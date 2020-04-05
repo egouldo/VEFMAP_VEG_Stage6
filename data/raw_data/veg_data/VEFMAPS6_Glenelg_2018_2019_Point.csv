@@ -5033,14 +5033,14 @@ Glenelg,Glenelg,Weavers,7,B,1,Bare,ground,6,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,B,1,Litter,ground,34,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,B,1,Lolium spp.,#N/A,12,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,B,1,Vulpia spp.,exotic,12,0_1m,26/02/2020,5,0,
-Glenelg,Glenelg,Weavers,7,B,1,Monocot,#N/A,5,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,7,B,1,Monocot grass,#N/A,5,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,B,1,Romulea rosea,exotic,1,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,B,1,Poa labillardierei var. labillardierei,native,9,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,C,2,Vulpia spp.,exotic,30,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,C,2,Lolium spp.,#N/A,10,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,C,2,Hemarthria uncinata var. uncinata,native,9,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,C,2,Bare,ground,2,0_1m,26/02/2020,5,0,
-Glenelg,Glenelg,Weavers,7,C,2,Monocot,#N/A,4,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,7,C,2,Monocot grass,#N/A,4,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,C,2,Litter,ground,38,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,D,3,Hemarthria uncinata var. uncinata,native,11,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,D,3,Lolium spp.,#N/A,15,0_1m,26/02/2020,5,0,
@@ -5048,7 +5048,7 @@ Glenelg,Glenelg,Weavers,7,D,3,Bromus diandrus,exotic,2,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,D,3,Bare,ground,1,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,D,3,Litter,ground,39,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,7,D,3,Vulpia spp.,exotic,12,0_1m,26/02/2020,5,0,
-Glenelg,Glenelg,Weavers,7,D,3,Monocot,#N/A,2,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,7,D,3,Monocot grass,#N/A,2,0_1m,26/02/2020,5,0,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,D,3,Rytidosperma spp.,native,3,0_1m,26/02/2020,5,0,
 Glenelg,Glenelg,Weavers,8,W,-1,Water,ground,40,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,W,-1,Cycnogeton procerum,#N/A,4,0_1m,26/02/2020,5,1,
@@ -5058,7 +5058,7 @@ Glenelg,Glenelg,Weavers,8,A,0,Vulpia spp.,exotic,1,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,A,0,Isolepis spp.,#N/A,4,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,A,0,Litter,ground,18,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,A,0,Bare,ground,22,0_1m,26/02/2020,5,1,
-Glenelg,Glenelg,Weavers,8,A,0,Monocot,#N/A,2,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,8,A,0,Monocot grass,#N/A,2,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,A,0,Juncus amabilis,native,3,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,A,0,Lolium spp.,#N/A,7,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,A,0,Hordeum spp.,exotic,1,0_1m,26/02/2020,5,1,
@@ -5068,7 +5068,7 @@ Glenelg,Glenelg,Weavers,8,B,1,Bare,ground,9,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,B,1,Litter,ground,31,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,B,1,Lolium spp.,#N/A,22,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,B,1,Polypogon monspeliensis,exotic,1,0_1m,26/02/2020,5,1,
-Glenelg,Glenelg,Weavers,8,B,1,Monocot,#N/A,4,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,8,B,1,Monocot grass,#N/A,4,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,B,1,Hordeum spp.,exotic,4,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,B,1,Juncus amabilis,native,8,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,B,1,Vulpia spp.,exotic,6,0_1m,26/02/2020,5,1,
@@ -5077,12 +5077,12 @@ Glenelg,Glenelg,Weavers,8,C,2,Vulpia spp.,exotic,32,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,C,2,Austrostipa scabra,native,1,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,C,2,Bare,ground,1,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,C,2,Litter,ground,39,0_1m,26/02/2020,5,1,
-Glenelg,Glenelg,Weavers,8,C,2,Monocot,#N/A,3,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,8,C,2,Monocot grass,#N/A,3,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,C,2,Rytidosperma spp.,native,7,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,C,2,Hordeum spp.,exotic,5,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,D,3,Acetosella vulgaris,exotic,1,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,D,3,Romulea rosea,exotic,1,0_1m,26/02/2020,5,1,
-Glenelg,Glenelg,Weavers,8,D,3,Monocot,#N/A,6,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. This is the closest from the species master
+Glenelg,Glenelg,Weavers,8,D,3,Monocot grass,#N/A,6,0_1m,26/02/2020,5,1,LV: Perennial grass in databook. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,D,3,Hypochaeris radicata,exotic,1,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,D,3,Lolium spp.,#N/A,16,0_1m,26/02/2020,5,1,
 Glenelg,Glenelg,Weavers,8,D,3,Vulpia spp.,exotic,27,0_1m,26/02/2020,5,1,
@@ -5103,7 +5103,7 @@ Glenelg,Glenelg,Weavers,7,B,1,Vulpia spp.,exotic,16,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,B,1,Romulea rosea,exotic,5,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,B,1,Litter,ground,24,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,B,1,Bare,ground,16,0_1m,24/10/2019,4,0,
-Glenelg,Glenelg,Weavers,7,B,1,Monocot,#N/A,4,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check
+Glenelg,Glenelg,Weavers,7,B,1,Monocot grass,#N/A,4,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,B,1,Bromus hordeaceus subsp. hordeaceus,#N/A,1,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,B,1,Poa labillardierei var. labillardierei,native,10,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,B,1,Gladiolus undulatus,exotic,1,0_1m,24/10/2019,4,0,
@@ -5111,7 +5111,7 @@ Glenelg,Glenelg,Weavers,7,C,2,Bare,ground,5,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,C,2,Litter,ground,35,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,C,2,Vulpia spp.,exotic,32,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,C,2,Aira spp.,#N/A,11,0_1m,24/10/2019,4,0,
-Glenelg,Glenelg,Weavers,7,C,2,Monocot,#N/A,4,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check
+Glenelg,Glenelg,Weavers,7,C,2,Monocot grass,#N/A,4,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,C,2,Bromus hordeaceus subsp. hordeaceus,#N/A,2,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,C,2,Lolium spp.,#N/A,3,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,C,2,Romulea rosea,exotic,6,0_1m,24/10/2019,4,0,
@@ -5122,7 +5122,7 @@ Glenelg,Glenelg,Weavers,7,D,3,Litter,ground,39,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,D,3,Vulpia spp.,exotic,31,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,D,3,Aira spp.,#N/A,6,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,D,3,Romulea rosea,exotic,8,0_1m,24/10/2019,4,0,
-Glenelg,Glenelg,Weavers,7,D,3,Monocot,#N/A,1,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check
+Glenelg,Glenelg,Weavers,7,D,3,Monocot grass,#N/A,1,0_1m,24/10/2019,4,0,LV: note says perennial exotic grass to check. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,7,D,3,Lolium spp.,#N/A,19,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,D,3,Freesia spp.,exotic,3,0_1m,24/10/2019,4,0,
 Glenelg,Glenelg,Weavers,7,D,3,Hemarthria uncinata var. uncinata,native,2,0_1m,24/10/2019,4,0,
@@ -5155,7 +5155,7 @@ Glenelg,Glenelg,Weavers,8,C,2,Wahlenbergia spp.,native,1,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,C,2,Romulea rosea,exotic,8,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,C,2,Lolium spp.,#N/A,7,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,C,2,Freesia spp.,exotic,1,0_1m,24/10/2019,4,1,
-Glenelg,Glenelg,Weavers,8,C,2,Monocot,#N/A,4,0_1m,24/10/2019,4,1,LV: note says perennial exotic grass to check
+Glenelg,Glenelg,Weavers,8,C,2,Monocot grass,#N/A,4,0_1m,24/10/2019,4,1,LV: note says perennial exotic grass to check. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,C,2,Hordeum spp.,exotic,3,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,C,2,Gladiolus undulatus,exotic,1,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Lolium spp.,#N/A,22,0_1m,24/10/2019,4,1,
@@ -5166,7 +5166,7 @@ Glenelg,Glenelg,Weavers,8,D,3,Holcus lanatus,exotic,1,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Romulea rosea,exotic,8,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Hemarthria uncinata var. uncinata,native,5,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Bromus hordeaceus subsp. hordeaceus,#N/A,7,0_1m,24/10/2019,4,1,
-Glenelg,Glenelg,Weavers,8,D,3,Monocot,#N/A,4,0_1m,24/10/2019,4,1,LV: note says perennial exotic grass to check
+Glenelg,Glenelg,Weavers,8,D,3,Monocot grass,#N/A,4,0_1m,24/10/2019,4,1,LV: note says perennial exotic grass to check. Updated to Monocot grass
 Glenelg,Glenelg,Weavers,8,D,3,Freesia spp.,exotic,4,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Lythrum hyssopifolia,native,2,0_1m,24/10/2019,4,1,
 Glenelg,Glenelg,Weavers,8,D,3,Acetosella vulgaris,exotic,1,0_1m,24/10/2019,4,1,
