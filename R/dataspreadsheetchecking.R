@@ -3,8 +3,9 @@
 
 
 #working directory - for LVs computer
-setwd("C:/Users/lv0e/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
+#setwd("C:/Users/lv0e/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
 #setwd("C:/Users/cj0a/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
+setwd("C:/Users/lv0e/OneDrive - Department of Environment, Land, Water and Planning/R/VEFMAP_VEG_Stage6/VEFMAP_VEG_Stage6/data/raw_data/veg_data")
 
 library(tidyverse)
 library(dplyr)
@@ -16,6 +17,7 @@ vegdata <- read.csv("VEFMAPS6_Glenelg_2018_2019_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Yarra_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_ThomsonMacalister_2018_2019_Point.csv")
+vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Point.csv")
 
 speciesmaster <- read.csv("VEFMAP_species_master.csv")
 
@@ -55,6 +57,62 @@ sitecheck<-
 #Levels: Bellbird Cowwarr Forsyth Hagans Heyfield Riverview
 
 #write.csv(vegdata,file = file.choose(new = T))
+
+# Site coding for Wimmera
+#unique(vegdata$SITE)
+#[1] McGuiness Bridge                 Millers Road                     Peuckers Road                   
+#[4] Wonwondah Gauge                  Grahams Bridge                   Mt Victory Road                 
+#[7] Tatlock Bridge                   Wonwondah Road                   Lake Lonsdale                   
+#[10] Roses Gap Road                   Sheepwash Creek                  Tobacco Road                    
+#[13] Mt William Tobacco Rd            Rose's Gap                       Rose's Gap (Hall's Gap in book?)
+#[16] NE Wanwanda Mackenzie            Graham's Bridge                  Macinnes Burnt creek            
+#[19] Miller's Road Burnt Creek        Peuck's Road                     Wanwanda Guage                  
+#[22] Tatlock's Bridge                 Mt Victory Road Mackenzie River  Macinnes burnt creek            
+#[25] Roses Gap                        McInnes                          Millers                         
+#[28] Pueckers 
+
+#vegdata$SITE <- recode(
+#vegdata$SITE,
+#'McGuiness Bridge' = 'MacInnes',
+#'Millers Road' = 'Millers',
+#'Peuckers Road'= 'Peuckers',
+#'Wonwondah Gauge'='WonwondahGauge',
+#'Grahams Bridge'= 'GrahamsBridge',
+#'Mt Victory Road' = 'MtVictory',
+#'Tatlock Bridge' = 'Laharum',
+#'Wonwondah Road' = 'NEWonwondah',
+#'Lake Lonsdale' = 'LakeLonsdale',
+#'Roses Gap Road'= 'RosesGap',
+#'Sheepwash Creek' = 'Sheepwash',
+#'Tobacco Road' = 'Tobacco',
+#'Mt William Tobacco Rd' = 'Tobacco',
+#"Rose's Gap" = 'RosesGap',
+#"Rose's Gap (Hall's Gap in book?)" = 'RosesGap',
+#"NE Wanwanda Mackenzie" = "NEWonwondah",
+#"Graham's Bridge" = "GrahamsBridge",
+#'Macinnes Burnt creek' = 'MacInnes',
+#"Miller's Road Burnt Creek" = 'Millers',
+#"Peuck's Road" =  'Peuckers',
+#"Wanwanda Guage" = 'WonwondahGauge',                  
+#"Tatlock's Bridge" = 'Laharum',
+#"Mt Victory Road Mackenzie River" = 'MtVictory',
+#"Macinnes burnt creek" =  "MacInnes",        
+#"Roses Gap" = "RosesGap",
+#"McInnes" = "MacInnes",
+#"Pueckers" = "Peuckers",
+#)
+
+#unique(vegdata$SITE)
+#[1] MacInnes       Millers        Peuckers       WonwondahGauge GrahamsBridge  MtVictory     
+#[7] Laharum        NEWonwondah    LakeLonsdale   RosesGap       Sheepwash      Tobacco 
+
+sitecheck2 <- vegdata %>%
+  group_by(WATERWAY,SITE) %>%
+  summarise(n()) %>%
+  arrange(WATERWAY)
+
+#write.csv(vegdata,file = file.choose(new = T))
+
 
 #check that the dates and surveys match and make sense and all surveys are present
 surveydatecheck<- vegdata %>%
