@@ -4564,19 +4564,19 @@ Wimmera,Mt William,Tobacco,3,C,2,Phalaris aquatica,exotic,5,0_1m,21/12/2017,2,0,
 Wimmera,Mt William,Tobacco,3,C,2,Romulea rosea,exotic,1,0_1m,4/09/2017,1,0,
 Wimmera,Mt William,Tobacco,3,C,2,Trifolium arvense var. arvense,exotic,1,0_1m,4/09/2017,1,0,
 Wimmera,Mt William,Tobacco,3,C,2,Triglochin striata,native,17,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Bare,ground,0,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Bromus diandrus,exotic,6,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Carex tereticaulis,native,1,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Cynosurus echinatus,exotic,7,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Gladiolus undulatus,exotic,9,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Holcus lanatus,exotic,19,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Hypochaeris radicata,exotic,2,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Juncus pallidus,native,4,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Juncus amabilis,native,3,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Litter,ground,40,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Lolium rigidum,exotic,2,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Phalaris aquatica,exotic,5,0_1m,21/12/2017,2,0,
-Wimmera,Mt William,Tobacco,3,D,2,Vulpia spp.,exotic,1,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Bare,ground,0,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Bromus diandrus,exotic,6,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Carex tereticaulis,native,1,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Cynosurus echinatus,exotic,7,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Gladiolus undulatus,exotic,9,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Holcus lanatus,exotic,19,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Hypochaeris radicata,exotic,2,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Juncus pallidus,native,4,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Juncus amabilis,native,3,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Litter,ground,40,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Lolium rigidum,exotic,2,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Phalaris aquatica,exotic,5,0_1m,21/12/2017,2,0,
+Wimmera,Mt William,Tobacco,3,D,3,Vulpia spp.,exotic,1,0_1m,21/12/2017,2,0,
 Wimmera,Mt William,Tobacco,3,D,3,Carex tereticaulis,native,3,0_1m,12/04/2018,3,0,
 Wimmera,Mt William,Tobacco,3,D,3,Monocot grass,exotic,29,0_1m,4/09/2017,1,0,Was Exotic grass
 Wimmera,Mt William,Tobacco,3,D,3,Monocot grass,exotic,3,0_1m,12/04/2018,3,0,Was Exotic grass
@@ -4952,7 +4952,7 @@ Wimmera,McKenzie,NEWonwondah,1,D,3,Litter,ground,35,0_1m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,1,D,3,Acacia provincialis,#,1,0_1m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,1,D,3,Moss/Lichen,ground,5,0_1m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,2,W,-1,Water,ground,40,0_1m,26/03/2019,6,0,
-Wimmera,McKenzie,NEWonwondah,2,W,-1,Cycnogeton procerum,native,NA,0_1m,26/03/2019,6,0,
+Wimmera,McKenzie,NEWonwondah,2,W,-1,Cycnogeton procerum,native,10,0_1m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,2,A,0,Juncus amabilis,native,31,0_1m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,2,A,0,Acacia provincialis,#,12,1_5m,26/03/2019,6,0,
 Wimmera,McKenzie,NEWonwondah,2,A,0,Callistemon rugulosus,native,7,0_1m,26/03/2019,6,0,"New species, check. Not in species master. Only recorded in survey 6"
@@ -5286,7 +5286,7 @@ Wimmera,Burnt,MacInnes,5,C,2,Carex tereticaulis,native,2,0_1m,27/03/2019,6,0,
 Wimmera,Burnt,MacInnes,5,C,2,Rytidosperma spp.,native,2,0_1m,27/03/2019,6,0,
 Wimmera,Burnt,MacInnes,5,C,2,Paspalum dilatatum,exotic,24,0_1m,27/03/2019,6,0,
 Wimmera,McKenzie,GrahamsBridge,1,W,-1,Bare,ground,32,0_1m,27/03/2019,6,0,
-Wimmera,McKenzie,GrahamsBridge,1,W,-1,Litter,8,NA,0_1m,27/03/2019,6,0,
+Wimmera,McKenzie,GrahamsBridge,1,W,-1,Litter,ground,8,0_1m,27/03/2019,6,0,
 Wimmera,McKenzie,GrahamsBridge,1,W,-1,Cycnogeton procerum,native,3,0_1m,27/03/2019,6,0,
 Wimmera,McKenzie,GrahamsBridge,1,A,0,Litter,ground,40,0_1m,27/03/2019,6,0,
 Wimmera,McKenzie,GrahamsBridge,1,A,0,Juncus amabilis,native,24,0_1m,27/03/2019,6,0,
@@ -5818,7 +5818,7 @@ Wimmera,Mt William,Tobacco,4,C,2,Holcus lanatus,exotic,2,0_1m,27/03/2019,6,0,
 Wimmera,Mt William,Tobacco,4,C,2,Litter,ground,40,0_1m,27/03/2019,6,0,
 Wimmera,Mt William,Tobacco,4,C,2,Juncus pallidus,native,1,0_1m,27/03/2019,6,0,
 Wimmera,Mt William,Tobacco,4,C,2,Microlaena stipoides var. stipoides,native,1,0_1m,27/03/2019,6,0,
-Wimmera,Mt William,Tobacco,1 (should this be 5?),W,-1,Water,ground,NA,0_1m,27/03/2019,6,0,Check Transect numbers
+Wimmera,Mt William,Tobacco,1 (should this be 5?),W,-1,Water,ground,30,0_1m,27/03/2019,6,0,Check Transect numbers
 Wimmera,Mt William,Tobacco,1 (should this be 5?),W,-1,Bare,ground,4,0_1m,27/03/2019,6,0,
 Wimmera,Mt William,Tobacco,1 (should this be 5?),W,-1,Litter,ground,6,0_1m,27/03/2019,6,0,
 Wimmera,Mt William,Tobacco,1 (should this be 5?),W,-1,Cycnogeton procerum,native,5,0_1m,27/03/2019,6,0,
@@ -5977,92 +5977,92 @@ Wimmera,Mt William,RosesGap,1,C,2,Geranium spp.,#N/A,2,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,1,C,2,Lolium spp.,#N/A,1,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,1,C,2,Litter,ground,40,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,1,C,2,Bare,ground,0,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),W,-1,Water,ground,19,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),W,-1,Litter,ground,9,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),W,-1,Bare,ground,12,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),W,-1,Lachnagrostis filiformis s.l.,#N/A,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Bare,ground,15,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Lachnagrostis filiformis s.l.,#N/A,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Lolium spp.,#N/A,8,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Ehrharta erecta var. erecta,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Juncus amabilis,native,10,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Bromus diandrus,exotic,4,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),A,0,Litter,ground,25,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Bare,ground,0,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Litter,ground,40,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Bromus diandrus,exotic,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Juncus amabilis,native,25,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Gladiolus undulatus,exotic,3,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Lolium spp.,#N/A,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Vicia sativa,#N/A,1,0_1,3/12/2018,5,0,Not in species master
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Lachnagrostis filiformis s.l.,#N/A,9,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Holcus lanatus,exotic,3,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),B,1,Phalaris aquatica,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Bare,ground,0,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Litter,ground,40,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Juncus amabilis,native,18,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Bromus diandrus,exotic,8,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Vulpia spp.,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Lolium spp.,#N/A,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Ehrharta erecta var. erecta,exotic,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Gladiolus undulatus,exotic,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Carex appressa,native,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Holcus lanatus,exotic,2,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),C,2,Phalaris aquatica,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Bare,ground,0,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Litter,ground,40,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Carex tereticaulis,native,12,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Ehrharta erecta var. erecta,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Phalaris aquatica,exotic,20,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Carex appressa,native,3,0_1,3/12/2018,5,0,
-Wimmera,Mt William,RosesGap,2 (3 in book),D,3,Bromus diandrus,exotic,2,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),W,-1,Water,ground,40,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),W,-1,Juncus spp.,native,14,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),A,0,Bare,ground,2,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),A,0,Litter,ground,38,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),A,0,Acacia provincialis,#,22,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),A,0,Juncus spp.,native,9,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),A,0,Centipeda cunninghamii,native,1,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),B,1,Bare,ground,4,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),B,1,Litter,ground,36,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),B,1,Acacia provincialis,#,31,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),B,1,Ehrharta calycina,exotic,12,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),C,2,Bare,ground,2,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),C,2,Litter,ground,35,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),C,2,Acacia provincialis,#,27,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),C,2,Moss/Lichen,ground,3,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),C,2,Ehrharta calycina,exotic,10,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Bare,ground,5,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Litter,ground,31,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Acacia provincialis,#,2,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Acacia provincialis,#,2,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Ehrharta calycina,exotic,20,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Rytidosperma spp.,native,1,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,1 (5 in book),D,3,Moss/Lichen,ground,4,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),W,-1,Water,ground,40,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),W,-1,Cycnogeton procerum,native,3,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Litter,ground,40,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Hypochaeris radicata,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Juncus spp.,native,23,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Acacia provincialis,#,13,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Ehrharta calycina,exotic,1,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Microlaena stipoides var. stipoides,native,2,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),A,0,Callistemon wimmerensis,native,6,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Litter,ground,35,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Bare,ground,5,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Acacia provincialis,#,15,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Ehrharta calycina,exotic,8,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Vulpia spp.,exotic,10,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),B,1,Lachnagrostis filiformis s.l.,#N/A,1,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Bare,ground,3,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Litter,ground,16,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Acacia provincialis,#,8,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Moss/Lichen,ground,21,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Ehrharta calycina,exotic,29,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),C,2,Rytidosperma spp.,native,3,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),D,3,Litter,ground,40,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),D,3,Acacia provincialis,#,16,1_5,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,2 (4 in book),D,3,Ehrharta calycina,exotic,32,0_1,3/12/2018,5,0,
+Wimmera,Mt William,RosesGap,2,W,-1,Water,ground,19,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,W,-1,Litter,ground,9,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,W,-1,Bare,ground,12,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,W,-1,Lachnagrostis filiformis s.l.,#N/A,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Bare,ground,15,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Lachnagrostis filiformis s.l.,#N/A,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Lolium spp.,#N/A,8,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Ehrharta erecta var. erecta,exotic,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Juncus amabilis,native,10,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Bromus diandrus,exotic,4,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,A,0,Litter,ground,25,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Bare,ground,0,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Litter,ground,40,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Bromus diandrus,exotic,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Juncus amabilis,native,25,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Gladiolus undulatus,exotic,3,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Lolium spp.,#N/A,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Vicia sativa,#N/A,1,0_1,3/12/2018,5,0,Not in species master. Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Lachnagrostis filiformis s.l.,#N/A,9,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Holcus lanatus,exotic,3,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,B,1,Phalaris aquatica,exotic,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Bare,ground,0,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Litter,ground,40,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Juncus amabilis,native,18,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Bromus diandrus,exotic,8,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Vulpia spp.,exotic,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Lolium spp.,#N/A,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Ehrharta erecta var. erecta,exotic,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Gladiolus undulatus,exotic,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Carex appressa,native,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Holcus lanatus,exotic,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,C,2,Phalaris aquatica,exotic,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Bare,ground,0,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Litter,ground,40,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Carex tereticaulis,native,12,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Ehrharta erecta var. erecta,exotic,1,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Phalaris aquatica,exotic,20,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Carex appressa,native,3,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,Mt William,RosesGap,2,D,3,Bromus diandrus,exotic,2,0_1,3/12/2018,5,0,Transect 3 in book
+Wimmera,McKenzie,NEWonwondah,1,W,-1,Water,ground,40,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,W,-1,Juncus spp.,native,14,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,A,0,Bare,ground,2,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,A,0,Litter,ground,38,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,A,0,Acacia provincialis,#,22,1_5,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,A,0,Juncus spp.,native,9,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,A,0,Centipeda cunninghamii,native,1,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,B,1,Bare,ground,4,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,B,1,Litter,ground,36,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,B,1,Acacia provincialis,#,31,1_5,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,B,1,Ehrharta calycina,exotic,12,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,C,2,Bare,ground,2,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,C,2,Litter,ground,35,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,C,2,Acacia provincialis,#,27,1_5,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,C,2,Moss/Lichen,ground,3,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,C,2,Ehrharta calycina,exotic,10,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Bare,ground,5,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Litter,ground,31,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Acacia provincialis,#,2,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Acacia provincialis,#,2,1_5,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Ehrharta calycina,exotic,20,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Rytidosperma spp.,native,1,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,1,D,3,Moss/Lichen,ground,4,0_1,3/12/2018,5,0,Written as Transect 5 in book
+Wimmera,McKenzie,NEWonwondah,2,W,-1,Water,ground,40,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,W,-1,Cycnogeton procerum,native,3,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Litter,ground,40,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Hypochaeris radicata,exotic,1,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Juncus spp.,native,23,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Acacia provincialis,#,13,1_5,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Ehrharta calycina,exotic,1,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Microlaena stipoides var. stipoides,native,2,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,A,0,Callistemon wimmerensis,native,6,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Litter,ground,35,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Bare,ground,5,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Acacia provincialis,#,15,1_5,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Ehrharta calycina,exotic,8,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Vulpia spp.,exotic,10,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,B,1,Lachnagrostis filiformis s.l.,#N/A,1,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Bare,ground,3,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Litter,ground,16,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Acacia provincialis,#,8,1_5,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Moss/Lichen,ground,21,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Ehrharta calycina,exotic,29,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,C,2,Rytidosperma spp.,native,3,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,D,3,Litter,ground,40,0_1,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,D,3,Acacia provincialis,#,16,1_5,3/12/2018,5,0,Written as Transect 4 in book
+Wimmera,McKenzie,NEWonwondah,2,D,3,Ehrharta calycina,exotic,32,0_1,3/12/2018,5,0,Written as Transect 4 in book
 Wimmera,McKenzie,NEWonwondah,3,W,-1,Water,ground,0,0_1,3/12/2018,5,0,
 Wimmera,McKenzie,NEWonwondah,3,W,-1,Bare,ground,30,0_1,3/12/2018,5,0,
 Wimmera,McKenzie,NEWonwondah,3,W,-1,Litter,ground,10,0_1,3/12/2018,5,0,
@@ -6780,7 +6780,7 @@ Wimmera,Mt William,RosesGap,3,B,1,Lolium spp.,#N/A,1,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,3,C,2,Bare,ground,28,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,3,C,2,Litter,ground,12,0_1,3/12/2018,5,0,
 Wimmera,Mt William,RosesGap,3,C,2,Bromus diandrus,exotic,12,0_1,3/12/2018,5,0,
-Wimmera,McKenzie,NEWonwondah,5,W,-1,Bare,ground,31,0_1,3/12/2018,5,0,Need to check trasects - both books have transect 5 and 4!
+Wimmera,McKenzie,NEWonwondah,5,W,-1,Bare,ground,31,0_1,3/12/2018,5,0,
 Wimmera,McKenzie,NEWonwondah,5,W,-1,Litter,ground,9,0_1,3/12/2018,5,0,
 Wimmera,McKenzie,NEWonwondah,5,W,-1,Acacia provincialis,#,12,1_5,3/12/2018,5,0,
 Wimmera,McKenzie,NEWonwondah,5,W,-1,Juncus amabilis,native,15,0_1,3/12/2018,5,0,
@@ -7651,7 +7651,7 @@ Wimmera,Mt William,RosesGap,4,A,0,Litter,ground,16,0_1m,11/09/2018,4,0,
 Wimmera,Mt William,RosesGap,4,A,0,Cycnogeton procerum,native,6,0_1m,11/09/2018,4,0,
 Wimmera,Mt William,RosesGap,4,A,0,Modiola caroliniana,exotic,1,0_1m,11/09/2018,4,0,
 Wimmera,Mt William,RosesGap,4,A,0,Cynodon dactylon var. dactylon,exotic,1,0_1m,11/09/2018,4,0,
-Wimmera,Mt William,RosesGap,4,A,0,Lysimachia arvensis,exotic,NA,0_1m,11/09/2018,4,0,"LV: scarlet pimpernel, have assumed this"
+Wimmera,Mt William,RosesGap,4,A,0,Lysimachia arvensis,exotic,1,0_1m,11/09/2018,4,0,"LV: scarlet pimpernel, have assumed this"
 Wimmera,Mt William,RosesGap,4,A,0,Lolium spp.,#N/A,3,0_1m,11/09/2018,4,0,
 Wimmera,Mt William,RosesGap,4,B,1,Holcus lanatus,exotic,5,0_1m,11/09/2018,4,0,
 Wimmera,Mt William,RosesGap,4,B,1,Juncus amabilis,native,24,0_1m,11/09/2018,4,0,
@@ -7768,7 +7768,7 @@ Wimmera,McKenzie,NEWonwondah,5,D,3,Lolium spp.,#N/A,6,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,5,D,3,Ehrharta calycina,exotic,29,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,5,D,3,Bromus diandrus,exotic,8,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,5,D,3,Litter,ground,40,0_1m,12/09/2018,4,0,
-Wimmera,McKenzie,NEWonwondah,4,W,-1,Cyperus gunnii subsp. gunnii,native,NA,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,NEWonwondah,4,W,-1,Cyperus gunnii subsp. gunnii,native,22,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,W,-1,Bare,ground,29,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,W,-1,Litter,ground,11,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,W,-1,Juncus amabilis,native,25,0_1m,12/09/2018,4,0,
@@ -7803,7 +7803,7 @@ Wimmera,McKenzie,NEWonwondah,4,D,3,Acacia provincialis,#,11,1_5m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Acacia provincialis,#,1,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Ehrharta calycina,exotic,11,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Romulea rosea,exotic,8,0_1m,12/09/2018,4,0,
-Wimmera,McKenzie,NEWonwondah,4,D,3,Arthropodium strictum s.l.,native,NA,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,NEWonwondah,4,D,3,Arthropodium strictum s.l.,native,7,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Bare,ground,10,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Moss/Lichen,ground,3,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,NEWonwondah,4,D,3,Rytidosperma setaceum,native,7,0_1m,12/09/2018,4,0,
@@ -8114,7 +8114,7 @@ Wimmera,McKenzie,GrahamsBridge,5,D,3,Acacia provincialis,#,10,1_5m,12/09/2018,4,
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Oxalis purpurea,exotic,2,0_1m,12/09/2018,4,0,Not in species master
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Goodenia ovata,native,2,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Lolium spp.,#N/A,18,0_1m,12/09/2018,4,0,
-Wimmera,McKenzie,GrahamsBridge,5,D,3,Geranium spp.,#N/A,NA,0_1m,12/09/2018,4,0,note says 'check'
+Wimmera,McKenzie,GrahamsBridge,5,D,3,Geranium spp.,#N/A,2,0_1m,12/09/2018,4,0,note says 'check'
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Ehrharta calycina,exotic,5,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Hemarthria uncinata var. uncinata,#N/A,10,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,GrahamsBridge,5,D,3,Microlaena stipoides var. stipoides,native,12,0_1m,12/09/2018,4,0,
@@ -8304,7 +8304,7 @@ Wimmera,McKenzie,MtVictory,2,W,-1,Amphibromus neesii,#N/A,3,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Isolepis inundata,native,18,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Cycnogeton procerum,native,6,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Leptospermum obovatum,native,2,0_1m,12/09/2018,4,0,
-Wimmera,McKenzie,MtVictory,2,W,-1,Juncus gregiflorus,native,NA,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,MtVictory,2,W,-1,Juncus gregiflorus,native,3,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Juncus amabilis,native,1,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Bare,ground,34,0_1m,12/09/2018,4,0,
 Wimmera,McKenzie,MtVictory,2,W,-1,Acacia provincialis,#,1,1_5m,12/09/2018,4,0,
@@ -8485,7 +8485,7 @@ Wimmera,Burnt,MacInnes,3,B,1,Gladiolus undulatus,exotic,10,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,B,1,Goodenia humilis,native,9,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,B,1,Paspalum dilatatum,exotic,3,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,B,1,Centella cordifolia,native,2,0_1m,12/09/2018,4,0,
-Wimmera,Burnt,MacInnes,3,B,1,Eragrostis brownii,native,NA,0_1m,12/09/2018,4,0,
+Wimmera,Burnt,MacInnes,3,B,1,Eragrostis brownii,native,1,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,B,1,Bare,ground,1,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,B,1,Litter,ground,39,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,3,C,2,Carex tereticaulis,native,19,0_1m,12/09/2018,4,0,
@@ -8520,7 +8520,7 @@ Wimmera,Burnt,MacInnes,5,B,1,Romulea rosea,exotic,4,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,5,B,1,Litter,ground,40,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,5,B,1,Monocot grass,#N/A,2,0_1m,12/09/2018,4,0,listed as simply Grass
 Wimmera,Burnt,MacInnes,5,C,2,Carex tereticaulis,native,2,0_1m,12/09/2018,4,0,
-Wimmera,Burnt,MacInnes,5,C,2,Rytidosperma spp.,native,NA,0_1m,12/09/2018,4,0,(big)
+Wimmera,Burnt,MacInnes,5,C,2,Rytidosperma spp.,native,2,0_1m,12/09/2018,4,0,(big)
 Wimmera,Burnt,MacInnes,5,C,2,Gladiolus undulatus,exotic,5,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,5,C,2,Litter,ground,40,0_1m,12/09/2018,4,0,
 Wimmera,Burnt,MacInnes,5,C,2,Lolium spp.,#N/A,14,0_1m,12/09/2018,4,0,
@@ -8968,3 +8968,12 @@ Wimmera,Burnt,WonwondahGauge,4,C,2,Holcus lanatus,exotic,1,0_1m,13/09/2018,4,0,
 Wimmera,Burnt,WonwondahGauge,4,C,2,Microlaena stipoides var. stipoides,native,2,0_1m,13/09/2018,4,0,
 Wimmera,Burnt,WonwondahGauge,4,C,2,Poa sieberiana,native,1,0_1m,13/09/2018,4,0,
 Wimmera,Burnt,WonwondahGauge,4,C,2,Litter,ground,32,0_1m,13/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Acacia provincialis,#N/A,19,1_5m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Acacia provincialis,#N/A,1,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Romulea rosea,#N/A,18,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Briza maxima,#N/A,7,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Leptospermum obovatum,#N/A,4,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Hemarthria uncinata var. uncinata,#N/A,3,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Austrostipa spp.,#N/A,1,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Microlaena stipoides var. stipoides,#N/A,14,0_1m,12/09/2018,4,0,
+Wimmera,McKenzie,Laharum,4,C,2,Litter,ground,40,0_1m,12/09/2018,4,0,
