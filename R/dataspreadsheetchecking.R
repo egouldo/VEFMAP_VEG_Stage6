@@ -176,6 +176,13 @@ subtransectcheck2<- vegdata %>%
   summarise(n()) %>%
   arrange(METRES)
 
+#extra check for recruits files - check that subtransects and letters
+# also match the distances correctly
+subtransectcheck3<- vegdata %>%
+  group_by(SUB_TRANS,METRES,METRES.1) %>%
+  summarise(n()) %>%
+  arrange(METRES)
+
 #check exlcoures
 exclosurecheck <-vegdata  %>% 
   group_by(SITE,SURVEY,TRANSECT,EXCLOSURE) %>%
@@ -247,7 +254,7 @@ vegdata$SPECIES <- recode(
 
 #if need save file #don't forget to add .csv when creating file name
 #can save straight into working directory
-write.csv(vegdata,file = file.choose(new = T))
+#write.csv(vegdata,file = file.choose(new = T))
 
 
 
