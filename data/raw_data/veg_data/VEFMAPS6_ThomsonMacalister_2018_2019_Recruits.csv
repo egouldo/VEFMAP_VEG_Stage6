@@ -1,711 +1,711 @@
-RIVER,SITE,TRANSECT,SUB_TRANS,METRES,METRES,RECRUIT SPECIES,RECRUIT ORIGIN,RECRUIT COUNT,DATE,SURVEY,EXCLOSURE,Notes,,,,,,,
-Thomson,Th4a 01,1,W,-1, -1 to 0,Dicot,#N/A,1,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,A,0,0 to 1,Apiaceae,#N/A,1,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,A,0,0 to 1,Holcus spp.,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,A,0,0 to 1,Anthoxanthum spp.,#N/A,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,B,1,1 to 2,Anthoxanthum spp.,#N/A,50_100,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,B,1,1 to 2,Holcus spp.,#N/A,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,1,C,2,2 to 3,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,W,-1, -1 to 0,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,A,0,0 to 1,Apiaceae,#N/A,3,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,A,0,0 to 1,Dicot,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,A,0,0 to 1,Exo,exotic,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,B,1,1 to 2,Exo,exotic,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,B,1,1 to 2,Sonchus spp.,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,B,1,1 to 2,Apiaceae,#N/A,1,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,B,1,1 to 2,Dicot,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,C,2,2 to 3,Holcus spp.,#N/A,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,C,2,2 to 3,Exo,exotic,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,2,D,3,3 to 4,Exo,exotic,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,W,-1, -1 to 0,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,A,0,0 to 1,Apiaceae,#N/A,8,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,A,0,0 to 1,Dicot,#N/A,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,A,0,0 to 1,Exo,exotic,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,B,1,1 to 2,Apiaceae,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,3,C,2,2 to 3,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,4,W,-1, -1 to 0,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,4,A,0,0 to 1,Dicot,#N/A,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,4,A,0,0 to 1,Galium aparine,exotic,1,17/07/2018,1,0,correct Galium species?,,,,,,,
-Thomson,Th4a 01,4,B,1,1 to 2,Galium aparine,exotic,10_50,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,4,C,2,2 to 3,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,5,W,-1, -1 to 0,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,5,A,0,0 to 1,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,5,B,1,1 to 2,Nil,NA,0,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 01,5,C,2,2 to 3,Galium aparine,exotic,2,17/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,10,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,10,A,0,0 to 1,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,10,B,1,1 to 2,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,10,C,2,2 to 3,Hypochaeris radicata,exotic,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,10,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,A,0,0 to 1,Dicot,#N/A,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,B,1,1 to 2,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,B,1,1 to 2,Dicot,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,B,1,1 to 2,Apiaceae,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,C,2,2 to 3,Apiaceae,#N/A,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,C,2,2 to 3,Hypochaeris radicata,exotic,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,9,C,2,2 to 3,Holcus spp.,#N/A,4,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,8,W,-1, -1 to 0,Nil,NA,,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,8,A,0,0 to 1,Nil,NA,,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,8,B,1,1 to 2,Nil,NA,,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,8,C,2,2 to 3,Galium aparine,exotic,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,W,-1, -1 to 0,Dicot,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,A,0,0 to 1,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,A,0,0 to 1,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,A,0,0 to 1,Acacia dealbata,native,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,B,1,1 to 2,Acacia dealbata,native,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,B,1,1 to 2,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,B,1,1 to 2,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,B,1,1 to 2,Dactylis glomerata,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,C,2,2 to 3,Dactylis glomerata,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,C,2,2 to 3,Lotus spp.,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,C,2,2 to 3,Galium aparine,exotic,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,7,C,2,2 to 3,Apiaceae,#N/A,8,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,W,-1, -1 to 0,Nil,NA,,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,A,0,0 to 1,Dicot,#N/A,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,B,1,1 to 2,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,B,1,1 to 2,Apiaceae,#N/A,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,B,1,1 to 2,Exo,exotic,4,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,C,2,2 to 3,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,C,2,2 to 3,Apiaceae,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,C,2,2 to 3,Monocot,#N/A,6,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,D,3,3 to 4,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,D,3,3 to 4,Apiaceae,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,D,3,3 to 4,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,6,D,3,3 to 4,Galium aparine,exotic,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,W,-1, -1 to 0,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,A,0,0 to 1,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,B,1,1 to 2,Exo,exotic,50_100,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,B,1,1 to 2,Apiaceae,#N/A,7,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,B,1,1 to 2,Hypochaeris radicata,exotic,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,C,2,2 to 3,Galium aparine,exotic,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,5,C,2,2 to 3,Apiaceae,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,W,-1, -1 to 0,Dicot,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,A,0,0 to 1,Exo,exotic,50_100,18/07/2018,1,0,Lolium?,,,,,,,
-Thomson,Th4a 03,4,B,1,1 to 2,Exo,exotic,50_100,18/07/2018,1,0,Lolium?,,,,,,,
-Thomson,Th4a 03,4,B,1,1 to 2,Ranunculus repens,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,B,1,1 to 2,Galium aparine,exotic,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,C,2,2 to 3,Apiaceae,#N/A,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,C,2,2 to 3,Galium aparine,exotic,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,C,2,2 to 3,Dicot,#N/A,5,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,4,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,Lolium?,,,,,,,
-Thomson,Th4a 03,3,W,-1, -1 to 0,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,W,-1, -1 to 0,Monocot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,A,0,0 to 1,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,A,0,0 to 1,Monocot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,B,1,1 to 2,Galium aparine,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,B,1,1 to 2,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,3,B,1,1 to 2,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,2,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,2,A,0,0 to 1,Exo,exotic,50_100,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,2,B,1,1 to 2,Exo,exotic,50_100,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,2,C,2,2 to 3,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,2,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,A,0,0 to 1,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,B,1,1 to 2,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,B,1,1 to 2,Dicot,#N/A,3,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th4a 03,1,D,3,3 to 4,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,1,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,1,A,0,0 to 1,Acacia dealbata,native,1,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,1,A,0,0 to 1,Dicot,#N/A,2,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,1,A,0,0 to 1,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,1,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,2,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,2,A,0,0 to 1,Galium/Asperula,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,2,B,1,1 to 2,Dactylis glomerata,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,2,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,2,B,1,1 to 2,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,A,0,0 to 1,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,A,0,0 to 1,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,A,0,0 to 1,Hypochaeris/Dicot?,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,B,1,1 to 2,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,B,1,1 to 2,Dicot,#N/A,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,C,2,2 to 3,Microlaena stipoides var. stipoides,native,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,3,C,2,2 to 3,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,4,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,4,A,0,0 to 1,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,4,B,1,1 to 2,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,4,C,2,2 to 3,Galium aparine,exotic,1,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,5,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,5,A,0,0 to 1,Exo,exotic,10_50,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,5,B,1,1 to 2,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,5,C,2,2 to 3,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,6,W,-1, -1 to 0,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,6,A,0,0 to 1,Monocot,#N/A,10_50,18/07/2018,1,0,Exo?,,,,,,,
-Thomson,Th5,6,B,1,1 to 2,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Thomson,Th5,6,C,2,2 to 3,Nil,NA,0,18/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,2,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,2,A,0,0 to 1,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,2,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,2,C,2,2 to 3,Hypochaeris spp.,#N/A,2,19/07/2018,1,0,"""Grati."" something? Or just radicata?",,,,,,,
-Macalister,Hagans Bridge,3,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Conyza spp.,#N/A,2,19/07/2018,1,0,species?,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Hypochaeris radicata,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Holcus spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,dicot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Hypericum spp.,#N/A,10_50,19/07/2018,1,0,species?,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Hypochaeris radicata,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Conyza spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Holcus spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Arctotheca spp.,#N/A,2,19/07/2018,1,0,species? Calendula?,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,dicot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Hypericum spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Hypochaeris radicata,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Conyza spp.,#N/A,7,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Arctotheca spp.,#N/A,3,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,dicot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Euchiton spp.,native,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,W,-1, -1 to 0,Dicot,#N/A,3,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,W,-1, -1 to 0,Exo,exotic,3,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,A,0,0 to 1,Lythrum hyssopifolia,native,1,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,A,0,0 to 1,Holcus spp.,#N/A,5,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,A,0,0 to 1,Rumex spp.,native,1,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,B,1,1 to 2,Taraxacum ,#N/A,1,19/07/2018,1,0,species?,,,,,,,
-Macalister,Hagans Bridge,4,B,1,1 to 2,Hypericum spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Hypericum spp.,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Hypochaeris radicata,exotic,4,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Leptospermum obovatum,native,4,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Cyperus eragrostis,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,W,-1, -1 to 0,Dicot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,W,-1, -1 to 0,Acacia dealbata,native,2,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,W,-1, -1 to 0,Monocot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,A,0,0 to 1,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,5,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,6,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,6,A,0,0 to 1,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,6,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,6,C,2,2 to 3,dicot ,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,6,D,3,3 to 4,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,7,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,7,A,0,0 to 1,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,7,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,7,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,A,0,0 to 1,Rumex spp.,native,1,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,B,1,1 to 2,Rumex spp.,native,1,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,B,1,1 to 2,Exo,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,C,2,2 to 3,Taraxacum ,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Hagans Bridge,1,D,3,3 to 4,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,6,W,-1, -1 to 0,dicot,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,6,A,0,0 to 1,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,6,B,1,1 to 2,Exo,exotic,1,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,6,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,W,-1, -1 to 0,dicot,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,A,0,0 to 1,Cirsium vulgare,exotic,5,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,A,0,0 to 1,Hypochaeris radicata,exotic,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,A,0,0 to 1,Acacia dealbata,native,3,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,A,0,0 to 1,Sonchus spp.,#N/A,1,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,5,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,A,0,0 to 1,Acacia dealbata,native,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,A,0,0 to 1,Rumex spp.,native,3,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,A,0,0 to 1,dicot,#N/A,3,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,B,1,1 to 2,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,4,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,W,-1, -1 to 0,Acacia dealbata,native,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,A,0,0 to 1,Acacia dealbata,native,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,A,0,0 to 1,Microlaena stipoides var. stipoides,native,3,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,B,1,1 to 2,Microlaena stipoides var. stipoides,native,3,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,B,1,1 to 2,Acacia dealbata,native,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,3,B,1,1 to 2,Cyperus eragrostis,exotic,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,1,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,1,A,0,0 to 1,Nil,NA,1,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,1,B,1,1 to 2,Nil,NA,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,W,-1, -1 to 0,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,A,0,0 to 1,Cyperus eragrostis,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,A,0,0 to 1,Persicaria praetermissa,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,A,0,0 to 1,Eucalyptus camaldulensis var. camaldulensis,native,1,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,A,0,0 to 1,dicot,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,A,0,0 to 1,Monocot,#N/A,2,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,B,1,1 to 2,Cyperus eragrostis,exotic,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,B,1,1 to 2,Monocot,#N/A,10_50,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,B,1,1 to 2,dicot,#N/A,4,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,B,1,1 to 2,Hypochaeris radicata,exotic,1,19/07/2018,1,0,,,,,,,,
-Macalister,Bellbird,2,C,2,2 to 3,Nil,NA,0,19/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,W,-1, -1 to 0,dicot,#N/A,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,W,-1, -1 to 0,Monocot,#N/A,4,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,A,0,0 to 1,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,B,1,1 to 2,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,C,2,2 to 3,Exo,exotic,3,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,5,C,2,2 to 3,Sonchus spp.,#N/A,1,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,A,0,0 to 1,Cyperus eragrostis,exotic,3,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,Cyperus eragrostis,exotic,10_50,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,Rumex spp.,native,1,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,dicot,#N/A,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,4,C,2,2 to 3,Cyperus eragrostis,exotic,10_50,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,A,0,0 to 1,Cyperus eragrostis,exotic,10_50,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,A,0,0 to 1,Hypochaeris radicata,exotic,1,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,A,0,0 to 1,Rumex spp.,native,1,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,B,1,1 to 2,dicot,#N/A,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,3,C,2,2 to 3,Cyperus eragrostis,exotic,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,2,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,2,A,0,0 to 1,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,2,B,1,1 to 2,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,2,C,2,2 to 3,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,1,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,1,A,0,0 to 1,Rumex spp.,native,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,1,A,0,1 to 1,Monocot,#N/A,5,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,1,B,1,1 to 2,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,1,C,2,2 to,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,6,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,6,A,0,0 to 1,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,6,B,1,1 to 2,Cyperus eragrostis,exotic,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,6,C,2,2 to 3,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,7,W,-1, -1 to 0,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,7,A,0,0 to 1,Cyperus eragrostis,exotic,2,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,7,B,1,1 to 2,Cyperus eragrostis,exotic,4,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,7,B,1,1 to 2,Solanum spp.,#N/A,1,20/07/2018,1,0,,,,,,,,
-Macalister,Forsyth Road,7,C,2,2 to 3,Nil,NA,0,20/07/2018,1,0,,,,,,,,
-Thomson,Cowwarr,2,W,-1, -1 to 0,dicot,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,W,-1, -1 to 0,monocot,#N/A,5,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,A,0,0 to 1,Ranunculus repens,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,A,0,0 to 1,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,A,0,0 to 1,Monocot,#N/A,50_100,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,A,0,0 to 1,Acacia spp.,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,B,1,1 to 2,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,B,1,1 to 2,Monocot,#N/A,50_100,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,B,1,1 to 2,Ranunculus repens,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,C,2,2 to 3,Dactylis glomerata,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,C,2,2 to 3,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,2,D,3,3 to 4,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,A,0,0 to 1,Cyperus eragrostis,exotic,5,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,A,0,0 to 1,Persicaria hydropiper,native,25,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,A,0,0 to 1,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,A,0,0 to 1,Lolium spp.,#N/A,10,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,B,1,1 to 2,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,C,2,2 to 3,Galium aparine,exotic,4,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,4,C,2,2 to 3,Conium maculatum,exotic,3,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,1,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,1,A,0,0 to 1,Persicaria praetermissa,#N/A,3,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,1,B,1,1 to 2,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,1,C,2,2 to 3,Nil,NA,,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,A,0,0 to 1,Vinca/Hypochaeris?,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,A,0,0 to 1,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,A,0,0 to 1,Monocot,#N/A,3,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,B,1,1 to 2,Vinca?,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,B,1,1 to 2,Conium maculatum,exotic,4,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,3,D,3,3 to 4,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,5,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,5,A,0,0 to 1,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,5,B,1,1 to 2,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Cowwarr,5,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,10,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,10,A,0,0 to 1,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,10,B,1,1 to 2,Hypochaeris?,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,10,C,2,2 to 3,Hypochaeris?,#N/A,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,W,-1, -1 to 0,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,W,-1, -1 to 0,Acacia dealbata,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Chardemine spp.,#N/A,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Persicaria hydropiper,native,100+,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Acacia dealbata,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Hedera helix,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Cerastium POINTY,#N/A,50_100,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Lolium spp.,#N/A,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Euphorbia spp.,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Agrostis spp.,#N/A,3,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Dactylis glomerata,exotic,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Modiola?,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Plantago lanceolata,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Cirsium spp.,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,A,0,0 to 1,Melicytus dentatus,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,B,1,1 to 2,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,B,1,1 to 2,Plantago lanceolata,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,B,1,1 to 2,Acacia dealbata,native,4,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,B,1,1 to 2,Modeola?,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,B,1,1 to 2,Melicytus dentatus,native,4,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,C,2,2 to 3,Euphorbia spp.,#N/A,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,C,2,2 to 3,Melicytus dentatus,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,C,2,2 to 3,Persicaria subsessilis,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,7,C,2,2 to 3,Conium maculatum,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,W,-1, -1 to 0,Persicaria hydropiper,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,W,-1, -1 to 0,Cyperus eragrostis,exotic,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Rumex spp.,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Cerastium POINTY,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Conium maculatum,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Persicaria hydropiper,native,4,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Cirsium spp.,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Rumex spp.,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Chenopodium album,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,C,2,2 to 3,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,5,C,2,2 to 3,Cirsium spp.,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,4,W,-1, -1 to 0,Persicaria hydropiper,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,4,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,4,B,1,1 to 2,Persicaria hydropiper,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,4,C,2,2 to 3,Raphanus raphanistrum,exotic,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,3,W,-1, -1 to 0,Persicaria hydropiper,native,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,3,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,3,A,0,0 to 1,Grassy monocot,#N/A,4,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,3,B,1,1 to 2,Galium aparine,exotic,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,W,-1, -1 to 0,Persicaria hydropiper,native,4,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,B,1,1 to 2,Persicaria hydropiper,native,3,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,B,1,1 to 2,Rumex crispus,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,C,2,2 to 3,Persicaria hydropiper,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,D,3,3 to 4,Plantago lanceolata,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,1,D,3,3 to 4,Raphanus raphanistrum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,8,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,8,A,0,0 to 1,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,8,B,1,1 to 2,Rumex crispus,exotic,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,8,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,W,-1, -1 to 0,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,A,0,0 to 1,Persicaria hydropiper,native,50_100,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,A,0,0 to 1,monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,A,0,0 to 1,Cyperus eragrostis,exotic,2,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,B,1,1 to 2,Conium maculatum,exotic,5,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,9,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,W,-1, -1 to 0,Persicaria hydropiper,native,3,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,A,0,0 to 1,Persicaria praetermissa,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,A,0,0 to 1,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,A,0,0 to 1,Oxalis perennans,native,1,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,B,1,1 to 2,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,B,1,1 to 2,Persicaria praetermissa,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,B,1,1 to 2,Conium maculatum,exotic,7,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,C,2,2 to 3,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,C,2,2 to 3,Persicaria praetermissa,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,C,2,2 to 3,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,C,2,2 to 3,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,D,3,3 to 4,Conium maculatum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,D,3,3 to 4,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,6,D,3,3 to 4,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,W,-1, -1 to 0,Persicaria praetermissa,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,W,-1, -1 to 0,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,A,0,0 to 1,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,B,1,1 to 2,Monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,B,1,1 to 2,Ranunculus repens,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,C,2,2 to 3,Ranunculus repens,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,C,2,2 to 3,Raphanus raphanistrum,exotic,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Heyfield,2,C,2,2 to 3,Conium maculatum,exotic,3,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,4,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,4,A,0,0 to 1,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,4,B,1,1 to 2,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,4,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,3,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,3,A,0,0 to 1,dicot,#N/A,4,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,3,B,1,1 to 2,dicot,#N/A,2,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,3,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,2,W,-1, -1 to 0,Persicaria hydropiper,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,2,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,2,B,1,1 to 2,Persicaria subsessilis,native,2,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,6,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,6,A,0,0 to 1,Tradescantia spp.,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,6,B,1,1 to 2,Tradescantia spp.,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,6,B,1,1 to 2,monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,6,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,5,W,-1, -1 to 0,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,5,A,0,0 to 1,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,5,B,1,1 to 2,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,5,C,2,2 to 3,Nil,NA,0,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,1,W,-1, -1 to 0,dicot,#N/A,3,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,1,A,0,0 to 1,Persicaria hydropiper,native,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,1,A,0,0 to 1,monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,1,B,1,1 to 2,Tradescantia spp.,#N/A,1,24/10/2018,2,0,,,,,,,,
-Thomson,Riverview,1,B,1,1 to 2,monocot,#N/A,10_50,24/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,2,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,2,A,0,0 to1,Persicaria hydropiper,native,5,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,2,B,1,1 to 2,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,2,C,2,2 to 3,Sonchus spp.,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Hypochaeris radicata,exotic,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Euchiton involucratus s.l.,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Lobelia anceps,native,5,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Hypochaeris radicata,exotic,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Euchiton involucratus s.l.,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Acacia dealbata,native,1,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Conyza spp.,#N/A,5,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Hypochaeris radicata,exotic,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Conyza spp.,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Raphanus raphanistrum,exotic,2,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,5,W,-1, -1 to 0,Persicaria hydropiper,native,1,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,5,A,0,0 to 1,Melicytus dentatus,native,4,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,5,A,0,0 to 1,Hypochaeris radicata,exotic,1,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,5,B,1,1 to 2,Melicytus dentatus,native,4,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,5,C,2,2 to 3,Melicytus dentatus,native,2,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,7,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,7,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,7,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,7,C,2,2 to 3,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,A,0,0 to 1,Persicaria hydropiper,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,B,1,1 to 2,Persicaria hydropiper,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,B,1,1 to 2,monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,C,2,2 to 3,monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,1,D,3,3 to 4,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,4,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,4,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,4,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Hypericum perforatum?,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,6,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,6,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,6,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,6,C,2,2 to 3,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Hagans Bridge,6,D,3,3 to 4,monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,W,-1, -1 to 0,dicot,#N/A,4,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,A,0,0 to 1,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,B,1,1 to 2,Sonchus spp.,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,B,1,1 to 2,Melicytus dentatus,native,1,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,C,2,2 to 3,Lactuca spp.,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,C,2,2 to 3,Persicaria hydropiper,native,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,5,C,2,2 to 3,Solanum nigrum s.l.,exotic,3,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,A,0,0 to 1,Melicytus dentatus,native,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,A,0,0 to 1,Sonchus spp.,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,A,0,0 to 1,Conyza spp.,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,A,0,0 to 1,dicot,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,B,1,1 to 2,Melicytus dentatus,native,4,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,4,C,2,2 to 3,Melicytus dentatus,native,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,W,-1, -1 to 0,dicot,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Persicaria hydropiper,native,6,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Cyperus eragrostis,exotic,5,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,B,1,1 to 2,dicot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,B,1,1 to 2,Monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,B,1,1 to 2,Persicaria hydropiper,native,2,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,2,C,2,2 to 3,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,6,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,6,A,0,0 to 1,Sonchus oleraceus,exotic,1,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,6,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,3,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,3,A,0,0 to 1,Acacia spp.,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,3,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,1,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,1,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Bellbird Reserve,1,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,1,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,1,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,1,B,1,1 to 2,Chenopodium album,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,1,C,2,2 to 3,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,4,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,4,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,Tradescantia spp.,#N/A,5,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,Microlaena stipoides var. stipoides,native,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,4,C,2,2 to 3,Cyperus eragrostis,exotic,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,6,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,6,A,0,0 to 1,monocot,#N/A,10_50,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,6,B,1,1 to 2,monocot,#N/A,5,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,6,C,2,2 to 3,Hypochaeris radicata,exotic,1,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,2,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,2,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,2,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,2,C,2,2 to 3,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,3,W,-1, -1 to 0,dicot,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,3,A,0,0 to 1,dicot,#N/A,2,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,3,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,3,C,2,2 to 3,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,W,-1, -1 to 0,Isolepis inundatus,#N/A,3,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,W,-1, -1 to 0,dicot,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,B,1,1 to 2,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,C,2,2 to 3,Dactylis glomerata,exotic,1,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,5,C,2,2 to 3,Sonchus spp.,#N/A,1,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,7,W,-1, -1 to 0,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,7,A,0,0 to 1,Nil,NA,0,25/10/2018,2,0,,,,,,,,
-Macalister,Forsyth Road,7,B,1,1 to 2,Persicaria hydropiper??,#N/A,5,25/10/2018,2,0,,,,,,,,
-Macalister,Cowwarr Road,1,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,1,A,0,0 to 1,Nil,NA,1,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,1,B,1,1 to 2,Nil,NA,2,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,1,C,2,2 to 3,Nil,NA,3,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,W,-1, -1 to 0,Ludwigia spp.,#N/A,1,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,W,-1, -1 to 0,dicot,#N/A,1,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,A,0,0 to 1,Cyperaceae,#N/A,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,2,D,3,3 to 4,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,W,-1, -1 to 0,Ludwigia spp.,#N/A,5,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,W,-1, -1 to 0,Persicaria hydropiper,native,1,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,A,0,0 to 1,Ludwigia spp.,#N/A,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,A,0,0 to 1,Lythrum hyssopifolia,native,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,A,0,0 to 1,Persicaria hydropiper,native,8,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,A,0,0 to 1,Cyperus eragrostis,exotic,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,B,1,1 to 2,Hypochaeris radicata,exotic,1,19/02/2019,3,0,,,,,,,,
-Macalister,Cowwarr Road,4,C,2,2 to 3,Euphorbia spp.,#N/A,10_50,19/02/2019,3,0,was it E. lathyris?,,,,,,,
-Macalister,Heyfield,10,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,10,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,10,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,10,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,W,-1, -1 to 0,Cyperus eragrostis,exotic,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,W,-1, -1 to 0,Persicaria spp.,#N/A,3,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Solanum nigrum s.l.,exotic,1,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Cyperus eragrostis,exotic,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Melicytus dentatus,native,2,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Conium maculatum,exotic,1,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Sonchus spp.,#N/A,4,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Cirsium spp.,#N/A,1,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Acacia dealbata,native,4,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,A,0,0 to 1,Persicaria spp.,#N/A,4,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,B,1,1 to 2,Acacia dealbata,native,1,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,C,2,2 to 3,Euphorbia spp.,#N/A,2,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,7,C,2,2 to 3,dicot,#N/A,3,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,6,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,6,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,6,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,6,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,6,D,3,3 to 4,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,4,W,-1, -1 to 0,Cyperus eragrostis,exotic,10_50,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,4,A,0,0 to 1,Cyperus eragrostis,exotic,5,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,4,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,3,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,3,A,0,0 to 1,Verbena spp.,#N/A,3,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,3,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,D,3,3 to 4,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Heyfield,1,E,4,4 to 5,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,5,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,5,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,5,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,5,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,3,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,3,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,3,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,2,A,-1, -1 to 0,Myosotis spp.,#N/A,5,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,2,B,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,2,C,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,1,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,Recruits not in book - transect done by both Scott/Chris and Lyndsey so maybe we all forgot - most likely no recruits based on previous transects,,,,,,,
-Thomson,Riverview Road,1,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,1,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,1,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,1,A,0,0 to 1,dicot,#N/A,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,1,B,1,1 to 2,dicot,#N/A,5,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,1,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,1,D,2,3 to 4,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,3,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,3,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,3,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,3,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,5,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,5,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,5,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,5,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,A,0,0 to1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,C,2,2 to 3,Aster subulatus,exotic,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,C,2,2 to 3,Verbena spp.,#N/A,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,6,C,2,2 to 3,Atriplex spp.?,#N/A,5,20/02/2019,3,0,question mark on species,,,,,,,
-Macalister,Hagans Bridge,6,D,3,3 to 4,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,7,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,7,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,7,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,7,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,5,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,5,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,5,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,5,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,4,W,-1, -1 to 0,monocot,#N/A,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,4,A,0,0 to 1,Conyza spp.,#N/A,2,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,4,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,4,C,2, 2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,W,-1, -1 to 0,Nil,NA,,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Cyperus eragrostis,exotic,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Alternanthera denticulata s.s.,native,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,persicaria hy,#N/A,2,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,A,0,0 to 1,Persicaria praetermissa,#N/A,2,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,B,1,1 to 2,Cyperus eragrostis,exotic,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,B,1,1 to 2,Alternanthera denticulata s.s.,native,6,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,C,2,2 to 3,Sonchus spp.,#N/A,1,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,2,C,2,2 to 3,Microlaena stipoides var. stipoides,native,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,6,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,6,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,6,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,6,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,1,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,1,A,0,0 to 1,Ludwigia spp.,#N/A,1,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,1,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,1,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,4,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,4,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,4,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,4,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,3,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,3,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,3,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,3,W,-1, -1 to 0,monocot,#N/A,10_50,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,3,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,3,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,3,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,5,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,5,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,5,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Cowwarr Road,5,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,9,W,-1, -1 to 0,Isolepis spp.,#N/A,10_50,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,9,A,0,0 to 1,Acacia spp.,native,1,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,9,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,9,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,8,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,8,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,8,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,8,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,W,-1, -1 to 0,Cyperus eragrostis,exotic,2,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,W,-1, -1 to 0,dicot,#N/A,2,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Persicaria hydropiper,native,10_50,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,A,0,0 to 1,Acacia dealbata,native,2,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,B,1,1 to 2,Conium maculatum,exotic,1,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,5,C,2,2 to 3,Acacia dealbata,native,1,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,2,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,2,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,2,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Heyfield,2,C,2,2 to 3,Persicaria hydropiper,native,1,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,W,-1, -1 to 0,dicot,#N/A,2,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,W,-1, -1 to 0,Tradescantia spp.,#N/A,1,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,W,-1, -1 to 0,Isolepis spp.,#N/A,10_50,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,W,-1, -1 to 0,Myosotis spp.,#N/A,3,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,6,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,4,W,-1, -1 to 0,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,4,A,0,0 to 1,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,4,B,1,1 to 2,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Thomson,Riverview Road,4,C,2,2 to 3,Nil,NA,0,19/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,2,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,2,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,2,B,1,1 to 2,persicaria spp.,#N/A,3,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,2,C,2,2 to 3,persicaria spp.,#N/A,2,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,4,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,4,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,4,B,1,1 to 2,Hypericum spp.,#N/A,10_50,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,4,B,1,1 to 2,Persicaria subsessilis,native,1,20/02/2019,3,0,,,,,,,,
-Macalister,Hagans Bridge,4,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,6,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,No recruits in book - assuming none as next transect also has none??,,,,,,,
-Macalister,Bellbird Reserve,6,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,6,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,6,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,3,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,3,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,3,B,1,1 to 2,Persicaria subsessilis,native,1,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,1,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,1,A,0,0 to 1,dicot,#N/A,3,20/02/2019,3,0,,,,,,,,
-Macalister,Bellbird Reserve,1,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,7,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,7,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,7,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,2,W,-1, -1 to 0,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,2,A,0,0 to 1,Alternanthera denticulata s.s.,native,4,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,2,B,1,1 to 2,Alternanthera denticulata s.s.,native,1,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,2,C,2,2 to 3,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,5,W,-1, -1 to 0,dicot,#N/A,1,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,5,A,0,0 to 1,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-Macalister,Forsyth Road,5,B,1,1 to 2,Nil,NA,0,20/02/2019,3,0,,,,,,,,
-,,,C,2,2 to 3,Nil,NA,0,,,,,,,,,,,
+"","WATERWAY","SITE","TRANSECT","SUB_TRANS","METRES","METRES.1","RECRUIT.SPECIES","RECRUIT.ORIGIN","RECRUIT.COUNT","DATE","SURVEY","EXCLOSURE","Notes"
+"1","Thomson","Cowwarr",1,"W",-1," -1 to 0","Dicot","#N/A","1","17/07/2018",1,0,""
+"2","Thomson","Cowwarr",1,"A",0,"0 to 1","Apiaceae","#N/A","1","17/07/2018",1,0,""
+"3","Thomson","Cowwarr",1,"A",0,"0 to 1","Holcus spp.","#N/A","2","17/07/2018",1,0,""
+"4","Thomson","Cowwarr",1,"A",0,"0 to 1","Anthoxanthum spp.","#N/A","10_50","17/07/2018",1,0,""
+"5","Thomson","Cowwarr",1,"B",1,"1 to 2","Anthoxanthum spp.","#N/A","50_100","17/07/2018",1,0,""
+"6","Thomson","Cowwarr",1,"B",1,"1 to 2","Holcus spp.","#N/A","10_50","17/07/2018",1,0,""
+"7","Thomson","Cowwarr",1,"C",2,"2 to 3","Nil",NA,"0","17/07/2018",1,0,""
+"8","Thomson","Cowwarr",2,"W",-1," -1 to 0","Nil",NA,"0","17/07/2018",1,0,""
+"9","Thomson","Cowwarr",2,"A",0,"0 to 1","Apiaceae","#N/A","3","17/07/2018",1,0,""
+"10","Thomson","Cowwarr",2,"A",0,"0 to 1","Dicot","#N/A","2","17/07/2018",1,0,""
+"11","Thomson","Cowwarr",2,"A",0,"0 to 1","Exo","exotic","10_50","17/07/2018",1,0,""
+"12","Thomson","Cowwarr",2,"B",1,"1 to 2","Exo","exotic","10_50","17/07/2018",1,0,""
+"13","Thomson","Cowwarr",2,"B",1,"1 to 2","Sonchus spp.","#N/A","2","17/07/2018",1,0,""
+"14","Thomson","Cowwarr",2,"B",1,"1 to 2","Apiaceae","#N/A","1","17/07/2018",1,0,""
+"15","Thomson","Cowwarr",2,"B",1,"1 to 2","Dicot","#N/A","2","17/07/2018",1,0,""
+"16","Thomson","Cowwarr",2,"C",2,"2 to 3","Holcus spp.","#N/A","10_50","17/07/2018",1,0,""
+"17","Thomson","Cowwarr",2,"C",2,"2 to 3","Exo","exotic","10_50","17/07/2018",1,0,""
+"18","Thomson","Cowwarr",2,"D",3,"3 to 4","Exo","exotic","10_50","17/07/2018",1,0,""
+"19","Thomson","Cowwarr",3,"W",-1," -1 to 0","Nil",NA,"0","17/07/2018",1,0,""
+"20","Thomson","Cowwarr",3,"A",0,"0 to 1","Apiaceae","#N/A","8","17/07/2018",1,0,""
+"21","Thomson","Cowwarr",3,"A",0,"0 to 1","Dicot","#N/A","10_50","17/07/2018",1,0,""
+"22","Thomson","Cowwarr",3,"A",0,"0 to 1","Exo","exotic","2","17/07/2018",1,0,""
+"23","Thomson","Cowwarr",3,"B",1,"1 to 2","Apiaceae","#N/A","2","17/07/2018",1,0,""
+"24","Thomson","Cowwarr",3,"C",2,"2 to 3","Nil",NA,"0","17/07/2018",1,0,""
+"25","Thomson","Cowwarr",4,"W",-1," -1 to 0","Nil",NA,"0","17/07/2018",1,0,""
+"26","Thomson","Cowwarr",4,"A",0,"0 to 1","Dicot","#N/A","2","17/07/2018",1,0,""
+"27","Thomson","Cowwarr",4,"A",0,"0 to 1","Galium aparine","exotic","1","17/07/2018",1,0,"correct Galium species?"
+"28","Thomson","Cowwarr",4,"B",1,"1 to 2","Galium aparine","exotic","10_50","17/07/2018",1,0,""
+"29","Thomson","Cowwarr",4,"C",2,"2 to 3","Nil",NA,"0","17/07/2018",1,0,""
+"30","Thomson","Cowwarr",5,"W",-1," -1 to 0","Nil",NA,"0","17/07/2018",1,0,""
+"31","Thomson","Cowwarr",5,"A",0,"0 to 1","Nil",NA,"0","17/07/2018",1,0,""
+"32","Thomson","Cowwarr",5,"B",1,"1 to 2","Nil",NA,"0","17/07/2018",1,0,""
+"33","Thomson","Cowwarr",5,"C",2,"2 to 3","Galium aparine","exotic","2","17/07/2018",1,0,""
+"34","Thomson","Heyfield",10,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"35","Thomson","Heyfield",10,"A",0,"0 to 1","Nil",NA,"0","18/07/2018",1,0,""
+"36","Thomson","Heyfield",10,"B",1,"1 to 2","Nil",NA,"0","18/07/2018",1,0,""
+"37","Thomson","Heyfield",10,"C",2,"2 to 3","Hypochaeris radicata","exotic","3","18/07/2018",1,0,""
+"38","Thomson","Heyfield",10,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,""
+"39","Thomson","Heyfield",9,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"40","Thomson","Heyfield",9,"A",0,"0 to 1","Dicot","#N/A","3","18/07/2018",1,0,""
+"41","Thomson","Heyfield",9,"B",1,"1 to 2","Exo","exotic","10_50","18/07/2018",1,0,""
+"42","Thomson","Heyfield",9,"B",1,"1 to 2","Dicot","#N/A","2","18/07/2018",1,0,""
+"43","Thomson","Heyfield",9,"B",1,"1 to 2","Apiaceae","#N/A","2","18/07/2018",1,0,""
+"44","Thomson","Heyfield",9,"C",2,"2 to 3","Apiaceae","#N/A","3","18/07/2018",1,0,""
+"45","Thomson","Heyfield",9,"C",2,"2 to 3","Hypochaeris radicata","exotic","2","18/07/2018",1,0,""
+"46","Thomson","Heyfield",9,"C",2,"2 to 3","Holcus spp.","#N/A","4","18/07/2018",1,0,""
+"47","Thomson","Heyfield",8,"W",-1," -1 to 0","Nil",NA,"","18/07/2018",1,0,""
+"48","Thomson","Heyfield",8,"A",0,"0 to 1","Nil",NA,"","18/07/2018",1,0,""
+"49","Thomson","Heyfield",8,"B",1,"1 to 2","Nil",NA,"","18/07/2018",1,0,""
+"50","Thomson","Heyfield",8,"C",2,"2 to 3","Galium aparine","exotic","2","18/07/2018",1,0,""
+"51","Thomson","Heyfield",7,"W",-1," -1 to 0","Dicot","#N/A","2","18/07/2018",1,0,""
+"52","Thomson","Heyfield",7,"A",0,"0 to 1","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"53","Thomson","Heyfield",7,"A",0,"0 to 1","Exo","exotic","10_50","18/07/2018",1,0,""
+"54","Thomson","Heyfield",7,"A",0,"0 to 1","Acacia dealbata","native","3","18/07/2018",1,0,""
+"55","Thomson","Heyfield",7,"B",1,"1 to 2","Acacia dealbata","native","3","18/07/2018",1,0,""
+"56","Thomson","Heyfield",7,"B",1,"1 to 2","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"57","Thomson","Heyfield",7,"B",1,"1 to 2","Exo","exotic","10_50","18/07/2018",1,0,""
+"58","Thomson","Heyfield",7,"B",1,"1 to 2","Dactylis glomerata","exotic","10_50","18/07/2018",1,0,""
+"59","Thomson","Heyfield",7,"C",2,"2 to 3","Dactylis glomerata","exotic","10_50","18/07/2018",1,0,""
+"60","Thomson","Heyfield",7,"C",2,"2 to 3","Lotus spp.","#N/A","10_50","18/07/2018",1,0,""
+"61","Thomson","Heyfield",7,"C",2,"2 to 3","Galium aparine","exotic","5","18/07/2018",1,0,""
+"62","Thomson","Heyfield",7,"C",2,"2 to 3","Apiaceae","#N/A","8","18/07/2018",1,0,""
+"63","Thomson","Heyfield",6,"W",-1," -1 to 0","Nil",NA,"","18/07/2018",1,0,""
+"64","Thomson","Heyfield",6,"A",0,"0 to 1","Dicot","#N/A","5","18/07/2018",1,0,""
+"65","Thomson","Heyfield",6,"B",1,"1 to 2","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"66","Thomson","Heyfield",6,"B",1,"1 to 2","Apiaceae","#N/A","5","18/07/2018",1,0,""
+"67","Thomson","Heyfield",6,"B",1,"1 to 2","Exo","exotic","4","18/07/2018",1,0,""
+"68","Thomson","Heyfield",6,"C",2,"2 to 3","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"69","Thomson","Heyfield",6,"C",2,"2 to 3","Apiaceae","#N/A","10_50","18/07/2018",1,0,""
+"70","Thomson","Heyfield",6,"C",2,"2 to 3","Monocot","#N/A","6","18/07/2018",1,0,""
+"71","Thomson","Heyfield",6,"D",3,"3 to 4","Exo","exotic","10_50","18/07/2018",1,0,""
+"72","Thomson","Heyfield",6,"D",3,"3 to 4","Apiaceae","#N/A","10_50","18/07/2018",1,0,""
+"73","Thomson","Heyfield",6,"D",3,"3 to 4","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"74","Thomson","Heyfield",6,"D",3,"3 to 4","Galium aparine","exotic","5","18/07/2018",1,0,""
+"75","Thomson","Heyfield",5,"W",-1," -1 to 0","Exo","exotic","10_50","18/07/2018",1,0,""
+"76","Thomson","Heyfield",5,"A",0,"0 to 1","Exo","exotic","10_50","18/07/2018",1,0,""
+"77","Thomson","Heyfield",5,"B",1,"1 to 2","Exo","exotic","50_100","18/07/2018",1,0,""
+"78","Thomson","Heyfield",5,"B",1,"1 to 2","Apiaceae","#N/A","7","18/07/2018",1,0,""
+"79","Thomson","Heyfield",5,"B",1,"1 to 2","Hypochaeris radicata","exotic","2","18/07/2018",1,0,""
+"80","Thomson","Heyfield",5,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,""
+"81","Thomson","Heyfield",5,"C",2,"2 to 3","Galium aparine","exotic","3","18/07/2018",1,0,""
+"82","Thomson","Heyfield",5,"C",2,"2 to 3","Apiaceae","#N/A","2","18/07/2018",1,0,""
+"83","Thomson","Heyfield",4,"W",-1," -1 to 0","Dicot","#N/A","2","18/07/2018",1,0,""
+"84","Thomson","Heyfield",4,"A",0,"0 to 1","Exo","exotic","50_100","18/07/2018",1,0,"Lolium?"
+"85","Thomson","Heyfield",4,"B",1,"1 to 2","Exo","exotic","50_100","18/07/2018",1,0,"Lolium?"
+"86","Thomson","Heyfield",4,"B",1,"1 to 2","Ranunculus repens","exotic","10_50","18/07/2018",1,0,""
+"87","Thomson","Heyfield",4,"B",1,"1 to 2","Galium aparine","exotic","3","18/07/2018",1,0,""
+"88","Thomson","Heyfield",4,"C",2,"2 to 3","Apiaceae","#N/A","3","18/07/2018",1,0,""
+"89","Thomson","Heyfield",4,"C",2,"2 to 3","Galium aparine","exotic","5","18/07/2018",1,0,""
+"90","Thomson","Heyfield",4,"C",2,"2 to 3","Dicot","#N/A","5","18/07/2018",1,0,""
+"91","Thomson","Heyfield",4,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,"Lolium?"
+"92","Thomson","Heyfield",3,"W",-1," -1 to 0","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"93","Thomson","Heyfield",3,"W",-1," -1 to 0","Monocot","#N/A","10_50","18/07/2018",1,0,""
+"94","Thomson","Heyfield",3,"A",0,"0 to 1","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"95","Thomson","Heyfield",3,"A",0,"0 to 1","Monocot","#N/A","10_50","18/07/2018",1,0,""
+"96","Thomson","Heyfield",3,"B",1,"1 to 2","Galium aparine","exotic","10_50","18/07/2018",1,0,""
+"97","Thomson","Heyfield",3,"B",1,"1 to 2","Exo","exotic","10_50","18/07/2018",1,0,""
+"98","Thomson","Heyfield",3,"B",1,"1 to 2","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"99","Thomson","Heyfield",2,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"100","Thomson","Heyfield",2,"A",0,"0 to 1","Exo","exotic","50_100","18/07/2018",1,0,""
+"101","Thomson","Heyfield",2,"B",1,"1 to 2","Exo","exotic","50_100","18/07/2018",1,0,""
+"102","Thomson","Heyfield",2,"C",2,"2 to 3","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"103","Thomson","Heyfield",2,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,""
+"104","Thomson","Heyfield",1,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"105","Thomson","Heyfield",1,"A",0,"0 to 1","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"106","Thomson","Heyfield",1,"B",1,"1 to 2","Exo","exotic","10_50","18/07/2018",1,0,""
+"107","Thomson","Heyfield",1,"B",1,"1 to 2","Dicot","#N/A","3","18/07/2018",1,0,""
+"108","Thomson","Heyfield",1,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,""
+"109","Thomson","Heyfield",1,"D",3,"3 to 4","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"110","Thomson","Riverview",1,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"111","Thomson","Riverview",1,"A",0,"0 to 1","Acacia dealbata","native","1","18/07/2018",1,0,""
+"112","Thomson","Riverview",1,"A",0,"0 to 1","Dicot","#N/A","2","18/07/2018",1,0,""
+"113","Thomson","Riverview",1,"A",0,"0 to 1","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"114","Thomson","Riverview",1,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"115","Thomson","Riverview",2,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"116","Thomson","Riverview",2,"A",0,"0 to 1","Galium/Asperula","#N/A","10_50","18/07/2018",1,0,""
+"117","Thomson","Riverview",2,"B",1,"1 to 2","Dactylis glomerata","exotic","10_50","18/07/2018",1,0,""
+"118","Thomson","Riverview",2,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"119","Thomson","Riverview",2,"B",1,"1 to 2","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"120","Thomson","Riverview",3,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"121","Thomson","Riverview",3,"A",0,"0 to 1","Exo","exotic","10_50","18/07/2018",1,0,""
+"122","Thomson","Riverview",3,"A",0,"0 to 1","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"123","Thomson","Riverview",3,"A",0,"0 to 1","Hypochaeris/Dicot?","#N/A","10_50","18/07/2018",1,0,""
+"124","Thomson","Riverview",3,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"125","Thomson","Riverview",3,"B",1,"1 to 2","Exo","exotic","10_50","18/07/2018",1,0,""
+"126","Thomson","Riverview",3,"B",1,"1 to 2","Dicot","#N/A","10_50","18/07/2018",1,0,""
+"127","Thomson","Riverview",3,"C",2,"2 to 3","Microlaena stipoides var. stipoides","native","10_50","18/07/2018",1,0,""
+"128","Thomson","Riverview",3,"C",2,"2 to 3","Exo","exotic","10_50","18/07/2018",1,0,""
+"129","Thomson","Riverview",4,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"130","Thomson","Riverview",4,"A",0,"0 to 1","Nil",NA,"0","18/07/2018",1,0,""
+"131","Thomson","Riverview",4,"B",1,"1 to 2","Nil",NA,"0","18/07/2018",1,0,""
+"132","Thomson","Riverview",4,"C",2,"2 to 3","Galium aparine","exotic","1","18/07/2018",1,0,""
+"133","Thomson","Riverview",5,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"134","Thomson","Riverview",5,"A",0,"0 to 1","Exo","exotic","10_50","18/07/2018",1,0,""
+"135","Thomson","Riverview",5,"B",1,"1 to 2","Nil",NA,"0","18/07/2018",1,0,""
+"136","Thomson","Riverview",5,"C",2,"2 to 3","Nil",NA,"0","18/07/2018",1,0,""
+"137","Thomson","Riverview",6,"W",-1," -1 to 0","Nil",NA,"0","18/07/2018",1,0,""
+"138","Thomson","Riverview",6,"A",0,"0 to 1","Monocot","#N/A","10_50","18/07/2018",1,0,"Exo?"
+"139","Thomson","Riverview",6,"B",1,"1 to 2","Nil",NA,"0","18/07/2018",1,0,""
+"140","Thomson","Riverview",6,"C",2,"2 to 3","Nil",NA,"0","18/07/2018",1,0,""
+"141","Macalister","Hagans",2,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"142","Macalister","Hagans",2,"A",0,"0 to 1","Nil",NA,"0","19/07/2018",1,0,""
+"143","Macalister","Hagans",2,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"144","Macalister","Hagans",2,"C",2,"2 to 3","Hypochaeris spp.","#N/A","2","19/07/2018",1,0,"""Grati."" something? Or just radicata?"
+"145","Macalister","Hagans",3,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"146","Macalister","Hagans",3,"A",0,"0 to 1","Conyza spp.","#N/A","2","19/07/2018",1,0,"species?"
+"147","Macalister","Hagans",3,"A",0,"0 to 1","Hypochaeris radicata","exotic","10_50","19/07/2018",1,0,""
+"148","Macalister","Hagans",3,"A",0,"0 to 1","Holcus spp.","#N/A","10_50","19/07/2018",1,0,""
+"149","Macalister","Hagans",3,"A",0,"0 to 1","dicot","#N/A","10_50","19/07/2018",1,0,""
+"150","Macalister","Hagans",3,"A",0,"0 to 1","Hypericum spp.","#N/A","10_50","19/07/2018",1,0,"species?"
+"151","Macalister","Hagans",3,"B",1,"1 to 2","Hypochaeris radicata","exotic","10_50","19/07/2018",1,0,""
+"152","Macalister","Hagans",3,"B",1,"1 to 2","Conyza spp.","#N/A","10_50","19/07/2018",1,0,""
+"153","Macalister","Hagans",3,"B",1,"1 to 2","Holcus spp.","#N/A","10_50","19/07/2018",1,0,""
+"154","Macalister","Hagans",3,"B",1,"1 to 2","Arctotheca spp.","#N/A","2","19/07/2018",1,0,"species? Calendula?"
+"155","Macalister","Hagans",3,"B",1,"1 to 2","dicot","#N/A","10_50","19/07/2018",1,0,""
+"156","Macalister","Hagans",3,"B",1,"1 to 2","Hypericum spp.","#N/A","10_50","19/07/2018",1,0,""
+"157","Macalister","Hagans",3,"C",2,"2 to 3","Hypochaeris radicata","exotic","10_50","19/07/2018",1,0,""
+"158","Macalister","Hagans",3,"C",2,"2 to 3","Conyza spp.","#N/A","7","19/07/2018",1,0,""
+"159","Macalister","Hagans",3,"C",2,"2 to 3","Arctotheca spp.","#N/A","3","19/07/2018",1,0,""
+"160","Macalister","Hagans",3,"C",2,"2 to 3","dicot","#N/A","10_50","19/07/2018",1,0,""
+"161","Macalister","Hagans",3,"C",2,"2 to 3","Euchiton spp.","native","10_50","19/07/2018",1,0,""
+"162","Macalister","Hagans",4,"W",-1," -1 to 0","Dicot","#N/A","3","19/07/2018",1,0,""
+"163","Macalister","Hagans",4,"W",-1," -1 to 0","Exo","exotic","3","19/07/2018",1,0,""
+"164","Macalister","Hagans",4,"A",0,"0 to 1","Lythrum hyssopifolia","native","1","19/07/2018",1,0,""
+"165","Macalister","Hagans",4,"A",0,"0 to 1","Holcus spp.","#N/A","5","19/07/2018",1,0,""
+"166","Macalister","Hagans",4,"A",0,"0 to 1","Rumex spp.","native","1","19/07/2018",1,0,""
+"167","Macalister","Hagans",4,"B",1,"1 to 2","Taraxacum ","#N/A","1","19/07/2018",1,0,"species?"
+"168","Macalister","Hagans",4,"B",1,"1 to 2","Hypericum spp.","#N/A","10_50","19/07/2018",1,0,""
+"169","Macalister","Hagans",4,"C",2,"2 to 3","Hypericum spp.","#N/A","10_50","19/07/2018",1,0,""
+"170","Macalister","Hagans",4,"C",2,"2 to 3","Hypochaeris radicata","exotic","4","19/07/2018",1,0,""
+"171","Macalister","Hagans",4,"C",2,"2 to 3","Leptospermum obovatum","native","4","19/07/2018",1,0,""
+"172","Macalister","Hagans",4,"C",2,"2 to 3","Cyperus eragrostis","exotic","10_50","19/07/2018",1,0,""
+"173","Macalister","Hagans",5,"W",-1," -1 to 0","Dicot","#N/A","10_50","19/07/2018",1,0,""
+"174","Macalister","Hagans",5,"W",-1," -1 to 0","Acacia dealbata","native","2","19/07/2018",1,0,""
+"175","Macalister","Hagans",5,"W",-1," -1 to 0","Monocot","#N/A","10_50","19/07/2018",1,0,""
+"176","Macalister","Hagans",5,"A",0,"0 to 1","Nil",NA,"0","19/07/2018",1,0,""
+"177","Macalister","Hagans",5,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"178","Macalister","Hagans",5,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"179","Macalister","Hagans",6,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"180","Macalister","Hagans",6,"A",0,"0 to 1","Nil",NA,"0","19/07/2018",1,0,""
+"181","Macalister","Hagans",6,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"182","Macalister","Hagans",6,"C",2,"2 to 3","dicot ","#N/A","10_50","19/07/2018",1,0,""
+"183","Macalister","Hagans",6,"D",3,"3 to 4","Nil",NA,"0","19/07/2018",1,0,""
+"184","Macalister","Hagans",7,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"185","Macalister","Hagans",7,"A",0,"0 to 1","Nil",NA,"0","19/07/2018",1,0,""
+"186","Macalister","Hagans",7,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"187","Macalister","Hagans",7,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"188","Macalister","Hagans",1,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"189","Macalister","Hagans",1,"A",0,"0 to 1","Rumex spp.","native","1","19/07/2018",1,0,""
+"190","Macalister","Hagans",1,"B",1,"1 to 2","Rumex spp.","native","1","19/07/2018",1,0,""
+"191","Macalister","Hagans",1,"B",1,"1 to 2","Exo","exotic","10_50","19/07/2018",1,0,""
+"192","Macalister","Hagans",1,"C",2,"2 to 3","Taraxacum ","#N/A","2","19/07/2018",1,0,""
+"193","Macalister","Hagans",1,"D",3,"3 to 4","Nil",NA,"0","19/07/2018",1,0,""
+"194","Macalister","Bellbird",6,"W",-1," -1 to 0","dicot","#N/A","2","19/07/2018",1,0,""
+"195","Macalister","Bellbird",6,"A",0,"0 to 1","Nil",NA,"0","19/07/2018",1,0,""
+"196","Macalister","Bellbird",6,"B",1,"1 to 2","Exo","exotic","1","19/07/2018",1,0,""
+"197","Macalister","Bellbird",6,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"198","Macalister","Bellbird",5,"W",-1," -1 to 0","dicot","#N/A","2","19/07/2018",1,0,""
+"199","Macalister","Bellbird",5,"A",0,"0 to 1","Cirsium vulgare","exotic","5","19/07/2018",1,0,""
+"200","Macalister","Bellbird",5,"A",0,"0 to 1","Hypochaeris radicata","exotic","2","19/07/2018",1,0,""
+"201","Macalister","Bellbird",5,"A",0,"0 to 1","Acacia dealbata","native","3","19/07/2018",1,0,""
+"202","Macalister","Bellbird",5,"A",0,"0 to 1","Sonchus spp.","#N/A","1","19/07/2018",1,0,""
+"203","Macalister","Bellbird",5,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"204","Macalister","Bellbird",5,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"205","Macalister","Bellbird",4,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"206","Macalister","Bellbird",4,"A",0,"0 to 1","Acacia dealbata","native","2","19/07/2018",1,0,""
+"207","Macalister","Bellbird",4,"A",0,"0 to 1","Rumex spp.","native","3","19/07/2018",1,0,""
+"208","Macalister","Bellbird",4,"A",0,"0 to 1","dicot","#N/A","3","19/07/2018",1,0,""
+"209","Macalister","Bellbird",4,"B",1,"1 to 2","Nil",NA,"0","19/07/2018",1,0,""
+"210","Macalister","Bellbird",4,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"211","Macalister","Bellbird",3,"W",-1," -1 to 0","Acacia dealbata","native","2","19/07/2018",1,0,""
+"212","Macalister","Bellbird",3,"A",0,"0 to 1","Acacia dealbata","native","10_50","19/07/2018",1,0,""
+"213","Macalister","Bellbird",3,"A",0,"0 to 1","Microlaena stipoides var. stipoides","native","3","19/07/2018",1,0,""
+"214","Macalister","Bellbird",3,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","3","19/07/2018",1,0,""
+"215","Macalister","Bellbird",3,"B",1,"1 to 2","Acacia dealbata","native","10_50","19/07/2018",1,0,""
+"216","Macalister","Bellbird",3,"B",1,"1 to 2","Cyperus eragrostis","exotic","2","19/07/2018",1,0,""
+"217","Macalister","Bellbird",1,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"218","Macalister","Bellbird",1,"A",0,"0 to 1","Nil",NA,"1","19/07/2018",1,0,""
+"219","Macalister","Bellbird",1,"B",1,"1 to 2","Nil",NA,"2","19/07/2018",1,0,""
+"220","Macalister","Bellbird",2,"W",-1," -1 to 0","Nil",NA,"0","19/07/2018",1,0,""
+"221","Macalister","Bellbird",2,"A",0,"0 to 1","Cyperus eragrostis","exotic","10_50","19/07/2018",1,0,""
+"222","Macalister","Bellbird",2,"A",0,"0 to 1","Persicaria praetermissa","#N/A","2","19/07/2018",1,0,""
+"223","Macalister","Bellbird",2,"A",0,"0 to 1","Eucalyptus camaldulensis var. camaldulensis","native","1","19/07/2018",1,0,""
+"224","Macalister","Bellbird",2,"A",0,"0 to 1","dicot","#N/A","2","19/07/2018",1,0,""
+"225","Macalister","Bellbird",2,"A",0,"0 to 1","Monocot","#N/A","2","19/07/2018",1,0,""
+"226","Macalister","Bellbird",2,"B",1,"1 to 2","Cyperus eragrostis","exotic","10_50","19/07/2018",1,0,""
+"227","Macalister","Bellbird",2,"B",1,"1 to 2","Monocot","#N/A","10_50","19/07/2018",1,0,""
+"228","Macalister","Bellbird",2,"B",1,"1 to 2","dicot","#N/A","4","19/07/2018",1,0,""
+"229","Macalister","Bellbird",2,"B",1,"1 to 2","Hypochaeris radicata","exotic","1","19/07/2018",1,0,""
+"230","Macalister","Bellbird",2,"C",2,"2 to 3","Nil",NA,"0","19/07/2018",1,0,""
+"231","Macalister","Forsyth",5,"W",-1," -1 to 0","dicot","#N/A","2","20/07/2018",1,0,""
+"232","Macalister","Forsyth",5,"W",-1," -1 to 0","Monocot","#N/A","4","20/07/2018",1,0,""
+"233","Macalister","Forsyth",5,"A",0,"0 to 1","Nil",NA,"0","20/07/2018",1,0,""
+"234","Macalister","Forsyth",5,"B",1,"1 to 2","Nil",NA,"0","20/07/2018",1,0,""
+"235","Macalister","Forsyth",5,"C",2,"2 to 3","Exo","exotic","3","20/07/2018",1,0,""
+"236","Macalister","Forsyth",5,"C",2,"2 to 3","Sonchus spp.","#N/A","1","20/07/2018",1,0,""
+"237","Macalister","Forsyth",4,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"238","Macalister","Forsyth",4,"A",0,"0 to 1","Cyperus eragrostis","exotic","3","20/07/2018",1,0,""
+"239","Macalister","Forsyth",4,"B",1,"1 to 2","Cyperus eragrostis","exotic","10_50","20/07/2018",1,0,""
+"240","Macalister","Forsyth",4,"B",1,"1 to 2","Rumex spp.","native","1","20/07/2018",1,0,""
+"241","Macalister","Forsyth",4,"B",1,"1 to 2","dicot","#N/A","2","20/07/2018",1,0,""
+"242","Macalister","Forsyth",4,"C",2,"2 to 3","Cyperus eragrostis","exotic","10_50","20/07/2018",1,0,""
+"243","Macalister","Forsyth",3,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"244","Macalister","Forsyth",3,"A",0,"0 to 1","Cyperus eragrostis","exotic","10_50","20/07/2018",1,0,""
+"245","Macalister","Forsyth",3,"A",0,"0 to 1","Hypochaeris radicata","exotic","1","20/07/2018",1,0,""
+"246","Macalister","Forsyth",3,"A",0,"0 to 1","Rumex spp.","native","1","20/07/2018",1,0,""
+"247","Macalister","Forsyth",3,"B",1,"1 to 2","dicot","#N/A","2","20/07/2018",1,0,""
+"248","Macalister","Forsyth",3,"C",2,"2 to 3","Cyperus eragrostis","exotic","2","20/07/2018",1,0,""
+"249","Macalister","Forsyth",2,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"250","Macalister","Forsyth",2,"A",0,"0 to 1","Nil",NA,"0","20/07/2018",1,0,""
+"251","Macalister","Forsyth",2,"B",1,"1 to 2","Nil",NA,"0","20/07/2018",1,0,""
+"252","Macalister","Forsyth",2,"C",2,"2 to 3","Nil",NA,"0","20/07/2018",1,0,""
+"253","Macalister","Forsyth",1,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"254","Macalister","Forsyth",1,"A",0,"0 to 1","Rumex spp.","native","2","20/07/2018",1,0,""
+"255","Macalister","Forsyth",1,"A",0,"1 to 1","Monocot","#N/A","5","20/07/2018",1,0,""
+"256","Macalister","Forsyth",1,"B",1,"1 to 2","Nil",NA,"0","20/07/2018",1,0,""
+"257","Macalister","Forsyth",1,"C",2,"2 to","Nil",NA,"0","20/07/2018",1,0,""
+"258","Macalister","Forsyth",6,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"259","Macalister","Forsyth",6,"A",0,"0 to 1","Nil",NA,"0","20/07/2018",1,0,""
+"260","Macalister","Forsyth",6,"B",1,"1 to 2","Cyperus eragrostis","exotic","2","20/07/2018",1,0,""
+"261","Macalister","Forsyth",6,"C",2,"2 to 3","Nil",NA,"0","20/07/2018",1,0,""
+"262","Macalister","Forsyth",7,"W",-1," -1 to 0","Nil",NA,"0","20/07/2018",1,0,""
+"263","Macalister","Forsyth",7,"A",0,"0 to 1","Cyperus eragrostis","exotic","2","20/07/2018",1,0,""
+"264","Macalister","Forsyth",7,"B",1,"1 to 2","Cyperus eragrostis","exotic","4","20/07/2018",1,0,""
+"265","Macalister","Forsyth",7,"B",1,"1 to 2","Solanum spp.","#N/A","1","20/07/2018",1,0,""
+"266","Macalister","Forsyth",7,"C",2,"2 to 3","Nil",NA,"0","20/07/2018",1,0,""
+"267","Thomson","Cowwarr",2,"W",-1," -1 to 0","dicot","#N/A","1","24/10/2018",2,0,""
+"268","Thomson","Cowwarr",2,"W",-1," -1 to 0","monocot","#N/A","5","24/10/2018",2,0,""
+"269","Thomson","Cowwarr",2,"A",0,"0 to 1","Ranunculus repens","exotic","10_50","24/10/2018",2,0,""
+"270","Thomson","Cowwarr",2,"A",0,"0 to 1","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"271","Thomson","Cowwarr",2,"A",0,"0 to 1","Monocot","#N/A","50_100","24/10/2018",2,0,""
+"272","Thomson","Cowwarr",2,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"273","Thomson","Cowwarr",2,"A",0,"0 to 1","Acacia spp.","native","1","24/10/2018",2,0,""
+"274","Thomson","Cowwarr",2,"B",1,"1 to 2","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"275","Thomson","Cowwarr",2,"B",1,"1 to 2","Monocot","#N/A","50_100","24/10/2018",2,0,""
+"276","Thomson","Cowwarr",2,"B",1,"1 to 2","Ranunculus repens","exotic","10_50","24/10/2018",2,0,""
+"277","Thomson","Cowwarr",2,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","24/10/2018",2,0,""
+"278","Thomson","Cowwarr",2,"C",2,"2 to 3","Dactylis glomerata","exotic","10_50","24/10/2018",2,0,""
+"279","Thomson","Cowwarr",2,"C",2,"2 to 3","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"280","Thomson","Cowwarr",2,"D",3,"3 to 4","Nil",NA,"0","24/10/2018",2,0,""
+"281","Thomson","Cowwarr",4,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"282","Thomson","Cowwarr",4,"A",0,"0 to 1","Cyperus eragrostis","exotic","5","24/10/2018",2,0,""
+"283","Thomson","Cowwarr",4,"A",0,"0 to 1","Persicaria hydropiper","native","25","24/10/2018",2,0,""
+"284","Thomson","Cowwarr",4,"A",0,"0 to 1","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"285","Thomson","Cowwarr",4,"A",0,"0 to 1","Lolium spp.","#N/A","10","24/10/2018",2,0,""
+"286","Thomson","Cowwarr",4,"B",1,"1 to 2","Nil",NA,"0","24/10/2018",2,0,""
+"287","Thomson","Cowwarr",4,"C",2,"2 to 3","Galium aparine","exotic","4","24/10/2018",2,0,""
+"288","Thomson","Cowwarr",4,"C",2,"2 to 3","Conium maculatum","exotic","3","24/10/2018",2,0,""
+"289","Thomson","Cowwarr",1,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"290","Thomson","Cowwarr",1,"A",0,"0 to 1","Persicaria praetermissa","#N/A","3","24/10/2018",2,0,""
+"291","Thomson","Cowwarr",1,"B",1,"1 to 2","Nil",NA,"0","24/10/2018",2,0,""
+"292","Thomson","Cowwarr",1,"C",2,"2 to 3","Nil",NA,"","24/10/2018",2,0,""
+"293","Thomson","Cowwarr",3,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"294","Thomson","Cowwarr",3,"A",0,"0 to 1","Vinca/Hypochaeris?","#N/A","10_50","24/10/2018",2,0,""
+"295","Thomson","Cowwarr",3,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"296","Thomson","Cowwarr",3,"A",0,"0 to 1","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"297","Thomson","Cowwarr",3,"A",0,"0 to 1","Monocot","#N/A","3","24/10/2018",2,0,""
+"298","Thomson","Cowwarr",3,"B",1,"1 to 2","Vinca?","#N/A","1","24/10/2018",2,0,""
+"299","Thomson","Cowwarr",3,"B",1,"1 to 2","Conium maculatum","exotic","4","24/10/2018",2,0,""
+"300","Thomson","Cowwarr",3,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"301","Thomson","Cowwarr",3,"D",3,"3 to 4","Nil",NA,"0","24/10/2018",2,0,""
+"302","Thomson","Cowwarr",5,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"303","Thomson","Cowwarr",5,"A",0,"0 to 1","Nil",NA,"0","24/10/2018",2,0,""
+"304","Thomson","Cowwarr",5,"B",1,"1 to 2","Nil",NA,"0","24/10/2018",2,0,""
+"305","Thomson","Cowwarr",5,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"306","Thomson","Heyfield",10,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"307","Thomson","Heyfield",10,"A",0,"0 to 1","Nil",NA,"0","24/10/2018",2,0,""
+"308","Thomson","Heyfield",10,"B",1,"1 to 2","Hypochaeris?","#N/A","1","24/10/2018",2,0,""
+"309","Thomson","Heyfield",10,"C",2,"2 to 3","Hypochaeris?","#N/A","5","24/10/2018",2,0,""
+"310","Thomson","Heyfield",7,"W",-1," -1 to 0","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"311","Thomson","Heyfield",7,"W",-1," -1 to 0","Acacia dealbata","native","1","24/10/2018",2,0,""
+"312","Thomson","Heyfield",7,"A",0,"0 to 1","Chardemine spp.","#N/A","2","24/10/2018",2,0,""
+"313","Thomson","Heyfield",7,"A",0,"0 to 1","Persicaria hydropiper","native","100+","24/10/2018",2,0,""
+"314","Thomson","Heyfield",7,"A",0,"0 to 1","Acacia dealbata","native","10_50","24/10/2018",2,0,""
+"315","Thomson","Heyfield",7,"A",0,"0 to 1","Hedera helix","exotic","1","24/10/2018",2,0,""
+"316","Thomson","Heyfield",7,"A",0,"0 to 1","Cerastium POINTY","#N/A","50_100","24/10/2018",2,0,""
+"317","Thomson","Heyfield",7,"A",0,"0 to 1","Lolium spp.","#N/A","5","24/10/2018",2,0,""
+"318","Thomson","Heyfield",7,"A",0,"0 to 1","Euphorbia spp.","#N/A","1","24/10/2018",2,0,""
+"319","Thomson","Heyfield",7,"A",0,"0 to 1","Agrostis spp.","#N/A","3","24/10/2018",2,0,""
+"320","Thomson","Heyfield",7,"A",0,"0 to 1","Dactylis glomerata","exotic","2","24/10/2018",2,0,""
+"321","Thomson","Heyfield",7,"A",0,"0 to 1","Modiola?","#N/A","10_50","24/10/2018",2,0,""
+"322","Thomson","Heyfield",7,"A",0,"0 to 1","Plantago lanceolata","exotic","1","24/10/2018",2,0,""
+"323","Thomson","Heyfield",7,"A",0,"0 to 1","Cirsium spp.","#N/A","1","24/10/2018",2,0,""
+"324","Thomson","Heyfield",7,"A",0,"0 to 1","Melicytus dentatus","native","2","24/10/2018",2,0,""
+"325","Thomson","Heyfield",7,"B",1,"1 to 2","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"326","Thomson","Heyfield",7,"B",1,"1 to 2","Plantago lanceolata","exotic","1","24/10/2018",2,0,""
+"327","Thomson","Heyfield",7,"B",1,"1 to 2","Acacia dealbata","native","4","24/10/2018",2,0,""
+"328","Thomson","Heyfield",7,"B",1,"1 to 2","Modeola?","#N/A","10_50","24/10/2018",2,0,""
+"329","Thomson","Heyfield",7,"B",1,"1 to 2","Melicytus dentatus","native","4","24/10/2018",2,0,""
+"330","Thomson","Heyfield",7,"C",2,"2 to 3","Euphorbia spp.","#N/A","5","24/10/2018",2,0,""
+"331","Thomson","Heyfield",7,"C",2,"2 to 3","Melicytus dentatus","native","2","24/10/2018",2,0,""
+"332","Thomson","Heyfield",7,"C",2,"2 to 3","Persicaria subsessilis","native","2","24/10/2018",2,0,""
+"333","Thomson","Heyfield",7,"C",2,"2 to 3","Conium maculatum","exotic","1","24/10/2018",2,0,""
+"334","Thomson","Heyfield",5,"W",-1," -1 to 0","Persicaria hydropiper","native","1","24/10/2018",2,0,""
+"335","Thomson","Heyfield",5,"W",-1," -1 to 0","Cyperus eragrostis","exotic","2","24/10/2018",2,0,""
+"336","Thomson","Heyfield",5,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"337","Thomson","Heyfield",5,"A",0,"0 to 1","Rumex spp.","native","2","24/10/2018",2,0,""
+"338","Thomson","Heyfield",5,"A",0,"0 to 1","Cerastium POINTY","#N/A","1","24/10/2018",2,0,""
+"339","Thomson","Heyfield",5,"A",0,"0 to 1","Conium maculatum","exotic","1","24/10/2018",2,0,""
+"340","Thomson","Heyfield",5,"B",1,"1 to 2","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"341","Thomson","Heyfield",5,"B",1,"1 to 2","Persicaria hydropiper","native","4","24/10/2018",2,0,""
+"342","Thomson","Heyfield",5,"B",1,"1 to 2","Cirsium spp.","#N/A","1","24/10/2018",2,0,""
+"343","Thomson","Heyfield",5,"B",1,"1 to 2","Rumex spp.","native","1","24/10/2018",2,0,""
+"344","Thomson","Heyfield",5,"B",1,"1 to 2","Chenopodium album","#N/A","1","24/10/2018",2,0,""
+"345","Thomson","Heyfield",5,"C",2,"2 to 3","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"346","Thomson","Heyfield",5,"C",2,"2 to 3","Cirsium spp.","#N/A","1","24/10/2018",2,0,""
+"347","Thomson","Heyfield",4,"W",-1," -1 to 0","Persicaria hydropiper","native","1","24/10/2018",2,0,""
+"348","Thomson","Heyfield",4,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"349","Thomson","Heyfield",4,"B",1,"1 to 2","Persicaria hydropiper","native","2","24/10/2018",2,0,""
+"350","Thomson","Heyfield",4,"C",2,"2 to 3","Raphanus raphanistrum","exotic","5","24/10/2018",2,0,""
+"351","Thomson","Heyfield",3,"W",-1," -1 to 0","Persicaria hydropiper","native","5","24/10/2018",2,0,""
+"352","Thomson","Heyfield",3,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"353","Thomson","Heyfield",3,"A",0,"0 to 1","Grassy monocot","#N/A","4","24/10/2018",2,0,""
+"354","Thomson","Heyfield",3,"B",1,"1 to 2","Galium aparine","exotic","2","24/10/2018",2,0,""
+"355","Thomson","Heyfield",1,"W",-1," -1 to 0","Persicaria hydropiper","native","4","24/10/2018",2,0,""
+"356","Thomson","Heyfield",1,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"357","Thomson","Heyfield",1,"B",1,"1 to 2","Persicaria hydropiper","native","3","24/10/2018",2,0,""
+"358","Thomson","Heyfield",1,"B",1,"1 to 2","Rumex crispus","exotic","1","24/10/2018",2,0,""
+"359","Thomson","Heyfield",1,"C",2,"2 to 3","Persicaria hydropiper","native","2","24/10/2018",2,0,""
+"360","Thomson","Heyfield",1,"D",3,"3 to 4","Plantago lanceolata","exotic","10_50","24/10/2018",2,0,""
+"361","Thomson","Heyfield",1,"D",3,"3 to 4","Raphanus raphanistrum","exotic","10_50","24/10/2018",2,0,""
+"362","Thomson","Heyfield",8,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"363","Thomson","Heyfield",8,"A",0,"0 to 1","Nil",NA,"0","24/10/2018",2,0,""
+"364","Thomson","Heyfield",8,"B",1,"1 to 2","Rumex crispus","exotic","1","24/10/2018",2,0,""
+"365","Thomson","Heyfield",8,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"366","Thomson","Heyfield",9,"W",-1," -1 to 0","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"367","Thomson","Heyfield",9,"A",0,"0 to 1","Persicaria hydropiper","native","50_100","24/10/2018",2,0,""
+"368","Thomson","Heyfield",9,"A",0,"0 to 1","monocot","#N/A","10_50","24/10/2018",2,0,""
+"369","Thomson","Heyfield",9,"A",0,"0 to 1","Cyperus eragrostis","exotic","2","24/10/2018",2,0,""
+"370","Thomson","Heyfield",9,"B",1,"1 to 2","Conium maculatum","exotic","5","24/10/2018",2,0,""
+"371","Thomson","Heyfield",9,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"372","Thomson","Heyfield",6,"W",-1," -1 to 0","Persicaria hydropiper","native","3","24/10/2018",2,0,""
+"373","Thomson","Heyfield",6,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"374","Thomson","Heyfield",6,"A",0,"0 to 1","Persicaria praetermissa","#N/A","10_50","24/10/2018",2,0,""
+"375","Thomson","Heyfield",6,"A",0,"0 to 1","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"376","Thomson","Heyfield",6,"A",0,"0 to 1","Oxalis perennans","native","1","24/10/2018",2,0,""
+"377","Thomson","Heyfield",6,"B",1,"1 to 2","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"378","Thomson","Heyfield",6,"B",1,"1 to 2","Persicaria praetermissa","#N/A","10_50","24/10/2018",2,0,""
+"379","Thomson","Heyfield",6,"B",1,"1 to 2","Conium maculatum","exotic","7","24/10/2018",2,0,""
+"380","Thomson","Heyfield",6,"C",2,"2 to 3","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"381","Thomson","Heyfield",6,"C",2,"2 to 3","Persicaria praetermissa","#N/A","10_50","24/10/2018",2,0,""
+"382","Thomson","Heyfield",6,"C",2,"2 to 3","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"383","Thomson","Heyfield",6,"C",2,"2 to 3","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"384","Thomson","Heyfield",6,"D",3,"3 to 4","Conium maculatum","exotic","10_50","24/10/2018",2,0,""
+"385","Thomson","Heyfield",6,"D",3,"3 to 4","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"386","Thomson","Heyfield",6,"D",3,"3 to 4","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"387","Thomson","Heyfield",2,"W",-1," -1 to 0","Persicaria praetermissa","#N/A","10_50","24/10/2018",2,0,""
+"388","Thomson","Heyfield",2,"W",-1," -1 to 0","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"389","Thomson","Heyfield",2,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"390","Thomson","Heyfield",2,"A",0,"0 to 1","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"391","Thomson","Heyfield",2,"B",1,"1 to 2","Monocot","#N/A","10_50","24/10/2018",2,0,""
+"392","Thomson","Heyfield",2,"B",1,"1 to 2","Ranunculus repens","exotic","10_50","24/10/2018",2,0,""
+"393","Thomson","Heyfield",2,"C",2,"2 to 3","Ranunculus repens","exotic","10_50","24/10/2018",2,0,""
+"394","Thomson","Heyfield",2,"C",2,"2 to 3","Raphanus raphanistrum","exotic","10_50","24/10/2018",2,0,""
+"395","Thomson","Heyfield",2,"C",2,"2 to 3","Conium maculatum","exotic","3","24/10/2018",2,0,""
+"396","Thomson","Riverview",4,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"397","Thomson","Riverview",4,"A",0,"0 to 1","Nil",NA,"0","24/10/2018",2,0,""
+"398","Thomson","Riverview",4,"B",1,"1 to 2","Nil",NA,"0","24/10/2018",2,0,""
+"399","Thomson","Riverview",4,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"400","Thomson","Riverview",3,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"401","Thomson","Riverview",3,"A",0,"0 to 1","dicot","#N/A","4","24/10/2018",2,0,""
+"402","Thomson","Riverview",3,"B",1,"1 to 2","dicot","#N/A","2","24/10/2018",2,0,""
+"403","Thomson","Riverview",3,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"404","Thomson","Riverview",2,"W",-1," -1 to 0","Persicaria hydropiper","native","2","24/10/2018",2,0,""
+"405","Thomson","Riverview",2,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"406","Thomson","Riverview",2,"B",1,"1 to 2","Persicaria subsessilis","native","2","24/10/2018",2,0,""
+"407","Thomson","Riverview",6,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"408","Thomson","Riverview",6,"A",0,"0 to 1","Tradescantia spp.","#N/A","10_50","24/10/2018",2,0,""
+"409","Thomson","Riverview",6,"B",1,"1 to 2","Tradescantia spp.","#N/A","10_50","24/10/2018",2,0,""
+"410","Thomson","Riverview",6,"B",1,"1 to 2","monocot","#N/A","10_50","24/10/2018",2,0,""
+"411","Thomson","Riverview",6,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"412","Thomson","Riverview",5,"W",-1," -1 to 0","Nil",NA,"0","24/10/2018",2,0,""
+"413","Thomson","Riverview",5,"A",0,"0 to 1","Nil",NA,"0","24/10/2018",2,0,""
+"414","Thomson","Riverview",5,"B",1,"1 to 2","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"415","Thomson","Riverview",5,"C",2,"2 to 3","Nil",NA,"0","24/10/2018",2,0,""
+"416","Thomson","Riverview",1,"W",-1," -1 to 0","dicot","#N/A","3","24/10/2018",2,0,""
+"417","Thomson","Riverview",1,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","24/10/2018",2,0,""
+"418","Thomson","Riverview",1,"A",0,"0 to 1","monocot","#N/A","10_50","24/10/2018",2,0,""
+"419","Thomson","Riverview",1,"B",1,"1 to 2","Tradescantia spp.","#N/A","1","24/10/2018",2,0,""
+"420","Thomson","Riverview",1,"B",1,"1 to 2","monocot","#N/A","10_50","24/10/2018",2,0,""
+"421","Macalister","Hagans",2,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"422","Macalister","Hagans",2,"A",0,"0 to1","Persicaria hydropiper","native","5","25/10/2018",2,0,""
+"423","Macalister","Hagans",2,"B",1,"1 to 2","dicot","#N/A","10_50","25/10/2018",2,0,""
+"424","Macalister","Hagans",2,"C",2,"2 to 3","Sonchus spp.","#N/A","1","25/10/2018",2,0,""
+"425","Macalister","Hagans",3,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"426","Macalister","Hagans",3,"A",0,"0 to 1","dicot","#N/A","10_50","25/10/2018",2,0,""
+"427","Macalister","Hagans",3,"A",0,"0 to 1","Hypochaeris radicata","exotic","10_50","25/10/2018",2,0,""
+"428","Macalister","Hagans",3,"A",0,"0 to 1","Euchiton involucratus s.l.","native","10_50","25/10/2018",2,0,""
+"429","Macalister","Hagans",3,"A",0,"0 to 1","Lobelia anceps","native","5","25/10/2018",2,0,""
+"430","Macalister","Hagans",3,"B",1,"1 to 2","Hypochaeris radicata","exotic","10_50","25/10/2018",2,0,""
+"431","Macalister","Hagans",3,"B",1,"1 to 2","Euchiton involucratus s.l.","native","10_50","25/10/2018",2,0,""
+"432","Macalister","Hagans",3,"B",1,"1 to 2","Acacia dealbata","native","1","25/10/2018",2,0,""
+"433","Macalister","Hagans",3,"B",1,"1 to 2","Conyza spp.","#N/A","5","25/10/2018",2,0,""
+"434","Macalister","Hagans",3,"C",2,"2 to 3","Hypochaeris radicata","exotic","10_50","25/10/2018",2,0,""
+"435","Macalister","Hagans",3,"C",2,"2 to 3","Conyza spp.","#N/A","2","25/10/2018",2,0,""
+"436","Macalister","Hagans",3,"C",2,"2 to 3","Raphanus raphanistrum","exotic","2","25/10/2018",2,0,""
+"437","Macalister","Hagans",5,"W",-1," -1 to 0","Persicaria hydropiper","native","1","25/10/2018",2,0,""
+"438","Macalister","Hagans",5,"A",0,"0 to 1","Melicytus dentatus","native","4","25/10/2018",2,0,""
+"439","Macalister","Hagans",5,"A",0,"0 to 1","Hypochaeris radicata","exotic","1","25/10/2018",2,0,""
+"440","Macalister","Hagans",5,"B",1,"1 to 2","Melicytus dentatus","native","4","25/10/2018",2,0,""
+"441","Macalister","Hagans",5,"C",2,"2 to 3","Melicytus dentatus","native","2","25/10/2018",2,0,""
+"442","Macalister","Hagans",7,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"443","Macalister","Hagans",7,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"444","Macalister","Hagans",7,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"445","Macalister","Hagans",7,"C",2,"2 to 3","Nil",NA,"0","25/10/2018",2,0,""
+"446","Macalister","Hagans",1,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"447","Macalister","Hagans",1,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","25/10/2018",2,0,""
+"448","Macalister","Hagans",1,"B",1,"1 to 2","Persicaria hydropiper","native","10_50","25/10/2018",2,0,""
+"449","Macalister","Hagans",1,"B",1,"1 to 2","monocot","#N/A","10_50","25/10/2018",2,0,""
+"450","Macalister","Hagans",1,"C",2,"2 to 3","monocot","#N/A","10_50","25/10/2018",2,0,""
+"451","Macalister","Hagans",1,"D",3,"3 to 4","Nil",NA,"0","25/10/2018",2,0,""
+"452","Macalister","Hagans",4,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"453","Macalister","Hagans",4,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"454","Macalister","Hagans",4,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"455","Macalister","Hagans",4,"C",2,"2 to 3","Hypericum perforatum?","#N/A","10_50","25/10/2018",2,0,""
+"456","Macalister","Hagans",6,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"457","Macalister","Hagans",6,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"458","Macalister","Hagans",6,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"459","Macalister","Hagans",6,"C",2,"2 to 3","dicot","#N/A","10_50","25/10/2018",2,0,""
+"460","Macalister","Hagans",6,"D",3,"3 to 4","monocot","#N/A","10_50","25/10/2018",2,0,""
+"461","Macalister","Bellbird",5,"W",-1," -1 to 0","dicot","#N/A","4","25/10/2018",2,0,""
+"462","Macalister","Bellbird",5,"A",0,"0 to 1","dicot","#N/A","10_50","25/10/2018",2,0,""
+"463","Macalister","Bellbird",5,"B",1,"1 to 2","Sonchus spp.","#N/A","1","25/10/2018",2,0,""
+"464","Macalister","Bellbird",5,"B",1,"1 to 2","Melicytus dentatus","native","1","25/10/2018",2,0,""
+"465","Macalister","Bellbird",5,"C",2,"2 to 3","Lactuca spp.","#N/A","2","25/10/2018",2,0,""
+"466","Macalister","Bellbird",5,"C",2,"2 to 3","Persicaria hydropiper","native","2","25/10/2018",2,0,""
+"467","Macalister","Bellbird",5,"C",2,"2 to 3","Solanum nigrum s.l.","exotic","3","25/10/2018",2,0,""
+"468","Macalister","Bellbird",4,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"469","Macalister","Bellbird",4,"A",0,"0 to 1","Melicytus dentatus","native","2","25/10/2018",2,0,""
+"470","Macalister","Bellbird",4,"A",0,"0 to 1","Sonchus spp.","#N/A","1","25/10/2018",2,0,""
+"471","Macalister","Bellbird",4,"A",0,"0 to 1","Conyza spp.","#N/A","1","25/10/2018",2,0,""
+"472","Macalister","Bellbird",4,"A",0,"0 to 1","dicot","#N/A","2","25/10/2018",2,0,""
+"473","Macalister","Bellbird",4,"B",1,"1 to 2","Melicytus dentatus","native","4","25/10/2018",2,0,""
+"474","Macalister","Bellbird",4,"C",2,"2 to 3","Melicytus dentatus","native","2","25/10/2018",2,0,""
+"475","Macalister","Bellbird",2,"W",-1," -1 to 0","dicot","#N/A","2","25/10/2018",2,0,""
+"476","Macalister","Bellbird",2,"A",0,"0 to 1","Persicaria hydropiper","native","6","25/10/2018",2,0,""
+"477","Macalister","Bellbird",2,"A",0,"0 to 1","Cyperus eragrostis","exotic","5","25/10/2018",2,0,""
+"478","Macalister","Bellbird",2,"A",0,"0 to 1","dicot","#N/A","10_50","25/10/2018",2,0,""
+"479","Macalister","Bellbird",2,"A",0,"0 to 1","Monocot","#N/A","10_50","25/10/2018",2,0,""
+"480","Macalister","Bellbird",2,"B",1,"1 to 2","dicot","#N/A","10_50","25/10/2018",2,0,""
+"481","Macalister","Bellbird",2,"B",1,"1 to 2","Monocot","#N/A","10_50","25/10/2018",2,0,""
+"482","Macalister","Bellbird",2,"B",1,"1 to 2","Persicaria hydropiper","native","2","25/10/2018",2,0,""
+"483","Macalister","Bellbird",2,"C",2,"2 to 3","Nil",NA,"0","25/10/2018",2,0,""
+"484","Macalister","Bellbird",6,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"485","Macalister","Bellbird",6,"A",0,"0 to 1","Sonchus oleraceus","exotic","1","25/10/2018",2,0,""
+"486","Macalister","Bellbird",6,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"487","Macalister","Bellbird",3,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"488","Macalister","Bellbird",3,"A",0,"0 to 1","Acacia spp.","native","10_50","25/10/2018",2,0,""
+"489","Macalister","Bellbird",3,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","25/10/2018",2,0,""
+"490","Macalister","Bellbird",1,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"491","Macalister","Bellbird",1,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"492","Macalister","Bellbird",1,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"493","Macalister","Forsyth",1,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"494","Macalister","Forsyth",1,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"495","Macalister","Forsyth",1,"B",1,"1 to 2","Chenopodium album","#N/A","2","25/10/2018",2,0,""
+"496","Macalister","Forsyth",1,"C",2,"2 to 3","Nil",NA,"0","25/10/2018",2,0,""
+"497","Macalister","Forsyth",4,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"498","Macalister","Forsyth",4,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"499","Macalister","Forsyth",4,"B",1,"1 to 2","Tradescantia spp.","#N/A","5","25/10/2018",2,0,""
+"500","Macalister","Forsyth",4,"B",1,"1 to 2","Microlaena stipoides var. stipoides","native","10_50","25/10/2018",2,0,""
+"501","Macalister","Forsyth",4,"C",2,"2 to 3","Cyperus eragrostis","exotic","10_50","25/10/2018",2,0,""
+"502","Macalister","Forsyth",6,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"503","Macalister","Forsyth",6,"A",0,"0 to 1","monocot","#N/A","10_50","25/10/2018",2,0,""
+"504","Macalister","Forsyth",6,"B",1,"1 to 2","monocot","#N/A","5","25/10/2018",2,0,""
+"505","Macalister","Forsyth",6,"C",2,"2 to 3","Hypochaeris radicata","exotic","1","25/10/2018",2,0,""
+"506","Macalister","Forsyth",2,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"507","Macalister","Forsyth",2,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"508","Macalister","Forsyth",2,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"509","Macalister","Forsyth",2,"C",2,"2 to 3","Nil",NA,"0","25/10/2018",2,0,""
+"510","Macalister","Forsyth",3,"W",-1," -1 to 0","dicot","#N/A","2","25/10/2018",2,0,""
+"511","Macalister","Forsyth",3,"A",0,"0 to 1","dicot","#N/A","2","25/10/2018",2,0,""
+"512","Macalister","Forsyth",3,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"513","Macalister","Forsyth",3,"C",2,"2 to 3","Nil",NA,"0","25/10/2018",2,0,""
+"514","Macalister","Forsyth",5,"W",-1," -1 to 0","Isolepis inundatus","#N/A","3","25/10/2018",2,0,""
+"515","Macalister","Forsyth",5,"W",-1," -1 to 0","dicot","#N/A","1","25/10/2018",2,0,""
+"516","Macalister","Forsyth",5,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"517","Macalister","Forsyth",5,"B",1,"1 to 2","Nil",NA,"0","25/10/2018",2,0,""
+"518","Macalister","Forsyth",5,"C",2,"2 to 3","Dactylis glomerata","exotic","1","25/10/2018",2,0,""
+"519","Macalister","Forsyth",5,"C",2,"2 to 3","Sonchus spp.","#N/A","1","25/10/2018",2,0,""
+"520","Macalister","Forsyth",7,"W",-1," -1 to 0","Nil",NA,"0","25/10/2018",2,0,""
+"521","Macalister","Forsyth",7,"A",0,"0 to 1","Nil",NA,"0","25/10/2018",2,0,""
+"522","Macalister","Forsyth",7,"B",1,"1 to 2","Persicaria hydropiper??","#N/A","5","25/10/2018",2,0,""
+"523","Macalister","Cowwarr",1,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"524","Macalister","Cowwarr",1,"A",0,"0 to 1","Nil",NA,"1","19/02/2019",3,0,""
+"525","Macalister","Cowwarr",1,"B",1,"1 to 2","Nil",NA,"2","19/02/2019",3,0,""
+"526","Macalister","Cowwarr",1,"C",2,"2 to 3","Nil",NA,"3","19/02/2019",3,0,""
+"527","Macalister","Cowwarr",2,"W",-1," -1 to 0","Ludwigia spp.","#N/A","1","19/02/2019",3,0,""
+"528","Macalister","Cowwarr",2,"W",-1," -1 to 0","dicot","#N/A","1","19/02/2019",3,0,""
+"529","Macalister","Cowwarr",2,"A",0,"0 to 1","Cyperaceae","#N/A","10_50","19/02/2019",3,0,""
+"530","Macalister","Cowwarr",2,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"531","Macalister","Cowwarr",2,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"532","Macalister","Cowwarr",2,"D",3,"3 to 4","Nil",NA,"0","19/02/2019",3,0,""
+"533","Macalister","Cowwarr",4,"W",-1," -1 to 0","Ludwigia spp.","#N/A","5","19/02/2019",3,0,""
+"534","Macalister","Cowwarr",4,"W",-1," -1 to 0","Persicaria hydropiper","native","1","19/02/2019",3,0,""
+"535","Macalister","Cowwarr",4,"A",0,"0 to 1","Ludwigia spp.","#N/A","10_50","19/02/2019",3,0,""
+"536","Macalister","Cowwarr",4,"A",0,"0 to 1","Lythrum hyssopifolia","native","10_50","19/02/2019",3,0,""
+"537","Macalister","Cowwarr",4,"A",0,"0 to 1","Persicaria hydropiper","native","8","19/02/2019",3,0,""
+"538","Macalister","Cowwarr",4,"A",0,"0 to 1","Cyperus eragrostis","exotic","10_50","19/02/2019",3,0,""
+"539","Macalister","Cowwarr",4,"B",1,"1 to 2","Hypochaeris radicata","exotic","1","19/02/2019",3,0,""
+"540","Macalister","Cowwarr",4,"C",2,"2 to 3","Euphorbia spp.","#N/A","10_50","19/02/2019",3,0,"was it E. lathyris?"
+"541","Macalister","Heyfield",10,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"542","Macalister","Heyfield",10,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"543","Macalister","Heyfield",10,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"544","Macalister","Heyfield",10,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"545","Macalister","Heyfield",7,"W",-1," -1 to 0","Cyperus eragrostis","exotic","10_50","19/02/2019",3,0,""
+"546","Macalister","Heyfield",7,"W",-1," -1 to 0","Persicaria spp.","#N/A","3","19/02/2019",3,0,""
+"547","Macalister","Heyfield",7,"A",0,"0 to 1","Solanum nigrum s.l.","exotic","1","19/02/2019",3,0,""
+"548","Macalister","Heyfield",7,"A",0,"0 to 1","Cyperus eragrostis","exotic","10_50","19/02/2019",3,0,""
+"549","Macalister","Heyfield",7,"A",0,"0 to 1","Melicytus dentatus","native","2","19/02/2019",3,0,""
+"550","Macalister","Heyfield",7,"A",0,"0 to 1","Conium maculatum","exotic","1","19/02/2019",3,0,""
+"551","Macalister","Heyfield",7,"A",0,"0 to 1","Sonchus spp.","#N/A","4","19/02/2019",3,0,""
+"552","Macalister","Heyfield",7,"A",0,"0 to 1","Cirsium spp.","#N/A","1","19/02/2019",3,0,""
+"553","Macalister","Heyfield",7,"A",0,"0 to 1","Acacia dealbata","native","4","19/02/2019",3,0,""
+"554","Macalister","Heyfield",7,"A",0,"0 to 1","Persicaria spp.","#N/A","4","19/02/2019",3,0,""
+"555","Macalister","Heyfield",7,"B",1,"1 to 2","Acacia dealbata","native","1","19/02/2019",3,0,""
+"556","Macalister","Heyfield",7,"C",2,"2 to 3","Euphorbia spp.","#N/A","2","19/02/2019",3,0,""
+"557","Macalister","Heyfield",7,"C",2,"2 to 3","dicot","#N/A","3","19/02/2019",3,0,""
+"558","Macalister","Heyfield",6,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"559","Macalister","Heyfield",6,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"560","Macalister","Heyfield",6,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"561","Macalister","Heyfield",6,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"562","Macalister","Heyfield",6,"D",3,"3 to 4","Nil",NA,"0","19/02/2019",3,0,""
+"563","Macalister","Heyfield",4,"W",-1," -1 to 0","Cyperus eragrostis","exotic","10_50","19/02/2019",3,0,""
+"564","Macalister","Heyfield",4,"A",0,"0 to 1","Cyperus eragrostis","exotic","5","19/02/2019",3,0,""
+"565","Macalister","Heyfield",4,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"566","Macalister","Heyfield",3,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"567","Macalister","Heyfield",3,"A",0,"0 to 1","Verbena spp.","#N/A","3","19/02/2019",3,0,""
+"568","Macalister","Heyfield",3,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"569","Macalister","Heyfield",1,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"570","Macalister","Heyfield",1,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"571","Macalister","Heyfield",1,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"572","Macalister","Heyfield",1,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"573","Macalister","Heyfield",1,"D",3,"3 to 4","Nil",NA,"0","19/02/2019",3,0,""
+"574","Macalister","Heyfield",1,"E",4,"4 to 5","Nil",NA,"0","19/02/2019",3,0,""
+"575","Thomson","Riverview",5,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"576","Thomson","Riverview",5,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"577","Thomson","Riverview",5,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"578","Thomson","Riverview",5,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"579","Thomson","Riverview",3,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"580","Thomson","Riverview",3,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"581","Thomson","Riverview",3,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"582","Thomson","Riverview",2,"A",-1," -1 to 0","Myosotis spp.","#N/A","5","19/02/2019",3,0,""
+"583","Thomson","Riverview",2,"B",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"584","Thomson","Riverview",2,"C",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"585","Thomson","Riverview",1,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,"Recruits not in book - transect done by both Scott/Chris and Lyndsey so maybe we all forgot - most likely no recruits based on previous transects"
+"586","Thomson","Riverview",1,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"587","Thomson","Riverview",1,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"588","Macalister","Hagans",1,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"589","Macalister","Hagans",1,"A",0,"0 to 1","dicot","#N/A","10_50","20/02/2019",3,0,""
+"590","Macalister","Hagans",1,"B",1,"1 to 2","dicot","#N/A","5","20/02/2019",3,0,""
+"591","Macalister","Hagans",1,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"592","Macalister","Hagans",1,"D",2,"3 to 4","Nil",NA,"0","20/02/2019",3,0,""
+"593","Macalister","Hagans",3,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"594","Macalister","Hagans",3,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"595","Macalister","Hagans",3,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"596","Macalister","Hagans",3,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"597","Macalister","Hagans",5,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"598","Macalister","Hagans",5,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"599","Macalister","Hagans",5,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"600","Macalister","Hagans",5,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"601","Macalister","Hagans",6,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"602","Macalister","Hagans",6,"A",0,"0 to1","Nil",NA,"0","20/02/2019",3,0,""
+"603","Macalister","Hagans",6,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"604","Macalister","Hagans",6,"C",2,"2 to 3","Aster subulatus","exotic","10_50","20/02/2019",3,0,""
+"605","Macalister","Hagans",6,"C",2,"2 to 3","Verbena spp.","#N/A","10_50","20/02/2019",3,0,""
+"606","Macalister","Hagans",6,"C",2,"2 to 3","Atriplex spp.?","#N/A","5","20/02/2019",3,0,"question mark on species"
+"607","Macalister","Hagans",6,"D",3,"3 to 4","Nil",NA,"0","20/02/2019",3,0,""
+"608","Macalister","Hagans",7,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"609","Macalister","Hagans",7,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"610","Macalister","Hagans",7,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"611","Macalister","Hagans",7,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"612","Macalister","Bellbird",5,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"613","Macalister","Bellbird",5,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"614","Macalister","Bellbird",5,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"615","Macalister","Bellbird",5,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"616","Macalister","Bellbird",4,"W",-1," -1 to 0","monocot","#N/A","10_50","20/02/2019",3,0,""
+"617","Macalister","Bellbird",4,"A",0,"0 to 1","Conyza spp.","#N/A","2","20/02/2019",3,0,""
+"618","Macalister","Bellbird",4,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"619","Macalister","Bellbird",4,"C",2," 2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"620","Macalister","Bellbird",2,"W",-1," -1 to 0","Nil",NA,"","20/02/2019",3,0,""
+"621","Macalister","Bellbird",2,"A",0,"0 to 1","Cyperus eragrostis","exotic","10_50","20/02/2019",3,0,""
+"622","Macalister","Bellbird",2,"A",0,"0 to 1","Alternanthera denticulata s.s.","native","10_50","20/02/2019",3,0,""
+"623","Macalister","Bellbird",2,"A",0,"0 to 1","persicaria hy","#N/A","2","20/02/2019",3,0,""
+"624","Macalister","Bellbird",2,"A",0,"0 to 1","Persicaria praetermissa","#N/A","2","20/02/2019",3,0,""
+"625","Macalister","Bellbird",2,"B",1,"1 to 2","Cyperus eragrostis","exotic","10_50","20/02/2019",3,0,""
+"626","Macalister","Bellbird",2,"B",1,"1 to 2","Alternanthera denticulata s.s.","native","6","20/02/2019",3,0,""
+"627","Macalister","Bellbird",2,"C",2,"2 to 3","Sonchus spp.","#N/A","1","20/02/2019",3,0,""
+"628","Macalister","Bellbird",2,"C",2,"2 to 3","Microlaena stipoides var. stipoides","native","10_50","20/02/2019",3,0,""
+"629","Macalister","Forsyth",6,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"630","Macalister","Forsyth",6,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"631","Macalister","Forsyth",6,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"632","Macalister","Forsyth",6,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"633","Macalister","Forsyth",1,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"634","Macalister","Forsyth",1,"A",0,"0 to 1","Ludwigia spp.","#N/A","1","20/02/2019",3,0,""
+"635","Macalister","Forsyth",1,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"636","Macalister","Forsyth",1,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"637","Macalister","Forsyth",4,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"638","Macalister","Forsyth",4,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"639","Macalister","Forsyth",4,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"640","Macalister","Forsyth",4,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"641","Macalister","Forsyth",3,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"642","Macalister","Forsyth",3,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"643","Macalister","Forsyth",3,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"644","Thomson","Cowwarr",3,"W",-1," -1 to 0","monocot","#N/A","10_50","19/02/2019",3,0,""
+"645","Thomson","Cowwarr",3,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"646","Thomson","Cowwarr",3,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"647","Thomson","Cowwarr",3,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"648","Thomson","Cowwarr",5,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"649","Thomson","Cowwarr",5,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"650","Thomson","Cowwarr",5,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"651","Thomson","Cowwarr",5,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"652","Thomson","Heyfield",9,"W",-1," -1 to 0","Isolepis spp.","#N/A","10_50","19/02/2019",3,0,""
+"653","Thomson","Heyfield",9,"A",0,"0 to 1","Acacia spp.","native","1","19/02/2019",3,0,""
+"654","Thomson","Heyfield",9,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"655","Thomson","Heyfield",9,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"656","Thomson","Heyfield",8,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"657","Thomson","Heyfield",8,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"658","Thomson","Heyfield",8,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"659","Thomson","Heyfield",8,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"660","Thomson","Heyfield",5,"W",-1," -1 to 0","Cyperus eragrostis","exotic","2","19/02/2019",3,0,""
+"661","Thomson","Heyfield",5,"W",-1," -1 to 0","dicot","#N/A","2","19/02/2019",3,0,""
+"662","Thomson","Heyfield",5,"A",0,"0 to 1","Persicaria hydropiper","native","10_50","19/02/2019",3,0,""
+"663","Thomson","Heyfield",5,"A",0,"0 to 1","Acacia dealbata","native","2","19/02/2019",3,0,""
+"664","Thomson","Heyfield",5,"B",1,"1 to 2","Conium maculatum","exotic","1","19/02/2019",3,0,""
+"665","Thomson","Heyfield",5,"C",2,"2 to 3","Acacia dealbata","native","1","19/02/2019",3,0,""
+"666","Thomson","Heyfield",2,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"667","Thomson","Heyfield",2,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"668","Thomson","Heyfield",2,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"669","Thomson","Heyfield",2,"C",2,"2 to 3","Persicaria hydropiper","native","1","19/02/2019",3,0,""
+"670","Thomson","Riverview",6,"W",-1," -1 to 0","dicot","#N/A","2","19/02/2019",3,0,""
+"671","Thomson","Riverview",6,"W",-1," -1 to 0","Tradescantia spp.","#N/A","1","19/02/2019",3,0,""
+"672","Thomson","Riverview",6,"W",-1," -1 to 0","Isolepis spp.","#N/A","10_50","19/02/2019",3,0,""
+"673","Thomson","Riverview",6,"W",-1," -1 to 0","Myosotis spp.","#N/A","3","19/02/2019",3,0,""
+"674","Thomson","Riverview",6,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"675","Thomson","Riverview",6,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"676","Thomson","Riverview",6,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"677","Thomson","Riverview",4,"W",-1," -1 to 0","Nil",NA,"0","19/02/2019",3,0,""
+"678","Thomson","Riverview",4,"A",0,"0 to 1","Nil",NA,"0","19/02/2019",3,0,""
+"679","Thomson","Riverview",4,"B",1,"1 to 2","Nil",NA,"0","19/02/2019",3,0,""
+"680","Thomson","Riverview",4,"C",2,"2 to 3","Nil",NA,"0","19/02/2019",3,0,""
+"681","Macalister","Hagans",2,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"682","Macalister","Hagans",2,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"683","Macalister","Hagans",2,"B",1,"1 to 2","persicaria spp.","#N/A","3","20/02/2019",3,0,""
+"684","Macalister","Hagans",2,"C",2,"2 to 3","persicaria spp.","#N/A","2","20/02/2019",3,0,""
+"685","Macalister","Hagans",4,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"686","Macalister","Hagans",4,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"687","Macalister","Hagans",4,"B",1,"1 to 2","Hypericum spp.","#N/A","10_50","20/02/2019",3,0,""
+"688","Macalister","Hagans",4,"B",1,"1 to 2","Persicaria subsessilis","native","1","20/02/2019",3,0,""
+"689","Macalister","Hagans",4,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"690","Macalister","Bellbird",6,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,"No recruits in book - assuming none as next transect also has none??"
+"691","Macalister","Bellbird",6,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"692","Macalister","Bellbird",6,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"693","Macalister","Bellbird",6,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"694","Macalister","Bellbird",3,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"695","Macalister","Bellbird",3,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"696","Macalister","Bellbird",3,"B",1,"1 to 2","Persicaria subsessilis","native","1","20/02/2019",3,0,""
+"697","Macalister","Bellbird",1,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"698","Macalister","Bellbird",1,"A",0,"0 to 1","dicot","#N/A","3","20/02/2019",3,0,""
+"699","Macalister","Bellbird",1,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"700","Macalister","Forsyth",7,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"701","Macalister","Forsyth",7,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"702","Macalister","Forsyth",7,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"703","Macalister","Forsyth",2,"W",-1," -1 to 0","Nil",NA,"0","20/02/2019",3,0,""
+"704","Macalister","Forsyth",2,"A",0,"0 to 1","Alternanthera denticulata s.s.","native","4","20/02/2019",3,0,""
+"705","Macalister","Forsyth",2,"B",1,"1 to 2","Alternanthera denticulata s.s.","native","1","20/02/2019",3,0,""
+"706","Macalister","Forsyth",2,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
+"707","Macalister","Forsyth",5,"W",-1," -1 to 0","dicot","#N/A","1","20/02/2019",3,0,""
+"708","Macalister","Forsyth",5,"A",0,"0 to 1","Nil",NA,"0","20/02/2019",3,0,""
+"709","Macalister","Forsyth",5,"B",1,"1 to 2","Nil",NA,"0","20/02/2019",3,0,""
+"710","Macalister","Forsyth",5,"C",2,"2 to 3","Nil",NA,"0","20/02/2019",3,0,""
