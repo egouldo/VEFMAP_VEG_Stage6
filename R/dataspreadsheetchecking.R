@@ -18,6 +18,8 @@ vegdata <- read.csv("VEFMAPS6_Yarra_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_ThomsonMacalister_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Recruits.csv")
+vegdata <- read.csv("VEFMAPS6_Yarra_2018_2019_Recruits.csv")
+vegdata <- read.csv("VEFMAPS6_ThomsonMacalister_2018_2019_Recruits.csv")
 
 speciesmaster <- read.csv("VEFMAP_species_master.csv")
 
@@ -36,7 +38,7 @@ sitecheck<-
   unique() %>%
   arrange(SITE)
 
-# Site coding for W Gippsland
+# Site coding for W Gippsland points
 #unique(vegdata$SITE)
 #[1] Th4a 01 (Cowwarr)  Th4a 03 (Heyfield) Th5 (Riverview)    Hagans Bridge      Bellbird Reserve   Forsyth Road      
 #[7] Cowwarr            Heyfield           Riverview          Cowwarr Road       Riverview Road    
@@ -57,6 +59,22 @@ sitecheck<-
 #Levels: Bellbird Cowwarr Forsyth Hagans Heyfield Riverview
 
 #write.csv(vegdata,file = file.choose(new = T))
+
+# Site coding for W Gippsland recruits
+# unique(vegdata$SITE)
+#[1] Th4a 01          Th4a 03          Th5              Hagans Bridge    Bellbird         Forsyth Road    
+#[7] Cowwarr          Heyfield         Riverview        Bellbird Reserve Cowwarr Road     Riverview Road
+
+#vegdata$SITE <- recode(vegdata$SITE,
+#`Th4a 01` = "Cowwarr",
+#`Th4a 03` = "Heyfield",
+#`Th5` = "Riverview",
+#`Hagans Bridge` = "Hagans",
+#`Bellbird Reserve` = "Bellbird",
+#`Forsyth Road` = "Forsyth",
+#'Cowwarr Road' = "Cowwarr",
+#'Riverview Road' = 'Riverview')
+
 
 # Site coding for Wimmera points
 #unique(vegdata$SITE)
