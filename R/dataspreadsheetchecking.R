@@ -20,6 +20,10 @@ vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Wimmera_2017_2018_2019_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_Yarra_2018_2019_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_ThomsonMacalister_2018_2019_Recruits.csv")
+vegdata <- read.csv("VEFMAPS6_Moorabool_2017_2018_Final_Point.csv")
+vegdata <- read.csv("VEFMAPS6_Moorabool_2017_2018_Final_Recruits.csv")
+vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Point.csv")
+vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Recruits.csvv")
 
 speciesmaster <- read.csv("VEFMAP_species_master.csv")
 
