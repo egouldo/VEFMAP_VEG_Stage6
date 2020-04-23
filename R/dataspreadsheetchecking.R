@@ -23,7 +23,7 @@ vegdata <- read.csv("VEFMAPS6_ThomsonMacalister_2018_2019_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_Moorabool_2017_2018_Final_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Moorabool_2017_2018_Final_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Point.csv")
-vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Recruits.csvv")
+vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Recruits.csv")
 
 speciesmaster <- read.csv("VEFMAP_species_master.csv")
 
@@ -169,7 +169,7 @@ sitecheck<-
 #"Wanwanda Guage" = "WonwondahGauge")
 
 sitecheck2 <- vegdata %>%
-  group_by(WATERWAY,SITE) %>%
+  group_by(SYSTEM,WATERWAY,SITE) %>%
   summarise(n()) %>%
   arrange(WATERWAY)
 
