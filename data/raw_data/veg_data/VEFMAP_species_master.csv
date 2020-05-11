@@ -137,6 +137,7 @@ Dactylis glomerata,Dactylis,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM
 Daucus carota,Daucus,Apiaceae,exotic,forb,Terrestrial,NO,,
 Daucus glochidiatus,Daucus,Apiaceae,native,forb,Terrestrial,NO,Tdr,KM
 Deyeuxia quadriseta,Deyeuxia,Poaceae,native,grass,Fringing_high,NO,Ate,KM
+Dianella porracea,Dianella,Asphodelaceae,native,forb,Fringing_high,NO,,
 Dianella tarda,Dianella,Asphodelaceae,native,forb,Fringing_high,NO,,
 Dichanthium sericeum subsp. sericeum,Dichanthium,Poaceae,native,grass,Terrestrial,NO,Tdr,assumed
 Dichelachne crinita,Dichelachne,Poaceae,native,grass,Terrestrial,NO,Tda,KM
@@ -165,6 +166,7 @@ Enteropogon acicularis,Enteropogon,Poaceae,native,grass,Terrestrial,NO,Tdr,KM
 Epilobium billardierianum subsp. billardierianum,Epilobium,Onagraceae,native,forb,Fringing_low,NO,,
 Epilobium hirtigerum,Epilobium,Onagraceae,native,forb,Fringing_low,NO,,
 Eragrostis brownii,Eragrostis,Poaceae,native,grass,Terrestrial,NO,Tdr,KM
+Eragrostis spp.,Eragrostis,Poaceae,native,grass,Terrestrial,NO,,
 Eragrostis infecunda,Eragrostis,Poaceae,native,grass,Fringing_low,NO,Ate,KM
 Erigeron bonariensis,Erigeron,Asteraceae,exotic,forb,Terrestrial,NO,,
 Erodium moschatum,Erodium,Geraniaceae,exotic,forb,Terrestrial,NO,,
@@ -178,7 +180,7 @@ Eucalyptus viminalis,Eucalyptus,Myrtaceae,native,tree,Tree,NO,Tdr,KM
 Euchiton involucratus s.l.,Euchiton,Asteraceae,native,forb,Fringing_low,NO,Tda,KM
 Euchiton sphaericus,Euchiton,Asteraceae,native,forb,Fringing_low,NO,Tdr,KM
 Euchiton spp.,Euchiton,Asteraceae,native,forb,Fringing_low,NO,,
-Euphorbia dallachyana,Euphorbia,Euphorbiaceae,native,forb,,NO,,
+Euphorbia dallachyana,Euphorbia,Euphorbiaceae,native,forb,Terrestrial,NO,,
 Euphorbia lathyris,Euphorbia,Euphorbiaceae,exotic,forb,Terrestrial,NO,Tdr,assumed
 Euphorbia spp.,Euphorbia,Euphorbiaceae,unknown,forb,,NO,,
 Exocarpos strictus,Exocarpos,Santalaceae,native,shrub,Shrub,NO,Tdr,KM
@@ -298,6 +300,7 @@ Lysimachia arvensis,Lysimachia,Primulaceae,exotic,forb,,NO,ATl,KM
 Lythrum hyssopifolia,Lythrum,Lythraceae,native,forb,Fringing_low,NO,Tda,Campbell 2014
 Lythrum salicaria,Lythrum,Lythraceae,native,forb,Fringing_low,NO,ATe,KM
 Malva spp.,Malva,Malvaceae,unknown,forb,Terrestrial,NO,,
+Malva parviflora,Malva,Malvaceae,exotic,forb,Terrestrial,NO,,
 Marrubium vulgare,Marrubium,Lamiaceae,exotic,forb,Terrestrial,NO,Tdr,KM
 Medicago polymorpha,Medicago,Fabaceae,exotic,forb,Terrestrial,NO,Tdr,KM
 Medicago spp.,Medicago,Fabaceae,exotic,forb,Terrestrial,NO,,
@@ -481,7 +484,7 @@ Triglochin striata,Triglochin,Juncaginaceae,native,forb,Fringing_low,NO,ATe,KM
 Typha domingensis,Typha,Typhaceae,native,sedge/rush,Emergent,YES,Se,Casanova 2011
 Typha latifolia,Typha,Typhaceae,exotic,sedge/rush,Emergent,YES,Se,KM
 Typha orientalis,Typha,Typhaceae,exotic,sedge/rush,Emergent,YES,Se,KM
-Typha spp.,Typha,Typhaceae,unknown,sedge/rush,Emergent,YES,Se,Casanova 2011
+Typha spp.,Typha,Typhaceae,native,sedge/rush,Emergent,YES,Se,Casanova 2011
 Ulex europaeus,Ulex,Fabaceae,exotic,shrub,Shrub,NO,Tdr,KM
 Urtica incisa,Urtica,Urticaceae,native,forb,Fringing_high,NO,Tda,KM
 Vallisneria australis,Vallisneria,Hydrocharitaceae,native,forb,Aquatic,YES,Sk,KM
