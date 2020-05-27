@@ -162,10 +162,32 @@ It is critically important for our study that the flow elevations correlate with
 A second issue is that the river chanels typically decline in elevation through space, resulting in a decline in elevation across the transect locations within a site. This means that a single flow level for each site will be inaccurately indicating flow heights at some transect locations. Again, this can be addressed through data calibration for each site so that the flow level speaks to each transect location within a site. This transect-specific calibration is required for all transects within the study with flow data available.
 This is then a three step process: 1) determine any discrepancy between sub-transect elevations and flow elevations for each site, 2) determine the within-site variation in elevation across transects, 3) provide a calibration value for all transects at all sites with flow data to enable rapid calibration.
 
-Vegetation categorisation into functional/response groups
-Determination of flow events/timelines for evaluation
-Determination of grazing covariate
-Determination of exotic vegetation covariate
+**Determination of flow events/timelines for evaluation**
+Once accurate and fully aligned data are produced via the processes indicated above, it is important to carefully consider the flow variables to be used within models. Our conceptual understanding of vegetation responses to flows suggests that the depth, duration and timing (season) are important attributes of flow that dictate responses. These variables can be extracted from the flow data that we have for each site.
+
+*Important considerations for flow depth*
+The most important aspect of flow depth is where or not a plant is fully submerged or not by the flow. Our VEFMAP Stage 6 experimental research has shown us that a plant that is only partly submerged is likely to be much less affected than a plant fully submerged. This is the case for most non-aquatic species. Therefore, when we consider the impacts of flow level, the flow elevation is very important, for example, the threshold of plant responses my not occur at the maximum elevation of a flow event but instead at around 40cm below the peak level where most plants will have been fully submerged. However, this impact may vary between species based on their height, growth form, and physiological responses to inundation.
+
+*Important considerations for flow duration*
+Flow duration is important because vegetation responses vary dramatically with duration. Our VEFMAP Stage 6 experimental research has shown us that most plants are tolerant of short periods of inundation (and there may be some positive effects at very short durations depending on climate attributes and soil). But as submergence duration increases, most non-aquatic plants will decline in health until they eventually reach a survival threshold. The specific duration of a non-lethal flow may not be critical in evaluating the effect of a flow, but that is critical information for a lethal flow.
+
+*Important considerations for flow timing*
+Flow duration is important because vegetation responses vary dramatically with duration. Our VEFMAP Stage 6 experimental research has shown us that many plants are more negatively effected (more rapidly) by submergence in warmer seasons. Separating winter/spring flow events from summer/autumn events appears to be the most important distinction from this point of view and we don't expect vegetation responses to be equivalent in these periods.
+
+*Determining the variables to use*
+Initially, we will use the most simple flow variables that directly relate to management of e-flows. The most commonly delivered e-flows are baseflows and spring freshes. These events are usually consistently delivered each year at the same flow magnitude. This allows us to evaluate the cumulative effect of those flow levels on vegetation, as well as the effects of a single flow event. This can be done by determining the mean baseflow level and mean peak fresh level from our flow data and using those levels as indicators to compare vegetation trends above and below those elevations. This will be our first point of evaluation for flow.
+As we progress the analysis and determine how closely or loosely vegetation patterns align with these levels, we will explore alternative approaches and variables for use in the evaluation, such as the number of days inundated by a certain depth over a given period.
+Importantly, the usefulness of these evaluations depends a lot on the vegetation species or groupings that are evaluated in the models against these flow metrics.
+
+**Vegetation categorisation into functional/response groups**
+Different species respond to the environment differently. The same is true for flow responses. This is why all of our vegetation surveys are initially done at the individual species level. However, individual species distributions and abundances are spatially and temporally patchy, so there can be great value in aggregating data from similar species to produce larger data pools. This is the norm for many ecological studies. The critical step is how species are aggregated. There is a balance between too refined groups (with little benefit from increased data pools as the pools increase by small amounts) and too broad groups (there is a large amount of species variation within a group meaning that responses are unclear). 
+One well-established grouping system for wetland plants is by Casanova and Brock (REF) that groups plants by their affinity for different water regimes - called wetland plant functional groups (WPFG). In many cases, the species and the responses are directly equivalent to riparian systems, however there are some notable variations. There are also many different WPFGs, which are impractical to evaluate separately in many cases.
+In this study, we do not have a pre-determined approach for how vegetation groups will be used. We have compiled all of the relvant WPFG assignments for each species recorded and have determined our own classes in which these groups are nested (with variation required in few cases where the riparian response is expected or observed to be different from the wetland responses).
+We will initially conduct our analyses using the three hierarchical levels of data aggregation: species < WPFG < broad classes. Based on these initial explorations, we will progress the final evaluation approach. This exploratory approach is important for a study like this where there is not a clear precedent in the published literature for the most appropriate vegetation groupings.
+
+**Determination of grazing covariate**
+
+**Determination of exotic vegetation covariate**
 
 
 *Describe how you will separate and distinguish between raw data, manipulated data, and outputs from modelling or any analyses of the model.*
