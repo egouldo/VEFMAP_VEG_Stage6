@@ -1,333 +1,333 @@
-SYSTEM,WATERWAY,SITE,REACH,TRANSECT,GRAZING,SHEEP_CATTLE,EXCLOSURE,EXCLOSURE_CON,EXC_INSTALL,SOIL_MOISTURE,FLOW_LOGGER,SPRINGFRESH_m_AHD,BASEFLOW_m_AHD,AHD_correlation_level,AHD_Old
-WGippsland,Thomson,Cowwarr,TBC,1,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846
-WGippsland,Thomson,Cowwarr,TBC,2,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846
-WGippsland,Thomson,Cowwarr,TBC,3,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846
-WGippsland,Thomson,Cowwarr,TBC,4,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846
-WGippsland,Thomson,Cowwarr,TBC,5,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846
-WGippsland,Macalister,Bellbird,TBC,1,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Bellbird,TBC,2,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Bellbird,TBC,3,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Bellbird,TBC,4,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Bellbird,TBC,5,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Bellbird,TBC,6,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436
-WGippsland,Macalister,Forsyth,TBC,1,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,2,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,3,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,4,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,5,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,6,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Forsyth,TBC,7,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA
-WGippsland,Macalister,Hagans,TBC,1,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,2,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,3,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,4,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,5,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,6,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Macalister,Hagans,TBC,7,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA
-WGippsland,Thomson,Heyfield,TBC,1,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,2,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,3,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,4,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,5,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,6,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,7,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,8,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,9,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Heyfield,TBC,10,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846
-WGippsland,Thomson,Riverview,TBC,1,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-WGippsland,Thomson,Riverview,TBC,2,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-WGippsland,Thomson,Riverview,TBC,3,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-WGippsland,Thomson,Riverview,TBC,4,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-WGippsland,Thomson,Riverview,TBC,5,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-WGippsland,Thomson,Riverview,TBC,6,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423
-Campaspe,Campaspe,Doaks,2,1,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,2,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,3,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,4,Y,C,N,Y_T5pair,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,5,N,NA,Y,NA,2017,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,6,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,7,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,8,Y,C,N,NA,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,9,N,NA,Y,NA,2017,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,Doaks,2,10,Y,C,N,Y_T9pair,NA,Y,Y,152.73,151.24,150.752,152.752
-Campaspe,Campaspe,English,2,1,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,2,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,3,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,4,N,NA,Y,NA,2018,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,5,Y,C,N,Y_T4pair,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,6,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,7,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,8,Y,C,N,Y_T8bpair,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,9,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,10,Y,C,N,NA,NA,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,English,2,8b,N,NA,Y,NA,2018,N,Y,132.14,131.75,130.25,130.25
-Campaspe,Campaspe,Bryants,3,1,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,2,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,3,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,4,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,5,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,6,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,7,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,8,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,9,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Bryants,3,10,N,NA,N,NA,NA,Y,Y,111.7,109.8,109.25,109.25
-Campaspe,Campaspe,Spencer,3,1,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,2,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,3,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,4,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,5,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,6,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,7,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,8,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,9,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Spencer,3,10,N,NA,N,NA,NA,N,Y,110.15,108.52,106.807,106.807
-Campaspe,Campaspe,Campbells,4,1,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,2,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,3,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,4,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,5,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,6,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,7,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,8,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,9,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Campbells,4,10,N,NA,N,NA,NA,N,Y,90.6,88.8,88.117,88.117
-Campaspe,Campaspe,Strathallan,4,1,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,2,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,3,Y,S,N,Y_T4pair,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,4,N,NA,Y,NA,2017,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,5,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,6,Y,S,N,Y_T7pair,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,7,N,NA,Y,NA,2017,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,8,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,9,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Campaspe,Campaspe,Strathallan,4,10,Y,S,N,NA,NA,Y,Y,98.35,96.52,95.912,95.912
-Glenelg,Glenelg,Warrock,TBC,1,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,2,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,3,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,4,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,5,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,6,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,7,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Warrock,TBC,8,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA
-Glenelg,Glenelg,Weavers,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,3,N,NA,Y,NA,2017,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,4,Y,C,N,Y_T3pair,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,6,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,7,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,8,Y,C,N,Y_T9pair,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,9,N,NA,Y,NA,2017,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Weavers,TBC,10,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Glenelg,Glenelg,Fulham,TBC,10,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,1,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,2,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,3,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,4,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,5,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,6,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,7,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,8,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,9,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Five Mile,TBC,10,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,1,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,2,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,3,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,4,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,5,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,6,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,7,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Glenelg,Dergholm,TBC,8,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA
-Glenelg,Wannon,Wannon,1,1,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA
-Glenelg,Wannon,Wannon,1,2,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA
-Glenelg,Wannon,Wannon,1,3,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA
-Glenelg,Wannon,Wannon,1,4,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA
-Glenelg,Wannon,Wannon,1,5,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA
-Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,1,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA
-Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,2,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA
-Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,3,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA
-Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,4,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA
-Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,5,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA
-Loddon,Twelve Mile,Frosts,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Twelve Mile,Frosts,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Twelve Mile,Frosts,TBC,3,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Twelve Mile,Frosts,TBC,4,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Twelve Mile,Frosts,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Loddon,Caldwells,TBC,1,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA
-Loddon,Loddon,Caldwells,TBC,2,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA
-Loddon,Loddon,Caldwells,TBC,3,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA
-Loddon,Loddon,Caldwells,TBC,4,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA
-Loddon,Loddon,Caldwells,TBC,5,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA
-Loddon,Loddon,LoddonCanaryIsland,TBC,1,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA
-Loddon,Loddon,LoddonCanaryIsland,TBC,2,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA
-Loddon,Loddon,LoddonCanaryIsland,TBC,3,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA
-Loddon,Loddon,LoddonCanaryIsland,TBC,4,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA
-Loddon,Loddon,LoddonCanaryIsland,TBC,5,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA
-Loddon,Tullaroop,Hood,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Hood,TBC,10,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,3,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,4,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,6,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,7,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,8,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,9,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Loddon,Tullaroop,Mullins,TBC,10,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,1,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,2,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,3,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,4,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,5,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,6,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,7,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,8,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,9,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Hunts Bridge,TBC,10,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,1,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,2,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,3,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,4,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,5,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,6,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,7,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,8,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,9,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Bakers Bridge,TBC,10,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,1,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,2,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,3,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,4,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,5,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,6,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,7,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,8,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,9,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Moorabool,Sharps Rd,TBC,10,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Moorabool,Sutherland,Sutherland,TBC,10,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Burnt,Peuckers,TBC,1,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Burnt,Peuckers,TBC,2,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Burnt,Peuckers,TBC,3,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Burnt,Peuckers,TBC,4,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Burnt,Peuckers,TBC,5,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Burnt,WonwondahGauge,TBC,1,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA
-Wimmera,Burnt,WonwondahGauge,TBC,2,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA
-Wimmera,Burnt,WonwondahGauge,TBC,3,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA
-Wimmera,Burnt,WonwondahGauge,TBC,4,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA
-Wimmera,Burnt,WonwondahGauge,TBC,5,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA
-Wimmera,Mackenzie,GrahamsBridge,TBC,1,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA
-Wimmera,Mackenzie,GrahamsBridge,TBC,2,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA
-Wimmera,Mackenzie,GrahamsBridge,TBC,3,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA
-Wimmera,Mackenzie,GrahamsBridge,TBC,4,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA
-Wimmera,Mackenzie,GrahamsBridge,TBC,5,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA
-Wimmera,Burnt,MacInnes,TBC,1,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA
-Wimmera,Burnt,MacInnes,TBC,2,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA
-Wimmera,Burnt,MacInnes,TBC,3,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA
-Wimmera,Burnt,MacInnes,TBC,4,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA
-Wimmera,Burnt,MacInnes,TBC,5,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA
-Wimmera,Mackenzie,NEWonwondah,TBC,1,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA
-Wimmera,Mackenzie,NEWonwondah,TBC,2,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA
-Wimmera,Mackenzie,NEWonwondah,TBC,3,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA
-Wimmera,Mackenzie,NEWonwondah,TBC,4,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA
-Wimmera,Mackenzie,NEWonwondah,TBC,5,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA
-Wimmera,Mackenzie,MtVictory,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,MtVictory,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,MtVictory,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,MtVictory,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,MtVictory,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,RosesGap,TBC,1,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Mt William,RosesGap,TBC,2,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Mt William,RosesGap,TBC,3,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Mt William,RosesGap,TBC,4,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Mt William,RosesGap,TBC,5,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,Laharum,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,Laharum,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,Laharum,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,Laharum,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mackenzie,Laharum,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,Tobacco,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,Tobacco,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,Tobacco,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,Tobacco,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Mt William,Tobacco,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA
-Wimmera,Burnt,Millers,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Burnt,Millers,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Burnt,Millers,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Burnt,Millers,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Burnt,Millers,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Mt William,LakeLonsdale,TBC,1,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA
-Wimmera,Mt William,LakeLonsdale,TBC,2,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA
-Wimmera,Mt William,LakeLonsdale,TBC,3,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA
-Wimmera,Mt William,LakeLonsdale,TBC,4,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA
-Wimmera,Mt William,LakeLonsdale,TBC,5,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA
-Wimmera,Mt William,Sheepwash,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Mt William,Sheepwash,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Mt William,Sheepwash,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Mt William,Sheepwash,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Wimmera,Mt William,Sheepwash,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA
-Yarra,Yarra,Millgrove,TBC,1,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,2,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,3,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,4,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,5,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,6,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,7,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,8,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,9,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Millgrove,TBC,10,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,1,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,2,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,3,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,4,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,5,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,6,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,7,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,8,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,US_out,Y,C,N,Y_US,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,US_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,9,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,10,Y,C,N,NA,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,DS_out,Y,C,N,Y_DS,NA,N,N,71.9,70,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,DS_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA
-Yarra,Yarra,Warrandyte,TBC,1,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,2,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,3,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,4,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,5,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,6,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,7,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,8,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,9,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Yarra,Warrandyte,TBC,10,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA
-Yarra,Watts,Watts,TBC,1,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA
-Yarra,Watts,Watts,TBC,2,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA
-Yarra,Watts,Watts,TBC,3,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA
-Yarra,Watts,Watts,TBC,4,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA
-Yarra,Watts,Watts,TBC,5,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA
+SYSTEM,WATERWAY,SITE,REACH,TRANSECT,GRAZING,SHEEP_CATTLE,EXCLOSURE,EXCLOSURE_CON,EXC_INSTALL,SOIL_MOISTURE,FLOW_LOGGER,SPRINGFRESH_m_AHD,BASEFLOW_m_AHD,AHD_correlation_level,AHD_Old,SPFRESH_DIFF,BSFLOW_DIFF
+WGippsland,Thomson,Cowwarr,TBC,1,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846,1.304,0.474
+WGippsland,Thomson,Cowwarr,TBC,2,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846,1.304,0.474
+WGippsland,Thomson,Cowwarr,TBC,3,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846,1.304,0.474
+WGippsland,Thomson,Cowwarr,TBC,4,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846,1.304,0.474
+WGippsland,Thomson,Cowwarr,TBC,5,N,NA,N,NA,NA,N,N,61.03,60.2,59.726,35.846,1.304,0.474
+WGippsland,Macalister,Bellbird,TBC,1,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Bellbird,TBC,2,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Bellbird,TBC,3,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Bellbird,TBC,4,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Bellbird,TBC,5,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Bellbird,TBC,6,N,NA,N,NA,NA,N,N,28,27.7,27.566,17.436,0.434,0.134
+WGippsland,Macalister,Forsyth,TBC,1,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,2,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,3,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,4,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,5,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,6,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Forsyth,TBC,7,N,NA,N,NA,NA,N,N,20.85,19.65,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,1,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,2,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,3,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,4,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,5,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,6,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Macalister,Hagans,TBC,7,Y,C,N,NA,NA,N,N,47.57,47.48,NA,NA,NA,NA
+WGippsland,Thomson,Heyfield,TBC,1,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,2,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,3,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,4,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,5,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,6,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,7,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,8,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,9,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Heyfield,TBC,10,N,NA,N,NA,NA,N,N,44.03,43.2,42.726,35.846,1.304,0.474
+WGippsland,Thomson,Riverview,TBC,1,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+WGippsland,Thomson,Riverview,TBC,2,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+WGippsland,Thomson,Riverview,TBC,3,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+WGippsland,Thomson,Riverview,TBC,4,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+WGippsland,Thomson,Riverview,TBC,5,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+WGippsland,Thomson,Riverview,TBC,6,N,NA,N,NA,NA,N,N,28.46,27.7,26.603,19.423,1.857,1.097
+Campaspe,Campaspe,Doaks,2,1,Y,C,N,NA,NA,Y,Y,153.24,151.75,151.262,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,2,Y,C,N,NA,NA,Y,Y,153.14,151.65,151.162,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,3,Y,C,N,NA,NA,Y,Y,152.74,151.25,150.762,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,4,Y,C,N,Y_T5pair,NA,Y,Y,152.58,151.09,150.602,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,5,N,NA,Y,NA,2017,Y,Y,152.5,151.01,150.522,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,6,Y,C,N,NA,NA,Y,Y,152.5,151.01,150.522,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,7,Y,C,N,NA,NA,Y,Y,152.44,150.95,150.462,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,8,Y,C,N,NA,NA,Y,Y,152.39,150.9,150.412,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,9,N,NA,Y,NA,2017,Y,Y,152.36,150.87,150.382,152.752,1.978,0.488
+Campaspe,Campaspe,Doaks,2,10,Y,C,N,Y_T9pair,NA,Y,Y,152.34,150.85,150.362,152.752,1.978,0.488
+Campaspe,Campaspe,English,2,1,Y,C,N,NA,NA,N,Y,131.89,131.5,130,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,2,Y,C,N,NA,NA,N,Y,131.79,131.4,129.9,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,3,Y,C,N,NA,NA,N,Y,131.69,131.3,129.8,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,4,N,NA,Y,NA,2018,N,Y,131.69,131.3,129.8,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,5,Y,C,N,Y_T4pair,NA,N,Y,131.69,131.3,129.8,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,6,Y,C,N,NA,NA,N,Y,131.69,131.3,129.8,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,7,Y,C,N,NA,NA,N,Y,131.64,131.25,129.75,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,8,Y,C,N,Y_T8bpair,NA,N,Y,131.61,131.22,129.72,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,9,Y,C,N,NA,NA,N,Y,131.61,131.22,129.72,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,10,Y,C,N,NA,NA,N,Y,131.61,131.22,129.72,130.25,1.89,1.5
+Campaspe,Campaspe,English,2,8b,N,NA,Y,NA,2018,N,Y,131.59,131.2,129.7,130.25,1.89,1.5
+Campaspe,Campaspe,Bryants,3,1,N,NA,N,NA,NA,Y,Y,112.6,110.7,110.15,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,2,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,3,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,4,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,5,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,6,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,7,N,NA,N,NA,NA,Y,Y,112.3,110.4,109.85,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,8,N,NA,N,NA,NA,Y,Y,112.28,110.38,109.83,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,9,N,NA,N,NA,NA,Y,Y,112.27,110.37,109.82,109.25,2.45,0.55
+Campaspe,Campaspe,Bryants,3,10,N,NA,N,NA,NA,Y,Y,112.25,110.35,109.8,109.25,2.45,0.55
+Campaspe,Campaspe,Spencer,3,1,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,2,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,3,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,4,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,5,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,6,N,NA,N,NA,NA,N,Y,109.58,107.95,106.237,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,7,N,NA,N,NA,NA,N,Y,109.53,107.9,106.187,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,8,N,NA,N,NA,NA,N,Y,109.53,107.9,106.187,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,9,N,NA,N,NA,NA,N,Y,109.53,107.9,106.187,106.807,3.343,1.713
+Campaspe,Campaspe,Spencer,3,10,N,NA,N,NA,NA,N,Y,109.53,107.9,106.187,106.807,3.343,1.713
+Campaspe,Campaspe,Campbells,4,1,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,2,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,3,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,4,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,5,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,6,N,NA,N,NA,NA,N,Y,91.2,89.4,88.717,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,7,N,NA,N,NA,NA,N,Y,91.15,89.35,88.667,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,8,N,NA,N,NA,NA,N,Y,91.15,89.35,88.667,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,9,N,NA,N,NA,NA,N,Y,91.15,89.35,88.667,88.117,2.483,0.683
+Campaspe,Campaspe,Campbells,4,10,N,NA,N,NA,NA,N,Y,91.15,89.35,88.667,88.117,2.483,0.683
+Campaspe,Campaspe,Strathallan,4,1,Y,S,N,NA,NA,Y,Y,99.03,97.2,96.592,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,2,Y,S,N,NA,NA,Y,Y,99.03,97.2,96.592,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,3,Y,S,N,Y_T4pair,NA,Y,Y,99.03,97.2,96.592,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,4,N,NA,Y,NA,2017,Y,Y,99.03,97.2,96.592,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,5,Y,S,N,NA,NA,Y,Y,98.98,97.15,96.542,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,6,Y,S,N,Y_T7pair,NA,Y,Y,98.98,97.15,96.542,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,7,N,NA,Y,NA,2017,Y,Y,98.98,97.15,96.542,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,8,Y,S,N,NA,NA,Y,Y,98.98,97.15,96.542,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,9,Y,S,N,NA,NA,Y,Y,98.93,97.1,96.492,95.912,2.438,0.608
+Campaspe,Campaspe,Strathallan,4,10,Y,S,N,NA,NA,Y,Y,98.93,97.1,96.492,95.912,2.438,0.608
+Glenelg,Glenelg,Warrock,TBC,1,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,2,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,3,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,4,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,5,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,6,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,7,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Warrock,TBC,8,N,NA,N,NA,NA,N,Y,65.1,61.99,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,3,N,NA,Y,NA,2017,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,4,Y,C,N,Y_T3pair,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,6,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,7,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,8,Y,C,N,Y_T9pair,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,9,N,NA,Y,NA,2017,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Weavers,TBC,10,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Fulham,TBC,10,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,1,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,2,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,3,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,4,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,5,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,6,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,7,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,8,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,9,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Five Mile,TBC,10,N,NA,N,NA,NA,N,Y,150.9,149.62,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,1,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,2,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,3,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,4,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,5,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,6,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,7,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Glenelg,Dergholm,TBC,8,N,NA,N,NA,NA,N,N,64.9,62.83,NA,NA,NA,NA
+Glenelg,Wannon,Wannon,1,1,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA,NA,NA
+Glenelg,Wannon,Wannon,1,2,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA,NA,NA
+Glenelg,Wannon,Wannon,1,3,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA,NA,NA
+Glenelg,Wannon,Wannon,1,4,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA,NA,NA
+Glenelg,Wannon,Wannon,1,5,N,NA,N,NA,NA,N,Y,121.2,120.06,NA,NA,NA,NA
+Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,1,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA,NA,NA
+Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,2,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA,NA,NA
+Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,3,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA,NA,NA
+Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,4,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA,NA,NA
+Loddon,Twelve Mile,TwelveMileCanaryIsland,TBC,5,N,NA,N,NA,NA,N,Y,83.8,81.05,NA,NA,NA,NA
+Loddon,Twelve Mile,Frosts,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Twelve Mile,Frosts,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Twelve Mile,Frosts,TBC,3,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Twelve Mile,Frosts,TBC,4,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Twelve Mile,Frosts,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Loddon,Caldwells,TBC,1,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA,NA,NA
+Loddon,Loddon,Caldwells,TBC,2,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA,NA,NA
+Loddon,Loddon,Caldwells,TBC,3,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA,NA,NA
+Loddon,Loddon,Caldwells,TBC,4,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA,NA,NA
+Loddon,Loddon,Caldwells,TBC,5,N,NA,N,NA,NA,N,N,81.65,80.57,NA,NA,NA,NA
+Loddon,Loddon,LoddonCanaryIsland,TBC,1,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA,NA,NA
+Loddon,Loddon,LoddonCanaryIsland,TBC,2,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA,NA,NA
+Loddon,Loddon,LoddonCanaryIsland,TBC,3,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA,NA,NA
+Loddon,Loddon,LoddonCanaryIsland,TBC,4,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA,NA,NA
+Loddon,Loddon,LoddonCanaryIsland,TBC,5,N,NA,N,NA,NA,N,N,81.75,80.85,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Hood,TBC,10,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,1,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,2,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,3,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,4,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,5,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,6,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,7,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,8,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,9,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Loddon,Tullaroop,Mullins,TBC,10,Y,C,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,1,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,2,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,3,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,4,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,5,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,6,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,7,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,8,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,9,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Hunts Bridge,TBC,10,N,NA,N,NA,NA,N,N,340.62,340.16,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,1,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,2,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,3,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,4,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,5,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,6,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,7,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,8,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,9,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Bakers Bridge,TBC,10,Y,S,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,1,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,2,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,3,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,4,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,5,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,6,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,7,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,8,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,9,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Moorabool,Sharps Rd,TBC,10,N,NA,N,NA,NA,N,N,190.41,189.94,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,6,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,7,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,8,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,9,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Moorabool,Sutherland,Sutherland,TBC,10,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Peuckers,TBC,1,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Peuckers,TBC,2,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Peuckers,TBC,3,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Peuckers,TBC,4,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Peuckers,TBC,5,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,WonwondahGauge,TBC,1,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA,NA,NA
+Wimmera,Burnt,WonwondahGauge,TBC,2,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA,NA,NA
+Wimmera,Burnt,WonwondahGauge,TBC,3,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA,NA,NA
+Wimmera,Burnt,WonwondahGauge,TBC,4,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA,NA,NA
+Wimmera,Burnt,WonwondahGauge,TBC,5,N,NA,N,NA,NA,Y,Y,157.08,156.91,NA,NA,NA,NA
+Wimmera,Mackenzie,GrahamsBridge,TBC,1,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA,NA,NA
+Wimmera,Mackenzie,GrahamsBridge,TBC,2,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA,NA,NA
+Wimmera,Mackenzie,GrahamsBridge,TBC,3,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA,NA,NA
+Wimmera,Mackenzie,GrahamsBridge,TBC,4,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA,NA,NA
+Wimmera,Mackenzie,GrahamsBridge,TBC,5,N,NA,N,NA,NA,N,Y,168.35,167.48,NA,NA,NA,NA
+Wimmera,Burnt,MacInnes,TBC,1,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA,NA,NA
+Wimmera,Burnt,MacInnes,TBC,2,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA,NA,NA
+Wimmera,Burnt,MacInnes,TBC,3,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA,NA,NA
+Wimmera,Burnt,MacInnes,TBC,4,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA,NA,NA
+Wimmera,Burnt,MacInnes,TBC,5,N,NA,N,NA,NA,N,Y,167.32,167.11,NA,NA,NA,NA
+Wimmera,Mackenzie,NEWonwondah,TBC,1,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA,NA,NA
+Wimmera,Mackenzie,NEWonwondah,TBC,2,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA,NA,NA
+Wimmera,Mackenzie,NEWonwondah,TBC,3,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA,NA,NA
+Wimmera,Mackenzie,NEWonwondah,TBC,4,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA,NA,NA
+Wimmera,Mackenzie,NEWonwondah,TBC,5,N,NA,N,NA,NA,Y,Y,135.3,134.85,NA,NA,NA,NA
+Wimmera,Mackenzie,MtVictory,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,MtVictory,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,MtVictory,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,MtVictory,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,MtVictory,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,RosesGap,TBC,1,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,RosesGap,TBC,2,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,RosesGap,TBC,3,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,RosesGap,TBC,4,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,RosesGap,TBC,5,N,NA,N,NA,NA,Y,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,Laharum,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,Laharum,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,Laharum,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,Laharum,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mackenzie,Laharum,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Tobacco,TBC,1,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Tobacco,TBC,2,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Tobacco,TBC,3,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Tobacco,TBC,4,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Tobacco,TBC,5,N,NA,N,NA,NA,N,Y,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Millers,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Millers,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Millers,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Millers,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Burnt,Millers,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,LakeLonsdale,TBC,1,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA,NA,NA
+Wimmera,Mt William,LakeLonsdale,TBC,2,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA,NA,NA
+Wimmera,Mt William,LakeLonsdale,TBC,3,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA,NA,NA
+Wimmera,Mt William,LakeLonsdale,TBC,4,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA,NA,NA
+Wimmera,Mt William,LakeLonsdale,TBC,5,N,NA,N,NA,NA,N,N,182.53,182.32,NA,NA,NA,NA
+Wimmera,Mt William,Sheepwash,TBC,1,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Sheepwash,TBC,2,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Sheepwash,TBC,3,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Sheepwash,TBC,4,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Wimmera,Mt William,Sheepwash,TBC,5,N,NA,N,NA,NA,N,N,NA,NA,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,1,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,2,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,3,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,4,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,5,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,6,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,7,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,8,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,9,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Millgrove,TBC,10,N,NA,N,NA,NA,N,N,125.11,124.38,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,1,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,2,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,3,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,4,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,5,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,6,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,7,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,8,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,US_out,Y,C,N,Y_US,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,US_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,9,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,10,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,DS_out,Y,C,N,Y_DS,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,DS_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,1,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,2,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,3,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,4,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,5,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,6,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,7,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,8,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,9,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Yarra,Warrandyte,TBC,10,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
+Yarra,Watts,Watts,TBC,1,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA,NA,NA
+Yarra,Watts,Watts,TBC,2,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA,NA,NA
+Yarra,Watts,Watts,TBC,3,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA,NA,NA
+Yarra,Watts,Watts,TBC,4,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA,NA,NA
+Yarra,Watts,Watts,TBC,5,N,NA,N,NA,NA,N,N,75.94,74.83,NA,NA,NA,NA
