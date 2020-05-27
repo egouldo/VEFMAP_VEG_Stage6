@@ -1,7 +1,7 @@
 Ecology and Conservation Modelling Preregistration Template – DRAFT
 ================
 Elise Gould, Megan Good, TBD:workshop collaborators
-19 May, 2020
+27 May, 2020
 
 # About this template
 
@@ -77,6 +77,42 @@ model. It also includes specification of model outputs, statements of
 the domain of applicability of the model, as well as the extent by which
 model outputs may be acceptably extrapolated (Grimm et al. 2014).*
 
+This preregistration document relates to the data analysis of a study on
+vegetation responses to environmental flows. The study forms one
+component of a larger set of studies within Stage 6 of the Victorian
+Environmental Flows Monitoring and Assessment Program (VEFMAP) managed
+by DELWP and delivered through the Arthur Rylah Institute (ARI). The
+study is funded by the state of Victoria, with a hierarchy of clients
+ranging from the Premier, to the Water Minister, Dep. Secretary, and
+program managers within the DELWP Water and Catchments division. The
+project is also co-funded through the Murray Darling Basin Plan, with
+corresponding requirements to contribute findings to Basin Plan
+reporting outputs. Other key stakeholders for this work are the
+Victorian Environmental Water Holder (VEWH) who manage the environmental
+water entitlements throughout the state, and the Victorian Catchment
+Management Authorities (CMAs) that manage the delivery of environmental
+water along individual waterways. Findings from this research can then
+be used to directly influence: managament decisions through the CMAs;
+water allocation through the VEWH; and water investment through DELWP,
+the State Government and the Murray Darling Basin Authority. Other
+stakeholders, including the public, water authorities and institutions
+such as Parks Victoria (among many others) have a minor active role
+within the study.
+
+The model itself within this study aims to provide clear evidence of the
+influence of environmental flows, and other factors (particularly exotic
+vegetation and livestock grazing), on native vegetation within regulated
+river chanels. Outputs will aim to give practical evidence and the
+implications of responses to directly improve and guide the management
+of environmental water delivery for native vegetation benefit. Given
+that the model will incorporate data from across a number of waterways
+across a large part of Victoria, the model applications will speak to
+each of those waterways, as well as potential extrapolation to waterways
+not surveyed. The models will not aim to provide explicit predictions
+within the waterways surveyed, or to specific un-surveyed waterways, but
+extension of these models for prediction will we highlighted for future
+investigation beyond this study.
+
 ## 1.1 Model Purpose
 
 *Defining the purpose of the model is critical because the model purpose
@@ -97,6 +133,51 @@ any clients for whom the model is developed. Briefly outline the
 ecological problem and the decision-problem, including the
 decision-trigger and any regulatory frameworks relevant to the problem.*
 
+The ecological problem is related to river regulation. Natural flow
+regimes are major drivers of ecological processes within waterways.
+Natural flow regimes are altered by water storage and extraction,
+i.e. regulation. Environmental flows aim to provide flow components in
+a waterway to replace natural components that have been removed from the
+flow regime, specifically to provide ecological benefit to multiple taxa
+and physical processes. The decision problem relates to maximising the
+effectiveness of the environmental water deliveries to achieve their
+objectives. Decision triggers can occur for the funding of environmental
+water, i.e. whether the outcomes are worth the investment or if the
+investment needs to be altered. Decision triggers can also occur for the
+management of environmental water, i.e. whether the outcomes suggest
+changes to the current management process. For this study, the evidence
+is provided for others to address those decisions. There are various
+regulatory frameworks that are relevant to the funding and delivery of
+environmental water, but they are not within the scope of this
+assessment as they are in the hands of the decision makers.
+
+The model objectives for this study are to provide evidence for
+vegetation responses to environmental flow delivery over short (\<1yr)
+to medium (\<5yr) term with consideration of additional significant
+factors, such as exotic vegetation cover and livestock grazing. These
+objectives can be captured in the following questions: what is the
+short-term vegetation response to a single environmental flow event?
+what is the vegetation response to repeated flow events that have been
+delivered in recent years? how much is the native vegetation response to
+environmental flows limited by the abundance of exotic vegetation or
+livestock grazing?
+
+The models will aim to quantify vegetation responses (indicated by plant
+cover) to environmental flows and to quantify the effect of exotic
+vegetation cover or livestock grazing presence on these responses.
+Vegetation cover data that will be the response variables to models (and
+exotic vegetation covariates) are collected on the individual species
+level but will likely be grouped into relevant response classes. The
+specific groupings are yet to be determined. More information on these
+groupings is provided below in 2.4.
+
+The two primary users of the model outputs are: 1) funders of
+environmental water (i.e. state and federal governments) to understand
+the magnitude of the outcomes of their investment, and the limitations
+or barriers to benefits; and 2) managers of environmental water
+(i.e. CMAs) to guide and improve management decisions for environmental
+benefits.
+
 ## 1.2 Specify modelling context
 
 *The scope of the model, including temporal and spatial resolutions are
@@ -111,6 +192,24 @@ from the problem context.*
 clients, and end-users of the model. Who is the model for, who is
 involved in formulating the model? Who needs buy in? Describe the
 decision-making context in which the model will be used.*
+
+Most of this is covered in 1.1.1 above.
+
+The model formulation is developed by the researchers at ARI, with
+guidance from the program managers at DELWP, external researchers and an
+Independent Review Panel of external researchers for VEFMAP. The general
+model structure was proposed by the ARI researchers, which was initially
+interrogated, modified and validated with program manager and external
+input. A more formal development of the model formulation was conducted
+in a collaboration between ARI reserachers and external researchers with
+specific statistical expertise.
+
+The model outputs, including recommendations, will be shared with
+decision makers (funders and managers) to guide their respective
+decisions. Decisions will require multiple inputs, such as the outcomes
+of this study and others, regulatory frameworks, funding availability,
+physical and practical constraints, and others. This study does not
+contribute to those decisions outside of providing the study outputs.
 
 ### 1.2.2 Model Scope and Scale
 
@@ -313,7 +412,68 @@ when and where those data were collected (Grimm et al. 2014).*
 
 *Describe any data preparation and processing steps, including
 manipulation of environmental layers, e.g. standardisation and
-geographic projection.*
+geographic projection.* This analysis is relatively complex, due to the
+large dataset and the integration of different data sources (vegetation
+data, flow, transect elevation, site attributes). Each of these data
+sources requires some careful data processing and preparation for use
+within the models. Here we outline the major actions - listed within
+issue \#23 in our repository.
+
+**GPS data correlation** The specific relevance of this issue for flow
+elevation is detailed below, but here we summarise the general issues
+with GPS correlation. High-accuracy GPS points are required for three
+parts of this study: 1) vegetation sampling locations, 2) flow elevation
+(data loggers), 3) bank profiles and soil moisture loggers. In this
+study, there were various sources of these GPS points, with each source
+not corresponding exactly to the others. A calibration is then used to
+align all points at a site for each source. The data sources include: -
+Points for flow loggers on Campaspe: Unimelb - Points for veg survey
+locations on Campaspe: ARI using UPG equipment - Points for all other
+veg survey locations: ARI using ARI equipment (equiv to UPG) - Zero
+grade heights for permanent water loggers: Ventia
+
+In all cases, we will calibrate to the levels of the vegetation survey
+locations, so that the flow data and vegetation data align.
+
+**Flow data correlation with site elevation** Flow data in this study
+was processed externally by a hydrology consultant with data and site
+information provided by the ARI team. For each site surveyed, flow data
+were compiled and an output of flow level (elevation in AHD) was
+produced at regular intervals (interval time depending on data inputs).
+While all vegetation survey sites were attempted to have matching flow
+data, some data were impossible to acquire due to the lack of critical
+flow information at the specific site and we are unable to evaluate full
+flow hydrology levels for these sites. The full hydrology data
+processing procedure is outlined in a separate document provided by the
+consultant and is not replicated here. It is critically important for
+our study that the flow elevations correlate with measured elevations of
+each vegetation sub-transect. The sub-transect elevations were obtained
+by ARI staff at the exact locations of the sub-transects, using GPS
+devices and processing software that was tested and proven sufficiently
+accurate for the study. While the relative elevation among sub-transect
+points appears to be accurate, the comparative elevation to the flow
+levels was in some cases misaligned. This is however a relatively easy
+fix, once the difference between the transect and flow data elevations
+is determined, that value is simply added or subtracted from either
+dataset for callibration. The differences were possible due to water
+level elevations recorded at each site that could compare flow levels
+with sub-transect levels directly. A second issue is that the river
+chanels typically decline in elevation through space, resulting in a
+decline in elevation across the transect locations within a site. This
+means that a single flow level for each site will be inaccurately
+indicating flow heights at some transect locations. Again, this can be
+addressed through data calibration for each site so that the flow level
+speaks to each transect location within a site. This transect-specific
+calibration is required for all transects within the study with flow
+data available. This is then a three step process: 1) determine any
+discrepancy between sub-transect elevations and flow elevations for each
+site, 2) determine the within-site variation in elevation across
+transects, 3) provide a calibration value for all transects at all sites
+with flow data to enable rapid calibration.
+
+Vegetation categorisation into functional/response groups Determination
+of flow events/timelines for evaluation Determination of grazing
+covariate Determination of exotic vegetation covariate
 
 *Describe how you will separate and distinguish between raw data,
 manipulated data, and outputs from modelling or any analyses of the
