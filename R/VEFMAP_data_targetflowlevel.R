@@ -45,8 +45,9 @@ veg_points <- left_join(veg_points,meta_data)
 
 ###### Plotting data
 
-# single plot
+### single plot
 
+# Doaks
 veg_points_doaks <- filter(veg_points, SITE=="Doaks")
 
 veg_points_doaks_sum <- group_by(veg_points_doaks, TRANSECT, SUB_TRANS, METRES, HEIGHT_AHD, fct_explicit_na(ORIGIN), fct_explicit_na(CLASSIFICATION)) %>% 
@@ -67,6 +68,8 @@ veg_points_doaks_sum$CLASSIFICATION <- factor(veg_points_doaks_sum$CLASSIFICATIO
               levels = c("Aquatic","Emergent","Fringing_low","Fringing_high","Terrestrial"))  # Treatment order
 
 
+veg_points_doaks_sum$ORIGIN <- factor(veg_points_doaks_sum$ORIGIN, 
+                                              levels = c("native","exotic"))
 
 baseflow_level <- mean(veg_points_doaks$BASEFLOW_m_AHD)
 springfresh_level <- mean(veg_points_doaks$SPRINGFRESH_m_AHD)
@@ -79,13 +82,47 @@ springfresh_level <- mean(veg_points_doaks$SPRINGFRESH_m_AHD)
   ylab("Cover %") +
   facet_grid(vars(ORIGIN), vars(CLASSIFICATION)) +
   geom_vline(xintercept = baseflow_level, colour = "blue", lty = 2) +
-  geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) 
-    
-    
-    
-    
-  scale_fill_manual(values=c("grey40","grey")) +
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"))
+  geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"))
 
 
 
+  # Bryants
+  veg_points_bryants <- filter(veg_points, SITE=="Bryants")
+  
+  veg_points_bryants_sum <- group_by(veg_points_bryants, TRANSECT, SUB_TRANS, METRES, HEIGHT_AHD, fct_explicit_na(ORIGIN), fct_explicit_na(CLASSIFICATION)) %>% 
+    summarise( COVER = sum(HITS)/40*100)  
+  
+  veg_points_bryants_sum <- veg_points_bryants_sum %>% rename(ORIGIN = "fct_explicit_na(ORIGIN)")
+  veg_points_bryants_sum <- veg_points_bryants_sum %>% rename(CLASSIFICATION = "fct_explicit_na(CLASSIFICATION)")
+  
+  veg_points_bryants_sum <- filter(veg_points_bryants_sum, ORIGIN=="exotic" | ORIGIN=="native")
+  veg_points_bryants_sum <- filter(veg_points_bryants_sum, 
+                                 CLASSIFICATION=="Aquatic" | 
+                                   CLASSIFICATION=="Emergent" | 
+                                   CLASSIFICATION=="Fringing_low" |
+                                   CLASSIFICATION=="Fringing_high" |
+                                   CLASSIFICATION=="Terrestrial" )
+  
+  veg_points_bryants_sum$CLASSIFICATION <- factor(veg_points_bryants_sum$CLASSIFICATION, 
+                                                levels = c("Aquatic","Emergent","Fringing_low","Fringing_high","Terrestrial"))  # Treatment order
+  
+  veg_points_bryants_sum$ORIGIN <- factor(veg_points_bryants_sum$ORIGIN, 
+                                        levels = c("native","exotic"))
+  
+  
+  baseflow_level <- mean(veg_points_bryants$BASEFLOW_m_AHD)
+  springfresh_level <- mean(veg_points_bryants$SPRINGFRESH_m_AHD)
+  
+  ggplot(veg_points_bryants_sum, aes(x=HEIGHT_AHD,y=COVER)) +
+    geom_point() +
+    theme_bw() + 
+    # ylim(0,600) +
+    xlab("Elevation (mAHD)") +
+    ylab("Cover %") +
+    facet_grid(vars(ORIGIN), vars(CLASSIFICATION)) +
+    geom_vline(xintercept = baseflow_level, colour = "blue", lty = 2) +
+    geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"))
+  
+  
