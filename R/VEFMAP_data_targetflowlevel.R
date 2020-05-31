@@ -131,4 +131,64 @@ springfresh_level <- mean(veg_points_doaks$SPRINGFRESH_m_AHD)
     geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) +
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"))
   
+
+  
+  
+  
+  
+###### Native veg versus exotic
+  
+  veg_points_sum <- group_by(veg_points, TRANSECT,GRAZING, DATE, METRES, HEIGHT_AHD, fct_explicit_na(ORIGIN), fct_explicit_na(CLASSIFICATION)) %>% 
+    summarise( COVER = sum(HITS)/40*100) 
+  
+  veg_points_sum$MONTH <- month(veg_points_sum$DATE,label=T)
+  
+  veg_points_sum <- veg_points_sum %>% rename(ORIGIN = "fct_explicit_na(ORIGIN)")
+  veg_points_sum <- veg_points_sum %>% rename(CLASSIFICATION = "fct_explicit_na(CLASSIFICATION)")
+  
+  veg_points_sum <- filter(veg_points_sum, ORIGIN=="exotic" | ORIGIN=="native")
+  veg_points_sum <- filter(veg_points_sum, 
+                                 #CLASSIFICATION=="Aquatic" | 
+                                   CLASSIFICATION=="Emergent" | 
+                                   CLASSIFICATION=="Fringing_low" |
+                                   CLASSIFICATION=="Fringing_high" |
+                                   CLASSIFICATION=="Terrestrial" )
+  
+  veg_points_sum$CLASSIFICATION <- factor(veg_points_sum$CLASSIFICATION, 
+                                                levels = c("Aquatic","Emergent","Fringing_low","Fringing_high","Terrestrial"))  # Treatment order
+  
+  
+  veg_points_sum$ORIGIN <- factor(veg_points_sum$ORIGIN, 
+                                        levels = c("native","exotic"))
+  
+  veg_points_sum_wide <- spread(veg_points_sum, ORIGIN, COVER)
+  
+  veg_points_sum_wide[is.na(veg_points_sum_wide)] <- 0
+  
+  
+  ggplot(veg_points_sum_wide, aes(x=native,y=exotic, color=MONTH)) +
+    geom_point() +
+    theme_bw() + 
+    xlim(0,200) +
+    xlab("Native cover %") +
+    ylab("Exotic cover %") +
+    #facet_grid(vars(ORIGIN), vars(CLASSIFICATION)) +
+    facet_grid(cols = vars(CLASSIFICATION)) +
+   # geom_vline(xintercept = baseflow_level, colour = "blue", lty = 2) +
+  #  geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"))
+  
+  
+  
+  ggplot(veg_points_sum_wide, aes(x=native,y=exotic, color=GRAZING)) +
+    geom_point() +
+    theme_bw() + 
+    xlim(0,200) +
+    xlab("Native cover %") +
+    ylab("Exotic cover %") +
+    #facet_grid(vars(ORIGIN), vars(CLASSIFICATION)) +
+    facet_grid(cols = vars(CLASSIFICATION)) +
+    # geom_vline(xintercept = baseflow_level, colour = "blue", lty = 2) +
+    #  geom_vline(xintercept = springfresh_level, colour = "red", lty = 2) +
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),  axis.line = element_line(colour = "black"))
   
