@@ -6,6 +6,7 @@ library(tidyr)
 library(dplyr)
 library(forcats)
 library(ggplot2)
+library(lubridate)
 
 ###### Data
 setwd("~/../GIT2/VEFMAP_VEG_Stage6/data")  # This will only work for certain computer setups, setwd to data folder.
@@ -21,6 +22,8 @@ gps_data <- read.csv("./raw_data/site_data/GPS_All.csv")
 meta_data <- read.csv("./raw_data/site_data/VEFMAPS6_Site_Metadata.csv")
 
 
+###### Data formatting 
+veg_points$DATE <- as.Date(as.character(veg_points$DATE), "%d/%m/%Y")
 
 ###### Data merging
 
@@ -31,6 +34,7 @@ veg_points <- left_join(veg_points,veg_master)
 
 # Merge gps data with point data
 gps_data$TRANSECT <- as.factor(gps_data$TRANSECT)
+veg_points$METRES <- as.factor(veg_points$METRES)
 gps_data <- gps_data %>% select(SYSTEM, WATERWAY, SITE, TRANSECT, METRES, HEIGHT_AHD)
 
 veg_points <- left_join(veg_points,gps_data)
@@ -50,8 +54,10 @@ veg_points <- left_join(veg_points,meta_data)
 # Doaks
 veg_points_doaks <- filter(veg_points, SITE=="Doaks")
 
-veg_points_doaks_sum <- group_by(veg_points_doaks, TRANSECT, SUB_TRANS, METRES, HEIGHT_AHD, fct_explicit_na(ORIGIN), fct_explicit_na(CLASSIFICATION)) %>% 
-  summarise( COVER = sum(HITS)/40*100)  
+veg_points_doaks_sum <- group_by(veg_points_doaks, TRANSECT, DATE, SUB_TRANS, METRES, HEIGHT_AHD, fct_explicit_na(ORIGIN), fct_explicit_na(CLASSIFICATION)) %>% 
+  summarise( COVER = sum(HITS)/40*100) 
+
+veg_points_doaks_sum$MONTH <- month(veg_points_doaks_sum$DATE,label=T)
 
 veg_points_doaks_sum <- veg_points_doaks_sum %>% rename(ORIGIN = "fct_explicit_na(ORIGIN)")
 veg_points_doaks_sum <- veg_points_doaks_sum %>% rename(CLASSIFICATION = "fct_explicit_na(CLASSIFICATION)")
@@ -74,7 +80,7 @@ veg_points_doaks_sum$ORIGIN <- factor(veg_points_doaks_sum$ORIGIN,
 baseflow_level <- mean(veg_points_doaks$BASEFLOW_m_AHD)
 springfresh_level <- mean(veg_points_doaks$SPRINGFRESH_m_AHD)
 
-  ggplot(veg_points_doaks_sum, aes(x=HEIGHT_AHD,y=COVER)) +
+  ggplot(veg_points_doaks_sum, aes(x=HEIGHT_AHD,y=COVER, color=MONTH)) +
   geom_point() +
   theme_bw() + 
  # ylim(0,600) +
