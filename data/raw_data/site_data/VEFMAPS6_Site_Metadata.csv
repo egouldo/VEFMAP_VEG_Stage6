@@ -310,12 +310,12 @@ Yarra,Yarra,Tarrawarra,TBC,5,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Tarrawarra,TBC,6,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Tarrawarra,TBC,7,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Tarrawarra,TBC,8,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,US_out,Y,C,N,Y_US,NA,N,N,71.9,70,NA,NA,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,US_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,US-C,Y,C,N,Y_US,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,US-T,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Tarrawarra,TBC,9,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Tarrawarra,TBC,10,Y,C,N,NA,NA,N,N,71.9,70,NA,NA,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,DS_out,Y,C,N,Y_DS,NA,N,N,71.9,70,NA,NA,NA,NA
-Yarra,Yarra,Tarrawarra,TBC,DS_in,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,DS-C,Y,C,N,Y_DS,NA,N,N,71.9,70,NA,NA,NA,NA
+Yarra,Yarra,Tarrawarra,TBC,DS-T,N,NA,Y,NA,2018,N,N,71.9,70,NA,NA,NA,NA
 Yarra,Yarra,Warrandyte,TBC,1,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
 Yarra,Yarra,Warrandyte,TBC,2,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
 Yarra,Yarra,Warrandyte,TBC,3,N,NA,N,NA,NA,N,N,25.33,24.83,NA,NA,NA,NA
