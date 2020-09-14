@@ -175,6 +175,7 @@ veg_points_subset_site <- filter(veg_points_subset, SITE=="Spencer")
 veg_points_subset_site <- filter(veg_points_subset, SITE=="English")
 veg_points_subset_site <- filter(veg_points_subset, SITE=="Strathallan")
 veg_points_subset_site <- filter(veg_points_subset, SITE=="Campbells")
+veg_points_subset_site <- filter(veg_points_subset, SITE=="English" | SITE=="Spencer" | SITE=="Strathallan" | SITE=="Campbells" | SITE=="Bryants" | SITE=="Doaks")
 
 
 # Claculate hits per zone per period and year
@@ -254,6 +255,12 @@ abline(0,1)
 em <- emmeans( Mixmod_Camp, pairwise ~ Period | Year | Zone | ORIGIN)
 ds_em <- em$emmeans %>% data.frame()
 ds_contrasts <- em$contrasts %>% data.frame()
+
+
+em <- emmeans( Mixmod_Camp, pairwise ~ Zone |Period | Year  | ORIGIN)
+ds_em <- em$emmeans %>% data.frame()
+ds_contrasts <- em$contrasts %>% data.frame()
+
 
 ds_contrasts$Effect <- (1-exp(ds_contrasts$estimate))*100
 ds_contrasts$CI_LB <- (1-exp(ds_contrasts$estimate-2*ds_contrasts$SE))*100
