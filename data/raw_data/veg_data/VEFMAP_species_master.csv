@@ -26,13 +26,13 @@ Alternanthera sp. 1 (Plains),Alternanthera,Amaranthaceae,native,forb,Fringing_lo
 Alternanthera spp.,Alternanthera,Amaranthaceae,native,forb,Fringing_low,NO,,,Littoral
 Amaranthus spp.,Amaranthus,Amaranthaceae,exotic,forb,Terrestrial,NO,Tdr,assumed from other species in genus,Terrestrial
 Amphibromus nervosus,Amphibromus,Poaceae,native,grass,Emergent,YES,Tda,KM,Littoral
-Anthemis cotula,Anthemis,Asteraceae,exotic,forb,,NO,,,
+Anthemis cotula,Anthemis,Asteraceae,exotic,forb,,NO,,,Terrestrial
 Anthosachne scabra,Anthosachne,Poaceae,native,grass,Terrestrial,NO,,,Terrestrial
 Anthoxanthum odoratum,Anthoxanthum,Poaceae,exotic,grass,Terrestrial,NO,Tda,KM,Terrestrial
 Anthoxanthum spp.,Anthoxanthum,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
 Apiaceae spp.,unknown,Apiaceae,unknown,forb,,NO,,,
 Apium prostratum,Apium,Apiaceae,native,forb,Terrestrial,NO,Tda,KM,Terrestrial
-Aponogeton distachyos,Aponogeton,Aponogetonaceae,exotic,forb,,NO,Sk,KM,
+Aponogeton distachyos,Aponogeton,Aponogetonaceae,exotic,forb,,NO,Sk,KM,Aquatic
 Araujia sericifera,Araujia,Apocynaceae,exotic,climber,Terrestrial,NO,,,Terrestrial
 Arctotheca calendula,Arctotheca,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Arthropodium fimbriatum,Arthropodium,Asparagaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
@@ -52,7 +52,7 @@ Avena barbata,Avena,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Avena fatua,Avena,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Avena spp.,Avena,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
 Azolla spp.,Azolla,Salviniaceae,native,fern,Aquatic,YES,,,Aquatic
-Baloskion tetraphyllum subsp. tetraphyllum,Baloskion,Restionaceae,native,sedge/rush,Emergent,YES,ATe,assumed,Littoral margin
+Baloskion tetraphyllum subsp. tetraphyllum,Baloskion,Restionaceae,native,sedge/rush,Emergent,YES,ATe,assumed,Littoral
 Baumea arthrophylla,Baumea,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Emergent
 Baumea articulata,Baumea,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Emergent
 Baumea juncea,Baumea,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Emergent
@@ -115,7 +115,7 @@ Conium maculatum,Conium,Apiaceae,exotic,forb,Terrestrial,NO,Tdr,assumed,Terrestr
 Convolvulus arvensis,Convolvulus,Convolvulaceae,exotic,climber,Terrestrial,NO,,,Terrestrial
 Coprosma quadrifida,Coprosma,Rubiaceae,native,shrub,Shrub,NO,Tdr,KM,Shrub
 Cotula australis,Cotula,Asteraceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
-Cotula coronopifolia,Cotula,Asteraceae,exotic,forb,Fringing_high,NO,ARp,KM,Littoral margin
+Cotula coronopifolia,Cotula,Asteraceae,exotic,forb,Fringing_high,NO,ARp,KM,Littoral
 Cotula spp.,Cotula,Asteraceae,unknown,forb,Terrestrial,NO,,,Terrestrial
 Crassula decumbens var. decumbens,Crassula,Crassulaceae,native,forb,Terrestrial,NO,,,Terrestrial
 Crassula helmsii,Crassula,Crassulaceae,native,forb,Fringing_low,NO,ARp,KM,Littoral
@@ -144,14 +144,14 @@ Dichelachne crinita,Dichelachne,Poaceae,native,grass,Terrestrial,NO,Tda,KM,Terre
 Dichondra repens,Dichondra,Convolvulaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Dicot,unknown,unknown,unknown,unknown,,NO,,,
 Dillwynia spp.,Dillwynia,Fabaceae,native,shrub,Shrub,NO,,,Shrub
-Dipsacus fullonum,Dipsacus,Dipsacaceae,exotic,forb,,NO,,,
+Dipsacus fullonum,Dipsacus,Dipsacaceae,exotic,forb,,NO,,,Littoral margin
 Distichlis distichophylla,Distichlis,Poaceae,native,grass,Fringing_low,NO,Tda,KM,Littoral
 Dittrichia graveolens,Dittrichia,Asteraceae,exotic,shrub,Shrub,NO,Tdr,KM,Shrub
 Dodonaea viscosa,Dodonaea,Sapindaceae,native,shrub,Shrub,NO,Tdr,KM,Shrub
 Drosera spp.,Drosera,Droseraceae,native,forb,Terrestrial,NO,,,Terrestrial
 Dysphania pumilio,Dysphania,Chenopodiaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
-Echinopogon ovatus,Echinopogon,Poaceae,native,grass,,NO,Tda,KM,
-Eclipta platyglossa,Eclipta,Asteraceae,native,forb,,NO,Tda,KM,
+Echinopogon ovatus,Echinopogon,Poaceae,native,grass,,NO,Tda,KM,Terrestrial
+Eclipta platyglossa,Eclipta,Asteraceae,native,forb,,NO,Tda,KM,Littoral margin
 Ehrharta calycina,Ehrharta,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Ehrharta erecta var. erecta,Ehrharta,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
 Ehrharta longiflora,Ehrharta,Poaceae,exotic,grass,Terrestrial,NO,Tda,KM,Terrestrial
@@ -215,17 +215,17 @@ Haloragis heterophylla,Haloragis,Haloragaceae,native,forb,Fringing_high,NO,Tda,K
 Hedera helix,Hedera,Araliaceae,exotic,climber,Terrestrial,NO,Tdr,KM,Terrestrial
 Heliotropium europaeum,Heliotropium,Boraginaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Helminthotheca echioides,Helminthotheca,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
-Hemarthria uncinata var. uncinata,Hemarthria,Poaceae,native,grass,Fringing_low,NO,Tda,KM,Littoral
+Hemarthria uncinata var. uncinata,Hemarthria,Poaceae,native,grass,Fringing_low,NO,Tda,KM,Littoral margin
 Holcus lanatus,Holcus,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Holcus spp.,Holcus,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
 Hordeum leporinum,Hordeum,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Hordeum marinum,Hordeum,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Hordeum spp.,Hordeum,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
-Hydrocotyle laxiflora,Hydrocotyle,Araliaceae,native,forb,,NO,ATl,KM,
+Hydrocotyle laxiflora,Hydrocotyle,Araliaceae,native,forb,,NO,ATl,KM,Terrestrial
 Hydrocotyle pterocarpa,Hydrocotyle,Araliaceae,native,forb,Fringing_low,NO,ATl,KM,Littoral
 Hypericum androsaemum,Hypericum,Hypericaceae,exotic,forb,Terrestrial,NO,Tda,KM,Terrestrial
 Hypericum gramineum,Hypericum,Hypericaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
-Hypericum japonicum,Hypericum,Hypericaceae,native,forb,,NO,Tda,KM,
+Hypericum japonicum,Hypericum,Hypericaceae,native,forb,,NO,Tda,KM,Littoral
 Hypericum perforatum,Hypericum,Hypericaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Hypericum spp.,Hypericum,Hypericaceae,unknown,forb,Terrestrial,NO,,,Terrestrial
 Hypochaeris glabra,Hypochaeris,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
@@ -236,7 +236,7 @@ Isolepis cernua,Isolepis,Cyperaceae,native,sedge/rush,Fringing_low,NO,Atl,KM,Lit
 Isolepis fluitans,Isolepis,Cyperaceae,native,sedge/rush,Aquatic,YES,Sk,KM,Aquatic
 Isolepis hystrix,Isolepis,Cyperaceae,exotic,sedge/rush,Fringing_low,NO,ATe,KM,Littoral
 Isolepis inundata,Isolepis,Cyperaceae,native,sedge/rush,Fringing_low,NO,ATl,KM,Littoral
-Isolepis marginata,Isolepis,Cyperaceae,native,sedge/rush,,NO,ARp,KM,
+Isolepis marginata,Isolepis,Cyperaceae,native,sedge/rush,,NO,ARp,KM,Littoral margin
 Isolepis spp.,Isolepis,Cyperaceae,unknown,sedge/rush,Emergent,YES,ATe,Campbell 2014,Littoral
 Juncus acutus subsp. acutus,Juncus,Juncaceae,exotic,sedge/rush,Emergent,YES,ATe,KM,Littoral
 Juncus amabilis,Juncus,Juncaceae,native,sedge/rush,Emergent,YES,ATe,KM,Littoral
@@ -262,7 +262,7 @@ Lachnagrostis filiformis s.l.,Lachnagrostis,Poaceae,native,grass,Fringing_low,NO
 Lactuca serriola,Lactuca,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Lactuca spp.,Lactuca,Asteraceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Lagurus ovatus,Lagurus,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
-Leersia oryzoides,Leersia,Poaceae,exotic,grass,,NO,,,
+Leersia oryzoides,Leersia,Poaceae,exotic,grass,,NO,,,Littoral
 Lemna disperma,Lemna,Araceae,native,forb,Aquatic,YES,Arf,KM,Aquatic
 Leontodon saxatilis,Leontodon,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Lepidium africanum,Lepidium,Brassicaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
@@ -280,7 +280,7 @@ Leptospermum obvatum,Leptospermum,Myrtaceae,native,shrub,Shrub,NO,,,Shrub
 Ligustrum spp.,Ligustrum,Oleaceae,exotic,tree,Tree,NO,,,Tree
 Lilaeopsis polyantha,Lilaeopsis,Apiaceae,native,forb,Emergent,YES,ATl,KM,Littoral
 Lobelia anceps,Lobelia,Campanulaceae,native,forb,Fringing_low,NO,Tda,KM,Littoral
-Lobelia beaugleholei,Lobelia,Campanulaceae,native,forb,,NO,,,
+Lobelia beaugleholei,Lobelia,Campanulaceae,native,forb,,NO,,,Littoral
 Lobelia pedunculata s.l.,Lobelia,Campanulaceae,native,forb,Fringing_low,NO,Tdr,KM,Littoral
 Lobelia pratioides,Lobelia,Campanulaceae,native,forb,Fringing_low,NO,ATl,KM,Littoral
 Lolium perenne,Lolium,Poaceae,exotic,grass,Terrestrial,NO,Tdr,KM,Terrestrial
@@ -294,9 +294,9 @@ Lonicera japonica,Lonicera,Caprifoliaceae,exotic,climber,Terrestrial,NO,Tda?,Che
 Lotus corniculatus,Lotus,Fabaceae,exotic,forb,Terrestrial,NO,Tda,KM,Terrestrial
 Lotus spp.,Lotus,Fabaceae,exotic,forb,,NO,,,
 Ludwigia palustris,Ludwigia,Onagraceae,exotic,forb,Emergent,YES,ARp,CHECK,Littoral
-Ludwigia spp.,Ludwigia,Onagraceae,unknown,forb,,NO,,,
-Lycopus australis,Lycopus,Lamiaceae,native,forb,Fringing_high,NO,ATe,KM,Littoral margin
-Lysimachia arvensis,Lysimachia,Primulaceae,exotic,forb,,NO,ATl,KM,
+Ludwigia spp.,Ludwigia,Onagraceae,unknown,forb,,NO,,,Littoral
+Lycopus australis,Lycopus,Lamiaceae,native,forb,Fringing_high,NO,ATe,KM,Littoral
+Lysimachia arvensis,Lysimachia,Primulaceae,exotic,forb,,NO,ATl,KM,Terrestrial
 Lythrum hyssopifolia,Lythrum,Lythraceae,native,forb,Fringing_low,NO,Tda,Campbell 2014,Littoral
 Lythrum salicaria,Lythrum,Lythraceae,native,forb,Fringing_low,NO,ATe,KM,Littoral
 Malva spp.,Malva,Malvaceae,unknown,forb,Terrestrial,NO,,,Terrestrial
@@ -319,16 +319,16 @@ Moenchia erecta,Moenchia,Caryophyllaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terre
 Monocot,unknown,unknown,unknown,unknown,,NO,,,
 Monocot grass exotic,unknown,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
 Monocot grass,unknown,Poaceae,exotic,grass,Terrestrial,NO,,,Terrestrial
-Monocot sedge/rush,unknown,unknown,unknown,sedge/rush,,NO,,,
+Monocot sedge/rush,unknown,unknown,unknown,sedge/rush,,NO,,,Littoral
 Montia australasica,Montia,Montiaceae,native,forb,Fringing_low,NO,ATe,KM,Littoral
 Montia spp.,Montia,Montiaceae,native,forb,Fringing_low,NO,Unknown,,Littoral
 Moraea flaccida,Moraea,Iridaceae,exotic,forb,Terrestrial,NO,Tda,KM,Terrestrial
 Moraea lewisiae,Moraea,Iridaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Muehlenbeckia florulenta,Muehlenbeckia,Polygonaceae,native,shrub,Shrub,NO,ATe,Campbell 2014,Shrub
 Myoporum insulare,Myoporum,Scrophulariaceae,native,shrub,Shrub,NO,ATl,KM,Shrub
-Myosotis arvensis,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,,,Littoral
-Myosotis laxa,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,,,Littoral
-Myosotis spp.,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,Unknown,,Littoral
+Myosotis arvensis,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,,,Littoral margin
+Myosotis laxa,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,,,Littoral margin
+Myosotis spp.,Myosotis,Boraginaceae,exotic,forb,Fringing_low,NO,Unknown,,Littoral margin
 Myriophyllum amphibium,Myriophyllum,Haloragaceae,native,forb,Aquatic,YES,ARp,KM,Aquatic
 Myriophyllum simulans,Myriophyllum,Haloragaceae,native,forb,Aquatic,YES,ARp,KM,Aquatic
 Myriophyllum spp.,Myriophyllum,Haloragaceae,native,forb,Aquatic,YES,ARp,Campbell 2014,Aquatic
@@ -384,7 +384,7 @@ Poa fordeana,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,KM,Littoral margin
 Poa labillardierei var. labillardierei,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,KM,Littoral margin
 Poa sieberiana,Poa,Poaceae,native,grass,Fringing_high,NO,Tdr,KM,Littoral margin
 Poa spp.,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,assumed,Littoral margin
-Polycarpon tetraphyllum,Polycarpon,Caryophyllaceae,exotic,forb,,NO,Tda,KM,
+Polycarpon tetraphyllum,Polycarpon,Caryophyllaceae,exotic,forb,,NO,Tda,KM,Terrestrial
 Polygonum aviculare,Polygonum,Polygonaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Polypogon monspeliensis,Polypogon,Poaceae,exotic,grass,Fringing_low,NO,ATe,KM,Littoral margin
 Polystichum proliferum,Polystichum,Dryopteridaceae,native,fern,Terrestrial,NO,Tdr,KM,Terrestrial
@@ -406,7 +406,7 @@ Ranunculus amphitrichus,Ranunculus,Ranunculaceae,native,forb,Aquatic,YES,ARf,KM,
 Ranunculus pumilio,Ranunculus,Ranunculaceae,native,forb,Fringing_low,NO,Tda?,check,Littoral
 Ranunculus repens,Ranunculus,Ranunculaceae,exotic,forb,Fringing_low,NO,ATe,KM,Littoral
 Ranunculus sceleratus subsp. sceleratus,Ranunculus,Ranunculaceae,exotic,forb,Fringing_low,NO,ATe,KM,Littoral
-Ranunculus sessiliflorus,Ranunculus,Ranunculaceae,native,forb,,NO,Tda,KM,
+Ranunculus sessiliflorus,Ranunculus,Ranunculaceae,native,forb,,NO,Tda,KM,Littoral
 Ranunculus undosus,Ranunculus,Ranunculaceae,native,forb,Emergent,YES,Ate,KM,Littoral
 Myrsine howittiana,Rapanea,Primulaceae,native,tree,Tree,NO,,,Tree
 Raphanus raphanistrum,Raphanus,Brassicaceae,exotic,forb,Fringing_high,NO,Tda,KM,Littoral margin
@@ -473,7 +473,7 @@ Themeda triandra,Themeda,Poaceae,native,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Thysanotus patersonii,Thysanotus,Asparagaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Tradescantia fluminensis,Tradescantia,Commelinaceae,exotic,forb,Fringing_high,NO,Tda?,assumed,Littoral margin
 Tradescantia spp.,Tradescantia,Commelinaceae,exotic,forb,Fringing_high,NO,,,Littoral margin
-Tribolium obliterum,Tribolium,Poaceae,exotic,grass,,NO,,,
+Tribolium obliterum,Tribolium,Poaceae,exotic,grass,,NO,,,Terrestrial
 Tricoryne elatior,Tricoryne,Asphodelaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Trifolium angustifolium var. angustifolium,Trifolium,Fabaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Trifolium arvense var. arvense,Trifolium,Fabaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
@@ -490,7 +490,7 @@ Typha spp.,Typha,Typhaceae,native,sedge/rush,Emergent,YES,Se,Casanova 2011,Emerg
 Ulex europaeus,Ulex,Fabaceae,exotic,shrub,Shrub,NO,Tdr,KM,Shrub
 Urtica incisa,Urtica,Urticaceae,native,forb,Fringing_high,NO,Tda,KM,Littoral margin
 Vallisneria australis,Vallisneria,Hydrocharitaceae,native,forb,Aquatic,YES,Sk,KM,Aquatic
-Vellereophyton dealbatum,Vellereophyton,Asteraceae,exotic,forb,,NO,Tda,KM,
+Vellereophyton dealbatum,Vellereophyton,Asteraceae,exotic,forb,,NO,Tda,KM,Littoral margin
 Verbascum virgatum,Verbascum,Scrophulariaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial
 Verbena bonariensis s.l.,Verbena,Verbenaceae,exotic,forb,Fringing_high,NO,Tdr,Campbell 2014,Littoral margin
 Verbena officinalis s.l.,Verbena,Verbenaceae,exotic,forb,Fringing_high,NO,,,Littoral margin
