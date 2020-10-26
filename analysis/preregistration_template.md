@@ -1,81 +1,28 @@
 Ecology and Conservation Modelling Preregistration Template – DRAFT
 ================
 Elise Gould, Megan Good, TBD:workshop collaborators
-27 May, 2020
-
-# About this template
-
-This template has been collated from a combination of literature reviews
-of the ‘Good Modelling Practice’ and other modelling literature, as well
-as a collaborative workshop at DELWP. Chris Jones has kindly volunteered
-one component of the VEFMAP project investigating vegetation responses
-to environmental flows as a testing ground for the use of
-preregistration templates in applied ecological modelling research. This
-template will be used to preregister this research, and we will use the
-VEFMAP project to both develop and evaluate the template ‘in situ’.
-
-The template is largely structured around 6 “phases” in the process of
-developing, evaluating and analysing a model or models in ecological
-applications: `Problem Formulation`, `Define Conceptual Model`,
-`Formalise and Specify Model`, `Model Validation and Evaluation`, `Model
-Analysis`, `Model Application`. These have been defined and described to
-some extent throughout the template.
-
-## iterative model development and a ‘living preregistration’
-
-One of the major challenges in designing a template for modelling is
-that the process of model development is inherently iterative.
-Typically, the process of preregistration is completely distinct from
-and precedes the implementation of the analysis plan laid out in the
-preregistration. However, translating the preregistration process to a
-modelling research context is not so clear cut because some decisions
-are inherently dependent on the outcomes and results of previous
-decisions and analyses. For example, some items at the later stages of
-modelling probably can’t be answered until the model itself is fully or
-close to fully developed, especially for more complex process models
-(e.g. specifying exactly what sensitivity analyses or uncertainty
-analyses will be conducted). Thus deciding on the inner logic of the
-template, and what is in and out of scope has been particularly
-difficult.
-
-One method around this is to accept that the current model of
-preregistration is not going to work for iterative model development.
-Again, the more complex the model, the more likely this is to be the
-case. Consequently I propose a different model of preregistration that I
-think will work for modeling research contexts. At the moment I’m
-calling it ‘living preregistration’ but please suggest another name.
-Others have termed this ‘adaptive preregistration’, and this is maybe a
-better name.
-
-In this model of preregistration, all questions that can be answered,
-should be answered before any data analysis or modelling proceeds. For
-some items, particularly during model evaluation and analysis, perhaps
-only responses of a general nature can be provided. That is OK. As the
-modelling proceeds. Further detail can be provided and the next phase of
-analysis can be preregistered. Where the results of model evaluation and
-analysis reveal that there are problems with the model, or perhaps
-assumption violations, plans can be changed, and again the next phase of
-analysis can be preregistered.
-
-A static document for this type of process doesn’t really make sense. I
-propose leveraging the code and project management tools within the
-GitHub platform as a way of hosting a ‘living’ or ‘adaptive’
-preregistration. Because GitHub documents are ‘time-stamped’, the
-genesis of the preregistration from one version to the next can be
-traced and tagged with versions. Since the document would exist in the
-repository with the code itself, any results from analyses that cause
-the analysis plan to change can be linked and referenced in the updated
-plan.
-
------
+26 October, 2020
 
 # 1\. Problem Formulation
 
-*Specifies the decision-making context in which the model will be used,
-the clients driving model development or stakeholders addressed by the
-model. It also includes specification of model outputs, statements of
-the domain of applicability of the model, as well as the extent by which
-model outputs may be acceptably extrapolated (Grimm et al. 2014).*
+*Includes a clear specification of the problem context in which the
+model will be used or designed to inform. Defining the purpose of the
+model is critical because the model purpose influences choices at later
+stages of model development (Jakeman, Letcher, and Norton 2006). This
+includes engaging with the decision maker and/or key stakeholders (if
+relevant).*
+
+## 1.1 Model Context and Purpose
+
+### 1.1.1. Key Stakeholders
+
+*First, identify relevant interest groups:*
+
+  - *Who is the model for?*
+  - *Who is involved in formulating the model?*
+  - *Who needs buy in?*
+  - *How key stakeholders will/wish to be involved in model development
+    and testing*
 
 This preregistration document relates to the data analysis of a study on
 vegetation responses to environmental flows. The study forms one
@@ -99,39 +46,43 @@ stakeholders, including the public, water authorities and institutions
 such as Parks Victoria (among many others) have a minor active role
 within the study.
 
-The model itself within this study aims to provide clear evidence of the
-influence of environmental flows, and other factors (particularly exotic
-vegetation and livestock grazing), on native vegetation within regulated
-river chanels. Outputs will aim to give practical evidence and the
-implications of responses to directly improve and guide the management
-of environmental water delivery for native vegetation benefit. Given
-that the model will incorporate data from across a number of waterways
-across a large part of Victoria, the model applications will speak to
-each of those waterways, as well as potential extrapolation to waterways
-not surveyed. The models will not aim to provide explicit predictions
-within the waterways surveyed, or to specific un-surveyed waterways, but
-extension of these models for prediction will we highlighted for future
-investigation beyond this study.
+The model formulation is developed by the researchers at ARI, with
+guidance from the program managers at DELWP, external researchers and an
+Independent Review Panel of external researchers for VEFMAP. The general
+model structure was proposed by the ARI researchers, which was initially
+interrogated, modified and validated with program manager and external
+input. A more formal development of the model formulation was conducted
+in a collaboration between ARI researchers and external researchers with
+specific statistical expertise.
 
-## 1.1 Model Purpose
+The model outputs, including recommendations, will be shared with
+decision makers (funders and managers) to guide their respective
+decisions. Decisions will require multiple inputs, such as the outcomes
+of this study and others, regulatory frameworks, funding availability,
+physical and practical constraints, and others. This study does not
+contribute to those decisions outside of providing the study outputs.
 
-*Defining the purpose of the model is critical because the model purpose
-influences choices at later stages of model development (Jakeman,
-Letcher, and Norton 2006). Common model purposes in ecology include:
-gaining a better qualitative understanding of the target system,
-knowledge synthesis and review, and providing guidance for management
-and decision-making (Jakeman, Letcher, and Norton 2006) (could also see
-Addison paper on the use of models). Note that modelling objectives are
-distinct from the analytical objectives of the model.*
+### 1.1.2 The problem, and subsequent purpose of the model
 
-### 1.1.1 Define model purpose and problem context
+*Briefly outline:*
 
-*Provide a clear statement of the modelling objectives and problem that
-the model seeks to illuminate. What is the purpose of the model/s?
-Ensure that you specify any focal taxa and study objectives, as well as
-any clients for whom the model is developed. Briefly outline the
-ecological problem and the decision-problem, including the
-decision-trigger and any regulatory frameworks relevant to the problem.*
+  - *The problem (including the decision to be made, if relevant).*
+  - *How your model is to address the problem, being clear about the
+    scope i.e. is your model addressing the whole problem, or part of
+    it? Are there any linked problems that your model needs to cognisant
+    of?*
+  - *The scope of the model, including temporal and spatial resolutions
+    (Mahmoud et al. 2009)*
+  - *Finish with a clear statement of the purpose of your model.*
+
+*Common model purposes in ecology can include: gaining a better
+qualitative understanding of the target system, synthesising and
+reviewing knowledge, providing guidance for management and
+decision-making (Jakeman, Letcher, and Norton 2006), comparing the
+performance of alternative management actions under budget constraint
+(Fraser et al. 2017) to search for robust decisions under uncertainty
+(McDonald-Madden, Baxter, and Possingham 2008), to choose the
+conservation policy that minimises uncertainty (Tulloch et al. 2015).*
 
 The ecological problem is related to river regulation. Natural flow
 regimes are major drivers of ecological processes within waterways.
@@ -150,6 +101,45 @@ is provided for others to address those decisions. There are various
 regulatory frameworks that are relevant to the funding and delivery of
 environmental water, but they are not within the scope of this
 assessment as they are in the hands of the decision makers.
+
+The model itself within this study aims to provide clear evidence of the
+influence of environmental flows, and other factors (particularly exotic
+vegetation and livestock grazing), on native vegetation within regulated
+river channels. Outputs will aim to give practical evidence and the
+implications of responses to directly improve and guide the management
+of environmental water delivery for native vegetation benefit. Given
+that the model will incorporate data from across a number of waterways
+across a large part of Victoria, the model applications will speak to
+each of those waterways, as well as potential extrapolation to waterways
+not surveyed. The models will not aim to provide explicit predictions
+within the waterways surveyed, or to specific un-surveyed waterways, but
+extension of these models for prediction will we highlighted for future
+investigation beyond this study.
+
+### 1.1.3 Analytical purpose and scope, including scenario analysis
+
+*Provide more detail on the analytical purpose and scope of the model:*
+
+  - *How will the model be analysed?*
+  - *What analytical questions will the model be used to answer?*
+  - *What is the intended domain in which the model is to be applied?
+    Are there any reasonable extrapolation limits beyond which you
+    expect the model should not be applied? (Grimm et al. 2014)*
+  - *Are there potentially unacceptable management or policy outcomes
+    identified by stakeholders that should be captured in the model,
+    i.e. as constraints?*
+  - *Are there scenarios that model outputs have to accommodate?
+    Scenarios should be set a priori, i.e. before the model is built,
+    (Moallemi, Elsawah, and Ryan 2019).*
+  - *Describe what processes you will use to elicit and identify
+    relevant scenarios, e.g. literature review, structured workshops
+    with stakeholders or decision-makers.*
+  - *What degree of flexibility is required from the model? Might the
+    model need to be quickly reconfigured to explore new scenarios or
+    problems proposed by clients / managers / model-users?*
+  - *Last, are there any limitations on model development analysis and
+    flexibility, such as time or budget constraints, for example, does a
+    model need to be deployed rapidly?*
 
 The model objectives for this study are to provide evidence for
 vegetation responses to environmental flow delivery over short (\<1yr)
@@ -178,126 +168,53 @@ or barriers to benefits; and 2) managers of environmental water
 (i.e. CMAs) to guide and improve management decisions for environmental
 benefits.
 
-## 1.2 Specify modelling context
+### 1.1.4 Output (or response) variable(s)
 
-*The scope of the model, including temporal and spatial resolutions are
-defined here (Mahmoud et al. 2009), and any limitations on model
-development analysis and flexibility should be outlined here (Jakeman,
-Letcher, and Norton 2006). Note that the modelling context is different
-from the problem context.*
+*After defining the problem context, you will need to understand from
+key stakeholders what the outputs of the model are, and how they will be
+measured/modelled at the appropriate spatial and temporal scale (see
+1.1.2, but to be addressed in 3.4.1).*
 
-### 1.2.1 Identify model interest group
+*In a decision context, the model outputs relate directly to the
+fundamental objectives (what is driving the decision, what is to be
+fundamentally achieved, or avoided? Gregory et al 2012). These are
+differentiated from means objectives, which specify means to achieving
+the fundamental, or end objectives. For example, improving the condition
+of an area of habitat, could be considered a means to improving the
+status of the fauna that utilise the habitat. As such, the status of the
+given fauna is an output (or response) variable for the model. Questions
+you might ask of key stakeholders to elicit the output variable(s):*
 
-*Identify interest groups in the modelling context. This includes
-clients, and end-users of the model. Who is the model for, who is
-involved in formulating the model? Who needs buy in? Describe the
-decision-making context in which the model will be used.*
+  - *What variables would support taking a particular course of action
+    (i.e. a decision), or help define the problem at hand?*
+  - *What are the values to be addressed in this problem context? Are
+    they all relevant to this model?*
 
-Most of this is covered in 1.1.1 above.
+*There may be multiple objectives, which may not all be relevant in your
+model. It is important to capture this in the description of model scope
+(1.1.2). Any model variable may be qualitative or quantitative. It is
+the role of the modeller to ensure all variables, particularly the
+output variable(s) are measured at the appropriate scale. If the models
+are to be used in a decision context, this step is particularly crucial,
+as the choice of performance measure can result in substantial
+differences in model outputs (Giljohan et al, 2014).*
 
-The model formulation is developed by the researchers at ARI, with
-guidance from the program managers at DELWP, external researchers and an
-Independent Review Panel of external researchers for VEFMAP. The general
-model structure was proposed by the ARI researchers, which was initially
-interrogated, modified and validated with program manager and external
-input. A more formal development of the model formulation was conducted
-in a collaboration between ARI reserachers and external researchers with
-specific statistical expertise.
+### 1.1.5 Scenario analysis operationalization (delete as appropriate)
 
-The model outputs, including recommendations, will be shared with
-decision makers (funders and managers) to guide their respective
-decisions. Decisions will require multiple inputs, such as the outcomes
-of this study and others, regulatory frameworks, funding availability,
-physical and practical constraints, and others. This study does not
-contribute to those decisions outside of providing the study outputs.
-
-### 1.2.2 Model Scope and Scale
-
-*Determine the temporal and spatial scope of the model. Where is the
-boundary of the modelled system? Everything beyond the boundary and not
-crossing it is to be ignored within the domain of the model, and
-everything crossing the boundary is to be treated as external forcing
-(known/unknown), or else as model outputs (observed, or not, Jakeman et
-al. 2006).The choice of a model’s boundaries is closely linked to the
-choice of how finely to aggregate the behaviour within the model
-(Jakeman et al., 2006) - what is the intended scale and resolution of
-the model (temporal, spatial or otherwise)? Explain how any key concepts
-or terms within problem or decision-making contexts, such as regulatory
-terms, will be operationalised and defined in a biologically meaningful
-way to answer the research question appropriately? (Should this last
-step go here or within define conceptual framework?). What is the
-intended domain of applicability of the model, what is the extent of
-acceptable extrapolations (Grimm)? This is relevant to model
-transferability… (similar to a COG statement..)* A comment:This section
-feels a bit too big and confusing from my perspective and I do think you
-might need to move some of it to a different section to reduce the risk
-of misinterpretation. I’m just thinking about how I might fill this out
-for an imagined study. The literal boundaries of the study are usually
-straightforward, but the theoretic boundaries are a different and also
-big thing to try to conceptualise in one section. You could have a
-section for the spatial/temporal boundaries of the study, and another
-section on how far the results can be extrapolated based on the study
-design. This makes sense to me in how I design experiments, if I have
-too many confounding variables and not enough spatial and environmental
-replication then I’m less likely to make any broad claims. However, if I
-have controlled or experimentally manipulated factors then I feel safer
-making bigger generalisations about results.
-
-### 1.2.3 Logistical Constraints
-
-*Time-frame - When must the model by completed, e.g. to help make a
-decision?*
-
-*What effort and resources are available for both developing the model
-and operating the model?*
-
-*What degree of flexibility is required from the model? Might the model
-need to be quickly reconfigured to explore new scenarios or problems
-proposed by clients / managers / model-users?*
-
-## 1.3.1 Explain analytical objectives
-
-*How will the model be analysed, what analytical questions will the
-model be used to answer? Examples from ecological decision-making
-include: to compare the performance of alternative management actions
-under budget constraint (Fraser et al. 2017) to search for robust
-decisions under uncertainty (McDonald-Madden, Baxter, and Possingham
-2008), to choose the conservation policy that minimises uncertainty
-\[insert ref\]. See other examples in Moallemi et al. 2019 & ask Libby
-and others.*
-
-### 1.3.2 - Identify outcomes to evaluate decisions under scenarios
-
-*The outcomes should speak directly to the analytical objectives
-identified in 1.3.1. Outcomes could be qualitative or quantitative, and
-include descriptive statistic measures, satisficing measures or regret
-measures (Moallemi et al. 2019). For example, a model outcome in the top
-10th percentile of worst conditions, or some minimum performance
-threshold for meeting a performance objective, or choosing a decision
-with the minimum regret or least amount of uncertainty.* To be honest, I
-don’t know how I might apply this to my work or any future works. Maybe
-I do not have enough knowledge of this type of research to apply it to
-my basic ecology research. But this isn’t to say it’s not important, I
-just wonder if there’s a way to make this accessible to non-desicion or
-modelling peeps. Like, how would I apply it to the woodland condition
-analysis?
-
-## 1.4 Define candidate actions decisions
-
-*Candidate decisions should be investigated and are specified a priori.
-Depending on the modelling context, they may be specified by
-stakeholders, model users or the analyst(Moallemi, Elsawah, and Ryan
-2019).¬†Describe the method used to identify relevant management
-actions.*
-
-## 1.5 Specify scenarios
-
-*Describe what processes you will use to elicit and identify relevant
-scenarios, e.g. literature review, structured workshops with
-stakeholders or decision-makers. Specify scenarios under which decisions
-are investigated. Scenarios should be set a priori (i.e. before the
-model is built, (Moallemi, Elsawah, and Ryan 2019)) and may be
-stakeholder-defined or expert judgment-driven (Mahmoud et al. 2009).*
+  - *How will you operationalize any scenarios identified in 1.1.3? For
+    example, how will you operationalise any qualitative changes of
+    interest, such as ‚ ‘deterioration’ or ‘improvement’?*
+  - *Describe how you will evaluate and distinguish the performance of
+    alternative scenario outcomes. Examples include: descriptive
+    statistic measures, such as a model in the top 10th percentile of
+    worst conditions, satisficing measures such as a minimum performance
+    threshold for achieving some management objective, or perhaps regret
+    measures, such as choosing a decision with minimum regret (Moallemi,
+    Elsawah, and Ryan 2019).*
+  - *Justify or otherwise explain how you chose these measures and
+    determined performance criteria in relation to the analytical
+    objectives, model purpose and modelling context, such as the risk
+    attitudes of decision-makers and stakeholders within this system.*
 
 # 2.0 Define Conceptual Model
 
@@ -305,46 +222,52 @@ stakeholder-defined or expert judgment-driven (Mahmoud et al. 2009).*
 et al. 2016). The conceptual model describes the biological mechanisms
 relevant to the ecological problem and should capture basic premises
 about how the target system works, including any prior knowledge and
-assumptions about system processes. Conceptual models may be
-representeed in a variety of formats, such as influence diagrams,
-linguistic model block diagram or bond graphs, and these illustrate how
-model drivers are linked to both outputs or observed responses, and
-internal (state) variables (Jakeman, Letcher, and Norton, 2006).*
+assumptions about system processes. Conceptual models may be represented
+in a variety of formats – such as influence diagrams, linguistic model
+block diagram or bond graphs – illustrating how model drivers are linked
+to both outputs or observed responses, and internal (state) variables
+(Jakeman, Letcher, and Norton, 2006).*
 
-## 2.1 Choose elicitation and representation method
+## 2.1 Conceptual Model Representation and Elicitation Method
 
-*Describe what method you will use to elicit or identify the conceptual
-model. Some common methods include interviews, drawings, and mapping
-techniques including influence diagrams, cognitive maps and Bayesian
-belief networks (Moon et al. 2019). (Libby, to provide link to any
-structured expert elicitation methods?).While it is difficult to decide
-and justify which method is most appropriate, however Moon et al. (2019)
-provide guidance addressing this methodological question. Finally, how
-do you intend on representing the final conceptual model? This will
-likely depend on the method chosen to elicit the conceptual model.*
+  - *Describe what method you will use to elicit or identify the
+    conceptual model. Some common methods include interviews, drawings,
+    and mapping techniques including influence diagrams, cognitive maps
+    and Bayesian belief networks (see Moon et al. (2019) for guidance on
+    selecting an appropriate elicitation method).*
+  - *How will you represent the final conceptual model? This will likely
+    depend on the method chosen to elicit the conceptual model.*
 
-## 2.2 Specify key assumptions uncertainties
+### 2.2.1 Explain Critical Conceptual Design Decisions
 
-*This step should list and explain the critical conceptual design
-decisions, including: spatial and temporal scales, selection of entities
-and processes, representation of stochasticity and heterogeneity,
-consideration of local versus global interactions, environmental
-drivers, etc. (Grimm et al. 2014). The influence of particular theories,
-concepts, or importantly, earlier models, should be explained and
-justified against alternative conceptual design decisions that might
-lead to alternative model structures (Grimm et al. 2014). Specify key
-assumptions and uncertainties underlying the model’s design. Describe
-how uncertainty and variation will be represented in this model. This
-includes both exogenous uncertainties affecting the system, parametric
-uncertainty in input data and structural / conceptual nonparametric
-uncertainty in the model (Moallemi, Elsawah, and Ryan 2019).*
+*List and explain critical conceptual design decisions, including:*
 
-## 2.3 Define conceptual model: identify predictor response variables
+  - *spatial and temporal scales,*
+  - *selection of entities and processes,*
+  - *representation of stochasticity and heterogeneity,*
+  - *consideration of local versus global interactions, environmental
+    drivers, etc. (Grimm et al. 2014).*
 
-*The identification and definition of primary model input variables
-should be driven by scenario definitions, and by the scope of the model
-described in the problem formulation phase (Mahmoud et al. 2009) –
-Identify and define system variables structures:*
+*Explain and justify the influence of particular theories, concepts, or
+earlier models against alternative conceptual design decisions that
+might lead to alternative model structures (Grimm et al. 2014).*
+
+### 2.2.2 Model assumptions and uncertainties
+
+*Specify key assumptions and uncertainties underlying the model design,
+describing how uncertainty and variation will be will be represented in
+the model. Sources of uncertainty may include:*
+
+  - *exogenous uncertainties affecting the system,*
+  - *parametric uncertainty in input data and*
+  - *structural / conceptual nonparametric uncertainty in the model
+    (Moallemi, Elsawah, and Ryan 2019).*
+
+## 2.3 Predictor Variables
+
+*Identify and define system system variables and structures, referencing
+scenario definitions, and the scope of the model as described within
+problem formulation (1.1.3):*
 
   - *What variables would support taking this action or making this
     decision?*
@@ -359,65 +282,69 @@ Identify and define system variables structures:*
 
 ## 2.4 Define prior knowledge, data specification and evaluation
 
-*Collect, process and prepare data available for parameterisation,
-determining model structure, and for scenario
-analysis.*
+*This section should specify the plan for collecting, processing and
+preparing data available for parameterisation, determining model
+structure, and for scenario analysis.*
 
-### 2.4.1 Collate available data sources that could be used to parameterise or structure the model
+### 2.4.1 Document data sources
 
-*Document the identity, quantity and provenance of any data used to
-develop, identify and test the model. Describe how the data is arranged,
-in terms of replication and covariates.Explain how you will summarise
-what data and knowledge will be used to design and parameterise the
-model, including references, data sources, and information about whom,
-when and where those data were collected (Grimm et al. 2014).*
+*Document the identity, quantity and provenance of any data that will be
+used to develop, identify and test the model. Describe how the data is
+arranged, in terms of replicates and covariates.*
 
-**For pre-existing data: – as appropriate.**
+**For pre-existing data (delete as appropriate):**
 
-  - *For each dataset, is the data open or publically available? (Y/N)*
+  - *For each dataset, is the data open or publicly available? (Y/N)*
   - *How can the data be accessed? Provide a link or contact as
-    appropriate, indicating any restrctions on the use of data.*
+    appropriate, indicating any restrictions on the use of data.*
   - *Date of download, access, or future access:*
   - *Describe the source of the data - what entity originally collected
     this data? (National Data Set, Private Organisational Data, Own Lab
     Collection, Other Lab Collection, External Contractor,
     Meta-Analysis, Expert Elicitation, Other).*
-  - *Codebook. If a Codebook is available, please link to it here and /
-    or upload the document.*
+  - *Codebook and meta-data. If a Codebook or other meta-data is
+    available, please link to it here and / or upload the document(s).*
   - *Prior work based on this dataset - Have you published / presented
     any previous work based on this dataset? Include any publications,
     conference presentations (papers, posters), or working papers
-    (in-prep, unpublished, preprints) based ont his dataset you have
+    (in-prep, unpublished, preprints) based ont this dataset you have
     worked on.*
-  - *Prior Research Activity - Have you worked with these data before?
-    Describe any prior but unpublished research activity using these
-    data. Be specific and transparent.*
+  - *Unpublished Prior Research Activity - Describe any prior but
+    unpublished research activity using these data. Be specific and
+    transparent.*
   - *Prior knowledge of the current dataset - Describe any prior
-    knowledge of the dataset. Be specific.*
+    knowledge of or interaction with the dataset before commencing this
+    study. For example, have you read any reports or publications about
+    this data?*
 
-**Sampling Plan (For data you will collect) – delete as appropriate.**
+**Sampling Plan (For data you will collect) – delete as appropriate:**
 
-  - Data collection procedures - Please describe your data collection
-    process, including how sites and transects or any other physical
-    unit were selected. Describe any inclusion or exclusion rules, and
-    the study timeline.
-  - Sample Size - Describe the sample size of your study.
-  - Sample Size Rationale - Describe how you determined the appropriate
+  - *Data collection procedures*
+      - *Please describe your data collection process, including how
+        sites and transects or any other physical unit were selected and
+        arranged.*
+      - *Describe any inclusion or exclusion rules, and the study
+        timeline.*
+  - *Sample Size: Describe the sample size of your study.*
+  - *Sample Size Rationale: Describe how you determined the appropriate
     sample size for your study. It could include feasibility
-    constraints, such as time, money or personnel.
-  - If sample size cannot be specified, specify a stopping rule -
-    i.e. how will you decide when to terminate your data collection?
+    constraints, such as time, money or personnel.*
+  - *If sample size cannot be specified, specify a stopping rule -
+    i.e. how will you decide when to terminate your data collection?*
 
 ### 2.4.2 Data Processing and Preparation
 
 *Describe any data preparation and processing steps, including
-manipulation of environmental layers, e.g. standardisation and
-geographic projection.* This analysis is relatively complex, due to the
-large dataset and the integration of different data sources (vegetation
-data, flow, transect elevation, site attributes). Each of these data
-sources requires some careful data processing and preparation for use
-within the models. Here we outline the major actions - listed within
-issue \#23 in our repository.
+manipulation of environmental layers (e.g. standardisation and
+geographic projection) or variable construction (e.g. Principal
+Component Analysis).*
+
+This analysis is relatively complex, due to the large dataset and the
+integration of different data sources (vegetation data, flow, transect
+elevation, site attributes). Each of these data sources requires some
+careful data processing and preparation for use within the models. Here
+we outline the major actions - listed within issue \#23 in our
+repository.
 
 **GPS data correlation** The specific relevance of this issue for flow
 elevation is detailed below, but here we summarise the general issues
@@ -460,699 +387,623 @@ level elevations recorded at each site that could compare flow levels
 with sub-transect levels directly. A second issue is that the river
 chanels typically decline in elevation through space, resulting in a
 decline in elevation across the transect locations within a site. This
-means that a single flow level for each site will be inaccurately
-indicating flow heights at some transect locations. Again, this can be
-addressed through data calibration for each site so that the flow level
-speaks to each transect location within a site. This transect-specific
-calibration is required for all transects within the study with flow
-data available. This is then a three step process: 1) determine any
-discrepancy between sub-transect elevations and flow elevations for each
-site, 2) determine the within-site variation in elevation across
-transects, 3) provide a calibration value for all transects at all sites
-with flow data to enable rapid calibration.
+is particularly true for sites further upstream, whereas lowland reaches
+can be very flat. This means that a single flow level for each site will
+be inaccurately indicating flow heights at some transect locations.
+Again, this can be addressed through data calibration for each site so
+that the flow level speaks to each transect location within a site. This
+transect-specific calibration is required for all transects within the
+study with flow data available. This is then a three step process: 1)
+determine any discrepancy between sub-transect elevations and flow
+elevations for each site, 2) determine the within-site variation in
+elevation across transects, 3) provide a calibration value for all
+transects at all sites with flow data to enable rapid calibration.
 
-Vegetation categorisation into functional/response groups Determination
-of flow events/timelines for evaluation Determination of grazing
-covariate Determination of exotic vegetation covariate
+**Determination of flow events/timelines for evaluation** Once accurate
+and fully aligned data are produced via the processes indicated above,
+it is important to carefully consider the flow variables to be used
+within models. Our conceptual understanding of vegetation responses to
+flows suggests that the depth, duration and timing (season) are
+important attributes of flow that dictate responses. These variables can
+be extracted from the flow data that we have for each site.
 
-*Describe how you will separate and distinguish between raw data,
-manipulated data, and outputs from modelling or any analyses of the
-model.*
+*Important considerations for flow depth* The most important aspect of
+flow depth is where or not a plant is fully submerged or not by the
+flow. Our VEFMAP Stage 6 experimental research has shown us that a plant
+that is only partly submerged is likely to be much less affected than a
+plant fully submerged. This is the case for most non-aquatic species.
+Therefore, when we consider the impacts of flow level, the flow
+elevation is very important, for example, the threshold of plant
+responses my not occur at the maximum elevation of a flow event but
+instead at around 40cm below the peak level where most plants will have
+been fully submerged. However, this impact may vary between species
+based on their height, growth form, and physiological responses to
+inundation.
 
-### 2.4.3 Describe any data exploration or preliminary data analyses.
+*Important considerations for flow duration* Flow duration is important
+because vegetation responses vary dramatically with duration. Our VEFMAP
+Stage 6 experimental research has shown us that most plants are tolerant
+of short periods of inundation (and there may be some positive effects
+at very short durations depending on climate attributes and soil). But
+as submergence duration increases, most non-aquatic plants will decline
+in health until they eventually reach a survival threshold. The specific
+duration of a non-lethal flow may not be critical in evaluating the
+effect of a flow, but that is critical information for a lethal flow.
 
-*In most modelling cases, it is necessary to perform preliminary
-analyses to understand the data and check that assumptions and
-requirements of the chosen modelling procedures are met. Data
-exploration prior to model fitting or development may include
-exploratory analyses to check for collinearity, spatial and temporal
-coverage, quality and resolution, outliers, or the need for
-transformations (Yates et al. 2018). Describe how you will summarise and
-explore your data, and explain what method you will use (graphical,
-tabular or otherwise) to represent your data and any analyses.*
+*Important considerations for flow timing* Flow duration is important
+because vegetation responses vary dramatically with duration. Our VEFMAP
+Stage 6 experimental research has shown us that many plants are more
+negatively effected (more rapidly) by submergence in warmer seasons.
+Separating winter/spring flow events from summer/autumn events appears
+to be the most important distinction from this point of view and we
+don’t expect vegetation responses to be equivalent in these periods.
 
-### 2.4.4 Data Evaluation
+*Determining the variables to use* Initially, we will use the most
+simple flow variables that directly relate to management of e-flows. The
+most commonly delivered e-flows are baseflows and spring freshes. These
+events are usually consistently delivered each year at the same flow
+magnitude. This allows us to evaluate the cumulative effect of those
+flow levels on vegetation, as well as the effects of a single flow
+event. This can be done by determining the mean baseflow level and mean
+peak fresh level from our flow data and using those levels as indicators
+to compare vegetation trends above and below those elevations. This will
+be our first point of evaluation for flow. As we progress the analysis
+and determine how closely or loosely vegetation patterns align with
+these levels, we will explore alternative approaches and variables for
+use in the evaluation, such as the number of days inundated by a certain
+depth over a given period. Importantly, the usefulness of these
+evaluations depends a lot on the vegetation species or groupings that
+are evaluated in the models against these flow metrics.
 
-*Describe how you will evaluate the quality and sources of both
-numerical and qualitative data that available for model
-parameterisation, and for determining the overall model structure (Grimm
-et al. 2014). Ideally, model input data should be internally consistent
-across temporal and spatial scales and resolutions, and appropriate to
-the problem at hand (Mahmoud et al. 2009). Document any issues with data
-reliability. This is important because data quality and ecological
-relevance might be constrained by measurement error, inappropriate
-experimental design, and heterogeneity and variability inherent in
-ecological systems (Grimm et al. 2014).*
+**Vegetation categorisation into functional/response groups** Different
+species respond to the environment differently. The same is true for
+flow responses. This is why all of our vegetation surveys are initially
+done at the individual species level. However, individual species
+distributions and abundances are spatially and temporally patchy, so
+there can be great value in aggregating data from similar species to
+produce larger data pools. This is the norm for many ecological studies.
+The critical step is how species are aggregated. There is a balance
+between too refined groups (with little benefit from increased data
+pools as the pools increase by small amounts) and too broad groups
+(there is a large amount of species variation within a group meaning
+that responses are unclear). One well-established grouping system for
+wetland plants is by Casanova and Brock (REF) that groups plants by
+their affinity for different water regimes - called wetland plant
+functional groups (WPFG). In many cases, the species and the responses
+are directly equivalent to riparian systems, however there are some
+notable variations. There are also many different WPFGs, which are
+impractical to evaluate separately in many cases. In this study, we do
+not have a pre-determined approach for how vegetation groups will be
+used. We have compiled all of the relvant WPFG assignments for each
+species recorded and have determined our own classes in which these
+groups are nested (with variation required in few cases where the
+riparian response is expected or observed to be different from the
+wetland responses). We will initially conduct our analyses using the
+three hierarchical levels of data aggregation: species \< WPFG \< broad
+classes. Based on these initial explorations, we will progress the final
+evaluation approach. This exploratory approach is important for a study
+like this where there is not a clear precedent in the published
+literature for the most appropriate vegetation groupings.
 
-*Data Exclusion: How will you determine what data, if any, will be
-excluded from your analyses? How will outliers be handled? Describe
-rules for identifying outlier data, and for excluding a site, transect,
-quadrat, year or season, species, trait, etc.*
+**Determination of grazing covariate**
 
-*Missing data: How will you identify and deal with incomplete or missing
-data?*
+**Determination of exotic vegetation covariate**
 
-## 2.5 Conceptual model evaluation
+### 2.4.3 Data Exploration or preliminary data analyses
 
-*Describe how the model will be critically evaluated. Evaluation
-includes both the overall model structure, and any submodels if
-relevant. How will any simplifying assumptiosn be critically
-assessed(Augusiak, Van den Brink, and Grimm 2014)?¬†Explain whether this
-process will include consultation or feedback from a client, manager, or
-model user.*
+*It is often necessary when modeling to perform preliminary analyses to
+check assumptions and ensure requirements of the chosen modelling
+procedure are met, for instance, exploratory analyses to check for
+collinearity, spatial and temporal coverage, quality and resolution,
+outliers or the need for transformations (Yates et al. 2018). Because
+each preliminary analysis increases the risk of researcher degrees of
+freedom, flexible analysis strategies may be specified. For each
+separate preliminary or investigatory analysis:*
+
+  - *State what needs to be known to proceed with further
+    decision-making about the modelling procedure, and why the analysis
+    is necessary.*
+  - *Explain how you will implement this analysis, as well as any
+    techniques you will use to summarise and explore your data.*
+  - *What method will you use to represent this analysis (graphical,
+    tabular, or otherwise)*
+  - *Specify exactly which parts of the data will be used.*
+  - *Describe how the results will be interpreted, listing each
+    potential analytic decision, as well as the analysis finding that
+    will trigger each decision, where possible.*
+
+### 2.4.4 Data evaluation, exclusion, and missing data
+
+  - *Describe how you will determine how reliable the data is for the
+    given model purpose. Ideally, model input data should be internally
+    consistent across temporal and spatial scales and resolutions, and
+    appropriate to the problem at hand (Mahmoud et al. 2009).*
+  - *Document any issues with data reliability. This is important
+    because data quality and ecological relevance might be constrained
+    by measurement error, inappropriate experimental design, and
+    heterogeneity and variability inherent in ecological systems (Grimm
+    et al. 2014).*
+  - *How will you determine what data, if any, will be excluded from
+    your analyses? How will outliers be handled? Describe rules for
+    identifying outlier data, and for excluding a site, transect,
+    quadrat, year or season, species, trait, etc.*
+  - *How will you identify and deal with incomplete or missing data?*
+
+## 2.5 Conceptual Model Evaluation
+
+  - *Describe how your conceptual model will be critically evaluated.
+    Evaluation includes both the completeness and suitability of the
+    overall model structure.*
+  - *How will you critically assess any simplifying assumptions?*
+  - *Will the conceptual model evaluation process include consultation
+    or feedback from a client, manager, or model user?*
 
 # 3.0 Formalise and Specify Model
 
-*Critical decisions are made here about the type of model, modelling
-framework and approach to be used. The model is formalised into a
-mathematical / statistical description of the system and respective
-changes it can experience (Mahmoud et al. 2009). In this section
-describe what quantitative methods you will use to build the model/s,
-explain how they are relevant to the client/manager/user’s purpose.*
+## 3.1 Model Class, Framework and Approach
 
-## 3.1 Choose model class, framework and approach
-
-*Describe what class or approach of model you will use and¬†explain how
-the choice of model class was informed by the analytical objectives of
-the model. Modelling approaches lie on a spectrum from correlative or
-phenomenological to mechanistic or process-based¬† (Yates et al. 2018);
+*Modelling approaches lie on a spectrum from correlative or
+phenomenological to mechanistic or process-based (Yates et al. 2018);
 where correlative models use mathematical functions fitted to data to
 describe underlying processes, and mechanistic models explicitly
 represent processes and details of component parts of a biological
 system that are expected to give rise to the data (White and Marshall
-2019).*
+2019). A model ‘class,’ ‘family’’ or ‘type’ is often used to describe a
+set of models each of which has a distinct but related sampling
+distribution (Liu & Aitken, 2008). The model family is driven by choices
+about the types of variables covered and the nature of their treatment,
+as well as structural features of the model, such as link functions,
+spatial and temporal scales of processes and their interactions (Jakeman
+et al. 2006).*
 
-## 3.2 Choose model features and family
+  - *Describe what modelling framework, approach or class of model you
+    will use to implement your model and relate your choice to the model
+    purpose and analytical objectives described in 1.1.2 and 1.1.3.*
 
-*All modelling approaches require the selection of model features, which
-conform with the conceptual model and data specified in previous steps
-(Jakeman 2006). The choice of model are determined in conjunction with
-features are selected. Usually difficult to change fundamental features
-of a model beyond an early stage of model development, so careful
-thought and planning here is useful to the modeller (Jakeman, 2006).
-However, if changes to these fundamental aspects of the model do need to
-change, please document how and why these choices were made.*
+### 3.1.1 Operationalising Model Variables
 
-### 3.2.1 Explain how you will operationalise response variable(s)
+  - *Specify how you will operationalise the response variables in the
+    model. This should relate directly to the analytical and or
+    management objectives specified during the problem formulation
+    phase. Operationalisations could include:*
+      - *the extent of a response,*
+      - *an extreme value,*
+      - *a trend,*
+      - *a long-term mean,*
+      - *a probability distribution,*
+      - *a spatial pattern,*
+      - *a time-series,*
+      - *qualitative change, such as a direction of change or*
+      - *the frequency, location, or probability of some event occurring
+        (Jakeman, 2006).*
+  - *Provide a rationale for your choices, including why plausible
+    alternatives were not chosen.*
+  - *For the remaining model variables, specify each variable and their
+    nature of their treatment (e.g. lumped/distributed,
+    linear/non-linear, stochastic/deterministic, Jakeman, 2006).*
 
-*Specify how you will operationalise response variables in the model.
-This should relate directly to the analytical and or management
-objectives specified during the problem formulation phase.
-Specifications could include:- qualitative change, such as a direction
-of change- the extent of a response- an extreme value- a trend- a
-long-term mean- a probability distribution- a spatial pattern- a
-time-series, or- the frequency, location, or probability of some event
-occuring.Provide a rationale for your choices, including why plausible
-alternatives were not chosen (Jakeman, 2006).*
+### 3.1.2 Model Structure
 
-### 3.2.2 Choose model family
+*Specify model structural features, including:*
 
-*Specify which family of statistical distributions you will use in your
-model, and describe any transformations, or link functions. Justify your
-decision based on the purpose, objectives, prior knowledge and
-logistical constraints (Jakeman, 2006) specified in the problem
-formulation phase. Include in your rationalse for selection detail about
-which variables the model outputs are sensitive to, what aspects of
-their behaviour are important, and any associated spatial or temporal
-dimensions in sampling.*
+  - *the functional form of interactions,*
+  - *data structures,*
+  - *measures used to specify links,*
+  - *any bins or discretisation of continuous variables (Jakeman,
+    2006).*
 
-### 3.2.3 Choose model features
+### 3.1.3 Model Class / Family
 
-*Specify which types of variables are covered in the model, and the
-nature of their treatment (e.g. lumped/distributed, linear/non-linear,
-stochastic/deterministic, Jakeman, 2006). Specify model structural
-features, including:- the functional form of interactions,- data
-structures- measures used to specify links, spatio temporal scales and
-processes as well as their interactions- any bins or discretisation of
-continuous variables.*
+  - *Specify which family of statistical distributions you will use in
+    your model, and describe any transformations, or link functions.*
+  - Justify your decision based on the purpose, objectives, prior
+    knowledge and logistical constraints (Jakeman, 2006) specified in
+    the problem formulation phase.\*
+  - Include in your rational for selection, detail about which variables
+    the model outputs are sensitive to, what aspects of their behaviour
+    are important, and any associated spatial or temporal dimensions in
+    sampling.\*
 
-## 3.3 Choose approach for identifying model structure and parameters
+### 3.2 Model Structure and Parameter Estimation
 
-*This refers to the iterative process of determining the most efficient
-or parsimonious representation of the system at the appropriate scale of
-concern (Jakeman, 2006) that best meets the analytical objectives
-specified in the problem formulation phase. Approaches to finding model
-structure and parameters may be knowledge-supported, or data-driven
-(Boets et al. 2015). Model selection methods can include traditional
-inferential approaches such as unconstrained searches of a dataset for
-patterns that explain variations in the response variable, or use of
-ensemble-modelling methods (Barnard et al. 2019). Ensemble modelling
-procedures might aim to derive a single model, or a multi-model average
-(Yates et al. 2018). Refining actions to develop a model could include
-iteratively dropping parameters or adding them, or aggregating /
-disaggregating system descriptors, such as dimensionality and processes
-(Jakeman, 2006). Specify what approach and methods you will use to
-identify model structure and parameters.*
+*This section refers to the process of determining the best/most
+efficient/parsimonious representation of the system at a scale relevant
+to the model purpose, context and scope appropriate scale of concern
+(Jakeman, 2006) that best meets the analytical objectives (as specified
+in 1.1.3). Approaches to finding model structure and parameters may be
+knowledge-supported, or data-driven (Boets et al. 2015). Model selection
+methods can include traditional inferential approaches such as
+unconstrained searches of a dataset for patterns that explain variations
+in the response variable, or use of ensemble-modelling methods (Barnard
+et al. 2019). Ensemble modelling procedures might aim to derive a single
+model, or a multi-model average (Yates et al. 2018). Refining actions to
+develop a model could include iteratively dropping parameters or adding
+them, or aggregating / disaggregating system descriptors, such as
+dimensionality and processes (Jakeman, 2006).*
 
-## 3.4 Choose estimation technique and performance criteria
+  - *Specify what approach and methods you will use to identify model
+    structure and parameters.*
 
-*Before calibrating the model to the data, the performance criteria on
-which the calibration is judged are chosen. These criteria and their
-underlying assumptions should reflect the desired properties of the
-parameter estimates / structure (Jakeman, Letcher, and Norton 2006). For
-example, modellers might seek that parameter estimates are robust to
-outliers, unbiased, and yield appropriate predictive performance.
-Modellers will need to consider whether the assumptions of the
-estimation technique yielding those desired criteria are appropriate to
-the problem at hand. For integrated or sub-divided models, other
-considerations might include choices about where to disaggregate the
-model for parameter estimation; e.g. spatial sectioning (streams into
-reaches) and temporal sectioning (piece-wise linear models) (Jakeman,
-Letcher, and Norton 2006). Specifying performance criteria a priori is
-important because it involves pre-specifying how the fitted or
-quantitative model will be interpreted in advance, avoiding biases like
-confirmation bias, HARKing, and cherry-picking some performance tests
-from the full suite of tests undertaken.This is important - because it
-involves pre-specifying how¬†we will interpret the fitted or
-quantitative model to avoid cognitive biases like confirmation bias,
-HARKing or other questionable research practices.*
+### 3.2.1 Parameter/Structure estimation technique
 
-### 3.4.1 Choice of estimation performance criteria
+  - *Specify what technique you will use to estimate parameter values,
+    and how you will supply non-parametric variables and/or data
+    (e.g. distributed boundary conditions). For example, will you
+    calibrate all variables simultaneously by optimising fit of model
+    outputs to observations, or will you parameterise the model in a
+    piecemeal fashion by either direct measurement, inference from
+    secondary data, or some combination (Jakeman, 2006).*
+  - *Identify which variables were parameterised directly (if any), such
+    as by expert elicitation or prior knowledge.*
+  - *Specify which algorithm(s) you will use for any data-driven
+    parameter estimation, including supervised, or unsupervised machine
+    learning, decision-tree, K-nearest neighbour or cluster algorithms
+    (Liu et al. 2018).*
+  - *Repeat the above bullet points but for model structure estimation,
+    if you are using quantitative methods for structure estimation
+    rather than knowledge or expert-judgment driven methods.*
 
-*Specify which suite of performance criteria you will use to judge the
-performance of the model. Examples include correlation scores,
-coefficient of determination, specificity, sensitivity, AUC, etcetera
-(Yates et al. 2018). Relate any underlying assumptions of each criterion
-to the desired properties of the model, and justify the choice of
-performance metric in relation into whether it is sensitive to the
-problem at hand. Explain how you will identify which model features or
-components are significant or meaningful.*
+### 3.2.2 Estimation performance criteria
 
-### 3.4.2 Choice of structure and parameter estimation technique
+  - *Specify which suite of performance criteria you will use to judge
+    the performance of the model. Examples include correlation scores,
+    coefficient of determination, specificity, sensitivity, AUC,
+    etcetera (Yates et al. 2018). State any numeric thresholds and their
+    qualitative interpretation for judging adequate estimation.*
+  - *Relate any underlying assumptions of each criterion to the desired
+    properties of the model and justify the choice of performance metric
+    in relation into whether it is sensitive to the problem at hand.*
+  - *Explain how you will identify which model features or components
+    are significant or meaningful.*
 
-*Specify what technique you will use to estimate parameter values, and
-how you will supply non-parametric variables and/or data
-(e.g. distributed boundary conditions). For example, will you calibrate
-all variables simultaneously by optimising fi of model outputs to
-observations, or will you parameterise the model in a piecemeal fashion
-by either direct measurement, inference from secondary data, or some
-combination (Jakeman, 2006). Identify which variables were parameterised
-directly, such as by expert elicitation or prior knowledge.Specify which
-algorithm(s) you will use for any data-driven structure / parameter
-estimation, including supervised, or unsupervised machine learning,
-decision-tree, K-nearest neighbour or cluster algorithms (Liu et al.
-2018).*
+## 3.3 Model assumptions and uncertainties
 
-## 3.5 Specify model assumptions and uncertainties
+  - *Specify all assumptions and key uncertainties in the formal model.*
+  - *Describe what gaps exist between the model conception, and the
+    real-world problem, what biases might this introduce and how might
+    this impact any interpertation of the model outputs, and*
+  - *what implications are there on evaluating model-output to inform
+    decisions?*
 
-*Specify all assumptions and key uncertainties in the formal model.
-Describe what gaps exist between the model conception, and the
-real-world problem, what biases might this introduce and how might this
-impact any interpertation of the model outputs, and what implications
-are there on evaluating model-output to inform decisions?*
+## 3.4 Specify formal model
 
-## 3.6 Specify formal model
+  - *Once all decisions have been made about the approach and method of
+    model specification, translate the conceptual model into the formal
+    or quantitative model.*
+  - *For data-driven and model-selection approaches that determine model
+    structure and parameters, describe any initial model specifications
+    and parameterisations, including for any tune-in parameters.*
 
-*Once critical decisions have been made about the approach and method of
-model specification,¬†translate the conceptual model into the
-quantitative model. For data-driven and model-selection approaches that
-determine model structure and parameters, describe any initial model
-specifications and parameterisations, including for any tune-in
-parameters. (Should this go here or in model calibration?)*
-
-# 4.0 Model Calibration, Model Fitting & Checking
-
-*This phase involves fitting the formally defined model to data and
-checking and testing the fitted model (what should go in thisphase if
-using a numerical or mathematical, but not correlative model or how
-could we change the wording to make this optional if not relevant?)*
+# 4.0 Model Calibration, Fitting & Checking
 
 ## 4.1 Model calibration and validation scheme
 
-*Describe the validation scheme you will use for model testing and
-evaluation. Please explain your reasoning for your choice of model
-calibration and validation scheme. The model may be tested on data
-independent of those used to parameterise the model (external
-validation), or the model may be cross-validated on random sub-samples
-of the data used to parameterise the model (internal cross-validation)
-\[Yates et al. (2018);(Barnard et al. 2019). Although using independent
-data is the gold-standard or idealised practice for model evaluation,
-Typically testing on independent datasets is not possible for large
-and/or integrated models, especially when they are being used to
-generate anticipatory predictions beyond the conditions on which they
-were calibrated (Jakeman, Letcher, and Norton 2006). Describe and
-justify the method for your calibration and validation schema.*
+  - *Describe how you will validate and check the calibration of the
+    model. The model may be tested on data independent of those used to
+    parameterise the model (external validation), or the model may be
+    cross-validated on random sub-samples of the data used to
+    parameterise the model (internal cross-validation) (Yates et
+    al. 2018; Barnard et al. 2019).*
+  - *Describe any model tuning procedures for estimating hyper
+    parameters (if any).*
+  - *Justify your choices*
 
-## 4.1.2 Data partitioning
+### 4.1.2 Describe calibration/validation data
 
-*Describe the approach for partitioning the data in support of the
-calibration and validation schema described above. For example, specify
-the number of folds that will be created and the relative size of each.*
-
-*How will you document and/or share the partitioned data such that the
-data partitioning and any subsequent modelling based on this
-partitioning can be computationally reproduced?*
+  - *If partitioning data for cross-validation:*
+      - *Describe the approach specifying the number of folds that will
+        be created and the relative size of each.*
+      - *Describe how will you document and/or share the partitioned
+        data such that the data partitioning and any subsequent
+        modelling based on this partitioning can be computationally
+        reproduced.*
+  - *If using external / independent holdout data:*
+      - *Describe any known differences between the training and
+        validation datasets and the size of the validation dataset.*
+      - *Describe how will you document and/or share the external data
+        such that any subsequent modelling can be computationally
+        reproduced.*
+      - *It is preferable that any independent data used for model
+        evaluation remains unknown to modellers during the process of
+        model building, please describe the relationship modellers have
+        to model validation data, will independent datasets be known to
+        any modeller or analyst involved in the model building process?*
 
 ## 4.2 Implementation verification
 
-*What Quality Assurance measures will you take to verify the modle has
-been correctly implemented as per the formal model specification ? This
-could be as simple as an informal ‚Äòmodel walkthrough’ to examine the
-model’s behaviour qualitatively, or it could include more sophisticated
-approaches such as formal unit testing approaches using continuous
-integration platforms (see (Yenni et al. 2019)). Qualitative tests could
-include syntax checking of code,¬†and code reviews by peers. Checks for
-verification implementation should include i) thoroughy checking for
-bugs or programming errors, ¬†and ii) whether the implemented model
-performs as dictated by the model description (Grimm et al. 2014).
-Specifying up front QA tests for implementation verification may help to
-avoid selective debugging.*
+  - *What Quality Assurance measures will you take to verify the model
+    has been correctly implemented as specified? Specifying up front
+    quality assurance tests for implementation verification may help to
+    avoid selective debugging and silent errors.*
+      - *Tests could include syntax checking of code, and code reviews
+        by peers.*
+      - *Checks for verification implementation should include i)
+        thoroughly checking for bugs or programming errors, and ii)
+        whether the implemented model performs as dictated by the model
+        description (Grimm et al. 2014).*
+      - *Technical measures include using unit tests, or in-built checks
+        within functions to prevent potential errors.*
 
-## 4.3 Model checking
+## 4.3 Model Checking
 
-*“Model Checking” goes by many names (“conditional verification”,
-“quantitative verification”, “model output verification” <cite>), and
-refers to a series of analyses that assess a model’s performance in
-representing the system of interest (Conn et al. 2018). During this
-process, observed data, or data and patterns that guided model design
-and calibration is compared to model output in order to identify if and
-where there are any systematic differences. Model checking therefore
-heps diagnose assumption violations, and reveals where a model might
-need to be altered to better represent the data, and therefore system
-(Conn et al. 2018). Quantitative model checking diagnostics include
-goodness of fit, tests on residuals or errors, such as for
-heteroscedascity, cross-correlation, and autocorrelation (Jakeman,
-Letcher, and Norton 2006).*
+*“Model Checking” goes by many names (“calibration testing or
+validation”, “conditional verification”, “quantitative verification”,
+“model output verification”), and refers to a series of analyses that
+assess a model’s performance in representing the system of interest
+(Conn et al. 2018). Model checking therefore helps diagnose assumption
+violations, and reveals where a model might need to be altered to better
+represent the data, and therefore system (Conn et al. 2018).
+Quantitative model checking diagnostics include goodness of fit, tests
+on residuals or errors, such as for heteroscedascity, cross-correlation,
+and autocorrelation (Jakeman, Letcher, and Norton 2006).*
 
-### 4.3.1 Quantitative tests
+### 4.3.1 Quantitative model checking
 
-*Specify any diagnostics or tests you will use during model checking.
-For each test, specify the numerical threshold or criteria that will you
-use to interpret the outcome of the test in assessing the model’s
-ability to sufficiently represent the gathered data used to develop and
-parameterise the model.*
+*During this process, observed data, or data and patterns that guided
+model design and calibration is compared to model output in order to
+identify if and where there are any systematic differences.*
 
-### 4.3.2 Qualitative Model Checking
+  - *Specify any diagnostics or tests you will use during model checking
+    to assess a model’s performance in representing the system of
+    interest.*
+  - *For each test, specify the criteria that will you use to interpret
+    the outcome of the test in assessing the model’s ability to
+    sufficiently represent the gathered data used to develop and
+    parameterise the model.*
 
-*This step is largely informal and case-specific, but requires ‚Äòface
+### 4.3.2 Qualitative model checking
+
+*This step is largely informal and case-specific but requires ‘face
 validation’ with model users / clients / managers who aren’t involved in
 the development of the model to assess whether the interactions and
-outcomes of the model are feasible an ddefensible (Grimm et al. 2014).
-This process could be called a ‚Äúlaugh test" or a ‚Äúpub test, and in
-addition to checking the model’s believability, it builds the client’s
-confidence in the model (Jakeman, Letcher, and Norton 2006).¬†Face
-validation could include structured walk-throughs, or presenting
-descriptions, visualisations or summaries of model results to experts
-for assessment. Briefly explain how you will qualitatively check the
-model, and whether + how you will include users and clients in the
-process.*
+outcomes of the model are feasible and defensible (Grimm et al. 2014).
+Other terms for qualitative checking include the “laugh test” or the
+“pub test,” and in addition to checking the model’s believability,
+they build the client or users’ confidence in the model (Jakeman,
+Letcher, and Norton 2006).*
+
+  - *Explain how you will qualitatively check the model, and whether and
+    how you will include users and clients in the process. Face
+    validation could include structured walk-throughs, or presenting
+    descriptions, visualisations or summaries of model results to
+    experts for assessment.*
+
+### 4.3.3 Assumption violation checks
+
+  - *Explain how you will demonstrate robustness to model assumptions
+    and check for violations of model assumptions.*
+  - *If you cannot perform quantitative assumption checks, describe what
+    theoretical justifications would justify a lack of violation of or
+    robustness to model assumptions.*
+  - *If you cannot demonstrate or theoretically justify violation or
+    robustness to assumptions, explain why not, and specify whether you
+    will discuss assumption violations and their consequences for
+    interpretation of model outputs.*
+  - *The consequences of assumption violations on the interpretation of
+    results should be assessed (Araújo et al. 2019). If assumption
+    violations cannot be avoided, explain describe how you will explore
+    their consequences (To be completed in interim iterations of the
+    preregistration, only if there are departures from assumptions as
+    demonstrated in the planned tests above).*
 
 # 5.0 Model Validation and Evaluation
 
-*Model Validation & Evaluation - This phase consists of a suite of
-analyses that collectively inform the decision and whether and when a
-model is suitable to meet its intended purpose (Augusiak, Van den Brink
-and Grimm 2014). Errors in design and implementation of the model and
-their implication on the model output are assessed. Ideally independent
-data is used against the model outputs to assess whether the model
-output behaviour exhibits the required accuracy for the model’s intended
-purpose. The outcomes of these analyses build confidence in the model
-applications and increase understandingof model strengths and
-limitations. Model evaluation including model analysis and other testing
-should complement model checking. It should evaluate model checking, and
-consider over-fitting and extrapolation. The higher the proportion of
-calibrated, or uncertain parameters, the greater the risk that the model
-seems to work correctly \[‚Ä¶\] but for the wrong reasons" Evaluation
-thus complements model checking because we can rule out the chance that
-the model fits the calibration data well, but has not captured the
-relevant ecological mecahnisms of the system (Grimm). Evaluation of
-model outputs against external data in conjunction with the results from
-model checking provide information about the structural realism and
-therefore credibility of the model (Grimm et al. 2014).*
+*Model evaluation including model analysis and other testing complements
+model checking. By evaluating the model against independent test or
+holdout data the chance that the model fits the calibration or fitting
+data well, but has not captured the relevant ecological mechanisms of
+the system, can be ruled out (Grimm et al. 2014). Collectively,
+modelling activities in section 4 and 5 provide provide information
+about the structural realism and therefore credibility of the model
+(Grimm et al. 2014).*
 
 ## 5.1 Model output corroboration
 
-*Ideally, model outputs or predictions are compared to independent data
-and patterns that were not used to develop, parameterise, or verify the
-model. Testing against a dataset of response and predictor variables
-that are sptially and/or temporally independent from the training
-dataset¬†minimises the risk of artificially inflating model performance
-measures (Araújo et al. 2019).State whether you will corroborate the
-model outputs on external data, and please document any independent
-validation data in step \<2.4\>.It is preferable that any independent
-data used for model evaluation remains unknown to modellers during the
-process of model building, please describe the relationship modllers
-have to model validation data, will independent datasets be known to any
-modeller or analyst involved in the model building process?Although the
-corroboration of model outputs against an independent validation dataset
-is considered the ‘gold standard’ for showing that a model properly
-represents the internal organisation of the system ), model validation
-is not always possible because empirical experiments are infeasible or
-model users are working on rapid-response time-frames ‚Äî hence, why
-ecologists often model in the first place (Grimm, et al. 2014.
-Independent predictions can instead be tested on submodels.
-Alternatively, patterns in model output that are robust and seem
-characteristic of the system can be identified and evaluated in
-consultation with the literature or by experts to judge how accurate the
-model’s output is (Grimm et al.2014). If unable to evaluate the model
-outputs against independent data, explain why and explain what steps you
-will take to interrogate the model.*
+  - *State whether you will corroborate the model outputs on external
+    test data, and ensure that any independent validation data is
+    documented in 4.1.2.*
+  - *Testing the model against data that are collected spatially and/or
+    temporally independent from the training dataset minimizes the risk
+    of artificially inflating model performance measures (Araújo et
+    al. 2019). Although the corroboration of model outputs against an
+    independent validation dataset is considered the ‘gold standard’ for
+    showing that a model properly represents the internal organisation
+    of the system), model validation is not always possible (Grimm, et
+    al. 2014). If you are unable to evaluate the model outputs against
+    independent data, explain why not, and describe what steps you will
+    take to interrogate the model. For example, Independent predictions
+    can instead be tested on submodels, alternatively, patterns in model
+    output that are robust and seem characteristic of the system can be
+    identified and evaluated in consultation with the literature or by
+    experts to judge how accurate the model’s output is (Grimm et
+    al.2014).*
 
-## 5.2 Choose performance metrics and criteria
+### 5.1.1 Model corroboration performance metrics and criteria
 
-*Model performance can be quantified by a range of tests, including
-measures of agreement between predictions and independent observations,
-or estimates of accuracy, bias, calibration, discrimination refinement,
-resolution and skill (Araújo et al. 2019). Specify what performance
-measures you will use to evaluate the model and briefly explain how each
-test relates to different desired properties of a model’s
-performance.Spatial, temporal and environmental pattern of errors and
-variance can change the interpretation of model predictions and
-conservation decisions (Araújo et al. 2019), where relevant and
-possible, describe how you will characterise and report the spatial,
-temporal and environmental pattern of errors and variance. If comparing
-alternative models, specify what measures of model comparison or
-out-of-sample performance metrics will you use to find support for
-alternative models or else to optimise predictive ability. State what
-numerical threshold or qualities you will use for each of these
-metrics.*
+  - *Specify what performance measures you will use to evaluate the
+    model and briefly explain how each test relates to different desired
+    properties of a model’s performance. Examples include measures of
+    agreement between predictions and independent observations, or
+    estimates of accuracy, bias, calibration, discrimination refinement,
+    resolution and skill (Araújo et al. 2019).*
+  - *Spatial, temporal and environmental pattern of errors and variance
+    can change the interpretation of model predictions and conservation
+    decisions (Araújo et al. 2019), where relevant and possible,
+    describe how you will characterise and report the spatial, temporal
+    and environmental pattern of errors and variance.*
+  - *If comparing alternative models, specify what measures of model
+    comparison or out-of-sample performance metrics will you use to find
+    support for alternative models or else to optimise predictive
+    ability.*
+  - *State what numerical threshold or qualities you will use for each
+    of these metrics.*
 
-## 5.3 Evaluate model assumptions
+## 5.2 Model Analysis
 
-*Explain how you will demonstrate a lack of violation of or robustness
-to model assumptions. If you cannot perform quantitative tests, specify
-what theoretical justifications would justify a lack of violation of or
-robustness to model assumptions. If you cannot demonstrate or
-theoretically justify violation or robustness to assumptions, explain
-why not, and specify whether you will discuss assumption violations and
-their consequences for interpretation of model outputs.(Complete in
-follow-up iterations of the pre-registration, only if there are
-departures from assumptions as demonstrated in the planned tests above).
-The consequences of assumption violations on the interpretation of
-results should be assessed (Araújo et al. 2019). Specify how you will
-assess departures from assumptions. If assumption violations cannot be
-avoided, explain describe how you will explore their consequences.*
-
-## 5.4 Model analysis
-
-*Uncertainty in models arises due to incomplete system understanding
-(which processes to include, or which interact), from imprecise, finite
-and sparese data measurements, and from uncertainty in input conditions
-and scenarios for model simulations or runs (Jakeman, Letcher, and
-Norton 2006). Non-technical uncertainties can also be introduced
-throughout the modellign process, such as uncertainties arising from
-issues in problem-framing, indeterminicies, and modeller / client values
-(Jakeman, Letcher, and Norton 2006).The purpose of model analysis is to
-prevent blind trust in the model by understanding how model outputs have
-emerged, and to ‚Äòchallenge’ the model by verifying whether the model
-is still believeable and fit for purpose if one or more parameters are
-changed (Grimm et al. 2014). Model analysis should increase
-understanding of the model behaviour by identifying which processes and
-process interactions explain characteristic behaviours of the model
-system. Model analysis typically consists of sensitivity analyses
-preceded by uncertainty analyses (Saltelli et al. 2019), and a suite of
-other simulation or other computational experiments. The aim of such
-computational experiments is to increase understanding of the model
-behaviour by identifying which processes and process interactions
-explain characteristic behaviours of the model system (Grimm et al.
-2014).Uncertainty analyses and sensitivity analyses augment one another
-to draw conclusions about model uncertainty ‚Äî the overall model will
-be very uncertain if the parameters that are the most uncertain are the
-ones the model is most uncertain to., for instance.Because the results
-from a full suite of sensitivity analysis and uncertainty analysis can
-be difficult to interpret due to the number and complexity of causal
-relations examined (Jakeman, Letcher, and Norton 2006), it is useful for
-the analyst to relate the choice of analysis to the modelling context,
-purpose and analytical objectives defined in the problem formulation
-phase, in tandem with any critical uncertainties that have emerged
-during model development and testing prior to this point.*
-
-### 5.4.1 Uncertainty Analyses
+### 5.2.1 Uncertainty Analyses
 
 *Uncertainty can arise from different modeling techniques, response data
-and predictor variables (Araújo et al. 2019). Uncertainty analyses
-characterise the uncertainty in model outputs, and identifies how
+and predictor variables (Araújo et al. 2019). Uncertainty analyses
+characterise the uncertainty in model outputs, and identify how
 uncertainty in model parameters affects uncertainty in model output, but
 does not identify which model assumptions are driving this behaviour
-(Grimm et al. 2014; Saltelli et al. 2019). Uncertainty analyses can
-include propagating known uncertainties through the model, or by
-investigating the effect of different model scenarios with different
-parameters and modelling technique combinations (Araújo et al. 2019),
-for example. It also includes characterising the output distribution,
-for example “by constructing it empirically from model output data
-points”. It could also include extracting summary statistics like the
-mean, median and variance from this distribution, and perhaps
-constructing confidence intervals on the mean (Saltelli et al.
-2019).Please describe how you will characterise any suspected critical
-model and data uncertainties, as well as how you plan on summarising the
-results of these experiments with graphical, tabular or other
-devices.Relate your choice of analysis to the context and purposes of
-the model described in the problem formulation phase. For instance
-‚Äúdiscrepancies between model output and observed output may be
-important for forecasting models, where cost, benefit, an risk over a
-substantial period must be gauged, but much less critical for
-decision-making or management models where the user may be satisfied
-with knowing that the predicted ranking order of impcats of alternative
-scenarios or management options is likely to be correct, with only a
-rough indication of their sizes" (Jakeman, Letcher, and Norton 2006).If
-the chosen modelling approach is able to explicitly articulate
-uncertainty due to data, measurements or baseline conditions, such as by
-providing estimates of uncertainty (typically in the form of
-probabilistic paraameter covariance, (Jakeman, Letcher, and Norton
-2006)), specify which measure of uncertainty you will measure.*
+(Grimm et al. 2014; Saltelli et al. 2019).*
 
-### 5.4.2 Sensitivity Analyses
+  - *Please describe how you will characterise model and data
+    uncertainties. E.g. propagating known uncertainties through the
+    model, investigating the effect of different model scenarios with
+    different parameters and modelling technique combinations (Araújo et
+    al. 2019), or empirically constructing model distributions from
+    model output datapoints, and extracting summary statistics,
+    including the mean, median, variance, and constructing confidence
+    intervals (Saltelli et al. 2019).*
+  - *Relate your choice of analysis to the context and purposes of the
+    model described in the problem formulation phase. For instance, high
+    model precision may be important for predictive modelling when cost,
+    benefit and risk must be adequately gauged, but for decision-making
+    contexts where only the predicted ranked order of management options
+    is necessary, model accuracy and precision might be less important
+    (Jakeman, Letcher, and Norton 2006).*
+  - *Describe how you will summarise the results of these in silico
+    experiments with graphical, tabular, or other devices, such as
+    summary statistics.*
+  - *If the chosen modelling approach is able to explicitly articulate
+    uncertainty due to data, measurements or baseline conditions, such
+    as by providing estimates of uncertainty (typically in the form of
+    probabilistic parameter covariance, (Jakeman, Letcher, and Norton
+    2006)), specify which measure of uncertainty you will measure.*
 
-*Sensitivity Analyses Sensitivity analysis may improve understanding
-processes within models, and therefore on the natural system, or else as
-a quality assurance tool - sensitivity analyses may reveal logical or
-implementation errors in the model Sensitivity analysis examines how
-uncertainty in model outputs can be apportioned to different sources of
-uncertainty in model input (Saltelli et al. 2019). Model sensitivity can
-be evaluated using 3 approaches: 1. deterministic sensitivity,
-stochastic sensitivity (variability in the model), or scenario
-sensitivity (effect of changes based on scenarios).Describe any
-sensitivity analyses you will conduct by specifying the initial
-conditions and input data for each analysis - i.e. which parameters will
-be held constant, which will be varied, and the range and intervals of
-values over which those parameterrs will be varied. Where there were
-critical uncertainties or multiple plausible representations of a
-submodel, sensitivity analyses can be used to constract alternative
-submodels (Grimm et al. 2014). This analysis can be used for
-‚Äòpattern-oriented theory development’ which analyses which
-submodel causes the full model to most closely reproduce a set of
-observed patterns? (Grimm et al. 2014)State the primary objective of
-each sensitvity analysis, for example, a common objective is to identify
-which input variables contribute the most to model uncertainty so that
-these variables can be targeted for further data collection, or
-altertantively to identify which variables or factors contribute little
-to overall model outputs, and so can be ‚Äòdropped’ from future
-iterations of the model (Saltelli et al. 2019).What information should
-be reported to reproduce a sensitvity analysis should guide us as to
-what information we should get people to report now.*
+### 5.2.2 Sensitivity Analyses
 
-### 5.4.3 Other simulation experiments and robustness analyses
+*Sensitivity analysis examines how uncertainty in model outputs can be
+apportioned to different sources of uncertainty in model input (Saltelli
+et al. 2019).*
 
-*Please describe anyother simulation experiments and / or robustness
-experiments you will perform on the model.*
+  - *Describe the sensitivity analysis approach you will take:
+    deterministic sensitivity, stochastic sensitivity (variability in
+    the model), or scenario sensitivity (effect of changes based on
+    scenarios).*
+  - *Describe any sensitivity analyses you will conduct by specifying
+    which parameters will be held constant, which will be varied, and
+    the range and intervals of values over which those parameters will
+    be varied.*
+  - *State the primary objective of each sensitivity analysis, for
+    example, to identify which input variables contribute the most to
+    model uncertainty so that these variables can be targeted for
+    further data collection, or alternatively to identify which
+    variables or factors contribute little to overall model outputs, and
+    so can be ‘dropped’ from future iterations of the model (Saltelli et
+    al. 2019).*
 
-# 6.0 Model Application
+### 5.2.3 Model application / scenario analysis
 
-*Explain how you will operationalise any scenarios identified during the
-problem formulation phase, if not already done so.¬†For example, how
-will you operationalise any qualitative changes of interest, such as
-‚Äòdeterioration’ or ‚Äòimprovement’?Specify any input conditions
-and relevant parameter values for initial environmental conditions and
-decision-variables under each scenario. Please describe any other
-relevant technical details of model application, such as methods for how
-you will implement any simulations or model projections. Specify what
-raw and transformed model outputs will you extract from the model
-simulations or projections.*
+  - *Specify any input conditions and relevant parameter values for
+    initial environmental conditions and decision-variables under each
+    scenario specified in section 1.*
+  - *Please describe any other relevant technical details of model
+    application, such as methods for how you will implement any
+    simulations or model projections.*
+  - *What raw and transformed model outputs will you extract from the
+    model simulations or projections, and how will you map, plot, or
+    otherwise display and synthesise the results of scenario and model
+    analyses.*
+  - *Explain how you will analyse the model analysis output to answer
+    your analytical objectives. For instance, describe any trade-off or
+    robustness analyses you will undertake to help evaluate and choose
+    between different alternatives in consultation with experts or
+    decision-makers.*
 
-## 6.1 Choose performance criteria for scenario analysis
+### 5.2.4 Other in silico analyses
 
-*Describe how you will evaluate and distinguish the performance of
-alternative scenario outcomes. These measures should link back to the
-analytical objectives specified during the problem formulation phase,
-and might include for example, descriptive statistic measures, such as a
-model in the top 10th percentile of worst conditions, satisficing
-measures such as a minimum performance threshold for achieving some
-management objective, or perhaps regret measures, such as choosing a
-decision with minimum regret (Moallemi, Elsawah, and Ryan 2019)."Justify
-or otherwise explain how you chose these measures, and determined
-performance criteria in relation to the analytical objectives, modelling
-context, such as the risk attitudes of decision-makers and stakeholders
-within this system.*
-
-## 6.2 Synthesis of model application results
-
-*Specify how you will map, plot or otherwise display and synthesise the
-results of scenario and model analyses. Explain how will they support
-meaningful analysis and interpretation to aid in answering the
-analytical objectives and modelling context specified in the problem
-formulation phase.Explain how you will analyse the model analysis output
-to answer your analytical objectives. For instance, describe any
-trade-off or robustness analyses you will undertake to help evaluate and
-choose between different alternatives in consultation with experts or
-decision-makers.*
-
-## 6.3 Consultation with Experts, Clients, Stakeholders
-
-*How will you use the results of model application analysis to provide
-advice. and support to the clients / managers / stakeholders based on
-these findings?Describe how these results will be characterised and
-presented to experts, clients and stakeholders once the results from the
-modelling exercises have been synthesised. What role will these
-consultations have in determining the selection of management
-interventions, or future iterations of model development? For example,
-what key outliers or strongest examples of best or worst case scenarios
-should be presented to experts or decision-makers?(Do we need an item
-about how do we interpret the model outputs? Should there be some a
-priori decisions about how we interpret the model findings, and how does
-case 49 about the risk attitude inform how the analyst interprets the
-model findings?)*
+  - *Describe any other simulation experiments and or robustness
+    analyses you will perform on the model, including any metrics and
+    their criteria / thresholds for interpreting the results of the
+    analysis.*
 
 # References
 
-<div id="refs" class="references">
-
-<div id="ref-Araujo2019">
-
 Araújo, MB, RP Anderson, A Márcia Barbosa, CM Beale, CF Dormann, R
-Early, RA Garcia, et al. 2019. “Standards for Distribution Models in
-Biodiversity Assessments.” *Sci Adv* 5 (1): eaat4858.
-
-</div>
-
-<div id="ref-Augusiak:2014gz">
+Early, RA Garcia, et al. 2019. “Standards for Distribution Models in
+Biodiversity Assessments.” Sci Adv 5 (1): eaat4858.
 
 Augusiak, Jacqueline, Paul J Van den Brink, and Volker Grimm. 2014.
 “Merging Validation and Evaluation of Ecological Models to
 ‘Evaludation’: A Review of Terminology and a Practical Approach.”
-*Ecological Modelling* 280: 117–28.
-
-</div>
-
-<div id="ref-Barnard2019">
+Ecological Modelling 280: 117–28.
 
 Barnard, David M., Matthew J. Germino, David S. Pilliod, Robert S.
 Arkle, Cara Applestein, Bill E. Davidson, and Matthew R. Fisk. 2019.
 “Can’t See the Random Forest for the Decision Trees: Selecting
-Predictive Models for Restoration Ecology.” *Restoration Ecology*.
-
-</div>
-
-<div id="ref-Boets:2015gl">
+Predictive Models for Restoration Ecology.” Restoration Ecology.
 
 Boets, Pieter, Dries Landuyt, Gert Everaert, Steven Broekx, and Peter L
 M Goethals. 2015. “Evaluation and Comparison of Data-Driven and
 Knowledge-Supported Bayesian Belief Networks to Assess the Habitat
 Suitability for Alien Macroinvertebrates” 74: 92–103.
 
-</div>
-
-<div id="ref-Conn:2018hd">
-
 Conn, Paul B, Devin S Johnson, Perry J Williams, Sharon R Melin, and
 Mevin B Hooten. 2018. “A Guide to Bayesian Model Checking for
-Ecologists.” *Ecological Monographs* 9: 341–17.
-
-</div>
-
-<div id="ref-Fraser:2017jf">
+Ecologists.” Ecological Monographs 9: 341–17.
 
 Fraser, Hannah, Libby Rumpff, Jian D L Yen, Doug Robinson, and Brendan A
 Wintle. 2017. “Integrated Models to Support Multiobjective Ecological
-Restoration Decisions.” *Conservation Biology* 31 (6): 1418–27.
+Restoration Decisions.” Conservation Biology 31 (6): 1418–27.
 
-</div>
+Giljohann, K. M., McCarthy, M. A., McCarthy, M. A., Kelly, L. T., &
+Kelly, L. T. (2014). Choice of biodiversity index drives optimal fire
+management decisions. Ecological Modelling.
 
-<div id="ref-Grimm:2014es">
+Gregory, R., Failing, L., Failing, L., Harstone, M., Harstone, M., Long,
+G., . . . Ohlson, D. (2012). Structured decision making: a practical
+guide to environmental management choices. John Wiley & Sons.
 
 Grimm, Volker, Jacqueline Augusiak, Andreas Focks, Béatrice M Frank,
-Faten Gabsi, Alice S A Johnston, Chun Liu, et al. 2014. “Towards Better
+Faten Gabsi, Alice S A Johnston, Chun Liu, et al. 2014. “Towards Better
 Modelling and Decision Support: Documenting Model Development, Testing,
-and Analysis Using Trace.” *Ecological Modelling* 280: 129–39.
-
-</div>
-
-<div id="ref-Jakeman:2006ii">
+and Analysis Using Trace.” Ecological Modelling 280: 129–39.
 
 Jakeman, A J, R A Letcher, and J P Norton. 2006. “Ten Iterative Steps in
-Development and Evaluation of Environmental Models.” *Environmental
-Modelling & Software* 21 (5): 602–14.
+Development and Evaluation of Environmental Models.” Environmental
+Modelling & Software 21 (5): 602–14.
 
-</div>
-
-<div id="ref-Liu2018b">
+Liu, C. C., & Aitkin, M. (2008). Bayes factors: Prior sensitivity and
+model generalizability. Journal of Mathematical Psychology, 52(6),
+362-375. <doi:10.1016/j.jmp.2008.03.002>
 
 Liu, Zelin, Changhui Peng, Timothy Work, Jean-Noel Candau, Annie
 DesRochers, and Daniel Kneeshaw. 2018. “Application of Machine-Learning
 Methods in Forest Ecology: Recent Progress and Future Challenges.”
-*Environmental Reviews* 26 (4): 339–50.
-
-</div>
-
-<div id="ref-Mahmoud2009">
+Environmental Reviews 26 (4): 339–50.
 
 Mahmoud, Mohammed, Yuqiong Liu, Holly Hartmann, Steven Stewart, Thorsten
-Wagener, Darius Semmens, Robert Stewart, et al. 2009. “A Formal
+Wagener, Darius Semmens, Robert Stewart, et al. 2009. “A Formal
 Framework for Scenario Development in Support of Environmental
-Decision-Making.” *Environmental Modelling & Software* 24 (7): 798–808.
+Decision-Making.” Environmental Modelling & Software 24 (7): 798–808.
 
-</div>
-
-<div id="ref-McDonald-Madden2008">
-
-McDonald-Madden, Eve, Peter W.J. Baxter, and Hugh P. Possingham. 2008.
+McDonald-Madden, Eve, Peter W. J. Baxter, and Hugh P. Possingham. 2008.
 “Making Robust Decisions for Conservation with Restricted Money and
-Knowledge.” *Journal of Applied Ecology* 45 (6): 1630–8.
-
-</div>
-
-<div id="ref-Moallemi2019">
+Knowledge.” Journal of Applied Ecology 45 (6): 1630–8.
 
 Moallemi, Enayat A., Sondoss Elsawah, and Michael J. Ryan. 2019.
 “Strengthening ‘Good’ Modelling Practices in Robust Decision Support:
 A Reporting Guideline for Combining Multiple Model-Based Methods.”
-*Mathematics and Computers in Simulation*.
-
-</div>
-
-<div id="ref-Saltelli2019">
+Mathematics and Computers in Simulation.
 
 Saltelli, Andrea, Ksenia Aleksankina, William Becker, Pamela Fennell,
 Federico Ferretti, Niels Holst, Sushan Li, and Qiongli Wu. 2019. “Why so
 Many Published Sensitivity Analyses Are False: A Systematic Review of
-Sensitivity Analysis Practices.” *Environmental Modelling & Software*
-114: 29–39.
+Sensitivity Analysis Practices.” Environmental Modelling & Software 114:
+29–39.
 
-</div>
-
-<div id="ref-White2019a">
+Tulloch, A. I. T., Maloney, R. F., Joseph, L. N., Bennett, J. R., Di
+Fonzo, M. M. I., Probert, W. J. M., . . . Possingham, H. P. (2015).
+Effect of risk aversion on prioritizing conservation projects.
+Conservation Biology.
 
 White, Craig R, and Dustin J Marshall. 2019. “Should We Care If Models
-Are Phenomenological or Mechanistic.” *Trends in Ecology & Evolution* 34
+Are Phenomenological or Mechanistic.” Trends in Ecology & Evolution 34
 (4): 276–78.
 
-</div>
-
-<div id="ref-Yates2018">
-
 Yates, KL, PJ Bouchet, MJ Caley, K Mengersen, CF Randin, S Parnell, AH
-Fielding, et al. 2018. “Outstanding Challenges in the Transferability of
-Ecological Models.” *Trends Ecol. Evol. (Amst.)* 33 (10): 790–802.
-
-</div>
-
-<div id="ref-Yenni2019">
-
-Yenni, GM, EM Christensen, EK Bledsoe, SR Supp, RM Diaz, EP White, and
-SKM Ernest. 2019. “Developing a Modern Data Workflow for Regularly
-Updated Data.” *PLoS Biol* 17 (1). Department of Wildlife Ecology;
-Conservation, University of Florida, Gainesville, Florida, United States
-of America. School of Natural Resources; the Environment, University of
-Florida, Gainesville, Florida, United States of America. Data Analytics
-Program, Denison University, Granville, Ohio, United States of America.
-School of Natural Resources; the Environment, University of Florida,
-Gainesville, Florida, United States of America. Department of Wildlife
-Ecology; Conservation, University of Florida, Gainesville, Florida,
-United States of America. Informatics Institute, University of Florida,
-Gainesville, Florida, United States of America. Department of Wildlife
-Ecology; Conservation, University of Florida, Gainesville, Florida,
-United States of America. Biodiversity Institute, University of Florida,
-Gainesville, Florida, United States of America.: e3000125.
-
-</div>
-
-</div>
+Fielding, et al. 2018. “Outstanding Challenges in the Transferability of
+Ecological Models.” Trends Ecol. Evol. (Amst.) 33 (10): 790–802.
