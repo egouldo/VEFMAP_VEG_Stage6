@@ -102,6 +102,8 @@ I don't think this section is relevant to this study.
 - *Describe what method you will use to elicit or identify the conceptual model. Some common methods include interviews, drawings, and mapping techniques including influence diagrams, cognitive maps and Bayesian belief networks (see Moon et al. (2019) for guidance on selecting an appropriate elicitation method).*
 - *How will you represent the final conceptual model? This will likely depend on the method chosen to elicit the conceptual model.*
 
+We have developed a series of relevant conceptual models for this work over the past four years that build on previous published work by other researchers, as well as our own research, observations and many discussions. These conceptual models are described in text within program reports and are summarised in diagrams. The models are biological/ecological only and do not include links to decision makers or values as these constrainsts are not within our capability to influence. Therefore, the models primarily summarise the dominant drivers of vegetation attributes (cover, diversity, distribution, composition) within waterways. Not all important drivers are included because it is impossible to account for everything within our study. Our final model for this particular study will be decribed in text and summarised within one or more non-quantitative diagrams. 
+
 ### 2.2.1 	Explain Critical Conceptual Design Decisions
 
 *List and explain critical conceptual design decisions, including:*
@@ -112,6 +114,16 @@ I don't think this section is relevant to this study.
 - *consideration of local versus global interactions, environmental drivers, etc. (Grimm et al. 2014).*
 
 *Explain and justify the influence of particular theories, concepts, or earlier models against alternative conceptual design decisions that might lead to alternative model structures (Grimm et al. 2014).*
+
+This current study focusses on two different timeframes: short term (months) in relation to before and after event surveys; as well as long-term (years) in relation to patterns resulting from previous years of particular flow regimes. The models therefore need to describe the short term responses of plants to events as well as the cumulative responses of plants to multiple types of events within years repeated over several years, i.e. regimes. 
+
+The entities will be the vegetation response variables (cover, diversity, composition and perhaps distribution) as well as various flow variables and other factors such as bank elevation, site, river system, rainfall and livestock grazing. The flow variables will depend on the timeframe. Short term responses will include the presence and magnitude of a flow event and potentially the time of year and duration of the event. Long term responses will include the presence of individual flow events over the previous years (number of years TBC) and categorisation of the types of events that occurred, e.g. was a winter/spring flow natural or e-flow? Was it small or large? Categories TBC. 
+
+The primary process included is the inundation of plants by river flow. Rainfall to provide water will be included as a covariate rather than a process. Livestock grazing will also be evaluated as a damaging process through various mechanisms (plant consumption, trampling, soil compaction, nutrient addition, pugging, etc.) but these mechanisms are difficult to untangle so will most likely be combined if we can't do so adequately.
+
+There is a large amount of heterogeneity in vegetation patterns within and between sites as well as stochasticity in the responses to events (and regimes). While both will play a large role in the modelling process of this study, neither is substantially addressed in the conceptual models for responses. One key component that has been considered though is the issue of habitat unsuitability for some plants in some areas, for example, there are many locations on a bank (such as very steep banks) where it is very difficult for some or any plants to occur, so these sites will have no or low cover or diversity regardless of flows. Because of this, we may consider models that evaluate change in cover only where plants occur at a sample in at least one survey - i.e. excluding sample locations with zeros through the whole dataset. This is defensible because locations where occupancy are impossible are not effective for evaluating flow responses, however, the frequency and distribution of these 'zero' samples would need to be described as well. 
+
+There are clear local and glabal interactions within our study. Local interactions are dominated by the species abundance and composition of plants within a sample area (plant interactions). Rainfall may also interact with flow events and would influence sites or groups of sites separately. Global interactions include the effect of season (time of year) on the responses, which is largely influenced by day length and temperatures. 
 
 ### 2.2.2	Model assumptions and uncertainties 
 
