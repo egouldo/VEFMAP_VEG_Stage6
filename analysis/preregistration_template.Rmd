@@ -142,14 +142,14 @@ By 'exogenous uncertainties' I'm assuming this refers to uncertainties in any of
 
 **Parametric uncertainty**
 I think this is referring to the other predictor variables in the model that are directly associated with treatments. These are primarily associated with flow but also grazing and potentially exotic plant cover.
-- Flow elevation zones. There is uncertainty in our GPS measurements of elevation of sub-transects and quadrats. There is also uncertainty in the flow elevation through time. Also, the flow elevation peak may only last for a brief period so the duration affected by the peak height may be very short. This means that the flow elevation zones that combine all of this information are uncertain. 
+- Flow elevation zones (if used). There is uncertainty in our GPS measurements of elevation of sub-transects and quadrats. There is also uncertainty in the flow elevation through time. Also, the flow elevation peak may only last for a brief period so the duration affected by the peak height may be very short. This means that the flow elevation zones that combine all of this information are uncertain. Even if we do not use zones, each of the input data listed here will be included and will be uncertain as indicated.  
 - Flow magnitude and duration. Flow magnitude (discharge) is recorded in most regulated streams at set gauges. The data from these gauges is usually calibrated by the data manager at some point after the raw data are entered. We have little idea of how much uncertainty there is in the uncorrected or corrected data that we obtain from online resources. Also, it is assumed that the magnitude (and timing and duration of flows) at the gauge is representative of the sites near that gauge, but we are unsure how much that may vary spatially. 
 - Flow velocity. Flow velocity can have a significant impact on plants if it is fast enough to damage or remove plants, or if it alters the soil. However the calculation of velocity at any given point on a river is difficult and varies at all points throughout the river cross section depending on the flow magnitude, flow height, channel form and obstacles. We do not have the capacity to calculate or even broadly approximate velocities at different flows so this variable cannot be included. However, we have seen very little field evidence of plant damage or removal from regulated flows on waterways and velocities during most regulated flows are typically not high on the bank where the plants are. 
 - Livestock grazing is specified as present or absent only at each site, not the intensity or duration of grazing. This adds a lot of uncertainty to this variable because the intensity (number of animals) and duration are important factors for the impact. However, this information is difficult to obtain from landholders or estimate from the site. We do have the animal ID though (cattle or sheep). Also, grazing impacts are spatially patchy depending on the ease of access - livestock don't impact steep slopes or inaccessible ledges or obstacles much compared to flatter or gentler slopes. So within a grazed site, the grazing impact may vary between transects. 
 - We will consider models for native plant cover that include exotic plant cover as a predictor. The categorisation of native and exotic is fairly well recognised in Victoria and should not pose an issue, but the categorisation of the plant group is variable (see 2.4.2). Also, the estimate of cover is uncertain. 
 
 **Structural non-parametric uncertainty**
-Model uncertainty is a given. The models we will use will not fit the data perfectly but we will be able to quantify this uncertainty in our model estimates. More information about the model form and potential uncertainty is provided in section 3. 
+Model uncertainty is a given. The models we will use will not fit the data perfectly but we will be able to quantify this uncertainty in our model estimates. Uncertainty will be captured for our vegetation input data based on the number of samples we have within our hierarchical data structure. Uncertainty will not be accounted for in our uncertain variables such as rainfall or flow where we have no way of estimating this uncertainty.Unknown uncertainty will be somewhat captured in random effects but this will be an approximation only. More information about the model form and potential uncertainty is provided in section 3 but is not contained within our conceptual model. 
 
 ## 2.3 Predictor Variables
 
@@ -160,6 +160,18 @@ Model uncertainty is a given. The models we will use will not fit the data perfe
 - *What variables have not been measured, but may interact with the system (often occurs in field or observational studies)?*
 - *What variables are indice or surrogate measures of variables that we cannot or have not measured?*
 - *In what ways do we expect these variables to interact (model structures)?*
+
+Based on our problem formulation, the expected predictor variables to use within our models are:
+- Bank elevation (by zone or elevation measure GPS)
+- Flow elevation, duration, time.
+- Livestock grazing (likely presence or absence (but can provide approximate intensity category), potentially by grazer type sheep/cattle)
+- Rainfall (potentially, but need to be careful about what period of rainfall data is relevant to the responses)
+- Site variables (random effects for hierarchical structure: sub-transects/quadrats < transects < site < system/basin)
+- Exotic vegetation cover or diversity (for models with native vegetation as the response)
+- Time/season (the period over which the event has occurred, for regimes this will be standardised to a set number of years so will not be included as time but would be categorised into regime type TBC)
+
+Each of these variables is important for influencing decisions about the use of environmental water to achieve benefits for (native) riparian vegetation. Additional variables that may be useful but are difficult to obtain at the appropriate spatial resolution (such as soils and funghi) are unlikely to be added. 
+We expect there to be interactions between flow and bank elevation, hence the need to incorporate the elevation in our models. There may be interactions between bank elevation and livestock impacts due to the softer ground at the bank margin being mroe susciptible to trampling. Exotic vegetation will also interact with bank elevation and flows. Rainfall in summer is likely to be more influential than rainfall in winter. 
 
 ## 2.4 Define prior knowledge, data specification and evaluation
 
