@@ -167,7 +167,7 @@ Epilobium billardierianum subsp. billardierianum,Epilobium,Onagraceae,native,for
 Epilobium hirtigerum,Epilobium,Onagraceae,native,forb,Fringing_low,NO,,,Littoral
 Eragrostis brownii,Eragrostis,Poaceae,native,grass,Terrestrial,NO,Tdr,KM,Terrestrial
 Eragrostis spp.,Eragrostis,Poaceae,native,grass,Terrestrial,NO,,,Terrestrial
-Eragrostis infecunda,Eragrostis,Poaceae,native,grass,Fringing_low,NO,Ate,KM,Littoral
+Eragrostis infecunda,Eragrostis,Poaceae,native,grass,Emergent,NO,Ate,KM,Littoral
 Erigeron bonariensis,Erigeron,Asteraceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Erodium moschatum,Erodium,Geraniaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
 Erodium spp.,Erodium,Geraniaceae,exotic,forb,Terrestrial,NO,,,Terrestrial
@@ -278,7 +278,7 @@ Leptospermum lanigerum,Leptospermum,Myrtaceae,native,shrub,Shrub,NO,ATw,KM,Shrub
 Leptospermum obovatum,Leptospermum,Myrtaceae,native,shrub,Shrub,NO,ATw,assumed,Shrub
 Leptospermum obvatum,Leptospermum,Myrtaceae,native,shrub,Shrub,NO,,,Shrub
 Ligustrum spp.,Ligustrum,Oleaceae,exotic,tree,Tree,NO,,,Tree
-Lilaeopsis polyantha,Lilaeopsis,Apiaceae,native,forb,Emergent,YES,ATl,KM,Littoral
+Lilaeopsis polyantha,Lilaeopsis,Apiaceae,native,forb,Fringing_low,YES,ATl,KM,Littoral
 Lobelia anceps,Lobelia,Campanulaceae,native,forb,Fringing_low,NO,Tda,KM,Littoral
 Lobelia beaugleholei,Lobelia,Campanulaceae,native,forb,,NO,,,Littoral
 Lobelia pedunculata s.l.,Lobelia,Campanulaceae,native,forb,Fringing_low,NO,Tdr,KM,Littoral
@@ -349,7 +349,7 @@ Oxalis pes-caprae,Oxalis,Oxalidaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestri
 Oxalis spp.,Oxalis,Oxalidaceae,unknown,forb,Terrestrial,NO,,,Terrestrial
 Ozothamnus ferrugineus,Ozothamnus,Asteraceae,native,shrub,Shrub,NO,Tdr or Tda?,,Shrub
 Pandorea pandorana,Pandorea,Bignoniaceae,native,climber,Terrestrial,NO,,,Terrestrial
-Panicum coloratum,Panicum,Poaceae,exotic,grass,Fringing_low,NO,Tda?,assumed,Littoral margin
+Panicum coloratum,Panicum,Poaceae,exotic,grass,Fringing_high,NO,Tda?,assumed,Littoral margin
 Panicum spp.,Panicum,Poaceae,native,grass,Fringing_low,NO,,,Littoral margin
 Paspalidium jubiflorum,Paspalidium,Poaceae,native,grass,Fringing_high,NO,Tda,Campbell 2014,Littoral margin
 Paspalidium spp.,Paspalidium,Poaceae,native,grass,Fringing_high,NO,Tda,assumed,Littoral margin
@@ -360,13 +360,13 @@ Pentameris airoides subsp. airoides,Pentameris,Poaceae,exotic,grass,Terrestrial,
 Persicaria decipiens,Persicaria,Polygonaceae,native,forb,Emergent,YES,ATe,Campbell 2014,Littoral
 Persicaria hydropiper,Persicaria,Polygonaceae,native,forb,Emergent,YES,ATe,KM,Littoral
 Persicaria lapathifolia,Persicaria,Polygonaceae,native,forb,Emergent,YES,ATe,Campbell 2014,Littoral
-Persicaria praetermissa,Persicaria,Polygonaceae,native,forb,Fringing_low,NO,ATl,"CHECK (low growing, scrambling)",Littoral
-Persicaria prostrata,Persicaria,Polygonaceae,native,forb,Fringing_low,NO,ATl,Campbell 2014,Littoral
+Persicaria praetermissa,Persicaria,Polygonaceae,native,forb,Emergent,NO,ATl,"CHECK (low growing, scrambling)",Littoral
+Persicaria prostrata,Persicaria,Polygonaceae,native,forb,Emergent,NO,ATl,Campbell 2014,Littoral
 Persicaria spp.,Persicaria,Polygonaceae,native,forb,Emergent,YES,ATe,Campbell 2014,Littoral
 Persicaria subsessilis,Persicaria,Polygonaceae,native,forb,Emergent,YES,ATe,assumed but CHECK,Littoral
 Phalaris aquatica,Phalaris,Poaceae,exotic,grass,Fringing_high,NO,Tdr,KM,Littoral margin
 Phalaris arundinacea,Phalaris,Poaceae,exotic,grass,Emergent,YES,ATe,KM,Emergent
-Phalaris spp.,Phalaris,Poaceae,exotic,grass,,NO,,,
+Phalaris spp.,Phalaris,Poaceae,exotic,grass,Unknown,NO,,,
 Phragmites australis,Phragmites,Poaceae,native,grass,Emergent,YES,ATe,KM,Emergent
 Phyla canescens,Phyla,Verbenaceae,exotic,forb,Fringing_high,NO,Tda,Campbell 2014,Littoral margin
 Pittosporum undulatum,Pittosporum,Pittosporaceae,native,shrub,Tree,NO,,,Tree

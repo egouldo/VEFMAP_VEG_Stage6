@@ -198,6 +198,11 @@ subtransectcheck2<- vegdata %>%
   summarise(n()) %>%
   arrange(METRES)
 
+subtransectcheck3<- vegdata %>%
+  group_by(SITE, TRANSECT) %>%
+  summarise(max(METRES)) %>%
+  arrange(SITE)
+
 #extra check for recruits files - check that subtransects and letters
 # also match the distances correctly
 subtransectcheck3<- vegdata %>%
