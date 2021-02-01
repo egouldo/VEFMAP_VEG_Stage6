@@ -310,6 +310,8 @@ There are a small number of cases where we have incomplete or missing data due t
 
 - *Describe what modelling framework, approach or class of model you will use to implement your model and relate your choice to the model purpose and analytical objectives described in 1.1.2 and 1.1.3.*
 
+We will use a correlative model approach for this analysis, where we will attempt to detect and describe patterns in recorded vegetation data in relation to a series of covariates. Specifically, the analysis aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diverstiy) within regulated river channels (See 1.1.2). We intend to use generalised linear mixed effects models (GLMM) with binomial family distribution for cover data (successes from trials) and Poisson family for species richness (counts). We believe that GLMMs are a robust approach for our objectives and data structure, with a key feature of the random effects allowing for the hierarchical sampling design and repeated measures. 
+
 ### 3.1.1 Operationalising Model Variables
 
 - *Specify how you will operationalise the response variables in the model. This should relate directly to the analytical and or management objectives specified during the problem formulation phase. Operationalisations could include:*
