@@ -364,6 +364,12 @@ Initially, our model structure will be based on our conceptual model of the syst
 - *Specify which algorithm(s) you will use for any data-driven parameter estimation, including supervised, or unsupervised machine learning, decision-tree, K-nearest neighbour or cluster algorithms (Liu et al. 2018).*
 - *Repeat the above bullet points but for model structure estimation, if you are using quantitative methods for structure estimation rather than knowledge or expert-judgment driven methods.*
 
+Parameterisation:
+We will use data-driven parameter estimation using maximum likelihood for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as  binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).  
+
+Structure estimation:
+I don't understand this question, so will come back to it.
+
 ### 3.2.2	Estimation performance criteria
 
 - *Specify which suite of performance criteria you will use to judge the performance of the model. Examples include correlation scores, coefficient of determination, specificity, sensitivity, AUC, etcetera (Yates et al. 2018). State any numeric thresholds and their qualitative interpretation for judging adequate estimation.*
