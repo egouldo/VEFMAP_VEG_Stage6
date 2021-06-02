@@ -55,7 +55,7 @@ Glenelg,Glenelg,Weavers,3,W,-1, -1 to 0,Nil,NA,0,25/09/2018,1,
 Glenelg,Glenelg,Weavers,3,A,0,0 to 1,Lolium spp.,NA,100+,25/09/2018,1,
 Glenelg,Glenelg,Weavers,3,A,0,0 to 1,Hypochaeris radicata,exotic,1,25/09/2018,1,
 Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Lolium spp.,NA,100+,25/09/2018,1,
-Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Triglochin spp.,native,1,25/09/2018,1,LV: not in species master.  Is it Triglochin spp. or Cycnogeton spp.?
+Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Cycnogeton alcockiae,native,1,25/09/2018,1,
 Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Holcus spp.,NA,9,25/09/2018,1,
 Glenelg,Glenelg,Weavers,3,C,2,2 to 3,Lolium spp.,NA,100+,25/09/2018,1,
 Glenelg,Wannon,Wannon,3,W,-1, -1 to 0,Nil,NA,0,26/09/2018,1,
@@ -116,7 +116,7 @@ Glenelg,Glenelg,Warrock,7,D,3,3 to 4,Rumex spp.,native,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Rumex spp.,native,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Cerastium glomeratum s.l.,exotic,2,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Aster subulatus,exotic,10_50,24/09/2018,1,
-Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Crassula natans,NA,2,24/09/2018,1,"LV: Chris check species, only occurrence in dataset and not in species master"
+Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Crassula natans,NA,2,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Dicot,NA,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Lolium spp.,NA,1,24/09/2018,1,
 Glenelg,Glenelg,Warrock,7,E,4,4 to 5,Poa annua,NA,3,24/09/2018,1,
@@ -128,7 +128,7 @@ Glenelg,Glenelg,Warrock,5,W,-1, -1 to 0,Dicot,NA,2,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,A,0,0 to 1,Dicot,NA,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,B,1,1 to 2,Dicot,NA,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,B,1,1 to 2,Monocot,NA,1,24/09/2018,1,
-Glenelg,Glenelg,Warrock,5,C,2,2 to 3,Monocot,NA,1,24/09/2018,1,LV: left blank in book so have assumed a count of 1
+Glenelg,Glenelg,Warrock,5,C,2,2 to 3,Monocot,NA,1,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,C,2,2 to 3,Dicot,NA,10_50,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,C,2,2 to 3,Rumex spp.,native,6,24/09/2018,1,
 Glenelg,Glenelg,Warrock,5,C,2,2 to 3,Lolium spp.,NA,1,24/09/2018,1,
@@ -199,7 +199,7 @@ Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Isolepis spp.,NA,7,25/09/2018,1,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Isolepis spp.,NA,10_50,25/09/2018,1,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Lolium spp.,NA,10_50,25/09/2018,1,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Crassula decumbens var. decumbens,native,3,25/09/2018,1,
-Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Epilobium spp.,NA,1,25/09/2018,1,"LV: Chris to check, if keeping as is, will need adding to species master"
+Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Epilobium spp.,NA,1,25/09/2018,1,
 Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Crassula decumbens var. decumbens,native,5,25/09/2018,1,
 Glenelg,Glenelg,Weavers,7,W,-1, -1 to 0,Isolepis spp.,NA,10_50,25/09/2018,1,
 Glenelg,Glenelg,Weavers,7,W,-1, -1 to 0,Monocot,NA,2,25/09/2018,1,
@@ -293,7 +293,7 @@ Glenelg,Glenelg,Fulham,1,B,1,1 to 2,Nil,NA,0,27/09/2018,1,
 Glenelg,Glenelg,Fulham,2,W,-1, -1 to 0,Nil,NA,0,27/09/2018,1,
 Glenelg,Glenelg,Fulham,2,A,0,0 to 1,Nil,NA,0,27/09/2018,1,
 Glenelg,Glenelg,Fulham,2,B,1,1 to 2,Nil,NA,0,27/09/2018,1,
-Glenelg,Glenelg,Fulham,2,C,2,2 to 3,Epilobium spp.,NA,1,27/09/2018,1,"LV: Chris to check, if keeping as is, will need adding to species master"
+Glenelg,Glenelg,Fulham,2,C,2,2 to 3,Epilobium spp.,NA,1,27/09/2018,1,
 Glenelg,Glenelg,Fulham,2,C,2,2 to 3,Hypochaeris glabra,NA,2,27/09/2018,1,
 Glenelg,Glenelg,Fulham,2,D,3,3 to 4,Hypochaeris glabra,NA,10_50,27/09/2018,1,
 Glenelg,Glenelg,Fulham,3,W,-1, -1 to 0,Nil,NA,0,27/09/2018,1,
@@ -478,7 +478,7 @@ Glenelg,Glenelg,Weavers,10,C,2,2 to 3,Nil,NA,0,16/04/2019,3,
 Glenelg,Glenelg,Weavers,9,W,-1, -1 to 0,Nil,NA,0,16/04/2019,3,
 Glenelg,Glenelg,Weavers,9,A,0,0 to 1,Nil,NA,0,16/04/2019,3,
 Glenelg,Glenelg,Weavers,9,B,1,1 to 2,Nil,NA,0,16/04/2019,3,
-Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Typha spp.,NA,2,16/04/2019,3,Most likely from Rhizome
+Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Typha spp.,NA,2,16/04/2019,3,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Nil,NA,0,16/04/2019,3,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Nil,NA,0,16/04/2019,3,
 Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Nil,NA,0,16/04/2019,3,
@@ -573,9 +573,9 @@ Glenelg,Glenelg,Five Mile,9,C,2,2 to 3,Nil,NA,0,17/04/2019,3,
 Glenelg,Glenelg,Five Mile,10,W,-1, -1 to 0,Nil,NA,0,17/04/2019,3,
 Glenelg,Glenelg,Five Mile,10,A,0,0 to 1,Nil,NA,0,17/04/2019,3,
 Glenelg,Glenelg,Five Mile,10,B,1,1 to 2,Nil,NA,0,17/04/2019,3,
-Glenelg,Glenelg,Five Mile,10,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Five Mile,10,A,0,0 to 1,Nil,NA,0,7/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Five Mile,10,B,1,1 to 2,Nil,NA,0,7/01/2019,2,"Count for NIL had a number entered, have updated to 0"
+Glenelg,Glenelg,Five Mile,10,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,
+Glenelg,Glenelg,Five Mile,10,A,0,0 to 1,Nil,NA,0,7/01/2019,2,
+Glenelg,Glenelg,Five Mile,10,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,9,W,-1, -1 to 0,Cycnogeton procerum,NA,6,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,9,A,0,0 to 1,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,9,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
@@ -595,18 +595,18 @@ Glenelg,Glenelg,Five Mile,7,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,7,C,2,2 to 3,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,7,D,3,3 to 4,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,7,E,4,4 to 5,Nil,NA,0,7/01/2019,2,
-Glenelg,Glenelg,Five Mile,7,F,5,5 to 6,Nil,NA,0,7/01/2019,2,Point transects only go to 6m - check book
+Glenelg,Glenelg,Five Mile,7,F,5,5 to 6,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,A,0,0 to 1,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,C,2,2 to 3,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,D,3,3 to 4,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,6,E,4,4 to 5,Nil,NA,0,7/01/2019,2,
-Glenelg,Glenelg,Five Mile,5,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,Nothing written in book - have assumed Nil
+Glenelg,Glenelg,Five Mile,5,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,5,A,0,0 to 1,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,5,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,5,C,2,2 to 3,Nil,NA,0,7/01/2019,2,
-Glenelg,Glenelg,Five Mile,4,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,Nothing written in book - have assumed Nil
+Glenelg,Glenelg,Five Mile,4,W,-1, -1 to 0,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,4,A,0,0 to 1,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,4,B,1,1 to 2,Nil,NA,0,7/01/2019,2,
 Glenelg,Glenelg,Five Mile,4,C,2,2 to 3,Nil,NA,0,7/01/2019,2,
@@ -629,43 +629,43 @@ Glenelg,Glenelg,Weavers,2,B,1,1 to 2,Hypochaeris radicata,exotic,3,8/01/2019,2,
 Glenelg,Glenelg,Weavers,2,B,1,1 to 2,Dicot,NA,2,8/01/2019,2,
 Glenelg,Glenelg,Weavers,3,W,-1, -1 to 0,Atriplex prostrata,NA,2,8/01/2019,2,
 Glenelg,Glenelg,Weavers,3,W,-1, -1 to 0,Cotula coronopifolia,exotic,2,8/01/2019,2,
-Glenelg,Glenelg,Weavers,3,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,3,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,4,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,4,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,4,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,4,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,5,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Nothing written in book - have assumed Nil. Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,5,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,5,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,6,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,6,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,6,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,6,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,6,D,3,3 to 4,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,7,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,9,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,9,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,9,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,10,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,10,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Weavers,10,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,1,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,1,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,1,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,2,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,2,A,0,0 to 1,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,2,B,1,1 to 2,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,2,C,2,2 to 3,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
-Glenelg,Glenelg,Fulham,2,D,3,3 to 4,Nil,NA,0,8/01/2019,2,"Count for NIL had a number entered, have updated to 0"
+Glenelg,Glenelg,Weavers,3,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,3,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,3,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,4,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,4,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,4,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,4,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,5,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,5,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,5,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,6,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,6,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,6,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,6,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,6,D,3,3 to 4,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,7,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,8,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,9,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,9,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,9,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,10,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,10,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Weavers,10,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,1,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,1,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,1,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,2,W,-1, -1 to 0,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,2,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,2,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,2,C,2,2 to 3,Nil,NA,0,8/01/2019,2,
+Glenelg,Glenelg,Fulham,2,D,3,3 to 4,Nil,NA,0,8/01/2019,2,
 Glenelg,Glenelg,Fulham,3,W,-1, -1 to 0,Cycnogeton procerum,NA,10_50,8/01/2019,2,
 Glenelg,Glenelg,Fulham,3,A,0,0 to 1,Nil,NA,0,8/01/2019,2,
 Glenelg,Glenelg,Fulham,3,B,1,1 to 2,Nil,NA,0,8/01/2019,2,
@@ -709,7 +709,7 @@ Glenelg,Glenelg,Dergholm,4,W,-1, -1 to 0,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,4,A,0,0 to 1,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,4,B,1,1 to 2,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,4,C,2,2 to 3,Nil,NA,0,9/01/2019,2,
-Glenelg,Glenelg,Dergholm,5,W,-1, -1 to 0,Nil,NA,0,9/01/2019,2,Nothing written in book - have assumed Nil
+Glenelg,Glenelg,Dergholm,5,W,-1, -1 to 0,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,5,A,0,0 to 1,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,5,B,1,1 to 2,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,6,W,-1, -1 to 0,Dicot,NA,5,9/01/2019,2,
@@ -719,7 +719,7 @@ Glenelg,Glenelg,Dergholm,6,C,2,2 to 3,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,7,W,-1, -1 to 0,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,7,A,0,0 to 1,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Dergholm,7,B,1,1 to 2,Nil,NA,0,9/01/2019,2,
-Glenelg,Glenelg,Dergholm,7,C,2,2 to 3,Nil,NA,0,9/01/2019,2,Transect 8 missing from field data book
+Glenelg,Glenelg,Dergholm,7,C,2,2 to 3,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Warrock,8,W,-1, -1 to 0,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Warrock,8,A,0,0 to 1,Nil,NA,0,9/01/2019,2,
 Glenelg,Glenelg,Warrock,8,B,1,1 to 2,Nil,NA,0,9/01/2019,2,
@@ -775,7 +775,7 @@ Glenelg,Wannon,Wannon,1,W,-1, -1 to 0,Dicot,,3,10/01/2019,2,
 Glenelg,Wannon,Wannon,1,A,0,0 to 1,Nil,,0,10/01/2019,2,
 Glenelg,Wannon,Wannon,1,B,1,1 to 2,Nil,,0,10/01/2019,2,
 Glenelg,Glenelg,Weavers,7,W,-1, -1 to 0,Nil,,0,24/10/2019,4,
-Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Isolepis platycarpa,,10_50,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Isolepis platycarpa,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Isolepis hystrix,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Lolium spp.,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,A,0,0 to 1,Vulpia spp.,,10_50,24/10/2019,4,
@@ -785,7 +785,7 @@ Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Crassula decumbens var. decumbens,,10_50,24
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Bromus hordeaceus subsp. hordeaceus,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Vulpia spp.,,100+,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Lolium spp.,,10_50,24/10/2019,4,
-Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Aira spp.,,10_50,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Aira elegantissima,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Holcus lanatus,,1,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Hordeum spp.,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,B,1,1 to 2,Hypochaeris radicata,,10_50,24/10/2019,4,
@@ -795,16 +795,16 @@ Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Bromus hordeaceus subsp. hordeaceus,,100+,2
 Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Lolium spp.,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Bromus diandrus,,5,24/10/2019,4,
 Glenelg,Glenelg,Weavers,7,C,2,2 to 3,Hypochaeris radicata,,3,24/10/2019,4,
-Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Isolepis platycarpa,,10_50,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Isolepis platycarpa,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,W,-1, -1 to 0,Lolium spp.,,6,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Isolepis hystrix,,10_50,24/10/2019,4,
-Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Isolepis platycarpa,,50_100,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Isolepis platycarpa,,50_100,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Lolium spp.,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Crassula decumbens var. decumbens,,2,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Lythrum hyssopifolia,,2,24/10/2019,4,
-Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Crassula natans,,2,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Crassula natans,,2,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,A,0,0 to 1,Juncus bufonius,,1,24/10/2019,4,question mark
-Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Isolepis platycarpa,,10_50,24/10/2019,4,Not in species master
+Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Isolepis platycarpa,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Lolium spp.,,10_50,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Hordeum spp.,,50_100,24/10/2019,4,
 Glenelg,Glenelg,Weavers,8,B,1,1 to 2,Vulpia spp.,,50_100,24/10/2019,4,
