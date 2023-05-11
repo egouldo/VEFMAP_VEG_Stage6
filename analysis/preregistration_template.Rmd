@@ -1,6 +1,6 @@
 ---
 title: "Ecology and Conservation Modelling Preregistration Template -- DRAFT"
-author: "Elise Gould, Megan Good, TBD:workshop collaborators"
+author: "Elliot Gould, Megan Good, TBD:workshop collaborators"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   github_document: default
