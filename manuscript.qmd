@@ -71,9 +71,46 @@ a. 
 However there remains significant uncertainty around what timing (and size) is most effective within the window of deliverability.
 The importance of timing has been demonstrated by the importance of seasonal flowering of terrestrial species, as well as the impact of season on submergence effects (Tonkin et al. 2020, Vivian et al. 2020, Main et al. 2022). 
 
+This preregistration document relates to the data analysis of a study on vegetation responses to environmental flows.
+The model aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diversity/richness) within regulated river channels.
+Outputs will aim to give practical evidence and the implications of responses to directly improve and guide the management of environmental water delivery for native vegetation benefit.
+The model will incorporate data from across a number of waterways across a large part of Victoria.
+The models will not aim to provide explicit predictions within the waterways surveyed, or to specific un-surveyed waterways, but extension of these models for prediction will be highlighted for future investigation beyond this study.
+
 # Methods
 
+## Monitoring Data
+
+Data were collected from 44 sites across Victoria with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'.
+Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey.
+
 # Results
+
+From Chris:
+
+> I\'ve had a go at sketching out some of the plots I\'d like to be able to show in the paper: see attached.
+>
+>  
+>
+> 1.  The first is plotting the raw data of broad vegetation groups for each reach in relation to elevation up the bank and the typical baseflow and fresh levels.
+>     There are about 25 reaches total -- some with only one site, others with 2-3 sites -- so I can see this as being some example plots in the paper and the rest in the supplement?
+>
+> 2.  The second is modelled output of the effect of some of the key drivers on vegetation cover against elevation.
+>     This is difficult to do across all sites because the elevation impacts are not standardised, so we could do it for individual reaches (such as the Campaspe, where we have the most data), or think of ways to standardise it across sites?
+>     I\'m envisaging a GAMM plot of predictions for this figure.
+>
+> 3.  The effect size of grazing, exotic vegetation cover and inundation on the cover of native vegetation.
+>     Makes most sense to separate this into the effect of spring inundation within the winter-spring sampling interval and summer inundation in the spring-summer interval.
+>     This can be done across all sites because it is not directly relating to elevation, but instead, whether or not the spot was inundated for.
+>     We would probably use a duration of inundation, rather than a binary of inundated or not, but happy to discuss. 
+>
+>  
+>
+> There will need to be some other additional plots of flow regime or other basic attributes across all sites to show how they vary, in addition to a map of the sites (attached example).
+>
+>  
+>
+> Happy for your thoughts, but this is just setting the scene for the analysis.
 
 # Discussion & Conclusion
 
