@@ -1,6 +1,7 @@
 ---
-title: "Quantifying changes in native vegetation cover and richness in response to flow events and regimes"
+title: "Quantifying changes in native vegetation cover and richness in response to flow events and regimes, livestock grazing and weed cover"
 description: "draft manuscript"
+date-modified: today
 format:
   pdf:
     elsevier-pdf:
@@ -26,6 +27,7 @@ author:
   - name: Karl Just
   - name: Ana Backstrom
     orcid: 0000-0003-0151-3927
+bibliography: data/references.bib
 ---
 
 # Introduction
@@ -36,6 +38,38 @@ a. 
 b. 
     This report will summarise implications for management relating to observations and models, such as the effect of flow events in different places and where the outcomes will be greatest.
 This will include specific recommendations for how flow management actions can be used to achieve management objectives, such as supporting riparian vegetation cover and diversity as well as limiting terrestrial vegetation encroachment.
+
+\[Directly relating to aim questions 1, 2 and 3
+
+1. 
+  How important are environmental flows for achieving riparian vegetation outcomes in different waterways, given limiting factors and the broader flow regime? 
+
+a. 
+     This question has direct links to the VEFMAP Veg Q1 project, where that project aims to estimate important links between flow and other factors (based on expert knowledge), while this project aims to quantify a subset of those links based on models of empirical data.
+Both projects are needed as they perform different tasks with a different scope. 
+ 
+
+b. 
+    This question has direct links to stated management objectives within the seasonal watering plans of CMAs.
+Some objectives are likely to be effectively achieved by current flow actions, while others may not, this project will provide evidence for this. 
+
+2. 
+  What is the predicted outcome of recent environmental flow regimes in different waterways, using counterfactual modelling to estimate controls? 
+ 
+
+a. 
+     Counterfactual models are becoming the preferred method for evaluating effects of treatments in waterways and wetlands across Victoria due to the unavailability of true controls within the landscape.
+Methods to implement this are in early stages and project like this will be essential to establish protocols for effective use. 
+ 
+
+3. 
+  How can the timing of delivering a fresh be optimised to develop and maintain fringing and emergent plant populations in the riparian zone? 
+ 
+
+a. 
+     Freshes remain a significant flood event in many waterways and a key management tool to achieve vegetation outcomes.
+However there remains significant uncertainty around what timing (and size) is most effective within the window of deliverability.
+The importance of timing has been demonstrated by the importance of seasonal flowering of terrestrial species, as well as the impact of season on submergence effects (Tonkin et al. 2020, Vivian et al. 2020, Main et al. 2022). 
 
 # Methods
 
