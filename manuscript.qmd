@@ -1,0 +1,46 @@
+---
+title: "Quantifying changes in native vegetation cover and richness in response to flow events and regimes"
+description: "draft manuscript"
+format:
+  pdf:
+    elsevier-pdf:
+      keep-tex: true    
+  html: default
+editor: visual
+author: 
+  - name: Christopher Stuart Jones
+    orcid: 0000-0003-2833-0194
+  - name: Lyndsey Vivian
+    orcid: 0000-0003-1927-723X
+  - name: Jian Yen
+    orcid: 0000-0001-7964-923X
+  - name: Elliot Gould
+    orcid: 0000-0002-6585-538X
+  - name: Henry Wootton
+    orcid: 0000-0001-6506-0248
+  - name: Bryan Mole
+  - name: Jacqui Brooks
+  - name: Laura Caffrey
+  - name: Freya Mary Thomas
+    orcid: 0000-0001-9926-6295
+  - name: Karl Just
+  - name: Ana Backstrom
+    orcid: 0000-0003-0151-3927
+---
+
+# Introduction
+
+a. 
+    This project will refine the models already developed through Stage 6 that were extensively described within the preregistration template document attached to the original proposal, and use these models to evaluate vegetation responses and effects of drivers on native riparian vegetation data from Stages 6 and 7.
+
+b. 
+    This report will summarise implications for management relating to observations and models, such as the effect of flow events in different places and where the outcomes will be greatest.
+This will include specific recommendations for how flow management actions can be used to achieve management objectives, such as supporting riparian vegetation cover and diversity as well as limiting terrestrial vegetation encroachment.
+
+# Methods
+
+# Results
+
+# Discussion & Conclusion
+
+# References  {.unnumbered}
