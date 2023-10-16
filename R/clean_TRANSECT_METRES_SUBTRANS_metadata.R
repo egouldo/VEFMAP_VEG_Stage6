@@ -1,5 +1,5 @@
 # Clean Site Metadata as per issue #24
-# Author: Elise Gould
+# Author: Elliot Gould
 # Date: 29 May 2020
 
 library(tidyverse)

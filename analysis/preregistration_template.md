@@ -1,6 +1,6 @@
 Ecology and Conservation Modelling Preregistration Template – DRAFT
 ================
-Elise Gould, Megan Good, TBD:workshop collaborators
+Elliot Gould, Megan Good, TBD:workshop collaborators
 26 October, 2020
 
 # 1\. Problem Formulation

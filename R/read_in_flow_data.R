@@ -1,5 +1,5 @@
 # Read in Streamology Flow data
-# Author: Elise Gould
+# Author: Elliot Gould
 
 library(tidyverse)
 library(readxl)
