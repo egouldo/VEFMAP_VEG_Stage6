@@ -371,13 +371,45 @@ Structure estimation: I don't understand this question, so will come back to it.
 
 # 4.0 Model Calibration, Fitting & Checking
 
-## 4.1 Model calibration and validation scheme
+## 4.1 Model Checking
+
+*"Model Checking" goes by many names ("calibration testing or validation", "conditional verification", "quantitative verification", "model output verification"), and refers to a series of analyses that assess a model's performance in representing the system of interest (Conn et al. 2018). Model checking therefore helps diagnose assumption violations, and reveals where a model might need to be altered to better represent the data, and therefore system (Conn et al. 2018). Quantitative model checking diagnostics include goodness of fit, tests on residuals or errors, such as for heteroscedascity, cross-correlation, and autocorrelation (Jakeman, Letcher, and Norton 2006).*
+
+### 4.1.1 Quantitative model checking
+
+*During this process, observed data, or data and patterns that guided model design and calibration is compared to model output in order to identify if and where there are any systematic differences.*
+
+-   *Specify any diagnostics or tests you will use during model checking to assess a model's performance in representing the system of interest.*
+-   *For each test, specify the criteria that will you use to interpret the outcome of the test in assessing the model's ability to sufficiently represent the gathered data used to develop and parameterise the model.*
+
+### 4.1.2 Qualitative model checking
+
+*This step is largely informal and case-specific but requires 'face validation' with model users / clients / managers who aren't involved in the development of the model to assess whether the interactions and outcomes of the model are feasible and defensible (Grimm et al. 2014). Other terms for qualitative checking include the "laugh test" or the "pub test," and in addition to checking the model's believability, they build the client or users' confidence in the model (Jakeman, Letcher, and Norton 2006).*
+
+-   *Explain how you will qualitatively check the model, and whether and how you will include users and clients in the process. Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.*
+
+### 4.1.3 Assumption violation checks
+
+-   *Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.*
+-   *If you cannot perform quantitative assumption checks, describe what theoretical justifications would justify a lack of violation of or robustness to model assumptions.*
+-   *If you cannot demonstrate or theoretically justify violation or robustness to assumptions, explain why not, and specify whether you will discuss assumption violations and their consequences for interpretation of model outputs.*
+-   *The consequences of assumption violations on the interpretation of results should be assessed (Araújo et al. 2019). If assumption violations cannot be avoided, explain describe how you will explore their consequences (To be completed in interim iterations of the preregistration, only if there are departures from assumptions as demonstrated in the planned tests above).*
+
+## 4.2 Implementation verification
+
+-   *What Quality Assurance measures will you take to verify the model has been correctly implemented as specified? Specifying up front quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.*
+
+    -   *Tests could include syntax checking of code, and code reviews by peers.*
+    -   *Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as dictated by the model description (Grimm et al. 2014).*
+    -   *Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.*
+
+## 4.3 Model calibration and validation scheme
 
 -   *Describe how you will validate and check the calibration of the model. The model may be tested on data independent of those used to parameterise the model (external validation), or the model may be cross-validated on random sub-samples of the data used to parameterise the model (internal cross-validation) (Yates et al. 2018; Barnard et al. 2019).*
 -   *Describe any model tuning procedures for estimating hyper parameters (if any).*
 -   *Justify your choices*
 
-### 4.1.2 Describe calibration/validation data
+### 4.3.2 Describe calibration/validation data
 
 -   *If partitioning data for cross-validation:*
 
@@ -389,38 +421,6 @@ Structure estimation: I don't understand this question, so will come back to it.
     -   *Describe any known differences between the training and validation datasets and the size of the validation dataset.*
     -   *Describe how will you document and/or share the external data such that any subsequent modelling can be computationally reproduced.*
     -   *It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building, please describe the relationship modellers have to model validation data, will independent datasets be known to any modeller or analyst involved in the model building process?*
-
-## 4.2 Implementation verification
-
--   *What Quality Assurance measures will you take to verify the model has been correctly implemented as specified? Specifying up front quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.*
-
-    -   *Tests could include syntax checking of code, and code reviews by peers.*
-    -   *Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as dictated by the model description (Grimm et al. 2014).*
-    -   *Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.*
-
-## 4.3 Model Checking
-
-*"Model Checking" goes by many names ("calibration testing or validation", "conditional verification", "quantitative verification", "model output verification"), and refers to a series of analyses that assess a model's performance in representing the system of interest (Conn et al. 2018). Model checking therefore helps diagnose assumption violations, and reveals where a model might need to be altered to better represent the data, and therefore system (Conn et al. 2018). Quantitative model checking diagnostics include goodness of fit, tests on residuals or errors, such as for heteroscedascity, cross-correlation, and autocorrelation (Jakeman, Letcher, and Norton 2006).*
-
-### 4.3.1 Quantitative model checking
-
-*During this process, observed data, or data and patterns that guided model design and calibration is compared to model output in order to identify if and where there are any systematic differences.*
-
--   *Specify any diagnostics or tests you will use during model checking to assess a model's performance in representing the system of interest.*
--   *For each test, specify the criteria that will you use to interpret the outcome of the test in assessing the model's ability to sufficiently represent the gathered data used to develop and parameterise the model.*
-
-### 4.3.2 Qualitative model checking
-
-*This step is largely informal and case-specific but requires 'face validation' with model users / clients / managers who aren't involved in the development of the model to assess whether the interactions and outcomes of the model are feasible and defensible (Grimm et al. 2014). Other terms for qualitative checking include the "laugh test" or the "pub test," and in addition to checking the model's believability, they build the client or users' confidence in the model (Jakeman, Letcher, and Norton 2006).*
-
--   *Explain how you will qualitatively check the model, and whether and how you will include users and clients in the process. Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.*
-
-### 4.3.3 Assumption violation checks
-
--   *Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.*
--   *If you cannot perform quantitative assumption checks, describe what theoretical justifications would justify a lack of violation of or robustness to model assumptions.*
--   *If you cannot demonstrate or theoretically justify violation or robustness to assumptions, explain why not, and specify whether you will discuss assumption violations and their consequences for interpretation of model outputs.*
--   *The consequences of assumption violations on the interpretation of results should be assessed (Araújo et al. 2019). If assumption violations cannot be avoided, explain describe how you will explore their consequences (To be completed in interim iterations of the preregistration, only if there are departures from assumptions as demonstrated in the planned tests above).*
 
 # 5.0 Model Validation and Evaluation
 
