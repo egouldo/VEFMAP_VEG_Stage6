@@ -403,23 +403,18 @@ Structure estimation: I don't understand this question, so will come back to it.
     -   *Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as dictated by the model description (Grimm et al. 2014).*
     -   *Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.*
 
-## 4.3 Model calibration and validation scheme
+## 4.3 Modelling Workflow and Data Partitioning Scheme
 
--   *Describe how you will validate and check the calibration of the model. The model may be tested on data independent of those used to parameterise the model (external validation), or the model may be cross-validated on random sub-samples of the data used to parameterise the model (internal cross-validation) (Yates et al. 2018; Barnard et al. 2019).*
--   *Describe any model tuning procedures for estimating hyper parameters (if any).*
--   *Justify your choices*
+This section pertains to any data calibration, validation or testing *schemes* that will be implemented. For example, the model may be tested on data independent of those used to parameterise the model (external validation), or the model may be cross-validated on random sub-samples of the data used to parameterise the model (internal cross-validation) (Yates et al. 2018; Barnard et al. 2019). For some types of models, hyper-parameters are estimated from data, and may be tuned on further independent holdouts of the training data, (“validation data”). This section should describe the overall workflow and any related data-partitioning, while section 5 *Model Evaluation and Validation* describes the specific analyses and tests that will be implemented during model evaluation.
 
-### 4.3.2 Describe calibration/validation data
-
--   *If partitioning data for cross-validation:*
-
+- *Briefly describe the overall modelling workflow.*
+- *Describe calibration / tuning / validation data*
+  -   *If partitioning data for cross-validation:*
     -   *Describe the approach specifying the number of folds that will be created and the relative size of each.*
     -   *Describe how will you document and/or share the partitioned data such that the data partitioning and any subsequent modelling based on this partitioning can be computationally reproduced.*
-
--   *If using external / independent holdout data:*
-
+  -   *If using external / independent holdout data:*
     -   *Describe any known differences between the training and validation datasets and the size of the validation dataset.*
-    -   *Describe how will you document and/or share the external data such that any subsequent modelling can be computationally reproduced.*
+    -   *Describe how will you document the the external/independent data such that any subsequent modelling can be computationally reproduced.*
     -   *It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building, please describe the relationship modellers have to model validation data, will independent datasets be known to any modeller or analyst involved in the model building process?*
 
 # 5.0 Model Validation and Evaluation
