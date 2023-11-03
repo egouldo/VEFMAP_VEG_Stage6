@@ -256,10 +256,44 @@ In all cases, we will calibrate to the levels of the vegetation survey locations
 -   *State what needs to be known to proceed with further decision-making about the modelling procedure, and why the analysis is necessary.*
 -   *Explain how you will implement this analysis, as well as any techniques you will use to summarise and explore your data.*
 -   *What method will you use to represent this analysis (graphical, tabular, or otherwise)*
--   *Specify exactly which parts of the data will be used.*
+-   *Specify exactly which parts of subsets of the data will be used.*
 -   *Describe how the results will be interpreted, listing each potential analytic decision, as well as the analysis finding that will trigger each decision, where possible.*
 
 Given the complex nature of this analysis and the uncertainties in the data structure due to the data processing that needs to occur, there are many preliminary checks that may need to be conducted. For example, depending on the vegetation groupings that we decide to use, and how we account for 'zero samples' (see 2.2.1) there may be very different amounts of skew or zero-inflation in the response or predictor variables. Initially, we will need to do simple tests of data distributions within hierarchies to check for data spread and prevalence of zeros or outliers. We will also need to assess the colinearity or interactions between candidate predictor variables to ensure relevant interactions are captured and to reduce model overfitting. Our data are spatially and temporally variable with a relatively large spatial coverage but the data density is not equal across space and time, i.e. some sites have been surveyed more than others and in different years. Random effects for site should account for the spatial bias but we will need to carefully consider the interpretation of the outputs and explore options for accounting for temporal variability.
+
+We will conduct a pilot analysis of a subset of the full data-set in order to develop an initial set of candidate models. This pilot data will consist of both hydrological and vegetation data for a single System, *Campaspe*. Although the last three years of data are missing from the current Campaspe dataset, it still contains observations from multiple years which will facilitate setting up a multi-year model.  The pilot analysis aims to address uncertainties in how best to specify the candidate models, including how some variables should be operationalised, and which variables should be included given issues like multicolinearity. The analysis aims to identify any major issues that we might need to address within our modelling of the full dataset.
+
+Some questions we will investigate are:
+- How do we classify best flow regime based on inundation data?
+- What is the relevant regime time-frame to consider for quantifying the regime? 3 / 5 years, something else?
+- Are there any outliers?
+- What distributional assumptions do we need to make in our models?
+- Will there be issues with zero-inflated count data?
+- [ ] JY / HW to add any questions you might wish to explore here?
+
+To resolve these uncertainties we will conduct some exploratory data analyses, including:
+- [ ] JY / HW to briefly describe any EDA you might wish to do before any model fitting to address these questions? E.g. look at the distributions of certain variables (specify)? What else?
+
+We will also fit two initial models to the preliminary dataset, one for each key response variable (richness, cover):
+
+```{r, eval = FALSE}
+Cov_event_mod <- gam(plant_hits/point_samples ~ 
+Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
+Grazing + 			# Fixed effect of grazing (binary, pres/absent)
+                      	s(Transect, bs='re') +		# Random effect for Transect
+                      	s(Site, bs='re'),      		# Random effect for Site
+		#s(System, bs='re') +		# Random effect for System, not to be implemented in pilot analysis
+		data=Data_springfresh_subset, family=binomial("logit"), method='REML' )
+
+Rich_event_mod <- gam(richness ~ 
+Year*Period*Zone*Origin +  	# fixed effects for year, period (before/after), treatment zone, and origin (native/exotic) and their interactions
+Grazing + 			# Fixed effect of grazing
+                      	s(Transect, bs='re') +		# Random effect for Transect
+                      	s(Site, bs='re'),      		# Random effect for Site
+		#s(System, bs='re') +		# Random effect for System, not implemented in pilot analysis
+		data=Data_springfresh_subset, family=binomial or ocat [TBC], method='REML' )
+```
+Any models fitted to the pilot dataset will undergo the same model checking & evaluation process as the candidate models fitted to the full dataset unless otherwise specified. Models fitted to the pilot dataset will require a different random-effects structure to accommodate differences in data-structure. For example, no random-effect for 'System' will be used for pilot models, however this random effect will need to be included for the full models where multiple systems will be included in the dataset. 
 
 ### 2.4.4 Data evaluation, exclusion, and missing data
 
@@ -272,7 +306,7 @@ Given the complex nature of this analysis and the uncertainties in the data stru
 
 *Data exclusions* Data will only be excluded if be believe it is incorrect, and it can't be corrected, or it is irrelevant to a particular model/assessment. For example, if evaluating survey intervals relating to spring fresh delivery, we can only include years and sites where such a delivery actually occurred. Incorrect data are easily detercted where values lie outside possible or plausible ranges, but in other cases they can be very difficult to identify - we are confident that the former have been well accounted for in the datasets but the latter is only partially accounted for and there may be some minor errors that we cannot isolate. All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or lifeform, may not be possible to include. The vast majority of these occurrences are for seedlings that are too small to be identified. In most cases seedlings had minimal impact on plant cover, so this would have few implications for evaluation of cover, but this may have a greater impact on species richness. Decisions will need to be made for certain unknown species categories, particularly those that are more common in the dataset. At this stage only species that can reliably assigned to a relevant group for a given model will be included.
 
-*Missing data* There are a small number of cases where we have incomplete or missing data due to various circumstances in the surveys. Currently these are indicated as NA in the dataset and form a small proposrtion of the overall dataset.
+*Missing data* There are a small number of cases where we have incomplete or missing data due to various circumstances in the surveys. Currently these are indicated as NA in the dataset and form a small proportion of the overall dataset.
 
 ## 2.5 Conceptual Model Evaluation
 
