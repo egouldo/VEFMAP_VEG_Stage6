@@ -2,11 +2,11 @@
 # 
 
 ###### Packages
-library(tidyr)
-library(dplyr)
-library(forcats)
-library(ggplot2)
-library(lubridate)
+# library(tidyr)
+# library(dplyr)
+# library(forcats)
+# library(ggplot2)
+# library(lubridate)
 
 ###### Data
 setwd("~/../GIT2/VEFMAP_VEG_Stage6/data")  # This will only work for certain computer setups, setwd to data folder.

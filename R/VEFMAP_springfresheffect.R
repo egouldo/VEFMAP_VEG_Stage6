@@ -13,13 +13,13 @@
 
 
 ###### Packages
-library(tidyverse)
-library(ggplot2)
-library(mgcv)   # for the gamm model
-library(vcd)    # for model checking
-library(lme4)  # for glmer
-library(emmeans)
-library(RColorBrewer)
+# library(tidyverse)
+# library(ggplot2)
+# library(mgcv)   # for the gamm model
+# library(vcd)    # for model checking
+# library(lme4)  # for glmer
+# library(emmeans)
+# library(RColorBrewer)
 
 ###### Data
 
