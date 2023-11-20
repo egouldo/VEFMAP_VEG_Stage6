@@ -9,7 +9,7 @@ load_coordinates <- function(recompile = FALSE) {
     # load saved version if it exists and recompilation isn't required
     filename <- dir(here::here("compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    out <- qread(here::here("compiled_data", filename))
+    site_metadata_cleaned <- qread(here::here("compiled_data", filename))
     
   } else {
     
@@ -116,6 +116,9 @@ load_coordinates <- function(recompile = FALSE) {
           pull(wb_site) |> unique() |> paste(collapse = "")
       ))
     }
+    
+    # save compiled version to file
+    qsave(site_metadata_cleaned, file = "data/compiled_data/gps-compiled.qs")
 
   }
   

@@ -12,6 +12,7 @@
 
 # load some packages (preliminary list for renv tracking)
 library(here)
+library(qs)
 library(readr)
 library(readxl)
 library(dplyr)
