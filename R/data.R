@@ -1,20 +1,20 @@
-# function to load site coordinates and metadata, with some filters, and
-#    with cleaned version saved to compiled_data/gps-compiled.csv
+# function to load site coordinates and metadata, with cleaned version 
+#   saved to data/compiled_data/gps-compiled.qs
 load_coordinates <- function(recompile = FALSE) {
   
   # check if data exist
-  exists <- grepl("gps-compiled", here::here("compiled_data"))
+  exists <- grepl("gps-compiled", here::here("data", "compiled_data"))
   if (any(exists) & !recompile) {
     
     # load saved version if it exists and recompilation isn't required
-    filename <- dir(here::here("compiled_data"))[exists]
+    filename <- dir(here::here("data", "compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    site_metadata_cleaned <- qread(here::here("compiled_data", filename))
+    out <- qread(here::here("data", "compiled_data", filename))
     
   } else {
     
     # load data, subsetted to pilot data set (Campaspe)
-    site_metadata <- readr::read_csv(
+    in <- readr::read_csv(
       here::here("data", "raw_data", "site_data", "GPS_All.csv"),
       skip = 1,
       col_names = c(
@@ -54,7 +54,7 @@ load_coordinates <- function(recompile = FALSE) {
     )
     
     # tidy up fields, splitting up transect/subtransect field if needed    
-    site_metadata_cleaned <- site_metadata |> 
+    out <- in |> 
       dplyr::mutate(
         transect_subtransect = gsub("TDOWN_", "TDOWN-", transect_subtransect)
       ) |>
@@ -80,7 +80,7 @@ load_coordinates <- function(recompile = FALSE) {
       dplyr::select(-transect_split, -metres_split)
     
     # check: everything that has transect and subtransect has metres
-    metres_filled <- site_metadata_cleaned |> 
+    metres_filled <- out |> 
       dplyr::filter(is.na(metres) & !is.na(transect) & !is.na(transect_subtransect))
     if (nrow(metres_filled) > 0) {
       warning(paste0(
@@ -99,7 +99,7 @@ load_coordinates <- function(recompile = FALSE) {
     }
     
     # repeat to check that transect field has been filled
-    transect_filled <- site_metadata_cleaned |>
+    transect_filled <- out |>
       dplyr::filter(is.na(transect) & !is.na(transect_subtransect))
     if (nrow(transect_filled) > 0) {
       warning(paste0(
@@ -118,11 +118,86 @@ load_coordinates <- function(recompile = FALSE) {
     }
     
     # save compiled version to file
-    qsave(site_metadata_cleaned, file = "data/compiled_data/gps-compiled.qs")
-
+    qsave(
+      out, 
+      file = here::here("data", "compiled_data", "gps-compiled.qs")
+    )
+    
   }
   
   # return
   site_metadata_cleaned
+  
+}
+
+# function to load site metadata, with cleaned version saved to
+#   data/compiled-data/metadata-compiled.qs
+load_metadata <- function(recompile = FALSE) {
+  
+  # check if data exist
+  exists <- grepl("metadata-compiled", here::here("data", "compiled_data"))
+  if (any(exists) & !recompile) {
+    
+    # load saved version if it exists and recompilation isn't required
+    filename <- dir(here::here("data", "compiled_data"))[exists]
+    filename <- sort(filename, decreasing = TRUE)[1]
+    site_metadata_cleaned <- qread(here::here("data", "compiled_data", filename))
+    
+  } else {
+    
+    # load data, subsetted to pilot data set (Campaspe)
+    out <- readr::read_csv(
+      here::here("data", "raw_data", "site_data", "VEFMAPS6_Site_Metadata.csv"),
+      skip = 1,
+      col_names = c(
+        "system",
+        "waterbody",
+        "site",
+        "reach",
+        "transect",
+        "grazing",
+        "sheep_cattle",
+        "exclosure",
+        "exclosure_con",
+        "exc_install", 
+        "soil_moisture",
+        "flow_logger",
+        "springfresh_m_ahd",
+        "baseflow_m_ahd",
+        "ahd_correlation_level",
+        "ahd_old",
+        "spfresh_diff",
+        "bsflow_diff",
+        "ivtflow",
+        "ivtflow_diff"
+      ),
+      col_types =  cols(
+        .default = col_double(),
+        system = col_character(),
+        waterbody = col_character(),
+        site = col_character(),
+        reach = col_character(),
+        transect = col_character(),
+        grazing = col_character(),
+        sheep_cattle = col_character(),
+        exclosure = col_character(),
+        exclosure_con = col_character(),
+        soil_moisture = col_character(),
+        flow_logger = col_character()
+      )
+    )
+    
+    # add reach info from AAEDB
+    ## TODO
+    
+    # save compiled version to file
+    qsave(
+      out, file = here::here("data", "compiled_data", "metadata-compiled.qs")
+    )
+    
+  }
+  
+  # return
+  out
   
 }
