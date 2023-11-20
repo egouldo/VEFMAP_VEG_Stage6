@@ -14,7 +14,7 @@ load_coordinates <- function(recompile = FALSE) {
   } else {
     
     # load data, subsetted to pilot data set (Campaspe)
-    in <- readr::read_csv(
+    input <- readr::read_csv(
       here::here("data", "raw_data", "site_data", "GPS_All.csv"),
       skip = 1,
       col_names = c(
@@ -54,7 +54,7 @@ load_coordinates <- function(recompile = FALSE) {
     )
     
     # tidy up fields, splitting up transect/subtransect field if needed    
-    out <- in |> 
+    out <- input |> 
       dplyr::mutate(
         transect_subtransect = gsub("TDOWN_", "TDOWN-", transect_subtransect)
       ) |>
