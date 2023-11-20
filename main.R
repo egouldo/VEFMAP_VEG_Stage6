@@ -8,7 +8,7 @@
 # Contact: jdl.yen [at] gmail.com
 
 # Date created: 16 November 2023
-# Last updated: 16 November 2023
+# Last updated: 21 November 2023
 
 # load some packages (preliminary list for renv tracking)
 library(here)
@@ -16,11 +16,28 @@ library(readr)
 library(readxl)
 library(dplyr)
 library(tidyr)
+library(stringr)
 library(mgcv)
 library(performance)
 library(ggplot2)
 
-# load helper functions
-# source("R/...")
+# set project root
+here::i_am()
 
-# load data, subsetted to pilot data set (Campaspe)
+# load helper functions
+source("R/data.R")
+
+# load site info
+coords <- load_coordinates()
+site_info <- load_metadata()
+
+
+## LOAD DATA, CLASSIFY SITES INTO ZONES (ABOVE/BELOW BS/SPR THRESHOLDS, PLUS MARGINAL ZONE)
+##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
+##           and 3 and 4 are pre/post summer event), with other factors
+
+## Modle should have (TERM | PFG / SPECIES) in it
+
+## DISPLAY OUTPUTS IN NEAT WAY.
+
+
