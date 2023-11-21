@@ -3,13 +3,13 @@
 load_coordinates <- function(recompile = FALSE) {
   
   # check if data exist
-  exists <- grepl("gps-compiled", here::here("data", "compiled_data"))
+  exists <- grepl("gps-compiled", dir(here::here("data", "compiled_data")))
   if (any(exists) & !recompile) {
     
     # load saved version if it exists and recompilation isn't required
     filename <- dir(here::here("data", "compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    out <- qread(here::here("data", "compiled_data", filename))
+    out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
     
@@ -39,17 +39,17 @@ load_coordinates <- function(recompile = FALSE) {
         "point_id",
         "old_gps_height"
       ),
-      col_types =  cols(
-        .default = col_double(),
-        system = col_character(),
-        waterbody = col_character(),
-        site = col_character(),
-        transect = col_character(),
-        metres = col_character(),
-        transect_subtransect = col_character(),
-        gps_note = col_character(),
-        gps_date = col_character(),
-        datafile = col_character()
+      col_types =  readr::cols(
+        .default = readr::col_double(),
+        system = readr::col_character(),
+        waterbody = readr::col_character(),
+        site = readr::col_character(),
+        transect = readr::col_character(),
+        metres = readr::col_character(),
+        transect_subtransect = readr::col_character(),
+        gps_note = readr::col_character(),
+        gps_date = readr::col_character(),
+        datafile = readr::col_character()
       )
     )
     
@@ -87,14 +87,16 @@ load_coordinates <- function(recompile = FALSE) {
         "transect_subtransect has not been split correctly; ",
         "check transect and metres for ",
         metres_filled |> 
-          mutate(
+          dplyr::mutate(
             wb_site = paste0(
               "\n",
               paste(waterbody, site, sep = ": "),
               " (", transect, ")"
             )
           ) |>
-          pull(wb_site) |> unique() |> paste(collapse = "")
+          dplyr::pull(wb_site) |> 
+          unique() |> 
+          paste(collapse = "")
       ))
     }
     
@@ -106,19 +108,21 @@ load_coordinates <- function(recompile = FALSE) {
         "transect_subtransect has not been split correctly; ",
         "check transect and metres for ",
         metres_filled |> 
-          mutate(
+          dplyr::mutate(
             wb_site = paste0(
               "\n",
               paste(waterbody, site, sep = ": "),
               " (", transect, ")"
             )
           ) |>
-          pull(wb_site) |> unique() |> paste(collapse = "")
+          dplyr::pull(wb_site) |> 
+          unique() |> 
+          paste(collapse = "")
       ))
     }
     
     # save compiled version to file
-    qsave(
+    qs::qsave(
       out, 
       file = here::here("data", "compiled_data", "gps-compiled.qs")
     )
@@ -135,13 +139,15 @@ load_coordinates <- function(recompile = FALSE) {
 load_metadata <- function(recompile = FALSE) {
   
   # check if data exist
-  exists <- grepl("metadata-compiled", here::here("data", "compiled_data"))
+  exists <- grepl(
+    "metadata-compiled", dir(here::here("data", "compiled_data"))
+  )
   if (any(exists) & !recompile) {
     
     # load saved version if it exists and recompilation isn't required
     filename <- dir(here::here("data", "compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    site_metadata_cleaned <- qread(here::here("data", "compiled_data", filename))
+    site_metadata_cleaned <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
     
@@ -171,19 +177,19 @@ load_metadata <- function(recompile = FALSE) {
         "ivtflow",
         "ivtflow_diff"
       ),
-      col_types =  cols(
-        .default = col_double(),
-        system = col_character(),
-        waterbody = col_character(),
-        site = col_character(),
-        reach = col_character(),
-        transect = col_character(),
-        grazing = col_character(),
-        sheep_cattle = col_character(),
-        exclosure = col_character(),
-        exclosure_con = col_character(),
-        soil_moisture = col_character(),
-        flow_logger = col_character()
+      col_types = readr::cols(
+        .default = readr::col_double(),
+        system = readr::col_character(),
+        waterbody = readr::col_character(),
+        site = readr::col_character(),
+        reach = readr::col_character(),
+        transect = readr::col_character(),
+        grazing = readr::col_character(),
+        sheep_cattle = readr::col_character(),
+        exclosure = readr::col_character(),
+        exclosure_con = readr::col_character(),
+        soil_moisture = readr::col_character(),
+        flow_logger = readr::col_character()
       )
     )
     
@@ -191,7 +197,126 @@ load_metadata <- function(recompile = FALSE) {
     ## TODO
     
     # save compiled version to file
-    qsave(
+    qs::qsave(
+      out, file = here::here("data", "compiled_data", "metadata-compiled.qs")
+    )
+    
+  }
+  
+  # return
+  out
+  
+}
+
+
+# veg_points <- read.csv("./raw_data/veg_data/VEFMAPS6_Campaspe_2017_2018_2019_2020_Point.csv")
+# function to load site metadata, with cleaned version saved to
+#   data/compiled-data/metadata-compiled.qs
+load_points <- function(system, recompile = FALSE, pilot = TRUE) {
+  
+  # stop if not loading pilot data
+  if (pilot & system != "Campaspe") 
+    stop("Pilot analysis must focus on Campaspe system only", call. = FALSE)
+  
+  # check system is OK
+  sys_list <- c(
+    "Campaspe", 
+    "Glenelg",
+    "Loddon",
+    "Moorabool",
+    "ThomsonMacalister",
+    "Wimmera",
+    "Yarra"
+  )
+  if (!system %in% sys_list) {
+    stop(
+      "system must be one of ",
+      paste(sys_list, collapse = ", "), 
+      call. = FALSE
+    )
+  }
+  
+  # check if data exist
+  exists <- grepl(
+    paste0("points-compiled-", system),
+    dir(here::here("data", "compiled_data"))
+  )
+  if (any(exists) & !recompile) {
+    
+    # load saved version if it exists and recompilation isn't required
+    filename <- dir(here::here("data", "compiled_data"))[exists]
+    filename <- sort(filename, decreasing = TRUE)[1]
+    site_metadata_cleaned <- qs::qread(here::here("data", "compiled_data", filename))
+    
+  } else {
+    
+    # load data, subsetted to pilot data set (Campaspe)
+    exists <- grepl(
+      paste0("VEFMAPS6_", system, ".*", "_Point"),
+      dir(here::here("data", "raw_data", "veg_data"))
+    )
+    filename <- dir(here::here("data", "raw_data", "veg_data"))[exists]
+    filename <- sort(filename, decreasing = TRUE)[1]
+    out <- readr::read_csv(
+      here::here("data", "raw_data", "veg_data", filename),
+      skip = 1,
+      col_names = c(
+        "system",
+        "waterbody",
+        "site",
+        "transect",
+        "subtransect",
+        "metres",
+        "species",
+        "origin",
+        "hits",
+        "height",
+        "date",
+        "survey"
+      ),
+      col_types =  readr::cols(
+        .default = readr::col_character(),
+        metres = readr::col_double(),
+        hits = readr::col_double()
+      )
+    )
+    
+    # fix up date
+    out <- out |>
+      dplyr::mutate(date = readr::parse_date(date, format = "%d/%m/%Y"))
+
+    # and add species info
+    species <- readr::read_csv(
+      here::here("data", "raw_data", "veg_data", "VEFMAP_species_master.csv"),
+      skip = 1,
+      col_names = c(
+        "species",
+        "genus",
+        "family",
+        "origin",
+        "lifeform",
+        "classification",
+        "instream_veg",
+        "wpfg",
+        "wpfg_source",
+        "group",
+        "rec_group"
+      ),
+      col_types =  readr::cols(
+        .default = readr::col_character()
+      )
+    )
+    
+    # ditch repeats for exotic/native litter/bare ground
+    species <- species |>
+      dplyr::filter(!(species %in% c("Bare", "Litter") & origin == "exotic"))
+    
+    # merge with output
+    out <- out |>
+      dplyr::left_join(species, by = "species")
+
+    # save compiled version to file
+    qs::qsave(
       out, file = here::here("data", "compiled_data", "metadata-compiled.qs")
     )
     
