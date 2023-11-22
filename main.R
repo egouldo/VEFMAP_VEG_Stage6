@@ -26,45 +26,45 @@ library(ggplot2)
 source("R/data.R")
 
 # load site info
-coords <- load_coordinates()
-site_info <- load_metadata()
+# TODO: work out difference calculations to align true elev with flow elev
+site_info <- load_metadata(recompile = TRUE)
 
 # read in veg survey data and species information for
 #   pilot data set (Campaspe River)
-veg <- load_points(system = "Campaspe", pilot = TRUE)
+veg_cover <- load_cover(system = "Campaspe", pilot = TRUE, recompile = TRUE)
+veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = TRUE)
 
 # check missing transects and species
 # TODO
-
-# filter out non-target species
-# TODO
-
-# add the thresholds and sub-transect AHD measurements and
-#    calculate flow zones
-coords <- coords |> 
-  mutate(coords_available = 1, metres = as.numeric(metres)) |>
-  left_join(
-    site_info |> mutate(thresholds_available = 1),
-    by = c("system", "waterbody", "site", "transect")
-  ) |>
-  mutate(
-    zone = ifelse(
-      height_ahd < baseflow_m_ahd, "below_baseflow",
-      ifelse(height_ahd < springfresh_m_ahd, "baseflow_to_springfresh",
-             "above_springfresh")
-    )
-  )
+# (won't work with veg directly because currently summing over species)
+# veg |> 
+#   distinct(wpfg, species) |> 
+#   arrange(wpfg, species) |>
+#   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
 
 # add this info into the veg data set
 veg <- veg |>
-  left_join(coords, by = c("system", "waterbody", "site", "transect", "metres"))
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres"))
+
+# load flow data and merge summary metrics with veg
 
 # filter out the data without PFG or zone info
 
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
 ##           and 3 and 4 are pre/post summer event), with other factors
+## HITS out of 40, but two obs exceed 40 (work out what to do with these)
 
 ## Modle should have (TERM | PFG / SPECIES) in it
+mod <- mgcv::gamm((hits / npoint) ~ wpfg * )
+
+Cov_event_mod <- gam(plant_hits/point_samples ~ 
+                       Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
+                       Grazing + 			# Fixed effect of grazing (binary, pres/absent)
+                       s(Transect, bs='re') +		# Random effect for Transect
+                       s(Site, bs='re'),      		# Random effect for Site
+                     #s(System, bs='re') +		# Random effect for System, not to be implemented in pilot analysis
+                     data=Data_springfresh_subset, family=binomial("logit"), method='REML' )
+
 
 ## DISPLAY OUTPUTS IN NEAT WAY.
 
