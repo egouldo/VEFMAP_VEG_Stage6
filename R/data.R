@@ -1,3 +1,23 @@
+# lists of target WPFGs and veg types
+.wpfg_list <- c(
+  "ARp",
+  "ATe",
+  "ATl",
+  "Ate",
+  "Atl",
+  "Se",
+  "Sk",
+  "Tda",
+  "Tdr"
+)
+.classification_list <- c(
+  "Aquatic", 
+  "Emergent", 
+  "Fringing_low",
+  "Fringing_high",
+  "Terrestrial"
+)
+
 # function to load site coordinates and metadata, with cleaned version 
 #   saved to data/compiled_data/gps-compiled.qs
 load_coordinates <- function(recompile = FALSE) {
@@ -65,7 +85,6 @@ load_coordinates <- function(recompile = FALSE) {
         remove = FALSE
       ) |>
       dplyr::mutate(
-        # remove everything except digits in transect_split
         transect_split = stringr::str_remove(
           string = transect_split, pattern = "\\D"
         ),
@@ -78,9 +97,6 @@ load_coordinates <- function(recompile = FALSE) {
         metres = stringr::str_remove(string = metres, pattern = "M")
       ) |> 
       dplyr::select(-transect_split, -metres_split)
-    
-    # TODO: consider adding reach information; requires updated coordinates
-    #   (some appear to be grid info?)
 
     # check: everything that has transect and subtransect has metres
     metres_filled <- out |> 
@@ -155,7 +171,7 @@ load_metadata <- function(recompile = FALSE) {
   } else {
     
     # load data, subsetted to pilot data set (Campaspe)
-    out <- readr::read_csv(
+    input <- readr::read_csv(
       here::here("data", "raw_data", "site_data", "VEFMAPS6_Site_Metadata.csv"),
       skip = 1,
       col_names = c(
@@ -196,6 +212,36 @@ load_metadata <- function(recompile = FALSE) {
       )
     )
     
+    # add the thresholds and sub-transect AHD measurements and
+    #    calculate flow zones
+    coords <- load_coordinates(recompile = recompile)
+    out <- coords |> 
+      mutate(coords_available = 1, metres = as.numeric(metres)) |>
+      left_join(
+        input |> mutate(thresholds_available = 1),
+        by = c("system", "waterbody", "site", "transect")
+      ) |>
+      mutate(
+        zone = ifelse(
+          height_ahd < baseflow_m_ahd, "below_baseflow",
+          ifelse(height_ahd < springfresh_m_ahd, "baseflow_to_springfresh",
+                 "above_springfresh")
+        )
+      )
+    
+    # return a subset of fields for simplicity
+    out <- out |>
+      select(
+        system, waterbody, site, lon, lat, height_ahd, transect, metres,
+        grazing, sheep_cattle, springfresh_m_ahd, baseflow_m_ahd, 
+        ahd_correlation_level, spfresh_diff, bsflow_diff, ivtflow,
+        ivtflow_diff, zone
+      )
+    
+    # and filter out rows without transect info
+    out <- out |>
+      filter(!is.na(transect) & !is.na(metres))
+    
     # save compiled version to file
     qs::qsave(
       out, file = here::here("data", "compiled_data", "metadata-compiled.qs")
@@ -208,10 +254,8 @@ load_metadata <- function(recompile = FALSE) {
   
 }
 
-
-# veg_points <- read.csv("./raw_data/veg_data/VEFMAPS6_Campaspe_2017_2018_2019_2020_Point.csv")
-# function to load site metadata, with cleaned version saved to
-#   data/compiled-data/metadata-compiled.qs
+# function to load point data for a single system, with cleaned version
+#   saved to data/compiled-data/points-compiled-[SYSTEM].qs
 load_points <- function(system, recompile = FALSE, pilot = TRUE) {
   
   # stop if not loading pilot data
@@ -314,6 +358,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     
     # merge with output
     out <- out |>
+      dplyr::select(-origin) |>
       dplyr::left_join(species, by = "species")
 
     # save compiled version to file
@@ -323,6 +368,105 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     )
     
   }
+  
+  # return
+  out
+  
+}
+
+# function to load cover data for a single system
+load_cover <- function(system, recompile = FALSE, pilot = TRUE) {
+  
+  # load pointing data
+  out <- load_points(system = system, recompile = recompile, pilot = pilot)
+  
+  # filter out non-target species
+  out <- out |>
+    filter(
+      classification %in% .classification_list,
+      wpfg %in% .wpfg_list,
+      !is.na(hits)
+    )
+  
+  # calculate cover and fill zeros
+  out <- out |>
+    select(
+      waterbody,
+      site, 
+      transect,
+      metres,
+      hits,
+      date,
+      origin,
+      wpfg
+    ) |>
+    group_by(
+      waterbody, 
+      site,
+      transect,
+      metres, 
+      date, 
+      origin,
+      wpfg
+    ) |>
+    summarise(hits = sum(hits), npoint = 40) |>
+    ungroup() |>
+    mutate(hits = ifelse(hits > npoint, npoint, hits)) |>
+    complete(
+      nesting(waterbody, site, transect, metres, date), 
+      nesting(origin, wpfg),
+      fill = list(hits = 0, npoint = 40)
+    )       
+  
+  # return
+  out
+  
+}
+
+# function to load richness data for a single system
+load_richness <- function(system, recompile = FALSE, pilot = TRUE) {
+  
+  # load pointing data
+  out <- load_points(system = system, recompile = recompile, pilot = pilot)
+  
+  # filter out non-target species
+  out <- out |>
+    filter(
+      classification %in% .classification_list,
+      wpfg %in% .wpfg_list,
+      !is.na(hits)
+    )
+  
+  # calculate cover and fill zeros
+  out <- out |>
+    select(
+      waterbody,
+      site, 
+      transect,
+      metres,
+      hits,
+      date,
+      origin,
+      wpfg,
+      species
+    ) |>
+    group_by(
+      waterbody, 
+      site,
+      transect,
+      metres, 
+      date, 
+      origin,
+      wpfg
+    ) |>
+    filter(hits > 0) |>
+    summarise(richness = length(unique(species))) |>
+    ungroup() |>
+    complete(
+      nesting(waterbody, site, transect, metres, date), 
+      nesting(origin, wpfg),
+      fill = list(richness = 0)
+    )       
   
   # return
   out
