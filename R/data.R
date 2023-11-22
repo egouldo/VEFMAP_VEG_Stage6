@@ -79,6 +79,9 @@ load_coordinates <- function(recompile = FALSE) {
       ) |> 
       dplyr::select(-transect_split, -metres_split)
     
+    # TODO: consider adding reach information; requires updated coordinates
+    #   (some appear to be grid info?)
+
     # check: everything that has transect and subtransect has metres
     metres_filled <- out |> 
       dplyr::filter(is.na(metres) & !is.na(transect) & !is.na(transect_subtransect))
@@ -130,7 +133,7 @@ load_coordinates <- function(recompile = FALSE) {
   }
   
   # return
-  site_metadata_cleaned
+  out
   
 }
 
@@ -147,7 +150,7 @@ load_metadata <- function(recompile = FALSE) {
     # load saved version if it exists and recompilation isn't required
     filename <- dir(here::here("data", "compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    site_metadata_cleaned <- qs::qread(here::here("data", "compiled_data", filename))
+    out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
     
@@ -192,9 +195,6 @@ load_metadata <- function(recompile = FALSE) {
         flow_logger = readr::col_character()
       )
     )
-    
-    # add reach info from AAEDB
-    ## TODO
     
     # save compiled version to file
     qs::qsave(
@@ -246,11 +246,11 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     # load saved version if it exists and recompilation isn't required
     filename <- dir(here::here("data", "compiled_data"))[exists]
     filename <- sort(filename, decreasing = TRUE)[1]
-    site_metadata_cleaned <- qs::qread(here::here("data", "compiled_data", filename))
+    out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
     
-    # load data, subsetted to pilot data set (Campaspe)
+    # load data for a specific site
     exists <- grepl(
       paste0("VEFMAPS6_", system, ".*", "_Point"),
       dir(here::here("data", "raw_data", "veg_data"))
@@ -309,15 +309,17 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     
     # ditch repeats for exotic/native litter/bare ground
     species <- species |>
-      dplyr::filter(!(species %in% c("Bare", "Litter") & origin == "exotic"))
+      dplyr::filter(!(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) |>
+      dplyr::filter(!duplicated(species))
     
     # merge with output
     out <- out |>
       dplyr::left_join(species, by = "species")
 
     # save compiled version to file
+    savename <- paste0("points-compiled-", system, ".qs")
     qs::qsave(
-      out, file = here::here("data", "compiled_data", "metadata-compiled.qs")
+      out, file = here::here("data", "compiled_data", savename)
     )
     
   }
