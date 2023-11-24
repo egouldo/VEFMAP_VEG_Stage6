@@ -89,6 +89,36 @@
       ],
       "Hash": "a45594a00f5dbb073d5ec9f48592a08a"
     },
+    "aae.hydro": {
+      "Package": "aae.hydro",
+      "Version": "0.0.1.9003",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "aae.hydro",
+      "RemoteUsername": "aae-stats",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "ab38b1289c519cb3edd00ceb623d85797ffa4dca",
+      "Requirements": [
+        "R",
+        "dplyr",
+        "httr",
+        "httr2",
+        "jsonlite",
+        "lubridate"
+      ],
+      "Hash": "ee29470c7c2926ca6c791b7caf889403"
+    },
+    "askpass": {
+      "Package": "askpass",
+      "Version": "1.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "sys"
+      ],
+      "Hash": "cad6cf7f1d5f6e906700b9d3e718c796"
+    },
     "base64enc": {
       "Package": "base64enc",
       "Version": "0.1-3",
@@ -255,6 +285,16 @@
         "utils"
       ],
       "Hash": "e8a1e41acf02548751f45c718d55aa6a"
+    },
+    "curl": {
+      "Package": "curl",
+      "Version": "5.1.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "9123f3ef96a2c1a93927d828b2fe7d4c"
     },
     "datawizard": {
       "Package": "datawizard",
@@ -488,6 +528,42 @@
       ],
       "Hash": "2d7b3857980e0e0d0a1fd6f11928ab0f"
     },
+    "httr": {
+      "Package": "httr",
+      "Version": "1.4.7",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "curl",
+        "jsonlite",
+        "mime",
+        "openssl"
+      ],
+      "Hash": "ac107251d9d9fd72f0ca8049988f1d7f"
+    },
+    "httr2": {
+      "Package": "httr2",
+      "Version": "1.0.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "cli",
+        "curl",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "openssl",
+        "rappdirs",
+        "rlang",
+        "vctrs",
+        "withr"
+      ],
+      "Hash": "e2b30f1fc039a0bab047dd52bb20ef71"
+    },
     "insight": {
       "Package": "insight",
       "Version": "0.19.6",
@@ -587,6 +663,19 @@
       ],
       "Hash": "b8552d117e1b808b09a832f589b79035"
     },
+    "lubridate": {
+      "Package": "lubridate",
+      "Version": "1.9.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "generics",
+        "methods",
+        "timechange"
+      ],
+      "Hash": "680ad542fbcf801442c83a6ac5a2126c"
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.3",
@@ -659,6 +748,16 @@
         "utils"
       ],
       "Hash": "8d1938040a05566f4f7a14af4feadd6b"
+    },
+    "openssl": {
+      "Package": "openssl",
+      "Version": "2.1.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "askpass"
+      ],
+      "Hash": "2a0dc8c6adfb6f032e4d4af82d258ab5"
     },
     "performance": {
       "Package": "performance",
@@ -938,6 +1037,13 @@
       ],
       "Hash": "960e2ae9e09656611e0b8214ad543207"
     },
+    "sys": {
+      "Package": "sys",
+      "Version": "3.4.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
+    },
     "tibble": {
       "Package": "tibble",
       "Version": "3.2.1",
@@ -995,6 +1101,17 @@
         "withr"
       ],
       "Hash": "79540e5fcd9e0435af547d885f184fd5"
+    },
+    "timechange": {
+      "Package": "timechange",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11"
+      ],
+      "Hash": "8548b44f79a35ba1791308b61e6012d7"
     },
     "tinytex": {
       "Package": "tinytex",
