@@ -36,7 +36,7 @@ site_info <- load_metadata(recompile = FALSE)
 #   pilot data set (Campaspe River)
 veg_cover <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
-veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = TRUE, ar = FALSE)
+veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
 # TODO: check missing species
 # veg |> 
@@ -58,6 +58,13 @@ veg_cover_ar <- veg_cover_ar |>
     metrics,
     by = c("system", "waterbody", "site", "survey_year", "period")
   )
+veg_richness <- veg_richness |>
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  filter(!is.na(zone)) |>
+  left_join(
+    metrics,
+    by = c("system", "waterbody", "site", "survey_year", "period")
+  )
 
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
 ##           and 3 and 4 are pre/post summer event), with other factors
@@ -67,12 +74,17 @@ veg_cover_ar <- veg_cover_ar |>
 ##   random int/slopes for origin and look at correlations to assess
 ##   how natives and exotics interact
 
+stan_seed <- 2023-11-26
+
+
 ## Modle should have (TERM | PFG / SPECIES) in it
 veg_cover_ar <- veg_cover_ar |>
   mutate(
     log_hits_tm1 = log(hits_tm1 + 1),
     days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-    days_above_springfresh_std = scale(days_above_springfresh)[, 1]
+    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 cover_ar1_mod <- mgcv::gamm(
@@ -97,6 +109,70 @@ cover_ar1_mod <- mgcv::gamm(
   ),
   family = poisson(),
   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+)
+
+
+cover_ar1_mod <- brms::brm(
+  hits ~ log_hits_tm1 +
+    days_above_baseflow_std + days_above_springfresh_std +
+    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+    zone * period +
+    grazing +
+    offset(npoint) +
+    (1 | waterbody) + 
+    (1 | site) +
+    (1 | transect) +
+    (1 | survey_year) +
+    (1 | wpfg),
+    # origin = ~ zone + period + grazing,
+    # wpfg = ~ days_above_baseflow_std + 
+    #   days_above_springfresh_std +
+    #   zone * origin * period,
+    # species = ~ days_above_baseflow_std + 
+    #   days_above_springfresh_std +
+    #   zone * origin * period
+  family = poisson(),
+  data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+)
+
+veg_richness <- veg_richness |>
+  mutate(
+    days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+  ) |>
+  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+richness_mod <- brms::brm(
+  richness ~ days_above_baseflow_std + days_above_springfresh_std +
+    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+    zone * period +
+    grazing +
+    (1 | waterbody) + 
+    (1 | site) +
+    (1 | transect) +
+    (1 | survey_year) +
+    (1 | wpfg),
+  # origin = ~ zone + period + grazing,
+  # wpfg = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period,
+  # species = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period
+  data = veg_richness,
+  family = poisson(),
+  chains = 4,
+  cores = 4,
+  seed = stan_seed,
+  iter = 2000,
+  warmup = 1000,
+  control = list(adapt_delta = 0.8, max_treedepth = 10),
+  backend = "rstan",
+  refresh = 100,
+  silent = 0,
+  threads = brms::threading(3)
 )
 
 # TODO: update pre-reg if required, update git for latest model changes
