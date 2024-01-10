@@ -66,6 +66,17 @@ veg_richness <- veg_richness |>
     by = c("system", "waterbody", "site", "survey_year", "period")
   )
 
+# TODO: sum cover over all species within each wpfg
+veg_cover_ar |>
+  group_by(dkfdj) |>
+  summarise(
+    hits = sum(hits),
+    npoint = unique(npoint),  # each point can have multiple overlapping veg records,
+                              #   so it potentially makes more sense to treat it as
+                              #   40 points with possibility of > 100% cover.
+    hits_tm1 = sum(hits_tm1)
+  )
+
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
 ##           and 3 and 4 are pre/post summer event), with other factors
 ## HITS out of 40, but two obs exceed 40 (work out what to do with these)
@@ -75,7 +86,6 @@ veg_richness <- veg_richness |>
 ##   how natives and exotics interact
 
 stan_seed <- 2023-11-26
-
 
 ## Modle should have (TERM | PFG / SPECIES) in it
 veg_cover_ar <- veg_cover_ar |>
@@ -87,6 +97,39 @@ veg_cover_ar <- veg_cover_ar |>
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+## NEED TO FILTER OUT ALL 0 OR ALL 1 CATEGORIES
+#http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#penalizationhandling-complete-separation
+
+# might need flow metrics-by-zone interactoin to capture that 
+#    flow metrics have different effects in each zone (below base, between base
+#    and spr fresh, above spr fresh)
+
+cover_ar1_mod <- lme4::glmer(
+  hits ~ log_hits_tm1 +
+    days_above_baseflow_std + days_above_springfresh_std +
+    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+#    zone * period +
+    zone + period +
+    grazing +
+    offset(npoint) +
+    # (1 | waterbody) + 
+    # (1 | site) +
+    # (1 | transect) +
+    # (1 | survey_year) +
+    (1 | wpfg),
+  # origin = ~ zone + period + grazing,
+  # wpfg = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period,
+  # species = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period
+  family = poisson(),
+  data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+)
+
+
 cover_ar1_mod <- mgcv::gamm(
   hits ~ log_hits_tm1 +
     s(days_above_baseflow_std) + s(days_above_springfresh_std) +
@@ -144,6 +187,8 @@ veg_richness <- veg_richness |>
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
+
+## DON'T DO THIS ONE, WILL BE TOO SLOW
 richness_mod <- brms::brm(
   richness ~ days_above_baseflow_std + days_above_springfresh_std +
     days_above_baseflow_std_sq + days_above_springfresh_std_sq +
