@@ -8,7 +8,12 @@
 # Contact: jdl.yen [at] gmail.com
 
 # Date created: 16 November 2023
-# Last updated: 22 November 2023
+# Last updated: 10 January 2024
+
+# renv notes:
+#  Check renv is up to date with renv::status()
+#  Whenever changing pacakges, make sure the renv lockfile is updated
+#     with renv::snapshot()
 
 # load some packages (include all dependencies for renv tracking)
 library(here)
@@ -20,6 +25,7 @@ library(tidyr)
 library(lubridate)
 library(stringr)
 library(aae.hydro)
+library(lme4)
 library(mgcv)
 library(performance)
 library(ggplot2)
@@ -34,15 +40,29 @@ site_info <- load_metadata(recompile = FALSE)
 
 # read in veg survey data and species information for
 #   pilot data set (Campaspe River)
-veg_cover <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
+## IGNORE for now, JY to follow up
 # TODO: check missing species
 # veg |> 
 #   distinct(wpfg, species) |> 
 #   arrange(wpfg, species) |>
 #   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
+
+# TODO: sum cover over all species within each wpfg
+veg_cover_ar <- veg_cover_ar |>
+  group_by(
+    waterbody, site, transect, metres, survey, survey_year,
+    period, origin, wpfg
+  ) |>
+  summarise(
+    hits = sum(hits),
+    npoint = unique(npoint),  # each point can have multiple overlapping veg records,
+                              #   so it potentially makes more sense to treat it as
+                              #   40 points with possibility of > 100% cover.
+    hits_tm1 = sum(hits_tm1)
+  )
 
 # load flow data and merge summary metrics with veg
 flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
@@ -66,28 +86,17 @@ veg_richness <- veg_richness |>
     by = c("system", "waterbody", "site", "survey_year", "period")
   )
 
-# TODO: sum cover over all species within each wpfg
-veg_cover_ar |>
-  group_by(dkfdj) |>
-  summarise(
-    hits = sum(hits),
-    npoint = unique(npoint),  # each point can have multiple overlapping veg records,
-                              #   so it potentially makes more sense to treat it as
-                              #   40 points with possibility of > 100% cover.
-    hits_tm1 = sum(hits_tm1)
-  )
-
+## IGNORE FOR NOW
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
 ##           and 3 and 4 are pre/post summer event), with other factors
 ## HITS out of 40, but two obs exceed 40 (work out what to do with these)
 
+## IGNORE FOR NOW
 ## TODO: consider including exotic cover as a predictor OR include
 ##   random int/slopes for origin and look at correlations to assess
 ##   how natives and exotics interact
 
-stan_seed <- 2023-11-26
-
-## Modle should have (TERM | PFG / SPECIES) in it
+# standardise predictors and remove rows with missing flow info
 veg_cover_ar <- veg_cover_ar |>
   mutate(
     log_hits_tm1 = log(hits_tm1 + 1),
@@ -98,13 +107,40 @@ veg_cover_ar <- veg_cover_ar |>
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
-## NEED TO FILTER OUT ALL 0 OR ALL 1 CATEGORIES
-#http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#penalizationhandling-complete-separation
+## Some errors caused by categeroies with all 0 or all 1 values
+## Need to remove these if they occur.
+## http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#penalizationhandling-complete-separation
 
-# might need flow metrics-by-zone interactoin to capture that 
-#    flow metrics have different effects in each zone (below base, between base
-#    and spr fresh, above spr fresh)
+# GENERAL MODEL STRUCTURE BASED ON CHRIS'S INITIAL MODEL
+# Cov_event_mod <- gam(plant_hits/point_samples ~ 
+#                        Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
+#                        Grazing + 			# Fixed effect of grazing (binary, pres/absent)
+#                        s(Transect, bs='re') +		# Random effect for Transect
+#                        s(Site, bs='re'),      		# Random effect for Site
+#                      #s(System, bs='re') +		# Random effect for System, not to be implemented in pilot analysis
+#                      data=Data_springfresh_subset, family=binomial("logit"), method='REML' )
+# 
+# JY RECOMMENDATION: build up to this from a simple base, don't try really high
+#    level interactions to start
+#
+# For richness, consider flow metrics, zone, period, grazing, origin, wpfg,
+#    maybe work towards zone * period interactions and zone * flow_metrics
+#    interactions with random effects for waterbody, site, transect, survey_year
+# 
+# For cover, use a similar structure but add hits_tm1 as an additional fixed predictor
+#    to set up an autoregressive structure (see examples below)
+#
+# Consider TMBB models, or whatever works best given data amount
+#
+# Model distributions:
+#   1. Richness: start with Poisson, consider Negative Binomial or zero-inflated Poisson if issues
+#   2. Cover (autoregressive): consider Poisson with offset(npoint) (shown below),
+#        but could also calculate proportional cover (hits / npoint) and use
+#        a zero-inflated lognormal. Need to include hits_tm1 on the link scale 
+#        in the same model (see below, becomes log_hits_tm1 for poisson, would be
+#        log_proportional_cover_tm1 in lognormal model)
 
+# GLMER version (linear mixed model)
 cover_ar1_mod <- lme4::glmer(
   hits ~ log_hits_tm1 +
     days_above_baseflow_std + days_above_springfresh_std +
@@ -129,7 +165,7 @@ cover_ar1_mod <- lme4::glmer(
   data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
 )
 
-
+# GAMM version (additive mixed model)
 cover_ar1_mod <- mgcv::gamm(
   hits ~ log_hits_tm1 +
     s(days_above_baseflow_std) + s(days_above_springfresh_std) +
@@ -154,30 +190,6 @@ cover_ar1_mod <- mgcv::gamm(
   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
 )
 
-
-cover_ar1_mod <- brms::brm(
-  hits ~ log_hits_tm1 +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    zone * period +
-    grazing +
-    offset(npoint) +
-    (1 | waterbody) + 
-    (1 | site) +
-    (1 | transect) +
-    (1 | survey_year) +
-    (1 | wpfg),
-    # origin = ~ zone + period + grazing,
-    # wpfg = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period,
-    # species = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period
-  family = poisson(),
-  data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
 veg_richness <- veg_richness |>
   mutate(
     days_above_baseflow_std = scale(days_above_baseflow)[, 1],
@@ -188,41 +200,43 @@ veg_richness <- veg_richness |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
 
-## DON'T DO THIS ONE, WILL BE TOO SLOW
-richness_mod <- brms::brm(
-  richness ~ days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    zone * period +
-    grazing +
-    (1 | waterbody) + 
-    (1 | site) +
-    (1 | transect) +
-    (1 | survey_year) +
-    (1 | wpfg),
-  # origin = ~ zone + period + grazing,
-  # wpfg = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period,
-  # species = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period
-  data = veg_richness,
-  family = poisson(),
-  chains = 4,
-  cores = 4,
-  seed = stan_seed,
-  iter = 2000,
-  warmup = 1000,
-  control = list(adapt_delta = 0.8, max_treedepth = 10),
-  backend = "rstan",
-  refresh = 100,
-  silent = 0,
-  threads = brms::threading(3)
-)
+## DON'T DO THIS ONE, WILL BE TOO SLOW, left here so you can see model
+##   structure in possibly closer-to-TMBB syntax
+# richness_mod <- brms::brm(
+#   richness ~ days_above_baseflow_std + days_above_springfresh_std +
+#     days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+#     zone * period +
+#     grazing +
+#     (1 | waterbody) + 
+#     (1 | site) +
+#     (1 | transect) +
+#     (1 | survey_year) +
+#     (1 | wpfg),
+#   # origin = ~ zone + period + grazing,
+#   # wpfg = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period,
+#   # species = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period
+#   data = veg_richness,
+#   family = poisson(),
+#   chains = 4,
+#   cores = 4,
+#   seed = stan_seed,
+#   iter = 2000,
+#   warmup = 1000,
+#   control = list(adapt_delta = 0.8, max_treedepth = 10),
+#   backend = "rstan",
+#   refresh = 100,
+#   silent = 0,
+#   threads = brms::threading(3)
+# )
 
+# IGNORE FOR NOW
 # TODO: update pre-reg if required, update git for latest model changes
-# TODO: assess Bayesian models? (maybe too large; glmmTMB instead?)
 
+# Fall-back option: GAM without random terms
 # Works quickly, r2 near 0.5
 # cover_ar1_mod <- mgcv::gam(
 #   hits ~ log_hits_tm1 +
@@ -233,15 +247,9 @@ richness_mod <- brms::brm(
 #   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
 # )
 
-Cov_event_mod <- gam(plant_hits/point_samples ~ 
-                       Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
-                       Grazing + 			# Fixed effect of grazing (binary, pres/absent)
-                       s(Transect, bs='re') +		# Random effect for Transect
-                       s(Site, bs='re'),      		# Random effect for Site
-                     #s(System, bs='re') +		# Random effect for System, not to be implemented in pilot analysis
-                     data=Data_springfresh_subset, family=binomial("logit"), method='REML' )
 
-
-## DISPLAY OUTPUTS IN NEAT WAY.
-
-
+## TODO: update pre-reg doc based on final model structure
+## TODO: run for all systems (JY to assist with data cleaning)
+## TODO: generate outputs for reporting:
+##    1. estimates of flow effects or zone/period effects
+##    2. plots of veg richness and cover as a function of zone/period/transect
