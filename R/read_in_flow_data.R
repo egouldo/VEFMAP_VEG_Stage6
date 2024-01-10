@@ -1,8 +1,8 @@
 # Read in Streamology Flow data
 # Author: Elliot Gould
 
-library(tidyverse)
-library(readxl)
+# library(tidyverse)
+# library(readxl)
 
 read_flow_dat <- function(filepath, skip_lines = integer(1L), directory) {
   readxl::read_xlsx(paste0(directory, filepath), sheet = 1,skip = skip_lines,trim_ws = TRUE) %>% 

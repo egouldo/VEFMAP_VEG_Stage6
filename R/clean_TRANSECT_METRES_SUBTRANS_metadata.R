@@ -2,7 +2,7 @@
 # Author: Elliot Gould
 # Date: 29 May 2020
 
-library(tidyverse)
+# library(tidyverse)
 
 site_metadata <- readr::read_csv("./data/raw_data/site_data/GPS_All.csv", col_types = 
                                  cols(

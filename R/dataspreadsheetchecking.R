@@ -7,8 +7,8 @@
 #setwd("C:/Users/cj0a/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
 setwd("C:/Users/lv0e/OneDrive - Department of Environment, Land, Water and Planning/R/VEFMAP_VEG_Stage6/VEFMAP_VEG_Stage6/data/raw_data/veg_data")
 
-library(tidyverse)
-library(dplyr)
+# library(tidyverse)
+# library(dplyr)
 
 #read in data
 vegdata <- read.csv("VEFMAPS6_Glenelg_2018_2019_Point.csv")

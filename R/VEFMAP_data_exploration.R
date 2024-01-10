@@ -96,13 +96,13 @@
 
 #+ setup, message = FALSE, fig.keep = "none", fig.show = "hide"
 # SETUP ----
-knitr::opts_chunk$set(cache = TRUE)
-library(here)
-library(lme4)
-library(lubridate)
-library(readxl)
-library(rstanarm)
-library(tidyverse)
+# knitr::opts_chunk$set(cache = TRUE)
+# library(here)
+# library(lme4)
+# library(lubridate)
+# library(readxl)
+# library(rstanarm)
+# library(tidyverse)
 
 # Function to read in recruit or point data.
 read_fun <- function(x) { 
