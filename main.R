@@ -10,6 +10,9 @@
 # Date created: 16 November 2023
 # Last updated: 10 January 2024
 
+# Clear environment
+rm(list = ls()) 
+
 # renv notes:
 #  Check renv is up to date with renv::status()
 #  Whenever changing pacakges, make sure the renv lockfile is updated
@@ -51,7 +54,7 @@ veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE,
 #   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
 
 # TODO: sum cover over all species within each wpfg
-veg_cover_ar <- veg_cover_ar |>
+veg_cover_ar_sum <- veg_cover_ar |>
   group_by(
     waterbody, site, transect, metres, survey, survey_year,
     period, origin, wpfg
@@ -64,6 +67,12 @@ veg_cover_ar <- veg_cover_ar |>
     hits_tm1 = sum(hits_tm1)
   )
 
+# look at this data - come back to this its hard to even look at
+
+ggplot(veg_cover_ar_sum, aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(.~metres)
+ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
+
+
 # load flow data and merge summary metrics with veg
 flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 metrics <- calculate_metrics(flow, site_info)
@@ -72,6 +81,13 @@ metrics <- calculate_metrics(flow, site_info)
 #    values
 # TODO: check missing site info with CJ
 veg_cover_ar <- veg_cover_ar |>
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  filter(!is.na(zone)) |>
+  left_join(
+    metrics,
+    by = c("system", "waterbody", "site", "survey_year", "period")
+  )
+veg_cover_ar_sum <- veg_cover_ar_sum |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
   left_join(
