@@ -46,6 +46,19 @@ site_info <- load_metadata(recompile = FALSE)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
+summary(veg_richness)
+unique(veg_richness$waterbody)
+#[1] "Campaspe"
+unique(veg_richness$site)
+#[1] "Bryants"     "Campbells"   "Doaks"       "English"     "Spencer"     "Strathallan"
+unique(veg_richness$transect)
+#[1] "1"  "10" "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9" 
+unique(veg_richness$period)
+#[1] "after_spring"  "after_summer"  "before_spring"
+unique(veg_richness$origin)
+#[1] "exotic"  "native"  "unknown"
+
+
 ## IGNORE for now, JY to follow up
 # TODO: check missing species
 # veg |> 
@@ -123,6 +136,16 @@ veg_cover_ar <- veg_cover_ar |>
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
+veg_cover_ar_sum <- veg_cover_ar_sum |>
+  mutate(
+    log_hits_tm1 = log(hits_tm1 + 1),
+    days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+  ) |>
+  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
 ## Some errors caused by categeroies with all 0 or all 1 values
 ## Need to remove these if they occur.
 ## http://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#penalizationhandling-complete-separation
@@ -165,7 +188,7 @@ cover_ar1_mod <- lme4::glmer(
     zone + period +
     grazing +
     offset(npoint) +
-    # (1 | waterbody) + 
+    # (1 | waterbody) + # only one for now
     # (1 | site) +
     # (1 | transect) +
     # (1 | survey_year) +
@@ -205,6 +228,15 @@ cover_ar1_mod <- mgcv::gamm(
   family = poisson(),
   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
 )
+
+# above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
+# and build complexity in once we start to understand how the models are behaving.
+
+# lets 
+
+
+
+# now lets model vegetation richness
 
 veg_richness <- veg_richness |>
   mutate(
