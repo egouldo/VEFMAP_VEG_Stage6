@@ -15,7 +15,7 @@ rm(list = ls())
 
 # renv notes:
 #  Check renv is up to date with renv::status()
-#  Whenever changing pacakges, make sure the renv lockfile is updated
+#  Whenever changing packages, make sure the renv lockfile is updated
 #     with renv::snapshot()
 
 # load some packages (include all dependencies for renv tracking)
@@ -32,6 +32,7 @@ library(lme4)
 library(mgcv)
 library(performance)
 library(ggplot2)
+library(glmmTMB)
 
 # load helper functions
 source("R/utils.R")
@@ -46,6 +47,7 @@ site_info <- load_metadata(recompile = FALSE)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
+# take a quick look at the data
 summary(veg_richness)
 unique(veg_richness$waterbody)
 #[1] "Campaspe"
@@ -57,6 +59,9 @@ unique(veg_richness$period)
 #[1] "after_spring"  "after_summer"  "before_spring"
 unique(veg_richness$origin)
 #[1] "exotic"  "native"  "unknown"
+unique(veg_richness$zone)
+#[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
+
 
 
 ## IGNORE for now, JY to follow up
@@ -79,11 +84,6 @@ veg_cover_ar_sum <- veg_cover_ar |>
                               #   40 points with possibility of > 100% cover.
     hits_tm1 = sum(hits_tm1)
   )
-
-# look at this data - come back to this its hard to even look at
-
-ggplot(veg_cover_ar_sum, aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(.~metres)
-ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
 
 
 # load flow data and merge summary metrics with veg
@@ -125,10 +125,13 @@ veg_richness <- veg_richness |>
 ##   random int/slopes for origin and look at correlations to assess
 ##   how natives and exotics interact
 
+## TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
 # standardise predictors and remove rows with missing flow info
 veg_cover_ar <- veg_cover_ar |>
   mutate(
+    pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
+    log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
     days_above_baseflow_std = scale(days_above_baseflow)[, 1],
     days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
@@ -138,13 +141,36 @@ veg_cover_ar <- veg_cover_ar |>
 
 veg_cover_ar_sum <- veg_cover_ar_sum |>
   mutate(
+    pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
+    log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
     days_above_baseflow_std = scale(days_above_baseflow)[, 1],
     days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+# look at this data - come back to this its hard to even look at
+
+hist(veg_cover_ar$hits)
+plot(density(veg_cover_ar$hits))
+
+hist(veg_cover_ar_sum$hits)
+plot(density(veg_cover_ar_sum$hits))
+hist(veg_cover_ar_sum$hits/40*100)
+
+veg_cover_ar_sum %>% 
+  group_by(wpfg) %>%
+  summarise(no_rows = length(hits))
+
+ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
+ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
+
+plot(veg_cover_ar_sum$AQV.A, veg_cover_ar_sum$Tot_Count, pch = 19)
+
+
+
 
 ## Some errors caused by categeroies with all 0 or all 1 values
 ## Need to remove these if they occur.
@@ -232,7 +258,43 @@ cover_ar1_mod <- mgcv::gamm(
 # above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
 # and build complexity in once we start to understand how the models are behaving.
 
-# lets 
+# we will first fit a zero inflated lognormal model. This will be proportional cover
+# (hits/npoints) where some values are greater than 100% cover due to 
+# The model needs a autoregressive fixed effect on the link scale of cover in the previous timestep. 
+
+# lets first fit a series of additive models using the glmmTMB package. 
+# this allows us to easily view model fit diagnostics using the xx function.
+
+
+# glmmTMB version (linear mixed model)
+cover_ar1_TMBmod <- glmmTMB::glmmTMB(
+  pr_cover ~ log_pr_cover_tm1 +
+    days_above_baseflow_std + days_above_springfresh_std +
+    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+    #    zone * period +
+    zone + period +
+    grazing +
+    # (1 | waterbody) + # only one for now
+    # (1 | site) +
+    # (1 | transect) +
+    # (1 | survey_year) +
+    (1 | wpfg),
+  # origin = ~ zone + period + grazing,
+  # wpfg = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period,
+  # species = ~ days_above_baseflow_std + 
+  #   days_above_springfresh_std +
+  #   zone * origin * period
+  family = lognormal(),
+  ziformula=~1,
+  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+)
+
+summary(cover_ar1_TMBmod)
+
+# model 2 with wpfg as a fixed effect, and random effects of site, transect an survey_year
+# flow metrics, zone, period, grazing, origin, wpfg,
 
 
 
