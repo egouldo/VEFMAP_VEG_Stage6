@@ -59,8 +59,6 @@ unique(veg_richness$period)
 #[1] "after_spring"  "after_summer"  "before_spring"
 unique(veg_richness$origin)
 #[1] "exotic"  "native"  "unknown"
-unique(veg_richness$zone)
-#[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
 
 
 
@@ -126,32 +124,42 @@ veg_richness <- veg_richness |>
 ##   how natives and exotics interact
 
 ## TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
-# standardise predictors and remove rows with missing flow info
+# standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
+
+veg_cover_ar$days_above_baseflow_std <- scale(veg_cover_ar$days_above_baseflow)[, 1]
+veg_cover_ar$days_above_springfresh_std <- scale(veg_cover_ar$days_above_springfresh)[, 1]
+
 veg_cover_ar <- veg_cover_ar |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
     log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+   # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+   # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+veg_cover_ar_sum$days_above_baseflow_std <- scale(veg_cover_ar_sum$days_above_baseflow)[, 1]
+veg_cover_ar_sum$days_above_springfresh_std <- scale(veg_cover_ar_sum$days_above_springfresh)[, 1]
 
 veg_cover_ar_sum <- veg_cover_ar_sum |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
     log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+   # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+   # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
 # look at this data - come back to this its hard to even look at
+
+unique(veg_richness$zone)
+#[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
 
 hist(veg_cover_ar$hits)
 plot(density(veg_cover_ar$hits))
@@ -166,10 +174,6 @@ veg_cover_ar_sum %>%
 
 ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
 ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
-
-plot(veg_cover_ar_sum$AQV.A, veg_cover_ar_sum$Tot_Count, pch = 19)
-
-
 
 
 ## Some errors caused by categeroies with all 0 or all 1 values
@@ -264,6 +268,9 @@ cover_ar1_mod <- mgcv::gamm(
 
 # lets first fit a series of additive models using the glmmTMB package. 
 # this allows us to easily view model fit diagnostics using the xx function.
+
+summary(veg_cover_ar_sum)
+
 
 
 # glmmTMB version (linear mixed model)
