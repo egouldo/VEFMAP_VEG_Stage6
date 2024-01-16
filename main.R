@@ -80,7 +80,8 @@ veg_cover_ar_sum <- veg_cover_ar |>
     npoint = unique(npoint),  # each point can have multiple overlapping veg records,
                               #   so it potentially makes more sense to treat it as
                               #   40 points with possibility of > 100% cover.
-    hits_tm1 = sum(hits_tm1)
+    hits_tm1 = sum(hits_tm1),
+    npoint_tm1 = unique(npoint_tm1)
   )
 
 
@@ -133,7 +134,7 @@ veg_cover_ar <- veg_cover_ar |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
-    log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
    # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
    # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
@@ -148,13 +149,32 @@ veg_cover_ar_sum <- veg_cover_ar_sum |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
-    log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
    # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
    # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+# find the minimum proportion cover score for each dataset
+
+min(veg_cover_ar$pr_cover[veg_cover_ar$pr_cover > 0])
+min(veg_cover_ar_sum$pr_cover[veg_cover_ar_sum$pr_cover > 0])
+
+# add half this minumum value to all repsonse values as an added constant for use in lognormal model (as per JY methodology)
+
+veg_cover_ar <- veg_cover_ar |>
+  mutate(
+    pr_cover_tf = pr_cover + (.025*.5),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+  )
+
+veg_cover_ar_sum <- veg_cover_ar_sum |>
+  mutate(
+    pr_cover_tf = pr_cover + (.025*.5),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+  )
 
 # look at this data - come back to this its hard to even look at
 
@@ -166,14 +186,20 @@ plot(density(veg_cover_ar$hits))
 
 hist(veg_cover_ar_sum$hits)
 plot(density(veg_cover_ar_sum$hits))
-hist(veg_cover_ar_sum$hits/40*100)
+
+hist(veg_cover_ar$pr_cover_tf)
+plot(density(veg_cover_ar$pr_cover_tf))
+
+hist(veg_cover_ar_sum$pr_cover_tf)
+plot(density(veg_cover_ar_sum$pr_cover_tf))
 
 veg_cover_ar_sum %>% 
-  group_by(wpfg) %>%
-  summarise(no_rows = length(hits))
+  group_by(wpfg, site, origin) %>%
+  summarise(no_rows = length(hits)) %>% print(n=50)
 
 ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
 ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = hits, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
+
 
 
 ## Some errors caused by categeroies with all 0 or all 1 values
@@ -275,7 +301,7 @@ summary(veg_cover_ar_sum)
 
 # glmmTMB version (linear mixed model)
 cover_ar1_TMBmod <- glmmTMB::glmmTMB(
-  pr_cover ~ log_pr_cover_tm1 +
+  pr_cover_tf ~ log_pr_cover_tm1_tf +
     days_above_baseflow_std + days_above_springfresh_std +
     days_above_baseflow_std_sq + days_above_springfresh_std_sq +
     #    zone * period +

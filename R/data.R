@@ -850,9 +850,9 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE) {
     out_prev <- out |>
       dplyr::mutate(survey = survey + 1) |>
       dplyr::select(
-        waterbody, site, transect, metres, survey, origin, wpfg, species, hits
+        waterbody, site, transect, metres, survey, origin, wpfg, species, hits, npoint
       ) |>
-      dplyr::rename(hits_tm1 = hits)
+      dplyr::rename(hits_tm1 = hits, npoint_tm1 = npoint)
     
     # pull out cover column and merge
     out <- out |>
