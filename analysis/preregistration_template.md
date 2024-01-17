@@ -2,7 +2,7 @@ Ecology and Conservation Modelling Preregistration Template – DRAFT
 ================
 Elliot Gould, Megan Good, Henry Wootton, Jian Yen, TBD:workshop
 collaborators
-12 January, 2024
+17 January, 2024
 
 # 1. Problem Formulation
 

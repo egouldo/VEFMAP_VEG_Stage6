@@ -773,15 +773,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE) {
   
   # load pointing data
   out <- load_points(system = system, recompile = recompile, pilot = pilot)
-  
-  # filter out non-target species
-  out <- out |>
-    dplyr::filter(
-      classification %in% .classification_list,
-      wpfg %in% .wpfg_list,
-      !is.na(hits)
-    )
-  
+
   # calculate cover and fill zeros
   out <- out |>
     dplyr::select(
@@ -866,6 +858,44 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE) {
     out <- out |> dplyr::filter(!is.na(hits_tm1))
     
   }
+  
+  # reload species info to perform post-expansion filtering
+  species <- readr::read_csv(
+    here::here("data", "raw_data", "veg_data", "VEFMAP_species_master.csv"),
+    skip = 1,
+    col_names = c(
+      "species",
+      "genus",
+      "family",
+      "origin",
+      "lifeform",
+      "classification",
+      "instream_veg",
+      "wpfg",
+      "group",
+      "rec_group"
+    ),
+    col_types =  readr::cols(
+      .default = readr::col_character()
+    )
+  )
+  
+  # ditch repeats for exotic/native litter/bare ground
+  species <- species |>
+    dplyr::filter(
+      !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic"),
+      !duplicated(species)
+    )
+  
+  # filter out non-target species
+  #.  (do this after creating the full survey table to avoid
+  #.   dropping some survey locations)
+  out <- out |>
+    left_join(species |> select(-origin, -wpfg), by = "species") |>
+    dplyr::filter(
+      classification %in% .classification_list,
+      wpfg %in% .wpfg_list
+    )
   
   # return
   out
