@@ -38,6 +38,7 @@ library(see)
 library(patchwork)
 library(jtools)
 library(parameters) # extract model params for plotting
+library(interactions)
 
 # load helper functions
 source("R/utils.R")
@@ -88,6 +89,10 @@ veg_cover_ar_sum <- veg_cover_ar |>
     hits_tm1 = sum(hits_tm1),
     npoint_tm1 = unique(npoint_tm1)
   )
+
+# check the values of hits
+
+summary(veg_cover_ar_sum)
 
 
 # load flow data and merge summary metrics with veg
@@ -181,6 +186,12 @@ veg_cover_ar_sum <- veg_cover_ar_sum |>
     log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
   )
 
+# finally create factor that captures differing combinations of plant functional group and origin (native or exotic)
+
+veg_cover_ar$wpfg_ori <- as.factor(paste(veg_cover_ar$wpfg,veg_cover_ar$origin, sep = "_"))
+
+veg_cover_ar_sum$wpfg_ori <- as.factor(paste(veg_cover_ar_sum$wpfg,veg_cover_ar_sum$origin, sep = "_"))
+
 # look at this data - come back to this its hard to even look at
 
 unique(veg_richness$zone)
@@ -201,6 +212,11 @@ plot(density(veg_cover_ar_sum$pr_cover_tf))
 veg_cover_ar_sum %>% 
   group_by(wpfg, site, origin, period, metres, transect, survey) %>%
   summarise(no_rows = length(hits)) %>% print(n=50)
+
+veg_cover_ar_sum %>% 
+  group_by(wpfg,  origin) %>%
+  summarise(no_rows = length(hits)) %>% print(n=50)
+
 
 ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
 ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
@@ -306,670 +322,140 @@ summary(veg_cover_ar_sum)
 # note that fitting lognormal models of proportionate cover performed poorly so we instead move towards poisson or negative binomial models
 # these include an offset of npoints to account for the number of points (effectivly becomes a proportion response?)
 
-# lets fit a simple model without fixed effects to look at fit of random effects
-# poisson with simple zero inflation formula
-cover_ar1_TMBmod <- glmmTMB::glmmTMB(
+# fitting negative binomial and poisson models led us to adopt a poisson model with a zformula of ~ wpfg. Fitting dispersion parameters 
+# did not help the fit so we leave it out. We dont fit an offset of npoint as they are all the same value (40), and fitting it seemed to effect fits. Note also that we exclude two 
+# plant functional groups that may be incorrectly specified data (typos). 
+
+# lets attempt to fit the hydrology model first - try to fit zone also
+cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-  #  days_above_baseflow_std + days_above_springfresh_std +
-   # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
+    days_above_baseflow_std*wpfg_ori + days_above_springfresh_std*wpfg_ori +
+    days_above_baseflow_std^2 + days_above_springfresh_std_sq^2 +
+    #   zone * period +
   #  zone + period +
-  #  grazing +
+  #  grazing + wpfg + origin +
     (1 | site / transect) +
-    (1 | site / period) +
+    #(1 | site / period) +
     (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = poisson(),
-  ziformula=~1,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  # ziformula=~ (1 | site) + (1 | site:transect) + wpfg*zone,
+  # ziformula=~ wpfg*zone,
+  ziformula=~ wpfg_ori,
+  #dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
-summary(cover_ar1_TMBmod)
+summary(cover_ar_TMBmod_1)
+# 
 
 # old school model fit diagnostic plots
 
-plot(fitted(cover_ar1_TMBmod), cover_ar1_TMBmod$frame$hits)
-plot(fitted(cover_ar1_TMBmod) + 1, cover_ar1_TMBmod$frame$hits + 1, log = "xy")
+plot(fitted(cover_ar_TMBmod_1), cover_ar_TMBmod_1$frame$hits)
+plot(fitted(cover_ar_TMBmod_1) + 1, cover_ar_TMBmod_1$frame$hits + 1, log = "xy")
+# 
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
-check_model(cover_ar1_TMBmod)
+check_model(cover_ar_TMBmod_1)
 
-check_predictions(cover_ar1_TMBmod) 
-# looks ok
+check_predictions(cover_ar_TMBmod_1) 
+# 
 
-check_collinearity(cover_ar1_TMBmod)
-# no predictors
+check_collinearity(cover_ar_TMBmod_1)
+# a problem but to be expected in interactions
 
-check_overdispersion(cover_ar1_TMBmod)
-# massively overdispersed
+check_overdispersion(cover_ar_TMBmod_1)
+# still overdispersed
 
-check_zeroinflation(cover_ar1_TMBmod)
-# underfitting zeros
+check_zeroinflation(cover_ar_TMBmod_1)
+# slightly underfitting but pretty good
 
-check_singularity(cover_ar1_TMBmod)
+check_singularity(cover_ar_TMBmod_1)
 # false
 
-# now try a model with a different zformula. This one uses a zone by functional group interaction (accounts for differing amounts of zeros per function group per zone)
+# forrest plot of estiamtes
 
-cover_ar2_TMBmod <- glmmTMB::glmmTMB(
+plot(model_parameters(cover_ar_TMBmod_1))
+
+effect_plot(cover_ar_TMBmod_1, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
+
+effect_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+interact_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, interval = T) + scale_y_continuous(limits=c(0, 5))
+
+interact_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+interact_plot(cover_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+#Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
+  #                        Grazing + 	
+
+# now lets fit the spatial model
+cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
+   # days_above_baseflow_std + days_above_springfresh_std +
+   # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
+    #   zone * period +
+    survey_year*period*zone*origin*wpfg
+  + grazing +
     (1 | site / transect) +
-    (1 | site / period) +
+    #(1 | site / period) +
     (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = poisson(),
-  ziformula=~wpfg*zone,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar2_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar2_TMBmod), cover_ar2_TMBmod$frame$hits)
-plot(fitted(cover_ar2_TMBmod) + 1, cover_ar2_TMBmod$frame$hits + 1, log = "xy")
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar2_TMBmod)
-
-check_predictions(cover_ar2_TMBmod) 
-# looks even better
-
-check_collinearity(cover_ar2_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar2_TMBmod)
-# doesnt work but looks overdispersed from the check_model call
-
-check_zeroinflation(cover_ar2_TMBmod)
-# better but still underfitting zeros
-
-check_singularity(cover_ar2_TMBmod)
-# singular
-
-# now try a model with a different zformula. This one uses random effects in the z formula which make it more flexible
-
-cover_ar3_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = poisson(),
-  ziformula=~ (1 | site) + (1 | site:transect) + wpfg * zone,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar3_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar3_TMBmod), cover_ar3_TMBmod$frame$hits)
-plot(fitted(cover_ar3_TMBmod) + 1, cover_ar3_TMBmod$frame$hits + 1, log = "xy")
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar3_TMBmod)
-
-check_predictions(cover_ar3_TMBmod) 
-# looks ok again
-
-check_collinearity(cover_ar3_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar3_TMBmod)
-# doenst work but above plot looks overdispersed
-
-check_zeroinflation(cover_ar3_TMBmod)
-# underfitting zeros
-
-check_singularity(cover_ar3_TMBmod)
-# singular
-
-# now lets try fitting models with negative binomial dispersion parameters. This should deal better with overdispersion. 
-# simple z formula
-cover_ar4_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ 1 ,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar4_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar4_TMBmod), cover_ar4_TMBmod$frame$hits)
-plot(fitted(cover_ar4_TMBmod) + 1, cover_ar4_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar4_TMBmod)
-
-check_predictions(cover_ar4_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar4_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar4_TMBmod)
-# overdispersed
-
-check_zeroinflation(cover_ar4_TMBmod)
-# does ok
-
-check_singularity(cover_ar4_TMBmod)
-# not singular
-
-# zformula with interaction of functional group and zone
-cover_ar5_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ wpfg*zone ,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar5_TMBmod)
-# convergence issues
-
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar5_TMBmod), cover_ar5_TMBmod$frame$hits)
-plot(fitted(cover_ar5_TMBmod) + 1, cover_ar5_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar5_TMBmod)
-
-check_predictions(cover_ar5_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar5_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar5_TMBmod)
-# error and plot above looks weird
-
-check_zeroinflation(cover_ar5_TMBmod)
-# does ok
-
-check_singularity(cover_ar5_TMBmod)
-# not singular
-
-# zformula with interaction of functional group and zone, as well as zformula random effects 
-cover_ar6_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ (1 | site) + (1 | site:transect) + wpfg*zone ,
-  dispformula = ~ wpfg,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar6_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar6_TMBmod), cover_ar6_TMBmod$frame$hits)
-plot(fitted(cover_ar6_TMBmod) + 1, cover_ar6_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar6_TMBmod)
-
-check_predictions(cover_ar6_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar6_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar6_TMBmod)
-# doenst work and above looked weird
-
-check_zeroinflation(cover_ar6_TMBmod)
-# does ok
-
-check_singularity(cover_ar6_TMBmod)
-# not singular
-
-# lets try some more zformulas
-# first a couple of simple ones
-
-# zformula of functional group alone
-cover_ar7_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  # ziformula=~ (1 | site) + (1 | site:transect) + wpfg*zone,
+  # ziformula=~ wpfg*zone,
   ziformula=~ wpfg,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+  #dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> filter(!wpfg %in% c("Ate", "Atl"))
 )
 
-summary(cover_ar7_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar7_TMBmod), cover_ar7_TMBmod$frame$hits)
-plot(fitted(cover_ar7_TMBmod) + 1, cover_ar7_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar7_TMBmod)
-
-check_predictions(cover_ar7_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar7_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar7_TMBmod)
-# doenst work and above looked weird
-
-check_zeroinflation(cover_ar7_TMBmod)
-# does ok
-
-check_singularity(cover_ar7_TMBmod)
-# singular
-
-# zformula of zone alone
-cover_ar8_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ zone,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar8_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar8_TMBmod), cover_ar8_TMBmod$frame$hits)
-plot(fitted(cover_ar8_TMBmod) + 1, cover_ar8_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar8_TMBmod)
-
-check_predictions(cover_ar8_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar8_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar8_TMBmod)
-# overdispersed
-
-check_zeroinflation(cover_ar8_TMBmod)
-# does ok
-
-check_singularity(cover_ar8_TMBmod)
-# not singular
-
-# zformula of additive functional group and zone
-cover_ar9_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ wpfg + zone,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar9_TMBmod)
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar9_TMBmod), cover_ar9_TMBmod$frame$hits)
-plot(fitted(cover_ar9_TMBmod) + 1, cover_ar9_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar9_TMBmod)
-
-check_predictions(cover_ar9_TMBmod) 
-# ok but was better before
-
-check_collinearity(cover_ar9_TMBmod)
-# no predictors yet
-
-check_overdispersion(cover_ar9_TMBmod)
-# doenst work and above didnt look great but better than before
-
-check_zeroinflation(cover_ar9_TMBmod)
-# does ok
-
-check_singularity(cover_ar9_TMBmod)
-# singular
-
-# zformula of additive functional group and zone and ziformula random effects
-cover_ar10_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    #  days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-    #    zone * period +
-    #  zone + period +
-    #  grazing +
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  family = nbinom2,
-  ziformula=~ (1 | site) + (1 | site:transect) + wpfg + zone,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar10_TMBmod)
-# lots of convergence issues
+summary(cover_ar_TMBmod_2)
+# 
 
 # old school model fit diagnostic plots
 
-plot(fitted(cover_ar10_TMBmod), cover_ar10_TMBmod$frame$hits)
-plot(fitted(cover_ar10_TMBmod) + 1, cover_ar10_TMBmod$frame$hits + 1, log = "xy")
-# looks to be overpredicting cover, esp at small values
+plot(fitted(cover_ar_TMBmod_2), cover_ar_TMBmod_2$frame$hits)
+plot(fitted(cover_ar_TMBmod_2) + 1, cover_ar_TMBmod_2$frame$hits + 1, log = "xy")
+# 
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
-check_model(cover_ar10_TMBmod)
+check_model(cover_ar_TMBmod_2)
 
-check_predictions(cover_ar10_TMBmod) 
-# that just made it worse
+check_predictions(cover_ar_TMBmod_2) 
+# 
 
-check_collinearity(cover_ar10_TMBmod)
-# no predictors yet
+check_collinearity(cover_ar_TMBmod_2)
+# good
 
-check_overdispersion(cover_ar10_TMBmod)
-# overdispersed
+check_overdispersion(cover_ar_TMBmod_2)
+# still overdispersed
 
-check_zeroinflation(cover_ar10_TMBmod)
-# does ok
+check_zeroinflation(cover_ar_TMBmod_2)
+# slightly underfitting zeros
 
-check_singularity(cover_ar10_TMBmod)
-# singular
+check_singularity(cover_ar_TMBmod_2)
+# True
 
+# forrest plot of estiamtes
 
+plot(model_parameters(cover_ar_TMBmod_2))
 
+effect_plot(cover_ar_TMBmod_2, pred = zone  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 40))
 
+effect_plot(cover_ar_TMBmod_2, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
+effect_plot(cover_ar_TMBmod_2, pred = period  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
+effect_plot(cover_ar_TMBmod_2, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
 
-
-
-# model with wpfg as a fixed effect, and random effects of site, transect an survey_year
-# flow metrics, zone, period, grazing, origin, wpfg,
-
-cover_ar4_TMBmod <- glmmTMB::glmmTMB(
-  pr_cover_tf ~ log_pr_cover_tm1_tf +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + #days_above_springfresh_std_sq +
-    #    zone * period +
-    zone + period +
-    grazing + wpfg + origin +
-    # (1 | waterbody) + # only one for now
-     (1 | site) +
-     (1 | transect) +
-     (1 | survey_year) ,
-    #(1 | wpfg),
-  family = lognormal(),
-  ziformula=~zone,
-  data = veg_cover_ar_sum |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar4_TMBmod) # something wrong here
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar1_TMBmod), cover_ar1_TMBmod$frame$hits)
-plot(fitted(cover_ar1_TMBmod) + 1, cover_ar1_TMBmod$frame$hits + 1, log = "xy")
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar4_TMBmod)
-
-check_predictions(cover_ar4_TMBmod) 
-# doesnt work
-
-check_collinearity(cover_ar4_TMBmod)
-
-check_overdispersion(cover_ar4_TMBmod)
-# needs to be poisson family
-
-check_zeroinflation(cover_ar4_TMBmod)
-# needs to be poisson or binomial family
-
-check_singularity(cover_ar4_TMBmod)
-
-# now fit with interactive ziformula of zone and wpfg
-cover_ar5_TMBmod <- glmmTMB::glmmTMB(
-  pr_cover_tf ~ log_pr_cover_tm1_tf +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + #days_above_springfresh_std_sq +
-    #    zone * period +
-    zone + period +
-    grazing + wpfg + origin +
-    # (1 | waterbody) + # only one for now
-    (1 | site) +
-    (1 | transect) +
-    (1 | survey_year) ,
-  #(1 | wpfg),
-  family = lognormal(),
-  ziformula=~ (1 | site) + (1 | site:transect) + zone*wpfg,
-  data = veg_cover_ar_sum |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar5_TMBmod) 
-# old school model fit diagnostic plots
-
-plot(fitted(cover_ar1_TMBmod), cover_ar1_TMBmod$frame$hits)
-plot(fitted(cover_ar1_TMBmod) + 1, cover_ar1_TMBmod$frame$hits + 1, log = "xy")
-
-# now fit with Poisson response
-cover_ar_jian_TMBmod <- glmmTMB::glmmTMB(
-  hits ~ log_hits_tm1 +
-    # days_above_baseflow_std + days_above_springfresh_std +
-    # days_above_baseflow_std_sq + #days_above_springfresh_std_sq +
-    #    zone * period +
-    # zone + period +
-    # grazing + wpfg + origin +
-    # (1 | waterbody) + # only one for now
-    (1 | site / transect) +
-    (1 | site / period) +
-    (1 | metres) +
-    (1 | survey_year) +
-    offset(npoint),
-  #(1 | wpfg),
-  family = poisson(), # negbin1()/negbin2(),
-  ziformula=~ (1 | site) + (1 | site:transect) + zone*wpfg,
-  data = veg_cover_ar_sum #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-plot(fitted(cover_ar_jian_TMBmod), cover_ar_jian_TMBmod$frame$hits)
-plot(fitted(cover_ar_jian_TMBmod) + 1, cover_ar_jian_TMBmod$frame$hits + 1, log = "xy")
-check_model(cover_ar_jian_TMBmod)
-
-# predict(cover_ar_jian_TMBmod, newdata = data.frame(TO_BE_SPECIFIED))
-
-## COULD try binomial family (response is binomial (count) with npoint trials)
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar5_TMBmod)
-
-check_predictions(cover_ar5_TMBmod) 
-# doesnt work
-
-check_collinearity(cover_ar5_TMBmod)
-
-check_overdispersion(cover_ar5_TMBmod)
-# needs to be poisson family
-
-check_zeroinflation(cover_ar5_TMBmod)
-# needs to be poisson or binomial family
-
-check_singularity(cover_ar5_TMBmod)
-
-# now fit with additive ziformula of zone and wpfg
-cover_ar6_TMBmod <- glmmTMB::glmmTMB(
-  pr_cover_tf ~ log_pr_cover_tm1_tf +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + #days_above_springfresh_std_sq +
-    #    zone * period +
-    zone + period +
-    grazing + wpfg + origin +
-    # (1 | waterbody) + # only one for now
-    (1 | site) +
-    (1 | transect) +
-    (1 | survey_year) ,
-  #(1 | wpfg),
-  family = lognormal(),
-  ziformula=~zone+wpfg,
-  data = veg_cover_ar_sum |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar6_TMBmod) # something wrong here
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar6_TMBmod)
-
-check_predictions(cover_ar6_TMBmod) 
-# doesnt work
-
-check_collinearity(cover_ar6_TMBmod)
-
-check_overdispersion(cover_ar6_TMBmod)
-# needs to be poisson family
-
-check_zeroinflation(cover_ar6_TMBmod)
-# needs to be poisson or binomial family
-
-check_singularity(cover_ar6_TMBmod)
-
-# play with model predictions
-
-effect_plot(cover_ar6_TMBmod, pred = days_above_baseflow_std  , interval = TRUE, partial.residuals = TRUE)
-
-effect_plot(cover_ar6_TMBmod, pred = wpfg  , interval = TRUE, partial.residuals = TRUE)
-
-effect_plot(cover_ar6_TMBmod, pred = period  , interval = TRUE, partial.residuals = TRUE)
-
-
-
-# try really simplifying into a few fixed effects
-cover_ar7_TMBmod <- glmmTMB::glmmTMB(
-  pr_cover_tf ~ log_pr_cover_tm1_tf +
- #   days_above_baseflow_std + days_above_springfresh_std +
-  #  days_above_baseflow_std_sq + #days_above_springfresh_std_sq +
-    #    zone * period +
-    zone + period + wpfg +
-   # grazing + wpfg + origin +
-    # (1 | waterbody) + # only one for now
-    (1 | site) +
-    (1 | transect) +
-    (1 | survey_year) ,
-  #(1 | wpfg),
-  family = lognormal(),
-  ziformula=~zone+wpfg,
-  data = veg_cover_ar_sum |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
-
-summary(cover_ar7_TMBmod) # something wrong here
-
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
-
-check_model(cover_ar7_TMBmod)
-
-check_predictions(cover_ar7_TMBmod) 
-# doesnt work
-
-check_collinearity(cover_ar7_TMBmod)
-
-check_overdispersion(cover_ar7_TMBmod)
-# needs to be poisson family
-
-check_zeroinflation(cover_ar7_TMBmod)
-# needs to be poisson or binomial family
-
-check_singularity(cover_ar7_TMBmod)
-
-# play with model predictions
-
-plot(model_parameters(cover_ar7_TMBmod))
-
-effect_plot(cover_ar7_TMBmod, pred = zone  , interval = TRUE, partial.residuals = TRUE)
-
-effect_plot(cover_ar7_TMBmod, pred = wpfg  , interval = TRUE, partial.residuals = TRUE)
-
-effect_plot(cover_ar7_TMBmod, pred = period  , interval = TRUE, partial.residuals = TRUE)
-
-# plot raw data 
+effect_plot(cover_ar_TMBmod_2, pred = days_above_baseflow_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 
 
@@ -985,6 +471,9 @@ veg_richness <- veg_richness |>
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+
+
 
 
 ## DON'T DO THIS ONE, WILL BE TOO SLOW, left here so you can see model
