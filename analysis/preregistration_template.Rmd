@@ -269,31 +269,50 @@ Some questions we will investigate are:
 - Are there any outliers?
 - What distributional assumptions do we need to make in our models?
 - Will there be issues with zero-inflated count data?
-- [ ] JY / HW to add any questions you might wish to explore here?
+- Do the available data support the desired model structures, or do these require simplification?
 
-To resolve these uncertainties we will conduct some exploratory data analyses, including:
-- [ ] JY / HW to briefly describe any EDA you might wish to do before any model fitting to address these questions? E.g. look at the distributions of certain variables (specify)? What else?
+To resolve these uncertainties we will conduct some exploratory data analyses. Specifically, we will visually assess distributions of the response variables, test correlations between all pairs of numerical (non-categorical) predictor variables, and calculate counts of non-zero observations within each category of any categorical variables included in the analysis (accounted for nested structures and interactions).
 
 We will also fit two initial models to the preliminary dataset, one for each key response variable (richness, cover):
 
 ```{r, eval = FALSE}
-Cov_event_mod <- gam(plant_hits/point_samples ~ 
-Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
-Grazing + 			# Fixed effect of grazing (binary, pres/absent)
-                      	s(Transect, bs='re') +		# Random effect for Transect
-                      	s(Site, bs='re'),      		# Random effect for Site
-		#s(System, bs='re') +		# Random effect for System, not to be implemented in pilot analysis
-		data=Data_springfresh_subset, family=binomial("logit"), method='REML' )
+library(glmmTMB)
 
-Rich_event_mod <- gam(richness ~ 
-Year*Period*Zone*Origin +  	# fixed effects for year, period (before/after), treatment zone, and origin (native/exotic) and their interactions
-Grazing + 			# Fixed effect of grazing
-                      	s(Transect, bs='re') +		# Random effect for Transect
-                      	s(Site, bs='re'),      		# Random effect for Site
-		#s(System, bs='re') +		# Random effect for System, not implemented in pilot analysis
-		data=Data_springfresh_subset, family=binomial or ocat [TBC], method='REML' )
+# autoregressive model for cover
+cover_ar_model <- glmmTMB(
+  plant_hits ~ log_plant_hits_tm1 +                                          # specify an autoregressive model structure to model change in plant cover
+    wpfg * origin * (days_above_baseflow + days_above_springfresh) +         # assess group- and origin-specific impacts of broad flow "regimes"
+    wpfg * zone * period * origin                                            # fixed effects for functional group, zone (bank elev.), period (before/after), and origin (with interactions)
+    grazing +                                                                # fixed effect for grazing impacts (binary variable)
+    (1 | site / transect) +   # random effects for transects nested within sites
+    (1 | metres) +            # random effect for location of site up the streambank
+    (1 | survey_year) +       # random effect for survey year
+    family = poisson,         # assume count distribution of plant_hits
+    ziformula = ~ wpfg,       # allow zero-inflation, with functional group-specific parameters
+    data = veg_cover_ar
+)
+
+# model for species richness
+richness_model <- glmmTMB(
+  species_richness ~
+    wpfg * origin * (days_above_baseflow + days_above_springfresh) +         # assess group- and origin-specific impacts of broad flow "regimes"
+    wpfg * zone * period * origin                                            # fixed effects for functional group, zone (bank elev.), period (before/after), and origin (with interactions)
+    grazing +                                                                # fixed effect for grazing impacts (binary variable)
+    (1 | site / transect) +   # random effects for transects nested within sites
+    (1 | metres) +            # random effect for location of site up the streambank
+    (1 | survey_year) +       # random effect for survey year
+    offset(npoint),           # offset to account for number of points measured at each transect
+    family = poisson,         # assume count distribution of plant_hits
+    ziformula = ~ wpfg,       # allow zero-inflation, with functional group-specific parameters
+    data = veg_richness
+)
+
 ```
-Any models fitted to the pilot dataset will undergo the same model checking & evaluation process as the candidate models fitted to the full dataset unless otherwise specified. Models fitted to the pilot dataset will require a different random-effects structure to accommodate differences in data-structure. For example, no random-effect for 'System' will be used for pilot models, however this random effect will need to be included for the full models where multiple systems will be included in the dataset. 
+
+All models fitted to the pilot data set will undergo the same model checks as the candidate models fitted to the full dataset. The primary focus of model checks for the pilot analysis is to identify appropriate model structures, which has two main steps. First, assessing whether model converged and generated reliable parameter estimates, which in the case of the proposed `glmmTMB` models is assessed internally and printed on model return. Second, assessing whether the model structure (particularly the error distribution) is appropriate for the data, which is supported by posterior predictive checks. The details of these steps are provided in section 4.1, below.
+
+It is important to note that models fitted to the pilot dataset may not translate directly to the final analysis due to differences in the data structure. These differences will change the distribution of observations within categories, and will introduce a new random effect for waterbody (or system), which is not required for the single-waterbody pilot analysis. Due to these changes, the final analysis still requires model checking and may require changes to the model structure.
+
 
 ### 2.4.4 Data evaluation, exclusion, and missing data
 
@@ -305,6 +324,9 @@ Any models fitted to the pilot dataset will undergo the same model checking & ev
 *Data reliability* At this stage I am unsure about how we will quantitatively evaluate how reliable the data are for the questions being addressed. Qualitatievely, one of the most important considerations will be to assess how logical the outcomes are in relation to our observations and conceptual understanding. We have a very good moental model of these systems due to the large amounts of fieldwork in various areas over the years collecting the dataset used in this study as well as relevant data for other studies. As for data qualtiy, there are likely to be minor errors in such a large dataset that we cannot detect with our quality checking procedures, however, we are very confident that the data have been consistently collected (almost every survey was led by the same individual with the other surveyors being from a consistent set of experienced individuals), in the same places (all transects were permanently marked and relocated at each survey), and the datat checking process has been extremely thorough (documented in git). All this considered, we believe that this is one of the most reliable vegetation datasets available anywhere in Victoria for its size and complexity.
 
 *Data exclusions* Data will only be excluded if be believe it is incorrect, and it can't be corrected, or it is irrelevant to a particular model/assessment. For example, if evaluating survey intervals relating to spring fresh delivery, we can only include years and sites where such a delivery actually occurred. Incorrect data are easily detercted where values lie outside possible or plausible ranges, but in other cases they can be very difficult to identify - we are confident that the former have been well accounted for in the datasets but the latter is only partially accounted for and there may be some minor errors that we cannot isolate. All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or lifeform, may not be possible to include. The vast majority of these occurrences are for seedlings that are too small to be identified. In most cases seedlings had minimal impact on plant cover, so this would have few implications for evaluation of cover, but this may have a greater impact on species richness. Decisions will need to be made for certain unknown species categories, particularly those that are more common in the dataset. At this stage only species that can reliably assigned to a relevant group for a given model will be included.
+
+[] EG, can you update to note that data were excluded for several groups in the pilot study, where zero-inflation was extreme and their inclusion prevented model fitting. These exclusions may not be required when analysing the full data set.
+
 
 *Missing data* There are a small number of cases where we have incomplete or missing data due to various circumstances in the surveys. Currently these are indicated as NA in the dataset and form a small proportion of the overall dataset.
 
@@ -322,7 +344,9 @@ Any models fitted to the pilot dataset will undergo the same model checking & ev
 
 -   *Describe what modelling framework, approach or class of model you will use to implement your model and relate your choice to the model purpose and analytical objectives described in 1.1.2 and 1.1.3.*
 
-We will use a correlative model approach for this analysis, where we will attempt to detect and describe patterns in recorded vegetation data in relation to a series of covariates. Specifically, the analysis aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diverstiy) within regulated river channels (See 1.1.2). We will initially use generalised linear mixed effects models (GLMM) with binomial family distribution for cover data (successes from trials) and Poisson family for species richness (counts). The exact model family will be determined based on an iterative process of model fitting and model checking (with posterior predictive checks) to ensure that the fitted model family is appropriate for the data being modelled (see Section 3.1.3, below). We believe that GLMMs are a robust approach for our objectives and data structure, with a key feature of the random effects allowing for the hierarchical sampling design and repeated measures.
+We will use a correlative model approach for this analysis, where we will attempt to detect and describe patterns in recorded vegetation data in relation to a series of covariates. Specifically, the analysis aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diverstiy) within regulated river channels (See 1.1.2). We will initially use generalised linear mixed effects models (GLMM) with zero-inflated Poisson family distribution for cover data and species richness (counts). The exact model family will be determined based on an iterative process of model fitting and model checking (with posterior predictive checks) to ensure that the fitted model family is appropriate for the data being modelled (see Section 3.1.3, below). We believe that GLMMs are a robust approach for our objectives and data structure, with a key feature of the random effects allowing for the hierarchical sampling design and repeated measures.
+
+Although alternative distributions may be suitable for cover data (e.g., binomial, beta), these distributions introduce link functions that complicate the specification of an autoregressive model structure. For this reason, a Poisson distribution was used to model cover data, noting that the Poisson approximates the binomial in the limit of a large number of trials. The Poisson distribution, specified with an offset, still models proportional cover but does not constrain values to sit below an upper bound (values must still be non-negative).
 
 ### 3.1.1 Operationalising Model Variables
 
@@ -353,11 +377,12 @@ The two primary response variables are plant cover and species richness (see 1.1
 -   *measures used to specify links,*
 -   *any bins or discretisation of continuous variables (Jakeman, 2006).*
 
-Interactions are expected within the proposed models, such as those between elevation and flow, as well as flow, livestock grazing and weeds. For some model options, flow data may not be required, and elevation may be used as a surrogate for flow (e.g. x elevation represents x flow). In this case, a three-way interaction between elevation, grazing and weeds may be used to evaluate vegetation responses. Event-based (short term) models evaluating hanges before and after an event would require a fourth interacting term for period (before or after event). Isolating the effects of elevation, flow or period could then be done using post-hoc tests. Data structures are broadly defined in 2.3 and 2.4.2 for the different variables proposed for the study. Plant richness data are counts [Poisson], cover data are hits (successes) from points (trials, where n=40 for all sub-transects) [binomial], flow data may take a range of forms indicated earlier, elevation is provided in mAHD but is likely to be input into the model as an ordinal categorical factor with bins based on known elevation of flow events (e.g. freshes), grazing at this stage may be a binomial indicator of presence or absence, or alternatively as a categorical factor indicating the presence/absence of cattle or sheep.
+Interactions are expected within the proposed models, such as those between elevation and flow, as well as flow, livestock grazing and weeds. For some model options, flow data may not be required, and elevation may be used as a surrogate for flow (e.g. x elevation represents x flow). In this case, a three-way interaction between elevation, grazing and weeds may be used to evaluate vegetation responses. Event-based (short term) models evaluating hanges before and after an event would require a fourth interacting term for period (before or after event). Isolating the effects of elevation, flow or period could then be done using post-hoc tests. Data structures are broadly defined in 2.3 and 2.4.2 for the different variables proposed for the study. Plant richness data are counts [Poisson], cover data are hits (successes) from points (trials, where n=40 for all sub-transects) [modelled as Poisson, see Section 3.1], flow data may take a range of forms indicated earlier, elevation is provided in mAHD but is likely to be input into the model as an ordinal categorical factor with bins based on known elevation of flow events (e.g. freshes), grazing at this stage may be a binomial indicator of presence or absence, or alternatively as a categorical factor indicating the presence/absence of cattle or sheep.
 
-The model structure will be refined through the pilot analysis (described in Section a.b.c), one aspect of which will be to assess model convergence with different levels of interactions (model convergence checks are described in Section a.b.c). If models do not converge with the above-specified interactions, higher order interactions will be progressively removed from the model (i.e., three way interactions will be removed, then two-way interactions). Two-way interactions will be removed in the following order (based on their hypothesised ecological importance, see Section 1.x.y): CJ TO FILL.
+The model structure will be refined through the pilot analysis (described in Section 2.4.3), one aspect of which will be to assess model convergence with different levels of interactions (model convergence checks are described in Section a.b.c). If models do not converge with the above-specified interactions, higher order interactions will be progressively removed from the model (i.e., three way interactions will be removed, then two-way interactions).
 
-The following terms will be included as random effects: TO BE DETERMINED (site, year, transect nested within site, point nested within transect, species nested within functional grouping). Random slopes too (effects by functional grouping?). TO BE DISCUSSED WITH CJ.
+The following terms will be included as random effects: transects nested within sites, point location (metres up the streambank), and survey year.
+
 
 ### 3.1.3 Model Class / Family
 
@@ -365,7 +390,12 @@ The following terms will be included as random effects: TO BE DETERMINED (site, 
 -   Justify your decision based on the purpose, objectives, prior knowledge and logistical constraints (Jakeman, 2006) specified in the problem formulation phase.\*
 -   Include in your rational for selection, detail about which variables the model outputs are sensitive to, what aspects of their behaviour are important, and any associated spatial or temporal dimensions in sampling.\*
 
-The two key vegetation response variables have Poisson and binomial families (distributions) as indicated above in 3.1.2. The count data for richness will use a log link function, while the binomial proportion data will use a logit link function. These distributions have been selected based on the type of data and the expected data distributions, however there may be unknown issues with these approaches due to actual data distributions not matching our expectations, such as an unaccounted for high prevalence of zeros in the data. Inflated zeros are likely to occur for both variables but the relative proportion of those among sampling units and how closely these relate with covariates is unknown. A formal sensitivity analysis has not yet been completed and so we are unaware of what variables the model outputs are most sensitive to. The many potential forms of flow and/or elevation data is a key area of possible variation in the variable behaviour, which is currently unknown. There are also many spatial and temporal dimensions associated with the data, such as the hierarchical scales of sub-transect, transect, site, reach, waterway, basin, and State. There will be spatial autocorrelation within the data at each of these levels, such as northern waterways or river basins being more similar to southern counterparts due to climate and geomorphology differences. The extent of the variation among the different spatial scale is currently unknown and is an important aspect of the study to evaluate. Temporal patterns are also important due to the longitudinal nature of the data collection and different seasons of survey (i.e. different proximity to different flow/climate periods). Careful consideration of these aspects will be important in the model design, as per section 2.4.2.
+The two key vegetation response variables have Poisson and binomial families (distributions) as indicated above in 3.1.2, but will both be modelled as zero-inflated Poisson distributions for the reasons outlined in Section 3.1. All models will use a log link function. These distributions have been selected based on the type of data and the expected data distributions, particularly the fact that observations of richness and cover are both recorded as counts but include many zero values. There may be unexpected issues with these approaches due to actual data distributions not matching our expectations, such as an unaccounted for over-dispersion of the data.
+
+A formal sensitivity analysis has not yet been completed and so we are unaware of what variables the model outputs are most sensitive to. The many potential forms of flow and/or elevation data is a key area of possible variation in the variable behaviour, which is currently unknown. There are also many spatial and temporal dimensions associated with the data, such as the hierarchical scales of sub-transect, transect, site, reach, waterway, basin, and State. There will be spatial autocorrelation within the data at each of these levels, such as northern waterways or river basins being more similar to southern counterparts due to climate and geomorphology differences. The extent of the variation among the different spatial scale is currently unknown and is an important aspect of the study to evaluate. Temporal patterns are also important due to the longitudinal nature of the data collection and different seasons of survey (i.e. different proximity to different flow/climate periods). Careful consideration of these aspects will be important in the model design, as per section 2.4.2.
+
+[] EG, can you add some text to reflect that we also might check other count distributions (particularly the negative binomial) to address issues of zero inflation and over-dispersion.
+
 
 ### 3.2 Model Structure and Parameter Estimation
 
@@ -374,6 +404,7 @@ The two key vegetation response variables have Poisson and binomial families (di
 -   *Specify what approach and methods you will use to identify model structure and parameters.*
 
 Initially, our model structure will be based on our conceptual model of the system/response that has also guided our data collection. In this case, we do not have a very large set of potential environmental variables to select from that may or may not be influential. Instead, we have selected variables and monitoring approaches to collect data that reflect our expecations of correlation/causation. Given this, there is unlikely to be a large need for a model selection process where variables are added or removed sequentially to evaluate relative model performance. However, there will be critical evaluation of all model components to determine their value to the model, such as the hierarchical nature of the data and the need (or not) to include all levels of the hierarchy in the final models. The model selection process is an important part of the study in itself and will be described in the resulting paper, particularly where it relates to relative effects of different variables and relative importance of spatial and temporal scales. Additionally, there will be some investigation of the effectiveness/appropriateness of different forms of certain variables, such as: bank elevation (continuous or categorical), vegetation groupings (see section 2.4.2), and flow variables (2.4.2). The primary focus of the model is to evaluate the relative impacts of the key variables in line with the conceptual model and hypotheses, so model performance will align with that objective, including model fit parameters of residual plots, model uncertainty, unexplained variation, degrees of freedom, and fit statistics. Evaluating the model performance for predictive capacity within and beyond the dataset may not be required in the current study as it is likely beyond the scope, but this would involve testing predictive capacity within and between waterways using e.g. a cross-validation approach.
+
 
 ### 3.2.1 Parameter/Structure estimation technique
 
@@ -384,13 +415,20 @@ Initially, our model structure will be based on our conceptual model of the syst
 
 Parameterisation: We will use data-driven parameter estimation using maximum likelihood for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
 
+[] EG, can you update to reflect that we use the `glmmTMB` R package, which uses the [Template Model Builder software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit flexible GLMM-type models (among other things).
+
 Structure estimation: I don't understand this question, so will come back to it.
+[] EG, can you clarify the structure estimation, suspect not relevant given the model structure is determined based on existing knowledge. That said, the pilot study did inform model structures because it identified where models needed to be simlified.
+
 
 ### 3.2.2 Estimation performance criteria
 
 -   *Specify which suite of performance criteria you will use to judge the performance of the model. Examples include correlation scores, coefficient of determination, specificity, sensitivity, AUC, etcetera (Yates et al. 2018). State any numeric thresholds and their qualitative interpretation for judging adequate estimation.*
 -   *Relate any underlying assumptions of each criterion to the desired properties of the model and justify the choice of performance metric in relation into whether it is sensitive to the problem at hand.*
 -   *Explain how you will identify which model features or components are significant or meaningful.*
+
+[] EG can you update to note that R2 is the primary performance criterion used here (used to assess agreement between fitted and observed values), coupled with posterior predictive checks to assess the suitability of model structures. Model features will be identified using visual plots of estimates (forest plots of most coefficients and plots of predicted values under different combinations of the key flow, zone, and period predictor variables).
+
 
 ## 3.3 Model assumptions and uncertainties
 
@@ -402,6 +440,20 @@ Structure estimation: I don't understand this question, so will come back to it.
 
 -   *Once all decisions have been made about the approach and method of model specification, translate the conceptual model into the formal or quantitative model.*
 -   *For data-driven and model-selection approaches that determine model structure and parameters, describe any initial model specifications and parameterisations, including for any tune-in parameters.*
+
+[] EG can you please update to outline the results of hte pilot study:
+ - models were too complex for the data available, and had to be simplified. 
+ - settled on three model structures (all based on those in Section 2.4.3):
+     1. a "flow regime" model, which has the `days_above_baseflow` and `days_above_springfresh` predictors, plus random effects. 
+     2. a "flow events" model (first version), which has a `zone * period` interaction, independent fixed effects for `origin`, `wpfg`, and `grazing`, and random effects, but no `days_above_` predictors.
+     3. a "flow events" model (second version), which has a `wpfg * period` interaction, independent fixed effects for `zone`, `origin`, and `grazing`, and random effects, but no `days_above_` predictors.
+ - rationale for these is to capture the average effects of flows at different levels over multiple years (model 1), the effects on vegetation before and after specific flow events under an assumption that different plant functional groups (`wpfg`s) have different cover levels but similar responses to flows (model 2), and the effects of specific flow events allowing different plant functional groups to differ in their response but assuming that responses in each zone are similar (model 3).
+ - These models are *not* ideal, but full models with three-way interactions did not converge and were unable to generate reliable parameter estimates. Full models will be trialled again with the full data set, but these simplified models will be used if full models do not converge.
+ - posterior predictive checks indicated high levels of zero-inflation and some over-dispersion. Final models allowed zero-inflation parameters to differ among plant functional groups (`ziformula = ~ wpfg`) but did not account for over-dispersion. The most common method to address over-dispersion is with negative binomial models, potentially with group-specific dispersion parameters (e.g., `dispformula = ~ wpfg` as an argument in glmmTMB). However, all attempts to fit negative binomial models resulted in non-convergence. Given the zero-inflated Poisson models converged and reliably captured the proportion of zeros in the data, this approach is proposed for all models.
+ - Need a couple of decision points for the full model:
+     1. Attempt to fit a single model with all data (adding a random effect for `waterbody`), but this may not converge or may not be computationally feasible. In this case, models will be fitted separately for each waterbody as per the pilot study approach.
+     2. May be able to add three-way interactions back in when the full data set is available (but may not). Will test the full three-way `zone * period * wpfg` interaction; if this converges it will be used as the basis for final outputs, if not, the simplified models listed above will be used.
+
 
 # 4.0 Model Calibration, Fitting & Checking
 
@@ -422,12 +474,19 @@ Structure estimation: I don't understand this question, so will come back to it.
 
 -   *Explain how you will qualitatively check the model, and whether and how you will include users and clients in the process. Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.*
 
+[] EG can you please add two points here:
+1. Posterior predictive checks will be used to address zero-inflation and over-dispersion. These are visual checks that compare the distribution of observed data with distributions simulated from the fitted model. Close alignment of the two indicates an appropriate model structure, whereas deviations indicate possible mismatches between the data and the model.
+2. Assessment of estimated associations by field experts (CJ and LV) to identify whether estimated associations are plausible given what is known about the target system.
+
+
 ### 4.1.3 Assumption violation checks
 
 -   *Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.*
 -   *If you cannot perform quantitative assumption checks, describe what theoretical justifications would justify a lack of violation of or robustness to model assumptions.*
 -   *If you cannot demonstrate or theoretically justify violation or robustness to assumptions, explain why not, and specify whether you will discuss assumption violations and their consequences for interpretation of model outputs.*
 -   *The consequences of assumption violations on the interpretation of results should be assessed (Araújo et al. 2019). If assumption violations cannot be avoided, explain describe how you will explore their consequences (To be completed in interim iterations of the preregistration, only if there are departures from assumptions as demonstrated in the planned tests above).*
+
+[] EG to consider whether posterior checks should be mentioned here instead of 4.1.2
 
 ## 4.2 Implementation verification
 
@@ -436,6 +495,9 @@ Structure estimation: I don't understand this question, so will come back to it.
     -   *Tests could include syntax checking of code, and code reviews by peers.*
     -   *Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as dictated by the model description (Grimm et al. 2014).*
     -   *Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.*
+    
+[] EG to update: GH review by JY/HW/EG (anyone who didn't open the PR).
+    
 
 ## 4.3 Modelling Workflow and Data Partitioning Scheme
 
@@ -451,6 +513,9 @@ This section pertains to any data calibration, validation or testing *schemes* t
     -   *Describe how will you document the the external/independent data such that any subsequent modelling can be computationally reproduced.*
     -   *It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building, please describe the relationship modellers have to model validation data, will independent datasets be known to any modeller or analyst involved in the model building process?*
 
+[] EG to update: no data partitioning used given complexity of the analysis and the focus of the work on inference. In-sample model fit calculated with R2, and posterior predictive checks used to assess model appropriateness. EG, should these be covered in section 5.0 rather than 4.x?
+
+
 # 5.0 Model Validation and Evaluation
 
 *Model evaluation including model analysis and other testing complements model checking. By evaluating the model against independent test or holdout data the chance that the model fits the calibration or fitting data well, but has not captured the relevant ecological mechanisms of the system, can be ruled out (Grimm et al. 2014). Collectively, modelling activities in section 4 and 5 provide provide information about the structural realism and therefore credibility of the model (Grimm et al. 2014).*
@@ -459,6 +524,9 @@ This section pertains to any data calibration, validation or testing *schemes* t
 
 -   *State whether you will corroborate the model outputs on external test data, and ensure that any independent validation data is documented in 4.1.2.*
 -   *Testing the model against data that are collected spatially and/or temporally independent from the training dataset minimizes the risk of artificially inflating model performance measures (Araújo et al. 2019). Although the corroboration of model outputs against an independent validation dataset is considered the 'gold standard' for showing that a model properly represents the internal organisation of the system), model validation is not always possible (Grimm, et al. 2014). If you are unable to evaluate the model outputs against independent data, explain why not, and describe what steps you will take to interrogate the model. For example, Independent predictions can instead be tested on submodels, alternatively, patterns in model output that are robust and seem characteristic of the system can be identified and evaluated in consultation with the literature or by experts to judge how accurate the model's output is (Grimm et al.2014).*
+
+[] EG to update: no such tests used in this work given model complexity.
+
 
 ### 5.1.1 Model corroboration performance metrics and criteria
 
