@@ -39,6 +39,8 @@ library(patchwork)
 library(jtools)
 library(parameters) # extract model params for plotting
 library(interactions)
+library(ggforce)
+
 
 # load helper functions
 source("R/utils.R")
@@ -186,7 +188,7 @@ veg_cover_ar_sum <- veg_cover_ar_sum |>
     log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
   )
 
-# finally create factor that captures differing combinations of plant functional group and origin (native or exotic)
+# create factor that captures differing combinations of plant functional group and origin (native or exotic)
 
 veg_cover_ar$wpfg_ori <- as.factor(paste(veg_cover_ar$wpfg,veg_cover_ar$origin, sep = "_"))
 
@@ -220,8 +222,14 @@ veg_cover_ar_sum %>%
 
 ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
 ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
+ggplot(veg_cover_ar_sum, aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + geom_point() 
 
+# finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
+## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
 
+Plotdata <- veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+Plotdata$zone <- ordered(Plotdata$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
+Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
 ## Some errors caused by categeroies with all 0 or all 1 values
 ## Need to remove these if they occur.
@@ -309,13 +317,6 @@ cover_ar1_mod <- mgcv::gamm(
 # above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
 # and build complexity in once we start to understand how the models are behaving.
 
-# we will first fit a zero inflated lognormal model. This will be proportional cover
-# (hits/npoints) where some values are greater than 100% cover due to 
-# The model needs a autoregressive fixed effect on the link scale of cover in the previous timestep. 
-
-# lets first fit a series of additive models using the glmmTMB package. 
-# this allows us to easily view model fit diagnostics using the xx function.
-
 summary(veg_cover_ar_sum)
 
 # glmmTMB version (linear mixed model)
@@ -326,26 +327,25 @@ summary(veg_cover_ar_sum)
 # did not help the fit so we leave it out. We dont fit an offset of npoint as they are all the same value (40), and fitting it seemed to effect fits. Note also that we exclude two 
 # plant functional groups that may be incorrectly specified data (typos). 
 
-# lets attempt to fit the hydrology model first - try to fit zone also
+# lets attempt to fit the hydrology model first -
 cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-    days_above_baseflow_std*wpfg_ori + days_above_springfresh_std*wpfg_ori +
-    days_above_baseflow_std^2 + days_above_springfresh_std_sq^2 +
+    days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
+   # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
     #   zone * period +
   #  zone + period +
-  #  grazing + wpfg + origin +
+  #  grazing + wpfg  +
     (1 | site / transect) +
     #(1 | site / period) +
     (1 | metres) +
     (1 | survey_year),
   # offset(npoint),
   family = poisson,
-  # ziformula=~ (1 | site) + (1 | site:transect) + wpfg*zone,
-  # ziformula=~ wpfg*zone,
-  ziformula=~ wpfg_ori,
+  ziformula=~ wpfg,
   #dispformula =~ wpfg ,
   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
+
 
 summary(cover_ar_TMBmod_1)
 # 
@@ -359,6 +359,8 @@ plot(fitted(cover_ar_TMBmod_1) + 1, cover_ar_TMBmod_1$frame$hits + 1, log = "xy"
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
 check_model(cover_ar_TMBmod_1)
+
+model_performance(cover_ar_TMBmod_1)
 
 check_predictions(cover_ar_TMBmod_1) 
 # 
@@ -379,41 +381,101 @@ check_singularity(cover_ar_TMBmod_1)
 
 plot(model_parameters(cover_ar_TMBmod_1))
 
-effect_plot(cover_ar_TMBmod_1, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+effect_plot(cover_ar_TMBmod_1, pred = log_hits_tm1 , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(cover_ar_TMBmod_1, pred = wpfg , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 effect_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
 
-effect_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+effect_plot(cover_ar_TMBmod_1, pred = days_above_springfresh_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std_sq  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 interact_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, interval = T) + scale_y_continuous(limits=c(0, 5))
 
-interact_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+interact_plot(cover_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, interval = T, plot.points = T) + scale_y_continuous(limits=c(0, 20))
 
-interact_plot(cover_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+interact_plot(cover_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wpfg_ori, plot.points = T) + scale_y_continuous(limits=c(0, 20))
 
-#Year*Period*Zone*Origin +  	# fixed effects for year (1-4), period (before/after), treatment zone (bank elev), and origin (native/exotic) and their interactions
-  #                        Grazing + 	
+# extract and plot model predictions
 
-# now lets fit the spatial model
+HydroPredictDaysabovebaseFunc<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),cover_ar_TMBmod_1,xlevels=20))
+
+c<-mean(veg_cover_ar_sum$days_above_baseflow) 
+d<-sd(veg_cover_ar_sum$days_above_baseflow)
+HydroPredictDaysabovebaseFunc$days_above_baseflow<-(HydroPredictDaysabovebaseFunc$days_above_baseflow_std*d+c)
+
+HydroPredictDaysabovebaseFunc$hits <- HydroPredictDaysabovebaseFunc$fit
+
+HydroPredictDaysabovebaseFuncPlot<-ggplot(HydroPredictDaysabovebaseFunc, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
+  geom_point(data= Plotdata,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above baseflow", y = "Hits")+ theme_bw() +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+HydroPredictDaysabovebaseFuncPlot
+
+HydroPredictDaysabovebaseFuncOri<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg','origin'),cover_ar_TMBmod_1,xlevels=20))
+
+c<-mean(veg_cover_ar_sum$days_above_baseflow) 
+d<-sd(veg_cover_ar_sum$days_above_baseflow)
+HydroPredictDaysabovebaseFuncOri$days_above_baseflow<-(HydroPredictDaysabovebaseFuncOri$days_above_baseflow_std*d+c)
+
+HydroPredictDaysabovebaseFuncOri$hits <- HydroPredictDaysabovebaseFuncOri$fit
+
+HydroPredictDaysabovebaseFuncoriPlot<-ggplot(HydroPredictDaysabovebaseFuncOri, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  #geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
+  geom_point(data= Plotdata ,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above baseflow", y = "Hits")+ theme_bw() + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+HydroPredictDaysabovebaseFuncoriPlot
+
+
+HydroPredictDaysabovespringFunc<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg','origin'),cover_ar_TMBmod_1,xlevels=20))
+c<-mean(veg_cover_ar_sum$days_above_springfresh) 
+d<-sd(veg_cover_ar_sum$days_above_springfresh)
+HydroPredictDaysabovespringFunc$days_above_springfresh<-(HydroPredictDaysabovespringFunc$days_above_springfresh_std*d+c)
+
+HydroPredictDaysabovespringFunc$hits <- HydroPredictDaysabovespringFunc$fit
+
+HydroPredictDaysabovebaseFuncPlot<-ggplot(HydroPredictDaysabovespringFunc, aes(days_above_springfresh, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  #geom_ribbon(aes(ymin = lower, ymax = upper),  fill = "brown1", alpha= 0.1)+
+  geom_point(data= Plotdata,aes(x=days_above_springfresh, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above spring fresh", y = "Hits")+ theme_bw()  + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+HydroPredictDaysabovebaseFuncPlot
+
+
+# now lets fit the 'spatial' or 'flow event' model
+# 
+# first look at flow effects across zone
+
 cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
    # days_above_baseflow_std + days_above_springfresh_std +
    # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
-    #   zone * period +
-    survey_year*period*zone*origin*wpfg
-  + grazing +
+    zone*period +
+     origin + wpfg +
+    grazing +
     (1 | site / transect) +
     #(1 | site / period) +
     (1 | metres) +
     (1 | survey_year),
   # offset(npoint),
   family = poisson,
-  # ziformula=~ (1 | site) + (1 | site:transect) + wpfg*zone,
-  # ziformula=~ wpfg*zone,
   ziformula=~ wpfg,
   #dispformula =~ wpfg ,
-  data = veg_cover_ar_sum |> filter(!wpfg %in% c("Ate", "Atl"))
+  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
+
 
 summary(cover_ar_TMBmod_2)
 # 
@@ -427,6 +489,8 @@ plot(fitted(cover_ar_TMBmod_2) + 1, cover_ar_TMBmod_2$frame$hits + 1, log = "xy"
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
 check_model(cover_ar_TMBmod_2)
+
+model_performance(cover_ar_TMBmod_2)
 
 check_predictions(cover_ar_TMBmod_2) 
 # 
@@ -453,11 +517,137 @@ effect_plot(cover_ar_TMBmod_2, pred = wpfg  , interval = TRUE, partial.residuals
 
 effect_plot(cover_ar_TMBmod_2, pred = period  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
-effect_plot(cover_ar_TMBmod_2, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
+effect_plot(cover_ar_TMBmod_2, pred = survey_year  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
-effect_plot(cover_ar_TMBmod_2, pred = days_above_baseflow_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale_y_continuous(limits=c(0, 60))
+
+# plot model estimates 
+
+EventsPredictZonePeriod<- as.data.frame(Effect(c('zone', 'period'),cover_ar_TMBmod_2,xlevels=20))
+EventsPredictZonePeriod$hits <- EventsPredictZonePeriod$fit
+EventsPredictZonePeriod$zone <- ordered(EventsPredictZonePeriod$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
+EventsPredictZonePeriod$period <- ordered(EventsPredictZonePeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
+
+EventsPredictZonePeriodPlot<-ggplot(EventsPredictZonePeriod, aes(zone, hits, colour = period, group = period)) +
+  geom_point(size = 5, position= position_dodge(0.5))+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
+  geom_point(data= Plotdata,aes(x=zone, y= hits, colour = period), alpha = 0.2,position= position_dodge(0.5))+
+  coord_cartesian(ylim = c(0, 20))+
+  labs(x = "Zone", y = "Hits")+ theme_bw() +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+EventsPredictZonePeriodPlot
+
+EventsPredictZonePeriodPlot2<-ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) +
+  geom_point(size = 5)+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
+  geom_sina(data= Plotdata, alpha = 0.05)+
+  coord_cartesian(ylim = c(0, 20))+
+  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~zone, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(axis.text.x = element_blank(),      # hide iv.y labels
+        axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+        panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"), legend.position = "right") 
+
+EventsPredictZonePeriodPlot2
+  
 
 
+
+# now look at flow effects across functional groups
+
+cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
+  hits ~ log_hits_tm1 +
+    # days_above_baseflow_std + days_above_springfresh_std +
+    # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
+    zone + wpfg * period + 
+     origin + 
+    grazing +
+    (1 | site / transect) +
+    #(1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  ziformula=~ wpfg,
+  #dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+
+summary(cover_ar_TMBmod_3)
+# 
+
+# old school model fit diagnostic plots
+
+plot(fitted(cover_ar_TMBmod_3), cover_ar_TMBmod_3$frame$hits)
+plot(fitted(cover_ar_TMBmod_3) + 1, cover_ar_TMBmod_3$frame$hits + 1, log = "xy")
+# 
+
+# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
+
+check_model(cover_ar_TMBmod_3)
+
+model_performance(cover_ar_TMBmod_3)
+
+check_predictions(cover_ar_TMBmod_3) 
+# 
+
+check_collinearity(cover_ar_TMBmod_3)
+# good
+
+check_overdispersion(cover_ar_TMBmod_3)
+# still overdispersed
+
+check_zeroinflation(cover_ar_TMBmod_3)
+# slightly underfitting zeros
+
+check_singularity(cover_ar_TMBmod_3)
+# True
+
+# forrest plot of estiamtes
+
+plot(model_parameters(cover_ar_TMBmod_3))
+
+effect_plot(cover_ar_TMBmod_3, pred = zone  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 40))
+
+effect_plot(cover_ar_TMBmod_3, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(cover_ar_TMBmod_3, pred = period  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(cover_ar_TMBmod_3, pred = survey_year  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+cat_plot(cover_ar_TMBmod_3, pred = wpfg, modx =  period, plot.points = T) + scale_y_continuous(limits=c(0, 10))
+
+# plot model estimates 
+
+EventsPredictFuncPeriod<- as.data.frame(Effect(c('period', 'wpfg'),cover_ar_TMBmod_3,xlevels=20))
+EventsPredictFuncPeriod$hits <- EventsPredictFuncPeriod$fit
+EventsPredictFuncPeriod$period <- ordered(EventsPredictFuncPeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
+
+EventsPredictFuncPeriodPlot<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg, group = wpfg)) +
+  geom_point(size = 5, position= position_dodge(0.5))+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
+  geom_point(data= Plotdata,aes(x=period, y= hits, colour = wpfg), alpha = 0.2,position= position_dodge(0.5))+
+  coord_cartesian(ylim = c(0, 20))+
+  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+EventsPredictFuncPeriodPlot
+
+EventsPredictFuncPeriodPlot2<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg)) +
+  geom_point(size = 5)+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
+  geom_sina(data= Plotdata, alpha = 0.1)+
+  coord_cartesian(ylim = c(0, 20))+
+  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+        #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+        panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"), legend.position = "right") 
+
+EventsPredictFuncPeriodPlot2
 
 
 
@@ -471,6 +661,87 @@ veg_richness <- veg_richness |>
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+# create factor that captures differing combinations of plant functional group and origin (native or exotic)
+
+veg_richness$wpfg_ori <- as.factor(paste(veg_richness$wpfg,veg_richness$origin, sep = "_"))
+
+
+# lets attempt to fit the additive model to look at model fits under differing distributions
+# tried poisson, then 
+
+richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
+  richness ~ 
+    #days_above_baseflow_std + days_above_springfresh_std +
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+    #   zone * period +
+     zone *period*wpfg +
+      grazing + origin +
+    (1 | site / transect) +
+    #(1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  #ziformula=~ wpfg,
+  dispformula =~ wpfg ,
+  data = veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+
+
+summary(richness_ar_TMBmod_1)
+# 
+
+# old school model fit diagnostic plots
+
+plot(fitted(richness_ar_TMBmod_1), richness_ar_TMBmod_1$frame$hits)
+#plot(fitted(richness_ar_TMBmod_1) + 1, richness_ar_TMBmod_1$frame$hits + 1, log = "xy")
+# 
+
+# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
+
+check_model(richness_ar_TMBmod_1)
+
+model_performance(richness_ar_TMBmod_1)
+
+check_predictions(richness_ar_TMBmod_1) 
+# 
+
+check_collinearity(richness_ar_TMBmod_1)
+# 
+
+check_overdispersion(richness_ar_TMBmod_1)
+# still overdispersed
+
+check_zeroinflation(richness_ar_TMBmod_1)
+# 
+
+check_singularity(richness_ar_TMBmod_1)
+# false
+
+# forrest plot of estiamtes
+
+plot(model_parameters(richness_ar_TMBmod_1))
+
+effect_plot(richness_ar_TMBmod_1, pred = log_hits_tm1 , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_1, pred = wpfg , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
+
+effect_plot(richness_ar_TMBmod_1, pred = days_above_springfresh_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std_sq  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+interact_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, interval = T) + scale_y_continuous(limits=c(0, 5))
+
+interact_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std, modx = wpfg, interval = T, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+interact_plot(richness_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wpfg_ori, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+
+
+
 
 
 

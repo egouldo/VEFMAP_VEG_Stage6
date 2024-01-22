@@ -720,6 +720,22 @@
       ],
       "Hash": "750aba9b42391da33ac290b71a749023"
     },
+    "interactions": {
+      "Package": "interactions",
+      "Version": "1.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "cli",
+        "crayon",
+        "generics",
+        "ggplot2",
+        "jtools",
+        "rlang",
+        "tibble"
+      ],
+      "Hash": "f53a67dc389b1d281b5edecec8a488d9"
+    },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
