@@ -460,8 +460,8 @@ HydroPredictDaysabovebaseFuncPlot
 
 cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-   # days_above_baseflow_std + days_above_springfresh_std +
-   # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
+    #days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
     zone*period +
      origin + wpfg +
     grazing +
@@ -559,7 +559,7 @@ EventsPredictZonePeriodPlot2
 
 cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-    # days_above_baseflow_std + days_above_springfresh_std +
+   # days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
     # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
     zone + wpfg * period + 
      origin + 
@@ -672,23 +672,25 @@ PlotdataRich$zone <- ordered(PlotdataRich$zone, levels = c( "below_baseflow", "b
 PlotdataRich$period <- ordered(PlotdataRich$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
 # lets attempt to fit the additive model to look at model fits under differing distributions
-# tried poisson, then 
+# tried poisson and nbinom with dispersion and ziformulas of wpfg but all had convergence issues so landed again on poisson distributions.
 
+# Regime model
 richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   richness ~ 
-    #days_above_baseflow_std + days_above_springfresh_std +
+    days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
     # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
     #   zone * period +
-     zone *period + zone*wpfg + wpfg*period +
-      grazing + origin +
+    #zone *period + zone*wpfg + wpfg*period +
+   # grazing + origin +
     (1 | site / transect) +
     #(1 | site / period) +
     (1 | metres) +
     (1 | survey_year),
   # offset(npoint),
   family = poisson,
+  #family = nbinom2,
   #ziformula=~ wpfg,
-  dispformula =~ wpfg ,
+  # dispformula =~ wpfg ,
   data = veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
@@ -747,7 +749,137 @@ interact_plot(richness_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wp
 
 # plot model estimates 
 
-RichPredictZonePeriod<- as.data.frame(Effect(c('period', 'zone'),richness_ar_TMBmod_1,xlevels=20))
+RichPredictDaysabovebaseFunc<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),richness_ar_TMBmod_1,xlevels=20))
+
+c<-mean(veg_cover_ar_sum$days_above_baseflow) 
+d<-sd(veg_cover_ar_sum$days_above_baseflow)
+RichPredictDaysabovebaseFunc$days_above_baseflow<-(RichPredictDaysabovebaseFunc$days_above_baseflow_std*d+c)
+
+RichPredictDaysabovebaseFunc$hits <- RichPredictDaysabovebaseFunc$fit
+
+RichPredictDaysabovebaseFuncPlot<-ggplot(RichPredictDaysabovebaseFunc, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
+  geom_point(data= Plotdata,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above baseflow", y = "Species richness")+ theme_bw() +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+RichPredictDaysabovebaseFuncPlot
+
+RichPredictDaysabovebaseFuncOri<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg','origin'),richness_ar_TMBmod_1,xlevels=20))
+
+c<-mean(veg_cover_ar_sum$days_above_baseflow) 
+d<-sd(veg_cover_ar_sum$days_above_baseflow)
+RichPredictDaysabovebaseFuncOri$days_above_baseflow<-(RichPredictDaysabovebaseFuncOri$days_above_baseflow_std*d+c)
+
+RichPredictDaysabovebaseFuncOri$hits <- RichPredictDaysabovebaseFuncOri$fit
+
+RichPredictDaysabovebaseFuncoriPlot<-ggplot(RichPredictDaysabovebaseFuncOri, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  #geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
+  geom_point(data= Plotdata ,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above baseflow", y = "Species richness")+ theme_bw() + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+RichPredictDaysabovebaseFuncoriPlot
+
+
+RichPredictDaysabovespringFunc<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg','origin'),richness_ar_TMBmod_1,xlevels=20))
+c<-mean(veg_cover_ar_sum$days_above_springfresh) 
+d<-sd(veg_cover_ar_sum$days_above_springfresh)
+RichPredictDaysabovespringFunc$days_above_springfresh<-(RichPredictDaysabovespringFunc$days_above_springfresh_std*d+c)
+
+RichPredictDaysabovespringFunc$hits <- RichPredictDaysabovespringFunc$fit
+
+RichPredictDaysabovebaseFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(days_above_springfresh, hits, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 2)+
+  #geom_ribbon(aes(ymin = lower, ymax = upper),  fill = "brown1", alpha= 0.1)+
+  geom_point(data= Plotdata,aes(x=days_above_springfresh, y= hits, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 50))+
+  labs(x = "Days above spring fresh", y = "Species richness")+ theme_bw()  + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+
+RichPredictDaysabovebaseFuncPlot
+
+# Flow event model
+
+richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
+  richness ~ 
+    #days_above_baseflow_std + days_above_springfresh_std +
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+    #   zone * period +
+     zone *period + zone*wpfg + wpfg*period +
+      grazing + origin +
+    (1 | site / transect) +
+    #(1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+ family = poisson,
+  #family = nbinom2,
+  #ziformula=~ wpfg,
+ # dispformula =~ wpfg ,
+  data = veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))|> filter(!wpfg %in% c("Sk", "Se"))
+)
+
+
+summary(richness_ar_TMBmod_2)
+# 
+
+# old school model fit diagnostic plots
+
+plot(fitted(richness_ar_TMBmod_2), richness_ar_TMBmod_2$frame$hits)
+#plot(fitted(richness_ar_TMBmod_2) + 1, richness_ar_TMBmod_2$frame$hits + 1, log = "xy")
+# 
+
+# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
+
+check_model(richness_ar_TMBmod_2)
+
+model_performance(richness_ar_TMBmod_2)
+
+check_predictions(richness_ar_TMBmod_2) 
+# 
+
+check_collinearity(richness_ar_TMBmod_2)
+# 
+
+check_overdispersion(richness_ar_TMBmod_2)
+# Not overdispersed
+
+check_zeroinflation(richness_ar_TMBmod_2)
+# ok
+
+check_singularity(richness_ar_TMBmod_2)
+# false
+
+# forrest plot of estiamtes
+
+plot(model_parameters(richness_ar_TMBmod_2))
+
+effect_plot(richness_ar_TMBmod_2, pred = log_hits_tm1 , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_2, pred = wpfg , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_2, pred = days_above_baseflow_std , interval = TRUE, partial.residuals = T, plot.points = T) + scale_y_continuous(limits=c(0, 100))
+
+effect_plot(richness_ar_TMBmod_2, pred = days_above_springfresh_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+effect_plot(richness_ar_TMBmod_2, pred = days_above_baseflow_std_sq  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+cat_plot(richness_ar_TMBmod_2, pred = zone, modx = period, interval = T, plot.points = T) #+ scale_y_continuous(limits=c(0, 5))
+
+interact_plot(richness_ar_TMBmod_2, pred = days_above_baseflow_std, modx = wpfg, interval = T, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+interact_plot(richness_ar_TMBmod_2, pred = days_above_springfresh_std, modx = wpfg_ori, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+
+
+
+# plot model estimates 
+
+RichPredictZonePeriod<- as.data.frame(Effect(c('period', 'zone'),richness_ar_TMBmod_2,xlevels=20))
 RichPredictZonePeriod$richness <- RichPredictZonePeriod$fit
 RichPredictZonePeriod$period <- ordered(RichPredictZonePeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
 RichPredictZonePeriod$zone <- ordered(RichPredictZonePeriod$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
@@ -757,7 +889,7 @@ RichPredictZonePeriodPlot<-ggplot(RichPredictZonePeriod, aes(zone, richness, col
  # geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
   geom_point(data= PlotdataRich,aes(x=zone, y= richness, colour = period), alpha = 0.2,position= position_dodge(0.5))+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~period) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  labs(x = "Zone", y = "Species richness")+ theme_bw() + facet_grid(~period) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
 RichPredictZonePeriodPlot
@@ -767,7 +899,7 @@ RichPredictZonePeriodPlot2<-ggplot(RichPredictZonePeriod, aes(period, richness, 
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= PlotdataRich, alpha = 0.05)+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~zone, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  labs(x = "Zone", y = "Species richness")+ theme_bw() + facet_grid(~zone, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
@@ -776,7 +908,8 @@ RichPredictZonePeriodPlot2<-ggplot(RichPredictZonePeriod, aes(period, richness, 
 
 RichPredictZonePeriodPlot2
 
-RichPredictZonewpfg<- as.data.frame(Effect(c('zone', 'wpfg'),richness_ar_TMBmod_1,xlevels=20))
+
+RichPredictZonewpfg<- as.data.frame(Effect(c('zone', 'wpfg'),richness_ar_TMBmod_2,xlevels=20))
 RichPredictZonewpfg$richness <- RichPredictZonewpfg$fit
 RichPredictZonewpfg$zone <- ordered(RichPredictZonewpfg$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
 
@@ -785,7 +918,7 @@ RichPredictZonewpfgPlot<-ggplot(RichPredictZonewpfg, aes(zone, richness, colour 
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
   geom_point(data= PlotdataRich,aes(x=zone, y= richness, colour = wpfg), alpha = 0.2,position= position_dodge(0.5))+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  labs(x = "Zone", y = "Species richness")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
 RichPredictZonewpfgPlot
@@ -795,16 +928,16 @@ RichPredictZonewpfgPlot2<-ggplot(RichPredictZonewpfg, aes(zone, richness, colour
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= PlotdataRich, alpha = 0.05)+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(#axis.text.x = element_blank(),      # hide iv.y labels
-    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+  labs(x = "Zone", y = "Species richness")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(axis.text.x = element_blank(),      # hide iv.y labels
+    axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
     panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "right") 
 
 RichPredictZonewpfgPlot2
 
-RichPredictPeriodwpfg<- as.data.frame(Effect(c('period', 'wpfg'),richness_ar_TMBmod_1,xlevels=20))
+RichPredictPeriodwpfg<- as.data.frame(Effect(c('period', 'wpfg'),richness_ar_TMBmod_2,xlevels=20))
 RichPredictPeriodwpfg$richness <- RichPredictPeriodwpfg$fit
 RichPredictPeriodwpfg$period <- ordered(RichPredictPeriodwpfg$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
@@ -813,7 +946,7 @@ RichPredictPeriodwpfgPlot<-ggplot(RichPredictPeriodwpfg, aes(period, richness, c
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
   geom_point(data= PlotdataRich,aes(x=period, y= richness, colour = wpfg), alpha = 0.2,position= position_dodge(0.5))+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  labs(x = "Period", y = "Species richness")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
 RichPredictPeriodwpfgPlot
@@ -823,9 +956,9 @@ RichPredictPeriodwpfgPlot2<-ggplot(RichPredictPeriodwpfg, aes(period, richness, 
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= PlotdataRich, alpha = 0.05)+
   coord_cartesian(ylim = c(0, 7))+
-  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(#axis.text.x = element_blank(),      # hide iv.y labels
-    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+  labs(x = "Period", y = "Species richness")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(axis.text.x = element_blank(),      # hide iv.y labels
+    axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
     panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "right") 
