@@ -414,7 +414,6 @@ Initially, our model structure will be based on our conceptual model of the syst
 
 Parameterisation: We will use data-driven parameter estimation using maximum likelihood for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
 
-[] EG, can you update to reflect that we use the `glmmTMB` R package, which uses the [Template Model Builder software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit flexible GLMM-type models (among other things).
 
 Structure estimation: model structure specification is knowledge-driven rather than data-driven, with further refinement and simplification guided by the results of the pilot analysis (section 2.4.3).
 
