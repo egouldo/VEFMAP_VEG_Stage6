@@ -474,7 +474,7 @@ Structure estimation: I don't understand this question, so will come back to it.
 
 -   *Explain how you will qualitatively check the model, and whether and how you will include users and clients in the process. Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.*
 
-[] EG can you please add two points here:
+Model checking will be undertaken using a combination of qualitative and quantitative analyses with subjective assessment.
 1. Posterior predictive checks will be used to address zero-inflation and over-dispersion. These are visual checks that compare the distribution of observed data with distributions simulated from the fitted model. Close alignment of the two indicates an appropriate model structure, whereas deviations indicate possible mismatches between the data and the model.
 2. Assessment of estimated associations by field experts (CJ and LV) to identify whether estimated associations are plausible given what is known about the target system.
 
