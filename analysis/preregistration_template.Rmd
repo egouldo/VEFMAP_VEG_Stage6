@@ -387,7 +387,7 @@ The following terms will be included as random effects: transects nested within 
 ### 3.1.3 Model Class / Family
 
 -   *Specify which family of statistical distributions you will use in your model, and describe any transformations, or link functions.*
--   Justify your decision based on the purpose, objectives, prior knowledge and logistical constraints (Jakeman, 2006) specified in the problem formulation phase.\*
+-   *Justify your decision based on the purpose, objectives, prior knowledge and logistical constraints (Jakeman, 2006) specified in the problem formulation phase.*
 -   Include in your rational for selection, detail about which variables the model outputs are sensitive to, what aspects of their behaviour are important, and any associated spatial or temporal dimensions in sampling.\*
 
 The two key vegetation response variables have Poisson and binomial families (distributions) as indicated above in 3.1.2, but will both be modelled as zero-inflated Poisson distributions for the reasons outlined in Section 3.1. All models will use a log link function. These distributions have been selected based on the type of data and the expected data distributions, particularly the fact that observations of richness and cover are both recorded as counts but include many zero values. There may be unexpected issues with these approaches due to actual data distributions not matching our expectations, such as an unaccounted for over-dispersion of the data.
