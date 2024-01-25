@@ -418,7 +418,7 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
 [] EG, can you update to reflect that we use the `glmmTMB` R package, which uses the [Template Model Builder software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit flexible GLMM-type models (among other things).
 
 Structure estimation: I don't understand this question, so will come back to it.
-[] EG, can you clarify the structure estimation, suspect not relevant given the model structure is determined based on existing knowledge. That said, the pilot study did inform model structures because it identified where models needed to be simlified.
+Structure estimation: model structure specification is knowledge-driven rather than data-driven, with further refinement and simplification guided by the results of the pilot analysis (section 2.4.3).
 
 
 ### 3.2.2 Estimation performance criteria
