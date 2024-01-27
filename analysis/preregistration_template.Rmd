@@ -7,7 +7,7 @@ output:
 bibliography: ../data/references.bib
 ---
 
-# 1. Problem Formulation
+# [1.0 Problem Formulation](#1.0-problem-formulation) 
 
 ---
 
@@ -18,7 +18,7 @@ Important components include the decision maker and stakeholders (including expe
 
 ---
 
-## 1.1 Model Context and Purpose
+## [1.1 Model Context and Purpose](#1.1-model-context-and-purpose)
 
 ---
 
@@ -34,7 +34,7 @@ Any external limitations on model development, analysis and flexibility should a
 
 ---
 
-### 1.1.1. Key Stakeholders & Model Users
+### [1.1.1. Key Stakeholders & Model Users](#1.1.1-key-stakeholders-and-model-users)
 
 ---
 
@@ -55,7 +55,7 @@ The model formulation is developed by the researchers at ARI, with guidance from
 
 The model outputs, including recommendations, will be shared with decision makers (funders and managers) to guide their respective decisions. Decisions will require multiple inputs, such as the outcomes of this study and others, regulatory frameworks, funding availability, physical and practical constraints, and others. This study does not contribute to those decisions outside of providing the study outputs.
 
-### 1.1.2 Model purpose, context and problem context
+### [1.1.2 Model purpose, context and problem context](#1.1.2-model-purpose-context-and-problem-context)
 
 ---
 
@@ -75,7 +75,7 @@ The ecological problem is related to river regulation. Natural flow regimes are 
 
 The model itself within this study aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diversity) within regulated river channels. Outputs will aim to give practical evidence and the implications of responses to directly improve and guide the management of environmental water delivery for native vegetation benefit. Given that the model will incorporate data from across a number of waterways across a large part of Victoria, the model applications will speak to each of those waterways, as well as potential extrapolation to waterways not surveyed. The models will not aim to provide explicit predictions within the waterways surveyed, or to specific un-surveyed waterways, but extension of these models for prediction will we highlighted for future investigation beyond this study.
 
-### 1.1.3 Analytical purpose
+### [1.1.3 Analytical purpose](#1.1.3-analytical-purpose)
 
 ---
 
@@ -112,7 +112,7 @@ Future research will involve testing scenarios of different flow regimes to what
 
 The three primary users of the model outputs are: 1) funders of environmental water (i.e. state and federal governments) to understand the magnitude of the outcomes of their investment, and the limitations or barriers to benefits; 2) managers of environmental water (i.e. CMAs) to guide and improve management decisions for environmental benefits; and 3) other researchers working in the field of waterway flow management and environmental flows locally and internationally.
 
-### 1.1.4 Logistical Constraints
+### [1.1.4 Logistical Constraints](#1.1.4-logistical-constraints)
 
 ---
 
@@ -125,7 +125,7 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 
 ---
 
-### 1.1.5 Model Scope, Scale and Resolution
+### [1.1.5 Model Scope, Scale and Resolution](#1.1.5-model-scope-scale-and-resolution)
 
 ---
 
@@ -137,7 +137,7 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 
 ---
 
-### 1.1.6 Intended Application of Results
+### [1.1.6 Intended Application of Results](#1.1.6-intended-application-of-results)
 
 ---
 
@@ -155,7 +155,7 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 ---
 
 
-# 2.0 Define Conceptual Model
+# [2.0 Define Conceptual Model](#2.0-define-conceptual-model)
 
 ---
 
@@ -166,7 +166,7 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 ---
 
 
-## 2.1 Elicitation and Representation Method
+## [2.1 Elicitation and Representation Method](#2.1-elicitation-and-representation-method)
 
 ---
 
@@ -179,7 +179,7 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 
 We have developed a series of relevant conceptual models for this work over the past four years that build on previous published work by other researchers, as well as our own research, observations and many discussions. These conceptual models are described in text within program reports and are summarised in diagrams. The models are biological/ecological only and do not include links to decision makers or values as these constrainsts are not within our capability to influence. Therefore, the models primarily summarise the dominant drivers of vegetation attributes (cover, diversity, distribution, composition) within waterways. Not all important drivers are included because it is impossible to account for everything within our study. Our final model for this particular study will be decribed in text and summarised within one or more non-quantitative diagrams.
 
-## 2.2 Explain Critical Conceptual Design Decisions
+## [2.2 Explain Critical Conceptual Design Decisions](#2.2-explain-critical-conceptual-design-decisions)
 
 ---
 
@@ -206,7 +206,7 @@ There is a large amount of heterogeneity in vegetation patterns within and betwe
 
 There are clear local and glabal interactions within our study. Local interactions are dominated by the species abundance and composition of plants within a sample area (plant interactions). Rainfall may also interact with flow events and would influence sites or groups of sites separately. Global interactions include the effect of season (time of year) on the responses, which is largely influenced by day length and temperatures.
 
-### 2.3 Model assumptions and uncertainties
+### [2.3 Model assumptions and uncertainties](#2.3-model-assumptions-and-uncertainties)
 
 ---
 
@@ -237,7 +237,7 @@ There are clear local and glabal interactions within our study. Local interactio
 
 **Structural non-parametric uncertainty** Model uncertainty is a given. The models we will use will not fit the data perfectly but we will be able to quantify this uncertainty in our model estimates. Uncertainty will be captured for our vegetation input data based on the number of samples we have within our hierarchical data structure. Uncertainty will not be accounted for in our uncertain variables such as rainfall or flow where we have no way of estimating this uncertainty.Unknown uncertainty will be somewhat captured in random effects but this will be an approximation only. More information about the model form and potential uncertainty is provided in section 3 but is not contained within our conceptual model.
 
-## 2.4 Identify predictor and response variables
+## [2.4 Identify predictor and response variables](#2.4-identify-predictor-and-response-variables)
 
 ---
 
@@ -284,7 +284,7 @@ Based on our problem formulation, the expected predictor variables to use within
 
 Each of these variables is important for influencing decisions about the use of environmental water to achieve benefits for (native) riparian vegetation. Additional variables that may be useful but are difficult to obtain at the appropriate spatial resolution (such as soils and funghi) are unlikely to be added. We expect there to be interactions between flow and bank elevation, hence the need to incorporate the elevation in our models. There may be interactions between bank elevation and livestock impacts due to the softer ground at the bank margin being mroe susciptible to trampling. Exotic vegetation will also interact with bank elevation and flows. Rainfall in summer is likely to be more influential than rainfall in winter.
 
-## 2.5 Define prior knowledge, data specification and evaluation
+## [2.5 Define prior knowledge, data specification and evaluation](#2.5-define-prior-knowledge-data-specification-and-evaluation)
 
 ---
 
@@ -292,7 +292,7 @@ Each of these variables is important for influencing decisions about the use of 
 
 *This section specifies the plan for collecting, processing and preparing data available for parameterisation, determining model structure, and for scenario analysis.*
 
-### 2.5.1 Collate available data sources that could be used to parameterise or structure the model
+### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data-sources-that-could-be-used-to-parameterise-or-structure-the-model)
 
 ---
 
@@ -329,7 +329,7 @@ For this section, I have used the relevant points above from both of the options
 -   There have been many unpubllished client reports producted based on small subsets of these data but with very limited data analysis. There have also been many oral presentations and various summary documents (flyers etc.) shared with relevant stakeholders. A summary including some preliminary analysis of these data is provided in this published client report, available at the above website: *Tonkin, Z., Jones, C., Clunie, P., Vivian, L., Amtstaetter, F., Jones, M., Koster, W., Mole, B., O'Connor, J., Brooks, J., Caffrey, L., and Lyon, J. (2020). Victorian Environmental Flows Monitoring and Assessment Program. Stage 6 Synthesis Report 2016-2020. Technical Report Series No. 316, Department of Environment, Land, Water and Planning, Heidelberg, Victoria.* There are other published papers in development based on this program but not on this dataset.
 -   Existing knowledge of the data comes from collecting it ourselves, conducting thorough data checking and cleaning, producing output summaries (species lists, sample sizes, etc.) and conducting a preliminary analysis on a small subset of the data for the report highlighted above and a separate study on one time period from one river: Sutton, N., Houghton, J., Vietz, G., Jones, C., Mole, B., Morris, K., Gower, T. 2020. Influence of Intervalley Transfers (IVT) on the Riverbanks and Bank Vegetation of the Goulburn and Campaspe Rivers. Report by Streamology and Arthur Rylah Institute for the Department of Environment, Land, Water and Planning. June, 2020.
 
-### 2.5.2 Data Processing and Preparation
+### [2.5.2 Data Processing and Preparation](#2.5.2-data-processing-and-preparation)
 
 ---
 
@@ -370,7 +370,7 @@ In all cases, we will calibrate to the levels of the vegetation survey locations
 
 **Determination of exotic vegetation covariate** The exotic vegetation covariate is releatively straightforward in one sense because it will be simple cover and/or diversity estimates that we have collected. However, there is a likely interaction between the impact of exotic species and the terrestrial/riparian grouping, for example, it is possible that terrestrial exotics are less of a problem than riparian ones even with the same amount of cover because they occupy the same habitat and seasonal niches as native riparian species. So this comes back to the vegetation groupings described above which need to be resolved to determine the variables used.
 
-### 2.5.3 Describe any data exploration or preliminary data analyses
+### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-describe-any-data-exploration-or-preliminary-data-analyses)
 
 ---
 
@@ -448,7 +448,7 @@ All models fitted to the pilot data set will undergo the same model checks as th
 It is important to note that models fitted to the pilot dataset may not translate directly to the final analysis due to differences in the data structure. These differences will change the distribution of observations within categories, and will introduce a new random effect for waterbody (or system), which is not required for the single-waterbody pilot analysis. Due to these changes, the final analysis still requires model checking and may require changes to the model structure.
 
 
-### 2.5.4 Data evaluation, exclusion, and missing data
+### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-and-missing-data)
 
 ---
 
@@ -478,7 +478,7 @@ Documenting issues with reliability is important because data quality and ecolog
 
 *Missing data* There are a small number of cases where we have incomplete or missing data due to various circumstances in the surveys. Currently these are indicated as NA in the dataset and form a small proportion of the overall dataset.
 
-## 2.6 Conceptual Model Evaluation
+## [2.6 Conceptual Model Evaluation](#2.6-conceptual-model-evaluation)
 
 ---
 
@@ -492,7 +492,7 @@ Documenting issues with reliability is important because data quality and ecolog
 ---
 
 
-# 3.0 Formalise and Specify Model
+#[ 3.0 Formalise and Specify Model](#3.0-formalise-and-specify-model)
 
 ---
 
@@ -502,7 +502,7 @@ Documenting issues with reliability is important because data quality and ecolog
 
 ---
 
-## 3.1 Model Class, Framework and Approach
+## [3.1 Model Class, Framework and Approach](#3.1-model-class-framework-and-approach)
 
 ---
 
@@ -523,7 +523,7 @@ We will use a correlative model approach for this analysis, where we will attemp
 
 Although alternative distributions may be suitable for cover data (e.g., binomial, beta), these distributions introduce link functions that complicate the specification of an autoregressive model structure. For this reason, a Poisson distribution was used to model cover data, noting that the Poisson approximates the binomial in the limit of a large number of trials. The Poisson distribution, specified with an offset, still models proportional cover but does not constrain values to sit below an upper bound (values must still be non-negative).
 
-## 3.2 Choose model features and family
+## [3.2 Choose model features and family](#3.2-choose-model-features-and-family)
 
 ---
 
@@ -533,7 +533,7 @@ Although alternative distributions may be suitable for cover data (e.g., binomia
 
 ---
 
-### 3.2.1 Operationalising Model Variables
+### [3.2.1 Operationalising Model Variables](#3.2.1-operationalising-model-variables)
 
 ---
 
@@ -546,7 +546,7 @@ Although alternative distributions may be suitable for cover data (e.g., binomia
 
 The two primary response variables are plant cover and species richness (see 1.1.4), which will be operationalised in slightly different ways depending on the timeframe: 1) short term-in response to a single event (i.e. before and after); and 2) medium term (2-10 years) in relation to typical flow regimes (flow elevation/duration/timing) over that period. Both will be using the extent of a response of particular groups of plants at particular bank elevations in relation to flow events (factor condition of before or after an specific event) or flow values (e.g. days of flow to a specific elevation within a year/season), as well as the additional covariates of exotic plant cover and livestock grazing. This will enable an evaluation of variation in plant responses at different elevations in relation to the primary management action (flow) as well as identify the relative impacts of flow and the covariates of exotic plants (interacting with flow) and livestock grazing.
 
-### 3.2.2 Choose model family
+### [3.2.2 Choose model family](#3.2.2-choose-model-family)
 
 ---
 
@@ -564,7 +564,7 @@ A formal sensitivity analysis has not yet been completed and so we are unaware o
 
 [] EG, can you add some text to reflect that we also might check other count distributions (particularly the negative binomial) to address issues of zero inflation and over-dispersion.
 
-## 3.3 Describe *approach* for identifying model structure
+## [3.3 Describe *approach* for identifying model structure](#3.3-describe-approach-for-identifying-model-structure)
 
 ---
 
@@ -598,7 +598,7 @@ The model structure will be refined through the pilot analysis (described in Sec
 The following terms will be included as random effects: transects nested within sites, point location (metres up the streambank), and survey year.
 
 
-## 3.4 Describe Parameter Estimation Technique and Performance Criteria
+## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-describe-parameter-estimation-technique-and-performance-criteria)
 
 ---
 
@@ -610,7 +610,7 @@ The following terms will be included as random effects: transects nested within 
 
 ---
 
-### 3.4.1 Parameter Estimation Technique
+### [3.4.1 Parameter Estimation Technique](#3.4.1-parameter-estimation-technique)
 
 ---
 
@@ -629,7 +629,7 @@ Initially, our model structure will be based on our conceptual model of the syst
 Parameterisation: We will use data-driven parameter estimation using maximum likelihood for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
 
 
-### 3.4.2 Estimation performance criteria
+### [3.4.2 Estimation performance criteria](#3.4.2-estimation-performance-criteria)
 
 ---
 
@@ -645,7 +645,7 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
 - [] EG can you update to note that R2 is the primary performance criterion used here (used to assess agreement between fitted and observed values), coupled with posterior predictive checks to assess the suitability of model structures. Model features will be identified using visual plots of estimates (forest plots of most coefficients and plots of predicted values under different combinations of the key flow, zone, and period predictor variables).
 
 
-## 3.5 Model Assumptions & Uncertainties
+## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions--uncertainties)
 
 ---
 
@@ -656,7 +656,7 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
 ---
 
 
-## 3.6 Specify formal model
+## [3.6 Specify formal model](#3.6-specify-formal-model)
 
 ---
 
@@ -684,9 +684,9 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
      2. May be able to add three-way interactions back in when the full data set is available (but may not). Will test the full three-way `zone * period * wpfg` interaction; if this converges it will be used as the basis for final outputs, if not, the simplified models listed above will be used.
 
 
-# 4. Model Calibration, Fitting & Checking
+# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting--checking)
 
-## 4.1 Model Calibration and Validation Scheme
+## [4.1 Model Calibration and Validation Scheme](#4.1-model-calibration-and-validation-scheme)
 
 ---
 
@@ -703,7 +703,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 ---
 
-### 4.1.1 Describe Calibration / Validation Data
+### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration--validation-data)
 
 ---
 
@@ -725,7 +725,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 ---
 
-## 4.3 Implementation verification
+## [4.2 Implementation verification](#4.3-implementation-verification)
 
 ---
 
@@ -741,7 +741,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 [] EG to update: GH review by JY/HW/EG (anyone who didn't open the PR).
 
 
-## 4.4 Model Checking
+## [4.3 Model Checking](#4.4-model-checking)
 
 ---
 
@@ -751,7 +751,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 ---
 
-### 4.4.1 Quantitative model checking
+### [4.3.1 Quantitative model checking](#4.4.1-quantitative-model-checking)
 
 ---
 
@@ -771,7 +771,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 
 
-### 4.4.2 Qualitative model checking
+### [4.3.2 Qualitative model checking](#4.4.2-qualitative-model-checking)
 
 ---
 
@@ -792,80 +792,156 @@ Model checking will be undertaken using a combination of qualitative and quantit
 1. Posterior predictive checks will be used to address zero-inflation and over-dispersion. These are visual checks that compare the distribution of observed data with distributions simulated from the fitted model. Close alignment of the two indicates an appropriate model structure, whereas deviations indicate possible mismatches between the data and the model.
 2. Assessment of estimated associations by field experts (CJ and LV) to identify whether estimated associations are plausible given what is known about the target system.
 
-## 4.3 Modelling Workflow and Data Partitioning Scheme
+### [4.3.3 Assumption violation checks](#4.3.3-assumption-violation-checks)
 
-This section pertains to any data calibration, validation or testing *schemes* that will be implemented. For example, the model may be tested on data independent of those used to parameterise the model (external validation), or the model may be cross-validated on random sub-samples of the data used to parameterise the model (internal cross-validation) (Yates et al. 2018; Barnard et al. 2019). For some types of models, hyper-parameters are estimated from data, and may be tuned on further independent holdouts of the training data, (“validation data”). This section should describe the overall workflow and any related data-partitioning, while section 5 *Model Evaluation and Validation* describes the specific analyses and tests that will be implemented during model evaluation.
+---
 
-- *Briefly describe the overall modelling workflow.*
-- *Describe calibration / tuning / validation data*
-  -   *If partitioning data for cross-validation:*
-    -   *Describe the approach specifying the number of folds that will be created and the relative size of each.*
-    -   *Describe how will you document and/or share the partitioned data such that the data partitioning and any subsequent modelling based on this partitioning can be computationally reproduced.*
-  -   *If using external / independent holdout data:*
-    -   *Describe any known differences between the training and validation datasets and the size of the validation dataset.*
-    -   *Describe how will you document the the external/independent data such that any subsequent modelling can be computationally reproduced.*
-    -   *It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building, please describe the relationship modellers have to model validation data, will independent datasets be known to any modeller or analyst involved in the model building process?*
+**`📝` Preregistration Item**
 
-[] EG to update: no data partitioning used given complexity of the analysis and the focus of the work on inference. In-sample model fit calculated with R2, and posterior predictive checks used to assess model appropriateness. EG, should these be covered in section 5.0 rather than 4.x?
+>The consequences of assumption violations on the interpretation of results should be assessed [@Araujo2019].
+>
+-   Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.
+-   If you cannot perform quantitative assumption checks, describe what theoretical justifications would justify a lack of violation of or robustness to model assumptions.
+-   If you cannot demonstrate or theoretically justify violation or robustness to assumptions, explain why not, and specify whether you will discuss assumption violations and their consequences for interpretation of model outputs.
+-   If assumption violations cannot be avoided, explain how you will explore the consequences of assumption violations on the interpretation of results (To be completed in interim iterations of the preregistration, only if there are departures from assumptions as demonstrated in the planned tests above).
 
-### 4.4.3 Assumption violation checks
-
--   *Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.*
--   *If you cannot perform quantitative assumption checks, describe what theoretical justifications would justify a lack of violation of or robustness to model assumptions.*
--   *If you cannot demonstrate or theoretically justify violation or robustness to assumptions, explain why not, and specify whether you will discuss assumption violations and their consequences for interpretation of model outputs.*
--   *The consequences of assumption violations on the interpretation of results should be assessed (Araújo et al. 2019). If assumption violations cannot be avoided, explain describe how you will explore their consequences (To be completed in interim iterations of the preregistration, only if there are departures from assumptions as demonstrated in the planned tests above).*
+---
 
 [] EG to consider whether posterior checks should be mentioned here instead of 4.1.2
 
 
-# 5.0 Model Validation and Evaluation
+# [5.0 Model Validation and Evaluation](#5.0-model-validation-and-evaluation)
 
-*Model evaluation including model analysis and other testing complements model checking. By evaluating the model against independent test or holdout data the chance that the model fits the calibration or fitting data well, but has not captured the relevant ecological mechanisms of the system, can be ruled out (Grimm et al. 2014). Collectively, modelling activities in section 4 and 5 provide provide information about the structural realism and therefore credibility of the model (Grimm et al. 2014).*
+---
 
-## 5.1 Model output corroboration
+**`ℹ️` Rationale & Explanation**
 
--   *State whether you will corroborate the model outputs on external test data, and ensure that any independent validation data is documented in 4.1.2.*
--   *Testing the model against data that are collected spatially and/or temporally independent from the training dataset minimizes the risk of artificially inflating model performance measures (Araújo et al. 2019). Although the corroboration of model outputs against an independent validation dataset is considered the 'gold standard' for showing that a model properly represents the internal organisation of the system), model validation is not always possible (Grimm, et al. 2014). If you are unable to evaluate the model outputs against independent data, explain why not, and describe what steps you will take to interrogate the model. For example, Independent predictions can instead be tested on submodels, alternatively, patterns in model output that are robust and seem characteristic of the system can be identified and evaluated in consultation with the literature or by experts to judge how accurate the model's output is (Grimm et al.2014).*
+> The model validation & evaluation phase comprises a suite of analyses that collectively inform inferences about whether, and under what conditions, a model is suitable to meet its intended purpose [@Augusiak:2014gz]. Errors in design and implementation of the model and their implication on the model output are assessed. Ideally independent data is used against the model outputs to assess whether the model output behaviour exhibits the required accuracy for the model's intended purpose. The outcomes of these analyses build confidence in the model applications and increase understanding of model strengths and limitations. Model evaluation including, model analysis, should complement model checking. It should evaluate model checking, and consider over-fitting and extrapolation. The higher the proportion of calibrated, or uncertain parameters, "the greater the risk that the model seems to work correctly, but for the wrong reasons" (citaiton). Evaluation thus complements model checking because we can rule out the chance that the model fits the calibration data well, but has not captured the relevant ecological mechanisms of the system pertinent to the research question or the decision problem underpinning the model [@Grimm:2014es]. Evaluation of model outputs against external data in conjunction with the results from model checking provide information about the structural realism and therefore credibility of the model [@Grimm2016].
+
+---
+
+## [5.1 Model output corroboration](#5.1-model-output-corroboration)
+
+---
+
+**`ℹ️` Rationale & Explanation**
+
+> Ideally, model outputs or predictions are compared to independent data and patterns that were not used to develop, parameterise, or verify the model. Testing against a dataset of response and predictor variables that are spatially and/or temporally independent from the training dataset minimises the risk of artificially inflating model performance measures [@Araujo2019]. Although the corroboration of model outputs against an independent validation dataset is considered the 'gold standard' for showing that a model properly represents the internal organisation of the system, model validation is not always possible because empirical experiments are infeasible or model users are working on rapid-response time-frames, hence, why ecologists often model in the first place [@Grimm:2014es]. Independent predictions might instead be tested on sub-models. Alternatively, patterns in model output that are robust and seem characteristic of the system can be identified and evaluated in consultation with the literature or by experts to judge how accurate the model output is [@Grimm:2014es].
+
+---
+
+**`📝` Preregistration Item**
+
+> 
+-   [ ] State whether you will corroborate the model outputs on external data, and document any independent validation data in step.
+-   [ ] It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building [@Dwork2015], describe the relationship modellers have to model validation data, e.g. will independent datasets be known to any modeller or analyst involved in the model building process?
+-   [ ] If unable to evaluate the model outputs against independent data, explain why and explain what steps you will take to interrogate the model.
+
+---
 
 [] EG to update: no such tests used in this work given model complexity.
 
 
-### 5.1.1 Model corroboration performance metrics and criteria
+## [5.2 Choose Performance Metrics & Criteria](#5.2-choose-performance-metrics-criteria)
 
--   *Specify what performance measures you will use to evaluate the model and briefly explain how each test relates to different desired properties of a model's performance. Examples include measures of agreement between predictions and independent observations, or estimates of accuracy, bias, calibration, discrimination refinement, resolution and skill (Araújo et al. 2019).*
--   *Spatial, temporal and environmental pattern of errors and variance can change the interpretation of model predictions and conservation decisions (Araújo et al. 2019), where relevant and possible, describe how you will characterise and report the spatial, temporal and environmental pattern of errors and variance.*
--   *If comparing alternative models, specify what measures of model comparison or out-of-sample performance metrics will you use to find support for alternative models or else to optimise predictive ability.*
--   *State what numerical threshold or qualities you will use for each of these metrics.*
+---
 
-## 5.2 Model Analysis
+**`ℹ️` Rationale & Explanation**
 
-### 5.2.1 Uncertainty Analyses
+> Model performance can be quantified by a range of tests, including measures of agreement between predictions and independent observations, or estimates of accuracy, bias, calibration, discrimination refinement, resolution and skill [@Araujo2019]. Note that the performance metrics and criteria in this section are used for evaluating the structured and parameterised models (ideally) on independent holdout data, so this step is additional to any performance criteria used for determining model structure or parameterisation in section X.
 
-*Uncertainty can arise from different modeling techniques, response data and predictor variables (Araújo et al. 2019). Uncertainty analyses characterise the uncertainty in model outputs, and identify how uncertainty in model parameters affects uncertainty in model output, but does not identify which model assumptions are driving this behaviour (Grimm et al. 2014; Saltelli et al. 2019).*
+---
 
--   *Please describe how you will characterise model and data uncertainties. E.g. propagating known uncertainties through the model, investigating the effect of different model scenarios with different parameters and modelling technique combinations (Araújo et al. 2019), or empirically constructing model distributions from model output datapoints, and extracting summary statistics, including the mean, median, variance, and constructing confidence intervals (Saltelli et al. 2019).*
--   *Relate your choice of analysis to the context and purposes of the model described in the problem formulation phase. For instance, high model precision may be important for predictive modelling when cost, benefit and risk must be adequately gauged, but for decision-making contexts where only the predicted ranked order of management options is necessary, model accuracy and precision might be less important (Jakeman, Letcher, and Norton 2006).*
--   *Describe how you will summarise the results of these in silico experiments with graphical, tabular, or other devices, such as summary statistics.*
--   *If the chosen modelling approach is able to explicitly articulate uncertainty due to data, measurements or baseline conditions, such as by providing estimates of uncertainty (typically in the form of probabilistic parameter covariance, (Jakeman, Letcher, and Norton 2006)), specify which measure of uncertainty you will measure.*
+**`📝` Preregistration Item**
 
-### 5.2.2 Sensitivity Analyses
+> 
+-   [ ] Specify what performance measures you will use to evaluate the model and briefly explain how each test relates to different desired properties of a model's performance.
+-   [ ] Spatial, temporal and environmental pattern of errors and variance can change the interpretation of model predictions and conservation decisions [@Araujo2019], where relevant and possible, describe how you will characterise and report the spatial, temporal and environmental pattern of errors and variance.
+-   [ ] If comparing alternative models, specify what measures of model comparison or out-of-sample performance metrics will you use to find support for alternative models or else to optimise predictive ability. State what numerical threshold or qualities you will use for each of these metrics.
 
-*Sensitivity analysis examines how uncertainty in model outputs can be apportioned to different sources of uncertainty in model input (Saltelli et al. 2019).*
+---
 
--   *Describe the sensitivity analysis approach you will take: deterministic sensitivity, stochastic sensitivity (variability in the model), or scenario sensitivity (effect of changes based on scenarios).*
--   *Describe any sensitivity analyses you will conduct by specifying which parameters will be held constant, which will be varied, and the range and intervals of values over which those parameters will be varied.*
--   *State the primary objective of each sensitivity analysis, for example, to identify which input variables contribute the most to model uncertainty so that these variables can be targeted for further data collection, or alternatively to identify which variables or factors contribute little to overall model outputs, and so can be 'dropped' from future iterations of the model (Saltelli et al. 2019).*
+## [5.3 Model Analysis](#5.3-model-analysis)
 
-### 5.3.3 Model application / scenario analysis
+---
 
--   *Specify any input conditions and relevant parameter values for initial environmental conditions and decision-variables under each scenario specified in section 1.*
--   *Please describe any other relevant technical details of model application, such as methods for how you will implement any simulations or model projections.*
--   *What raw and transformed model outputs will you extract from the model simulations or projections, and how will you map, plot, or otherwise display and synthesise the results of scenario and model analyses.*
--   *Explain how you will analyse the model analysis output to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.*
+**`ℹ️` Rationale & Explanation**
 
-### 5.3.4 Other simulation experiments / robustness analyses etc.
+> Uncertainty in models arises due to incomplete system understanding (which processes to include, or which interact), from imprecise, finite and sparese data measurements, and from uncertainty in input conditions and scenarios for model simulations or runs [@Jakeman:2006ii]. Non-technical uncertainties can also be introduced throughout the modellign process, such as uncertainties arising from issues in problem-framing, indeterminicies, and modeller / client values [@Jakeman:2006ii].
+>
+The purpose of model analysis is to prevent blind trust in the model by understanding how model outputs have emerged, and to 'challenge' the model by verifying whether the model is still believable and fit for purpose if one or more parameters are changed [@Grimm:2014es].
+>
+Model analysis should increase understanding of the model behaviour by identifying which processes and process interactions explain characteristic behaviours of the model system. Model analysis typically consists of sensitivity analyses preceded by uncertainty analyses [@Saltelli2019], and a suite of other simulation or other computational experiments. The aim of such computational experiments is to increase understanding of the model behaviour by identifying which processes and process interactions explain characteristic behaviours of the model system [@Grimm:2014es]. Uncertainty analyses and sensitivity analyses augment one another to draw conclusions about model uncertainty.
+>
+Because the results from a full suite of sensitivity analysis and uncertainty analysis can be difficult to interpret due to the number and complexity of causal relations examined [@Jakeman:2006ii], it is useful for the analyst to relate the choice of analysis to the modelling context, purpose and analytical objectives defined in the problem formulation phase, in tandem with any critical uncertainties that have emerged during model development and testing prior to this point.
 
--   *Describe any other simulation experiments and or robustness analyses you will perform on the model, including any metrics and their criteria / thresholds for interpreting the results of the analysis.*
+---
 
-# References
+### [5.3.1 Uncertainty Analyses](#5.3.1-uncertainty-analyses)
+
+---
+
+**`ℹ️` Rationale & Explanation**
+
+> Uncertainty can arise from different modelling techniques, response data and predictor variables [@Araujo2019]. Uncertainty analyses characterise the uncertainty in model outputs, and identify how uncertainty in model parameters affects uncertainty in model output, but does not identify which model assumptions are driving this behaviour [@Grimm:2014es; @Saltelli2019]. Uncertainty analyses can include propagating known uncertainties through the model, or by investigating the effect of different model scenarios with different parameters and modelling technique combinations [@Araujo2019], for example. It could also include characterising the output distribution, such as through empirical construction using model output data points. It could also include extracting summary statistics like the mean, median and variance from this distribution, and perhaps constructing confidence intervals on the mean [@Saltelli2019].
+
+
+---
+
+**`📝` Preregistration Item**
+
+>
+-   [ ] Please describe how you will characterise model and data uncertainties, e.g. propagating known uncertainties through the model, investigating the effect of different model scenarios with different parameters and modelling technique combinations [@Araujo2019], or empirically constructing model distributions from model output data points, and extracting summary statistics, including the mean, median, variance, and constructing confidence intervals [@Saltelli2019].
+-   [ ] Relate your choice of analysis to the context and purposes of the model described in the problem formulation phase. For instance ‚discrepancies between model output and observed output may be important for forecasting models, where cost, benefit, an risk over a substantial period must be gauged, but much less critical for decision-making or management models where the user may be satisfied with knowing that the predicted ranking order of impacts of alternative scenarios or management options is likely to be correct, with only a rough indication of their sizes" [@Jakeman:2006ii].
+-   [ ] Briefly describe how you will summarise the results of these in silico experiments with graphical, tabular, or other devices, such as summary statistics.
+-   [ ] If the chosen modelling approach is able to explicitly articulate uncertainty due to data, measurements or baseline conditions, such as by providing estimates of uncertainty (typically in the form of probabilistic parameter covariance, [@Jakeman:2006ii]), specify which measure of uncertainty you will use.
+
+---
+
+### [5.3.2 Sensitivity Analyses](#5.2.2-sensitivity-analyses)
+
+---
+
+**`ℹ️` Rationale & Explanation**
+
+> Sensitivity analysis examines how uncertainty in model outputs can be apportioned to different sources of uncertainty in model input [@Saltelli2019].
+
+---
+
+**`📝` Preregistration Item**
+
+>
+-   [ ] Describe the sensitivity analysis approach you will take: deterministic sensitivity, stochastic sensitivity (variability in the model), or scenario sensitivity (effect of changes based on scenarios).
+-   [ ] Describe any sensitivity analyses you will conduct by specifying which parameters will be held constant, which will be varied, and the range and intervals of values over which those parameters will be varied.
+-   [ ] State the primary objective of each sensitivity analysis, for example, to identify which input variables contribute the most to model uncertainty so that these variables can be targeted for further data collection, or alternatively to identify which variables or factors contribute little to overall model outputs, and so can be 'dropped' from future iterations of the model [@Saltelli2019].
+
+---
+
+### [5.3.3 Model application or scenario analysis](#5.3.3-model-application--scenario-analysis)
+
+---
+
+**`📝` Preregistration Item**
+
+>
+-   [ ] Specify any input conditions and relevant parameter values for initial environmental conditions and decision-variables under each scenario specified in section 1.
+-   [ ] Describe any other relevant technical details of model application, such as methods for how you will implement any simulations or model projections.
+-   [ ] What raw and transformed model outputs will you extract from the model simulations or projections, and how will you map, plot, or otherwise display and synthesise the results of scenario and model analyses.
+-   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
+
+---
+
+### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-experiments--robustness-analyses-etc)
+
+---
+
+**`📝` Preregistration Item**
+
+> 
+-   [ ] Describe any other simulation experiments, robustness analyses or other analyses you will perform on the model, including any metrics and their criteria / thresholds for interpreting the results of the analysis.
+
+---
+
+
+# [References](#references)
 
