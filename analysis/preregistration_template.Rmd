@@ -292,7 +292,7 @@ Each of these variables is important for influencing decisions about the use of 
 
 *This section specifies the plan for collecting, processing and preparing data available for parameterisation, determining model structure, and for scenario analysis.*
 
-### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data-sources-that-could-be-used-to-parameterise-or-structure-the-model)
+### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data)
 
 ---
 
@@ -370,7 +370,7 @@ In all cases, we will calibrate to the levels of the vegetation survey locations
 
 **Determination of exotic vegetation covariate** The exotic vegetation covariate is releatively straightforward in one sense because it will be simple cover and/or diversity estimates that we have collected. However, there is a likely interaction between the impact of exotic species and the terrestrial/riparian grouping, for example, it is possible that terrestrial exotics are less of a problem than riparian ones even with the same amount of cover because they occupy the same habitat and seasonal niches as native riparian species. So this comes back to the vegetation groupings described above which need to be resolved to determine the variables used.
 
-### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-describe-any-data-exploration-or-preliminary-data-analyses)
+### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-prelim-data-analyses-data-exploration)
 
 ---
 
@@ -448,7 +448,7 @@ All models fitted to the pilot data set will undergo the same model checks as th
 It is important to note that models fitted to the pilot dataset may not translate directly to the final analysis due to differences in the data structure. These differences will change the distribution of observations within categories, and will introduce a new random effect for waterbody (or system), which is not required for the single-waterbody pilot analysis. Due to these changes, the final analysis still requires model checking and may require changes to the model structure.
 
 
-### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-and-missing-data)
+### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-missing-data)
 
 ---
 
@@ -523,7 +523,7 @@ We will use a correlative model approach for this analysis, where we will attemp
 
 Although alternative distributions may be suitable for cover data (e.g., binomial, beta), these distributions introduce link functions that complicate the specification of an autoregressive model structure. For this reason, a Poisson distribution was used to model cover data, noting that the Poisson approximates the binomial in the limit of a large number of trials. The Poisson distribution, specified with an offset, still models proportional cover but does not constrain values to sit below an upper bound (values must still be non-negative).
 
-## [3.2 Choose model features and family](#3.2-choose-model-features-and-family)
+## [3.2 Choose model features and family](#3.2-model-features-and-family)
 
 ---
 
@@ -564,7 +564,7 @@ A formal sensitivity analysis has not yet been completed and so we are unaware o
 
 [] EG, can you add some text to reflect that we also might check other count distributions (particularly the negative binomial) to address issues of zero inflation and over-dispersion.
 
-## [3.3 Describe *approach* for identifying model structure](#3.3-describe-approach-for-identifying-model-structure)
+## [3.3 Describe *approach* for identifying model structure](#3.3-model-structure-identification-approach)
 
 ---
 
@@ -598,7 +598,7 @@ The model structure will be refined through the pilot analysis (described in Sec
 The following terms will be included as random effects: transects nested within sites, point location (metres up the streambank), and survey year.
 
 
-## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-describe-parameter-estimation-technique-and-performance-criteria)
+## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-parameter-estimation-technique-and-performance-criteria)
 
 ---
 
@@ -610,7 +610,7 @@ The following terms will be included as random effects: transects nested within 
 
 ---
 
-### [3.4.1 Parameter Estimation Technique](#3.4.1-parameter-estimation-technique)
+### [3.4.1 Parameter Estimation Technique](#3.4.1-estimation-technique)
 
 ---
 
@@ -645,7 +645,7 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
 - [] EG can you update to note that R2 is the primary performance criterion used here (used to assess agreement between fitted and observed values), coupled with posterior predictive checks to assess the suitability of model structures. Model features will be identified using visual plots of estimates (forest plots of most coefficients and plots of predicted values under different combinations of the key flow, zone, and period predictor variables).
 
 
-## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions--uncertainties)
+## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions-uncertainties)
 
 ---
 
@@ -684,7 +684,7 @@ Parameterisation: We will use data-driven parameter estimation using maximum lik
      2. May be able to add three-way interactions back in when the full data set is available (but may not). Will test the full three-way `zone * period * wpfg` interaction; if this converges it will be used as the basis for final outputs, if not, the simplified models listed above will be used.
 
 
-# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting--checking)
+# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting-checking)
 
 ## [4.1 Model Calibration and Validation Scheme](#4.1-model-calibration-and-validation-scheme)
 
@@ -703,7 +703,7 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 ---
 
-### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration--validation-data)
+### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration-validation-data)
 
 ---
 
@@ -842,7 +842,7 @@ Model checking will be undertaken using a combination of qualitative and quantit
 [] EG to update: no such tests used in this work given model complexity.
 
 
-## [5.2 Choose Performance Metrics & Criteria](#5.2-choose-performance-metrics-criteria)
+## [5.2 Choose Performance Metrics & Criteria](#5.2-evaluation-performance-metrics-criteria)
 
 ---
 
@@ -917,7 +917,7 @@ Because the results from a full suite of sensitivity analysis and uncertainty an
 
 ---
 
-### [5.3.3 Model application or scenario analysis](#5.3.3-model-application--scenario-analysis)
+### [5.3.3 Model application or scenario analysis](#5.3.3-model-application-scenario-analysis)
 
 ---
 
@@ -931,7 +931,7 @@ Because the results from a full suite of sensitivity analysis and uncertainty an
 
 ---
 
-### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-experiments--robustness-analyses-etc)
+### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-robustness-analyses)
 
 ---
 

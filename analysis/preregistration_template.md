@@ -651,7 +651,7 @@ than rainfall in winter.
 preparing data available for parameterisation, determining model
 structure, and for scenario analysis.*
 
-### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data-sources-that-could-be-used-to-parameterise-or-structure-the-model)
+### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data)
 
 ------------------------------------------------------------------------
 
@@ -949,7 +949,7 @@ seasonal niches as native riparian species. So this comes back to the
 vegetation groupings described above which need to be resolved to
 determine the variables used.
 
-### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-describe-any-data-exploration-or-preliminary-data-analyses)
+### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-prelim-data-analyses-data-exploration)
 
 ------------------------------------------------------------------------
 
@@ -1081,7 +1081,7 @@ single-waterbody pilot analysis. Due to these changes, the final
 analysis still requires model checking and may require changes to the
 model structure.
 
-### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-and-missing-data)
+### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-missing-data)
 
 ------------------------------------------------------------------------
 
@@ -1241,7 +1241,7 @@ number of trials. The Poisson distribution, specified with an offset,
 still models proportional cover but does not constrain values to sit
 below an upper bound (values must still be non-negative).
 
-## [3.2 Choose model features and family](#3.2-choose-model-features-and-family)
+## [3.2 Choose model features and family](#3.2-model-features-and-family)
 
 ------------------------------------------------------------------------
 
@@ -1351,7 +1351,7 @@ important in the model design, as per section 2.4.2.
 count distributions (particularly the negative binomial) to address
 issues of zero inflation and over-dispersion.
 
-## [3.3 Describe *approach* for identifying model structure](#3.3-describe-approach-for-identifying-model-structure)
+## [3.3 Describe *approach* for identifying model structure](#3.3-model-structure-identification-approach)
 
 ------------------------------------------------------------------------
 
@@ -1430,7 +1430,7 @@ The following terms will be included as random effects: transects nested
 within sites, point location (metres up the streambank), and survey
 year.
 
-## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-describe-parameter-estimation-technique-and-performance-criteria)
+## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-parameter-estimation-technique-and-performance-criteria)
 
 ------------------------------------------------------------------------
 
@@ -1454,7 +1454,7 @@ year.
 
 ------------------------------------------------------------------------
 
-### [3.4.1 Parameter Estimation Technique](#3.4.1-parameter-estimation-technique)
+### [3.4.1 Parameter Estimation Technique](#3.4.1-estimation-technique)
 
 ------------------------------------------------------------------------
 
@@ -1539,7 +1539,7 @@ optimise the model by comparing fit of model outputs to observations
   plots of predicted values under different combinations of the key
   flow, zone, and period predictor variables).
 
-## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions--uncertainties)
+## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions-uncertainties)
 
 ------------------------------------------------------------------------
 
@@ -1616,7 +1616,7 @@ may not). Will test the full three-way `zone * period * wpfg`
 interaction; if this converges it will be used as the basis for final
 outputs, if not, the simplified models listed above will be used.
 
-# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting--checking)
+# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting-checking)
 
 ## [4.1 Model Calibration and Validation Scheme](#4.1-model-calibration-and-validation-scheme)
 
@@ -1648,7 +1648,7 @@ outputs, if not, the simplified models listed above will be used.
 
 ------------------------------------------------------------------------
 
-### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration--validation-data)
+### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration-validation-data)
 
 ------------------------------------------------------------------------
 
@@ -1890,7 +1890,7 @@ instead of 4.1.2
 \[\] EG to update: no such tests used in this work given model
 complexity.
 
-## [5.2 Choose Performance Metrics & Criteria](#5.2-choose-performance-metrics-criteria)
+## [5.2 Choose Performance Metrics & Criteria](#5.2-evaluation-performance-metrics-criteria)
 
 ------------------------------------------------------------------------
 
@@ -2057,7 +2057,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.3 Model application or scenario analysis](#5.3.3-model-application--scenario-analysis)
+### [5.3.3 Model application or scenario analysis](#5.3.3-model-application-scenario-analysis)
 
 ------------------------------------------------------------------------
 
@@ -2081,7 +2081,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-experiments--robustness-analyses-etc)
+### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-robustness-analyses)
 
 ------------------------------------------------------------------------
 
