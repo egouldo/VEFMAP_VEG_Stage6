@@ -1,9 +1,9 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-27 January, 2024
+28 January, 2024
 
-# [1.0 Problem Formulation](#1.0-problem-formulation)
+# 1.0 Problem Formulation
 
 ------------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 
 ------------------------------------------------------------------------
 
-## [1.1 Model Context and Purpose](#1.1-model-context-and-purpose)
+## 1.1 Model Context and Purpose
 
 ------------------------------------------------------------------------
 
@@ -49,7 +49,7 @@ Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 
 ------------------------------------------------------------------------
 
-### [1.1.1. Key Stakeholders & Model Users](#1.1.1-key-stakeholders-and-model-users)
+### 1.1.1. Key Stakeholders & Model Users
 
 ------------------------------------------------------------------------
 
@@ -103,7 +103,7 @@ of this study and others, regulatory frameworks, funding availability,
 physical and practical constraints, and others. This study does not
 contribute to those decisions outside of providing the study outputs.
 
-### [1.1.2 Model purpose, context and problem context](#1.1.2-model-purpose-context-and-problem-context)
+### 1.1.2 Model purpose, context and problem context
 
 ------------------------------------------------------------------------
 
@@ -159,7 +159,7 @@ specific un-surveyed waterways, but extension of these models for
 prediction will we highlighted for future investigation beyond this
 study.
 
-### [1.1.3 Analytical purpose](#1.1.3-analytical-purpose)
+### 1.1.3 Analytical purpose
 
 ------------------------------------------------------------------------
 
@@ -263,7 +263,7 @@ to guide and improve management decisions for environmental benefits;
 and 3) other researchers working in the field of waterway flow
 management and environmental flows locally and internationally.
 
-### [1.1.4 Logistical Constraints](#1.1.4-logistical-constraints)
+### 1.1.4 Logistical Constraints
 
 ------------------------------------------------------------------------
 
@@ -280,7 +280,7 @@ management and environmental flows locally and internationally.
 
 ------------------------------------------------------------------------
 
-### [1.1.5 Model Scope, Scale and Resolution](#1.1.5-model-scope-scale-and-resolution)
+### 1.1.5 Model Scope, Scale and Resolution
 
 ------------------------------------------------------------------------
 
@@ -298,7 +298,7 @@ management and environmental flows locally and internationally.
 
 ------------------------------------------------------------------------
 
-### [1.1.6 Intended Application of Results](#1.1.6-intended-application-of-results)
+### 1.1.6 Intended Application of Results
 
 ------------------------------------------------------------------------
 
@@ -325,7 +325,7 @@ management and environmental flows locally and internationally.
 
 ------------------------------------------------------------------------
 
-# [2.0 Define Conceptual Model](#2.0-define-conceptual-model)
+# 2.0 Define Conceptual Model
 
 ------------------------------------------------------------------------
 
@@ -344,7 +344,7 @@ management and environmental flows locally and internationally.
 
 ------------------------------------------------------------------------
 
-## [2.1 Elicitation and Representation Method](#2.1-elicitation-and-representation-method)
+## 2.1 Elicitation and Representation Method
 
 ------------------------------------------------------------------------
 
@@ -376,7 +376,7 @@ because it is impossible to account for everything within our study. Our
 final model for this particular study will be decribed in text and
 summarised within one or more non-quantitative diagrams.
 
-## [2.2 Explain Critical Conceptual Design Decisions](#2.2-explain-critical-conceptual-design-decisions)
+## 2.2 Explain Critical Conceptual Design Decisions
 
 ------------------------------------------------------------------------
 
@@ -447,7 +447,7 @@ separately. Global interactions include the effect of season (time of
 year) on the responses, which is largely influenced by day length and
 temperatures.
 
-### [2.3 Model assumptions and uncertainties](#2.3-model-assumptions-and-uncertainties)
+### 2.3 Model assumptions and uncertainties
 
 ------------------------------------------------------------------------
 
@@ -554,7 +554,7 @@ approximation only. More information about the model form and potential
 uncertainty is provided in section 3 but is not contained within our
 conceptual model.
 
-## [2.4 Identify predictor and response variables](#2.4-identify-predictor-and-response-variables)
+## 2.4 Identify predictor and response variables
 
 ------------------------------------------------------------------------
 
@@ -571,7 +571,8 @@ conceptual model.
 
 > Identify and define system system variables and structures,
 > referencing scenario definitions, and the scope of the model as
-> described within problem formulation (1.1.3):
+> described within problem formulation
+> ([1.1](#11-model-context-and-purpose)):
 >
 > - [ ] What variables would support taking this action or making this
 >   decision?
@@ -641,7 +642,7 @@ susciptible to trampling. Exotic vegetation will also interact with bank
 elevation and flows. Rainfall in summer is likely to be more influential
 than rainfall in winter.
 
-## [2.5 Define prior knowledge, data specification and evaluation](#2.5-define-prior-knowledge-data-specification-and-evaluation)
+## 2.5 Define prior knowledge, data specification and evaluation
 
 ------------------------------------------------------------------------
 
@@ -651,7 +652,7 @@ than rainfall in winter.
 preparing data available for parameterisation, determining model
 structure, and for scenario analysis.*
 
-### [2.5.1 Collate available data sources that could be used to parameterise or structure the model](#2.5.1-collate-available-data)
+### 2.5.1 Collate available data sources that could be used to parameterise or structure the model
 
 ------------------------------------------------------------------------
 
@@ -748,7 +749,7 @@ options above given that we have collected the data ourselves.
   Rivers. Report by Streamology and Arthur Rylah Institute for the
   Department of Environment, Land, Water and Planning. June, 2020.
 
-### [2.5.2 Data Processing and Preparation](#2.5.2-data-processing-and-preparation)
+### 2.5.2 Data Processing and Preparation
 
 ------------------------------------------------------------------------
 
@@ -949,7 +950,7 @@ seasonal niches as native riparian species. So this comes back to the
 vegetation groupings described above which need to be resolved to
 determine the variables used.
 
-### [2.5.3 Describe any data exploration or preliminary data analyses](#2.5.3-prelim-data-analyses-data-exploration)
+### 2.5.3 Describe any data exploration or preliminary data analyses
 
 ------------------------------------------------------------------------
 
@@ -1081,7 +1082,7 @@ single-waterbody pilot analysis. Due to these changes, the final
 analysis still requires model checking and may require changes to the
 model structure.
 
-### [2.5.4 Data evaluation, exclusion, and missing data](#2.5.4-data-evaluation-exclusion-missing-data)
+### 2.5.4 Data evaluation, exclusion, and missing data
 
 ------------------------------------------------------------------------
 
@@ -1157,7 +1158,7 @@ incomplete or missing data due to various circumstances in the surveys.
 Currently these are indicated as NA in the dataset and form a small
 proportion of the overall dataset.
 
-## [2.6 Conceptual Model Evaluation](#2.6-conceptual-model-evaluation)
+## 2.6 Conceptual Model Evaluation
 
 ------------------------------------------------------------------------
 
@@ -1173,7 +1174,7 @@ proportion of the overall dataset.
 
 ------------------------------------------------------------------------
 
-\#[3.0 Formalise and Specify Model](#3.0-formalise-and-specify-model)
+# 3.0 Formalise and Specify Model
 
 ------------------------------------------------------------------------
 
@@ -1185,7 +1186,7 @@ proportion of the overall dataset.
 
 ------------------------------------------------------------------------
 
-## [3.1 Model Class, Framework and Approach](#3.1-model-class-framework-and-approach)
+## 3.1 Model Class, Framework and Approach
 
 ------------------------------------------------------------------------
 
@@ -1212,7 +1213,7 @@ proportion of the overall dataset.
 > - [ ] Describe what modelling framework, approach or class of model
 >   you will use to implement your model and relate your choice to the
 >   model purpose and analytical objectives described in 1.1.2 and
->   1.1.3.
+>   [1.1.3](#113-analytical-purpose).
 
 ------------------------------------------------------------------------
 
@@ -1222,15 +1223,16 @@ in relation to a series of covariates. Specifically, the analysis aims
 to provide clear evidence of the influence of environmental flows, and
 other factors (particularly exotic vegetation and livestock grazing), on
 native vegetation (cover and diverstiy) within regulated river channels
-(See 1.1.2). We will initially use generalised linear mixed effects
-models (GLMM) with zero-inflated Poisson family distribution for cover
-data and species richness (counts). The exact model family will be
-determined based on an iterative process of model fitting and model
-checking (with posterior predictive checks) to ensure that the fitted
-model family is appropriate for the data being modelled (see Section
-3.1.3, below). We believe that GLMMs are a robust approach for our
-objectives and data structure, with a key feature of the random effects
-allowing for the hierarchical sampling design and repeated measures.
+([1.1.3](#113-analytical-purpose)). We will initially use generalised
+linear mixed effects models (GLMM) with zero-inflated Poisson family
+distribution for cover data and species richness (counts). The exact
+model family will be determined based on an iterative process of model
+fitting and model checking (with posterior predictive checks) to ensure
+that the fitted model family is appropriate for the data being modelled
+(see [3.2.2](#322-choose-model-family), below). We believe that GLMMs
+are a robust approach for our objectives and data structure, with a key
+feature of the random effects allowing for the hierarchical sampling
+design and repeated measures.
 
 Although alternative distributions may be suitable for cover data (e.g.,
 binomial, beta), these distributions introduce link functions that
@@ -1241,7 +1243,7 @@ number of trials. The Poisson distribution, specified with an offset,
 still models proportional cover but does not constrain values to sit
 below an upper bound (values must still be non-negative).
 
-## [3.2 Choose model features and family](#3.2-model-features-and-family)
+## 3.2 Choose model features and family
 
 ------------------------------------------------------------------------
 
@@ -1263,7 +1265,7 @@ below an upper bound (values must still be non-negative).
 
 ------------------------------------------------------------------------
 
-### [3.2.1 Operationalising Model Variables](#3.2.1-operationalising-model-variables)
+### 3.2.1 Operationalising Model Variables
 
 ------------------------------------------------------------------------
 
@@ -1304,7 +1306,7 @@ at different elevations in relation to the primary management action
 covariates of exotic plants (interacting with flow) and livestock
 grazing.
 
-### [3.2.2 Choose model family](#3.2.2-choose-model-family)
+### 3.2.2 Choose model family
 
 ------------------------------------------------------------------------
 
@@ -1345,13 +1347,14 @@ is an important aspect of the study to evaluate. Temporal patterns are
 also important due to the longitudinal nature of the data collection and
 different seasons of survey (i.e. different proximity to different
 flow/climate periods). Careful consideration of these aspects will be
-important in the model design, as per section 2.4.2.
+important in the model design, as per [see section
+2.4](#2.4-identify-predictor-and-response-variables).
 
 \[\] EG, can you add some text to reflect that we also might check other
 count distributions (particularly the negative binomial) to address
 issues of zero inflation and over-dispersion.
 
-## [3.3 Describe *approach* for identifying model structure](#3.3-model-structure-identification-approach)
+## 3.3 Describe approach for identifying model structure
 
 ------------------------------------------------------------------------
 
@@ -1430,7 +1433,7 @@ The following terms will be included as random effects: transects nested
 within sites, point location (metres up the streambank), and survey
 year.
 
-## [3.4 Describe Parameter Estimation Technique and Performance Criteria](#3.4-parameter-estimation-technique-and-performance-criteria)
+## 3.4 Describe Parameter Estimation Technique and Performance Criteria
 
 ------------------------------------------------------------------------
 
@@ -1454,7 +1457,7 @@ year.
 
 ------------------------------------------------------------------------
 
-### [3.4.1 Parameter Estimation Technique](#3.4.1-estimation-technique)
+### 3.4.1 Parameter Estimation Technique
 
 ------------------------------------------------------------------------
 
@@ -1495,16 +1498,17 @@ different variables and relative importance of spatial and temporal
 scales. Additionally, there will be some investigation of the
 effectiveness/appropriateness of different forms of certain variables,
 such as: bank elevation (continuous or categorical), vegetation
-groupings (see section 2.4.2), and flow variables (2.4.2). The primary
-focus of the model is to evaluate the relative impacts of the key
-variables in line with the conceptual model and hypotheses, so model
-performance will align with that objective, including model fit
-parameters of residual plots, model uncertainty, unexplained variation,
-degrees of freedom, and fit statistics. Evaluating the model performance
-for predictive capacity within and beyond the dataset may not be
-required in the current study as it is likely beyond the scope, but this
-would involve testing predictive capacity within and between waterways
-using e.g. a cross-validation approach.
+groupings, and flow variables ([see section
+2.4](#2.4-identify-predictor-and-response-variables)). The primary focus
+of the model is to evaluate the relative impacts of the key variables in
+line with the conceptual model and hypotheses, so model performance will
+align with that objective, including model fit parameters of residual
+plots, model uncertainty, unexplained variation, degrees of freedom, and
+fit statistics. Evaluating the model performance for predictive capacity
+within and beyond the dataset may not be required in the current study
+as it is likely beyond the scope, but this would involve testing
+predictive capacity within and between waterways using e.g. a
+cross-validation approach.
 
 Parameterisation: We will use data-driven parameter estimation using
 maximum likelihood for both parametric and non-parametric factor data
@@ -1513,7 +1517,7 @@ data, as well as binary or categorical grazing variables). We will
 optimise the model by comparing fit of model outputs to observations
 (residuals versus fitted values).
 
-### [3.4.2 Estimation performance criteria](#3.4.2-estimation-performance-criteria)
+### 3.4.2 Estimation performance criteria
 
 ------------------------------------------------------------------------
 
@@ -1539,7 +1543,7 @@ optimise the model by comparing fit of model outputs to observations
   plots of predicted values under different combinations of the key
   flow, zone, and period predictor variables).
 
-## [3.5 Model Assumptions & Uncertainties](#3.5-model-assumptions-uncertainties)
+## 3.5 Model Assumptions & Uncertainties
 
 ------------------------------------------------------------------------
 
@@ -1554,7 +1558,7 @@ optimise the model by comparing fit of model outputs to observations
 
 ------------------------------------------------------------------------
 
-## [3.6 Specify formal model](#3.6-specify-formal-model)
+## 3.6 Specify formal model
 
 ------------------------------------------------------------------------
 
@@ -1616,9 +1620,9 @@ may not). Will test the full three-way `zone * period * wpfg`
 interaction; if this converges it will be used as the basis for final
 outputs, if not, the simplified models listed above will be used.
 
-# [4. Model Calibration, Fitting & Checking](#4-model-calibration-fitting-checking)
+# 4. Model Calibration, Fitting & Checking
 
-## [4.1 Model Calibration and Validation Scheme](#4.1-model-calibration-and-validation-scheme)
+## 4.1 Model Calibration and Validation Scheme
 
 ------------------------------------------------------------------------
 
@@ -1648,7 +1652,7 @@ outputs, if not, the simplified models listed above will be used.
 
 ------------------------------------------------------------------------
 
-### [4.1.1 Describe Calibration / Validation Data](#4.1.1-describe-calibration-validation-data)
+### 4.1.1 Describe Calibration / Validation Data
 
 ------------------------------------------------------------------------
 
@@ -1682,7 +1686,7 @@ outputs, if not, the simplified models listed above will be used.
 
 ------------------------------------------------------------------------
 
-## [4.2 Implementation verification](#4.3-implementation-verification)
+## 4.2 Implementation verification
 
 ------------------------------------------------------------------------
 
@@ -1706,7 +1710,7 @@ outputs, if not, the simplified models listed above will be used.
 \[\] EG to update: GH review by JY/HW/EG (anyone who didn’t open the
 PR).
 
-## [4.3 Model Checking](#4.4-model-checking)
+## 4.3 Model Checking
 
 ------------------------------------------------------------------------
 
@@ -1725,7 +1729,7 @@ PR).
 
 ------------------------------------------------------------------------
 
-### [4.3.1 Quantitative model checking](#4.4.1-quantitative-model-checking)
+### 4.3.1 Quantitative model checking
 
 ------------------------------------------------------------------------
 
@@ -1749,7 +1753,7 @@ PR).
 
 ------------------------------------------------------------------------
 
-### [4.3.2 Qualitative model checking](#4.4.2-qualitative-model-checking)
+### 4.3.2 Qualitative model checking
 
 ------------------------------------------------------------------------
 
@@ -1786,7 +1790,7 @@ model. 2. Assessment of estimated associations by field experts (CJ and
 LV) to identify whether estimated associations are plausible given what
 is known about the target system.
 
-### [4.3.3 Assumption violation checks](#4.3.3-assumption-violation-checks)
+### 4.3.3 Assumption violation checks
 
 ------------------------------------------------------------------------
 
@@ -1815,7 +1819,7 @@ is known about the target system.
 \[\] EG to consider whether posterior checks should be mentioned here
 instead of 4.1.2
 
-# [5.0 Model Validation and Evaluation](#5.0-model-validation-and-evaluation)
+# 5.0 Model Validation and Evaluation
 
 ------------------------------------------------------------------------
 
@@ -1846,7 +1850,7 @@ instead of 4.1.2
 
 ------------------------------------------------------------------------
 
-## [5.1 Model output corroboration](#5.1-model-output-corroboration)
+## 5.1 Model output corroboration
 
 ------------------------------------------------------------------------
 
@@ -1890,7 +1894,7 @@ instead of 4.1.2
 \[\] EG to update: no such tests used in this work given model
 complexity.
 
-## [5.2 Choose Performance Metrics & Criteria](#5.2-evaluation-performance-metrics-criteria)
+## 5.2 Choose Performance Metrics & Criteria
 
 ------------------------------------------------------------------------
 
@@ -1926,7 +1930,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-## [5.3 Model Analysis](#5.3-model-analysis)
+## 5.3 Model Analysis
 
 ------------------------------------------------------------------------
 
@@ -1969,7 +1973,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.1 Uncertainty Analyses](#5.3.1-uncertainty-analyses)
+### 5.3.1 Uncertainty Analyses
 
 ------------------------------------------------------------------------
 
@@ -2025,7 +2029,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.2 Sensitivity Analyses](#5.2.2-sensitivity-analyses)
+### 5.3.2 Sensitivity Analyses
 
 ------------------------------------------------------------------------
 
@@ -2057,7 +2061,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.3 Model application or scenario analysis](#5.3.3-model-application-scenario-analysis)
+### 5.3.3 Model application or scenario analysis
 
 ------------------------------------------------------------------------
 
@@ -2081,7 +2085,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-### [5.3.4 Other simulation experiments / robustness analyses etc.](#5.3.4-other-simulation-robustness-analyses)
+### 5.3.4 Other simulation experiments / robustness analyses
 
 ------------------------------------------------------------------------
 
@@ -2094,7 +2098,7 @@ complexity.
 
 ------------------------------------------------------------------------
 
-# [References](#references)
+# References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
 
