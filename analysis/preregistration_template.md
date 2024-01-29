@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-28 January, 2024
+29 January, 2024
 
 # 1.0 Problem Formulation
 
@@ -1398,7 +1398,8 @@ issues of zero inflation and over-dispersion.
 
 Structure estimation: model structure specification is knowledge-driven
 rather than data-driven, with further refinement and simplification
-guided by the results of the pilot analysis (section 2.4.3).
+guided by the results of the pilot analysis ([section
+2.5.3](#253describe-any-data-exploration-or-preliminary-data-analyses)).
 
 Interactions are expected within the proposed models, such as those
 between elevation and flow, as well as flow, livestock grazing and
@@ -1410,24 +1411,28 @@ responses. Event-based (short term) models evaluating changes before and
 after an event would require a fourth interacting term for period
 (before or after event). Isolating the effects of elevation, flow or
 period could then be done using post-hoc tests. Data structures are
-broadly defined in 2.3 and 2.4.2 for the different variables proposed
-for the study. Plant richness data are counts $$Poisson$$, cover data
-are hits (successes) from points (trials, where n=40 for all
-sub-transects) $$modelled as Poisson, see Section 3.1$$, flow data may
-take a range of forms indicated earlier, elevation is provided in mAHD
-but is likely to be input into the model as an ordinal categorical
-factor with bins based on known elevation of flow events (e.g. freshes),
-grazing at this stage may be a binomial indicator of presence or
-absence, or alternatively as a categorical factor indicating the
-presence/absence of cattle or sheep.
+broadly defined in
+[2.2](#22-explain-critical-conceptual-design-decisions) and
+[2.4](#24-identify-predictor-and-response-variables) for the different
+variables proposed for the study. Plant richness data are counts
+$$Poisson$$, cover data are hits (successes) from points (trials, where
+n=40 for all sub-transects) $$modelled as Poisson, see Section 3.1$$,
+flow data may take a range of forms indicated earlier, elevation is
+provided in mAHD but is likely to be input into the model as an ordinal
+categorical factor with bins based on known elevation of flow events
+(e.g. freshes), grazing at this stage may be a binomial indicator of
+presence or absence, or alternatively as a categorical factor indicating
+the presence/absence of cattle or sheep.
 
 The model structure will be refined through the pilot analysis
-(described in Section 2.4.3), one aspect of which will be to assess
-model convergence with different levels of interactions (model
-convergence checks are described in Section a.b.c). If models do not
-converge with the above-specified interactions, higher order
-interactions will be progressively removed from the model (i.e., three
-way interactions will be removed, then two-way interactions).
+(described in Section
+[2.5.3](#253-describe-any-data-exploration-or-preliminary-data-analyses)),
+one aspect of which will be to assess model convergence with different
+levels of interactions (model convergence checks are described in
+Section a.b.c). If models do not converge with the above-specified
+interactions, higher order interactions will be progressively removed
+from the model (i.e., three way interactions will be removed, then
+two-way interactions).
 
 The following terms will be included as random effects: transects nested
 within sites, point location (metres up the streambank), and survey
@@ -1578,47 +1583,49 @@ optimise the model by comparing fit of model outputs to observations
 
 ------------------------------------------------------------------------
 
-\[\] EG can you please update to outline the results of hte pilot
+\[\] EG can you please update to outline the results of the pilot
 study: - models were too complex for the data available, and had to be
 simplified. - settled on three model structures (all based on those in
-Section 2.4.3): 1. a “flow regime” model, which has the
-`days_above_baseflow` and `days_above_springfresh` predictors, plus
-random effects. 2. a “flow events” model (first version), which has a
-`zone * period` interaction, independent fixed effects for `origin`,
-`wpfg`, and `grazing`, and random effects, but no `days_above_`
-predictors. 3. a “flow events” model (second version), which has a
-`wpfg * period` interaction, independent fixed effects for `zone`,
-`origin`, and `grazing`, and random effects, but no `days_above_`
-predictors. - rationale for these is to capture the average effects of
-flows at different levels over multiple years (model 1), the effects on
-vegetation before and after specific flow events under an assumption
-that different plant functional groups (`wpfg`s) have different cover
-levels but similar responses to flows (model 2), and the effects of
-specific flow events allowing different plant functional groups to
-differ in their response but assuming that responses in each zone are
-similar (model 3). - These models are *not* ideal, but full models with
-three-way interactions did not converge and were unable to generate
-reliable parameter estimates. Full models will be trialled again with
-the full data set, but these simplified models will be used if full
-models do not converge. - posterior predictive checks indicated high
-levels of zero-inflation and some over-dispersion. Final models allowed
-zero-inflation parameters to differ among plant functional groups
-(`ziformula = ~ wpfg`) but did not account for over-dispersion. The most
-common method to address over-dispersion is with negative binomial
-models, potentially with group-specific dispersion parameters (e.g.,
-`dispformula = ~ wpfg` as an argument in glmmTMB). However, all attempts
-to fit negative binomial models resulted in non-convergence. Given the
-zero-inflated Poisson models converged and reliably captured the
-proportion of zeros in the data, this approach is proposed for all
-models. - Need a couple of decision points for the full model: 1.
-Attempt to fit a single model with all data (adding a random effect for
-`waterbody`), but this may not converge or may not be computationally
-feasible. In this case, models will be fitted separately for each
-waterbody as per the pilot study approach. 2. May be able to add
-three-way interactions back in when the full data set is available (but
-may not). Will test the full three-way `zone * period * wpfg`
-interaction; if this converges it will be used as the basis for final
-outputs, if not, the simplified models listed above will be used.
+Section
+[2.5.3](#253-describe-any-data-exploration-or-preliminary-data-analyses)): 1.
+a “flow regime” model, which has the `days_above_baseflow` and
+`days_above_springfresh` predictors, plus random effects. 2. a “flow
+events” model (first version), which has a `zone * period` interaction,
+independent fixed effects for `origin`, `wpfg`, and `grazing`, and
+random effects, but no `days_above_` predictors. 3. a “flow events”
+model (second version), which has a `wpfg * period` interaction,
+independent fixed effects for `zone`, `origin`, and `grazing`, and
+random effects, but no `days_above_` predictors. - rationale for these
+is to capture the average effects of flows at different levels over
+multiple years (model 1), the effects on vegetation before and after
+specific flow events under an assumption that different plant functional
+groups (`wpfg`s) have different cover levels but similar responses to
+flows (model 2), and the effects of specific flow events allowing
+different plant functional groups to differ in their response but
+assuming that responses in each zone are similar (model 3). - These
+models are *not* ideal, but full models with three-way interactions did
+not converge and were unable to generate reliable parameter estimates.
+Full models will be trialled again with the full data set, but these
+simplified models will be used if full models do not converge. -
+posterior predictive checks indicated high levels of zero-inflation and
+some over-dispersion. Final models allowed zero-inflation parameters to
+differ among plant functional groups (`ziformula = ~ wpfg`) but did not
+account for over-dispersion. The most common method to address
+over-dispersion is with negative binomial models, potentially with
+group-specific dispersion parameters (e.g., `dispformula = ~ wpfg` as an
+argument in glmmTMB). However, all attempts to fit negative binomial
+models resulted in non-convergence. Given the zero-inflated Poisson
+models converged and reliably captured the proportion of zeros in the
+data, this approach is proposed for all models. - Need a couple of
+decision points for the full model: 1. Attempt to fit a single model
+with all data (adding a random effect for `waterbody`), but this may not
+converge or may not be computationally feasible. In this case, models
+will be fitted separately for each waterbody as per the pilot study
+approach. 2. May be able to add three-way interactions back in when the
+full data set is available (but may not). Will test the full three-way
+`zone * period * wpfg` interaction; if this converges it will be used as
+the basis for final outputs, if not, the simplified models listed above
+will be used.
 
 # 4. Model Calibration, Fitting & Checking
 
