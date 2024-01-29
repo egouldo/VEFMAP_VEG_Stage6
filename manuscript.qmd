@@ -32,77 +32,83 @@ bibliography: data/references.bib
 
 # Introduction
 
-a. 
-    This project will refine the models already developed through Stage 6 that were extensively described within the preregistration template document attached to the original proposal, and use these models to evaluate vegetation responses and effects of drivers on native riparian vegetation data from Stages 6 and 7.
+This project will refine the models already developed through Stage 6 that were extensively described within the preregistration template document attached to the original proposal, and use these models to evaluate vegetation responses and effects of drivers on native riparian vegetation data from Stages 6 and 7.
 
-b. 
-    This report will summarise implications for management relating to observations and models, such as the effect of flow events in different places and where the outcomes will be greatest.
-This will include specific recommendations for how flow management actions can be used to achieve management objectives, such as supporting riparian vegetation cover and diversity as well as limiting terrestrial vegetation encroachment.
+This report will summarise implications for management relating to observations and models, such as the effect of flow events in different places and where the outcomes will be greatest. This will include specific recommendations for how flow management actions can be used to achieve management objectives, such as supporting riparian vegetation cover and diversity as well as limiting terrestrial vegetation encroachment.
 
-\[Directly relating to aim questions 1, 2 and 3
+\[Directly relating to aim questions 1, 2 and 3\]
 
-1. 
-  How important are environmental flows for achieving riparian vegetation outcomes in different waterways, given limiting factors and the broader flow regime? 
+1.  How important are environmental flows for achieving riparian vegetation outcomes in different waterways, given limiting factors and the broader flow regime? 
+    a.  This question has direct links to the VEFMAP Veg Q1 project, where that project aims to estimate important links between flow and other factors (based on expert knowledge), while this project aims to quantify a subset of those links based on models of empirical data. Both projects are needed as they perform different tasks with a different scope.   
+    b.  This question has direct links to stated management objectives within the seasonal watering plans of CMAs. Some objectives are likely to be effectively achieved by current flow actions, while others may not, this project will provide evidence for this. 
+2.  What is the predicted outcome of recent environmental flow regimes in different waterways, using counterfactual modelling to estimate controls?
+    a.  Counterfactual models are becoming the preferred method for evaluating effects of treatments in waterways and wetlands across Victoria due to the unavailability of true controls within the landscape. Methods to implement this are in early stages and project like this will be essential to establish protocols for effective use.   
+3.  How can the timing of delivering a fresh be optimised to develop and maintain fringing and emergent plant populations in the riparian zone
+    a.  Freshes remain a significant flood event in many waterways and a key management tool to achieve vegetation outcomes. However there remains significant uncertainty around what timing (and size) is most effective within the window of deliverability. The importance of timing has been demonstrated by the importance of seasonal flowering of terrestrial species, as well as the impact of season on submergence effects (Tonkin et al. 2020, Vivian et al. 2020, Main et al. 2022). 
 
-a. 
-     This question has direct links to the VEFMAP Veg Q1 project, where that project aims to estimate important links between flow and other factors (based on expert knowledge), while this project aims to quantify a subset of those links based on models of empirical data.
-Both projects are needed as they perform different tasks with a different scope. 
- 
-
-b. 
-    This question has direct links to stated management objectives within the seasonal watering plans of CMAs.
-Some objectives are likely to be effectively achieved by current flow actions, while others may not, this project will provide evidence for this. 
-
-2. 
-  What is the predicted outcome of recent environmental flow regimes in different waterways, using counterfactual modelling to estimate controls? 
- 
-
-a. 
-     Counterfactual models are becoming the preferred method for evaluating effects of treatments in waterways and wetlands across Victoria due to the unavailability of true controls within the landscape.
-Methods to implement this are in early stages and project like this will be essential to establish protocols for effective use. 
- 
-
-3. 
-  How can the timing of delivering a fresh be optimised to develop and maintain fringing and emergent plant populations in the riparian zone? 
- 
-
-a. 
-     Freshes remain a significant flood event in many waterways and a key management tool to achieve vegetation outcomes.
-However there remains significant uncertainty around what timing (and size) is most effective within the window of deliverability.
-The importance of timing has been demonstrated by the importance of seasonal flowering of terrestrial species, as well as the impact of season on submergence effects (Tonkin et al. 2020, Vivian et al. 2020, Main et al. 2022). 
-
-This preregistration document relates to the data analysis of a study on vegetation responses to environmental flows.
-The model aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diversity/richness) within regulated river channels.
-Outputs will aim to give practical evidence and the implications of responses to directly improve and guide the management of environmental water delivery for native vegetation benefit.
-The model will incorporate data from across a number of waterways across a large part of Victoria.
-The models will not aim to provide explicit predictions within the waterways surveyed, or to specific un-surveyed waterways, but extension of these models for prediction will be highlighted for future investigation beyond this study.
+This preregistration document relates to the data analysis of a study on vegetation responses to environmental flows. The model aims to provide clear evidence of the influence of environmental flows, and other factors (particularly exotic vegetation and livestock grazing), on native vegetation (cover and diversity/richness) within regulated river channels. Outputs will aim to give practical evidence and the implications of responses to directly improve and guide the management of environmental water delivery for native vegetation benefit. The model will incorporate data from across a number of waterways across a large part of Victoria. The models will not aim to provide explicit predictions within the waterways surveyed, or to specific un-surveyed waterways, but extension of these models for prediction will be highlighted for future investigation beyond this study.
 
 # Methods
 
 ## Monitoring Data
 
-Data were collected from 44 sites across Victoria with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'.
-Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey.
+Data were collected from 44 sites across Victoria with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'. Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey.
+
+### Data Preparation
+
+-   [ ] summarise Chris' data preparation description from the preregistration document here.
+
+## Preregistered Analysis & adaptive preregistration
+
+This analysis was preregistered using the *adaptive preregistration* methodology (Gould et al. in prep) based on the ecological modelling preregistration template (cite DOI for the template, and version).
+
+An exploratory pilot analysis was undertaken on a subset of the full dataset in order to explore and resolve critical uncertainties in model specification that would inform a candidate set of models for later fitting on the full dataset.
+
+Despite resolving some uncertainties in the preliminary analysis, there remained some analytic uncertainty in how to specify the models. Following the adaptive preregistration methodology, for each model we set out the following decision-tree with contingent models should the preferred model specifications fail:
+
+**Vegetation Cover Modelling Decision Tree:**
+
+1.  List / outline key decision-points
+2.  Create Decision Tree
+
+> INSERT DECISION TREE HERE
+
+```{r}
+library(flowdiagramr)
+# Adapt the below code for our decision tree
+mymodel = list( varlabels = c("S","I","R"),
+                flows = list(S_flows = c("-b*S*I"), 
+                             I_flows = c("b*S*I","-g*I"), 
+                             R_flows = c("g*I"))
+              )
+#prepare diagram
+diagram_list <- prepare_diagram(mymodel)
+#make diagram
+my_diagram <- make_diagram(diagram_list)
+#plot diagram
+plot(my_diagram)
+```
+
+**Species Richness Modelling Decision Tree:**
+
+1.  List / outline key decision-points
+2.  Create Decision Tree
+
+> INSERT DECISION TREE HERE
 
 # Results
 
 From Chris:
 
-> I\'ve had a go at sketching out some of the plots I\'d like to be able to show in the paper: see attached.
+> I've had a go at sketching out some of the plots I'd like to be able to show in the paper: see attached.
 >
 >  
 >
-> 1.  The first is plotting the raw data of broad vegetation groups for each reach in relation to elevation up the bank and the typical baseflow and fresh levels.
->     There are about 25 reaches total -- some with only one site, others with 2-3 sites -- so I can see this as being some example plots in the paper and the rest in the supplement?
+> 1.  The first is plotting the raw data of broad vegetation groups for each reach in relation to elevation up the bank and the typical baseflow and fresh levels. There are about 25 reaches total -- some with only one site, others with 2-3 sites -- so I can see this as being some example plots in the paper and the rest in the supplement?
 >
-> 2.  The second is modelled output of the effect of some of the key drivers on vegetation cover against elevation.
->     This is difficult to do across all sites because the elevation impacts are not standardised, so we could do it for individual reaches (such as the Campaspe, where we have the most data), or think of ways to standardise it across sites?
->     I\'m envisaging a GAMM plot of predictions for this figure.
+> 2.  The second is modelled output of the effect of some of the key drivers on vegetation cover against elevation. This is difficult to do across all sites because the elevation impacts are not standardised, so we could do it for individual reaches (such as the Campaspe, where we have the most data), or think of ways to standardise it across sites? I'm envisaging a GAMM plot of predictions for this figure.
 >
-> 3.  The effect size of grazing, exotic vegetation cover and inundation on the cover of native vegetation.
->     Makes most sense to separate this into the effect of spring inundation within the winter-spring sampling interval and summer inundation in the spring-summer interval.
->     This can be done across all sites because it is not directly relating to elevation, but instead, whether or not the spot was inundated for.
->     We would probably use a duration of inundation, rather than a binary of inundated or not, but happy to discuss. 
+> 3.  The effect size of grazing, exotic vegetation cover and inundation on the cover of native vegetation. Makes most sense to separate this into the effect of spring inundation within the winter-spring sampling interval and summer inundation in the spring-summer interval. This can be done across all sites because it is not directly relating to elevation, but instead, whether or not the spot was inundated for. We would probably use a duration of inundation, rather than a binary of inundated or not, but happy to discuss. 
 >
 >  
 >
@@ -114,4 +120,4 @@ From Chris:
 
 # Discussion & Conclusion
 
-# References  {.unnumbered}
+# References {.unnumbered}
