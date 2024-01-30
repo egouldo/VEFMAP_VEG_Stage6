@@ -60,7 +60,7 @@ Data were collected from 44 sites across Victoria (@fig-survey-map) with samplin
 
 -   [ ] summarise Chris' data preparation description from the preregistration document here.
 
-## Preregistered Analysis & adaptive preregistration
+## Preregistered Analysis & Adaptive Preregistration
 
 This analysis was preregistered using the *adaptive preregistration* methodology (Gould et al. in prep) based on the ecological modelling preregistration template (cite DOI for the template, and version).
 
