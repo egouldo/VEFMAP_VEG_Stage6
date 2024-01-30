@@ -68,28 +68,34 @@ Despite resolving some uncertainties in the preliminary analysis, there remained
 
 **Vegetation Cover Modelling Decision Tree:**
 
-1.  List / outline key decision-points
-2.  Create Decision Tree
+```{mermaid}
+flowchart TB
 
-> INSERT DECISION TREE HERE
+subgraph ABC["Main Models"]
+direction TB
+A["Full Model, Full Dataset"]
+A-->B["Full Model, Full Dataset, 3-way Interaction"]
+B-->C["Full Model, fitted to each waterbody"]
+A-->C
+end
 
-```{r}
-library(flowdiagramr)
-# Adapt the below code for our decision tree
-mymodel = list( varlabels = c("S","I","R"),
-                flows = list(S_flows = c("-b*S*I"), 
-                             I_flows = c("b*S*I","-g*I"), 
-                             R_flows = c("g*I"))
-              )
-#prepare diagram
-diagram_list <- prepare_diagram(mymodel)
-#make diagram
-my_diagram <- make_diagram(diagram_list)
-#plot diagram
-plot(my_diagram)
+subgraph DEF["Simplified Models"]
+direction TB
+D[Flow regime model]
+E["Flow event model V1"]
+F["Flow event model V2"]
+end
+
+
+%%Link from main models subgraph to simplified models
+C --> DEF
+
+linkStyle 0 stroke:#56B4E9
+linkStyle default stroke:#E69F00
 ```
 
-**Species Richness Modelling Decision Tree:**
+**\
+Species Richness Modelling Decision Tree:**
 
 1.  List / outline key decision-points
 2.  Create Decision Tree
