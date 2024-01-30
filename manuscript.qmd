@@ -52,7 +52,9 @@ This preregistration document relates to the data analysis of a study on vegetat
 
 ## Monitoring Data
 
-Data were collected from 44 sites across Victoria with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'. Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey.
+Data were collected from 44 sites across Victoria (@fig-survey-map) with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'. Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey.
+
+![Vegetation survey sites and systems](images/VEFMAP_S6_Allsystems.png){#fig-survey-map}
 
 ### Data Preparation
 
