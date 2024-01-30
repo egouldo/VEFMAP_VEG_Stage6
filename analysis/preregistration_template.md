@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-29 January, 2024
+30 January, 2024
 
 # 1.0 Problem Formulation
 
@@ -180,10 +180,10 @@ examples in (Moallemi, Elsawah, and Ryan 2019).
 
 **`📝` Preregistration Item**
 
-*Provide detail on the analytical purpose and scope of the model:* 
+*Provide detail on the analytical purpose and scope of the model:*
 
 - [ ] How will the model be analysed and what analytical questions will
-  the model be used to answer? 
+  the model be used to answer?
 - [ ] Candidate decisions should be investigated and are specified a
   priori. Depending on the modelling context, they may be specified by
   stakeholders, model users or the analyst (Moallemi, Elsawah, and Ryan
@@ -194,7 +194,7 @@ examples in (Moallemi, Elsawah, and Ryan 2019).
     model.
   - [ ] Are there potentially unacceptable management or policy outcomes
     identified by stakeholders that should be captured in the model,
-    i.e. as constraints?
+    i.e.as constraints?
 - [ ] Are there scenarios that model inputs or outputs that must
   accommodated? Scenarios should be set a priori, (i.e. before the model
   is built, Moallemi, Elsawah, and Ryan 2019) and may be
@@ -202,7 +202,7 @@ examples in (Moallemi, Elsawah, and Ryan 2019).
   other experts (Mahmoud et al. 2009).
   - [ ] If relevant, describe what processes you will use to elicit and
     identify relevant scenarios, e.g. literature review, structured
-    workshops with stakeholders or decision-makers. 
+    workshops with stakeholders or decision-makers.
   - [ ] Specify scenarios under which decisions are investigated.
 
 ------------------------------------------------------------------------
@@ -227,7 +227,8 @@ collected on the individual species level but will likely be grouped
 into relevant response classes. These data also enable evaluation of
 vegetation diversity within relevant response classes. The specific
 groupings are yet to be determined. More information on these groupings
-is provided below in 2.4.
+is provided below in
+[2.4](#24-identify-predictor-and-response-variables).
 
 The models will require a certain amount of flexibility to be able to
 change the timeframes over which data are compared and the set of
@@ -240,10 +241,12 @@ time and funding resources - but this may change.
 The models themselves will be analysed by assessing the model fit and
 parameters indicating suitability of model structure given the data. The
 specific tests to be used will depend on the model structure used. More
-information is provided in 3.2 and 3.3. Future study will investigate
-the predictive capacity of the models within and between different
-waterways to enable transferability of the data, but this is beyond the
-scope of the current piece of work and is not described further here.
+information is provided in [3.2](#32-choose-model-features-and-family)
+and [3.5](#35-model-assumptions-uncertainties). Future study will
+investigate the predictive capacity of the models within and between
+different waterways to enable transferability of the data, but this is
+beyond the scope of the current piece of work and is not described
+further here.
 
 Future research will involve testing scenarios of different flow regimes
 to what we have observed. This includes estimating the expected data we
@@ -310,8 +313,8 @@ management and environmental flows locally and internationally.
 > extrapolated based on the study design (data + model + analysis)? For
 > instance, if there are many confounding variables and not enough
 > spatial / environmental replication, then making broader more general
-> claims beyond the stated boundaries of the model
-> ((**analyticalobjectives?**)) may not be warranted. However, larger
+> claims beyond the stated boundaries of the model ([section
+> 1.1.3](#113-analytical-purpose)) may not be warranted. However, larger
 > generalisations about results may be acceptable if the data comes from
 > experimentally manipulated or controlled systems.
 
@@ -439,7 +442,7 @@ This is defensible because locations where occupancy are impossible are
 not effective for evaluating flow responses, however, the frequency and
 distribution of these ‘zero’ samples would need to be described as well.
 
-There are clear local and glabal interactions within our study. Local
+There are clear local and global interactions within our study. Local
 interactions are dominated by the species abundance and composition of
 plants within a sample area (plant interactions). Rainfall may also
 interact with flow events and would influence sites or groups of sites
@@ -539,8 +542,9 @@ and potentially exotic plant cover.
 - We will consider models for native plant cover that include exotic
   plant cover as a predictor. The categorisation of native and exotic is
   fairly well recognised in Victoria and should not pose an issue, but
-  the categorisation of the plant group is variable (see 2.4.2). Also,
-  the estimate of cover is uncertain.
+  the categorisation of the plant group is variable (see
+  [2.5.2](#252-data-processing-and-preparation)). Also, the estimate of
+  cover is uncertain.
 
 **Structural non-parametric uncertainty** Model uncertainty is a given.
 The models we will use will not fit the data perfectly but we will be
@@ -548,11 +552,11 @@ able to quantify this uncertainty in our model estimates. Uncertainty
 will be captured for our vegetation input data based on the number of
 samples we have within our hierarchical data structure. Uncertainty will
 not be accounted for in our uncertain variables such as rainfall or flow
-where we have no way of estimating this uncertainty.Unknown uncertainty
+where we have no way of estimating this uncertainty. Unknown uncertainty
 will be somewhat captured in random effects but this will be an
 approximation only. More information about the model form and potential
-uncertainty is provided in section 3 but is not contained within our
-conceptual model.
+uncertainty is provided in [section 3](#30-formalise-and-specify-model)
+but is not contained within our conceptual model.
 
 ## 2.4 Identify predictor and response variables
 
@@ -766,7 +770,8 @@ This analysis is relatively complex, due to the large dataset and the
 integration of different data sources (vegetation data, flow, transect
 elevation, site attributes). Each of these data sources requires some
 careful data processing and preparation for use within the models. Here
-we outline the major actions - listed within issue \#23 in our
+we outline the major actions - listed within issue
+[\#23](#https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/23) in our
 repository.
 
 **GPS data correlation** The specific relevance of this issue for flow
@@ -930,17 +935,17 @@ literature for the most appropriate vegetation groupings.
 
 **Determination of grazing covariate** The most simple form of grazing
 covariate is a binary score of present or absent. However, as described
-in 2.2.2, there is a lot of variation in the effect of grazing relating
-to the intensity (density of animals) and the timing (season of
-grazing). While we do not have this information, we can roughly
-categorise the grazing intensity based on site observations, which may
-be informative. Additionally, we have data on grazer animal (sheep or
-cattle) which may be important for some or all questions. We need to
-consider these options and develop candidate variables to test in our
-models.
+in [3.5](#35-model-assumptions-uncertainties), there is a lot of
+variation in the effect of grazing relating to the intensity (density of
+animals) and the timing (season of grazing). While we do not have this
+information, we can roughly categorise the grazing intensity based on
+site observations, which may be informative. Additionally, we have data
+on grazer animal (sheep or cattle) which may be important for some or
+all questions. We need to consider these options and develop candidate
+variables to test in our models.
 
 **Determination of exotic vegetation covariate** The exotic vegetation
-covariate is releatively straightforward in one sense because it will be
+covariate is relatively straightforward in one sense because it will be
 simple cover and/or diversity estimates that we have collected. However,
 there is a likely interaction between the impact of exotic species and
 the terrestrial/riparian grouping, for example, it is possible that
@@ -985,8 +990,9 @@ Given the complex nature of this analysis and the uncertainties in the
 data structure due to the data processing that needs to occur, there are
 many preliminary checks that may need to be conducted. For example,
 depending on the vegetation groupings that we decide to use, and how we
-account for ‘zero samples’ (see 2.2.1) there may be very different
-amounts of skew or zero-inflation in the response or predictor
+account for ‘zero samples’ (see
+[2.2](#22-explain-critical-conceptual-decisions)) there may be very
+different amounts of skew or zero-inflation in the response or predictor
 variables. Initially, we will need to do simple tests of data
 distributions within hierarchies to check for data spread and prevalence
 of zeros or outliers. We will also need to assess the colinearity or
@@ -1071,7 +1077,7 @@ case of the proposed `glmmTMB` models is assessed internally and printed
 on model return. Second, assessing whether the model structure
 (particularly the error distribution) is appropriate for the data, which
 is supported by posterior predictive checks. The details of these steps
-are provided in section 4.1, below.
+are provided in [section 4.3.1](#431-quantitative-model-checking).
 
 It is important to note that models fitted to the pilot dataset may not
 translate directly to the final analysis due to differences in the data
@@ -1222,7 +1228,7 @@ will attempt to detect and describe patterns in recorded vegetation data
 in relation to a series of covariates. Specifically, the analysis aims
 to provide clear evidence of the influence of environmental flows, and
 other factors (particularly exotic vegetation and livestock grazing), on
-native vegetation (cover and diverstiy) within regulated river channels
+native vegetation (cover and diversity) within regulated river channels
 ([1.1.3](#113-analytical-purpose)). We will initially use generalised
 linear mixed effects models (GLMM) with zero-inflated Poisson family
 distribution for cover data and species richness (counts). The exact
@@ -1291,20 +1297,20 @@ below an upper bound (values must still be non-negative).
 ------------------------------------------------------------------------
 
 The two primary response variables are plant cover and species richness
-(see 1.1.4), which will be operationalised in slightly different ways
-depending on the timeframe: 1) short term-in response to a single event
-(i.e. before and after); and 2) medium term (2-10 years) in relation to
-typical flow regimes (flow elevation/duration/timing) over that period.
-Both will be using the extent of a response of particular groups of
-plants at particular bank elevations in relation to flow events (factor
-condition of before or after an specific event) or flow values
-(e.g. days of flow to a specific elevation within a year/season), as
-well as the additional covariates of exotic plant cover and livestock
-grazing. This will enable an evaluation of variation in plant responses
-at different elevations in relation to the primary management action
-(flow) as well as identify the relative impacts of flow and the
-covariates of exotic plants (interacting with flow) and livestock
-grazing.
+(see [2.4](#24-identify-predictor-and-response-variables)), which will
+be operationalised in slightly different ways depending on the
+timeframe: 1) short term-in response to a single event (i.e. before and
+after); and 2) medium term (2-10 years) in relation to typical flow
+regimes (flow elevation/duration/timing) over that period. Both will be
+using the extent of a response of particular groups of plants at
+particular bank elevations in relation to flow events (factor condition
+of before or after an specific event) or flow values (e.g. days of flow
+to a specific elevation within a year/season), as well as the additional
+covariates of exotic plant cover and livestock grazing. This will enable
+an evaluation of variation in plant responses at different elevations in
+relation to the primary management action (flow) as well as identify the
+relative impacts of flow and the covariates of exotic plants
+(interacting with flow) and livestock grazing.
 
 ### 3.2.2 Choose model family
 
@@ -1322,15 +1328,17 @@ grazing.
 ------------------------------------------------------------------------
 
 The two key vegetation response variables have Poisson and binomial
-families (distributions) as indicated above in 3.1.2, but will both be
-modelled as zero-inflated Poisson distributions for the reasons outlined
-in Section 3.1. All models will use a log link function. These
-distributions have been selected based on the type of data and the
-expected data distributions, particularly the fact that observations of
-richness and cover are both recorded as counts but include many zero
-values. There may be unexpected issues with these approaches due to
-actual data distributions not matching our expectations, such as an
-unaccounted for over-dispersion of the data.
+families (distributions) as indicated in [section
+3.3](#33-describe-approach-for-identifying-model-structure), but will
+both be modelled as zero-inflated Poisson distributions for the reasons
+outlined in [section 3.1](#31-model-class-framework-and-approach). All
+models will use a log link function. These distributions have been
+selected based on the type of data and the expected data distributions,
+particularly the fact that observations of richness and cover are both
+recorded as counts but include many zero values. There may be unexpected
+issues with these approaches due to actual data distributions not
+matching our expectations, such as an unaccounted for over-dispersion of
+the data.
 
 A formal sensitivity analysis has not yet been completed and so we are
 unaware of what variables the model outputs are most sensitive to. The
@@ -1416,23 +1424,24 @@ broadly defined in
 [2.4](#24-identify-predictor-and-response-variables) for the different
 variables proposed for the study. Plant richness data are counts
 $$Poisson$$, cover data are hits (successes) from points (trials, where
-n=40 for all sub-transects) $$modelled as Poisson, see Section 3.1$$,
-flow data may take a range of forms indicated earlier, elevation is
-provided in mAHD but is likely to be input into the model as an ordinal
-categorical factor with bins based on known elevation of flow events
-(e.g. freshes), grazing at this stage may be a binomial indicator of
-presence or absence, or alternatively as a categorical factor indicating
-the presence/absence of cattle or sheep.
+n=40 for all sub-transects) (modelled as Poisson, see [Section
+3.1](#31-model-class-framework-and-approach)), flow data may take a
+range of forms indicated earlier, elevation is provided in mAHD but is
+likely to be input into the model as an ordinal categorical factor with
+bins based on known elevation of flow events (e.g. freshes), grazing at
+this stage may be a binomial indicator of presence or absence, or
+alternatively as a categorical factor indicating the presence/absence of
+cattle or sheep.
 
 The model structure will be refined through the pilot analysis
-(described in Section
-[2.5.3](#253-describe-any-data-exploration-or-preliminary-data-analyses)),
+(described in [Section
+2.5.3](#253-describe-any-data-exploration-or-preliminary-data-analyses)),
 one aspect of which will be to assess model convergence with different
 levels of interactions (model convergence checks are described in
-Section a.b.c). If models do not converge with the above-specified
-interactions, higher order interactions will be progressively removed
-from the model (i.e., three way interactions will be removed, then
-two-way interactions).
+[Section 4.3.1](#431-quantitative-model-checking)). If models do not
+converge with the above-specified interactions, higher order
+interactions will be progressively removed from the model (i.e., three
+way interactions will be removed, then two-way interactions).
 
 The following terms will be included as random effects: transects nested
 within sites, point location (metres up the streambank), and survey
@@ -1503,8 +1512,8 @@ different variables and relative importance of spatial and temporal
 scales. Additionally, there will be some investigation of the
 effectiveness/appropriateness of different forms of certain variables,
 such as: bank elevation (continuous or categorical), vegetation
-groupings, and flow variables ([see section
-2.4](#2.4-identify-predictor-and-response-variables)). The primary focus
+groupings, and flow variables ([see Section
+2.4](#24-identify-predictor-and-response-variables)). The primary focus
 of the model is to evaluate the relative impacts of the key variables in
 line with the conceptual model and hypotheses, so model performance will
 align with that objective, including model fit parameters of residual
@@ -1915,7 +1924,8 @@ complexity.
 > used for evaluating the structured and parameterised models (ideally)
 > on independent holdout data, so this step is additional to any
 > performance criteria used for determining model structure or
-> parameterisation in section X.
+> parameterisation in [section
+> 4.0](#40-model-calibration-fitting-checking).
 
 ------------------------------------------------------------------------
 
@@ -2076,7 +2086,7 @@ complexity.
 
 > - [ ] Specify any input conditions and relevant parameter values for
 >   initial environmental conditions and decision-variables under each
->   scenario specified in section 1.
+>   scenario specified in [section 1.1](#11-model-context-and-purpose).
 > - [ ] Describe any other relevant technical details of model
 >   application, such as methods for how you will implement any
 >   simulations or model projections.
