@@ -64,10 +64,13 @@ This analysis was preregistered using the *adaptive preregistration* methodology
 
 An exploratory pilot analysis was undertaken on a subset of the full dataset in order to explore and resolve critical uncertainties in model specification that would inform a candidate set of models for later fitting on the full dataset.
 
-Despite resolving some uncertainties in the preliminary analysis, there remained some analytic uncertainty in how to specify the models. Following the adaptive preregistration methodology, for each model we set out the following decision-tree with contingent models should the preferred model specifications fail:
+Despite resolving some uncertainties in the preliminary analysis, there remained some analytic uncertainty in how to specify the models. Following the adaptive preregistration methodology, for response variable (vegetation cover and species richness), we set out decision-trees with contingent models should the main or preferred model specifications fail to converge (@fig-veg-modelling-flowchart).
+
+model we set out the following decision-tree with contingent models should the preferred model specifications fail:
 
 **Vegetation Cover Modelling Decision Tree:**
 
+::: {#fig-veg-modelling-flowchart}
 ```{mermaid}
 flowchart TB
 
@@ -93,6 +96,9 @@ C --> DEF
 linkStyle 0 stroke:#56B4E9
 linkStyle default stroke:#E69F00
 ```
+
+Modelling flow chart for vegetation cover. Blue links indicate model is feasible and converges, yellow links indicate model did not converge or could not be feasibly fitted.
+:::
 
 **\
 Species Richness Modelling Decision Tree:**
