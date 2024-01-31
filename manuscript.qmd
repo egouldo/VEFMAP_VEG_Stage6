@@ -102,6 +102,10 @@ linkStyle default stroke:#E69F00
 Modelling flow chart for vegetation cover. Blue links indicate model is feasible and converges, yellow links indicate model did not converge or could not be feasibly fitted.
 :::
 
+*Main Models*
+
+*Simplified Models*
+
 **\
 Species Richness Modelling Decision Tree:**
 
