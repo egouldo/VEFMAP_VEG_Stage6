@@ -323,7 +323,7 @@ It is important to note that models fitted to the pilot dataset may not translat
 
 *Data reliability* At this stage I am unsure about how we will quantitatively evaluate how reliable the data are for the questions being addressed. Qualitatievely, one of the most important considerations will be to assess how logical the outcomes are in relation to our observations and conceptual understanding. We have a very good moental model of these systems due to the large amounts of fieldwork in various areas over the years collecting the dataset used in this study as well as relevant data for other studies. As for data qualtiy, there are likely to be minor errors in such a large dataset that we cannot detect with our quality checking procedures, however, we are very confident that the data have been consistently collected (almost every survey was led by the same individual with the other surveyors being from a consistent set of experienced individuals), in the same places (all transects were permanently marked and relocated at each survey), and the datat checking process has been extremely thorough (documented in git). All this considered, we believe that this is one of the most reliable vegetation datasets available anywhere in Victoria for its size and complexity.
 
-*Data exclusions* Data will only be excluded if be believe it is incorrect, and it can't be corrected, or it is irrelevant to a particular model/assessment. For example, if evaluating survey intervals relating to spring fresh delivery, we can only include years and sites where such a delivery actually occurred. Incorrect data are easily detercted where values lie outside possible or plausible ranges, but in other cases they can be very difficult to identify - we are confident that the former have been well accounted for in the datasets but the latter is only partially accounted for and there may be some minor errors that we cannot isolate. All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or lifeform, may not be possible to include. The vast majority of these occurrences are for seedlings that are too small to be identified. In most cases seedlings had minimal impact on plant cover, so this would have few implications for evaluation of cover, but this may have a greater impact on species richness. Decisions will need to be made for certain unknown species categories, particularly those that are more common in the dataset. At this stage only species that can reliably assigned to a relevant group for a given model will be included.
+*Data exclusions* Data will only be excluded if we believe it is incorrect, and it can't be corrected, it is irrelevant to a particular model/assessment, or it precludes model fitting. For example, if evaluating survey intervals relating to spring fresh delivery, we can only include years and sites where such a delivery actually occurred. Incorrect data are easily detected where values lie outside possible or plausible ranges, but in other cases they can be very difficult to identify - we are confident that the former have been well accounted for in the datasets but the latter is only partially accounted for and there may be some minor errors that we cannot isolate. All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or lifeform, may not be possible to include. The vast majority of these occurrences are for seedlings that are too small to be identified. In most cases seedlings had minimal impact on plant cover, so this would have few implications for evaluation of cover, but this may have a greater impact on species richness. Decisions will need to be made for certain unknown species categories, particularly those that are more common in the dataset. At this stage only species that can reliably assigned to a relevant group for a given model will be included. Furthermore, the pilot analysis illustrated extreme zero-inflation for several groups, which prevented model fitting. Consequently these groups were excluded from the pilot study modelling and they may or may not be included in the full dataset analysis, depending on whether the models can be successfully fit. 
 
 
 
@@ -412,7 +412,7 @@ Initially, our model structure will be based on our conceptual model of the syst
 -   *Specify which algorithm(s) you will use for any data-driven parameter estimation, including supervised, or unsupervised machine learning, decision-tree, K-nearest neighbour or cluster algorithms (Liu et al. 2018).*
 -   *Repeat the above bullet points but for model structure estimation, if you are using quantitative methods for structure estimation rather than knowledge or expert-judgment driven methods.*
 
-Parameterisation: We will use data-driven parameter estimation using maximum likelihood for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
+Parameterisation: Parameter estimation will be data-driven, and implemented with the `glmmTMB` R package [@Brooks2017], which uses [Template Model Builder software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit flexible GLMM-type models, amongst other model types. `glmmTMB` uses maximum likelihood to estimate parameters for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables). We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
 
 
 Structure estimation: model structure specification is knowledge-driven rather than data-driven, with further refinement and simplification guided by the results of the pilot analysis (section 2.4.3).
@@ -438,18 +438,63 @@ Structure estimation: model structure specification is knowledge-driven rather t
 -   *Once all decisions have been made about the approach and method of model specification, translate the conceptual model into the formal or quantitative model.*
 -   *For data-driven and model-selection approaches that determine model structure and parameters, describe any initial model specifications and parameterisations, including for any tune-in parameters.*
 
-[] EG can you please update to outline the results of hte pilot study:
- - models were too complex for the data available, and had to be simplified. 
- - settled on three model structures (all based on those in Section 2.4.3):
-     1. a "flow regime" model, which has the `days_above_baseflow` and `days_above_springfresh` predictors, plus random effects. 
-     2. a "flow events" model (first version), which has a `zone * period` interaction, independent fixed effects for `origin`, `wpfg`, and `grazing`, and random effects, but no `days_above_` predictors.
-     3. a "flow events" model (second version), which has a `wpfg * period` interaction, independent fixed effects for `zone`, `origin`, and `grazing`, and random effects, but no `days_above_` predictors.
- - rationale for these is to capture the average effects of flows at different levels over multiple years (model 1), the effects on vegetation before and after specific flow events under an assumption that different plant functional groups (`wpfg`s) have different cover levels but similar responses to flows (model 2), and the effects of specific flow events allowing different plant functional groups to differ in their response but assuming that responses in each zone are similar (model 3).
- - These models are *not* ideal, but full models with three-way interactions did not converge and were unable to generate reliable parameter estimates. Full models will be trialled again with the full data set, but these simplified models will be used if full models do not converge.
- - posterior predictive checks indicated high levels of zero-inflation and some over-dispersion. Final models allowed zero-inflation parameters to differ among plant functional groups (`ziformula = ~ wpfg`) but did not account for over-dispersion. The most common method to address over-dispersion is with negative binomial models, potentially with group-specific dispersion parameters (e.g., `dispformula = ~ wpfg` as an argument in glmmTMB). However, all attempts to fit negative binomial models resulted in non-convergence. Given the zero-inflated Poisson models converged and reliably captured the proportion of zeros in the data, this approach is proposed for all models.
- - Need a couple of decision points for the full model:
-     1. Attempt to fit a single model with all data (adding a random effect for `waterbody`), but this may not converge or may not be computationally feasible. In this case, models will be fitted separately for each waterbody as per the pilot study approach.
-     2. May be able to add three-way interactions back in when the full data set is available (but may not). Will test the full three-way `zone * period * wpfg` interaction; if this converges it will be used as the basis for final outputs, if not, the simplified models listed above will be used.
+
+**Vegetation Cover Models**
+
+Based on the pilot analysis (section 2.4.3) we have derived three additional model structures to be fitted on the full dataset that are simplified versions of the full models specified in 2.4.3. While these simplified models are not ideal, the full models with three-way interactions were too complex given the data, and failed to converge and generate reliable parameter estimates on the pilot dataset. Consequently, the full models will be fitted again to the full dataset.
+
+**Full Model, full dataset**
+
+We will attempt to fit a single full model using all data, and adding a random effect for `waterbody` to account for variation between river systems.
+
+**Full Model, full dataset (with three-way interaction)**
+Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg`  back into the full model specification (discarded in the pilot analysis). If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
+
+**Full Models fitted separately for each `waterbody` dataset**
+However, this  model may not converge, or may not be computationally feasible. In this case, we will fit the full model separately for every waterbody, as per the pilot analysis, omitting the random effect for `waterbody`.
+
+Should the full model fitted to the full dataset not be computationally feasible or converge, we will also fit the following simplified models: 
+
+**Simplified model 1: "flow regime" model**
+
+The aim of this simplified model is to examine how past flow conditions influence vegetation cover while capturing the average effects of flows at different levels over multiple years. The model does not consider zone or period and identifies functional group-specific impacts of days above baseflow or spring fresh levels.
+
+This model includes two flow predictors (`days_above_baseflow_std`, `days_above_spring_fresh_std`), and the full suite of random effects. 
+
+![image](https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/2326b3d7-0322-4125-96ee-51e7aec61fb6)
+
+
+**Simplified model 2a: "flow events" Model, version 1**
+
+The aim of the 'flow events' models (2a,2b) is to examine how vegetation cover changes in specific zones before and after key flow events (spring and summer freshes). Model 2a seeks to examine the effects on vegetation before and after specific flow events assuming that different plant functional groups (`wpfg`s) have different cover levels but similar responses to flows.
+
+In the pilot analysis, model results indicated that vegetation cover differed in its responses to spring and summer freshes in each zone (below baseflow, baseflow to spring fresh, above spring fresh). Below baseflow level, vegetation increased following the spring fresh and remained high following the summer event (Pilot Analysis, Figure 5). In the baseflow-to-spring fresh zone, vegetation increased following the spring fresh but returned to pre-spring levels following the summer fresh (Pilot Analysis, Figure 5). In the above-spring fresh zone, vegetation level declined following both the spring and the summer fresh (Pilot Analysis, Figure 5).
+
+Consequently, this model includes several categorical predictors as independent fixed effects (`origin`, `wpfg`, `grazing`, and a zone-by-period interaction) and the full suite of random effects, but no `days_above_` predictors.
+
+This first version of the flow event model allows functional groups to have different levels of cover but assumes that changes following flow events are similar in all groups within a zone. Although this is not an ideal model structure, it is likely that functional groups are restricted to particular zones, in which case the zone-by-period interaction may capture some of the variation attributable to functional groupings.
+
+![image](https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/b837cb49-b090-4d71-968b-3dc85d7468a6)
+
+
+**Simplified model 2b: "flow events" model, version 2**
+The aim is to examine how vegetation cover of each functional grouping changes before and after key flow events (spring and summer freshes). This second version (Simplified model 2b) allows functional groups to have different responses to flow events (spring and summer freshes) but assumes that vegetation in all zones changes similarly following each flow event. As for simplified model 2a, this model structure is not ideal, but provides a method to distinguish `wpfg`-specific responses to flow events. 
+
+This model includes several categorical predictors as independent fixed effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction, as well as the full suite of random effects, and no `days_above_` predictors.
+
+![image](https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/a180fc2a-c69b-4ad3-8ded-c03cb0ba9262)
+
+
+**Species Richness Modles**
+
+TBD
+
+- [ ] EG to update once JY and HW finalise pilot analysis
+
+_Model class / family_
+
+Posterior predictive checks from the pilot analysis indicated high levels of zero-inflation with some over-dispersion. The final models in the pilot analysis allowed for zero-inflation parameters to differ among plant functional groups (`ziformula = ~ wpfg`) to account for different proportions of zeros among functional groupings, but did not account for over-dispersion. Over-dispersion is commonly accounted for by using negative binomial models, which we could potentially fit using groups-specific dispersion parameters using the `glmmTMB` argument `dispformula = ~ wpfg`. However, all attempts to fit negative binomial models resulted in non-convergence in our pilot analysis. Despite some degree of over-dispersion, given that the zero-inflated Poisson models converged and reliably captured the proportion of zeros in the pilot dataset, we propose using this approach for all models fitted to the full dataset, including any simplified models. 
+
 
 
 # 4.0 Model Calibration, Fitting & Checking
@@ -472,10 +517,11 @@ Structure estimation: model structure specification is knowledge-driven rather t
 -   *Explain how you will qualitatively check the model, and whether and how you will include users and clients in the process. Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.*
 
 Model checking will be undertaken using a combination of qualitative and quantitative analyses with subjective assessment.
-1. Posterior predictive checks will be used to address zero-inflation and over-dispersion. These are visual checks that compare the distribution of observed data with distributions simulated from the fitted model. Close alignment of the two indicates an appropriate model structure, whereas deviations indicate possible mismatches between the data and the model.
-2. Assessment of estimated associations by field experts (CJ and LV) to identify whether estimated associations are plausible given what is known about the target system.
+In terms of qualitative assessment, model results will be checked by field experts Chris Jones & Lyndsey Vivian, who will assess model-estimated associations for their plausibility given their expert knowledge of the underlying target system.
 
+Posterior predictive checks will be conducted to assess the degree of zero-inflation and over-dispersion. Posterior checks compare the distribution of observed data against a distribution simulated from the fitted model and are assessed quantitatively or graphically [@ Conn2018]. We will plot both distributions and visually compare the distributions: close alignment of the two distributions indicates that the specified model structure is appropriate, whereas deviations between the observed distribution and the model-generated distribution indicate potential assumption violations and mismatches between the data and model. 
 
+Should over-dispersion and zero-inflation be present in the fitted models, alternative model families / structures (section 3.1.3) may be investigated and compared to the primary models outlined in section 2.4.3.
 ### 4.1.3 Assumption violation checks
 
 -   *Explain how you will demonstrate robustness to model assumptions and check for violations of model assumptions.*
@@ -493,7 +539,11 @@ Model checking will be undertaken using a combination of qualitative and quantit
     -   *Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as dictated by the model description (Grimm et al. 2014).*
     -   *Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.*
     
-[] EG to update: GH review by JY/HW/EG (anyone who didn't open the PR).
+Implementation verification will be assessed using a number of techniques, but will broadly follow the approach proposed by Ivimey-Cook *et al.* [-@Ivimey2023]:
+
+1. Code will be reviewed periodically using the [GitHub flow model](https://docs.github.com/en/get-started/using-github/github-flow) where code is submitted for independent review by collaborators before being merged into the working copy of the code repository. Code will be assessed either by attempting to reproduce the code in the pull-request, or by visual inspection.
+2. Defensive programming techniques, in-line error checking, functionalisation, modularisation and documentation of analysis code will be used as preventative measures to catch bugs and ensure proper code implementation [@Ivimey2023],
+3. Finally, the final analysis and results will be subjected to a more substantial peer-code review from collaborators further removed from code writing and analysis implementation (likely CJ or EG), following the 4R's [@Ivimey2023].
     
 
 ## 4.3 Modelling Workflow and Data Partitioning Scheme
@@ -510,7 +560,7 @@ This section pertains to any data calibration, validation or testing *schemes* t
     -   *Describe how will you document the the external/independent data such that any subsequent modelling can be computationally reproduced.*
     -   *It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building, please describe the relationship modellers have to model validation data, will independent datasets be known to any modeller or analyst involved in the model building process?*
 
-[] EG to update: no data partitioning used given complexity of the analysis and the focus of the work on inference. In-sample model fit calculated with R2, and posterior predictive checks used to assess model appropriateness. EG, should these be covered in section 5.0 rather than 4.x?
+Due to the complexity of the analysis, and the focus on inference, no data partitioning / testing on external data will be used. However, we will use a subset of the data for exploratory pilot analysis that informs the final model specifications (Campaspe catchment only, section 2.4.3).
 
 
 # 5.0 Model Validation and Evaluation
@@ -522,7 +572,7 @@ This section pertains to any data calibration, validation or testing *schemes* t
 -   *State whether you will corroborate the model outputs on external test data, and ensure that any independent validation data is documented in 4.1.2.*
 -   *Testing the model against data that are collected spatially and/or temporally independent from the training dataset minimizes the risk of artificially inflating model performance measures (Araújo et al. 2019). Although the corroboration of model outputs against an independent validation dataset is considered the 'gold standard' for showing that a model properly represents the internal organisation of the system), model validation is not always possible (Grimm, et al. 2014). If you are unable to evaluate the model outputs against independent data, explain why not, and describe what steps you will take to interrogate the model. For example, Independent predictions can instead be tested on submodels, alternatively, patterns in model output that are robust and seem characteristic of the system can be identified and evaluated in consultation with the literature or by experts to judge how accurate the model's output is (Grimm et al.2014).*
 
-[] EG to update: no such tests used in this work given model complexity.
+Model evaluation and validation on external data will not be undertaken in this study because of complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and zero-inflation). For the same reasons, we will not partition the data for model validation on independent data using cross-validation or other data-partitioning approaches. Models may be validated on newly collected independent data in the future, but external validation is outside the scope of this study.
 
 
 ### 5.1.1 Model corroboration performance metrics and criteria
