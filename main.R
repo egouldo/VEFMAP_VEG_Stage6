@@ -443,7 +443,7 @@ HydroPredictDaysabovespringFunc$days_above_springfresh<-(HydroPredictDaysabovesp
 
 HydroPredictDaysabovespringFunc$hits <- HydroPredictDaysabovespringFunc$fit
 
-HydroPredictDaysabovebaseFuncPlot<-ggplot(HydroPredictDaysabovespringFunc, aes(days_above_springfresh, hits, colour = wpfg, group = wpfg)) +
+HydroPredictDaysabovespringFuncPlot<-ggplot(HydroPredictDaysabovespringFunc, aes(days_above_springfresh, hits, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   #geom_ribbon(aes(ymin = lower, ymax = upper),  fill = "brown1", alpha= 0.1)+
   geom_point(data= Plotdata,aes(x=days_above_springfresh, y= hits, colour = wpfg), alpha = 0.2)+
@@ -451,7 +451,7 @@ HydroPredictDaysabovebaseFuncPlot<-ggplot(HydroPredictDaysabovespringFunc, aes(d
   labs(x = "Days above spring fresh", y = "Hits")+ theme_bw()  + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
-HydroPredictDaysabovebaseFuncPlot
+HydroPredictDaysabovespringFuncPlot
 
 
 # now lets fit the 'spatial' or 'flow event' model
@@ -755,13 +755,13 @@ c<-mean(veg_cover_ar_sum$days_above_baseflow)
 d<-sd(veg_cover_ar_sum$days_above_baseflow)
 RichPredictDaysabovebaseFunc$days_above_baseflow<-(RichPredictDaysabovebaseFunc$days_above_baseflow_std*d+c)
 
-RichPredictDaysabovebaseFunc$hits <- RichPredictDaysabovebaseFunc$fit
+RichPredictDaysabovebaseFunc$richness <- RichPredictDaysabovebaseFunc$fit
 
-RichPredictDaysabovebaseFuncPlot<-ggplot(RichPredictDaysabovebaseFunc, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+RichPredictDaysabovebaseFuncPlot<-ggplot(RichPredictDaysabovebaseFunc, aes(days_above_baseflow, richness, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
-  geom_point(data= Plotdata,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
-  coord_cartesian(ylim = c(0, 50))+
+  geom_point(data= PlotdataRich,aes(x=days_above_baseflow, y= richness, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 7))+
   labs(x = "Days above baseflow", y = "Species richness")+ theme_bw() +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
@@ -773,13 +773,13 @@ c<-mean(veg_cover_ar_sum$days_above_baseflow)
 d<-sd(veg_cover_ar_sum$days_above_baseflow)
 RichPredictDaysabovebaseFuncOri$days_above_baseflow<-(RichPredictDaysabovebaseFuncOri$days_above_baseflow_std*d+c)
 
-RichPredictDaysabovebaseFuncOri$hits <- RichPredictDaysabovebaseFuncOri$fit
+RichPredictDaysabovebaseFuncOri$richness <- RichPredictDaysabovebaseFuncOri$fit
 
-RichPredictDaysabovebaseFuncoriPlot<-ggplot(RichPredictDaysabovebaseFuncOri, aes(days_above_baseflow, hits, colour = wpfg, group = wpfg)) +
+RichPredictDaysabovebaseFuncoriPlot<-ggplot(RichPredictDaysabovebaseFuncOri, aes(days_above_baseflow, richness, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   #geom_ribbon(aes(ymin = lower, ymax = upper, fill= wpfg),  alpha= 0.1)+
-  geom_point(data= Plotdata ,aes(x=days_above_baseflow, y= hits, colour = wpfg), alpha = 0.2)+
-  coord_cartesian(ylim = c(0, 50))+
+  geom_point(data= PlotdataRich ,aes(x=days_above_baseflow, y= richness, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 7))+
   labs(x = "Days above baseflow", y = "Species richness")+ theme_bw() + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
@@ -791,17 +791,17 @@ c<-mean(veg_cover_ar_sum$days_above_springfresh)
 d<-sd(veg_cover_ar_sum$days_above_springfresh)
 RichPredictDaysabovespringFunc$days_above_springfresh<-(RichPredictDaysabovespringFunc$days_above_springfresh_std*d+c)
 
-RichPredictDaysabovespringFunc$hits <- RichPredictDaysabovespringFunc$fit
+RichPredictDaysabovespringFunc$richness <- RichPredictDaysabovespringFunc$fit
 
-RichPredictDaysabovebaseFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(days_above_springfresh, hits, colour = wpfg, group = wpfg)) +
+RichPredictDaysabovespringFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(days_above_springfresh, richness, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   #geom_ribbon(aes(ymin = lower, ymax = upper),  fill = "brown1", alpha= 0.1)+
-  geom_point(data= Plotdata,aes(x=days_above_springfresh, y= hits, colour = wpfg), alpha = 0.2)+
-  coord_cartesian(ylim = c(0, 50))+
+  geom_point(data= PlotdataRich,aes(x=days_above_springfresh, y= richness, colour = wpfg), alpha = 0.2)+
+  coord_cartesian(ylim = c(0, 7))+
   labs(x = "Days above spring fresh", y = "Species richness")+ theme_bw()  + facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
 
-RichPredictDaysabovebaseFuncPlot
+RichPredictDaysabovespringFuncPlot
 
 # Flow event model
 
