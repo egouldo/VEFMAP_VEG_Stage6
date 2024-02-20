@@ -52,8 +52,19 @@ site_info <- load_metadata(recompile = FALSE)
 
 # read in veg survey data and species information for
 #   pilot data set (Campaspe River)
+debugonce(load_richness)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
+
+
+
+# henrys testing
+debugonce(load_points)
+out <- load_points(system = "Campaspe", recompile = T, pilot = T)
+
+
+
+
 
 # take a quick look at the data
 summary(veg_richness)

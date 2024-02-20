@@ -651,14 +651,15 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     
   } else {
     
-    # load data for a specific site
-    exists <- grepl(
+    # load data for a specific site in S6
+    existsS6 <- grepl(
       paste0("VEFMAPS6_", system, ".*", "_Point"),
       dir(here::here("data", "raw_data", "veg_data"))
     )
-    filename <- dir(here::here("data", "raw_data", "veg_data"))[exists]
-    filename <- sort(filename, decreasing = TRUE)[1]
-    out <- readr::read_csv(
+   
+    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[exists]
+    filenameS6 <- sort(filename, decreasing = TRUE)[1]
+    outS6 <- readr::read_csv(
       here::here("data", "raw_data", "veg_data", filename),
       skip = 1,
       col_names = c(
@@ -681,6 +682,40 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
         hits = readr::col_double()
       )
     )
+    
+    
+    # load data for a specific site in S7
+    existsS7 <- grepl(
+      paste0("VEFMAPS6_", system, ".*", "_Point"),
+      dir(here::here("data", "raw_data", "veg_data"))
+    )
+    
+    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[exists]
+    filenameS6 <- sort(filename, decreasing = TRUE)[1]
+    outS6 <- readr::read_csv(
+      here::here("data", "raw_data", "veg_data", filename),
+      skip = 1,
+      col_names = c(
+        "system",
+        "waterbody",
+        "site",
+        "transect",
+        "subtransect",
+        "metres",
+        "species",
+        "origin",
+        "hits",
+        "height",
+        "date",
+        "survey"
+      ),
+      col_types =  readr::cols(
+        .default = readr::col_character(),
+        metres = readr::col_double(),
+        hits = readr::col_double()
+      )
+    )
+    
     
     # fix up date
     out <- out |>
