@@ -58,9 +58,9 @@ veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE,
 
 
 
-# henrys testing
+# henry's testing
 debugonce(load_points)
-out <- load_points(system = "Campaspe", recompile = T, pilot = T)
+out <- load_points(system = "Campaspe", recompile = T, pilot = F)
 
 
 

@@ -657,10 +657,10 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
       dir(here::here("data", "raw_data", "veg_data"))
     )
    
-    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[exists]
-    filenameS6 <- sort(filename, decreasing = TRUE)[1]
+    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[existsS6]
+    filenameS6 <- sort(filenameS6, decreasing = TRUE)[1]
     outS6 <- readr::read_csv(
-      here::here("data", "raw_data", "veg_data", filename),
+      here::here("data", "raw_data", "veg_data", filenameS6),
       skip = 1,
       col_names = c(
         "system",
@@ -686,28 +686,27 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     
     # load data for a specific site in S7
     existsS7 <- grepl(
-      paste0("VEFMAPS6_", system, ".*", "_Point"),
+      paste0("VEFMAPS7_", system, ".*", "_Point"),
       dir(here::here("data", "raw_data", "veg_data"))
     )
     
-    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[exists]
-    filenameS6 <- sort(filename, decreasing = TRUE)[1]
-    outS6 <- readr::read_csv(
-      here::here("data", "raw_data", "veg_data", filename),
+    filenameS7 <- dir(here::here("data", "raw_data", "veg_data"))[existsS7]
+    filenameS7 <- sort(filenameS7, decreasing = TRUE)[1]
+    outS7 <- readr::read_csv(
+      here::here("data", "raw_data", "veg_data", filenameS7),
       skip = 1,
       col_names = c(
         "system",
         "waterbody",
         "site",
         "transect",
-        "subtransect",
         "metres",
         "species",
-        "origin",
         "hits",
         "height",
         "date",
-        "survey"
+        "survey",
+        "comments"
       ),
       col_types =  readr::cols(
         .default = readr::col_character(),
@@ -715,7 +714,12 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
         hits = readr::col_double()
       )
     )
+    #select columns we want as some of the files have multiple 'comments' columns
+    outS7 <- outS7 |> select(!('comments'))
     
+    # merge the S6 and S7 datasets - note this will need modification if more data is brought in
+  
+    out <- dplyr::bind_rows(outS6, outS7)
     
     # fix up date
     out <- out |>
@@ -725,7 +729,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     out <- out |>
       dplyr::mutate(
         species = ifelse(
-          species %in% .species_rename, .species_rename[species], species
+          species %in% names(.species_rename), .species_rename[species], species
         )
       )
     
@@ -778,12 +782,26 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     out <- out |>
       mutate(
         period = "before_spring",
-        period = ifelse(survey %in% c(2, 5, 8, 11), "after_spring", period),
-        period = ifelse(survey %in% c(3, 6, 9), "after_summer", period),
-        survey_year = 2017,
-        survey_year = ifelse(survey %in% c(4:6), 2018, survey_year),
-        survey_year = ifelse(survey %in% c(7:9), 2019, survey_year),
-        survey_year = ifelse(survey %in% c(10:11), 2020, survey_year)
+        period = ifelse(survey %in% c(1) & system == "Campaspe", "post_flood", period), # this accounts for the post flood period only relevant to the Campaspe system
+        period = ifelse(survey %in% c(2, 5, 8, 11, 12, 14, "2b"), "after_spring", period),
+        period = ifelse(survey %in% c(4) & system == "Glenelg", "after_spring", period), # this accounts for the differing numbering of surveys for the Glenelg system
+        period = ifelse(survey %in% c(3, 6, 9, 13, 15, "3b"), "after_summer", period),
+        period = ifelse(survey %in% c(5) & system == "Glenelg", "after_summer", period), # this accounts for the differing numbering of surveys for the Glenelg system
+        period = ifelse(survey %in% c(16), "post_flood", period),
+        survey_year = ifelse(system %in% c("Campaspe"), 2017, 2018),
+        survey_year = ifelse(system %in% c("WGCMA"), 2019, survey_year),
+        survey_year = ifelse(system %in% c("Yarra"), 2019, survey_year),
+        survey_year = ifelse(survey %in% c(1:3)& system == "Glenelg", 2019, survey_year),
+        survey_year = ifelse(survey %in% c(4:6)& system == "Campaspe", 2018, survey_year),
+        survey_year = ifelse(survey %in% c(4:6)& system == "Wimmera", 2019, survey_year),
+        survey_year = ifelse(survey %in% c(4:6)& system == "Moorabool", 2023, survey_year),
+        survey_year = ifelse(survey %in% c(4:5)& system == "Glenelg", 2023, survey_year),
+        survey_year = ifelse(survey %in% c(7:9)& system == "Campaspe", 2019, survey_year),
+        survey_year = ifelse(survey %in% c(10:11)& system == "Campaspe", 2020, survey_year),
+        survey_year = ifelse(survey %in% c(12:13)& system == "Campaspe", 2021, survey_year),
+        survey_year = ifelse(survey %in% c(14:15)& system == "Campaspe", 2022, survey_year),
+        survey_year = ifelse(survey %in% c(16)& system == "Campaspe", 2023, survey_year)
+        
       )
     
     # filter out skipped surveys
