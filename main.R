@@ -60,9 +60,33 @@ veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE,
 
 # henry's testing
 debugonce(load_points)
-out <- load_points(system = "Campaspe", recompile = T, pilot = F)
+outC <- load_points(system = "Campaspe", recompile = T, pilot = F, s6s7 = T)
 
+outC %>% distinct(survey,survey_year)
 
+outW <- load_points(system = "Wimmera", recompile = T, pilot = F, s6s7 = F)
+
+outW %>% distinct(survey,survey_year)
+
+outM <- load_points(system = "Moorabool", recompile = T, pilot = F, s6s7 = T)
+
+outM %>% distinct(survey,survey_year)
+
+outL <- load_points(system = "Loddon", recompile = T, pilot = F, s6s7 = F)
+
+outL %>% distinct(survey,survey_year)
+
+outY <- load_points(system = "Yarra", recompile = T, pilot = F, s6s7 = F)
+
+outY %>% distinct(survey,survey_year)
+
+outWG <- load_points(system = "WGCMA", recompile = T, pilot = F, s6s7 = F)
+
+outWG %>% distinct(survey,survey_year)
+
+outG <- load_points(system = "Glenelg", recompile = T, pilot = F, s6s7 = T)
+
+outG %>% distinct(survey,survey_year)
 
 
 

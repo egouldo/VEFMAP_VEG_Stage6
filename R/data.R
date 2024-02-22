@@ -613,7 +613,7 @@ calculate_metrics_internal <- function(
 
 # function to load point data for a single system, with cleaned version
 #   saved to data/compiled-data/points-compiled-[SYSTEM].qs
-load_points <- function(system, recompile = FALSE, pilot = TRUE) {
+load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
   
   # stop if not loading pilot data
   if (pilot & system != "Campaspe") 
@@ -650,7 +650,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
-    
+    if (s6s7 == TRUE){
     # load data for a specific site in S6
     existsS6 <- grepl(
       paste0("VEFMAPS6_", system, ".*", "_Point"),
@@ -715,12 +715,52 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
       )
     )
     #select columns we want as some of the files have multiple 'comments' columns
-    outS7 <- outS7 |> select(!('comments'))
+    outS7 <- outS7 |> select(c("system",
+                              "waterbody",
+                              "site",
+                              "transect",
+                              "metres",
+                              "species",
+                              "hits",
+                              "height",
+                              "date",
+                              "survey"))
     
     # merge the S6 and S7 datasets - note this will need modification if more data is brought in
   
     out <- dplyr::bind_rows(outS6, outS7)
-    
+    } else {
+      exists <- grepl(
+        paste0("VEFMAPS6_", system, ".*", "_Point"),
+        dir(here::here("data", "raw_data", "veg_data"))
+      )
+      
+      filename <- dir(here::here("data", "raw_data", "veg_data"))[exists]
+      filename <- sort(filename, decreasing = TRUE)[1]
+      out <- readr::read_csv(
+        here::here("data", "raw_data", "veg_data", filename),
+        skip = 1,
+        col_names = c(
+          "system",
+          "waterbody",
+          "site",
+          "transect",
+          "subtransect",
+          "metres",
+          "species",
+          "origin",
+          "hits",
+          "height",
+          "date",
+          "survey"
+        ),
+        col_types =  readr::cols(
+          .default = readr::col_character(),
+          metres = readr::col_double(),
+          hits = readr::col_double()
+        )
+      )
+    }
     # fix up date
     out <- out |>
       dplyr::mutate(date = readr::parse_date(date, format = "%d/%m/%Y"))
@@ -789,7 +829,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
         period = ifelse(survey %in% c(5) & system == "Glenelg", "after_summer", period), # this accounts for the differing numbering of surveys for the Glenelg system
         period = ifelse(survey %in% c(16), "post_flood", period),
         survey_year = ifelse(system %in% c("Campaspe"), 2017, 2018),
-        survey_year = ifelse(system %in% c("WGCMA"), 2019, survey_year),
+        survey_year = ifelse(system %in% c("ThomsonMacalister"), 2019, survey_year),
         survey_year = ifelse(system %in% c("Yarra"), 2019, survey_year),
         survey_year = ifelse(survey %in% c(1:3)& system == "Glenelg", 2019, survey_year),
         survey_year = ifelse(survey %in% c(4:6)& system == "Campaspe", 2018, survey_year),
