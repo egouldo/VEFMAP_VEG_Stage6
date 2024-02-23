@@ -52,42 +52,9 @@ site_info <- load_metadata(recompile = FALSE)
 
 # read in veg survey data and species information for
 #   pilot data set (Campaspe River)
-debugonce(load_richness)
+#debugonce(load_richness)
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
-
-
-
-# henry's testing
-debugonce(load_points)
-outC <- load_points(system = "Campaspe", recompile = T, pilot = F, s6s7 = T)
-
-outC %>% distinct(survey,survey_year)
-
-outW <- load_points(system = "Wimmera", recompile = T, pilot = F, s6s7 = F)
-
-outW %>% distinct(survey,survey_year)
-
-outM <- load_points(system = "Moorabool", recompile = T, pilot = F, s6s7 = T)
-
-outM %>% distinct(survey,survey_year)
-
-outL <- load_points(system = "Loddon", recompile = T, pilot = F, s6s7 = F)
-
-outL %>% distinct(survey,survey_year)
-
-outY <- load_points(system = "Yarra", recompile = T, pilot = F, s6s7 = F)
-
-outY %>% distinct(survey,survey_year)
-
-outWG <- load_points(system = "WGCMA", recompile = T, pilot = F, s6s7 = F)
-
-outWG %>% distinct(survey,survey_year)
-
-outG <- load_points(system = "Glenelg", recompile = T, pilot = F, s6s7 = T)
-
-outG %>% distinct(survey,survey_year)
-
 
 
 # take a quick look at the data
@@ -999,6 +966,38 @@ RichPredictPeriodwpfgPlot2<-ggplot(RichPredictPeriodwpfg, aes(period, richness, 
     axis.line = element_line(colour = "black"), legend.position = "right") 
 
 RichPredictPeriodwpfgPlot2
+
+
+
+# now lets move onto the full analysis
+# first we will attempt to fit a model with all sites included. 
+# we will take the same appraoch to fitting as we did in the pilot analysis
+
+# First lets extract cover data from raw datafiles for each site
+
+#debugonce(load_cover)
+veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
+
+veg_cover_arW <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arM <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+veg_cover_arL <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arY <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arT <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+# now lets combine datasets
+
+
+
+
+
 
 
 ## DON'T DO THIS ONE, WILL BE TOO SLOW, left here so you can see model

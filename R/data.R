@@ -650,6 +650,11 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
     out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
+  #  if(system == "ThompsonMacalister"){ # change system designation in the ThomsonMacalister dataset
+      
+      
+  #  }
+    
     if (s6s7 == TRUE){
     # load data for a specific site in S6
     existsS6 <- grepl(
@@ -729,6 +734,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
     # merge the S6 and S7 datasets - note this will need modification if more data is brought in
   
     out <- dplyr::bind_rows(outS6, outS7)
+    
     } else {
       exists <- grepl(
         paste0("VEFMAPS6_", system, ".*", "_Point"),
@@ -764,6 +770,11 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
     # fix up date
     out <- out |>
       dplyr::mutate(date = readr::parse_date(date, format = "%d/%m/%Y"))
+    
+    # fix missing system data in Yarra dataset
+    if (system == "Yarra"){
+      out$system <- "Yarra"
+    }
     
     # and fix up some species names
     out <- out |>
@@ -824,18 +835,22 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
         period = "before_spring",
         period = ifelse(survey %in% c(1) & system == "Campaspe", "post_flood", period), # this accounts for the post flood period only relevant to the Campaspe system
         period = ifelse(survey %in% c(2, 5, 8, 11, 12, 14, "2b"), "after_spring", period),
-        period = ifelse(survey %in% c(4) & system == "Glenelg", "after_spring", period), # this accounts for the differing numbering of surveys for the Glenelg system
+        period = ifelse(survey %in% c(2, 4, 5, 7) & system == "Glenelg", "after_spring", period), # 
+        period = ifelse(survey %in% c(4) & system == "Yarra", "after_spring", period), # 
         period = ifelse(survey %in% c(3, 6, 9, 13, 15, "3b"), "after_summer", period),
-        period = ifelse(survey %in% c(5) & system == "Glenelg", "after_summer", period), # this accounts for the differing numbering of surveys for the Glenelg system
+        period = ifelse(survey %in% c(6) & system == "Glenelg", "before_spring", period), #
+        period = ifelse(survey %in% c(2, 4, 5, 7) & system == "Glenelg", "after_spring", period), #
         period = ifelse(survey %in% c(16), "post_flood", period),
         survey_year = ifelse(system %in% c("Campaspe"), 2017, 2018),
-        survey_year = ifelse(system %in% c("ThomsonMacalister"), 2019, survey_year),
+        survey_year = ifelse(system %in% c("WGippsland"), 2019, survey_year),
         survey_year = ifelse(system %in% c("Yarra"), 2019, survey_year),
+        survey_year = ifelse(survey %in% c(4)& system == "Yarra", 2020, survey_year),
         survey_year = ifelse(survey %in% c(1:3)& system == "Glenelg", 2019, survey_year),
         survey_year = ifelse(survey %in% c(4:6)& system == "Campaspe", 2018, survey_year),
         survey_year = ifelse(survey %in% c(4:6)& system == "Wimmera", 2019, survey_year),
         survey_year = ifelse(survey %in% c(4:6)& system == "Moorabool", 2023, survey_year),
-        survey_year = ifelse(survey %in% c(4:5)& system == "Glenelg", 2023, survey_year),
+        survey_year = ifelse(survey %in% c(4:5)& system == "Glenelg", 2020, survey_year),
+        survey_year = ifelse(survey %in% c(6:7)& system == "Glenelg", 2023, survey_year),
         survey_year = ifelse(survey %in% c(7:9)& system == "Campaspe", 2019, survey_year),
         survey_year = ifelse(survey %in% c(10:11)& system == "Campaspe", 2020, survey_year),
         survey_year = ifelse(survey %in% c(12:13)& system == "Campaspe", 2021, survey_year),
@@ -862,10 +877,10 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
 }
 
 # function to load cover data for a single system
-load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE) {
+load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7 = FALSE) {
   
   # load pointing data
-  out <- load_points(system = system, recompile = recompile, pilot = pilot)
+  out <- load_points(system = system, recompile = recompile, pilot = pilot, s6s7 = s6s7)
 
   # calculate cover and fill zeros
   out <- out |>
@@ -996,10 +1011,10 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE) {
 }
 
 # function to load richness data for a single system
-load_richness <- function(system, recompile = FALSE, pilot = TRUE) {
+load_richness <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
   
   # load pointing data
-  out <- load_points(system = system, recompile = recompile, pilot = pilot)
+  out <- load_points(system = system, recompile = recompile, pilot = pilot, s6s7 = s6s7)
   
   # filter out non-target species
   out <- out |>
