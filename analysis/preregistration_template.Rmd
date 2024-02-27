@@ -407,7 +407,7 @@ Some questions we will investigate are:
 
 To resolve these uncertainties we will conduct some exploratory data analyses. Specifically, we will visually assess distributions of the response variables, test correlations between all pairs of numerical (non-categorical) predictor variables, and calculate counts of non-zero observations within each category of any categorical variables included in the analysis (accounted for nested structures and interactions).
 
-We will also fit two initial models to the preliminary dataset, one for each key response variable (richness, cover):
+We will also fit two initial models to the pilot dataset, one for each key response variable (richness, cover):
 
 ```{r, eval = FALSE}
 library(glmmTMB)
