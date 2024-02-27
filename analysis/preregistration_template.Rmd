@@ -562,7 +562,11 @@ The two key vegetation response variables have Poisson and binomial families (di
 
 A formal sensitivity analysis has not yet been completed and so we are unaware of what variables the model outputs are most sensitive to. The many potential forms of flow and/or elevation data is a key area of possible variation in the variable behaviour, which is currently unknown. There are also many spatial and temporal dimensions associated with the data, such as the hierarchical scales of sub-transect, transect, site, reach, waterway, basin, and State. There will be spatial autocorrelation within the data at each of these levels, such as northern waterways or river basins being more similar to southern counterparts due to climate and geomorphology differences. The extent of the variation among the different spatial scale is currently unknown and is an important aspect of the study to evaluate. Temporal patterns are also important due to the longitudinal nature of the data collection and different seasons of survey (i.e. different proximity to different flow/climate periods). Careful consideration of these aspects will be important in the model design, as per [see section 2.4](#2.4-identify-predictor-and-response-variables).
 
-[] EG, can you add some text to reflect that we also might check other count distributions (particularly the negative binomial) to address issues of zero inflation and over-dispersion.
+Should either over-dispersion or zero-inflation be identified in any fitted model, we will try alternative distributions. 
+
+Should over dispersion in any model be identified, we will re-fit the models using a negative binomial distribution. However, the models re-fitted using the negative binomial distribution will only be accepted over the Poisson models if they *both* improve over-dispersion *and* do not decline in model performance, particularly model fit, zero-inflation, and posterior predictive checks. 
+
+While we are unable to *a priori* precisely weight these criteria in determining the final distribution, the final decision will be guided by the model's overall ability to capture key associations reliably. This is especially likely to occur when there is no 'perfect model' and there is no dominant alternative choice of model distribution. 
 
 ## 3.3 Describe approach for identifying model structure
 
