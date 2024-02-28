@@ -646,7 +646,12 @@ Parameterisation: Parameter estimation will be data-driven, and implemented with
 
 ---
 
-- [] EG can you update to note that R2 is the primary performance criterion used here (used to assess agreement between fitted and observed values), coupled with posterior predictive checks to assess the suitability of model structures. Model features will be identified using visual plots of estimates (forest plots of most coefficients and plots of predicted values under different combinations of the key flow, zone, and period predictor variables).
+$R^2$, a measure of agreement between fitted and observed values, is the primary performance criterion we will use to evaluate the performance of each model, coupled with posterior predictive checks to assist the suitability of normal structures (Section 4) . When comparing among alternative models, models with a higher $R^2$ will be preferred over those with lower $R^2$. As an approximate guide for judging model fit, we will use the following thresholds $R^2$ in the absence of cross-validation: 
+
+- < 0.25 is poor, 
+- 0.25 - 0.5 is moderate, 
+- 0.5 - 0.75 is good, 
+- 0.75-1.0 is excellent, but probably indicates overfitting. 
 
 
 ## 3.5 Model Assumptions & Uncertainties
