@@ -686,7 +686,6 @@ Based on the pilot analysis (section 2.4.3) we have derived three additional mod
 
 We will attempt to fit a single full model using all data, and adding a random effect for `waterbody` to account for variation between river systems.
 
-**Full Model, full dataset (with three-way interaction)**
 Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg`  back into the full model specification (discarded in the pilot analysis). If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
 
 **Full Models fitted separately for each `waterbody` dataset**
