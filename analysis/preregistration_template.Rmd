@@ -750,6 +750,8 @@ This section pertains to any data calibration, validation or testing schemes tha
 
 ---
 
+
+
 ### 4.1.1 Describe Calibration / Validation Data
 
 ---
@@ -898,7 +900,13 @@ Should over-dispersion and zero-inflation be present in the fitted models, alter
 
 ---
 
-Model evaluation and validation on external data will not be undertaken in this study because of complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and zero-inflation). For the same reasons, we will not partition the data for model validation on independent data using cross-validation or other data-partitioning approaches. Models may be validated on newly collected independent data in the future, but external validation is outside the scope of this study.
+Model evaluation and validation on external data will not be undertaken in this study due to the complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and ero-inflation) and also due to the focus of the analysis on inference.
+
+For the same reasons, we will not partition the data for model validation on independent data using cross-validation or other data-partitioning approaches. Instead, in-sample model fit assessment will be conducted (section 5).
+
+Models may be validated on newly collected independent data in the future, but external validation is outside the scope of this study.
+
+We have partitioned the data for pilot analysis, see section 2.4.3 for details of this subsetting. 
 
 
 ## 5.2 Choose Performance Metrics & Criteria
