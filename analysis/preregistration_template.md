@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-30 January, 2024
+28 February, 2024
 
 # 1.0 Problem Formulation
 
@@ -1032,8 +1032,8 @@ response variables, test correlations between all pairs of numerical
 observations within each category of any categorical variables included
 in the analysis (accounted for nested structures and interactions).
 
-We will also fit two initial models to the preliminary dataset, one for
-each key response variable (richness, cover):
+We will also fit two initial models to the pilot dataset, one for each
+key response variable (richness, cover):
 
 ``` r
 library(glmmTMB)
@@ -1139,25 +1139,30 @@ each survey), and the datat checking process has been extremely thorough
 the most reliable vegetation datasets available anywhere in Victoria for
 its size and complexity.
 
-*Data exclusions* Data will only be excluded if be believe it is
-incorrect, and it can’t be corrected, or it is irrelevant to a
-particular model/assessment. For example, if evaluating survey intervals
-relating to spring fresh delivery, we can only include years and sites
-where such a delivery actually occurred. Incorrect data are easily
-detercted where values lie outside possible or plausible ranges, but in
-other cases they can be very difficult to identify - we are confident
-that the former have been well accounted for in the datasets but the
-latter is only partially accounted for and there may be some minor
-errors that we cannot isolate. All species will be included, but unknown
-species that have no possible grouping identifier, e.g. native/exotic or
-lifeform, may not be possible to include. The vast majority of these
-occurrences are for seedlings that are too small to be identified. In
-most cases seedlings had minimal impact on plant cover, so this would
-have few implications for evaluation of cover, but this may have a
-greater impact on species richness. Decisions will need to be made for
-certain unknown species categories, particularly those that are more
-common in the dataset. At this stage only species that can reliably
+*Data exclusions* Data will only be excluded if we believe it is
+incorrect, and it can’t be corrected, it is irrelevant to a particular
+model/assessment, or it precludes model fitting. For example, if
+evaluating survey intervals relating to spring fresh delivery, we can
+only include years and sites where such a delivery actually occurred.
+Incorrect data are easily detected where values lie outside possible or
+plausible ranges, but in other cases they can be very difficult to
+identify - we are confident that the former have been well accounted for
+in the datasets but the latter is only partially accounted for and there
+may be some minor errors that we cannot isolate. All species will be
+included, but unknown species that have no possible grouping identifier,
+e.g. native/exotic or lifeform, may not be possible to include. The vast
+majority of these occurrences are for seedlings that are too small to be
+identified. In most cases seedlings had minimal impact on plant cover,
+so this would have few implications for evaluation of cover, but this
+may have a greater impact on species richness. Decisions will need to be
+made for certain unknown species categories, particularly those that are
+more common in the dataset. At this stage only species that can reliably
 assigned to a relevant group for a given model will be included.
+Furthermore, the pilot analysis illustrated extreme zero-inflation for
+several groups, which prevented model fitting. Consequently these groups
+were excluded from the pilot study modelling and they may or may not be
+included in the full dataset analysis, depending on whether the models
+can be successfully fit.
 
 *Missing data* There are a small number of cases where we have
 incomplete or missing data due to various circumstances in the surveys.
@@ -1358,9 +1363,21 @@ flow/climate periods). Careful consideration of these aspects will be
 important in the model design, as per [see section
 2.4](#2.4-identify-predictor-and-response-variables).
 
-\[\] EG, can you add some text to reflect that we also might check other
-count distributions (particularly the negative binomial) to address
-issues of zero inflation and over-dispersion.
+Should either over-dispersion or zero-inflation be identified in any
+fitted model, we will try alternative distributions.
+
+Should over dispersion in any model be identified, we will re-fit the
+models using a negative binomial distribution. However, the models
+re-fitted using the negative binomial distribution will only be accepted
+over the Poisson models if they *both* improve over-dispersion *and* do
+not decline in model performance, particularly model fit,
+zero-inflation, and posterior predictive checks.
+
+While we are unable to *a priori* precisely weight these criteria in
+determining the final distribution, the final decision will be guided by
+the model’s overall ability to capture key associations reliably. This
+is especially likely to occur when there is no ‘perfect model’ and there
+is no dominant alternative choice of model distribution.
 
 ## 3.3 Describe approach for identifying model structure
 
@@ -1524,12 +1541,16 @@ as it is likely beyond the scope, but this would involve testing
 predictive capacity within and between waterways using e.g. a
 cross-validation approach.
 
-Parameterisation: We will use data-driven parameter estimation using
-maximum likelihood for both parametric and non-parametric factor data
-(nominal or ordinal) variables (e.g. categorised elevation and/or flow
-data, as well as binary or categorical grazing variables). We will
-optimise the model by comparing fit of model outputs to observations
-(residuals versus fitted values).
+Parameterisation: Parameter estimation will be data-driven, and
+implemented with the `glmmTMB` R package (Brooks et al. 2017), which
+uses [Template Model Builder
+software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit
+flexible GLMM-type models, amongst other model types. `glmmTMB` uses
+maximum likelihood to estimate parameters for both parametric and
+non-parametric factor data (nominal or ordinal) variables
+(e.g. categorised elevation and/or flow data, as well as binary or
+categorical grazing variables). We will optimise the model by comparing
+fit of model outputs to observations (residuals versus fitted values).
 
 ### 3.4.2 Estimation performance criteria
 
@@ -1549,13 +1570,19 @@ optimise the model by comparing fit of model outputs to observations
 
 ------------------------------------------------------------------------
 
-- \[\] EG can you update to note that R2 is the primary performance
-  criterion used here (used to assess agreement between fitted and
-  observed values), coupled with posterior predictive checks to assess
-  the suitability of model structures. Model features will be identified
-  using visual plots of estimates (forest plots of most coefficients and
-  plots of predicted values under different combinations of the key
-  flow, zone, and period predictor variables).
+$R^2$, a measure of agreement between fitted and observed values, is the
+primary performance criterion we will use to evaluate the performance of
+each model, coupled with posterior predictive checks to assist the
+suitability of normal structures (Section 4) . When comparing among
+alternative models, models with a higher $R^2$ will be preferred over
+those with lower $R^2$. As an approximate guide for judging model fit,
+we will use the following thresholds $R^2$ in the absence of
+cross-validation:
+
+- \< 0.25 is poor,
+- 0.25 - 0.5 is moderate,
+- 0.5 - 0.75 is good,
+- 0.75-1.0 is excellent, but probably indicates overfitting.
 
 ## 3.5 Model Assumptions & Uncertainties
 
@@ -1590,51 +1617,138 @@ optimise the model by comparing fit of model outputs to observations
 >   modelling, specify each model used in the candidate set, including
 >   any null or full/global model.
 
-------------------------------------------------------------------------
+**Vegetation Cover Models**
 
-\[\] EG can you please update to outline the results of the pilot
-study: - models were too complex for the data available, and had to be
-simplified. - settled on three model structures (all based on those in
-Section
-[2.5.3](#253-describe-any-data-exploration-or-preliminary-data-analyses)): 1.
-a “flow regime” model, which has the `days_above_baseflow` and
-`days_above_springfresh` predictors, plus random effects. 2. a “flow
-events” model (first version), which has a `zone * period` interaction,
-independent fixed effects for `origin`, `wpfg`, and `grazing`, and
-random effects, but no `days_above_` predictors. 3. a “flow events”
-model (second version), which has a `wpfg * period` interaction,
-independent fixed effects for `zone`, `origin`, and `grazing`, and
-random effects, but no `days_above_` predictors. - rationale for these
-is to capture the average effects of flows at different levels over
-multiple years (model 1), the effects on vegetation before and after
-specific flow events under an assumption that different plant functional
-groups (`wpfg`s) have different cover levels but similar responses to
-flows (model 2), and the effects of specific flow events allowing
-different plant functional groups to differ in their response but
-assuming that responses in each zone are similar (model 3). - These
-models are *not* ideal, but full models with three-way interactions did
-not converge and were unable to generate reliable parameter estimates.
-Full models will be trialled again with the full data set, but these
-simplified models will be used if full models do not converge. -
-posterior predictive checks indicated high levels of zero-inflation and
-some over-dispersion. Final models allowed zero-inflation parameters to
-differ among plant functional groups (`ziformula = ~ wpfg`) but did not
-account for over-dispersion. The most common method to address
-over-dispersion is with negative binomial models, potentially with
-group-specific dispersion parameters (e.g., `dispformula = ~ wpfg` as an
-argument in glmmTMB). However, all attempts to fit negative binomial
-models resulted in non-convergence. Given the zero-inflated Poisson
-models converged and reliably captured the proportion of zeros in the
-data, this approach is proposed for all models. - Need a couple of
-decision points for the full model: 1. Attempt to fit a single model
-with all data (adding a random effect for `waterbody`), but this may not
-converge or may not be computationally feasible. In this case, models
-will be fitted separately for each waterbody as per the pilot study
-approach. 2. May be able to add three-way interactions back in when the
-full data set is available (but may not). Will test the full three-way
-`zone * period * wpfg` interaction; if this converges it will be used as
-the basis for final outputs, if not, the simplified models listed above
-will be used.
+Based on the pilot analysis (section 2.4.3) we have derived three
+additional model structures to be fitted on the full dataset that are
+simplified versions of the full models specified in 2.4.3. While these
+simplified models are not ideal, the full models with three-way
+interactions were too complex given the data, and failed to converge and
+generate reliable parameter estimates on the pilot dataset.
+Consequently, the full models will be fitted again to the full dataset.
+
+*Full Model, full dataset*
+
+We will attempt to fit a single full model using all data, and adding a
+random effect for `waterbody` to account for variation between river
+systems.
+
+Should the full model fit to all data be computationally feasible and
+converge, we will add the three-way interaction `zone * period * wpfg`
+back into the full model specification (discarded in the pilot
+analysis). If this converges it will be used as the basis for final
+outputs, if not, the simplified models listed below will be used.
+
+Should the full model fitted to the full dataset not be computationally
+feasible or converge, we will follow a similar strategy for the
+pilot-study modelling, working from the full model towards simplified
+models, as there is potential for the full dataset to support a model of
+intermediate complecity (more complex than the simplified models, but
+not as complex as the full model). We will fit the following simplified
+models in the case that the full model fitted to the full dataset does
+not converge:
+
+*Simplified model 1: “flow regime” model*
+
+The aim of this simplified model is to examine how past flow conditions
+influence vegetation cover while capturing the average effects of flows
+at different levels over multiple years. The model does not consider
+zone or period and identifies functional group-specific impacts of days
+above baseflow or spring fresh levels.
+
+This model includes two flow predictors (`days_above_baseflow_std`,
+`days_above_spring_fresh_std`), and the full suite of random effects.
+
+<figure>
+<img
+src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/2326b3d7-0322-4125-96ee-51e7aec61fb6"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+
+*Simplified model 2a: “flow events” Model, version 1*
+
+The aim of the ‘flow events’ models (2a,2b) is to examine how vegetation
+cover changes in specific zones before and after key flow events (spring
+and summer freshes). Model 2a seeks to examine the effects on vegetation
+before and after specific flow events assuming that different plant
+functional groups (`wpfg`s) have different cover levels but similar
+responses to flows.
+
+In the pilot analysis, model results indicated that vegetation cover
+differed in its responses to spring and summer freshes in each zone
+(below baseflow, baseflow to spring fresh, above spring fresh). Below
+baseflow level, vegetation increased following the spring fresh and
+remained high following the summer event (Pilot Analysis, Figure 5). In
+the baseflow-to-spring fresh zone, vegetation increased following the
+spring fresh but returned to pre-spring levels following the summer
+fresh (Pilot Analysis, Figure 5). In the above-spring fresh zone,
+vegetation level declined following both the spring and the summer fresh
+(Pilot Analysis, Figure 5).
+
+Consequently, this model includes several categorical predictors as
+independent fixed effects (`origin`, `wpfg`, `grazing`, and a
+zone-by-period interaction) and the full suite of random effects, but no
+`days_above_` predictors.
+
+This first version of the flow event model allows functional groups to
+have different levels of cover but assumes that changes following flow
+events are similar in all groups within a zone. Although this is not an
+ideal model structure, it is likely that functional groups are
+restricted to particular zones, in which case the zone-by-period
+interaction may capture some of the variation attributable to functional
+groupings.
+
+<figure>
+<img
+src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/b837cb49-b090-4d71-968b-3dc85d7468a6"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+
+*Simplified model 2b: “flow events” model, version 2* The aim is to
+examine how vegetation cover of each functional grouping changes before
+and after key flow events (spring and summer freshes). This second
+version (Simplified model 2b) allows functional groups to have different
+responses to flow events (spring and summer freshes) but assumes that
+vegetation in all zones changes similarly following each flow event. As
+for simplified model 2a, this model structure is not ideal, but provides
+a method to distinguish `wpfg`-specific responses to flow events.
+
+This model includes several categorical predictors as independent fixed
+effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction,
+as well as the full suite of random effects, and no `days_above_`
+predictors.
+
+<figure>
+<img
+src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/a180fc2a-c69b-4ad3-8ded-c03cb0ba9262"
+alt="image" />
+<figcaption aria-hidden="true">image</figcaption>
+</figure>
+
+**Species Richness Modles**
+
+*Simplified Model 1:*
+
+*Simplified Model 2: *
+
+*Model class / family*
+
+Posterior predictive checks from the pilot analysis indicated high
+levels of zero-inflation with some over-dispersion. The final models in
+the pilot analysis allowed for zero-inflation parameters to differ among
+plant functional groups (`ziformula = ~ wpfg`) to account for different
+proportions of zeros among functional groupings, but did not account for
+over-dispersion. Over-dispersion is commonly accounted for by using
+negative binomial models, which we could potentially fit using
+groups-specific dispersion parameters using the `glmmTMB` argument
+`dispformula = ~ wpfg`. However, all attempts to fit negative binomial
+models resulted in non-convergence in our pilot analysis. Despite some
+degree of over-dispersion, given that the zero-inflated Poisson models
+converged and reliably captured the proportion of zeros in the pilot
+dataset, we propose using this approach for all models fitted to the
+full dataset, including any simplified models.
 
 # 4. Model Calibration, Fitting & Checking
 
@@ -1700,6 +1814,12 @@ will be used.
 >   model validation data, will independent datasets be known or
 >   accessible to any modeller or analyst?
 
+Due to the complexity of the analysis, and the focus on inference, no
+data partitioning / testing on external data will be used. However, we
+will use a subset of the data for exploratory pilot analysis that
+informs the final model specifications (Campaspe catchment only, section
+2.4.3).
+
 ------------------------------------------------------------------------
 
 ## 4.2 Implementation verification
@@ -1723,8 +1843,24 @@ will be used.
 
 ------------------------------------------------------------------------
 
-\[\] EG to update: GH review by JY/HW/EG (anyone who didn’t open the
-PR).
+Implementation verification will be assessed using a number of
+techniques, but will broadly follow the approach proposed by Ivimey-Cook
+*et al.* (**Ivimey2023?**):
+
+1.  Code will be reviewed periodically using the [GitHub flow
+    model](https://docs.github.com/en/get-started/using-github/github-flow)
+    where code is submitted for independent review by collaborators
+    before being merged into the working copy of the code repository.
+    Code will be assessed either by attempting to reproduce the code in
+    the pull-request, or by visual inspection.
+2.  Defensive programming techniques, in-line error checking,
+    functionalisation, modularisation and documentation of analysis code
+    will be used as preventative measures to catch bugs and ensure
+    proper code implementation (**Ivimey2023?**),
+3.  Finally, the final analysis and results will be subjected to a more
+    substantial peer-code review from collaborators further removed from
+    code writing and analysis implementation (likely CJ or EG),
+    following the 4R’s (**Ivimey2023?**).
 
 ## 4.3 Model Checking
 
@@ -1735,13 +1871,46 @@ PR).
 > “Model Checking” goes by many names (“conditional verification”,
 > “quantitative verification”, “model output verification” ), and refers
 > to a series of analyses that assess a model’s performance in
-> representing the system of interest (Conn et al. 2018). Model checking
+> representing the system of interest (**Conn:2018hd?**). Model checking
 > aids in diagnosing assumption violations, and reveals where a model
 > might need to be altered to better represent the data, and therefore
-> system (Conn et al. 2018). Quantitative model checking diagnostics
+> system (**Conn:2018hd?**). Quantitative model checking diagnostics
 > include goodness of fit, tests on residuals or errors, such as for
 > heteroscedascity, cross-correlation, and autocorrelation (Jakeman,
 > Letcher, and Norton 2006).
+
+Model checking will be undertaken using a combination of qualitative and
+quantitative analyses with subjective assessment.
+
+In terms of qualitative assessment, model results will be checked by
+field experts Chris Jones & Lyndsey Vivian, who will assess
+model-estimated associations for their plausibility given their expert
+knowledge of the underlying target system.
+
+Posterior predictive checks will be conducted to assess the degree of
+zero-inflation and over-dispersion. Posterior checks compare the
+distribution of observed data against a distribution simulated from the
+fitted model and are assessed quantitatively or graphically (Conn et al.
+2018). We will plot both distributions and visually compare the
+distributions: close alignment of the two distributions indicates that
+the specified model structure is appropriate, whereas deviations between
+the observed distribution and the model-generated distribution indicate
+potential assumption violations and mismatches between the data and
+model.
+
+For graphical posterior checks, there is no threshold but any
+disagreement, particularly in key aspects of the model (zero inflation,
+and counts in the range of the majority of the data) would suggest an
+alternative distribution is worth considering. Often no distribution
+will be perfect, so it’s a choice between two imperfect options. (in
+which case, we will take into consideration the balance between model
+balance simplicity, $R^2$, and the “key aspects” of model such as zero
+inflation and the bulk of the data).
+
+Should over-dispersion and zero-inflation be present in the fitted
+models, alternative model families / structures (section 3.1.3) may be
+investigated and compared to the primary models outlined in section
+2.4.3.
 
 ------------------------------------------------------------------------
 
@@ -1795,17 +1964,6 @@ PR).
 
 ------------------------------------------------------------------------
 
-Model checking will be undertaken using a combination of qualitative and
-quantitative analyses with subjective assessment. 1. Posterior
-predictive checks will be used to address zero-inflation and
-over-dispersion. These are visual checks that compare the distribution
-of observed data with distributions simulated from the fitted model.
-Close alignment of the two indicates an appropriate model structure,
-whereas deviations indicate possible mismatches between the data and the
-model. 2. Assessment of estimated associations by field experts (CJ and
-LV) to identify whether estimated associations are plausible given what
-is known about the target system.
-
 ### 4.3.3 Assumption violation checks
 
 ------------------------------------------------------------------------
@@ -1831,9 +1989,6 @@ is known about the target system.
 >   as demonstrated in the planned tests above).
 
 ------------------------------------------------------------------------
-
-\[\] EG to consider whether posterior checks should be mentioned here
-instead of 4.1.2
 
 # 5.0 Model Validation and Evaluation
 
@@ -1907,8 +2062,22 @@ instead of 4.1.2
 
 ------------------------------------------------------------------------
 
-\[\] EG to update: no such tests used in this work given model
-complexity.
+Model evaluation and validation on external data will not be undertaken
+in this study due to the complexity of the models (hierarchical
+structure combined with interactions) and data (potential for
+over-dispersion and ero-inflation) and also due to the focus of the
+analysis on inference.
+
+For the same reasons, we will not partition the data for model
+validation on independent data using cross-validation or other
+data-partitioning approaches. Instead, in-sample model fit assessment
+will be conducted (section 5).
+
+Models may be validated on newly collected independent data in the
+future, but external validation is outside the scope of this study.
+
+We have partitioned the data for pilot analysis, see section 2.4.3 for
+details of this subsetting.
 
 ## 5.2 Choose Performance Metrics & Criteria
 
@@ -2154,6 +2323,17 @@ Suitability for Alien Macroinvertebrates” 74: 92–103.
 
 </div>
 
+<div id="ref-Brooks2017" class="csl-entry">
+
+Brooks, Mollie E., Kasper Kristensen, Koen J. van Benthem, Arni
+Magnusson, Casper W. Berg, Anders Nielsen, Hans J. Skaug, Martin
+Maechler, and Benjamin M. Bolker. 2017.
+“<span class="nocase">glmmTMB</span> Balances Speed and Flexibility
+Among Packages for Zero-Inflated Generalized Linear Mixed Modeling.”
+*The R Journal* 9 (2): 378–400. <https://doi.org/10.32614/RJ-2017-066>.
+
+</div>
+
 <div id="ref-Cartwright:2016kr" class="csl-entry">
 
 Cartwright, Samantha J, Katharine M Bowgen, Catherine Collop, Kieran
@@ -2163,11 +2343,11 @@ Models to Non-Scientist End Users.” *Ecological Modelling* 338: 51–59.
 
 </div>
 
-<div id="ref-Conn:2018hd" class="csl-entry">
+<div id="ref-Conn2018" class="csl-entry">
 
 Conn, Paul B, Devin S Johnson, Perry J Williams, Sharon R Melin, and
 Mevin B Hooten. 2018. “A Guide to Bayesian Model Checking for
-Ecologists.” *Ecological Monographs* 9: 341–17.
+Ecologists.” *Ecological Monographs* 88 (4): 526–42.
 
 </div>
 
