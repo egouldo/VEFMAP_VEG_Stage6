@@ -688,7 +688,8 @@ We will attempt to fit a single full model using all data, and adding a random e
 
 Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg`  back into the full model specification (discarded in the pilot analysis). If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
 
-Should the full model fitted to the full dataset not be computationally feasible or converge, we will also fit the following simplified models: 
+Should the full model fitted to the full dataset not be computationally feasible or converge, we will follow a similar strategy for the pilot-study modelling, working from the full model towards simplified models, as there is potential for the full dataset to support a model of intermediate complecity (more complex than the simplified models, but not as complex as the full model). 
+We will  fit the following simplified models in the case that the full model fitted to the full dataset does not converge:
 
 **Simplified model 1: "flow regime" model**
 
