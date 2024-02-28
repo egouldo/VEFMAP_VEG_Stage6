@@ -682,7 +682,7 @@ $R^2$, a measure of agreement between fitted and observed values, is the primary
 
 Based on the pilot analysis (section 2.4.3) we have derived three additional model structures to be fitted on the full dataset that are simplified versions of the full models specified in 2.4.3. While these simplified models are not ideal, the full models with three-way interactions were too complex given the data, and failed to converge and generate reliable parameter estimates on the pilot dataset. Consequently, the full models will be fitted again to the full dataset.
 
-**Full Model, full dataset**
+*Full Model, full dataset*
 
 We will attempt to fit a single full model using all data, and adding a random effect for `waterbody` to account for variation between river systems.
 
@@ -691,7 +691,7 @@ Should the full model fit to all data be computationally feasible and converge, 
 Should the full model fitted to the full dataset not be computationally feasible or converge, we will follow a similar strategy for the pilot-study modelling, working from the full model towards simplified models, as there is potential for the full dataset to support a model of intermediate complecity (more complex than the simplified models, but not as complex as the full model). 
 We will  fit the following simplified models in the case that the full model fitted to the full dataset does not converge:
 
-**Simplified model 1: "flow regime" model**
+*Simplified model 1: "flow regime" model*
 
 The aim of this simplified model is to examine how past flow conditions influence vegetation cover while capturing the average effects of flows at different levels over multiple years. The model does not consider zone or period and identifies functional group-specific impacts of days above baseflow or spring fresh levels.
 
@@ -700,7 +700,7 @@ This model includes two flow predictors (`days_above_baseflow_std`, `days_above_
 ![image](https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/2326b3d7-0322-4125-96ee-51e7aec61fb6)
 
 
-**Simplified model 2a: "flow events" Model, version 1**
+*Simplified model 2a: "flow events" Model, version 1*
 
 The aim of the 'flow events' models (2a,2b) is to examine how vegetation cover changes in specific zones before and after key flow events (spring and summer freshes). Model 2a seeks to examine the effects on vegetation before and after specific flow events assuming that different plant functional groups (`wpfg`s) have different cover levels but similar responses to flows.
 
@@ -713,7 +713,7 @@ This first version of the flow event model allows functional groups to have diff
 ![image](https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/b837cb49-b090-4d71-968b-3dc85d7468a6)
 
 
-**Simplified model 2b: "flow events" model, version 2**
+*Simplified model 2b: "flow events" model, version 2*
 The aim is to examine how vegetation cover of each functional grouping changes before and after key flow events (spring and summer freshes). This second version (Simplified model 2b) allows functional groups to have different responses to flow events (spring and summer freshes) but assumes that vegetation in all zones changes similarly following each flow event. As for simplified model 2a, this model structure is not ideal, but provides a method to distinguish `wpfg`-specific responses to flow events. 
 
 This model includes several categorical predictors as independent fixed effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction, as well as the full suite of random effects, and no `days_above_` predictors.
@@ -723,9 +723,38 @@ This model includes several categorical predictors as independent fixed effects 
 
 **Species Richness Modles**
 
-TBD
 
-- [ ] EG to update once JY and HW finalise pilot analysis
+*Simplified Model 1: "Flow Regime" model*
+
+
+*Simplified Model 2: "Flow Events" model *
+
+```{r}
+richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
+  richness ~  
+    #days_above_baseflow_std + days_above_springfresh_std + 
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 + 
+    #   zone * period + 
+    zone *period + zone*wpfg + wpfg*period + 
+    grazing + origin + 
+    (1 | site / transect) + 
+    #(1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown"))|> 
+    filter(!wpfg %in% c("Sk", "Se")) 
+)
+```
+
+
 
 _Model class / family_
 
