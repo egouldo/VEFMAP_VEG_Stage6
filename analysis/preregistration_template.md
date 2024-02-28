@@ -1659,12 +1659,25 @@ above baseflow or spring fresh levels.
 This model includes two flow predictors (`days_above_baseflow_std`,
 `days_above_spring_fresh_std`), and the full suite of random effects.
 
-<figure>
-<img
-src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/2326b3d7-0322-4125-96ee-51e7aec61fb6"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
+``` r
+cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
+   hits ~ log_hits_tm1 +
+     days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+     #   zone * period +
+   #  zone + period +
+   #  grazing + wpfg  +
+     (1 | site / transect) +
+     #(1 | site / period) +
+     (1 | metres) +
+     (1 | survey_year),
+   # offset(npoint),
+   family = poisson,
+   ziformula=~ wpfg,
+   #dispformula =~ wpfg ,
+   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+ )
+```
 
 *Simplified model 2a: “flow events” Model, version 1*
 
@@ -1699,12 +1712,27 @@ restricted to particular zones, in which case the zone-by-period
 interaction may capture some of the variation attributable to functional
 groupings.
 
-<figure>
-<img
-src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/b837cb49-b090-4d71-968b-3dc85d7468a6"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
+``` r
+cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
+  hits ~ log_hits_tm1 +
+    # days_above_baseflow_std*wpfg*origin +
+    # days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std_sq +
+    zone*period +
+    origin + wpfg +
+    grazing +
+    (1 | site / transect) +
+    #(1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  ziformula=~ wpfg,
+  # dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+```
 
 *Simplified model 2b: “flow events” model, version 2* The aim is to
 examine how vegetation cover of each functional grouping changes before
@@ -1720,18 +1748,94 @@ effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction,
 as well as the full suite of random effects, and no `days_above_`
 predictors.
 
-<figure>
-<img
-src="https://github.com/egouldo/VEFMAP_VEG_Stage6/assets/8400682/a180fc2a-c69b-4ad3-8ded-c03cb0ba9262"
-alt="image" />
-<figcaption aria-hidden="true">image</figcaption>
-</figure>
+``` r
+cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
+  hits ~ log_hits_tm1 +
+    # days_above_baseflow_std*wpfg*origin + 
+    # days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 + 
+    # days_above_springfresh_std_sq +
+    zone + wpfg * period + 
+    origin + 
+    grazing +
+    (1 | site / transect) +
+    # (1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  ziformula=~ wpfg,
+  # dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> 
+    filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+```
 
 **Species Richness Modles**
 
-*Simplified Model 1:*
+*Simplified Model 1: “Flow Regime” model*
 
-*Simplified Model 2: *
+``` r
+richness_ar_TMBmod_1 <- glmmTMB::glmmTMB( 
+  richness ~  
+    days_above_baseflow_std*wpfg*origin +
+    days_above_springfresh_std*wpfg*origin + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
+    #zone *period + zone*wpfg + wpfg*period + 
+    # grazing + origin + 
+    (1 | site / transect) + 
+    #(1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown")) 
+) 
+```
+
+*Simplified Model 2: “Flow Events” model*
+
+Rather than splitting the flow events model into two different versions,
+as we did for the cover models, we have combined these into a single
+model for richness.
+
+- [ ] JY / HW any comment for rationale on this difference? i.e. reason
+  for splitting cover models into two versions but not richness models?
+
+``` r
+richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
+  richness ~  
+    #days_above_baseflow_std + 
+    # days_above_springfresh_std + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
+    zone *period + zone*wpfg + wpfg*period + 
+    grazing + origin + 
+    (1 | site / transect) + 
+    # (1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown"))|> 
+    filter(!wpfg %in% c("Sk", "Se")) 
+)
+```
 
 *Model class / family*
 
