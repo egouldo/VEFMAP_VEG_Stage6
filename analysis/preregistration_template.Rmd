@@ -690,7 +690,7 @@ We will attempt to fit a single full model using all data, and adding a random e
 Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg`  back into the full model specification (discarded in the pilot analysis). If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
 
 **Full Models fitted separately for each `waterbody` dataset**
-However, this  model may not converge, or may not be computationally feasible. In this case, we will fit the full model separately for every waterbody, as per the pilot analysis, omitting the random effect for `waterbody`.
+However, this  model may not converge, or may not be computationally feasible. In this case, we will fit the full model separately for every `waterbody`, as per the pilot analysis, omitting the random effect for `waterbody`.
 
 Should the full model fitted to the full dataset not be computationally feasible or converge, we will also fit the following simplified models: 
 
