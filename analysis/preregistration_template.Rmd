@@ -726,19 +726,46 @@ This model includes several categorical predictors as independent fixed effects 
 
 *Simplified Model 1: "Flow Regime" model*
 
+```{r richness-flow-regime-model, eval=FALSE}
+richness_ar_TMBmod_1 <- glmmTMB::glmmTMB( 
+  richness ~  
+    days_above_baseflow_std*wpfg*origin +
+    days_above_springfresh_std*wpfg*origin + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
+    #zone *period + zone*wpfg + wpfg*period + 
+    # grazing + origin + 
+    (1 | site / transect) + 
+    #(1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown")) 
+) 
+```
 
-*Simplified Model 2: "Flow Events" model *
+*Simplified Model 2: "Flow Events" model*
 
-```{r}
+```{r richness-flow-events-model, eval=FALSE}
 richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
   richness ~  
-    #days_above_baseflow_std + days_above_springfresh_std + 
-    # days_above_baseflow_std^2 + days_above_springfresh_std^2 + 
-    #   zone * period + 
+    #days_above_baseflow_std + 
+    # days_above_springfresh_std + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
     zone *period + zone*wpfg + wpfg*period + 
     grazing + origin + 
     (1 | site / transect) + 
-    #(1 | site / period) + 
+    # (1 | site / period) + 
     (1 | metres) + 
     (1 | survey_year), 
   # offset(npoint), 
@@ -753,7 +780,6 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
     filter(!wpfg %in% c("Sk", "Se")) 
 )
 ```
-
 
 
 _Model class / family_
