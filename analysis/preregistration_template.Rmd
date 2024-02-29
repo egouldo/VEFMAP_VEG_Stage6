@@ -168,6 +168,8 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 
 ------------------------------------------------------------------------
 
+The models will require a certain amount of flexibility to be able to change the timeframes over which data are compared and the set of predictor variables that will change depending on the timeframes selected. Funding constraints and client objectives may also require changes to the modelling process or purpose at any point. Currently there are no significant limitations on model development - sufficient time and funding resources - but this may change.
+
 ### 1.1.5 Model Scope, Scale and Resolution
 
 ------------------------------------------------------------------------
