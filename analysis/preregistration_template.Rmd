@@ -140,10 +140,6 @@ These data also enable evaluation of vegetation diversity within relevant respon
 The specific groupings are yet to be determined.
 More information on these groupings is provided below in [2.4](#24-identify-predictor-and-response-variables).
 
-The models will require a certain amount of flexibility to be able to change the timeframes over which data are compared and the set of predictor variables that will change depending on the timeframes selected.
-Funding constraints and client objectives may also require changes to the modelling process or purpose at any point.
-Currently there are no significant limitations on model development - sufficient time and funding resources - but this may change.
-
 The models themselves will be analysed by assessing the model fit and parameters indicating suitability of model structure given the data.
 The specific tests to be used will depend on the model structure used.
 More information is provided in [3.2](#32-choose-model-features-and-family) and [3.5](#35-model-assumptions-uncertainties).
