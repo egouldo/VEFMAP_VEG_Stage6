@@ -269,7 +269,7 @@ Local interactions are dominated by the species abundance and composition of pla
 Rainfall may also interact with flow events and would influence sites or groups of sites separately.
 Global interactions include the effect of season (time of year) on the responses, which is largely influenced by day length and temperatures.
 
-### 2.3 Model assumptions and uncertainties
+## 2.3 Model assumptions and uncertainties
 
 ------------------------------------------------------------------------
 
@@ -296,7 +296,7 @@ These include:
 **Parametric uncertainty** I think this is referring to the other predictor variables in the model that are directly associated with treatments.
 These are primarily associated with flow but also grazing and potentially exotic plant cover.
 
--   Flow elevation zones (if used). There is uncertainty in our GPS measurements of elevation of sub-transects and quadrats. There is also uncertainty in the flow elevation through time. Also, the flow elevation peak may only last for a brief period so the duration affected by the peak height may be very short. This means that the flow elevation zones that combine all of this information are uncertain. Even if we do not use zones, each of the input data listed here will be included and will be uncertain as indicated.\
+-   Flow elevation zones (if used). There is uncertainty in our GPS measurements of elevation of sub-transects and quadrats. There is also uncertainty in the flow elevation through time. Also, the flow elevation peak may only last for a brief period so the duration affected by the peak height may be very short. This means that the flow elevation zones that combine all of this information are uncertain. Even if we do not use zones, each of the input data listed here will be included and will be uncertain as indicated.
 -   Flow magnitude and duration. Flow magnitude (discharge) is recorded in most regulated streams at set gauges. The data from these gauges is usually calibrated by the data manager at some point after the raw data are entered. We have little idea of how much uncertainty there is in the uncorrected or corrected data that we obtain from online resources. Also, it is assumed that the magnitude (and timing and duration of flows) at the gauge is representative of the sites near that gauge, but we are unsure how much that may vary spatially.
 -   Flow velocity. Flow velocity can have a significant impact on plants if it is fast enough to damage or remove plants, or if it alters the soil. However the calculation of velocity at any given point on a river is difficult and varies at all points throughout the river cross section depending on the flow magnitude, flow height, channel form and obstacles. We do not have the capacity to calculate or even broadly approximate velocities at different flows so this variable cannot be included. However, we have seen very little field evidence of plant damage or removal from regulated flows on waterways and velocities during most regulated flows are typically not high on the bank where the plants are.
 -   Livestock grazing is specified as present or absent only at each site, not the intensity or duration of grazing. This adds a lot of uncertainty to this variable because the intensity (density of animals) and duration are important factors for the impact. However, this information is difficult to obtain from landholders or estimate from the site. We do have the animal ID though (cattle or sheep). Also, grazing impacts are spatially patchy depending on the ease of access - livestock don't impact steep slopes or inaccessible ledges or obstacles much compared to flatter or gentler slopes. So within a grazed site, the grazing impact may vary between transects.
@@ -870,6 +870,23 @@ As an approximate guide for judging model fit, we will use the following thresho
 
 ------------------------------------------------------------------------
 
+Poisson and negative binomial models all assume linearity in model parameters, independence between individual observations, as well as the multiplicative effects of independent variables.
+
+*Zero-inflation*
+
+Based on the results of the pilot study ([2.5.3 Describe any data exploration or preliminary data analyses]), all Poisson models allow for zero-inflation parameters to differ among plant functional groups (using `glmmTMB::` argument `ziformula=~ wpfg`).
+
+*Over-dispersion*
+
+Should over-dispersion (where the conditional variance of the outcome variable is greater than the conditional mean) be detected in models specified with a Poisson distribution, negative-binomial models will be fitted because they allow for over-dispersion by estimating the mean and variance independently [@Kruppa2021] and assume that extra-Poisson variance is a quadratic function of the mean [@Linden2011].
+Negative binomial models may allow for group-specific dispersion parameters using the `glmmTMB::` argument `dispformula = ~ wpfg`.
+
+Issues of over-dispersion are not expected to be fully resolved by the model specifications outlined in [3.0 Formalise and Specify Model], however proposed model specifications were a compromise between ideal specification and the limitations of our data.
+
+*Other Model Assumptions*
+
+For each specified model we may fit, further assumptions are described below in [3.6 Specify formal model].
+
 ## 3.6 Specify formal model
 
 ------------------------------------------------------------------------
@@ -908,7 +925,8 @@ This model includes two flow predictors (`days_above_baseflow_std`, `days_above_
 ```{r cover-flow-regime-model, eval=FALSE}
 cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
    hits ~ log_hits_tm1 +
-     days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
+     days_above_baseflow_std * wpfg * origin + 
+     days_above_springfresh_std * wpfg * origin +
     # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
      #   zone * period +
    #  zone + period +
@@ -921,10 +939,12 @@ cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
    family = poisson,
    ziformula=~ wpfg,
    #dispformula =~ wpfg ,
-   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+   data = veg_cover_ar_sum |> 
+     filter(!wpfg_ori %in% c("Atl_native", 
+                             "Ate_native", 
+                             "Tda_unknown"))
  )
 ```
-
 
 *Simplified model 2a: "flow events" Model, version 1*
 
@@ -963,13 +983,11 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 )
 ```
 
-
-*Simplified model 2b: "flow events" model, version 2* The aim is to examine how vegetation cover of each functional grouping changes before and after key flow events (spring and summer freshes).
+*Simplified model 2b: "flow events" model, version 2.* The aim is to examine how vegetation cover of each functional grouping changes before and after key flow events (spring and summer freshes).
 This second version (Simplified model 2b) allows functional groups to have different responses to flow events (spring and summer freshes) but assumes that vegetation in all zones changes similarly following each flow event.
 As for simplified model 2a, this model structure is not ideal, but provides a method to distinguish `wpfg`-specific responses to flow events.
 
 This model includes several categorical predictors as independent fixed effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction, as well as the full suite of random effects, and no `days_above_` predictors.
-
 
 ```{r cover-flow-events-model-v2, eval=FALSE}
 cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
