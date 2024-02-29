@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-28 February, 2024
+29 February, 2024
 
 # 1.0 Problem Formulation
 
@@ -450,7 +450,7 @@ separately. Global interactions include the effect of season (time of
 year) on the responses, which is largely influenced by day length and
 temperatures.
 
-### 2.3 Model assumptions and uncertainties
+## 2.3 Model assumptions and uncertainties
 
 ------------------------------------------------------------------------
 
@@ -509,7 +509,7 @@ and potentially exotic plant cover.
   affected by the peak height may be very short. This means that the
   flow elevation zones that combine all of this information are
   uncertain. Even if we do not use zones, each of the input data listed
-  here will be included and will be uncertain as indicated.  
+  here will be included and will be uncertain as indicated.
 - Flow magnitude and duration. Flow magnitude (discharge) is recorded in
   most regulated streams at set gauges. The data from these gauges is
   usually calibrated by the data manager at some point after the raw
@@ -1304,18 +1304,23 @@ below an upper bound (values must still be non-negative).
 The two primary response variables are plant cover and species richness
 (see [2.4](#24-identify-predictor-and-response-variables)), which will
 be operationalised in slightly different ways depending on the
-timeframe: 1) short term-in response to a single event (i.e. before and
-after); and 2) medium term (2-10 years) in relation to typical flow
-regimes (flow elevation/duration/timing) over that period. Both will be
-using the extent of a response of particular groups of plants at
-particular bank elevations in relation to flow events (factor condition
-of before or after an specific event) or flow values (e.g. days of flow
-to a specific elevation within a year/season), as well as the additional
-covariates of exotic plant cover and livestock grazing. This will enable
-an evaluation of variation in plant responses at different elevations in
-relation to the primary management action (flow) as well as identify the
-relative impacts of flow and the covariates of exotic plants
-(interacting with flow) and livestock grazing.
+timeframe:
+
+1.  short term-in response to a single event (i.e. before and after);
+    and
+2.  medium term (2-10 years) in relation to typical flow regimes (flow
+    elevation/duration/timing) over that period.
+
+Both will be using the extent of a response of particular groups of
+plants at particular bank elevations in relation to flow events (factor
+condition of before or after an specific event) or flow values
+(e.g. days of flow to a specific elevation within a year/season), as
+well as the additional covariates of exotic plant cover and livestock
+grazing. This will enable an evaluation of variation in plant responses
+at different elevations in relation to the primary management action
+(flow) as well as identify the relative impacts of flow and the
+covariates of exotic plants (interacting with flow) and livestock
+grazing.
 
 ### 3.2.2 Choose model family
 
@@ -1332,6 +1337,21 @@ relative impacts of flow and the covariates of exotic plants
 
 ------------------------------------------------------------------------
 
+Posterior predictive checks from the pilot analysis indicated high
+levels of zero-inflation with some over-dispersion. The final models in
+the pilot analysis allowed for zero-inflation parameters to differ among
+plant functional groups (`ziformula = ~ wpfg`) to account for different
+proportions of zeros among functional groupings, but did not account for
+over-dispersion. Over-dispersion is commonly accounted for by using
+negative binomial models, which we could potentially fit using
+groups-specific dispersion parameters using the `glmmTMB` argument
+`dispformula = ~ wpfg`. However, all attempts to fit negative binomial
+models resulted in non-convergence in our pilot analysis. Despite some
+degree of over-dispersion, given that the zero-inflated Poisson models
+converged and reliably captured the proportion of zeros in the pilot
+dataset, we propose using this approach for all models fitted to the
+full dataset, including any simplified models.
+
 The two key vegetation response variables have Poisson and binomial
 families (distributions) as indicated in [section
 3.3](#33-describe-approach-for-identifying-model-structure), but will
@@ -1344,24 +1364,6 @@ recorded as counts but include many zero values. There may be unexpected
 issues with these approaches due to actual data distributions not
 matching our expectations, such as an unaccounted for over-dispersion of
 the data.
-
-A formal sensitivity analysis has not yet been completed and so we are
-unaware of what variables the model outputs are most sensitive to. The
-many potential forms of flow and/or elevation data is a key area of
-possible variation in the variable behaviour, which is currently
-unknown. There are also many spatial and temporal dimensions associated
-with the data, such as the hierarchical scales of sub-transect,
-transect, site, reach, waterway, basin, and State. There will be spatial
-autocorrelation within the data at each of these levels, such as
-northern waterways or river basins being more similar to southern
-counterparts due to climate and geomorphology differences. The extent of
-the variation among the different spatial scale is currently unknown and
-is an important aspect of the study to evaluate. Temporal patterns are
-also important due to the longitudinal nature of the data collection and
-different seasons of survey (i.e. different proximity to different
-flow/climate periods). Careful consideration of these aspects will be
-important in the model design, as per [see section
-2.4](#2.4-identify-predictor-and-response-variables).
 
 Should either over-dispersion or zero-inflation be identified in any
 fitted model, we will try alternative distributions.
@@ -1439,11 +1441,11 @@ period could then be done using post-hoc tests. Data structures are
 broadly defined in
 [2.2](#22-explain-critical-conceptual-design-decisions) and
 [2.4](#24-identify-predictor-and-response-variables) for the different
-variables proposed for the study. Plant richness data are counts
-$$Poisson$$, cover data are hits (successes) from points (trials, where
-n=40 for all sub-transects) (modelled as Poisson, see [Section
+variables proposed for the study. Plant richness data are counts, cover
+data are hits (successes) from points (trials, where n=40 for all
+sub-transects) (modelled as $Poisson$, see [Section
 3.1](#31-model-class-framework-and-approach)), flow data may take a
-range of forms indicated earlier, elevation is provided in mAHD but is
+range of forms indicated earlier, elevation is provided in *mAHD* but is
 likely to be input into the model as an ordinal categorical factor with
 bins based on known elevation of flow events (e.g. freshes), grazing at
 this stage may be a binomial indicator of presence or absence, or
@@ -1599,6 +1601,59 @@ cross-validation:
 
 ------------------------------------------------------------------------
 
+Poisson and negative binomial models all assume linearity in model
+parameters, independence between individual observations, as well as the
+multiplicative effects of independent variables.
+
+*Zero-inflation*
+
+Based on the results of the pilot study ([2.5.3 Describe any data
+exploration or preliminary data
+analyses](#describe-any-data-exploration-or-preliminary-data-analyses)),
+all Poisson models allow for zero-inflation parameters to differ among
+plant functional groups (using `glmmTMB::` argument `ziformula=~ wpfg`).
+
+*Over-dispersion*
+
+Should over-dispersion (where the conditional variance of the outcome
+variable is greater than the conditional mean) be detected in models
+specified with a Poisson distribution, negative-binomial models will be
+fitted because they allow for over-dispersion by estimating the mean and
+variance independently (Kruppa and Hothorn 2021) and assume that
+extra-Poisson variance is a quadratic function of the mean (Lindén and
+Mäntyniemi 2011). Negative binomial models may allow for group-specific
+dispersion parameters using the `glmmTMB::` argument
+`dispformula = ~ wpfg`.
+
+Issues of over-dispersion are not expected to be fully resolved by the
+model specifications outlined in [3.0 Formalise and Specify
+Model](#formalise-and-specify-model), however proposed model
+specifications were a compromise between ideal specification and the
+limitations of our data.
+
+*Other Model Assumptions & Sources of Uncertainty*
+
+For each specified model we may fit, further assumptions are described
+below in [3.6 Specify formal model](#specify-formal-model).
+
+A formal sensitivity analysis has not yet been completed and so we are
+unaware of what variables the model outputs are most sensitive to. The
+many potential forms of flow and/or elevation data is a key area of
+possible variation in the variable behaviour, which is currently
+unknown. There are also many spatial and temporal dimensions associated
+with the data, such as the hierarchical scales of sub-transect,
+transect, site, reach, waterway, basin, and State. There will be spatial
+autocorrelation within the data at each of these levels, such as
+northern waterways or river basins being more similar to southern
+counterparts due to climate and geomorphology differences. The extent of
+the variation among the different spatial scale is currently unknown and
+is an important aspect of the study to evaluate. Temporal patterns are
+also important due to the longitudinal nature of the data collection and
+different seasons of survey (i.e. different proximity to different
+flow/climate periods). Careful consideration of these aspects will be
+important in the model design, as per [see section
+2.4](#2.4-identify-predictor-and-response-variables).
+
 ## 3.6 Specify formal model
 
 ------------------------------------------------------------------------
@@ -1662,7 +1717,8 @@ This model includes two flow predictors (`days_above_baseflow_std`,
 ``` r
 cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
    hits ~ log_hits_tm1 +
-     days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
+     days_above_baseflow_std * wpfg * origin + 
+     days_above_springfresh_std * wpfg * origin +
     # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
      #   zone * period +
    #  zone + period +
@@ -1675,7 +1731,10 @@ cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
    family = poisson,
    ziformula=~ wpfg,
    #dispformula =~ wpfg ,
-   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+   data = veg_cover_ar_sum |> 
+     filter(!wpfg_ori %in% c("Atl_native", 
+                             "Ate_native", 
+                             "Tda_unknown"))
  )
 ```
 
@@ -1734,7 +1793,7 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 )
 ```
 
-*Simplified model 2b: “flow events” model, version 2* The aim is to
+*Simplified model 2b: “flow events” model, version 2.* The aim is to
 examine how vegetation cover of each functional grouping changes before
 and after key flow events (spring and summer freshes). This second
 version (Simplified model 2b) allows functional groups to have different
@@ -1836,23 +1895,6 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
     filter(!wpfg %in% c("Sk", "Se")) 
 )
 ```
-
-*Model class / family*
-
-Posterior predictive checks from the pilot analysis indicated high
-levels of zero-inflation with some over-dispersion. The final models in
-the pilot analysis allowed for zero-inflation parameters to differ among
-plant functional groups (`ziformula = ~ wpfg`) to account for different
-proportions of zeros among functional groupings, but did not account for
-over-dispersion. Over-dispersion is commonly accounted for by using
-negative binomial models, which we could potentially fit using
-groups-specific dispersion parameters using the `glmmTMB` argument
-`dispformula = ~ wpfg`. However, all attempts to fit negative binomial
-models resulted in non-convergence in our pilot analysis. Despite some
-degree of over-dispersion, given that the zero-inflated Poisson models
-converged and reliably captured the proportion of zeros in the pilot
-dataset, we propose using this approach for all models fitted to the
-full dataset, including any simplified models.
 
 # 4. Model Calibration, Fitting & Checking
 
@@ -2487,6 +2529,24 @@ https://doi.org/<https://doi.org/10.1111/jeb.14230>.
 Jakeman, A J, R A Letcher, and J P Norton. 2006. “Ten Iterative Steps in
 Development and Evaluation of Environmental Models.” *Environmental
 Modelling & Software* 21 (5): 602–14.
+
+</div>
+
+<div id="ref-Kruppa2021" class="csl-entry">
+
+Kruppa, Jochen, and Ludwig Hothorn. 2021. “A Comparison Study on
+Modeling of Clustered and Overdispersed Count Data for Multiple
+Comparisons.” *Journal of Applied Statistics* 48 (16): 3220–32.
+<https://doi.org/10.1080/02664763.2020.1788518>.
+
+</div>
+
+<div id="ref-Linden2011" class="csl-entry">
+
+Lindén, Andreas, and Samu Mäntyniemi. 2011. “Using the Negative Binomial
+Distribution to Model Overdispersion in Ecological Count Data.”
+*Ecology* 92 (7): 1414–21.
+https://doi.org/<https://doi.org/10.1890/10-1831.1>.
 
 </div>
 
