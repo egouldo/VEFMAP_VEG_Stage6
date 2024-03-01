@@ -40,6 +40,7 @@ library(jtools)
 library(parameters) # extract model params for plotting
 library(interactions)
 library(ggforce)
+library(effects)
 
 
 # load helper functions
