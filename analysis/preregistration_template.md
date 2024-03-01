@@ -2103,7 +2103,7 @@ informs the final model specifications (Campaspe catchment only, section
 >   implemented model performs as described by the model description
 >   (Grimm et al. 2014).
 > - Qualitative tests could include syntax checking of code, and
->   peer-code review (Ivimey et al. 2023). Technical measures include
+>   peer-code review (Ivimey et al. 2023a). Technical measures include
 >   using unit tests, or in-built checks within functions to prevent
 >   potential errors.
 
@@ -2113,7 +2113,7 @@ informs the final model specifications (Campaspe catchment only, section
 
 Implementation verification will be assessed using a number of
 techniques, but will broadly follow the approach proposed by Ivimey-Cook
-*et al.* (**Ivimey2023?**):
+*et al.* (2023a):
 
 1.  Code will be reviewed periodically using the [GitHub flow
     model](https://docs.github.com/en/get-started/using-github/github-flow)
@@ -2124,11 +2124,11 @@ techniques, but will broadly follow the approach proposed by Ivimey-Cook
 2.  Defensive programming techniques, in-line error checking,
     functionalisation, modularisation and documentation of analysis code
     will be used as preventative measures to catch bugs and ensure
-    proper code implementation (**Ivimey2023?**),
+    proper code implementation (Ivimey et al. 2023b),
 3.  Finally, the final analysis and results will be subjected to a more
     substantial peer-code review from collaborators further removed from
     code writing and analysis implementation (likely CJ or EG),
-    following the 4R’s (**Ivimey2023?**).
+    following the 4R’s (Ivimey et al. 2023a).
 
 ## 4.3 Model Checking
 
@@ -2140,10 +2140,10 @@ techniques, but will broadly follow the approach proposed by Ivimey-Cook
 > “Model Checking” goes by many names (“conditional verification”,
 > “quantitative verification”, “model output verification” ), and refers
 > to a series of analyses that assess a model’s performance in
-> representing the system of interest (**Conn:2018hd?**). Model checking
+> representing the system of interest (Conn et al. 2018). Model checking
 > aids in diagnosing assumption violations, and reveals where a model
 > might need to be altered to better represent the data, and therefore
-> system (**Conn:2018hd?**). Quantitative model checking diagnostics
+> system (Conn et al. 2018). Quantitative model checking diagnostics
 > include goodness of fit, tests on residuals or errors, such as for
 > heteroscedascity, cross-correlation, and autocorrelation (Jakeman,
 > Letcher, and Norton 2006).
@@ -2296,7 +2296,7 @@ investigated and compared to the primary models outlined in section
 > underpinning the model (Grimm et al. 2014). Evaluation of model
 > outputs against external data in conjunction with the results from
 > model checking provide information about the structural realism and
-> therefore credibility of the model (**Grimm2016?**).
+> therefore credibility of the model (Grimm and Berger 2016).
 
 </details>
 
@@ -2335,9 +2335,10 @@ investigated and compared to the primary models outlined in section
 >   data, and document any independent validation data in step.
 > - [ ] It is preferable that any independent data used for model
 >   evaluation remains unknown to modellers during the process of model
->   building (**Dwork2015?**), describe the relationship modellers have
->   to model validation data, e.g. will independent datasets be known to
->   any modeller or analyst involved in the model building process?
+>   building (Dwork et al. 2015), describe the relationship modellers
+>   have to model validation data, e.g. will independent datasets be
+>   known to any modeller or analyst involved in the model building
+>   process?
 > - [ ] If unable to evaluate the model outputs against independent
 >   data, explain why and explain what steps you will take to
 >   interrogate the model.
@@ -2471,7 +2472,9 @@ details of this subsetting.
 > al. 2019).
 
 </details>
+
 Oka
+
 <details>
 <summary>
 📝 Preregistration Item
@@ -2648,6 +2651,15 @@ Ecologists.” *Ecological Monographs* 88 (4): 526–42.
 
 </div>
 
+<div id="ref-Dwork2015" class="csl-entry">
+
+Dwork, Cynthia, Vitaly Feldman, Moritz Hardt, Toniann Pitassi, Omer
+Reingold, and Aaron Roth. 2015. “The reusable holdout: Preserving
+validity in adaptive data analysis.” *Science* 349 (6248): 636–38.
+<https://doi.org/10.1126/science.aaa9375>.
+
+</div>
+
 <div id="ref-Fraser:2017jf" class="csl-entry">
 
 Fraser, Hannah, Libby Rumpff, Jian D L Yen, Doug Robinson, and Brendan A
@@ -2665,12 +2677,30 @@ and Analysis Using TRACE.” *Ecological Modelling* 280: 129–39.
 
 </div>
 
+<div id="ref-Grimm2016" class="csl-entry">
+
+Grimm, Volker, and Uta Berger. 2016. “Structural Realism, Emergence, and
+Predictions in Next-Generation Ecological Modelling: Synthesis from a
+Special Issue.” *Ecological Modelling* 326: 177–87.
+<https://doi.org/10.1016/j.ecolmodel.2016.01.001>.
+
+</div>
+
 <div id="ref-ivimey2023" class="csl-entry">
 
 Ivimey, Edward R, Joel L Pick, Kevin R Bairos, Antica Culina, Elliot
-Gould, Matthew Grainger, Benjamin M Marshall, et al. 2023. “Implementing
-Code Review in the Scientific Workflow: Insights from Ecology and
-Evolutionary Biology.” *Journal of Evolutionary Biology*.
+Gould, Matthew Grainger, Benjamin M Marshall, et al. 2023b.
+“Implementing Code Review in the Scientific Workflow: Insights from
+Ecology and Evolutionary Biology.” *Journal of Evolutionary Biology*.
+https://doi.org/<https://doi.org/10.1111/jeb.14230>.
+
+</div>
+
+<div id="ref-ivimey2023a" class="csl-entry">
+
+———, et al. 2023a. “Implementing Code Review in the Scientific Workflow:
+Insights from Ecology and Evolutionary Biology.” *Journal of
+Evolutionary Biology*.
 https://doi.org/<https://doi.org/10.1111/jeb.14230>.
 
 </div>
