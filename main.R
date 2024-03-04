@@ -48,7 +48,10 @@ source("R/data.R")
 
 # load site info
 # TODO: work out difference calculations to align true elev with flow elev
-site_info <- load_metadata(recompile = FALSE)
+debugonce(load_metadata)
+site_info <- load_metadata(recompile = T)
+
+# pilot analysis Campaspe ####
 
 # read in veg survey data and species information for
 #   pilot data set (Campaspe River)
@@ -69,8 +72,6 @@ unique(veg_richness$period)
 #[1] "after_spring"  "after_summer"  "before_spring"
 unique(veg_richness$origin)
 #[1] "exotic"  "native"  "unknown"
-
-
 
 ## IGNORE for now, JY to follow up
 # TODO: check missing species
@@ -196,7 +197,7 @@ veg_cover_ar$wpfg_ori <- as.factor(paste(veg_cover_ar$wpfg,veg_cover_ar$origin, 
 
 veg_cover_ar_sum$wpfg_ori <- as.factor(paste(veg_cover_ar_sum$wpfg,veg_cover_ar_sum$origin, sep = "_"))
 
-# look at this data - come back to this its hard to even look at
+# look at this data 
 
 unique(veg_richness$zone)
 #[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
@@ -967,39 +968,6 @@ RichPredictPeriodwpfgPlot2<-ggplot(RichPredictPeriodwpfg, aes(period, richness, 
 
 RichPredictPeriodwpfgPlot2
 
-
-
-# now lets move onto the full analysis
-# first we will attempt to fit a model with all sites included. 
-# we will take the same appraoch to fitting as we did in the pilot analysis
-
-# First lets extract cover data from raw datafiles for each site
-
-#debugonce(load_cover)
-veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
-
-veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
-
-veg_cover_arW <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arM <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
-
-veg_cover_arL <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arY <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arT <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
-
-# now lets combine datasets
-
-
-
-
-
-
-
 ## DON'T DO THIS ONE, WILL BE TOO SLOW, left here so you can see model
 ##   structure in possibly closer-to-TMBB syntax
 # richness_mod <- brms::brm(
@@ -1053,3 +1021,263 @@ veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE,
 ## TODO: generate outputs for reporting:
 ##    1. estimates of flow effects or zone/period effects
 ##    2. plots of veg richness and cover as a function of zone/period/transect
+
+
+# full analysis all sites ####
+# now lets move onto the full analysis
+# first we will attempt to fit a model with all sites included. 
+# we will take the same appraoch to fitting as we did in the pilot analysis
+
+# first lets extract cover data from raw datafiles for each site
+#debugonce(load_cover)
+veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
+
+veg_cover_arW <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arM <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+veg_cover_arL <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arY <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arT <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+
+veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+
+# now lets combine datasets
+veg_cover_ar_full <- dplyr::bind_rows(veg_cover_arC, veg_cover_arW, veg_cover_arM, veg_cover_arL, veg_cover_arY, veg_cover_arT, veg_cover_arG)
+  
+# lets also extract richness data from raw datafiles for each site
+#debugonce(load_richness)
+veg_richness_C <- load_richness(system = "Campaspe", pilot = FALSE, recompile = TRUE, s6s7 = TRUE)
+
+veg_richness_C %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
+
+veg_richness_W <- load_richness(system = "Wimmera", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
+
+veg_richness_M <- load_richness(system = "Moorabool", pilot = FALSE, recompile = TRUE,s6s7 = TRUE)
+
+veg_richness_L <- load_richness(system = "Loddon", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
+
+veg_richness_Y <- load_richness(system = "Yarra", pilot = FALSE, recompile = TRUE,s6s7 = FALSE)
+
+veg_richness_T <- load_richness(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
+
+veg_richness_G <- load_richness(system = "Glenelg", pilot = FALSE, recompile = TRUE, s6s7 = TRUE)
+
+# now lets combine datasets
+veg_richness_full <- dplyr::bind_rows(veg_richness_C, veg_richness_W, veg_richness_M, veg_richness_L, veg_richness_Y, veg_richness_T, veg_richness_G)
+  
+
+## IGNORE for now, JY to follow up
+# TODO: check missing species
+# veg |> 
+#   distinct(wpfg, species) |> 
+#   arrange(wpfg, species) |>
+#   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
+
+# TODO: sum cover over all species within each wpfg
+  veg_cover_ar_full_sum <- veg_cover_ar_full |>
+  group_by(
+    waterbody, site, transect, metres, survey, survey_year,
+    period, origin, wpfg
+  ) |>
+  summarise(
+    hits = sum(hits),
+    npoint = unique(npoint),  # each point can have multiple overlapping veg records,
+    #   so it potentially makes more sense to treat it as
+    #   40 points with possibility of > 100% cover.
+    hits_tm1 = sum(hits_tm1),
+    npoint_tm1 = unique(npoint_tm1)
+  )
+
+# check the values of hits
+
+summary(veg_cover_ar_full_sum)
+
+# load flow data and merge summary metrics with veg
+flowC <- load_flow(system = "Campaspe", pilot = FALSE, recompile = TRUE)
+
+flowW <- load_flow(system = "Wimmera", pilot = FALSE, recompile = TRUE)
+
+flowM <- load_flow(system = "Moorabool", pilot = FALSE, recompile = TRUE)
+
+flowL <- load_flow(system = "Loddon", pilot = FALSE, recompile = TRUE)
+
+flowY <- load_flow(system = "Yarra", pilot = FALSE, recompile = TRUE)
+
+flowTM <- load_flow(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE)
+
+flowG <- load_flow(system = "Glenelg", pilot = FALSE, recompile = TRUE)
+
+# combine the flow data from all sites
+flow_full <- dplyr::bind_rows(flowC, flowW, flowM, flowL, flowY, flowTM, flowG)
+
+# check data looks good
+flow_full %>% 
+  group_by(system, waterbody, site) %>%
+  summarise(no_rows = length(site)) %>% print(n=50)
+
+# TODO: investigate raw-data files for low amounts of data
+# note that we have excluded some sites for now (see within the 'load_flow' function for site list)
+
+# calculate metrics
+metrics_full <- calculate_metrics(flow_full, site_info)
+
+# check data looks good
+metrics_full %>% 
+  group_by(system, waterbody, site) %>%
+  summarise(no_rows = length(site), mean_days_above_spring = mean(days_above_springfresh), mean_days_above_baseflow = mean(days_above_baseflow)) %>% print(n=50)
+
+# TODO: check thresholds 
+# 
+
+
+debugonce(calculate_metrics)
+metrics_C <- calculate_metrics(flowC, site_info)
+
+metrics_W <- calculate_metrics(flowW, site_info)
+
+
+# add site and flow info into the veg data set, removing plots with missing
+#    values
+# TODO: check missing site info with CJ
+veg_cover_ar_full <- veg_cover_ar_full |>
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  filter(!is.na(zone)) |>
+  left_join(
+    metrics_full,
+    by = c("system", "waterbody", "site", "survey_year", "period")
+  )
+veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  filter(!is.na(zone)) |>
+  left_join(
+    metrics_full,
+    by = c("system", "waterbody", "site", "survey_year", "period")
+  )
+veg_richness_full <- veg_richness_full |>
+  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  filter(!is.na(zone)) |>
+  left_join(
+    metrics_full,
+    by = c("system", "waterbody", "site", "survey_year", "period")
+  )
+
+## IGNORE FOR NOW
+##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
+##           and 3 and 4 are pre/post summer event), with other factors
+## HITS out of 40, but two obs exceed 40 (work out what to do with these)
+
+## IGNORE FOR NOW
+## TODO: consider including exotic cover as a predictor OR include
+##   random int/slopes for origin and look at correlations to assess
+##   how natives and exotics interact
+
+## TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
+# standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
+
+veg_cover_ar_full$days_above_baseflow_std <- scale(veg_cover_ar_full$days_above_baseflow)[, 1]
+veg_cover_ar_full$days_above_springfresh_std <- scale(veg_cover_ar_full$days_above_springfresh)[, 1]
+
+veg_cover_ar_full <- veg_cover_ar_full |>
+  mutate(
+    pr_cover = hits/npoint,
+    log_hits_tm1 = log(hits_tm1 + 1),
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+    # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+  ) |>
+  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+veg_cover_ar_full_sum$days_above_baseflow_std <- scale(veg_cover_ar_full_sum$days_above_baseflow)[, 1]
+veg_cover_ar_full_sum$days_above_springfresh_std <- scale(veg_cover_ar_full_sum$days_above_springfresh)[, 1]
+
+veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
+  mutate(
+    pr_cover = hits/npoint,
+    log_hits_tm1 = log(hits_tm1 + 1),
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
+    # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+  ) |>
+  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+
+# find the minimum proportion cover score for each dataset
+
+min(veg_cover_ar_full$pr_cover[veg_cover_ar_full$pr_cover > 0])
+min(veg_cover_ar_full_sum$pr_cover[veg_cover_ar_full_sum$pr_cover > 0])
+
+# add half this minumum value to all repsonse values as an added constant for use in lognormal model (as per JY methodology)
+
+veg_cover_ar_full <- veg_cover_ar_full |>
+  mutate(
+    pr_cover_tf = pr_cover + (.025*.5),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+  )
+
+veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
+  mutate(
+    pr_cover_tf = pr_cover + (.025*.5),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+  )
+
+# create factor that captures differing combinations of plant functional group and origin (native or exotic)
+
+veg_cover_ar_full$wpfg_ori <- as.factor(paste(veg_cover_ar_full$wpfg,veg_cover_ar_full$origin, sep = "_"))
+
+veg_cover_ar_full_sum$wpfg_ori <- as.factor(paste(veg_cover_ar_full_sum$wpfg,veg_cover_ar_full_sum$origin, sep = "_"))
+
+# now look at this data
+
+unique(veg_richness_full$zone)
+#[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
+
+hist(veg_cover_ar_full$hits)
+plot(density(veg_cover_ar_full$hits))
+
+hist(veg_cover_ar_full_sum$hits)
+plot(density(veg_cover_ar_full_sum$hits))
+
+hist(veg_cover_ar_full$pr_cover_tf)
+plot(density(veg_cover_ar_full$pr_cover_tf))
+
+hist(veg_cover_ar_full_sum$pr_cover_tf)
+plot(density(veg_cover_ar_full_sum$pr_cover_tf))
+
+veg_cover_ar_full_sum %>% 
+  group_by(wpfg, site, origin, period, metres, transect, survey) %>%
+  summarise(no_rows = length(hits)) %>% print(n=50)
+
+veg_cover_ar_full_sum %>% 
+  group_by(wpfg,  origin) %>%
+  summarise(no_rows = length(hits)) %>% print(n=50)
+
+
+ggplot(veg_cover_ar_full_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
+ggplot(veg_cover_ar_full_sum[which(veg_cover_ar_full_sum$metres == 0),], aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
+ggplot(veg_cover_ar_full_sum, aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + geom_point() 
+
+# finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
+## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
+
+Plotdata_full <- veg_cover_ar_full_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+Plotdata_full$zone <- ordered(Plotdata_full$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
+Plotdata_full$period <- ordered(Plotdata_full$period, levels = c( "before_spring", "after_spring", "after_summer"))
+
+
+
+
+
+
+
+
+
+
+

@@ -360,25 +360,51 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
     # flatten into a single table
     out <- bind_rows(out)
     
+    # remove sites with low data for now
+    out <- out |> dplyr::filter(!(system == "Wimmera" & site == "Laharum" | site == "MtVictory")) |>  dplyr::filter(!(system == "Loddon" & site == "Mullins"))
+
+      
+  
     # clean up dates
     out <- out |>
+   dplyr::mutate(
+        date_time = case_when(system == "Yarra" & site == "Millgrove" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]), #remove weird date formatting
+        system == "Yarra" & site == "Warrandyte" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]),
+        .default = date_time)) |>
       dplyr::mutate(
-        date_formatted = lubridate::floor_date(
+      date_formatted= case_when(system == "Wimmera" & site == "Peuckers" | site == "RosesGap" | site == "Tobacco" | site == "MtVictory" | site == "Laharum" ~
+       lubridate::floor_date(
+        lubridate::parse_date_time(
+          date_time,
+          orders = c("dmy_HM")
+        ),
+        unit = days()
+      ),system == "Loddon" & site == "Mullins"  ~
+        lubridate::floor_date(
+          lubridate::parse_date_time(
+            date_time,
+            orders = c("dmy_HM")
+          ),
+          unit = days()
+        ),.default =
+       lubridate::floor_date(
           lubridate::parse_date_time(
             date_time,
             orders = c("ymd_HMS")
           ),
           unit = days()
         )
-      )
+      ))
+  
+    
     
     # and collapse to daily averages
     out <- out |>
       dplyr::group_by(system, waterbody, site, date_formatted) |>
       dplyr::summarise(
-        water_level_m = median(water_level_m),
-        qc = extract_mode(qc),
-        water_level_m_ahd = median(water_level_m_ahd)
+        water_level_m = median(water_level_m, na.rm=T),
+      #  qc = ifelse(all(qc %in% "NA"), "NA", extract_mode(qc)), # come back to this if needed
+        water_level_m_ahd = median(water_level_m_ahd, na.rm=T)
       )
     
     # save compiled version to file
@@ -590,21 +616,21 @@ calculate_metrics_internal <- function(
       value = x$water_level_m_ahd,
       date = x$date_formatted,
       resolution = survey(season = season, lag = lag),
-      fun = days_above,
+      fun = days_above,na.rm=T,
       threshold = thresholds |> pull(springfresh_m_ahd)
     )$date,
     days_above_springfresh = calculate(
       value = x$water_level_m_ahd,
       date = x$date_formatted,
       resolution = survey(season = season, lag = lag),
-      fun = days_above,
+      fun = days_above, na.rm=T,
       threshold = thresholds |> pull(springfresh_m_ahd)
     )$metric,
     days_above_baseflow = calculate(
       value = x$water_level_m_ahd,
       date = x$date_formatted,
       resolution = survey(season = season, lag = lag),
-      fun = days_above,
+      fun = days_above,na.rm=T,
       threshold = thresholds |> pull(baseflow_m_ahd)
     )$metric
   )
