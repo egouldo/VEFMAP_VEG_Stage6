@@ -212,6 +212,12 @@ Currently there are no significant limitations on model development - sufficient
 
 <br>
 
+The models developed in this study will be applied to only the river systems for which data was collected and used to fit these models.
+However, improved understanding about the ecological responses to environmental flows for the modelled systems may inform future conceptual models and statistical models based thereon.
+
+Given that the primary goal of this study is to improve understanding about the effects of environmental flows on vegetation, these models resulting from this preregistration should not be directly used to inform predictions on which to base decisions about the management of environmental flows.
+The models developed in this study will instead be appropriately refined for use within a predictive modelling context.
+
 # 2.0 Define Conceptual Model
 
 <details>

@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-01 March, 2024
+04 March, 2024
 
 # 1.0 Problem Formulation
 
@@ -108,6 +108,14 @@ of this study and others, regulatory frameworks, funding availability,
 physical and practical constraints, and others. This study does not
 contribute to those decisions outside of providing the study outputs.
 
+The three primary users of the model outputs are: 1) funders of
+environmental water (i.e. state and federal governments) to understand
+the magnitude of the outcomes of their investment, and the limitations
+or barriers to benefits; 2) managers of environmental water (i.e. CMAs)
+to guide and improve management decisions for environmental benefits;
+and 3) other researchers working in the field of waterway flow
+management and environmental flows locally and internationally.
+
 ### 1.1.2 Model purpose, context and problem context
 
 <details>
@@ -174,16 +182,16 @@ study.
 ℹ️ Rationale & Explanation
 </summary>
 
-How will the model be analysed, what analytical questions will the model
-be used to answer? For example, you might be using your model in a
-scenario analysis to determine which management decision is associated
-with minimum regret or the highest likelihood of improvement. Other
-examples from ecological decision-making include: to compare the
-performance of alternative management actions under budget constraint
-(Fraser et al. 2017) to search for robust decisions under uncertainty
-(McDonald-Madden, Baxter, and Possingham 2008), to choose the
-conservation policy that minimises uncertainty (insert ref). See other
-examples in (Moallemi, Elsawah, and Ryan 2019).
+> How will the model be analysed, what analytical questions will the
+> model be used to answer? For example, you might be using your model in
+> a scenario analysis to determine which management decision is
+> associated with minimum regret or the highest likelihood of
+> improvement. Other examples from ecological decision-making include:
+> to compare the performance of alternative management actions under
+> budget constraint (Fraser et al. 2017) to search for robust decisions
+> under uncertainty (McDonald-Madden, Baxter, and Possingham 2008), to
+> choose the conservation policy that minimises uncertainty (insert
+> ref). See other examples in (Moallemi, Elsawah, and Ryan 2019).
 
 </details>
 <details>
@@ -263,14 +271,6 @@ scenarios with different hypothetical future regimes in the medium
 the scope of the current study which will focus solely on the collected
 data.
 
-The three primary users of the model outputs are: 1) funders of
-environmental water (i.e. state and federal governments) to understand
-the magnitude of the outcomes of their investment, and the limitations
-or barriers to benefits; 2) managers of environmental water (i.e. CMAs)
-to guide and improve management decisions for environmental benefits;
-and 3) other researchers working in the field of waterway flow
-management and environmental flows locally and internationally.
-
 ### 1.1.4 Logistical Constraints
 
 <details>
@@ -349,6 +349,19 @@ time and funding resources - but this may change.
 </details>
 
 <br>
+
+The models developed in this study will be applied to only the river
+systems for which data was collected and used to fit these models.
+However, improved understanding about the ecological responses to
+environmental flows for the modelled systems may inform future
+conceptual models and statistical models based thereon.
+
+Given that the primary goal of this study is to improve understanding
+about the effects of environmental flows on vegetation, these models
+resulting from this preregistration should not be directly used to
+inform predictions on which to base decisions about the management of
+environmental flows. The models developed in this study will instead be
+appropriately refined for use within a predictive modelling context.
 
 # 2.0 Define Conceptual Model
 
