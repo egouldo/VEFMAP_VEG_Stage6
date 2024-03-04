@@ -72,6 +72,8 @@ The model outputs, including recommendations, will be shared with decision maker
 Decisions will require multiple inputs, such as the outcomes of this study and others, regulatory frameworks, funding availability, physical and practical constraints, and others.
 This study does not contribute to those decisions outside of providing the study outputs.
 
+The three primary users of the model outputs are: 1) funders of environmental water (i.e. state and federal governments) to understand the magnitude of the outcomes of their investment, and the limitations or barriers to benefits; 2) managers of environmental water (i.e. CMAs) to guide and improve management decisions for environmental benefits; and 3) other researchers working in the field of waterway flow management and environmental flows locally and internationally.
+
 ### 1.1.2 Model purpose, context and problem context
 
 <details>
@@ -157,8 +159,6 @@ Future research will involve testing scenarios of different flow regimes to what
 This includes estimating the expected data we would have collected if the flows that were delivered were not delivered - thus effectively modelling a control or counterfactual dataset to the observed data.
 It also includes testing various future scenarios with different hypothetical future regimes in the medium (\<5yr) or long (\>5yr) term.
 However, again this is likely to be beyond the scope of the current study which will focus solely on the collected data.
-
-The three primary users of the model outputs are: 1) funders of environmental water (i.e. state and federal governments) to understand the magnitude of the outcomes of their investment, and the limitations or barriers to benefits; 2) managers of environmental water (i.e. CMAs) to guide and improve management decisions for environmental benefits; and 3) other researchers working in the field of waterway flow management and environmental flows locally and internationally.
 
 ### 1.1.4 Logistical Constraints
 
