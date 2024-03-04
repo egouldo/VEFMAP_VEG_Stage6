@@ -953,8 +953,11 @@ As an approximate guide for judging model fit, we will use the following thresho
 
 <summary>📝 Preregistration Item</summary>
 
-> Specify assumptions and key uncertainties in the formal model.
-> Describe what gaps exist between the model conception, and the real-world problem, what biases might this introduce and how might this impact any interpretation of the model outputs, and what implications are there for evaluating model-output to inform inferences or decisions?
+> -   [ ] Specify assumptions and key uncertainties in the formal model.
+>
+> -   [ ] Describe what gaps exist between the model conception, and the real-world problem, what biases might this introduce and how might this impact any interpretation of the model outputs.
+>
+> -   [ ] What implications are there for evaluating model-output to inform inferences or decisions?
 
 </details>
 
