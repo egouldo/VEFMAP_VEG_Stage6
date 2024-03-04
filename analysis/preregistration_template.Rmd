@@ -189,6 +189,20 @@ Currently there are no significant limitations on model development - sufficient
 
 </details>
 
+<br>
+
+Each of the models described in this preregistration is aggregated differently depending on the response variable and depending on the particular model specification.
+
+**Vegetation Cover Models**
+
+-   Full Model: Models vegetation cover for any given transect
+
+-   Simplified Model 1: "flow regime model"
+
+-   Simplified Model 2: "flow events model"
+
+**Species Richness Models**
+
 ### 1.1.6 Intended Application of Results
 
 <details>
