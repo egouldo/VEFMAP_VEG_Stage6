@@ -694,6 +694,8 @@ At this stage only species that can reliably assigned to a relevant group for a 
 Furthermore, the pilot analysis illustrated extreme zero-inflation for several groups, which prevented model fitting.
 Consequently these groups were excluded from the pilot study modelling and they may or may not be included in the full dataset analysis, depending on whether the models can be successfully fit.
 
+Plant functional groups `"Atl_native", "Ate_native", "Tda_unknown"` are removed for all models because these `wpfg` are thought to be incorrectly specified (typos).
+
 *Missing data* There are a small number of cases where we have incomplete or missing data due to various circumstances in the surveys.
 Currently these are indicated as NA in the dataset and form a small proportion of the overall dataset.
 
