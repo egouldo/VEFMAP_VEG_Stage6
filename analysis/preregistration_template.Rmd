@@ -111,10 +111,10 @@ The models will not aim to provide explicit predictions within the waterways sur
 
 <summary>ℹ️ Rationale & Explanation</summary>
 
-How will the model be analysed, what analytical questions will the model be used to answer?
-For example, you might be using your model in a scenario analysis to determine which management decision is associated with minimum regret or the highest likelihood of improvement.
-Other examples from ecological decision-making include: to compare the performance of alternative management actions under budget constraint [@Fraser:2017jf] to search for robust decisions under uncertainty [@McDonald-Madden2008], to choose the conservation policy that minimises uncertainty (insert ref).
-See other examples in [@Moallemi2019].
+> How will the model be analysed, what analytical questions will the model be used to answer?
+> For example, you might be using your model in a scenario analysis to determine which management decision is associated with minimum regret or the highest likelihood of improvement.
+> Other examples from ecological decision-making include: to compare the performance of alternative management actions under budget constraint [@Fraser:2017jf] to search for robust decisions under uncertainty [@McDonald-Madden2008], to choose the conservation policy that minimises uncertainty (insert ref).
+> See other examples in [@Moallemi2019].
 
 </details>
 
