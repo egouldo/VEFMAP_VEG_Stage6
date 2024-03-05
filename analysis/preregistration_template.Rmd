@@ -1492,10 +1492,15 @@ No sensitivity analyses will be performed on any models developed in this study.
 
 <summary>📝 Preregistration Item</summary>
 
+> **Model Analysis**
+>
+> -   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
+>
+> **Scenario Analysis**
+>
 > -   [ ] Specify any input conditions and relevant parameter values for initial environmental conditions and decision-variables under each scenario specified in [section 1.1](#11-model-context-and-purpose).
 > -   [ ] Describe any other relevant technical details of model application, such as methods for how you will implement any simulations or model projections.
 > -   [ ] What raw and transformed model outputs will you extract from the model simulations or projections, and how will you map, plot, or otherwise display and synthesise the results of scenario and model analyses.
-> -   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
 
 </details>
 
