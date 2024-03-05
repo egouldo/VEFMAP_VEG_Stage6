@@ -1494,7 +1494,10 @@ No sensitivity analyses will be performed on any models developed in this study.
 
 > **Model Analysis**
 >
-> -   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
+> -   [ ] Explain how you will analyse model to answer your analytical objectives. For example:
+>     -   describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
+>
+>     -   Describe how you will summarise and visualise regression models to improve model understanding.
 >
 > **Scenario Analysis**
 >
