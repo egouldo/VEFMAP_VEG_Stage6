@@ -1446,8 +1446,6 @@ We have partitioned the data for pilot analysis, see section 2.4.3 for details o
 
 </details>
 
-Oka
-
 <details>
 
 <summary>📝 Preregistration Item</summary>
