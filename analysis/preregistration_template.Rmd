@@ -1507,6 +1507,29 @@ No sensitivity analyses will be performed on any models developed in this study.
 
 </details>
 
+\<br\>
+
+**Model analysis**
+
+Model features will be identified using visual plots of estimates, i.e. forest plots of most coefficients, and marginal effects plots (plots of predicted values of $y$ against values of $x$) under different combinations of of the key flow, zone, and period predictor variables.
+
+*Forest Plots:* For each fitted model we will extract both fixed-effect and random-effect coefficient estimates and their 95% Confidence Intervals using `parameters::model_parameters()` [@Ludecke2020] or similar.
+Estimates will then be visualised as forest plots in R.
+
+-   [ ] JY / HW check this is correct (re fixed and random)
+
+-   [ ] JY - are there any considerations
+
+*Predicted Values Plots:* We will use the `effects::effect_plot()` function [@Fox2009], or similar, to create marginal effects plots for each fitted model.
+
+-   which predictors for each model?
+
+-   What about interactions?
+
+-   [ ] JY/HW what about the zero-inflated models, do we need to do anything special to handle this?
+
+**Scenario analysis** will not be used in this study, but will be used in future predictive modelling studies based on the models developed in this study.
+
 ### 5.3.4 Other simulation experiments / robustness analyses
 
 <details>
