@@ -1390,6 +1390,7 @@ Instead, in-sample model fit assessment will be conducted (section 5).
 Models may be validated on newly collected independent data in the future, but external validation is outside the scope of this study.
 
 We have partitioned the data for pilot analysis, see section 2.4.3 for details of this subsetting.
+Pilot analysis was performed blind to the full dataset, and was performed only on the pilot data subset.
 
 ## 5.2 Choose Performance Metrics & Criteria
 
