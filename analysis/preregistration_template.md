@@ -1,7 +1,7 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-04 March, 2024
+05 March, 2024
 
 # 1.0 Problem Formulation
 
@@ -317,6 +317,22 @@ time and funding resources - but this may change.
 >   outputs (observed, or not, Jakeman, Letcher, and Norton 2006).
 
 </details>
+
+<br>
+
+Each of the models described in this preregistration is aggregated
+differently depending on the response variable and depending on the
+particular model specification.
+
+**Vegetation Cover Models**
+
+- Full Model: Models vegetation cover for any given transect
+
+- Simplified Model 1: “flow regime model”
+
+- Simplified Model 2: “flow events model”
+
+**Species Richness Models**
 
 ### 1.1.6 Intended Application of Results
 
@@ -1244,6 +1260,10 @@ were excluded from the pilot study modelling and they may or may not be
 included in the full dataset analysis, depending on whether the models
 can be successfully fit.
 
+Plant functional groups `"Atl_native", "Ate_native", "Tda_unknown"` are
+removed for all models because these `wpfg` are thought to be
+incorrectly specified (typos).
+
 *Missing data* There are a small number of cases where we have
 incomplete or missing data due to various circumstances in the surveys.
 Currently these are indicated as NA in the dataset and form a small
@@ -1620,7 +1640,7 @@ the system/response that has also guided our data collection. In this
 case, we do not have a very large set of potential environmental
 variables to select from that may or may not be influential. Instead, we
 have selected variables and monitoring approaches to collect data that
-reflect our expecations of correlation/causation. Given this, there is
+reflect our expectations of correlation/causation. Given this, there is
 unlikely to be a large need for a model selection process where
 variables are added or removed sequentially to evaluate relative model
 performance. However, there will be critical evaluation of all model
@@ -1698,12 +1718,14 @@ cross-validation:
 📝 Preregistration Item
 </summary>
 
-> Specify assumptions and key uncertainties in the formal model.
-> Describe what gaps exist between the model conception, and the
-> real-world problem, what biases might this introduce and how might
-> this impact any interpretation of the model outputs, and what
-> implications are there for evaluating model-output to inform
-> inferences or decisions?
+> - [ ] Specify assumptions and key uncertainties in the formal model.
+>
+> - [ ] Describe what gaps exist between the model conception, and the
+>   real-world problem, what biases might this introduce and how might
+>   this impact any interpretation of the model outputs.
+>
+> - [ ] What implications are there for evaluating model-output to
+>   inform inferences or decisions?
 
 </details>
 
@@ -2163,41 +2185,6 @@ techniques, but will broadly follow the approach proposed by Ivimey-Cook
 
 </details>
 
-<br>
-
-Model checking will be undertaken using a combination of qualitative and
-quantitative analyses with subjective assessment.
-
-In terms of qualitative assessment, model results will be checked by
-field experts Chris Jones & Lyndsey Vivian, who will assess
-model-estimated associations for their plausibility given their expert
-knowledge of the underlying target system.
-
-Posterior predictive checks will be conducted to assess the degree of
-zero-inflation and over-dispersion. Posterior checks compare the
-distribution of observed data against a distribution simulated from the
-fitted model and are assessed quantitatively or graphically (Conn et al.
-2018). We will plot both distributions and visually compare the
-distributions: close alignment of the two distributions indicates that
-the specified model structure is appropriate, whereas deviations between
-the observed distribution and the model-generated distribution indicate
-potential assumption violations and mismatches between the data and
-model.
-
-For graphical posterior checks, there is no threshold but any
-disagreement, particularly in key aspects of the model (zero inflation,
-and counts in the range of the majority of the data) would suggest an
-alternative distribution is worth considering. Often no distribution
-will be perfect, so it’s a choice between two imperfect options. (in
-which case, we will take into consideration the balance between model
-balance simplicity, $R^2$, and the “key aspects” of model such as zero
-inflation and the bulk of the data).
-
-Should over-dispersion and zero-inflation be present in the fitted
-models, alternative model families / structures (section 3.1.3) may be
-investigated and compared to the primary models outlined in section
-2.4.3.
-
 ### 4.3.1 Quantitative model checking
 
 <details>
@@ -2224,6 +2211,33 @@ investigated and compared to the primary models outlined in section
 >   parameterise the model.
 
 </details>
+
+<br>
+
+Posterior predictive checks will be conducted to assess the degree of
+zero-inflation and over-dispersion. Posterior checks compare the
+distribution of observed data against a distribution simulated from the
+fitted model and are assessed quantitatively or graphically (Conn et al.
+2018). We will plot both distributions and visually compare the
+distributions: close alignment of the two distributions indicates that
+the specified model structure is appropriate, whereas deviations between
+the observed distribution and the model-generated distribution indicate
+potential assumption violations and mismatches between the data and
+model.
+
+For graphical posterior checks, there is no threshold but any
+disagreement, particularly in key aspects of the model (zero inflation,
+and counts in the range of the majority of the data) would suggest an
+alternative distribution is worth considering. Often no distribution
+will be perfect, so it’s a choice between two imperfect options. (in
+which case, we will take into consideration the balance between model
+balance simplicity, $R^2$, and the “key aspects” of model such as zero
+inflation and the bulk of the data).
+
+Should over-dispersion and zero-inflation be present in the fitted
+models, alternative model families / structures (section 3.1.3) may be
+investigated and compared to the primary models outlined in section
+2.4.3.
 
 ### 4.3.2 Qualitative model checking
 
@@ -2253,6 +2267,13 @@ investigated and compared to the primary models outlined in section
 >   whether and how you will include users and clients in the process.
 
 </details>
+
+<br>
+
+In terms of qualitative assessment, model results will be checked by
+field experts Chris Jones & Lyndsey Vivian, who will assess
+model-estimated associations for their plausibility given their expert
+knowledge of the underlying target system.
 
 ### 4.3.3 Assumption violation checks
 
@@ -2417,6 +2438,8 @@ details of this subsetting.
 
 </details>
 
+\<br\>
+
 ## 5.3 Model Analysis
 
 <details>
@@ -2485,9 +2508,6 @@ details of this subsetting.
 > al. 2019).
 
 </details>
-
-Oka
-
 <details>
 <summary>
 📝 Preregistration Item
@@ -2501,6 +2521,7 @@ Oka
 >   model output data points, and extracting summary statistics,
 >   including the mean, median, variance, and constructing confidence
 >   intervals (Saltelli et al. 2019).
+>
 > - [ ] Relate your choice of analysis to the context and purposes of
 >   the model described in the problem formulation phase. For instance
 >   ‚discrepancies between model output and observed output may be
@@ -2511,9 +2532,11 @@ Oka
 >   alternative scenarios or management options is likely to be correct,
 >   with only a rough indication of their sizes” (Jakeman, Letcher, and
 >   Norton 2006).
+>
 > - [ ] Briefly describe how you will summarise the results of these in
 >   silico experiments with graphical, tabular, or other devices, such
 >   as summary statistics.
+>
 > - [ ] If the chosen modelling approach is able to explicitly
 >   articulate uncertainty due to data, measurements or baseline
 >   conditions, such as by providing estimates of uncertainty (typically
@@ -2558,6 +2581,11 @@ Oka
 
 </details>
 
+<br>
+
+No sensitivity analyses will be performed on any models developed in
+this study.
+
 ### 5.3.3 Model application or scenario analysis
 
 <details>
@@ -2596,6 +2624,12 @@ Oka
 >   of the analysis.
 
 </details>
+
+\<br\>
+
+No further simulation experiments, robustness or other analyses will be
+performed on the model other than analyses described above in this
+document.
 
 # References
 

@@ -912,7 +912,7 @@ The following terms will be included as random effects: transects nested within 
 
 Initially, our model structure will be based on our conceptual model of the system/response that has also guided our data collection.
 In this case, we do not have a very large set of potential environmental variables to select from that may or may not be influential.
-Instead, we have selected variables and monitoring approaches to collect data that reflect our expecations of correlation/causation.
+Instead, we have selected variables and monitoring approaches to collect data that reflect our expectations of correlation/causation.
 Given this, there is unlikely to be a large need for a model selection process where variables are added or removed sequentially to evaluate relative model performance.
 However, there will be critical evaluation of all model components to determine their value to the model, such as the hierarchical nature of the data and the need (or not) to include all levels of the hierarchy in the final models.
 The model selection process is an important part of the study in itself and will be described in the resulting paper, particularly where it relates to relative effects of different variables and relative importance of spatial and temporal scales.
