@@ -1,0 +1,46 @@
+# -----------------------------------------------------------
+# CITATION file created with {cffr} R package, v0.5.0
+# See also: https://docs.ropensci.org/cffr/
+# -----------------------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "VEFMAP_VEG_Stage6" in publications use:'
+type: software
+license: CC-BY-4.0
+title: 'VEFMAP_VEG_Stage6: VEFMAP, Vegetation Responses to Environmental Flows.'
+version: 0.0.0.9000
+abstract: This repository contains the analysis code for stage 6 of the VEFMAP project.
+authors:
+- family-names: Gould
+  given-names: Elliot
+  email: elliot.gould@unimelb.edu.au
+  orcid: https://orcid.org/0000-0002-6585-538X
+- family-names: Jones
+  given-names: Christopher, S.
+  email: chris.jones@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0003-2833-0194
+- family-names: Yen
+  given-names: J.D.L.
+  email: jian.yen@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0001-7964-923X
+- family-names: Wootton
+  given-names: Henry
+  email: henry.wootton@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0001-6506-0248
+- family-names: Vivian
+  given-names: Lyndsey
+  email: lyndsey.vivian@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0003-1927-723X
+contact:
+- family-names: Jones
+  given-names: Christopher, S.
+  email: chris.jones@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0003-2833-0194
+- family-names: Yen
+  given-names: Jian, D.L.
+  email: jian.yen@delwp.vic.gov.au
+  orcid: https://orcid.org/0000-0001-7964-923X
+- family-names: Elliot
+  given-names: Gould
+  email: elliot.gould@unimelb.edu.au
+  orcid: https://orcid.org/0000-0002-6585-538X
