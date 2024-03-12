@@ -8,7 +8,7 @@ message: 'To cite package "VEFMAP_VEG_Stage6" in publications use:'
 type: software
 license: CC-BY-4.0
 title: 'VEFMAP_VEG_Stage6: VEFMAP, Vegetation Responses to Environmental Flows.'
-version: 0.0.0.9000
+version: 0.20.9
 abstract: This repository contains the analysis code for stage 6 of the VEFMAP project.
 authors:
 - family-names: Jones
