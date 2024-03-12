@@ -11,10 +11,6 @@ title: 'VEFMAP_VEG_Stage6: VEFMAP, Vegetation Responses to Environmental Flows.'
 version: 0.0.0.9000
 abstract: This repository contains the analysis code for stage 6 of the VEFMAP project.
 authors:
-- family-names: Gould
-  given-names: Elliot
-  email: elliot.gould@unimelb.edu.au
-  orcid: https://orcid.org/0000-0002-6585-538X
 - family-names: Jones
   given-names: Christopher, S.
   email: chris.jones@delwp.vic.gov.au
@@ -23,6 +19,10 @@ authors:
   given-names: J.D.L.
   email: jian.yen@delwp.vic.gov.au
   orcid: https://orcid.org/0000-0001-7964-923X
+- family-names: Gould
+  given-names: Elliot
+  email: elliot.gould@unimelb.edu.au
+  orcid: https://orcid.org/0000-0002-6585-538X
 - family-names: Wootton
   given-names: Henry
   email: henry.wootton@delwp.vic.gov.au

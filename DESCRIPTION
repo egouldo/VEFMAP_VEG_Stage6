@@ -1,0 +1,19 @@
+Package: VEFMAP_VEG_Stage6
+Title: VEFMAP, Vegetation Responses to Environmental Flows. 
+Version: 0.20.9
+Authors@R: 
+    person("Christopher, S.", "Jones", , "chris.jones@delwp.vic.gov.au", role = c("aut"),
+           comment = c(ORCID = "0000-0003-2833-0194"))
+    person("Jian, D.L.", "Yen", , "jian.yen@delwp.vic.gov.au", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7964-923X"))
+    person("Elliot", "Gould", , "elliot.gould@unimelb.edu.au", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6585-538X"))
+    person("Henry", "Wootton", , "henry.wootton@delwp.vic.gov.au", role = c("aut"),
+           comment = c(ORCID = "0000-0001-6506-0248"))
+    person("Lyndsey", "Vivian", , "lyndsey.vivian@delwp.vic.gov.au", role = c("aut"),
+           comment = c(ORCID = "0000-0003-1927-723X"))
+Description: This repository contains the analysis code for stage 6 of the VEFMAP project. 
+License: CC BY 4.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
