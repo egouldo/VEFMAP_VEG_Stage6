@@ -68,7 +68,7 @@ load_coordinates <- function(recompile = FALSE) {
     
     # load data, subsetted to pilot data set (Campaspe)
     input <- readr::read_csv(
-      here::here("data", "raw_data", "site_data", "GPS_All.csv"),
+      here::here("data", "raw_data", "site_data", "GPS_All_corrected.csv"),
       skip = 1,
       col_names = c(
         "system",
@@ -105,6 +105,10 @@ load_coordinates <- function(recompile = FALSE) {
         datafile = readr::col_character()
       )
     )
+    
+    # filter out levels with multiple sub levels
+    
+    input <- input |> filter(!grepl("_W", transect_subtransect))
     
     # tidy up fields, splitting up transect/subtransect field if needed    
     out <- input |> 
