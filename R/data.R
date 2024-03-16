@@ -10,6 +10,7 @@
   "Tda",
   "Tdr"
 )
+.rec_group_list <- c("Terrestrial", "Riparian", "Aquatic", "Emergent")
 .classification_list <- c(
   "Aquatic", 
   "Emergent", 
@@ -827,6 +828,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
         "classification",
         "instream_veg",
         "wpfg",
+        "wpfg_source",
         "group",
         "rec_group"
       ),
@@ -925,6 +927,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
       survey_year,
       period,
       origin,
+      rec_group,
       wpfg,
       species
     ) |>
@@ -938,6 +941,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
       survey_year,
       period,
       origin,
+      rec_group,
       wpfg,
       species
     ) |>
@@ -948,7 +952,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
       tidyr::nesting(
         waterbody, site, transect, metres, date, survey, survey_year, period
       ), 
-      tidyr::nesting(origin, wpfg, species),
+      tidyr::nesting(origin, rec_group, wpfg, species),
       fill = list(hits = 0, npoint = 40)
     )     
   
@@ -963,6 +967,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
       survey_year, 
       period, 
       origin,
+      rec_group,
       wpfg,
       species
     ) |>
@@ -980,7 +985,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
     out_prev <- out |>
       dplyr::mutate(survey = survey + 1) |>
       dplyr::select(
-        waterbody, site, transect, metres, survey, origin, wpfg, species, hits, npoint
+        waterbody, site, transect, metres, survey, origin, rec_group, wpfg, species, hits, npoint
       ) |>
       dplyr::rename(hits_tm1 = hits, npoint_tm1 = npoint)
     
@@ -988,7 +993,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
     out <- out |>
       dplyr::left_join(
         out_prev,
-        by = c("waterbody", "site", "transect", "metres", "survey", "origin", "species", "wpfg")
+        by = c("waterbody", "site", "transect", "metres", "survey", "origin", "species", "rec_group", "wpfg")
       )
     
     # remove rows missing previous survey (only focus on recorded pairs
@@ -1010,6 +1015,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
       "classification",
       "instream_veg",
       "wpfg",
+      "wpfg_source",
       "group",
       "rec_group"
     ),
@@ -1029,10 +1035,10 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
   #.  (do this after creating the full survey table to avoid
   #.   dropping some survey locations)
   out <- out |>
-    left_join(species |> select(-origin, -wpfg), by = "species") |>
+    left_join(species |> select(-origin, -wpfg, -rec_group), by = "species") |>
     dplyr::filter(
       classification %in% .classification_list,
-      wpfg %in% .wpfg_list
+      #wpfg %in% .wpfg_list
     )
   
   # return
@@ -1067,6 +1073,7 @@ load_richness <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE)
       survey_year,
       period,
       origin,
+      rec_group,
       wpfg,
       species
     ) |>
@@ -1080,6 +1087,7 @@ load_richness <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE)
       survey_year,
       period,
       origin,
+      rec_group,
       wpfg
     ) |>
     dplyr::filter(hits > 0) |>
@@ -1089,7 +1097,7 @@ load_richness <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE)
       tidyr::nesting(
         waterbody, site, transect, metres, date, survey, survey_year, period
       ), 
-      tidyr::nesting(origin, wpfg),
+      tidyr::nesting(origin, rec_group, wpfg),
       fill = list(richness = 0)
     )
   
@@ -1104,7 +1112,8 @@ load_richness <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE)
       survey_year, 
       period, 
       origin,
-      wpfg
+      wpfg,
+      rec_group
     ) |>
     dplyr::summarise(richness = sum(richness)) |>
     dplyr::ungroup()
