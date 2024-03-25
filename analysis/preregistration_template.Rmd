@@ -259,7 +259,7 @@ The models developed in this study will instead be appropriately refined for use
 
 We have developed a series of relevant conceptual models for this work over the past four years that build on previous published work by other researchers, as well as our own research, observations and many discussions.
 These conceptual models are described in text within program reports and are summarised in diagrams.
-The models are biological/ecological only and do not include links to decision makers or values as these constrainsts are not within our capability to influence.
+The models are biological/ecological only and do not include links to decision makers or values as these constraints are not within our capability to influence.
 Therefore, the models primarily summarise the dominant drivers of vegetation attributes (cover, diversity, distribution, composition) within waterways.
 Not all important drivers are included because it is impossible to account for everything within our study.
 Our final model for this particular study will be decribed in text and summarised within one or more non-quantitative diagrams.
