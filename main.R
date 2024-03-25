@@ -1161,7 +1161,7 @@ metrics_full %>%
 
 # add site and flow info into the veg data set, removing plots with missing
 #    values
-# TODO: check missing site info with CJ
+# TODO: check missing site info with CJ - note that there are about 10 sites with missing info that the filter for zone below removes
 
 # remove duplicate entries
 site_info <- site_info |> distinct(system, waterbody, site, transect, metres, zone, grazing) 
@@ -1199,17 +1199,10 @@ veg_richness_full_sum <- veg_richness_full_sum |>
 
 # check data
 
-veg_cover_ar_full %>% distinct(waterbody, site, transect, metres) %>%  summarise(no_rows = length(hits))
 
 veg_cover_ar_full %>% 
   group_by(rec_group, waterbody, site, transect, metres) %>%
   summarise(no_rows = length(hits)) %>% print(n=50)
-
-site_info %>% 
-  group_by(waterbody, site, transect, metres) %>%
-  summarise(no_rows = length(metres)) %>% arrange(-no_rows)%>%print(n=50)
-
-
 
 veg_cover_ar_full %>% 
   group_by(wpfg, system, waterbody, site, transect, metres, period, survey, survey_year, origin) %>%
@@ -1290,12 +1283,6 @@ veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
     log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
   )
 
-# create factor that captures differing combinations of plant functional group and origin (native or exotic)
-
-veg_cover_ar_full$wpfg_ori <- as.factor(paste(veg_cover_ar_full$wpfg,veg_cover_ar_full$origin, sep = "_"))
-
-veg_cover_ar_full_sum$wpfg_ori <- as.factor(paste(veg_cover_ar_full_sum$wpfg,veg_cover_ar_full_sum$origin, sep = "_"))
-
 # now look at this data
 
 unique(veg_richness_full$zone)
@@ -1318,13 +1305,13 @@ hist(veg_cover_ar_full_sum$pr_cover_tf)
 plot(density(veg_cover_ar_full_sum$pr_cover_tf))
 
 veg_cover_ar_full_sum %>% 
-  group_by(wpfg,  origin) %>%
+  group_by(rec_group,  origin) %>%
   summarise(no_rows = length(hits)) %>% print(n=50) # a bunch of unknown origins here but lets leave in as a factor level for now
 
-ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = wpfg, colour =wpfg) ) + geom_point(position=position_dodge(.5)) + facet_grid(.~zone)
-ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = wpfg, colour = wpfg) ) + geom_jitter(position=position_dodge(.5)) #+ facet_grid(wpfg~transect)
-ggplot(veg_cover_ar_full_sum, aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + geom_point(position=position_dodge(.5)) 
-ggplot(veg_cover_ar_full_sum, aes(x = days_above_baseflow, y = hits, group = wpfg, colour = wpfg) ) + geom_point(position=position_dodge(.5)) 
+ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour =rec_group) ) + geom_point(position=position_dodge(.5)) + facet_grid(.~zone)
+ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour = rec_group) ) + geom_jitter(position=position_dodge(.5)) #+ facet_grid(wpfg~transect)
+ggplot(veg_cover_ar_full_sum, aes(x = days_above_springfresh, y = hits, group = rec_group, colour = rec_group) ) + geom_point(position=position_dodge(.5)) 
+ggplot(veg_cover_ar_full_sum, aes(x = days_above_baseflow, y = hits, group = rec_group, colour = rec_group) ) + geom_point(position=position_dodge(.5)) 
 
 ggplot(veg_cover_ar_full_sum, aes(x = rec_group, y = hits, group = rec_group, colour = rec_group) ) + geom_boxplot() + scale_y_continuous(limits = c(0,40))
 ggplot(veg_cover_ar_full_sum, aes(x = hits, colour = rec_group) ) + geom_density() 
@@ -1343,7 +1330,7 @@ Plotdata_full$period <- ordered(Plotdata_full$period, levels = c( "before_spring
 # full analysis ####
 # now move onto fitting the full models
 
-sum(veg_cover_ar_full_sum$hits %in% 0 ) / nrow(veg_cover_ar_full_sum) # 84% zeros
+sum(veg_cover_ar_full_sum$hits %in% 0 ) / nrow(veg_cover_ar_full_sum) # 76% zeros
 
 # modify the wpfg var to investigate the use of rec_group var in its place
 
@@ -1357,7 +1344,9 @@ veg_cover_ar_full_sum %>% group_by(origin, wpfg) %>% distinct(origin, wpfg) %>% 
 
 cover_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
-   days_above_baseflow_std*wpfg + days_above_springfresh_std*wpfg + origin + # original regime model does not converge
+   days_above_baseflow_std*wpfg+ days_above_springfresh_std*wpfg + # original regime model does not converge
+    days_above_baseflow_std_sq*wpfg + days_above_springfresh_std_sq*wpfg + origin +
+    
     #days_above_baseflow_std*wpfg + days_above_springfresh_std*wpfg + origin +
    # zone*period + origin + wpfg + grazing +     # flow event model v1 - fits ok
     # zone + wpfg * period + origin +  grazing + # flow event model v2 - fits ok
@@ -1371,9 +1360,8 @@ cover_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
   family = poisson(),
   ziformula=~ wpfg,
  #dispformula =~ wpfg * period + wpfg * zone,
-  data = veg_cover_ar_full_sum #|> filter(!origin %in% "unknown")  #|> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown")) |> filter(!wpfg %in% c("Atl"))
+  data = veg_cover_ar_full_sum #|> filter(!site %in% "unknown")  #|> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown")) |> filter(!wpfg %in% c("Atl"))
 )
-
 
 summary(cover_ar_TMBmod_full_1)
 # 
@@ -1421,11 +1409,11 @@ effect_plot(cover_ar_TMBmod_full_1, pred = days_above_springfresh_std  , interva
 
 #effect_plot(cover_ar_TMBmod_full_1, pred = days_above_baseflow_std_sq  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
-interact_plot(cover_ar_TMBmod_full_1, pred = days_above_baseflow_std, modx = wpfg, interval = T) + scale_y_continuous(limits=c(0, 10))
+interact_plot(cover_ar_TMBmod_full_1, pred = days_above_baseflow_std, modx = wpfg, interval = T) + scale_y_continuous(limits=c(0, 17))
 
-interact_plot(cover_ar_TMBmod_full_1, pred = days_above_baseflow_std, modx = wpfg, interval = T, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+interact_plot(cover_ar_TMBmod_full_1, pred = days_above_baseflow_std, modx = wpfg, interval = T, plot.points = T) + scale_y_continuous(limits=c(0, 17))
 
-interact_plot(cover_ar_TMBmod_full_1, pred = days_above_springfresh_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 20))
+interact_plot(cover_ar_TMBmod_full_1, pred = days_above_springfresh_std, modx = wpfg, plot.points = T) + scale_y_continuous(limits=c(0, 27))
 
 
 
@@ -1463,8 +1451,8 @@ HydroPredictDaysabovebaseFuncoriPlot_full2
 
 
 HydroPredictDaysabovespringFunc_full<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg'),cover_ar_TMBmod_full_1,xlevels=20))
-c<-mean(veg_cover_ar_sum$days_above_springfresh) 
-d<-sd(veg_cover_ar_sum$days_above_springfresh)
+c<-mean(veg_cover_ar_full_sum$days_above_springfresh) 
+d<-sd(veg_cover_ar_full_sum$days_above_springfresh)
 HydroPredictDaysabovespringFunc_full$days_above_springfresh<-(HydroPredictDaysabovespringFunc_full$days_above_springfresh_std*d+c)
 
 HydroPredictDaysabovespringFunc_full$hits <- HydroPredictDaysabovespringFunc_full$fit
@@ -1484,17 +1472,45 @@ HydroPredictDaysabovespringFuncPlot_full<-ggplot(HydroPredictDaysabovespringFunc
   geom_line(linewidth = 2)+
   #geom_ribbon(aes(ymin = lower, ymax = upper),  fill = "brown1", alpha= 0.1)+
   #geom_point(data= Plotdata_full,aes(x=days_above_springfresh, y= hits, colour = wpfg), alpha = 0.2)+
-  coord_cartesian(ylim = c(0, 100))+
+  coord_cartesian(ylim = c(0, 300))+
   geom_ribbon(aes(ymin=lower/40*100, ymax=upper/40*100,fill=wpfg),alpha=0.1 , color=NA, show.legend = F) +
   labs(x = "Days above spring fresh", y = "Predicted % cover")+ theme_bw()  + #facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Functional group') 
 
 HydroPredictDaysabovespringFuncPlot_full
 
+# effect of origin
+
+HydroPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_1))
+
+ggplot(HydroPredictOrigin_full, aes(origin, fit/40*100, colour = origin)) +
+  geom_point(size = 2)+
+  geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
+  #geom_sina(data= Plotdata_full, alpha = 0.1)+
+ # coord_cartesian(ylim = c(0, 17))+
+  labs(x = "Origin", y = "Predicted % cover")+ theme_bw() +
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Origin') 
+
+
 
 
 # now lets fit the 'spatial' or 'flow event' model
 # 
+# we need to modify the period factor for a few sites that do not recieve Eflows and as such we will call this a no_event level
+
+veg_cover_ar_full_sum <-  veg_cover_ar_full_sum %>% dplyr::mutate(
+ period = ifelse(site == "Peuckers" & period == "after_spring", "no_event", ifelse(site == "Peuckers" & period == "after_summer", "no_event", 
+                                                                                   ifelse(site == "McInnes" & period == "after_spring", "no_event",  
+                                                                                          ifelse(site == "McInnes" & period == "after_summer", "no_event", period)))))
+veg_cover_ar_full_sum %>% 
+  group_by( waterbody, site, period) %>%
+  summarise(no_rows = length(hits)) %>% print(n=100)
+
+
 # first look at flow effects across zone and period for each functional group
 
 cover_ar_TMBmod_full_2 <- glmmTMB::glmmTMB(
@@ -1567,10 +1583,10 @@ cat_plot(cover_ar_TMBmod_full_2, pred = wpfg, modx =  period, plot.points = T) +
 
 EventsPredictFuncPeriodZone_full<- as.data.frame(Effect(c('period', 'wpfg', 'zone'),cover_ar_TMBmod_full_2,xlevels=20))
 EventsPredictFuncPeriodZone_full$hits <- EventsPredictFuncPeriodZone_full$fit
-EventsPredictFuncPeriodZone_full$period <- ordered(EventsPredictFuncPeriodZone_full$period, levels = c( "before_spring", "after_spring", "after_summer"))
+EventsPredictFuncPeriodZone_full$period <- ordered(EventsPredictFuncPeriodZone_full$period, levels = c( "before_spring", "after_spring", "after_summer", "no_event"))
 
 EventsPredictFuncPeriodZone_full$period <- recode_factor(EventsPredictFuncPeriodZone_full$period, before_spring = "Before spring", 
-                                                         after_spring = "After spring", after_summer = "After summer")
+                                                         after_spring = "After spring", after_summer = "After summer", no_event = "No event")
 EventsPredictFuncPeriodZone_full$zone <- recode_factor(EventsPredictFuncPeriodZone_full$zone, above_springfresh = "Above springfresh", 
                                                        baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
 
@@ -1578,7 +1594,7 @@ EventsPredictFuncPeriodZone_full$zone <- recode_factor(EventsPredictFuncPeriodZo
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
-  coord_cartesian(ylim = c(0, 17))+
+  coord_cartesian(ylim = c(0, 20))+
   labs(x = "Period", y = "Predicted % cover")+ theme_bw() + facet_grid(zone~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
@@ -1586,6 +1602,45 @@ EventsPredictFuncPeriodZone_full$zone <- recode_factor(EventsPredictFuncPeriodZo
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Functional group') 
 
+   ggplot(EventsPredictFuncPeriodZone_full[which(EventsPredictFuncPeriodZone_full$period != "No event"),], aes(period, hits/40*100, colour = wpfg)) +
+     geom_point(size = 2)+
+     geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
+     #geom_sina(data= Plotdata_full, alpha = 0.1)+
+     coord_cartesian(ylim = c(0, 20))+
+     labs(x = "Period", y = "Predicted % cover")+ theme_bw() + facet_grid(zone~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
+     theme(#axis.text.x = element_blank(),      # hide iv.y labels
+       #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+       panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+       #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+       axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Functional group') 
+   
+   EventsPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_2))
+   
+   ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100, colour = origin)) +
+     geom_point(size = 2)+
+     geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
+     #geom_sina(data= Plotdata_full, alpha = 0.1)+
+      coord_cartesian(ylim = c(0, 20))+
+     labs(x = "Origin", y = "Predicted % cover")+ theme_bw() +
+     theme(#axis.text.x = element_blank(),      # hide iv.y labels
+       #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+       panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+       #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+       axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Origin') 
+
+   
+   ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100, colour = grazing)) +
+     geom_point(size = 2)+
+     geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
+     #geom_sina(data= Plotdata_full, alpha = 0.1)+
+      coord_cartesian(ylim = c(0, 20))+
+     labs(x = "Grazing", y = "Predicted % cover")+ theme_bw() +
+     theme(#axis.text.x = element_blank(),      # hide iv.y labels
+       #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+       panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+       #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+       axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Grazing') 
+   
 # richness ####
 # now lets model vegetation richness
 
@@ -1617,12 +1672,21 @@ veg_richness_full_sum$wpfg_ori <- as.factor(paste(veg_richness_full_sum$wpfg,veg
   
 summary(veg_richness_full_sum)
 
+
+veg_richness_full_sum <-  veg_richness_full_sum %>% dplyr::mutate(
+  period = ifelse(site == "Peuckers" & period == "after_spring", "no_event", ifelse(site == "Peuckers" & period == "after_summer", "no_event", 
+                                                                                    ifelse(site == "McInnes" & period == "after_spring", "no_event",  
+                                                                                           ifelse(site == "McInnes" & period == "after_summer", "no_event", period)))))
+veg_richness_full_sum %>% 
+  group_by( waterbody, site, period) %>%
+  summarise(no_rows = length(richness)) %>% print(n=100)
+
 # regime model
 
 richness_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
      richness ~ 
        days_above_baseflow_std*wpfg + days_above_springfresh_std*wpfg + origin +
-       # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+       days_above_baseflow_std_sq + days_above_springfresh_std_sq +
        #   zone * period +
        zone * wpfg * period  + grazing +
        # grazing + origin +
@@ -1635,7 +1699,7 @@ richness_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
      #family = nbinom2,
      #ziformula=~ wpfg,
      # dispformula =~ wpfg ,
-     data = veg_richness_full_sum #|> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+     data = veg_richness_full_sum |> filter(!site %in% c("Peuckers"))
    )
    
    
@@ -1695,8 +1759,8 @@ interact_plot(richness_ar_TMBmod_full_1, pred = days_above_springfresh_std, modx
    
 RichPredictDaysabovebaseFunc<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),richness_ar_TMBmod_full_1,xlevels=20))
    
-c<-mean(veg_cover_ar_sum$days_above_baseflow) 
-d<-sd(veg_cover_ar_sum$days_above_baseflow)
+c<-mean(veg_cover_ar_full_sum$days_above_baseflow) 
+d<-sd(veg_cover_ar_full_sum$days_above_baseflow)
 RichPredictDaysabovebaseFunc$days_above_baseflow<-(RichPredictDaysabovebaseFunc$days_above_baseflow_std*d+c)
    
 RichPredictDaysabovebaseFunc$richness <- RichPredictDaysabovebaseFunc$fit
@@ -1714,8 +1778,8 @@ RichPredictDaysabovebaseFuncPlot
 
    
 RichPredictDaysabovespringFunc<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg'),richness_ar_TMBmod_full_1,xlevels=20))
-c<-mean(veg_cover_ar_sum$days_above_springfresh) 
-d<-sd(veg_cover_ar_sum$days_above_springfresh)
+c<-mean(veg_cover_ar_full_sum$days_above_springfresh) 
+d<-sd(veg_cover_ar_full_sum$days_above_springfresh)
 RichPredictDaysabovespringFunc$days_above_springfresh<-(RichPredictDaysabovespringFunc$days_above_springfresh_std*d+c)
    
 RichPredictDaysabovespringFunc$richness <- RichPredictDaysabovespringFunc$fit
@@ -1724,7 +1788,7 @@ RichPredictDaysabovespringFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(d
 geom_line(linewidth = 2)+
 geom_ribbon(aes(ymin = lower, ymax = upper, fill=wpfg),  colour=NA, alpha= 0.1, show.legend = F)+
 #geom_point(data= PlotdataRich,aes(x=days_above_springfresh, y= richness, colour = wpfg), alpha = 0.2)+
-coord_cartesian(ylim = c(0, 1.5))+
+coord_cartesian(ylim = c(0, 5))+
 labs(x = "Days above spring fresh", y = "Species richness")+ theme_bw()  + #facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
 theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") +labs(color='Functional group') 
    
