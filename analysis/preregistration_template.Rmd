@@ -1158,8 +1158,6 @@ richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
 
 Rather than splitting the flow events model into two different versions, as we did for the cover models, we have combined these into a single model for richness.
 
--   [ ] JY / HW any comment for rationale on this difference? i.e. reason for splitting cover models into two versions but not richness models?
-
 ```{r richness-flow-events-model, eval=FALSE}
 richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
   richness ~  
