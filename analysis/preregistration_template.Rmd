@@ -61,7 +61,7 @@ The study is funded by the state of Victoria, with a hierarchy of clients rangin
 Secretary, and program managers within the DELWP Water and Catchments division.
 The project is also co-funded through the Murray Darling Basin Plan, with corresponding requirements to contribute findings to Basin Plan reporting outputs.
 Other key stakeholders for this work are the Victorian Environmental Water Holder (VEWH) who manage the environmental water entitlements throughout the state, and the Victorian Catchment Management Authorities (CMAs) that manage the delivery of environmental water along individual waterways.
-Findings from this research can then be used to directly influence: managament decisions through the CMAs; water allocation through the VEWH; and water investment through DELWP, the State Government and the Murray Darling Basin Authority.
+Findings from this research can then be used to directly influence: management decisions through the CMAs; water allocation through the VEWH; and water investment through DELWP, the State Government and the Murray Darling Basin Authority.
 Other stakeholders, including the public, water authorities and institutions such as Parks Victoria (among many others) have a minor active role within the study.
 
 The model formulation is developed by the researchers at ARI, with guidance from the program managers at DELWP, external researchers and an Independent Review Panel of external researchers for VEFMAP.
@@ -156,7 +156,7 @@ More information is provided in [3.2](#32-choose-model-features-and-family) and 
 Future study will investigate the predictive capacity of the models within and between different waterways to enable transferability of the data, but this is beyond the scope of the current piece of work and is not described further here.
 
 Future research will involve testing scenarios of different flow regimes to what we have observed.
-This includes estimating the expected data we would have collected if the flows that were delivered were not delivered - thus effectively modelling a control or counterfactual dataset to the observed data.
+This includes estimating the expected data we would have collected if the flows that were delivered were not delivered - thus effectively modelling a control or counter factual dataset to the observed data.
 It also includes testing various future scenarios with different hypothetical future regimes in the medium (\<5yr) or long (\>5yr) term.
 However, again this is likely to be beyond the scope of the current study which will focus solely on the collected data.
 
@@ -174,7 +174,7 @@ However, again this is likely to be beyond the scope of the current study which 
 
 <br>
 
-The models will require a certain amount of flexibility to be able to change the timeframes over which data are compared and the set of predictor variables that will change depending on the timeframes selected.
+The models will require a certain amount of flexibility to be able to change the time frames over which data are compared and the set of predictor variables that will change depending on the time frames selected.
 Funding constraints and client objectives may also require changes to the modelling process or purpose at any point.
 Currently there are no significant limitations on model development - sufficient time and funding resources - but this may change.
 
@@ -262,7 +262,7 @@ These conceptual models are described in text within program reports and are sum
 The models are biological/ecological only and do not include links to decision makers or values as these constraints are not within our capability to influence.
 Therefore, the models primarily summarise the dominant drivers of vegetation attributes (cover, diversity, distribution, composition) within waterways.
 Not all important drivers are included because it is impossible to account for everything within our study.
-Our final model for this particular study will be decribed in text and summarised within one or more non-quantitative diagrams.
+Our final model for this particular study will be described in text and summarised within one or more non-quantitative diagrams.
 
 ## 2.2 Explain Critical Conceptual Design Decisions
 
@@ -282,11 +282,11 @@ Our final model for this particular study will be decribed in text and summarise
 
 <br>
 
-This current study focusses on two different timeframes: short term (months) in relation to before and after event surveys; as well as long-term (years) in relation to patterns resulting from previous years of particular flow regimes.
+This current study will focus on two different time frames: short term (months) in relation to before and after event surveys; as well as long-term (years) in relation to patterns resulting from previous years of particular flow regimes.
 The models therefore need to describe the short term responses of plants to events as well as the cumulative responses of plants to multiple types of events within years repeated over several years, i.e. regimes.
 
 The entities will be the vegetation response variables (cover, diversity, composition and perhaps distribution) as well as various flow variables and other factors such as bank elevation, site, river system, rainfall and livestock grazing.
-The flow variables will depend on the timeframe.
+The flow variables will depend on the time frame.
 Short term responses will include the presence and magnitude of a flow event and potentially the time of year and duration of the event.
 Long term responses will include the presence of individual flow events over the previous years (number of years TBC) and categorisation of the types of events that occurred, e.g. was a winter/spring flow natural or e-flow?
 Was it small or large?
@@ -330,7 +330,7 @@ These include:
 
 -   The spatial variability of rainfall. For rainfall to be accessible to a plant it needs to fall on or very near the plant in most cases. However, rainfall is spatially patchy and a rain event will affect different sites in an area differently. So our rain gauge data will only be an approximation of the actual rainfall at a specific site.
 -   Climate. Aside from rainfall, there are many climate elements that will influence plants, such as temperature, humidity and solar radiation (light). We can provide estimated values for some of these at sites but this will not account for the spatial and temporal variation in these factors that may influence our results.
--   Soil properties. We do not have accurate (or any in some cases) information on soil type at each site. Nor do we have an expecation of how soils might influence plant attributes and responses to flows. We may be able to obtain basic information from spatial mapping of soil types, but this would be at a very coarse scale and would also not account for shallow surface soil deposits or variation through the soil profile. We have some data on soil types at some sites from soil cores but not all.
+-   Soil properties. We do not have accurate (or any in some cases) information on soil type at each site. Nor do we have an expectation of how soils might influence plant attributes and responses to flows. We may be able to obtain basic information from spatial mapping of soil types, but this would be at a very coarse scale and would also not account for shallow surface soil deposits or variation through the soil profile. We have some data on soil types at some sites from soil cores but not all.
 -   Funghi. Funghi may be considered exogenous or endogenous, but it may have a role in determining plant patterns and responses to flows. We have no data on this, nor any specific expectations on how funghi may influence results.
 
 **Parametric uncertainty** I think this is referring to the other predictor variables in the model that are directly associated with treatments.
@@ -402,7 +402,7 @@ Based on our problem formulation, the expected predictor variables to use within
 Each of these variables is important for influencing decisions about the use of environmental water to achieve benefits for (native) riparian vegetation.
 Additional variables that may be useful but are difficult to obtain at the appropriate spatial resolution (such as soils and funghi) are unlikely to be added.
 We expect there to be interactions between flow and bank elevation, hence the need to incorporate the elevation in our models.
-There may be interactions between bank elevation and livestock impacts due to the softer ground at the bank margin being mroe susciptible to trampling.
+There may be interactions between bank elevation and livestock impacts due to the softer ground at the bank margin being more susceptible to trampling.
 Exotic vegetation will also interact with bank elevation and flows.
 Rainfall in summer is likely to be more influential than rainfall in winter.
 
@@ -452,7 +452,7 @@ For this section, I have used the relevant points above from both of the options
 -   Data were collected from 44 sites across Victoria with sampling year and number of surveys varying between sites, from 3 times in one 'water year' to 11 times in four 'water years'. Each site had 5-10 permanent transects established and each of those transects had a series of sub-transects at increasing bank elevations at which data were collected each survey. More detail on how the data were collected is available in the manual.
 -   The data are not yet publicly available but will be available from an online database at a later date as a requirement of publicly funded data. There will be standard conditions of use for the data respecting IP and research contributions.
 -   A metadata file has not yet been produced for all of the relevant data files, but the column names have been intuitively labelled. A file will be produced and stored with the data or in an accessible repository. *Task/issue to create metadata file*
--   There have been many unpubllished client reports producted based on small subsets of these data but with very limited data analysis. There have also been many oral presentations and various summary documents (flyers etc.) shared with relevant stakeholders. A summary including some preliminary analysis of these data is provided in this published client report, available at the above website: *Tonkin, Z., Jones, C., Clunie, P., Vivian, L., Amtstaetter, F., Jones, M., Koster, W., Mole, B., O'Connor, J., Brooks, J., Caffrey, L., and Lyon, J. (2020). Victorian Environmental Flows Monitoring and Assessment Program. Stage 6 Synthesis Report 2016-2020. Technical Report Series No. 316, Department of Environment, Land, Water and Planning, Heidelberg, Victoria.* There are other published papers in development based on this program but not on this dataset.
+-   There have been many unpublished client reports produced based on small subsets of these data but with very limited data analysis. There have also been many oral presentations and various summary documents (flyers etc.) shared with relevant stakeholders. A summary including some preliminary analysis of these data is provided in this published client report, available at the above website: *Tonkin, Z., Jones, C., Clunie, P., Vivian, L., Amtstaetter, F., Jones, M., Koster, W., Mole, B., O'Connor, J., Brooks, J., Caffrey, L., and Lyon, J. (2020). Victorian Environmental Flows Monitoring and Assessment Program. Stage 6 Synthesis Report 2016-2020. Technical Report Series No. 316, Department of Environment, Land, Water and Planning, Heidelberg, Victoria.* There are other published papers in development based on this program but not on this dataset.
 -   Existing knowledge of the data comes from collecting it ourselves, conducting thorough data checking and cleaning, producing output summaries (species lists, sample sizes, etc.) and conducting a preliminary analysis on a small subset of the data for the report highlighted above and a separate study on one time period from one river: Sutton, N., Houghton, J., Vietz, G., Jones, C., Mole, B., Morris, K., Gower, T. 2020. Influence of Intervalley Transfers (IVT) on the Riverbanks and Bank Vegetation of the Goulburn and Campaspe Rivers. Report by Streamology and Arthur Rylah Institute for the Department of Environment, Land, Water and Planning. June, 2020.
 
 ### 2.5.2 Data Processing and Preparation
@@ -491,9 +491,9 @@ The full hydrology data processing procedure is outlined in a separate document 
 It is critically important for our study that the flow elevations correlate with measured elevations of each vegetation sub-transect.
 The sub-transect elevations were obtained by ARI staff at the exact locations of the sub-transects, using GPS devices and processing software that was tested and proven sufficiently accurate for the study.
 While the relative elevation among sub-transect points appears to be accurate, the comparative elevation to the flow levels was in some cases misaligned.
-This is however a relatively easy fix, once the difference between the transect and flow data elevations is determined, that value is simply added or subtracted from either dataset for callibration.
+This is however a relatively easy fix, once the difference between the transect and flow data elevations is determined, that value is simply added or subtracted from either dataset for calibration.
 The differences were possible due to water level elevations recorded at each site that could compare flow levels with sub-transect levels directly.
-A second issue is that the river chanels typically decline in elevation from upstream to downstream within a site, resulting in a decline in elevation across the transect locations within a site.
+A second issue is that the river channels typically decline in elevation from upstream to downstream within a site, resulting in a decline in elevation across the transect locations within a site.
 This is particularly true for sites further upstream, whereas lowland reaches can be very flat.
 This means that a single flow level for each site will be inaccurately indicating flow heights at some transect locations.
 Again, this can be addressed through data calibration for each site so that the flow level speaks to each transect location within a site.
@@ -524,7 +524,7 @@ We will also probably need to categorise or otherwise quantify waterways with pa
 For example, a 'full' regime might have baseflows and/or low-flows as well as at least one spring fresh and summer/autumn fresh.
 A 'summer' regime might have all but the spring fresh/high-flow, while a 'spring' regime might have all but the summer/autumn fresh.
 There may also be a category for 'variable' regime within recent years.
-For categorical regimes, the regime also needs to be consistent accross the relevant set of years.
+For categorical regimes, the regime also needs to be consistent across the relevant set of years.
 Depending on the variability between sites and between years, we might need to consider multiple options for evaluating the regime.
 Each of the sites needs to be assessed to list the regime within recent years to determine the best options - which has not been done yet.
 
@@ -548,7 +548,7 @@ One well-established grouping system for wetland plants is by Casanova and Brock
 In many cases, the species and the responses are directly equivalent to riparian systems, however there are some notable variations.
 There are also many different WPFGs, which are impractical to evaluate separately in many cases.
 In this study, we do not have a pre-determined approach for how vegetation groups will be used.
-We have compiled all of the relvant WPFG assignments for each species recorded and have determined our own classes in which these groups are nested (with variation required in few cases where the riparian response is expected or observed to be different from the wetland responses).
+We have compiled all of the relevant WPFG assignments for each species recorded and have determined our own classes in which these groups are nested (with variation required in few cases where the riparian response is expected or observed to be different from the wetland responses).
 We will initially conduct our analyses using the three hierarchical levels of data aggregation: species \< WPFG \< broad classes.
 Based on these initial explorations, we will progress the final evaluation approach.
 This exploratory approach is important for a study like this where there is not a clear precedent in the published literature for the most appropriate vegetation groupings.
@@ -593,7 +593,7 @@ So this comes back to the vegetation groupings described above which need to be 
 Given the complex nature of this analysis and the uncertainties in the data structure due to the data processing that needs to occur, there are many preliminary checks that may need to be conducted.
 For example, depending on the vegetation groupings that we decide to use, and how we account for 'zero samples' (see [2.2](#22-explain-critical-conceptual-decisions)) there may be very different amounts of skew or zero-inflation in the response or predictor variables.
 Initially, we will need to do simple tests of data distributions within hierarchies to check for data spread and prevalence of zeros or outliers.
-We will also need to assess the colinearity or interactions between candidate predictor variables to ensure relevant interactions are captured and to reduce model overfitting.
+We will also need to assess the collinearity or interactions between candidate predictor variables to ensure relevant interactions are captured and to reduce model overfitting.
 Our data are spatially and temporally variable with a relatively large spatial coverage but the data density is not equal across space and time, i.e. some sites have been surveyed more than others and in different years.
 Random effects for site should account for the spatial bias but we will need to carefully consider the interpretation of the outputs and explore options for accounting for temporal variability.
 
@@ -663,7 +663,7 @@ Second, assessing whether the model structure (particularly the error distributi
 The details of these steps are provided in [section 4.3.1](#431-quantitative-model-checking).
 
 It is important to note that models fitted to the pilot dataset may not translate directly to the final analysis due to differences in the data structure.
-These differences will change the distribution of observations within categories, and will introduce a new random effect for waterbody (or system), which is not required for the single-waterbody pilot analysis.
+These differences will change the distribution of observations within categories, and will introduce a new random effect for water body (or system), which is not required for the single-water body pilot analysis.
 Due to these changes, the final analysis still requires model checking and may require changes to the model structure.
 
 ### 2.5.4 Data evaluation, exclusion, and missing data
@@ -692,15 +692,15 @@ Due to these changes, the final analysis still requires model checking and may r
 <br>
 
 *Data reliability* At this stage I am unsure about how we will quantitatively evaluate how reliable the data are for the questions being addressed.
-Qualitatievely, one of the most important considerations will be to assess how logical the outcomes are in relation to our observations and conceptual understanding.
-We have a very good moental model of these systems due to the large amounts of fieldwork in various areas over the years collecting the dataset used in this study as well as relevant data for other studies.
-As for data qualtiy, there are likely to be minor errors in such a large dataset that we cannot detect with our quality checking procedures, however, we are very confident that the data have been consistently collected (almost every survey was led by the same individual with the other surveyors being from a consistent set of experienced individuals), in the same places (all transects were permanently marked and relocated at each survey), and the datat checking process has been extremely thorough (documented in git).
+Qualitatively, one of the most important considerations will be to assess how logical the outcomes are in relation to our observations and conceptual understanding.
+We have a very good mental model of these systems due to the large amounts of fieldwork in various areas over the years collecting the dataset used in this study as well as relevant data for other studies.
+As for data quality, there are likely to be minor errors in such a large dataset that we cannot detect with our quality checking procedures, however, we are very confident that the data have been consistently collected (almost every survey was led by the same individual with the other surveyors being from a consistent set of experienced individuals), in the same places (all transects were permanently marked and relocated at each survey), and the data checking process has been extremely thorough (documented in git).
 All this considered, we believe that this is one of the most reliable vegetation datasets available anywhere in Victoria for its size and complexity.
 
 *Data exclusions* Data will only be excluded if we believe it is incorrect, and it can't be corrected, it is irrelevant to a particular model/assessment, or it precludes model fitting.
 For example, if evaluating survey intervals relating to spring fresh delivery, we can only include years and sites where such a delivery actually occurred.
 Incorrect data are easily detected where values lie outside possible or plausible ranges, but in other cases they can be very difficult to identify - we are confident that the former have been well accounted for in the datasets but the latter is only partially accounted for and there may be some minor errors that we cannot isolate.
-All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or lifeform, may not be possible to include.
+All species will be included, but unknown species that have no possible grouping identifier, e.g. native/exotic or life form, may not be possible to include.
 The vast majority of these occurrences are for seedlings that are too small to be identified.
 In most cases seedlings had minimal impact on plant cover, so this would have few implications for evaluation of cover, but this may have a greater impact on species richness.
 Decisions will need to be made for certain unknown species categories, particularly those that are more common in the dataset.
@@ -787,14 +787,14 @@ The Poisson distribution, specified with an offset, still models proportional co
 
 <summary>📝 Preregistration Item</summary>
 
-> -   [ ] For each response, predictor, and covariate, *specify how these variables will be operationalised in the model. This should relate directly to the analytical and/or management objectives specified during the problem formulation phase. Operationalisations could include: the extent of a response, an extreme value, a trend, a long-term mean, a probability distribution, a spatial pattern, a time-series, qualitative change, such as a direction of change or, the frequency, location, or probability of some event occuring. Specify any treatment of model variables, including whether they are lumped / distributed, lienar / non-linear, stochastic / deterministic [@Jakeman:2006ii]* .
-> -   [ ] *Provide a rationale for your choices, including why plausible alternatives under consideration were not chosen, and relate your justification bacj to the purpose, objectives, prior knowledge and or logistical constraints specified in the problem formulation phase [@Jakeman:2006ii].*
+> -   [ ] For each response, predictor, and covariate, *specify how these variables will be operationalised in the model. This should relate directly to the analytical and/or management objectives specified during the problem formulation phase. Operationalisations could include: the extent of a response, an extreme value, a trend, a long-term mean, a probability distribution, a spatial pattern, a time-series, qualitative change, such as a direction of change or, the frequency, location, or probability of some event occurring. Specify any treatment of model variables, including whether they are lumped / distributed, linear / non-linear, stochastic / deterministic [@Jakeman:2006ii]* .
+> -   [ ] *Provide a rationale for your choices, including why plausible alternatives under consideration were not chosen, and relate your justification back to the purpose, objectives, prior knowledge and or logistical constraints specified in the problem formulation phase [@Jakeman:2006ii].*
 
 </details>
 
 <br>
 
-The two primary response variables are plant cover and species richness (see [2.4](#24-identify-predictor-and-response-variables)), which will be operationalised in slightly different ways depending on the timeframe:
+The two primary response variables are plant cover and species richness (see [2.4](#24-identify-predictor-and-response-variables)), which will be operationalised in slightly different ways depending on the time frame:
 
 1.  short term-in response to a single event (i.e. before and after); and
 2.  medium term (2-10 years) in relation to typical flow regimes (flow elevation/duration/timing) over that period.
@@ -1017,7 +1017,7 @@ We will attempt to fit a single full model using all data, and adding a random e
 Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg` back into the full model specification (discarded in the pilot analysis).
 If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
 
-Should the full model fitted to the full dataset not be computationally feasible or converge, we will follow a similar strategy for the pilot-study modelling, working from the full model towards simplified models, as there is potential for the full dataset to support a model of intermediate complecity (more complex than the simplified models, but not as complex as the full model).
+Should the full model fitted to the full dataset not be computationally feasible or converge, we will follow a similar strategy for the pilot-study modelling, working from the full model towards simplified models, as there is potential for the full dataset to support a model of intermediate complexity (more complex than the simplified models, but not as complex as the full model).
 We will fit the following simplified models in the case that the full model fitted to the full dataset does not converge:
 
 *Simplified model 1: "flow regime" model, [GitHub Issue 65](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/65)*
@@ -1350,7 +1350,7 @@ In terms of qualitative assessment, model results will be checked by field exper
 > The outcomes of these analyses build confidence in the model applications and increase understanding of model strengths and limitations.
 > Model evaluation including, model analysis, should complement model checking.
 > It should evaluate model checking, and consider over-fitting and extrapolation.
-> The higher the proportion of calibrated, or uncertain parameters, "the greater the risk that the model seems to work correctly, but for the wrong reasons" (citaiton).
+> The higher the proportion of calibrated, or uncertain parameters, "the greater the risk that the model seems to work correctly, but for the wrong reasons" (citation).
 > Evaluation thus complements model checking because we can rule out the chance that the model fits the calibration data well, but has not captured the relevant ecological mechanisms of the system pertinent to the research question or the decision problem underpinning the model [@Grimm:2014es].
 > Evaluation of model outputs against external data in conjunction with the results from model checking provide information about the structural realism and therefore credibility of the model [@Grimm2016].
 
@@ -1382,7 +1382,7 @@ In terms of qualitative assessment, model results will be checked by field exper
 
 <br>
 
-Model evaluation and validation on external data will not be undertaken in this study due to the complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and ero-inflation) and also due to the focus of the analysis on inference.
+Model evaluation and validation on external data will not be undertaken in this study due to the complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and zero-inflation) and also due to the focus of the analysis on inference.
 
 For the same reasons, we will not partition the data for model validation on independent data using cross-validation or other data-partitioning approaches.
 Instead, in-sample model fit assessment will be conducted (section 5).
@@ -1419,8 +1419,8 @@ Pilot analysis was performed blind to the full dataset, and was performed only o
 
 <summary>ℹ️ Rationale & Explanation</summary>
 
-> Uncertainty in models arises due to incomplete system understanding (which processes to include, or which interact), from imprecise, finite and sparese data measurements, and from uncertainty in input conditions and scenarios for model simulations or runs [@Jakeman:2006ii].
-> Non-technical uncertainties can also be introduced throughout the modellign process, such as uncertainties arising from issues in problem-framing, indeterminicies, and modeller / client values [@Jakeman:2006ii].
+> Uncertainty in models arises due to incomplete system understanding (which processes to include, or which interact), from imprecise, finite and sparse data measurements, and from uncertainty in input conditions and scenarios for model simulations or runs [@Jakeman:2006ii].
+> Non-technical uncertainties can also be introduced throughout the modelling process, such as uncertainties arising from issues in problem-framing, indeterminicies, and modeller / client values [@Jakeman:2006ii].
 >
 > The purpose of model analysis is to prevent blind trust in the model by understanding how model outputs have emerged, and to 'challenge' the model by verifying whether the model is still believable and fit for purpose if one or more parameters are changed [@Grimm:2014es].
 >
@@ -1507,8 +1507,6 @@ No sensitivity analyses will be performed on any models developed in this study.
 
 </details>
 
-\<br\>
-
 **Model analysis**
 
 Model features will be identified using visual plots of estimates, i.e. forest plots of most coefficients, and marginal effects plots (plots of predicted values of $y$ against values of $x$) under different combinations of of the key flow, zone, and period predictor variables.
@@ -1539,8 +1537,6 @@ Estimates will then be visualised as forest plots in R.
 > -   [ ] Describe any other simulation experiments, robustness analyses or other analyses you will perform on the model, including any metrics and their criteria / thresholds for interpreting the results of the analysis.
 
 </details>
-
-\<br\>
 
 No further simulation experiments, robustness or other analyses will be performed on the model other than analyses described above in this document.
 
