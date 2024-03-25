@@ -725,6 +725,9 @@ Currently these are indicated as NA in the dataset and form a small proportion o
 
 </details>
 
+Model analysis results will be used to update the existing conceptual model (described in [2.0 Define Conceptual Model]).
+Specifically, model results will be used to inform understanding about the short-term (flow models) and long-term (regime models) impacts of environmental flows combined with grazing and exotic vegetation on native vegetation (cover and density) within regulated river channels monitored in this dataset.
+
 # 3.0 Formalise and Specify Model
 
 <details>
