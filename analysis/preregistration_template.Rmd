@@ -1244,8 +1244,8 @@ However, we will use a subset of the data for exploratory pilot analysis that in
 <summary>📝 Preregistration Item</summary>
 
 > -   [ ] What Quality Assurance measures will you take to verify the model has been correctly implemented? Specifying a priori quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.
-> -   Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as described by the model description [@Grimm:2014es].
-> -   Qualitative tests could include syntax checking of code, and peer-code review [@ivimey2023a]. Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.
+> -   [ ] Checks for verification implementation should include i) thoroughly checking for bugs or programming errors, and ii) whether the implemented model performs as described by the model description [@Grimm:2014es].
+> -   [ ] Qualitative tests could include syntax checking of code, and peer-code review [@ivimey2023a]. Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.
 
 </details>
 
