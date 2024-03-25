@@ -1028,7 +1028,7 @@ RichPredictPeriodwpfgPlot2
 # we will take the same appraoch to fitting as we did in the pilot analysis
 
 # first lets extract cover data from raw datafiles for each site
-debugonce(load_cover)
+#debugonce(load_cover)
 veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
 
 veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
@@ -1109,7 +1109,7 @@ veg_richness_full <- dplyr::bind_rows(veg_richness_C, veg_richness_W, veg_richne
 summary(veg_cover_ar_full_sum) # TODO: remove rows with NA in metres factor?
 
 veg_cover_ar_full_sum %>% 
-  group_by(wpfg, waterbody, site, origin, period, metres, transect, survey, survey_year) %>%
+  group_by(rec_group, waterbody, site, origin, period, metres, transect, survey, survey_year) %>%
   summarise(no_rows = length(hits)) %>% print(n=50)
 
 
@@ -1198,6 +1198,19 @@ veg_richness_full_sum <- veg_richness_full_sum |>
   )
 
 # check data
+
+veg_cover_ar_full %>% distinct(waterbody, site, transect, metres) %>%  summarise(no_rows = length(hits))
+
+veg_cover_ar_full %>% 
+  group_by(rec_group, waterbody, site, transect, metres) %>%
+  summarise(no_rows = length(hits)) %>% print(n=50)
+
+site_info %>% 
+  group_by(waterbody, site, transect, metres) %>%
+  summarise(no_rows = length(metres)) %>% arrange(-no_rows)%>%print(n=50)
+
+
+
 veg_cover_ar_full %>% 
   group_by(wpfg, system, waterbody, site, transect, metres, period, survey, survey_year, origin) %>%
   summarise(no_rows = length(hits)) %>% print(n=50)
