@@ -121,6 +121,49 @@ non_empty_comments <-
   veg_data %>% 
   filter(dc_comms != "") %>% 
   select(species, dc_comms)
-  
+non_empty_comments %>% distinct() %>% print(., n = nrow(.))
 
-# What to do with comments??
+#TODO What to do with comments??
+
+
+# 6. Update Monocots
+
+
+# 7. Check NAs in HITS
+
+# Investigate NA hits
+NA_hits <- 
+  veg_data %>% filter(is.na(hits))
+
+# 8. Check Ground Layer Hits
+
+# Ground layer: reduce any that are over 40 (For the sites where sum of ground layer >40, reduce the number of hits of the layer with the most hits)
+
+ground_layer_hits <-
+  veg_data %>% 
+  left_join(species_master) %>% 
+  filter(classification == "Ground") %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  tally(hits,name = "ground_layer_hits")
+
+# Check for sites where sum of ground layer hits > 40
+
+ground_layer_hits_over_40 <- 
+  ground_layer_hits %>% 
+  filter(ground_layer_hits > 40)
+
+# Check for sites where sum of ground layer hits < 36
+ground_layer_hits_under_36 <- 
+  ground_layer_hits %>% 
+  filter(ground_layer_hits < 36)
+
+#TODO check data book to see where error is
+#  Ground layer: fix those under 36 (check data book to see where error is)
+
+
+
+# ----------------------- Generate Report -----------------------
+
+# Generate report with results of the checks
+
+#TODO generate report with results of the checks
