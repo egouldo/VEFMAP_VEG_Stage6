@@ -5,6 +5,7 @@ library(readr)
 library(dplyr)
 library(purrr)
 library(here)
+library(DescTools)
 
 # Approach: For now, I will build the tests using a single dataset, the Campaspe dataset, 
 # and then I will take the approach where all datasets in the raw_data/ are tested.
@@ -132,26 +133,22 @@ test_that("veg_data has appropriate species values", {
   
 })
 
-# Investigate Species
-
-veg_data %>% anti_join(species_master)
-
 
 # ---------- Test that veg_data hits are OK ----------
 
 test_that("veg_data hits are positive integers with no missing values", {
   # Check that the `hits` column has no missing values
-  expect_col_no_na(veg_data, vars(hits))
+  expect_col_vals_not_null(veg_data, vars(hits))
   
   # Check that the `hits` column has only numeric values
-  expect_col_type(veg_data, vars(hits), "numeric")
+  expect_col_is_numeric(veg_data, vars(hits))
   
   # Check that the `hits` column has only positive values
-  expect_col_vals_gt(veg_data, vars(hits), 0)
-  
-  # Check that the `hits` column has only integer values
-  expect_col_vals_eq(veg_data, vars(hits), as.integer(hits))
-  
+  expect_col_vals_gt(object = veg_data, columns =  vars(hits), value = 0, na_pass = TRUE) #ignore NA, because we have already checked for NA
+    
+  # Check that the `hits` column has only integer values (note, not the same as checking type of column)
+  expect_col_vals_expr(object = veg_data, expr = expr(DescTools::IsWhole(hits)))
+    
 })
 
 test_that("veg_data hits are between 36 and 40, inclusive", {
