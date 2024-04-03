@@ -28,16 +28,23 @@ species_master <- read_csv("data/raw_data/veg_data/VEFMAP_species_master.csv") %
 ground_spp <- 
   tribble(
     ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
-    "Log", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree root", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree base", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (dead)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (stump)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Rock", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Sand", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Poo", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground"
+    "Log", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree root", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree base", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (dead)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (stump)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Rock", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Sand", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground"
   )
+
+species_master <- 
+  species_master %>% 
+  bind_rows(ground_spp) %>% 
+  dplyr::filter(
+    !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) %>% 
+  distinct()
 
 # Load veg_data
 
@@ -80,7 +87,6 @@ db_datasource <- gnr_datasources() %>% filter(title %in% db_title)
 taxa_check_result <- 
   veg_data %>% 
   anti_join(species_master) %>% 
-  anti_join(ground_spp) %>% 
   anti_join(., {has_spp %>% distinct(species)}) %>% #rm species identified as spp.
   pull(species) %>%
   gnr_resolve(data_source_ids = db_datasource$id, with_canonical_ranks = TRUE) %>% 
@@ -109,7 +115,6 @@ taxa_check_result %>%
 spp_not_in_master <- 
   veg_data %>% 
   anti_join(species_master) %>% 
-  anti_join(ground_spp) %>% 
   anti_join(., {has_spp %>% distinct(species)}) %>% #rm species identified as spp.
   distinct(species, dc_comms) #rm duplicates but keep dc_comms for context
 #TODO keep other columns for some context? Could have two different df's one as short list, the other with all context data.
@@ -123,13 +128,14 @@ non_empty_comments <-
   veg_data %>% 
   filter(dc_comms != "") %>% 
   select(species, dc_comms)
+
 non_empty_comments %>% distinct() %>% print(., n = nrow(.))
 
 #TODO What to do with comments??
 
 
 # 6. Update Monocots
-
+#TODO not sure what this means exactly...
 
 # 7. Check NAs in HITS
 
@@ -138,6 +144,21 @@ NA_hits <-
   veg_data %>% filter(is.na(hits))
 
 # 8. Check Ground Layer Hits
+
+# Check that all ground layer species are classified as "Ground" in veg_data
+#TODO make sure that this is written as test!
+
+# If not, update the classification in the veg_data using ground_spp
+
+
+
+#TODO suspect TREEs are being removed, but they should probably be kept, and added to ground layer...
+
+
+
+#TODO ADD CHECK TO SEE WHICH SPECIES ARE BEING REMOVED because have no classification...., AND ADD TO GROUND LAYER!!
+# WRITE TEST to make sure that ground layer spp are coded appropriately!
+
 
 # Ground layer: reduce any that are over 40 (For the sites where sum of ground layer >40, reduce the number of hits of the layer with the most hits)
 
@@ -188,6 +209,7 @@ suggested_hits_reductions <-
 ground_layer_hits_under_36 <- 
   ground_layer_hits %>% 
   filter(ground_layer_hits < 36)
+
 
 #TODO check data book to see where error is
 #  Ground layer: fix those under 36 (check data book to see where error is)

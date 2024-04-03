@@ -37,31 +37,31 @@ species_master <- readr::read_csv(
   col_types =  readr::cols(
     .default = readr::col_character()
   )
-) |>
-  dplyr::filter(
-    !duplicated(species)
-  )
+)
 
 
 # Ground Layer Species Data
 ground_spp <- 
   tribble(
     ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
-    "Log", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree root", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree base", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (dead)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (stump)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Rock", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Sand", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Poo", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground"
+    "Log", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree root", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree base", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (dead)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (stump)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Rock", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Sand", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground" #TODO consider switchign origin to ground, as per S6 raw files, and update master species
   )
 
 # Add Ground Layer Species Data to species_master
 species_master <- #TODO consider adding to raw file rather than adding interactively here...
   species_master %>% 
-  bind_rows(ground_spp)
+  bind_rows(ground_spp) %>% 
+  dplyr::filter(
+    !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) %>% 
+  distinct()
 
 
 # Point data
