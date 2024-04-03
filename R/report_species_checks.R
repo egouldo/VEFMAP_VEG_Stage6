@@ -25,11 +25,19 @@ species_master <- read_csv("data/raw_data/veg_data/VEFMAP_species_master.csv") %
   janitor::clean_names()
 
 
-ground_spp <- tibble(
-  species = c("Log","Tree root",
-              "Tree","Tree base","Tree (dead)","Tree (stump)",
-              "Rock","Sand","Poo")
-)
+ground_spp <- 
+  tribble(
+    ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
+    "Log", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree root", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree base", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (dead)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (stump)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Rock", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Sand", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground"
+  )
 
 # Load veg_data
 
@@ -97,12 +105,6 @@ taxa_check_result %>%
 # required, so that the check passes and the species name is not flagged again in the future.
 
 # 3. After fixing spelling, check species list against master species list, report missing entries
-
-ground_spp <- tibble(
-  species = c("Log","Tree root",
-              "Tree","Tree base","Tree (dead)","Tree (stump)", "Tree stump",
-              "Rock","Sand","Poo")
-)
 
 spp_not_in_master <- 
   veg_data %>% 

@@ -43,7 +43,7 @@ species_master <- readr::read_csv(
 
 
 # Ground Layer Species Data
-ground_species <- 
+ground_spp <- 
   tribble(
     ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
     "Log", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
@@ -54,8 +54,13 @@ ground_species <-
     "Tree (stump)", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
     "Rock", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
     "Sand", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "exotic", NA, "Ground", NA, NA, NA, "Ground", "Ground"
   )
 
+# Add Ground Layer Species Data to species_master
+species_master <- #TODO consider adding to raw file rather than adding interactively here...
+  species_master %>% 
+  bind_rows(ground_spp)
 
 
 # Point data
