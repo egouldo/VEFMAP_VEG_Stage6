@@ -152,6 +152,36 @@ ground_layer_hits_over_40 <-
   ground_layer_hits %>% 
   filter(ground_layer_hits > 40)
 
+# Identify ground layer species with sum(hits) over 40
+
+layer_type_over_40 <- 
+  veg_data %>% 
+  left_join(species_master) %>% 
+  filter(classification == "Ground") %>% 
+  inner_join(ground_layer_hits_over_40, 
+             by = c("survey", "system", "waterway", "site", "transect", "metres")) %>% 
+  group_by(survey, system, waterway, site, transect, metres, species) %>%
+  tally(hits, name = "ground_layer_species_hits")
+
+# Identify the ground layer species with the most hits for each subtransect
+max_layer_type_over_40 <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  filter(ground_layer_species_hits == max(ground_layer_species_hits))
+
+suggested_hits_reductions <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  arrange(desc(ground_layer_species_hits), 
+          .by_group = TRUE) %>% 
+  mutate(max_val = max(ground_layer_species_hits), 
+         total = sum(ground_layer_species_hits), 
+         diff = total - max_val, 
+         reduced_value = 40 - diff) %>% # subtract hits from the layer with the most hits to reduce total to 40
+  ungroup %>%  
+  inner_join(max_layer_type_over_40) # remove ground layer species which are non-max hits
+
+
 # Check for sites where sum of ground layer hits < 36
 ground_layer_hits_under_36 <- 
   ground_layer_hits %>% 
