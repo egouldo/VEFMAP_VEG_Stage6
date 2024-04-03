@@ -152,15 +152,15 @@ test_that("veg_data hits are positive integers with no missing values", {
 })
 
 test_that("veg_data hits are between 36 and 40, inclusive", {
-  ground_layer_hits <-
-    veg_data %>% 
-    left_join(species_master) %>% 
-    filter(classification == "Ground") %>% 
-    group_by(survey, system, waterway, site, transect, metres) %>% 
-    tally(hits,name = "ground_layer_hits")
-  
-  expect_col_vals_between(ground_layer_hits, vars(ground_layer_hits), 36, 40)
-  
+  expect_col_vals_between(veg_data, 
+                          vars(ground_layer_hits), 
+                          36, 40,
+                          inclusive = TRUE, 
+                          preconditions = ~ . %>% 
+                            left_join(species_master) %>% 
+                            filter(classification == "Ground") %>% 
+                            group_by(survey, system, waterway, site, transect, metres) %>% 
+                            tally(hits,name = "ground_layer_hits"))
 })
 
 
