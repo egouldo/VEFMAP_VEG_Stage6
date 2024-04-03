@@ -131,3 +131,50 @@ test_that("veg_data has appropriate species values", {
 
 veg_data %>% anti_join(species_master)
 
+
+# ---------- Test that veg_data hits are OK ----------
+
+test_that("veg_data hits are positive integers with no missing values", {
+  # Check that the `hits` column has no missing values
+  expect_col_no_na(veg_data, vars(hits))
+  
+  # Check that the `hits` column has only numeric values
+  expect_col_type(veg_data, vars(hits), "numeric")
+  
+  # Check that the `hits` column has only positive values
+  expect_col_vals_gt(veg_data, vars(hits), 0)
+  
+  # Check that the `hits` column has only integer values
+  expect_col_vals_eq(veg_data, vars(hits), as.integer(hits))
+  
+})
+
+test_that("veg_data hits are between 36 and 40, inclusive", {
+  ground_layer_hits <-
+    veg_data %>% 
+    left_join(species_master) %>% 
+    filter(classification == "Ground") %>% 
+    group_by(survey, system, waterway, site, transect, metres) %>% 
+    tally(hits,name = "ground_layer_hits")
+  
+  expect_col_vals_between(ground_layer_hits, vars(ground_layer_hits), 36, 40)
+  
+})
+
+
+# ---------- Test that veg_data height are OK ----------
+
+test_that("veg_data height are positive integers with no missing values", {
+  # Check that the `height` column has no missing values
+  expect_col_no_na(veg_data, vars(height))
+  
+  # Check that the `height` column has only numeric values
+  expect_col_type(veg_data, vars(height), "numeric")
+  
+  # Check that the `height` column has only positive values
+  expect_col_vals_gt(veg_data, vars(height), 0)
+  
+  # Check that the `height` column has only integer values
+  expect_col_vals_eq(veg_data, vars(height), as.integer(height))
+  
+})
