@@ -88,7 +88,14 @@ VEFMAPS6_Site_Metadata <-
 
 ```
 
+
 # Execute Checks with Pointblank
+
+In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. 
+
+## Check Data Structure & Format
+
+Basic checks that required columns and their column types are present in the `veg_data` dataset.
 
 ```{r}
 #| label: check_veg_data_structure
