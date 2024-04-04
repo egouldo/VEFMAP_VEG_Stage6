@@ -24,6 +24,9 @@ suppressPackageStartupMessages(library(taxize))
 suppressPackageStartupMessages(library(fuzzyjoin))
 suppressPackageStartupMessages(library(here))
 suppressPackageStartupMessages(library(sessioninfo))
+suppressPackageStartupMessages(library(glue))
+suppressPackageStartupMessages(library(gluedown))
+suppressPackageStartupMessages(library(knitr))
 ```
 
 ```{r}
@@ -146,7 +149,7 @@ agent_data_structure <-
                                  "date", 
                                  "survey")) %>% 
   pointblank::col_is_numeric(vars(metres, hits)) %>% 
-  pointblank::interrogate(extract_failed = TRUE)
+  pointblank::interrogate()
 
 agent_data_structure %>% get_agent_report() %>% gt::as_raw_html()
 ```
@@ -319,6 +322,82 @@ agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 # Identify Data Issues
 
 ## Identify Data Structure problems
+
+```{r}
+#| label: get-data-extracts
+#| code-fold: true
+data_extracts <- agent_data_structure %>% 
+get_agent_report(display_table = FALSE) %>% 
+left_join(agent_data_structure  %>% 
+get_data_extracts() %>%
+enframe(name = "i", value = "data_extract") %>% 
+mutate(i = as.integer(i)), by = join_by(i)) %>% 
+drop_na(data_extract)
+```
+
+- [x] missing columns, number and which ones
+- [ ] incorrect values for system, waterway, site
+- [ ] missing values for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
+- [ ] incorrect column types for system, waterway, site, transect, species, origin, height, date, survey, metres, hits
+
+```{r}
+#| label: calc-missing-cols
+#| code-fold: true
+#| results: asis
+missing_cols <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_exists") %>% 
+  filter(n_pass == 0)
+gluedown::md_paragraph(glue::glue("There are {nrow(missing_cols)} missing columns in the `veg_data` dataset."))
+```
+
+```{r}
+#| label: report-missing-cols
+#| echo: false
+#| results: asis
+#| eval: !expr nrow(missing_cols) > 0
+gluedown::md_paragraph("The missing columns are:")
+gluedown::md_bullet(missing_cols$columns)
+```
+
+```{r}
+#| label: calc-incorrect-vals
+#| code-fold: true
+#| results: asis
+incorrect_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_in_set") %>% 
+  filter(n_pass == 0)
+
+n_cols_incorrect_vals <- nrow(incorrect_vals)
+
+gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
+    get_agent_report(display_table = FALSE) %>% 
+    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ")}.'))
+```
+
+```{r}
+#| label: report-incorrect-vals
+#| echo: false
+#| results: asis
+#| eval: !expr n_cols_incorrect_vals > 0
+
+gluedown::md_paragraph("The columns with incorrect values are:")
+gluedown::md_bullet(incorrect_vals$columns)
+#TODO show incorrect values for columns that have incorrect values
+```
+
+Should we ID which rows are suspect?
+
+```{r}
+
+```
+
+
+
+
 
 
 ```{r}
