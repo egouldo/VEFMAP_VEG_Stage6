@@ -335,9 +335,88 @@ agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 
 # Identify Ground Layer Hits Issues
 
+Below are sites where the sum of ground layer hits is over 40 (first table), and sites where the sum of the ground layer is under 36 (second table).
+
 ```{r}
 #| label: report-ground-layer-hits-issues
+#| code-fold: true
+#| results: asis
 
+agent_hits %>% 
+    pointblank::get_data_extracts() %>% 
+    set_names(agent_hits %>% 
+                  get_agent_report(display = FALSE) %>% 
+                  mutate(validation_name = glue::glue("**{type}({columns}, {values})**")) %>% 
+                pull(validation_name)) %>% 
+  walk2(.x = ., .y = names(.), 
+        ~ knitr::kable(.x, caption = .y) %>% 
+          print)
+```
+
+We also identify the ground layer species with the most hits for each subtransect and then suggest hit reductions for the ground layer species with the most hits to reduce the total of hits across all ground layer 'species' to 40. 
+
+```{r}
+#| label: calculate-ground-layer-hits-reductions
+#| code-fold: true
+
+# Identify subtransects where sum of ground layer hits > 40
+ground_layer_hits_over_40 <- 
+  agent_hits %>% 
+  pointblank::get_data_extracts() %>% 
+  set_names(agent_hits %>% 
+              get_agent_report(display = FALSE) %>% 
+              mutate(validation_name = glue::glue("{type}({columns}, {values})")) %>% 
+              pull(validation_name)) %>% keep_at(., at = ~ .x %>%  str_detect("40")) %>% 
+  flatten_df()
+
+# Identify all ground layer hits in subtransects where sum(hits) over 40
+layer_type_over_40 <- 
+  veg_data %>% 
+  left_join(species_master, by = c("species")) %>% 
+  filter(classification == "Ground") %>% 
+  inner_join(ground_layer_hits_over_40, 
+             by = c("survey", "system", "waterway", "site", "transect", "metres")) %>% 
+  group_by(survey, system, waterway, site, transect, metres, species) %>%
+  tally(hits, name = "ground_layer_species_hits")
+
+# Identify the ground layer species with the most hits for each subtransect
+max_layer_type_over_40 <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  filter(ground_layer_species_hits == max(ground_layer_species_hits))
+
+suggested_hits_reductions <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  arrange(desc(ground_layer_species_hits), 
+          .by_group = TRUE) %>% 
+  mutate(max_val = max(ground_layer_species_hits), 
+         total = sum(ground_layer_species_hits), 
+         diff = total - max_val, 
+         reduced_value = 40 - diff) %>% # subtract hits from the layer with the most hits to reduce total to 40
+  ungroup %>%  
+  inner_join(max_layer_type_over_40,
+             by = join_by(survey, system, waterway, site, transect, metres, species, ground_layer_species_hits)) # remove ground layer species which are non-max hits
+```
+
+Ground layer types (`species`) where the sum of hits is over 40 are listed below.
+
+```{r}
+#| label: report-ground-layer-hits
+#| echo: false
+
+knitr::kable(layer_type_over_40, 
+             caption = "**Ground layer types and their hits, where sum of ground layer hits is over 40.**")
+```
+
+Below are potential hit reductions for the ground layer `species` with the greatest hits to reduce the total ground layer hits to 40.
+
+```{r}
+#| label: report-ground-layer-hits-reductions
+#| echo: false
+
+knitr::kable(suggested_hits_reductions, 
+             caption = "**Suggested hits reductions to reduce total ground layer hits to 40.**")
 ```
 
 
