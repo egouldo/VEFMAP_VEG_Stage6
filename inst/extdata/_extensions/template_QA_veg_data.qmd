@@ -30,7 +30,9 @@ suppressPackageStartupMessages(library(sessioninfo))
 #| label: load-data
 #| code-fold: true 
 # Load species data
-species_master <- read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv")) %>% 
+species_master <- 
+  read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv"),
+           show_col_types = FALSE) %>% 
   janitor::clean_names()
 
 # Add new ground spp. data for correct ground layer hits sum
@@ -79,7 +81,9 @@ expected_raw_colnames <- c( #lowercase expected column names
   "survey"
 )
 
-VEFMAPS6_Site_Metadata <- read_csv(here::here("data/raw_data/site_data/VEFMAPS6_Site_Metadata.csv")) %>% 
+VEFMAPS6_Site_Metadata <- 
+  read_csv(here::here("data/raw_data/site_data/VEFMAPS6_Site_Metadata.csv"),
+           show_col_types = FALSE) %>% 
   janitor::clean_names()
 
 ```
