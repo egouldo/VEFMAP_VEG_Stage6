@@ -282,7 +282,37 @@ agent_species <-
 agent_species %>% get_agent_report() %>% gt::as_raw_html()
 ```
 
+## Check Ground Layer Hits
+
+Check that the total number of hits recorded for the ground layer is between 36 and 40, inclusive. This check is performed for each survey, system, waterway, site, transect, and metres.
+
+```{r}
+#| label: check_hits
+#| html-table-processing: none
+#| code-fold: true
+# Species Hits Checks
+
+agent_hits <- 
+  pointblank::create_agent(veg_data,
+                           tbl_name = basename(params$input_file),
+                           label = "Check Ground Layer Hits") %>%
+  col_vals_lte(vars(ground_layer_hits), 40, na_pass = TRUE,
+               preconditions = ~ . %>% 
+                 left_join(species_master, by = "species") %>% 
+                 filter(classification == "Ground") %>% 
+                 group_by(survey, system, waterway, site, transect, metres) %>% 
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup) %>%
+  col_vals_gte(vars(ground_layer_hits), 36, na_pass = TRUE,
+               preconditions = ~ . %>% 
+                 left_join(species_master, by = "species") %>% 
+                 filter(classification == "Ground") %>% 
+                 group_by(survey, system, waterway, site, transect, metres) %>% 
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup) %>%
+  interrogate()
+
+agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 ```
+
 
 # Identify Data Issues
 
@@ -300,6 +330,13 @@ agent_species %>% get_agent_report() %>% gt::as_raw_html()
 ```{r}
 #| label: report-species-issues
 
+
+```
+
+# Identify Ground Layer Hits Issues
+
+```{r}
+#| label: report-ground-layer-hits-issues
 
 ```
 
