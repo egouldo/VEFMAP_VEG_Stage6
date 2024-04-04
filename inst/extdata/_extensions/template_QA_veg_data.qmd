@@ -9,11 +9,14 @@ author:
 date: today
 params:
   input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
+self_contained: true
+toc: true
 ---
+
 
 ```{r}
 #| label: load-libs
-#| echo: false
+#| code-fold: true
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(pointblank))
 suppressPackageStartupMessages(library(janitor))
@@ -25,6 +28,7 @@ suppressPackageStartupMessages(library(sessioninfo))
 
 ```{r}
 #| label: load-data
+#| code-fold: true 
 # Load species data
 species_master <- read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv")) %>% 
   janitor::clean_names()
@@ -83,7 +87,9 @@ VEFMAPS6_Site_Metadata <- read_csv(here::here("data/raw_data/site_data/VEFMAPS6_
 # Execute Checks with Pointblank
 
 ```{r}
-#| label: check-veg_data
+#| label: check_veg_data_structure
+#| html-table-processing: none
+#| code-fold: true
 
 agent_data_structure <- 
   create_agent(veg_data, 
