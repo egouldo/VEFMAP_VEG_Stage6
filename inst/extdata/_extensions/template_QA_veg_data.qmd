@@ -61,8 +61,8 @@ species_master <-
 veg_data <- read_csv(here::here(params$input_file),
                      col_types =  readr::cols(
                        .default = readr::col_character(),
-                       metres = readr::col_double(),
-                       hits = readr::col_double()
+                       METRES = readr::col_double(),
+                       HITS = readr::col_double()
                      )) %>%
   janitor::clean_names()
 
