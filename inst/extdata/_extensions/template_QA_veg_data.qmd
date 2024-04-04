@@ -151,10 +151,136 @@ agent_data_structure <-
 agent_data_structure %>% get_agent_report() %>% gt::as_raw_html()
 ```
 
+
+## Check Species Entries
+
+Now we check the entries in the species column of the `veg_data`. We check that:
+
+- the species are in the `species_master` table;
+- That the species do not contain 'spp.' in the name (after removing any species identified as spp. in `species_master`);
+- That there are no spelling mistakes in the species names, checking against the World Flora Online Plant List 2023-12 using the `gnr_resolve` function from the `taxize` package;
+- That there are no species entries to be recoded in `veg_data` (i.e. have fuzzy-matches in `species_master` but no exact-matches);
+- That there are no species entries missing from `species_master` after having accounted for spelling fixes, recoding of entries in `veg_data`, and required species additions to `species_master`.
+
+
+```{r}
+#| label: check_species_data
+#| html-table-processing: none
+#| code-fold: true
+
+# Species Data Checks
+
+# 1. Species names to be updated from Spp.
+
+# Check for species names that contain "spp." in the veg_data
+# These species names need to be updated to the correct species name
+
+has_spp <- 
+  veg_data %>% 
+  anti_join(species_master, by = c("species")) %>% 
+  filter(str_detect(species, "spp.")) %>%
+  distinct(species, dc_comms, .keep_all = TRUE) #TODO consider adding other columns to call distinct on for help with context..
+#TODO .keep_all might only keep the first instance?? so could be a problem if there are multiple instances of the same species name
+
+# If there are any species names that contain "spp." in the veg_data,
+# check the species_master list to see if there is a matching species name without "spp." in the species column
+# if so, update the species name in the veg_data with the species name in the species_master list
+
+suggested_spp_replacements <- 
+  has_spp %>%  
+  mutate(spp_genus = str_remove(species, " spp.")) %>% 
+  left_join(species_master, 
+            by = c("spp_genus" = "genus"), 
+            suffix = c("_check", "_replacement"), 
+            relationship = "many-to-many") %>% # allows multiple species to be suggested for a single hs_spp & duplicate species across subtransects
+  select(-spp_genus) #TODO keep dc_comms column for context?
+
+# 2. Species names spelled correctly, and consistent with species_master
+
+# Run database call to check spelling
+db_title <- "World Flora Online Plant List 2023-12"
+db_datasource <- gnr_datasources() %>% filter(title %in% db_title)
+
+taxa_check_result <- 
+  veg_data %>% 
+  anti_join(species_master, by = c("species")) %>% 
+  anti_join(., { veg_data %>% 
+      anti_join(species_master, by = c("species")) %>% 
+      filter(str_detect(species, "spp.")) %>% 
+      distinct(species)},
+      by = c("species")) %>% #rm species identified as spp.
+  pluck("species", unique) %>% #unmatched species
+  gnr_resolve(data_source_ids = db_datasource$id, with_canonical_ranks = TRUE) %>% 
+  mutate(matched = user_supplied_name == matched_name2,
+         suggested_replacement = ifelse(matched == FALSE, matched_name2, NA)) %>% 
+  select(-matched_name2) %>% 
+  rename(species = user_supplied_name)
+# Check that suggested replacements are in species_master
+# If not, suggest in report that species_master should be updated
+
+# If so, replace the species name in the veg_data with the suggested replacement
+spelling_fixes <-
+  taxa_check_result %>% 
+  filter(matched == FALSE) %>% #don't drop NA just in case no suggested replacements
+  left_join(., species_master, by = c("suggested_replacement" = "species")) 
+
+# if not in species_master, suggest that species_master should be updated
+species_to_add <- taxa_check_result %>% filter(matched == TRUE) 
+
+# species to recode in veg_data (recorded incorrectly in veg_data, but fuzzy-matched in species_master)
+species_to_recode <- 
+  species_master %>% 
+  filter(str_detect(species, paste(species_to_add$species, collapse = "|"))) %>% 
+  fuzzy_left_join(species_to_add, match_fun = str_detect, by = c("species")) %>% 
+  select(-submitted_name, -suggested_replacement, -score, -matched, -data_source_title) %>% 
+  rename(species_master = species.x,  species_veg_data = species.y)
+
+#rm species_to_recode from species_to_add, recompute what spp missing from master_species
+species_to_add <- species_to_add %>% anti_join(species_to_recode, by = c("species" = "species_veg_data"))
+
 agent_species <- 
   create_agent(veg_data, 
                tbl_name = basename(params$input_file),
-               label = "Species Data")
+               label = "Species Data") %>% 
+  pointblank::col_vals_in_set(species, 
+                              species_master %>% 
+                                distinct(species),
+                              brief = "Expect species to be in the species_master table.") %>% 
+  pointblank::col_vals_expr(expr = ~ str_detect(species, "spp.", negate = TRUE),
+                            preconditions = ~ . %>% 
+                              anti_join(species_master, by = c("species")),
+                            brief = "Expect species to not contain 'spp.'") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~ . %>% 
+                    semi_join(taxa_check_result %>% 
+                                filter(matched == FALSE),  
+                              by = c("species")), #TODO what happens if nrow in taxa_check_result == 0?
+                  brief = "Expect no species identified with spelling mistakes.") %>% 
+  row_count_match(count = 0, 
+                 preconditions = ~ . %>% 
+                   semi_join(species_to_recode, #TODO what happens if nrow in species_to_recode == 0?
+                             by = c("species" = "species_veg_data")),
+                 brief = "Expect no species entries to be recoded (fuzzy-matched in `species_master`).") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~ . %>% 
+                    semi_join(species_to_add,  
+                              by = c("species")), #TODO what happens if nrow in species_to_add == 0?
+                  brief = "Expect no species entries missing from `species_master`.") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~   . %>% 
+                    anti_join(spelling_fixes,  by = c("species")) %>% # rm misspelt spp. 
+                    anti_join(., {suggested_spp_replacements %>% 
+                        distinct(species_check, species_replacement)}, 
+                        by = c("species" = "species_check")) %>% #rm species identified as spp.
+                    anti_join(species_to_recode, 
+                              by = c("species" = "species_veg_data")) %>% #rm spp marked for recoding
+                    anti_join(species_to_add,  by = c("species")) %>% #rm species to add to master list
+                    anti_join(species_master,  by = c("species")),
+                  brief = "Expect no species entries missing from `species_master`, accounting for spelling fixes, recoding, and additions to species_master.") %>% 
+  interrogate()
+
+agent_species %>% get_agent_report() %>% gt::as_raw_html()
+```
 
 ```
 
