@@ -80,6 +80,81 @@ VEFMAPS6_Site_Metadata <- read_csv(here::here("data/raw_data/site_data/VEFMAPS6_
 
 ```
 
+# Execute Checks with Pointblank
+
+```{r}
+#| label: check-veg_data
+
+agent_data_structure <- 
+  create_agent(veg_data, 
+               tbl_name = basename(params$input_file),
+               label = "Data Structure") %>% 
+  pointblank::col_exists(columns = all_of(expected_raw_colnames)) %>% 
+  pointblank::col_vals_in_set(system, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                pluck("system", unique)) %>% 
+  pointblank::rows_distinct(columns = system, 
+                            brief = "Expect one value per system.",
+                            preconditions = ~ . %>% distinct(system)) %>% 
+  pointblank::rows_distinct(columns = waterway, 
+                            brief = "Expect one value per waterway.",
+                            preconditions = ~ . %>% distinct(waterway)) %>% 
+  pointblank::col_vals_in_set(waterway, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                filter(system == veg_data %>% pluck("system", unique)) %>%
+                                pluck("waterway", unique)) %>%
+  pointblank::col_vals_in_set(site, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                filter(system == veg_data %>% pluck("system", unique),
+                                  waterway == veg_data %>% pluck("waterway", unique)) %>% 
+                                pluck("site", unique)) %>% 
+  pointblank::col_vals_not_null(columns = c("system", 
+                                               "waterway", 
+                                               "site", 
+                                               "transect", 
+                                               "metres", 
+                                               "species", 
+                                               "origin", 
+                                               "hits", 
+                                               "height", 
+                                               "date", 
+                                               "survey")) %>% 
+  pointblank::col_is_character(columns = c("system", 
+                                 "waterway", 
+                                 "site", 
+                                 "transect", 
+                                 "species", 
+                                 "origin", 
+                                 "height", 
+                                 "date", 
+                                 "survey")) %>% 
+  pointblank::col_is_numeric(vars(metres, hits))
+
+agent_species <- 
+  create_agent(veg_data, 
+               tbl_name = basename(params$input_file),
+               label = "Species Data")
+
+```
+
+# Identify Data Issues
+
+## Identify Data Structure problems
+
+
+```{r}
+#| label: report-data-structure-issues
+
+
+```
+
+## Identify Species Data Problems
+
+```{r}
+#| label: report-species-issues
+
+
+```
 
 
 # Session Information
