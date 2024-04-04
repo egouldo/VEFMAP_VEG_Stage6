@@ -301,13 +301,15 @@ agent_hits <-
                  left_join(species_master, by = "species") %>% 
                  filter(classification == "Ground") %>% 
                  group_by(survey, system, waterway, site, transect, metres) %>% 
-                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup) %>%
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup,
+               brief = "Expect ground layer hits <= 40.") %>%
   col_vals_gte(vars(ground_layer_hits), 36, na_pass = TRUE,
                preconditions = ~ . %>% 
                  left_join(species_master, by = "species") %>% 
                  filter(classification == "Ground") %>% 
                  group_by(survey, system, waterway, site, transect, metres) %>% 
-                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup) %>%
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup,
+               brief = "Expect ground layer hits >= 36.") %>%
   interrogate()
 
 agent_hits %>% get_agent_report() %>% gt::as_raw_html()
