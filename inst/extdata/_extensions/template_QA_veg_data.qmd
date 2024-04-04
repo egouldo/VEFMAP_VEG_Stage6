@@ -145,7 +145,11 @@ agent_data_structure <-
                                  "height", 
                                  "date", 
                                  "survey")) %>% 
-  pointblank::col_is_numeric(vars(metres, hits))
+  pointblank::col_is_numeric(vars(metres, hits)) %>% 
+  pointblank::interrogate(extract_failed = TRUE)
+
+agent_data_structure %>% get_agent_report() %>% gt::as_raw_html()
+```
 
 agent_species <- 
   create_agent(veg_data, 
