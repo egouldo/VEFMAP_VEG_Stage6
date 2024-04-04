@@ -11,6 +11,8 @@ params:
   input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
 self_contained: true
 toc: true
+execute:
+  freeze: auto # don't re-run the code chunks if source code not changed 
 ---
 
 
@@ -170,6 +172,7 @@ Now we check the entries in the species column of the `veg_data`. We check that:
 #| label: check_species_data
 #| html-table-processing: none
 #| code-fold: true
+#| cache: TRUE
 
 # Species Data Checks
 
@@ -324,8 +327,21 @@ agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 ## Identify Data Structure problems
 
 ```{r}
+#| label: check-agent-report-passed
+#| code-fold: true
+
+if(agent_data_structure %>% pointblank::all_passed() == FALSE){
+  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations."))
+} else {
+  gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
+}
+```
+
+
+```{r}
 #| label: get-data-extracts
 #| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
 data_extracts <- agent_data_structure %>% 
 get_agent_report(display_table = FALSE) %>% 
 left_join(agent_data_structure  %>% 
@@ -336,7 +352,7 @@ drop_na(data_extract)
 ```
 
 - [x] missing columns, number and which ones
-- [ ] incorrect values for system, waterway, site
+- [x] incorrect values for system, waterway, site
 - [ ] missing values for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
 - [ ] incorrect column types for system, waterway, site, transect, species, origin, height, date, survey, metres, hits
 
@@ -344,11 +360,14 @@ drop_na(data_extract)
 #| label: calc-missing-cols
 #| code-fold: true
 #| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
 missing_cols <- 
   agent_data_structure %>% 
   get_agent_report(display_table = FALSE) %>% 
   filter(type == "col_exists") %>% 
   filter(n_pass == 0)
+
 gluedown::md_paragraph(glue::glue("There are {nrow(missing_cols)} missing columns in the `veg_data` dataset."))
 ```
 
@@ -356,7 +375,8 @@ gluedown::md_paragraph(glue::glue("There are {nrow(missing_cols)} missing column
 #| label: report-missing-cols
 #| echo: false
 #| results: asis
-#| eval: !expr nrow(missing_cols) > 0
+#| eval: !expr exists("missing_cols", inherits = FALSE) && nrow(missing_cols) > 0
+
 gluedown::md_paragraph("The missing columns are:")
 gluedown::md_bullet(missing_cols$columns)
 ```
@@ -365,31 +385,41 @@ gluedown::md_bullet(missing_cols$columns)
 #| label: calc-incorrect-vals
 #| code-fold: true
 #| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
 incorrect_vals <- 
   agent_data_structure %>% 
   get_agent_report(display_table = FALSE) %>% 
-  filter(type == "col_vals_in_set") %>% 
-  filter(n_pass == 0)
+  filter(type == "col_vals_in_set",
+         n_pass == 0)
 
 n_cols_incorrect_vals <- nrow(incorrect_vals)
-
-gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
-    get_agent_report(display_table = FALSE) %>% 
-    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ")}.'))
 ```
 
 ```{r}
 #| label: report-incorrect-vals
 #| echo: false
 #| results: asis
-#| eval: !expr n_cols_incorrect_vals > 0
+#| eval: !expr exists("n_cols_incorrect_vals", inherits = FALSE) && n_cols_incorrect_vals > 0
+
+gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
+    get_agent_report(display_table = FALSE) %>% 
+    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ")}.'))
 
 gluedown::md_paragraph("The columns with incorrect values are:")
 gluedown::md_bullet(incorrect_vals$columns)
-#TODO show incorrect values for columns that have incorrect values
+
+cols_val_set <- agent_data_structure %>% 
+get_agent_report(display_table = FALSE)  %>% 
+filter(type == "col_vals_in_set", n_pass == 0) %>% 
+distinct(type, columns, values) %>% 
+drop_na(values) 
+
+gluedown::md_bullet(
+glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ', 
+'{pluck(cols_val_set, "values")}.'))
 ```
 
-Should we ID which rows are suspect?
 
 ```{r}
 
