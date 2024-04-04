@@ -1,0 +1,93 @@
+---
+title: '`r paste("QA Report:", basename(params$input_file))`'
+description: |
+  This is an automated report containing the results of QA checks on  `veg_data`.
+format: gfm
+author:
+  - Auto-generated Report
+  - Template by Elliot Gould (@egouldo),
+date: today
+params:
+  input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
+---
+
+```{r}
+#| label: load-libs
+#| echo: false
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(pointblank))
+suppressPackageStartupMessages(library(janitor))
+suppressPackageStartupMessages(library(taxize))
+suppressPackageStartupMessages(library(fuzzyjoin))
+suppressPackageStartupMessages(library(here))
+suppressPackageStartupMessages(library(sessioninfo))
+```
+
+```{r}
+#| label: load-data
+# Load species data
+species_master <- read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv")) %>% 
+  janitor::clean_names()
+
+# Add new ground spp. data for correct ground layer hits sum
+ground_spp <- 
+  tribble(
+    ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
+    "Log", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree root", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree base", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (dead)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (stump)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Rock", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Sand", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground"
+  )
+
+species_master <- 
+  species_master %>% 
+  bind_rows(ground_spp) %>% 
+  dplyr::filter(
+    !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) %>% 
+  distinct()
+
+# Load veg_data
+veg_data <- read_csv(here::here(params$input_file),
+                     col_types =  readr::cols(
+                       .default = readr::col_character(),
+                       metres = readr::col_double(),
+                       hits = readr::col_double()
+                     )) %>%
+  janitor::clean_names()
+
+expected_raw_colnames <- c( #lowercase expected column names
+  "system",
+  "waterway", # `waterway` is recoded in the data wrangling process to `waterbody`, but has been entered to date as `waterway` in raw data
+  "site",
+  "transect",
+  "sub_trans",
+  "metres",
+  "species",
+  "origin",
+  "hits",
+  "height",
+  "date",
+  "survey"
+)
+
+VEFMAPS6_Site_Metadata <- read_csv(here::here("data/raw_data/site_data/VEFMAPS6_Site_Metadata.csv")) %>% 
+  janitor::clean_names()
+
+```
+
+
+
+# Session Information
+
+<details>
+<summary>Session Information</summary>
+```{r}
+#| label: session-info
+sessioninfo::session_info(include_base = FALSE)
+```
+</details>
