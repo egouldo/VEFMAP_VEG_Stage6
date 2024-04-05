@@ -450,6 +450,91 @@ agent_species %>% get_agent_report() %>% gt::as_raw_html()
 ## Identify Species Data Problems
 
 ```{r}
+#| label: check-agent-species-report-passed
+#| code-fold: true
+#| results: asis
+
+if(agent_species %>% pointblank::all_passed() == FALSE){
+  gluedown::md_text(glue::glue("Some validations failed for {agent_species$label} validations.",
+                               " They are reported below."))
+} else {
+  gluedown::md_text(glue::glue("All validations passed for {agent_species$label} validations."))
+}
+```
+
+```{r}
+#| label: get-species-data-extracts
+#| code-fold: true
+#| eval: !expr agent_species %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+species_data_extracts <- agent_species %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  left_join(agent_species  %>% 
+              get_data_extracts() %>%
+              enframe(name = "i", value = "data_extract") %>% 
+              mutate(i = as.integer(i)), by = join_by(i)) %>% 
+  drop_na(data_extract)
+```
+
+
+
+1. Species names that contain "spp." in the `veg_data` dataset are listed below. These species names need to be updated to the correct species name.
+
+```{r}
+#| label: report-spp-species
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(has_spp) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| collapse: TRUE
+
+has_spp_vals <- agent_species %>% 
+get_agent_report(display_table = FALSE) %>%
+filter(type == "col_vals_expr", f_pass < 1)
+
+if(nrow(has_spp_vals) > 0){
+  gluedown::md_paragraph(glue('There are {has_spp_vals$units - has_spp_vals$n_pass} species ',
+  'entries containing "spp." in the `veg_data` dataset.',
+  ' These records are:'))
+}
+
+if(nrow(has_spp_vals) > 0){
+  species_data_extracts %>% 
+    inner_join(has_spp_vals %>% select(i),  by = join_by(i)) %>%
+    pull(data_extract) %>% flatten_df() %>% pluck("species", unique) %>% md_bullet()
+}
+```
+
+
+2. Species names that contain spelling mistakes are listed below. These species names need to be updated to the correct species name.
+
+```{r}
+#| label: report-spelling-fixes
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+if(nrow(spelling_fixes) > 0){
+  gluedown::md_paragraph(glue('There are {nrow(spelling_fixes)} species entries with spelling mistakes in the `veg_data` dataset.',
+  ' These records are:'))
+}
+
+if(nrow(spelling_fixes) > 0){
+  species_data_extracts %>% 
+    inner_join(USEDIFFOBJECTHERE %>% select(i),  by = join_by(i)) %>% # object not yet defined
+    pull(data_extract) %>% flatten_df() %>% pluck("species", unique) %>% md_bullet()
+}
+
+if(nrow(spelling_fixes) > 0){
+  gluedown::md_paragraph("The suggested replacements and their data in `species_master` are:")
+  knitr::kable(spelling_fixes, caption = "Suggested Species Replacements")
+}
+
+
+```
+
+
+```{r}
 #| label: report-species-issues
 
 
