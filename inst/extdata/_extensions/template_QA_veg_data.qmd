@@ -344,12 +344,12 @@ if(agent_data_structure %>% pointblank::all_passed() == FALSE){
 #| code-fold: true
 #| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
 data_extracts <- agent_data_structure %>% 
-get_agent_report(display_table = FALSE) %>% 
-left_join(agent_data_structure  %>% 
-get_data_extracts() %>%
-enframe(name = "i", value = "data_extract") %>% 
-mutate(i = as.integer(i)), by = join_by(i)) %>% 
-drop_na(data_extract)
+  get_agent_report(display_table = FALSE) %>% 
+  left_join(agent_data_structure  %>% 
+              get_data_extracts() %>%
+              enframe(name = "i", value = "data_extract") %>% 
+              mutate(i = as.integer(i)), by = join_by(i)) %>% 
+  drop_na(data_extract)
 ```
 
 - [x] missing columns, number and which ones
