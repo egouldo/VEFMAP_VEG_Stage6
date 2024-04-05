@@ -67,7 +67,8 @@ veg_data <- read_csv(here::here(params$input_file),
                      col_types =  readr::cols(
                        .default = readr::col_character(),
                        METRES = readr::col_double(),
-                       HITS = readr::col_double()
+                       HITS = readr::col_double(),
+                       DATE = readr::col_date(format = "%d/%m/%Y")
                      )) %>%
   janitor::clean_names()
 
@@ -94,11 +95,9 @@ VEFMAPS6_Site_Metadata <-
 ```
 
 
-# Execute Checks with Pointblank
+In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. After each `pointblank::` validation set is run, the results are reported in the following sections.
 
-In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. 
-
-## Check Data Structure & Format
+# Check Data Structure & Format
 
 Basic checks that required columns and their column types are present in the `veg_data` dataset.
 
@@ -148,16 +147,177 @@ agent_data_structure <-
                                  "species", 
                                  "origin", 
                                  "height", 
-                                 "date", 
                                  "survey")) %>% 
   pointblank::col_is_numeric(vars(metres, hits)) %>% 
+  pointblank::col_is_date(vars(date)) %>% 
   pointblank::interrogate()
 
 agent_data_structure %>% get_agent_report() %>% gt::as_raw_html()
 ```
 
 
-## Check Species Entries
+## Identify Data Structure problems
+
+```{r}
+#| label: check-agent-report-passed
+#| code-fold: true
+#| results: asis
+
+if(agent_data_structure %>% pointblank::all_passed() == FALSE){
+  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations.",
+                               " They are reported below."))
+} else {
+  gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
+}
+```
+
+```{r}
+#| label: get-data-extracts
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+data_extracts <- agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  left_join(agent_data_structure  %>% 
+              get_data_extracts() %>%
+              enframe(name = "i", value = "data_extract") %>% 
+              mutate(i = as.integer(i)), by = join_by(i)) %>% 
+  drop_na(data_extract)
+```
+
+```{r}
+#| label: report-missing-cols
+#| code-fold: true
+#| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+missing_cols <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_exists") %>% 
+  filter(n_pass == 0)
+
+if(nrow(missing_cols) > 0){
+  md_paragraph(
+    glue("There are {nrow(missing_cols)} missing columns in the `veg_data` dataset.",
+         " The missing columns are: ", 
+         '{missing_cols$columns %>% backtick() %>% glue_collapse(", ", last = " and ")}.')
+  )
+}
+```
+
+```{r}
+#| label: report-incorrect-vals
+#| code-fold: true
+#| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+incorrect_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_in_set",
+         f_pass < 1)
+
+n_cols_incorrect_vals <- nrow(incorrect_vals)
+
+gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
+    get_agent_report(display_table = FALSE) %>% 
+    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ", last = " and ")}.'))
+
+if(n_cols_incorrect_vals > 0){
+  gluedown::md_paragraph("The columns with incorrect values are:")
+  gluedown::md_bullet(incorrect_vals$columns)
+  
+  cols_val_set <- agent_data_structure %>% 
+    get_agent_report(display_table = FALSE)  %>% 
+    filter(type == "col_vals_in_set", f_pass < 1) %>% 
+    distinct(type, columns, values) %>% 
+    drop_na(values) 
+  
+  gluedown::md_bullet(
+    glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ', 
+               '{pluck(cols_val_set, "values")}.'))
+}
+```
+
+```{r}
+#| label: report-single-val-cols
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+single_val_cols <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "rows_distinct")
+
+if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
+  gluedown::md_paragraph("The following columns should have only a single unique value, but have the following values:",
+                         md_bullet(glue('{single_val_cols$columns}: ', 
+                                        '{map(single_val_cols$columns, 
+                                        ~ pluck(veg_data, .x, unique))}')
+                         ))
+}
+```
+
+```{r}
+#| label: report-missing-vals
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+missing_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_not_null", 
+         f_pass < 1)
+
+if(nrow(missing_vals) > 0){
+  md_paragraph(glue('The following columns have missing (`NA` or `NULL`) values:'),
+               md_bullet(glue('{missing_vals$columns}') %>% backtick()),
+               glue('Below are the observations in `veg_data` where the missing values occur:'))
+  
+}
+```
+
+```{r}
+#| label: report-missing-vals-extracts
+#| code-fold: true
+#| eval: !expr exists("missing_vals", inherits = FALSE) && nrow(missing_vals) > 0
+#| results: asis
+
+data_extracts %>% 
+  semi_join(missing_vals %>% select(i),
+            by = join_by(i)) %>%  
+  pull(data_extract,name = columns) %>%   
+  walk2(.x = ., .y = names(.), 
+       ~ knitr::kable(.x, caption = glue("**{.y}**")) %>% 
+         print()
+       )
+```
+
+```{r}
+#| label: report-incorrect-col-types
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+incorrect_col_types <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_is_character" | type == "col_is_numeric" | type == "col_is_date") %>% 
+  filter(n_pass == 0)
+
+md_text(glue("There are {nrow(incorrect_col_types)} columns with incorrect column types in the `veg_data` dataset."))
+
+if(nrow(incorrect_col_types) > 0){
+  md_text('The following columns have incorrect column types:')
+  md_bullet(glue('{incorrect_col_types$columns}') %>% backtick() )
+}
+```
+
+
+# Check Species Entries
 
 Now we check the entries in the species column of the `veg_data`. We check that:
 
@@ -288,7 +448,15 @@ agent_species <-
 agent_species %>% get_agent_report() %>% gt::as_raw_html()
 ```
 
-## Check Ground Layer Hits
+## Identify Species Data Problems
+
+```{r}
+#| label: report-species-issues
+
+
+```
+
+# Check Ground Layer Hits
 
 Check that the total number of hits recorded for the ground layer is between 36 and 40, inclusive. This check is performed for each survey, system, waterway, site, transect, and metres.
 
@@ -322,171 +490,9 @@ agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 ```
 
 
-# Identify Data Issues
-
-## Identify Data Structure problems
-
-```{r}
-#| label: check-agent-report-passed
-#| code-fold: true
-
-if(agent_data_structure %>% pointblank::all_passed() == FALSE){
-  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations.",
-                               " They are reported below."))
-} else {
-  gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
-}
-```
 
 
-```{r}
-#| label: get-data-extracts
-#| code-fold: true
-#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
-data_extracts <- agent_data_structure %>% 
-  get_agent_report(display_table = FALSE) %>% 
-  left_join(agent_data_structure  %>% 
-              get_data_extracts() %>%
-              enframe(name = "i", value = "data_extract") %>% 
-              mutate(i = as.integer(i)), by = join_by(i)) %>% 
-  drop_na(data_extract)
-```
-
-- [x] missing columns, number and which ones
-- [x] incorrect values for system, waterway, site unexpected values. 
-- [x] incorrect values for system, waterway: only a single value is expected 
-- [x] missing values (`NA`) for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
-- [ ] incorrect column types for system, waterway, site, transect, species, origin, height, date, survey, metres, hits
-
-```{r}
-#| label: calc-missing-cols
-#| code-fold: true
-#| results: asis
-#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
-
-missing_cols <- 
-  agent_data_structure %>% 
-  get_agent_report(display_table = FALSE) %>% 
-  filter(type == "col_exists") %>% 
-  filter(n_pass == 0)
-
-gluedown::md_paragraph(glue::glue("There are {nrow(missing_cols)} missing columns in the `veg_data` dataset."))
-```
-
-```{r}
-#| label: report-missing-cols
-#| echo: false
-#| results: asis
-#| eval: !expr exists("missing_cols", inherits = FALSE) && nrow(missing_cols) > 0
-
-gluedown::md_paragraph("The missing columns are:")
-gluedown::md_bullet(missing_cols$columns)
-```
-
-```{r}
-#| label: calc-incorrect-vals
-#| code-fold: true
-#| results: asis
-#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
-
-incorrect_vals <- 
-  agent_data_structure %>% 
-  get_agent_report(display_table = FALSE) %>% 
-  filter(type == "col_vals_in_set",
-         f_pass < 1)
-
-n_cols_incorrect_vals <- nrow(incorrect_vals)
-```
-
-```{r}
-#| label: report-incorrect-vals
-#| echo: false
-#| results: asis
-#| eval: !expr exists("n_cols_incorrect_vals", inherits = FALSE) && n_cols_incorrect_vals > 0
-
-gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
-    get_agent_report(display_table = FALSE) %>% 
-    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ")}.'))
-
-gluedown::md_paragraph("The columns with incorrect values are:")
-gluedown::md_bullet(incorrect_vals$columns)
-
-cols_val_set <- agent_data_structure %>% 
-  get_agent_report(display_table = FALSE)  %>% 
-  filter(type == "col_vals_in_set", f_pass < 1) %>% 
-  distinct(type, columns, values) %>% 
-  drop_na(values) 
-
-gluedown::md_bullet(
-glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ', 
-'{pluck(cols_val_set, "values")}.'))
-```
-
-```{r}
-#| label: calc-single-val-cols
-#| code-fold: true
-#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
-#| results: asis
-
-single_val_cols <- 
-  agent_data_structure %>% 
-  get_agent_report(display_table = FALSE) %>% 
-  filter(type == "rows_distinct")
-
-if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
-  gluedown::md_paragraph("The following columns should have only a single unique value, but have the following values:",
-                         md_bullet(glue('{single_val_cols$columns}: ', 
-                                        '{map(single_val_cols$columns, 
-                                        ~ pluck(veg_data, .x, unique))}')
-                         ))
-}
-```
-
-```{r}
-#| label: calc-missing-vals
-#| code-fold: true
-#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
-#| results: asis
-
-missing_vals <- 
-  agent_data_structure %>% 
-  get_agent_report(display_table = FALSE) %>% 
-  filter(type == "col_vals_not_null", 
-         f_pass < 1)
-
-if(nrow(missing_vals) > 0){
-  gluedown::md_paragraph('The following columns have missing (`NA` or `NULL`) values:',
-                       md_bullet(glue('{missing_vals$columns}')))
-  
-  semi_join(data_extracts, missing_vals) %>%  
-    pull(data_extract,name = columns) %>%   
-    walk2(.x = ., .y = names(.), 
-          ~ knitr::kable(.x, caption = .y) %>% 
-            print)
-  
-}
-```
-
-
-
-
-
-
-```{r}
-#| label: report-data-structure-issues
-
-
-```
-
-## Identify Species Data Problems
-
-```{r}
-#| label: report-species-issues
-
-
-```
-
-# Identify Ground Layer Hits Issues
+## Identify Ground Layer Hits Issues
 
 Below are sites where the sum of ground layer hits is over 40 (first table), and sites where the sum of the ground layer is under 36 (second table).
 
@@ -571,6 +577,11 @@ Below are potential hit reductions for the ground layer `species` with the great
 knitr::kable(suggested_hits_reductions, 
              caption = "**Suggested hits reductions to reduce total ground layer hits to 40.**")
 ```
+
+
+
+
+
 
 
 # Session Information
