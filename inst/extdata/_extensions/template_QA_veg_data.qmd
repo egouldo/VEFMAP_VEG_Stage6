@@ -391,7 +391,7 @@ incorrect_vals <-
   agent_data_structure %>% 
   get_agent_report(display_table = FALSE) %>% 
   filter(type == "col_vals_in_set",
-         n_pass == 0)
+         f_pass < 1)
 
 n_cols_incorrect_vals <- nrow(incorrect_vals)
 ```
@@ -410,10 +410,10 @@ gluedown::md_paragraph("The columns with incorrect values are:")
 gluedown::md_bullet(incorrect_vals$columns)
 
 cols_val_set <- agent_data_structure %>% 
-get_agent_report(display_table = FALSE)  %>% 
-filter(type == "col_vals_in_set", n_pass == 0) %>% 
-distinct(type, columns, values) %>% 
-drop_na(values) 
+  get_agent_report(display_table = FALSE)  %>% 
+  filter(type == "col_vals_in_set", f_pass < 1) %>% 
+  distinct(type, columns, values) %>% 
+  drop_na(values) 
 
 gluedown::md_bullet(
 glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ', 
