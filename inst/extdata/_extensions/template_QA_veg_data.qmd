@@ -355,7 +355,7 @@ data_extracts <- agent_data_structure %>%
 - [x] missing columns, number and which ones
 - [x] incorrect values for system, waterway, site unexpected values. 
 - [x] incorrect values for system, waterway: only a single value is expected 
-- [ ] missing values (`NA`) for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
+- [x] missing values (`NA`) for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
 - [ ] incorrect column types for system, waterway, site, transect, species, origin, height, date, survey, metres, hits
 
 ```{r}
@@ -451,8 +451,20 @@ if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
 missing_vals <- 
   agent_data_structure %>% 
   get_agent_report(display_table = FALSE) %>% 
-  filter(type == "col_vals_not_null",
-         n_pass == 0)
+  filter(type == "col_vals_not_null", 
+         f_pass < 1)
+
+if(nrow(missing_vals) > 0){
+  gluedown::md_paragraph('The following columns have missing (`NA` or `NULL`) values:',
+                       md_bullet(glue('{missing_vals$columns}')))
+  
+  semi_join(data_extracts, missing_vals) %>%  
+    pull(data_extract,name = columns) %>%   
+    walk2(.x = ., .y = names(.), 
+          ~ knitr::kable(.x, caption = .y) %>% 
+            print)
+  
+}
 ```
 
 
