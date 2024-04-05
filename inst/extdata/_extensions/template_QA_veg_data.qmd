@@ -426,6 +426,7 @@ glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ',
 #| label: calc-single-val-cols
 #| code-fold: true
 #| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
 
 single_val_cols <- 
   agent_data_structure %>% 
@@ -441,12 +442,11 @@ if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
 }
 ```
 
-MISSING (NA) VALS
-
 ```{r}
 #| label: calc-missing-vals
 #| code-fold: true
 #| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
 
 missing_vals <- 
   agent_data_structure %>% 
