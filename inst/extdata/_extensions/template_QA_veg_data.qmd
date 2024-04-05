@@ -444,7 +444,15 @@ if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
 MISSING (NA) VALS
 
 ```{r}
+#| label: calc-missing-vals
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
 
+missing_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_not_null",
+         n_pass == 0)
 ```
 
 
