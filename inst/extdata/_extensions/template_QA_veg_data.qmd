@@ -352,8 +352,9 @@ drop_na(data_extract)
 ```
 
 - [x] missing columns, number and which ones
-- [x] incorrect values for system, waterway, site
-- [ ] missing values for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
+- [x] incorrect values for system, waterway, site unexpected values. 
+- [x] incorrect values for system, waterway: only a single value is expected 
+- [ ] missing values (`NA`) for system, waterway, site, transect, metres, species, hits, height, date, survey, origin
 - [ ] incorrect column types for system, waterway, site, transect, species, origin, height, date, survey, metres, hits
 
 ```{r}
