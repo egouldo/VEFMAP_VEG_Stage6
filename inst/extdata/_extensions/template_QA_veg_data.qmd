@@ -176,7 +176,7 @@ if(agent_data_structure %>% pointblank::all_passed() == FALSE){
 #| code-fold: true
 #| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
 
-data_extracts <- agent_data_structure %>% 
+data_structure_extracts <- agent_data_structure %>% 
   get_agent_report(display_table = FALSE) %>% 
   left_join(agent_data_structure  %>% 
               get_data_extracts() %>%
@@ -286,7 +286,7 @@ if(nrow(missing_vals) > 0){
 #| eval: !expr exists("missing_vals", inherits = FALSE) && nrow(missing_vals) > 0
 #| results: asis
 
-data_extracts %>% 
+data_structure_extracts %>% 
   semi_join(missing_vals %>% select(i),
             by = join_by(i)) %>%  
   pull(data_extract,name = columns) %>%   
@@ -326,7 +326,6 @@ Now we check the entries in the species column of the `veg_data`. We check that:
 - That there are no spelling mistakes in the species names, checking against the World Flora Online Plant List 2023-12 using the `gnr_resolve` function from the `taxize` package;
 - That there are no species entries to be recoded in `veg_data` (i.e. have fuzzy-matches in `species_master` but no exact-matches);
 - That there are no species entries missing from `species_master` after having accounted for spelling fixes, recoding of entries in `veg_data`, and required species additions to `species_master`.
-
 
 ```{r}
 #| label: check_species_data
