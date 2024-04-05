@@ -331,7 +331,8 @@ agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 #| code-fold: true
 
 if(agent_data_structure %>% pointblank::all_passed() == FALSE){
-  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations."))
+  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations.",
+                               " They are reported below."))
 } else {
   gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
 }
