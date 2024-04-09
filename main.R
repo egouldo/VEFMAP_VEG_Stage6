@@ -1038,7 +1038,7 @@ RichPredictPeriodwpfgPlot2
 
 veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
 
-veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
+veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period) %>% print(n=90)
 
 veg_cover_arW <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
 
@@ -1055,7 +1055,6 @@ veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE,
 
 # now lets combine datasets
 veg_cover_ar_full <- dplyr::bind_rows(veg_cover_arC, veg_cover_arW, veg_cover_arM, veg_cover_arL, veg_cover_arY, veg_cover_arT, veg_cover_arG)
-
 
 # lets also extract richness data from raw datafiles for each site
 
@@ -1078,31 +1077,44 @@ veg_richness_G <- load_richness(system = "Glenelg", pilot = FALSE, recompile = T
 # now lets combine datasets
 veg_richness_full <- dplyr::bind_rows(veg_richness_C, veg_richness_W, veg_richness_M, veg_richness_L, veg_richness_Y, veg_richness_T, veg_richness_G)
   
+# collect information on the number of species at sites etc. within the raw dataset (not the ar dataset as this removes the first year)
 
-# collect information on the number of species at sites etc. within the dataset
+veg_cover_C <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = TRUE)
 
-veg_cover_ar_full_summary <- dplyr::bind_rows(veg_cover_arC, veg_cover_arW, veg_cover_arM, veg_cover_arL, veg_cover_arY, veg_cover_arT, veg_cover_arG)
+veg_cover_C %>% distinct(survey_year, period) %>% arrange(survey_year, period) %>% print(n=90)
+
+veg_cover_W <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = FALSE)
+
+veg_cover_M <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = TRUE)
+
+veg_cover_L <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = FALSE, s6s7 = FALSE)
+
+veg_cover_Y <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = FALSE, s6s7 = FALSE)
+
+veg_cover_T <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = FALSE,  s6s7 = FALSE)
+
+veg_cover_G <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = FALSE,  s6s7 = TRUE)
+
+veg_cover_full_summary <- dplyr::bind_rows(veg_cover_C, veg_cover_W, veg_cover_M, veg_cover_L, veg_cover_Y, veg_cover_T, veg_cover_G)
 
 # filter for rows hits greater than 0
-veg_cover_ar_full_summary_hits <- veg_cover_ar_full_summary %>% filter(hits > 0)
+veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
 
-veg_cover_ar_full_summary$unique_transect <- as.factor(paste(veg_cover_ar_full_summary$site,veg_cover_ar_full_summary$transect, sep = "_"))
+veg_cover_full_summary$unique_transect <- as.factor(paste(veg_cover_full_summary$site,veg_cover_full_summary$transect, sep = "_"))
 
-veg_cover_ar_full_summary %>% group_by(waterbody) %>% summarise(n=length(unique(site))) %>% print(n=80)# %>% summarise(ntot=sum((n)))
+veg_cover_full_summary %>% group_by(waterbody) %>% summarise(n=length(unique(site))) %>% print(n=80) #%>% summarise(ntot=sum((n)))
 
-veg_cover_ar_full_summary %>% group_by(waterbody) %>% distinct((survey_year)) %>% arrange(waterbody) %>% print(n=80)
+veg_cover_full_summary %>% group_by(waterbody) %>% distinct((survey_year)) %>% arrange(waterbody) %>% print(n=80)
 
-veg_cover_ar_full_summary %>% distinct((survey_year))  %>% print(n=80)
+veg_cover_full_summary %>% distinct((survey_year))  %>% print(n=80)
 
-veg_cover_ar_full_summary %>% group_by(waterbody, site) %>% summarise(n=length(unique(unique_transect))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) #%>% summarise(ntot2=sum((ntot)))
+veg_cover_full_summary %>% group_by(waterbody, site) %>% summarise(n=length(unique(unique_transect))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) #%>% summarise(ntot2=sum((ntot)))
 
-veg_cover_ar_full_summary %>% group_by(waterbody,survey_year, site) %>% summarise(n=length(unique(transect))) %>% print(n=80)
+veg_cover_full_summary %>% group_by(waterbody,survey_year) %>% summarise(n=length(unique(survey))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) %>% print(n=28) %>% summarise(ntot2=sum((ntot)))
 
-veg_cover_ar_full_summary %>% group_by(waterbody,survey_year) %>% summarise(n=length(unique(survey))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) %>% print(n=28) #%>% summarise(ntot2=sum((ntot)))
+veg_cover_full_summary_hits  %>% group_by(waterbody, rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) #%>% group_by(rec_group)%>% summarise(ntot=sum((n)))
 
-veg_cover_ar_full_summary_hits  %>% group_by(waterbody, rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) #%>% group_by(rec_group)%>% summarise(ntot=sum((n)))
-
-veg_cover_ar_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) 
+veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) 
 
 
 ## IGNORE for now, JY to follow up
@@ -1127,6 +1139,7 @@ veg_cover_ar_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(un
     npoint_tm1 = unique(npoint_tm1)
   )
 
+ 
 # sum richness across wpfg to get correct score for rec_group
   
   veg_richness_full_sum <- veg_richness_full |>
@@ -1216,6 +1229,7 @@ veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
     metrics_full,
     by = c("system", "waterbody", "site", "survey_year", "period")
   )
+
 veg_richness_full <- veg_richness_full |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
@@ -1342,6 +1356,10 @@ veg_cover_ar_full_sum %>%
   group_by(rec_group,  origin) %>%
   summarise(no_rows = length(hits)) %>% print(n=50) # a bunch of unknown origins here but lets leave in as a factor level for now
 
+veg_cover_ar_full_sum %>% filter(system == "Campaspe") %>% group_by(period, survey_year) %>%
+  distinct( period, survey_year) %>% arrange(period) %>% print(n=90)
+
+
 ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour =rec_group) ) + geom_point(position=position_dodge(.5)) + facet_grid(.~zone)
 ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour = rec_group) ) + geom_jitter(position=position_dodge(.5)) #+ facet_grid(wpfg~transect)
 ggplot(veg_cover_ar_full_sum, aes(x = days_above_springfresh, y = hits, group = rec_group, colour = rec_group) ) + geom_point(position=position_dodge(.5)) 
@@ -1362,9 +1380,6 @@ sum(veg_cover_ar_full_sum$hits %in% 0 ) / nrow(veg_cover_ar_full_sum) # 76% zero
 # modify the wpfg var to investigate the use of rec_group var in its place
 
 veg_cover_ar_full_sum$wpfg <- veg_cover_ar_full_sum$rec_group
-Plotdata_full$wpfg <- Plotdata_full$rec_group
-
-veg_cover_ar_full_sum %>% group_by(origin, wpfg) %>% distinct(origin, wpfg) %>% arrange(origin) %>% print(n=50)
 
 # cover ####
 # first we will attempt to fit the full model with all systems and sites included.
@@ -1430,7 +1445,7 @@ cover_ar_TMBmod_full_1_re <- cover_ar_TMBmod_full_1_re %>% filter(group_var == "
 
 cover_ar_TMBmod_full_1_re$group <- ordered(cover_ar_TMBmod_full_1_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
 
-ggplot(cover_ar_TMBmod_full_1_re , aes(group, value, colour = group)) +
+ggplot(cover_ar_TMBmod_full_1_re , aes(group, value)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower_2.5, ymax = upper_97.5), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
@@ -1441,6 +1456,29 @@ ggplot(cover_ar_TMBmod_full_1_re , aes(group, value, colour = group)) +
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
+# extract and plot vc components
+
+cover_ar_TMBmod_full_1_vc <- extract_vc(cover_ar_TMBmod_full_1) 
+
+cover_ar_TMBmod_full_1_vc$group <- ordered(cover_ar_TMBmod_full_1_vc$group, levels = c( "system", "site", "transect:site", "metres", "survey_year"))
+
+cover_ar_TMBmod_full_1_vc$group <- recode_factor(cover_ar_TMBmod_full_1_vc$group, system = "System", 
+                                                       site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+
+ggplot(cover_ar_TMBmod_full_1_vc , aes(group, sd)) +
+  geom_point(size = 2)+
+  geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  size= 1)+
+  #geom_sina(data= Plotdata_full, alpha = 0.1)+
+  # coord_cartesian(ylim = c(0, 17))+
+  labs(x = "Effect", y = "Standard deviation")+ theme_bw() +
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
+
 
 # forest plot of estimates
 
@@ -1531,11 +1569,17 @@ HydroPredictDaysabovespringFuncPlot_full
 
 HydroPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_1))
 
-ggplot(HydroPredictOrigin_full, aes(origin, fit/40*100, colour = origin)) +
+HydroPredictOrigin_full$origin <- ordered(HydroPredictOrigin_full$origin, levels = c( "native", "exotic"))
+
+HydroPredictOrigin_full$origin <- recode_factor(HydroPredictOrigin_full$origin, native = "Native", 
+                                                 exotic = "Exotic")
+
+
+ggplot(HydroPredictOrigin_full%>% filter(origin != "unknown"), aes(origin , fit/40*100)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
- # coord_cartesian(ylim = c(0, 17))+
+  coord_cartesian(ylim = c(0, 25))+
   labs(x = "Origin", y = "Predicted % cover")+ theme_bw() +
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
@@ -1618,7 +1662,7 @@ cover_ar_TMBmod_full_2_re <- cover_ar_TMBmod_full_2_re %>% filter(group_var == "
 
 cover_ar_TMBmod_full_2_re$group <- ordered(cover_ar_TMBmod_full_2_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
 
-ggplot(cover_ar_TMBmod_full_2_re %>% filter(group_var == "system"), aes(group, value, colour = group)) +
+ggplot(cover_ar_TMBmod_full_2_re %>% filter(group_var == "system"), aes(group, value)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower_2.5, ymax = upper_97.5), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
@@ -1628,7 +1672,29 @@ ggplot(cover_ar_TMBmod_full_2_re %>% filter(group_var == "system"), aes(group, v
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
+# extract and plot vc components
+
+cover_ar_TMBmod_full_2_vc <- extract_vc(cover_ar_TMBmod_full_2) 
+
+cover_ar_TMBmod_full_2_vc$group <- ordered(cover_ar_TMBmod_full_2_vc$group, levels = c( "system", "site", "transect:site", "metres", "survey_year"))
+
+cover_ar_TMBmod_full_2_vc$group <- recode_factor(cover_ar_TMBmod_full_2_vc$group, system = "System", 
+                                                 site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+
+ggplot(cover_ar_TMBmod_full_2_vc , aes(group, sd)) +
+  geom_point(size = 2)+
+  geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  size= 1)+
+  #geom_sina(data= Plotdata_full, alpha = 0.1)+
+  # coord_cartesian(ylim = c(0, 17))+
+  labs(x = "Effect", y = "Standard deviation")+ theme_bw() +
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
 
 
 # forrest plot of estiamtes
@@ -1665,7 +1731,7 @@ Cover_records$zone <- recode_factor(Cover_records$zone, above_springfresh = "Abo
                                        baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
 
 
-   ggplot(EventsPredictFuncPeriodZone_full, aes(period, hits/40*100, colour = wpfg)) +
+   ggplot(EventsPredictFuncPeriodZone_full, aes(period, hits/40*100)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
   coord_cartesian(ylim = c(0, 65))+
@@ -1678,14 +1744,20 @@ Cover_records$zone <- recode_factor(Cover_records$zone, above_springfresh = "Abo
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='Functional group') 
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20), axis.text=element_text(size=12)) +labs(color='Functional group') # 1600 x 800
 
   
 # effect of origin 
   
 EventsPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_2))
    
-ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100, colour = origin)) +
+EventsPredictOrigin_full$origin <- ordered(EventsPredictOrigin_full$origin, levels = c( "native", "exotic"))
+
+EventsPredictOrigin_full$origin <- recode_factor(EventsPredictOrigin_full$origin, native = "Native", 
+                                                exotic = "Exotic")
+
+
+ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100)) +
  geom_point(size = 2)+
  geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
  coord_cartesian(ylim = c(0, 20))+
@@ -1699,8 +1771,11 @@ ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100, colour = origin)) +
 # effect of grazing 
    
 EventsPredictgrazing_full<- as.data.frame(Effect(c('grazing'),cover_ar_TMBmod_full_2))
-   
-ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100, colour = grazing)) +
+
+EventsPredictgrazing_full$grazing <- recode_factor(EventsPredictgrazing_full$grazing, N = "No", 
+                                                 Y = "Yes")
+
+ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
    coord_cartesian(ylim = c(0, 20))+
@@ -1709,8 +1784,10 @@ ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100, colour = grazing)) +
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-   axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='Grazing') 
+   axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='Grazing') 
    
+
+
 # richness ####
 # now lets model vegetation richness
 
@@ -1808,7 +1885,7 @@ richness_ar_TMBmod_full_1_re <- richness_ar_TMBmod_full_1_re %>% filter(group_va
 
 richness_ar_TMBmod_full_1_re$group <- ordered(richness_ar_TMBmod_full_1_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
 
-ggplot(richness_ar_TMBmod_full_1_re %>% filter(group_var == "system"), aes(group, value, colour = group)) +
+ggplot(richness_ar_TMBmod_full_1_re %>% filter(group_var == "system"), aes(group, value)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower_2.5, ymax = upper_97.5), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
@@ -1818,7 +1895,29 @@ ggplot(richness_ar_TMBmod_full_1_re %>% filter(group_var == "system"), aes(group
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
+# extract and plot vc components
+
+richness_ar_TMBmod_full_1_vc <- extract_vc(richness_ar_TMBmod_full_1) 
+
+richness_ar_TMBmod_full_1_vc$group <- ordered(richness_ar_TMBmod_full_1_vc$group, levels = c( "system", "site", "transect:site", "metres", "survey_year"))
+
+richness_ar_TMBmod_full_1_vc$group <- recode_factor(richness_ar_TMBmod_full_1_vc$group, system = "System", 
+                                                 site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+
+ggplot(richness_ar_TMBmod_full_1_vc , aes(group, sd)) +
+  geom_point(size = 2)+
+  geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  size= 1)+
+  #geom_sina(data= Plotdata_full, alpha = 0.1)+
+  # coord_cartesian(ylim = c(0, 17))+
+  labs(x = "Effect", y = "Standard deviation")+ theme_bw() +
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
 
 # forrest plot of estiamtes
    
@@ -1899,7 +1998,7 @@ Richness_records$zone <- recode_factor(Richness_records$zone, above_springfresh 
                                                      baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
 
 
-ggplot(RichPredictFuncPeriodZone_full, aes(period, richness, colour = wpfg)) +
+ggplot(RichPredictFuncPeriodZone_full, aes(period, richness)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1,  size= 1)+
   #geom_sina(data= Plotdata_full, alpha = 0.1)+
@@ -1917,5 +2016,5 @@ ggplot(RichPredictFuncPeriodZone_full, aes(period, richness, colour = wpfg)) +
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='Functional group') +guides(size=FALSE)
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20), axis.text=element_text(size=12)) +labs(color='Functional group') +guides(size=FALSE) # 1600 x 800
 
