@@ -1647,8 +1647,8 @@ ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100)) +
    
 EventsPredictgrazing_full<- as.data.frame(Effect(c('grazing'),cover_ar_TMBmod_full_2))
 
-EventsPredictgrazing_full$grazing <- recode_factor(EventsPredictgrazing_full$grazing, N = "No", 
-                                                 Y = "Yes")
+EventsPredictgrazing_full$grazing <- recode_factor(EventsPredictgrazing_full$grazing, N = "No",   Y = "Yes")
+
 ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
