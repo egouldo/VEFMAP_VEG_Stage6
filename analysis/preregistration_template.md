@@ -1,5 +1,6 @@
 Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
+
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 29 February, 2024
 
@@ -1915,19 +1916,6 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 
 ------------------------------------------------------------------------
 
-**`📝` Preregistration Item**
-
-> This section pertains to any data calibration, validation or testing
-> schemes that will be implemented. For example, the model may be tested
-> on data independent of those used to parameterise the model (external
-> validation), or the model may be cross-validated on random sub-samples
-> of the data used to parameterise the model (internal cross-validation)
-> (Yates et al. 2018; Barnard et al. 2019). For some types of models,
-> hyper-parameters are estimated from data, and may be tuned on further
-> independent holdouts of the training data, (“validation data”).
-
-------------------------------------------------------------------------
-
 ### 4.1.1 Describe Calibration / Validation Data
 
 ------------------------------------------------------------------------
@@ -1960,13 +1948,14 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 >   model validation data, will independent datasets be known or
 >   accessible to any modeller or analyst?
 
+------------------------------------------------------------------------
+
 Due to the complexity of the analysis, and the focus on inference, no
 data partitioning / testing on external data will be used. However, we
 will use a subset of the data for exploratory pilot analysis that
 informs the final model specifications (Campaspe catchment only, section
 2.4.3).
 
-------------------------------------------------------------------------
 
 ## 4.2 Implementation verification
 
