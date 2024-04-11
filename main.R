@@ -79,12 +79,25 @@ unique(veg_richness$period)
 unique(veg_richness$origin)
 #[1] "exotic"  "native"  "unknown"
 
-## IGNORE for now, JY to follow up
+## IGNORE for now, JY to follow up - see also issue #53 on GitHub `gh issue view 53 -w`
 # TODO: check missing species
-# veg |> 
-#   distinct(wpfg, species) |> 
-#   arrange(wpfg, species) |>
-#   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
+
+veg_cover_ar %>% 
+  pointblank::col_vals_in_set(columns = wpfg, 
+                              set = .wpfg_list, 
+                              actions = 
+                                pointblank::action_levels(
+                                  warn_at = 1,
+                                  fns = list(warn = ~ 
+                                               cli_warn("Some species with no `wpfg` in `.wpfg_list`"))))
+
+wpfg_spp_missing <- 
+  veg_cover_ar |>
+  distinct(wpfg, species) |>
+  mutate(include = ifelse(wpfg %in% .wpfg_list, TRUE, FALSE)) %>% 
+  arrange(wpfg, species) |>
+  filter(is.na(wpfg) | include == FALSE) # species with no wpfg in .wpfg_list or NA
+
 
 # TODO: sum cover over all species within each wpfg
 veg_cover_ar_sum <- veg_cover_ar |>
