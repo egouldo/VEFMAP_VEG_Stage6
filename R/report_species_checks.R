@@ -8,6 +8,9 @@
 # - [x] 4. Consistent species names (I think the spell check and spp. check should cover this)
 # - [ ] 5. Check existing comments
 # - [ ] 6. Update Monocots
+# - [ ] 7. Check NAs in HITS
+# - [ ] 8. Check Ground Layer Hits
+# - [ ] 9. 
 
 # Load libraries
 
@@ -17,6 +20,7 @@ library(stringr)
 library(janitor)
 library(lubridate)
 library(taxize)
+library(fuzzyjoin)
 
 # Load data
 
@@ -74,8 +78,9 @@ suggested_spp_replacements <-
   mutate(spp_genus = str_remove(species, " spp.")) %>% 
   left_join(species_master, 
             by = c("spp_genus" = "genus"), 
-            suffix = c("_check", "_replacement")) %>% 
-  select(-spp_genus)
+            suffix = c("_check", "_replacement"), 
+            relationship = "many-to-many") %>% # allows multiple species to be suggested for a single hs_spp & duplicate species across subtransects
+  select(-spp_genus) #TODO keep dc_comms column for context?
 
 # 2. Species names spelled correctly
 
@@ -88,37 +93,47 @@ taxa_check_result <-
   veg_data %>% 
   anti_join(species_master) %>% 
   anti_join(., {has_spp %>% distinct(species)}) %>% #rm species identified as spp.
-  pull(species) %>%
+  pluck("species", unique) %>% #unmatched species
   gnr_resolve(data_source_ids = db_datasource$id, with_canonical_ranks = TRUE) %>% 
   mutate(matched = user_supplied_name == matched_name2,
          suggested_replacement = ifelse(matched == FALSE, matched_name2, NA)) %>% 
   select(-matched_name2) %>% 
   rename(species = user_supplied_name)
-  
+
 # Check that suggested replacements are in species_master
 # If not, suggest in report that species_master should be updated
 
 # If so, replace the species name in the veg_data with the suggested replacement
-taxa_check_result %>% 
-  drop_na(suggested_replacement) %>%
+spelling_fixes <-
+  taxa_check_result %>% 
+  filter(matched == FALSE) %>% #don't drop NA just in case no suggested replacements
   left_join(., species_master, by = c("suggested_replacement" = "species"))
 
-# if nrow not 0, then replace species name in veg_data with suggested replacement
+# if not in species_master, suggest that species_master should be updated
+species_to_add <- taxa_check_result %>% filter(matched == TRUE) 
 
-#TODO insert code... when to run in process? After report??
-#TODO generate report of auto-fixed species names, these should be flagged and checked by user,
-# With opportunity to revert to original name if necessary (this would require updating species master) if reversion
-# required, so that the check passes and the species name is not flagged again in the future.
+# species to recode in veg_data
+species_to_recode <- 
+  species_master %>% 
+  filter(str_detect(species, paste(species_to_add$species, collapse = "|"))) %>% 
+  fuzzy_left_join(species_to_add, match_fun = str_detect) %>% 
+  select(-submitted_name, -suggested_replacement, -score, -matched, -data_source_title) %>% 
+  rename(species_master = species.x,  species_veg_data = species.y)
+
+#rm species_to_recode from species_to_add, recompute what spp missing from master_species
+species_to_add <- species_to_add %>% anti_join(species_to_recode, by = c("species" = "species_veg_data"))
 
 # 3. After fixing spelling, check species list against master species list, report missing entries
 
 spp_not_in_master <- 
   veg_data %>% 
+  anti_join(spelling_fixes) %>% # rm misspelt spp. 
+  anti_join(., {suggested_spp_replacements %>% distinct(species_check, species_replacement)}, by = c("species" = "species_check")) %>% #rm species identified as spp.
+  anti_join(species_to_recode, by = c("species" = "species_veg_data")) %>% #rm species marked as needing to be recoded
+  anti_join(species_to_add) %>% #rm species to add to master list
   anti_join(species_master) %>% 
-  anti_join(., {has_spp %>% distinct(species)}) %>% #rm species identified as spp.
   distinct(species, dc_comms) #rm duplicates but keep dc_comms for context
 #TODO keep other columns for some context? Could have two different df's one as short list, the other with all context data.
-#TODO mark as flagged for spelling fix, or for user to check and update species master
 
 # 5. Check Comments
 
@@ -144,21 +159,6 @@ NA_hits <-
   veg_data %>% filter(is.na(hits))
 
 # 8. Check Ground Layer Hits
-
-# Check that all ground layer species are classified as "Ground" in veg_data
-#TODO make sure that this is written as test!
-
-# If not, update the classification in the veg_data using ground_spp
-
-
-
-#TODO suspect TREEs are being removed, but they should probably be kept, and added to ground layer...
-
-
-
-#TODO ADD CHECK TO SEE WHICH SPECIES ARE BEING REMOVED because have no classification...., AND ADD TO GROUND LAYER!!
-# WRITE TEST to make sure that ground layer spp are coded appropriately!
-
 
 # Ground layer: reduce any that are over 40 (For the sites where sum of ground layer >40, reduce the number of hits of the layer with the most hits)
 
@@ -213,11 +213,3 @@ ground_layer_hits_under_36 <-
 
 #TODO check data book to see where error is
 #  Ground layer: fix those under 36 (check data book to see where error is)
-
-
-
-# ----------------------- Generate Report -----------------------
-
-# Generate report with results of the checks
-
-#TODO generate report with results of the checks
