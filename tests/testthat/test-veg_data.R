@@ -164,19 +164,21 @@ test_that("veg_data hits are between 36 and 40, inclusive", {
 })
 
 
-# ---------- Test that veg_data height are OK ----------
+
+
+#TODO  ---------- Test that veg_data height are OK ----------
 
 test_that("veg_data height are positive integers with no missing values", {
   # Check that the `height` column has no missing values
-  expect_col_no_na(veg_data, vars(height))
+  expect_col_vals_not_null(veg_data, vars(height))
   
   # Check that the `height` column has only numeric values
-  expect_col_type(veg_data, vars(height), "numeric")
+  expect_col_is_numeric(veg_data, vars(height))
   
   # Check that the `height` column has only positive values
-  expect_col_vals_gt(veg_data, vars(height), 0)
+  expect_col_vals_gt(object = veg_data, columns =  vars(height), value = 0, na_pass = TRUE) #ignore NA, because we have already checked for NA
   
-  # Check that the `height` column has only integer values
-  expect_col_vals_eq(veg_data, vars(height), as.integer(height))
+  # Check that the `height` column has only integer values (note, not the same as checking type of column)
+  expect_col_vals_expr(object = veg_data, expr = expr(DescTools::IsWhole(height)))
   
 })
