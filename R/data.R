@@ -32,6 +32,7 @@
   "litter" = "Litter",
   "tree" = "Tree",
   "Moss" = "Moss/Lichen",
+  "moss" = "Moss/Lichen",
   "Hordeum murinum" = "Hordeum leporinum",
   "Alternanthera denticulata s.s." = "Alternanthera denticulata",
   "Eucalyptus camaldulensis var. camaldulensis" = "Eucalyptus camaldulensis subsp. camaldulensis",
