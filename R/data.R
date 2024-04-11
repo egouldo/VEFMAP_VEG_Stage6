@@ -429,7 +429,8 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
 # function to calculate some flow metrics based on flow data and baseflow and
 #   spring fresh thresholds
 calculate_metrics <- function(x, thresholds) {
-  
+  rlang::check_required(x)
+  rlang::check_required(thresholds)
   # calculate specific thresholds for each site
   vals <- thresholds |> 
     group_by(system, waterbody, site) |>
