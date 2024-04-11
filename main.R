@@ -47,6 +47,7 @@ library(mixedup)
 library(brms)
 library(rstanarm)
 library(assertthat)
+library(purrr)
 
 
 # load helper functions
@@ -1035,74 +1036,60 @@ RichPredictPeriodwpfgPlot2
 # )
 
 
-# full analysis all sites data loading ####
+#  ----------- full analysis: all sites  --------
+
+## ----------- Load Data --------
+
 # now lets move onto the full analysis
 # first we will attempt to fit a model with all sites included. 
 # we will take the same approach to fitting as we did in the pilot analysis
 
-# first lets extract cover data from raw data files for each site
+### ----------- Extract cover data from raw data files for each site ----------
 
-veg_cover_arC <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+veg_cover_ar_full <- map2(.x = .system_list, 
+                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                            set_names(.system_list),
+                          ~ load_cover(system = .x, 
+                                       pilot = FALSE, 
+                                       recompile = TRUE, 
+                                       ar = TRUE, 
+                                       s6s7 = .y)) %>% 
+  list_rbind(names_to = "system")
 
-veg_cover_arC %>% distinct(site, survey_year, period) %>% arrange(survey_year, period) %>% print(n=90)
+# veg_cover_ar_full %>% filter(system == "Campaspe") %>% distinct(site, survey_year, period) %>% arrange(survey_year, period) %>% print(n=90)
 
-veg_cover_arW <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
 
-veg_cover_arM <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
+### ----------- Extract richness data from raw data files for each site --------
 
-veg_cover_arL <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
+veg_richness_full <- map2(.x = .system_list, 
+                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                            set_names(.system_list),
+                          ~ load_richness(system = .x, 
+                                          pilot = FALSE, 
+                                          recompile = TRUE, #TODO Check if we need to recompile? seems unnecessary if recompiling full dataset in a couple of steps
+                                          s6s7 = .y)) %>% 
+  list_rbind(names_to = "system")
 
-veg_cover_arY <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arT <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = FALSE)
-
-veg_cover_arG <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = TRUE, s6s7 = TRUE)
-
-# now lets combine datasets
-veg_cover_ar_full <- dplyr::bind_rows(veg_cover_arC, veg_cover_arW, veg_cover_arM, veg_cover_arL, veg_cover_arY, veg_cover_arT, veg_cover_arG)
-
-# lets also extract richness data from raw data files for each site
-
-veg_richness_C <- load_richness(system = "Campaspe", pilot = FALSE, recompile = TRUE, s6s7 = TRUE)
-
-veg_richness_C %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
-
-veg_richness_W <- load_richness(system = "Wimmera", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
-
-veg_richness_M <- load_richness(system = "Moorabool", pilot = FALSE, recompile = TRUE,s6s7 = TRUE)
-
-veg_richness_L <- load_richness(system = "Loddon", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
-
-veg_richness_Y <- load_richness(system = "Yarra", pilot = FALSE, recompile = TRUE,s6s7 = FALSE)
-
-veg_richness_T <- load_richness(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, s6s7 = FALSE)
-
-veg_richness_G <- load_richness(system = "Glenelg", pilot = FALSE, recompile = TRUE, s6s7 = TRUE)
+# Check Campaspe
+# veg_richness_full %>% filter(system == "Campaspe") %>% distinct(site, survey_year, period) %>% arrange(survey_year, period)
 
 # now lets combine datasets
-veg_richness_full <- dplyr::bind_rows(veg_richness_C, veg_richness_W, veg_richness_M, veg_richness_L, veg_richness_Y, veg_richness_T, veg_richness_G)
   
 # collect information on the number of species at sites etc. within the raw dataset (not the ar dataset as this removes the first year)
 
-veg_cover_C <- load_cover(system = "Campaspe", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = TRUE)
+veg_cover_full <- map2(.x = .system_list, 
+                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                            set_names(.system_list),
+                          ~ load_cover(system = .x, 
+                                       pilot = FALSE, 
+                                       recompile = TRUE, 
+                                       ar = FALSE, 
+                                       s6s7 = .y)) %>% 
+  list_rbind(names_to = "system") %>% 
+  unite("unique_transect", site, transect, remove = FALSE)
 
-veg_cover_C %>% distinct(survey_year, period) %>% arrange(survey_year, period) %>% print(n=90)
 
-veg_cover_W <- load_cover(system = "Wimmera", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = FALSE)
 
-veg_cover_M <- load_cover(system = "Moorabool", pilot = FALSE, recompile = TRUE,  ar = FALSE, s6s7 = TRUE)
-
-veg_cover_L <- load_cover(system = "Loddon", pilot = FALSE, recompile = TRUE, ar = FALSE, s6s7 = FALSE)
-
-veg_cover_Y <- load_cover(system = "Yarra", pilot = FALSE, recompile = TRUE, ar = FALSE, s6s7 = FALSE)
-
-veg_cover_T <- load_cover(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE, ar = FALSE,  s6s7 = FALSE)
-
-veg_cover_G <- load_cover(system = "Glenelg", pilot = FALSE, recompile = TRUE, ar = FALSE,  s6s7 = TRUE)
-
-veg_cover_full_summary <- dplyr::bind_rows(veg_cover_C, veg_cover_W, veg_cover_M, veg_cover_L, veg_cover_Y, veg_cover_T, veg_cover_G)
-
-# calculate some summary stats
 # filter for rows hits greater than 0
 veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
 
