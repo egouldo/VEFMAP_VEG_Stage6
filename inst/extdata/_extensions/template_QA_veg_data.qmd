@@ -8,7 +8,7 @@ author:
   - Template by Elliot Gould (@egouldo),
 date: today
 params:
-  input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
+  input_file: "data/raw_data/veg_data/VEFMAPS6_Campaspe_2017_2018_2019_2020_Point.csv"
 self_contained: true
 toc: true
 execute:
@@ -34,6 +34,8 @@ suppressPackageStartupMessages(library(knitr))
 ```{r}
 #| label: load-data
 #| code-fold: true 
+#| warning: false
+#| message: false
 # Load species data
 species_master <- 
   read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv"),
@@ -91,9 +93,7 @@ VEFMAPS6_Site_Metadata <-
   read_csv(here::here("data/raw_data/site_data/VEFMAPS6_Site_Metadata.csv"),
            show_col_types = FALSE) %>% 
   janitor::clean_names()
-
 ```
-
 
 In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. After each `pointblank::` validation set is run, the results are reported in the following sections.
 
@@ -168,6 +168,31 @@ if(agent_data_structure %>% pointblank::all_passed() == FALSE){
                                " They are reported below."))
 } else {
   gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
+}
+```
+
+```{r}
+#| label: readr-data-type-problems
+#| code-fold: true
+#| results: asis
+#| eval: !expr "!is.null(veg_data) && nrow(problems(veg_data)) > 0"
+
+if(nrow(problems(veg_data)) > 0){
+  gluedown::md_paragraph(glue("There were some data-type issues when reading in the `veg_data` dataset with `readr::`.",
+                         "The issues are reported below."))
+}
+```
+
+```{r}
+#| label: readr-data-type-problems-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr "!is.null(veg_data) && nrow(problems(veg_data)) > 0"
+
+if(nrow(problems(veg_data)) > 0){
+  problems(veg_data) %>% 
+    select(-file) %>% 
+    knitr::kable(caption = "**Data Type Issues in `veg_data`**")
 }
 ```
 
@@ -500,13 +525,16 @@ if(nrow(has_spp_vals) > 0){
 
 if(nrow(has_spp_vals) > 0){
   species_data_extracts %>% 
-    inner_join(has_spp_vals %>% select(i),  by = join_by(i)) %>%
-    pull(data_extract) %>% flatten_df() %>% pluck("species", unique) %>% md_bullet()
+    inner_join(has_spp_vals %>% 
+                 select(i),  
+               by = join_by(i)) %>%
+    pull(data_extract) %>% 
+    flatten_df() %>% 
+    pluck("species", unique) %>% 
+    md_bullet()
 }
 ```
 
-
-2. Species names that contain spelling mistakes are listed below. These species names need to be updated to the correct species name.
 
 ```{r}
 #| label: report-spelling-fixes
@@ -516,29 +544,70 @@ if(nrow(has_spp_vals) > 0){
 
 if(nrow(spelling_fixes) > 0){
   gluedown::md_paragraph(glue('There are {nrow(spelling_fixes)} species entries with spelling mistakes in the `veg_data` dataset.',
-  ' These records are:'))
+  ' The suggested replacements and their corresponding data in `species_master` are listed below in table format.'))
 }
+```
 
+```{r}
+#| label: report-spelling-fixes-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+# Species needing speling fixes in `veg_data`
 if(nrow(spelling_fixes) > 0){
-  species_data_extracts %>% 
-    inner_join(USEDIFFOBJECTHERE %>% select(i),  by = join_by(i)) %>% # object not yet defined
-    pull(data_extract) %>% flatten_df() %>% pluck("species", unique) %>% md_bullet()
+  knitr::kable(spelling_fixes, 
+               caption = "Suggested Species Replacements")
 }
-
-if(nrow(spelling_fixes) > 0){
-  gluedown::md_paragraph("The suggested replacements and their data in `species_master` are:")
-  knitr::kable(spelling_fixes, caption = "Suggested Species Replacements")
-}
-
-
 ```
 
 
 ```{r}
-#| label: report-species-issues
+#| label: report-spp-to-recode
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
 
+gluedown::md_paragraph('The following species need to be recoded in the `veg_data` dataset:')
 
 ```
+
+```{r}
+#| label: report-spp-to-recode-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+knitr::kable(species_to_recode, 
+               caption = "Species in `veg_data`, but needing to be recoded.")
+```
+
+
+```{r}
+#| label: report-spp-to-add
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+# # Recalculate `species_to_add` after removing `species_to_recode`
+# species_to_add <- species_to_add %>% 
+#   anti_join(species_to_recode, 
+#             by = c("species" = "species_veg_data"))
+
+  gluedown::md_paragraph(glue('The following species are missing from the `species_master` table:'))
+```
+
+```{r}
+#| label: report-spp-to-add-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+
+knitr::kable(species_to_add, 
+               caption = "Species recorded in `veg_data`, but missing from `species_master`")
+```
+
 
 # Check Ground Layer Hits
 
@@ -572,8 +641,6 @@ agent_hits <-
 
 agent_hits %>% get_agent_report() %>% gt::as_raw_html()
 ```
-
-
 
 
 ## Identify Ground Layer Hits Issues
