@@ -81,7 +81,7 @@ unique(veg_richness$origin)
 #[1] "exotic"  "native"  "unknown"
 
 ## IGNORE for now, JY to follow up - see also issue #53 on GitHub `gh issue view 53 -w`
-# TODO: check missing species
+# TODO: check missing species in .wpfg_list
 
 veg_cover_ar %>% 
   pointblank::col_vals_in_set(columns = wpfg, 
