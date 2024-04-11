@@ -296,6 +296,8 @@ load_metadata <- function(recompile = FALSE) {
 # function to load flow data for a given site, with cleaned version 
 #   saved to data/compiled_data/flow-compiled-[SYSTEM].qs
 load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
+  rlang::check_required(system)
+  rlang::arg_match(system, .system_list)
   
   # stop if not loading pilot data
   if (pilot & system != "Campaspe") 
