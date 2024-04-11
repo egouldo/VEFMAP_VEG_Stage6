@@ -164,7 +164,9 @@ The three primary users of the model outputs are: 1) funders of environmental wa
 
 ------------------------------------------------------------------------
 
-The models will require a certain amount of flexibility to be able to change the timeframes over which data are compared and the set of predictor variables that will change depending on the timeframes selected. Funding constraints and client objectives may also require changes to the modelling process or purpose at any point. Currently there are no significant limitations on model development - sufficient time and funding resources - but this may change.
+The models will require a certain amount of flexibility to be able to change the timeframes over which data are compared and the set of predictor variables that will change depending on the timeframes selected.
+Funding constraints and client objectives may also require changes to the modelling process or purpose at any point.
+Currently there are no significant limitations on model development - sufficient time and funding resources - but this may change.
 
 ### 1.1.5 Model Scope, Scale and Resolution
 
@@ -718,7 +720,7 @@ The Poisson distribution, specified with an offset, still models proportional co
 
 The two primary response variables are plant cover and species richness (see [2.4](#24-identify-predictor-and-response-variables)), which will be operationalised in slightly different ways depending on the timeframe:
 
-1.   short term-in response to a single event (i.e. before and after); and
+1.  short term-in response to a single event (i.e. before and after); and
 2.  medium term (2-10 years) in relation to typical flow regimes (flow elevation/duration/timing) over that period.
 
 Both will be using the extent of a response of particular groups of plants at particular bank elevations in relation to flow events (factor condition of before or after an specific event) or flow values (e.g. days of flow to a specific elevation within a year/season), as well as the additional covariates of exotic plant cover and livestock grazing.
