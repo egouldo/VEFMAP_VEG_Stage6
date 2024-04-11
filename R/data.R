@@ -40,7 +40,8 @@
   "Verbena bonariensis" = "Verbena bonariensis s.l.",
   "Pseudognaphalium luteoalbum" = "Laphangium luteoalbum"
 )
-
+.system_list <- c("Campaspe", "Wimmera", "Moorabool", "Loddon", "Yarra", "ThomsonMacalister", "Glenelg") %>% 
+  set_names(.)
 # lookup to list waterways in each system
 .waterway_lu <- list(
   Campaspe = c("Campaspe_R"),
