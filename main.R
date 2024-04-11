@@ -113,7 +113,8 @@ veg_cover_ar_sum <- veg_cover_ar |>
                               #   40 points with possibility of > 100% cover.
     hits_tm1 = sum(hits_tm1),
     npoint_tm1 = unique(npoint_tm1)
-  )
+  ) %>% 
+  pointblank::col_vals_equal(npoint, 40) # validate npoint == 40
 
 # check the values of hits
 
