@@ -694,6 +694,8 @@ calculate_metrics_internal <- function(
 # function to load point data for a single system, with cleaned version
 #   saved to data/compiled-data/points-compiled-[SYSTEM].qs
 load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
+  rlang::check_required(system)
+  rlang::arg_match(system, .system_list)
   
   # stop if not loading pilot data
   if (pilot & system != "Campaspe") 
