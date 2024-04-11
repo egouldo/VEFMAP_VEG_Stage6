@@ -10,6 +10,7 @@
   "Tda",
   "Tdr"
 )
+
 .classification_list <- c(
   "Aquatic", 
   "Emergent", 
@@ -17,6 +18,7 @@
   "Fringing_high",
   "Terrestrial"
 )
+
 .species_rename <- c(
   "Tree root" = "Tree Root",
   "Aster subulatus" = "Symphyotrichum subulatum",
@@ -718,7 +720,7 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE) {
     # ditch repeats for exotic/native litter/bare ground
     species <- species |>
       dplyr::filter(
-        !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic"),
+        !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic"), #TODO what about instances where species %in% c("Water", "Bare") & origin == "native" in master species file?
         !duplicated(species)
       )
     
