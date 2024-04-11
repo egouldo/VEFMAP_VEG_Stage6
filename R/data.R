@@ -727,45 +727,51 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
       dir(here::here("data", "raw_data", "veg_data"))
     )
     
-    filenameS7 <- dir(here::here("data", "raw_data", "veg_data"))[existsS7]
-    filenameS7 <- sort(filenameS7, decreasing = TRUE)[1]
-    outS7 <- readr::read_csv(
-      here::here("data", "raw_data", "veg_data", filenameS7),
-      skip = 1,
-      col_names = c(
-        "system",
-        "waterbody",
-        "site",
-        "transect",
-        "metres",
-        "species",
-        "hits",
-        "height",
-        "date",
-        "survey",
-        "comments"
-      ),
-      col_types =  readr::cols(
-        .default = readr::col_character(),
-        metres = readr::col_double(),
-        hits = readr::col_double()
+    if(any(existsS7)){
+      filenameS7 <- dir(here::here("data", "raw_data", "veg_data"))[existsS7]
+      filenameS7 <- sort(filenameS7, decreasing = TRUE)[1]
+      outS7 <- readr::read_csv(
+        here::here("data", "raw_data", "veg_data", filenameS7),
+        skip = 1,
+        col_names = c(
+          "system",
+          "waterbody",
+          "site",
+          "transect",
+          "metres",
+          "species",
+          "hits",
+          "height",
+          "date",
+          "survey",
+          "comments"
+        ),
+        col_types =  readr::cols(
+          .default = readr::col_character(),
+          metres = readr::col_double(),
+          hits = readr::col_double()
+        )
       )
-    )
-    #select columns we want as some of the files have multiple 'comments' columns
-    outS7 <- outS7 |> select(c("system",
-                              "waterbody",
-                              "site",
-                              "transect",
-                              "metres",
-                              "species",
-                              "hits",
-                              "height",
-                              "date",
-                              "survey"))
+      #select columns we want as some of the files have multiple 'comments' columns
+      outS7 <- outS7 |> select(c("system",
+                                 "waterbody",
+                                 "site",
+                                 "transect",
+                                 "metres",
+                                 "species",
+                                 "hits",
+                                 "height",
+                                 "date",
+                                 "survey"))
+      
+      # merge the S6 and S7 datasets - note this will need modification if more data is brought in
+      
+      out <- dplyr::bind_rows(outS6, outS7)
+    } else {
+      cli::cli_warn(glue::glue("No S7 data available for `{system}` despite being requested. Using S6 data only."))
+      out <- outS6
+    }
     
-    # merge the S6 and S7 datasets - note this will need modification if more data is brought in
-  
-    out <- dplyr::bind_rows(outS6, outS7)
     
     } else {
       exists <- grepl(
