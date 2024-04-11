@@ -608,11 +608,56 @@ calculate_metrics <- function(x, thresholds) {
   
 }
 
-# internal function to calculate metrics for a specific lag and period
+#' @title Calculate flow metrics for a specific lag and period (internal)
+#' @description This function calculates the number of days above a threshold
+#'  for a given period and lag.
+#'  
+#'  The function is used internally by \code{\link{calculate_metrics}}.
+#'
+#'  @details
+#'  The function calculates the number of days above a threshold for a given
+#'  period and lag. The period is defined by the season argument, which is a
+#'  vector of month numbers. The lag is the number of years to go back from
+#'  the current year. The function calculates the number of days above the
+#'  threshold for each year in the period and lag, and then averages these
+#'  values. #TODO egouldo to check this...
+#'  @importFrom pointblank expect_col_exists
+#'  @importFrom rlang check_required
+#'  @importFrom assertthat assert_that
+#'  @importFrom dplyr tibble
+#'  @importFrom dplyr pull
+#'  @importFrom aes.hydro calculate
+#'  @importFrom aes.hydro days_above
+#'  @importFrom aes.hydro survey
+#'  @param x A data frame with columns system, waterbody, water_level_m_ahd,
+#'  and date_formatted.
+#'  @param thresholds A data frame with columns system, waterbody, site,
+#'  springfresh_m_ahd, and baseflow_m_ahd.
+#'  @param site The site name.
+#'  @param season A vector of month numbers defining the period.
+#'  @param lag The number of years to go back from the current year.
+#'  @param cli cli_abort
+#'  @return A tibble with columns system, waterbody, site, survey_year,
+#'  days_above_springfresh, and days_above_baseflow.
 calculate_metrics_internal <- function(
     x, thresholds, site, season = 10:21, lag = 0
 ) {
-  
+  # Check & Validate Arguments
+  rlang::check_required(x)
+  rlang::check_required(thresholds)
+  rlang::check_required(season)
+  assert_that(is.data.frame(x))
+  assert_that(rlang::is_bare_numeric(season))
+  assert_that(rlang::is_bare_numeric(lag))
+  assert_that(length(lag) == 1)
+  if(!test_col_exists(x, 
+                    columns = c("system", 
+                                "waterbody", 
+                                "water_level_m_ahd", 
+                                "date_formatted"))){
+    cli_abort("x must have columns {.var system}, {.var waterbody}, {.var water_level_m_ahd}, and {.var date_formatted}")
+  }
+   
   # calculate and return directly
   tibble(
     system = unique(x$system),
