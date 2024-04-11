@@ -1146,22 +1146,13 @@ veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(uniqu
 
 
 # load flow data and merge summary metrics with veg
-flowC <- load_flow(system = "Campaspe", pilot = FALSE, recompile = TRUE)
+flow_full <- 
+  map(.system_list,
+      load_flow,
+      pilot = FALSE, 
+      recompile = TRUE) %>% 
+  list_rbind()
 
-flowW <- load_flow(system = "Wimmera", pilot = FALSE, recompile = TRUE)
-
-flowM <- load_flow(system = "Moorabool", pilot = FALSE, recompile = TRUE)
-
-flowL <- load_flow(system = "Loddon", pilot = FALSE, recompile = TRUE)
-
-flowY <- load_flow(system = "Yarra", pilot = FALSE, recompile = TRUE)
-
-flowTM <- load_flow(system = "ThomsonMacalister", pilot = FALSE, recompile = TRUE)
-
-flowG <- load_flow(system = "Glenelg", pilot = FALSE, recompile = TRUE)
-
-# combine the flow data from all sites
-flow_full <- dplyr::bind_rows(flowC, flowW, flowM, flowL, flowY, flowTM, flowG)
 
 # TODO: investigate raw-data files for low amounts of data
 # note that we have excluded some sites for now (see within the 'load_flow' function for site list)
