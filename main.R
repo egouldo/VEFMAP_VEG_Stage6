@@ -112,8 +112,8 @@ veg_cover_ar_sum <- veg_cover_ar |>
   summarise(
     hits = sum(hits),
     npoint = unique(npoint),  # each point can have multiple overlapping veg records,
-                              #   so it potentially makes more sense to treat it as
-                              #   40 points with possibility of > 100% cover.
+    #   so it potentially makes more sense to treat it as
+    #   40 points with possibility of > 100% cover.
     hits_tm1 = sum(hits_tm1),
     npoint_tm1 = unique(npoint_tm1)
   ) %>% 
