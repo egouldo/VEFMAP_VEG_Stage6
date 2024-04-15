@@ -59,7 +59,7 @@ source("R/data.R")
 
 # load site info
 # TODO: work out difference calculations to align true elev with flow elev
-site_info <- load_metadata(recompile = T)
+site_info <- load_metadata(recompile = T) #TODO Moorabool transect splitting warning, `gh issue view 79`, check with CJ
 
 # pilot analysis Campaspe ####
 
