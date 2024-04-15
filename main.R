@@ -166,35 +166,30 @@ veg_richness <- veg_richness |>
 ## TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
 # standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
 
-veg_cover_ar$days_above_baseflow_std <- scale(veg_cover_ar$days_above_baseflow)[, 1]
-veg_cover_ar$days_above_springfresh_std <- scale(veg_cover_ar$days_above_springfresh)[, 1]
 
 veg_cover_ar <- veg_cover_ar |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
     #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-   # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-   # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
+    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
-  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
-
-veg_cover_ar_sum$days_above_baseflow_std <- scale(veg_cover_ar_sum$days_above_baseflow)[, 1]
-veg_cover_ar_sum$days_above_springfresh_std <- scale(veg_cover_ar_sum$days_above_springfresh)[, 1]
+  filter(!is.na(days_above_springfresh))  #TODO temporary due to incomplete flow data
 
 veg_cover_ar_sum <- veg_cover_ar_sum |>
   mutate(
     pr_cover = hits/npoint,
     log_hits_tm1 = log(hits_tm1 + 1),
     #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-   # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-   # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
+    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
+    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
     days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
     days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
   ) |>
-  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
+  filter(!is.na(days_above_springfresh))  #TODO temporary due to incomplete flow data
 
 # find the minimum proportion cover score for each dataset
 
