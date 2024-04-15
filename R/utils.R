@@ -126,3 +126,30 @@ prepare_modelling_data <- function(df, site_info = site_info, metrics = metrics,
   df
   
 }
+
+#' Custom Theme for modifying effects plots
+#' 
+#' @param rm_axis.text.x logical, remove x axis text
+#' @param rm_axis.ticks.x logical, remove x axis ticks
+#' @return ggplot2 theme
+#' @importFrom ggplot2 theme_bw element_blank element_line theme theme_replace
+theme_effects <- function(rm_axis.text.x = FALSE, rm_axis.ticks.x = FALSE){
+  t <- theme_bw() +
+    theme(panel.spacing.x = unit(0, "mm"), 
+          panel.border = element_blank(), 
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          axis.line = element_line(colour = "black"), 
+          legend.position = "right")
+  t <- t %+replace%
+    if(rm_axis.text.x){
+      theme(axis.text.x = element_blank())
+    } else if(rm_axis.ticks.x){
+      theme(axis.ticks.x = element_blank())
+    } else{
+      t
+    }
+  
+  t
+  
+}
