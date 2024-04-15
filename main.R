@@ -411,8 +411,14 @@ map( #TODO change to walk for saving outputs
   ~ .x(cover_ar_TMBmod_2)
 )
 
+# Forrest Plot of Estimates
 
-effect_plot(cover_ar_TMBmod_2, pred = survey_year  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+pmap(.l = list(model = list(cover_ar_TMBmod_2, cover_ar_TMBmod_2, cover_ar_TMBmod_2, cover_ar_TMBmod_2),
+               pred = list("zone", "wpfg", "period", "survey_year"),
+               interval = list(TRUE, TRUE, TRUE, TRUE),
+               partial.residuals = list(TRUE, TRUE, TRUE, TRUE)),
+  .f = ~ jtools::effect_plot(model = ..1, pred = ..2, interval = ..3 , partial.residuals = ..4) +
+    scale_y_continuous(limits=c(0, 60)))
 
 cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale_y_continuous(limits=c(0, 60))
 
