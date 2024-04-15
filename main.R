@@ -311,9 +311,9 @@ interact_plot(cover_ar_TMBmod_1, pred = days_above_springfresh_std, modx = wpfg_
 
 HydroPredictDaysabovebaseFunc<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),cover_ar_TMBmod_1,xlevels=20))
 
-c<-mean(veg_cover_ar_sum$days_above_baseflow) 
-d<-sd(veg_cover_ar_sum$days_above_baseflow)
-HydroPredictDaysabovebaseFunc$days_above_baseflow<-(HydroPredictDaysabovebaseFunc$days_above_baseflow_std*d+c)
+C<-mean(veg_cover_ar_sum$days_above_baseflow) 
+D<-sd(veg_cover_ar_sum$days_above_baseflow)
+HydroPredictDaysabovebaseFunc$days_above_baseflow <- (HydroPredictDaysabovebaseFunc$days_above_baseflow_std*D+C)
 
 HydroPredictDaysabovebaseFunc$hits <- HydroPredictDaysabovebaseFunc$fit
 
@@ -329,9 +329,9 @@ HydroPredictDaysabovebaseFuncPlot
 
 HydroPredictDaysabovebaseFuncOri<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg','origin'),cover_ar_TMBmod_1,xlevels=20))
 
-c<-mean(veg_cover_ar_sum$days_above_baseflow) 
-d<-sd(veg_cover_ar_sum$days_above_baseflow)
-HydroPredictDaysabovebaseFuncOri$days_above_baseflow<-(HydroPredictDaysabovebaseFuncOri$days_above_baseflow_std*d+c)
+C<-mean(veg_cover_ar_sum$days_above_baseflow) 
+D<-sd(veg_cover_ar_sum$days_above_baseflow)
+HydroPredictDaysabovebaseFuncOri$days_above_baseflow<-(HydroPredictDaysabovebaseFuncOri$days_above_baseflow_std*D+C)
 
 HydroPredictDaysabovebaseFuncOri$hits <- HydroPredictDaysabovebaseFuncOri$fit
 
