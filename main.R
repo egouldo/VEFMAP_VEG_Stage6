@@ -394,39 +394,23 @@ summary(cover_ar_TMBmod_2)
 plot(fitted(cover_ar_TMBmod_2), cover_ar_TMBmod_2$frame$hits)
 plot(fitted(cover_ar_TMBmod_2) + 1, cover_ar_TMBmod_2$frame$hits + 1, log = "xy")
 
+map(
+  list(
+    model_performance,
+    check_collinearity, # good
+    check_overdispersion, # overdispersed
+    check_zeroinflation, # slightly underfitting zeros
+    check_singularity # False
+  ), 
+  ~ .x(cover_ar_TMBmod_2)
+)
 
-# use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
+map( #TODO change to walk for saving outputs
+  list(check_model,
+       check_predictions), 
+  ~ .x(cover_ar_TMBmod_2)
+)
 
-map(list(check_model), ~.x(cover_ar_TMBmod_2))
-
-check_model(cover_ar_TMBmod_2)
-
-model_performance(cover_ar_TMBmod_2)
-
-check_predictions(cover_ar_TMBmod_2) 
-
-
-check_collinearity(cover_ar_TMBmod_2)
-# good
-
-check_overdispersion(cover_ar_TMBmod_2)
-# still overdispersed
-
-check_zeroinflation(cover_ar_TMBmod_2)
-# slightly underfitting zeros
-
-check_singularity(cover_ar_TMBmod_2)
-# False
-
-# forrest plot of estiamtes
-
-plot(model_parameters(cover_ar_TMBmod_2))
-
-effect_plot(cover_ar_TMBmod_2, pred = zone  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 40))
-
-effect_plot(cover_ar_TMBmod_2, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
-
-effect_plot(cover_ar_TMBmod_2, pred = period  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 effect_plot(cover_ar_TMBmod_2, pred = survey_year  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
