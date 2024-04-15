@@ -624,24 +624,23 @@ plot(fitted(richness_ar_TMBmod_1), richness_ar_TMBmod_1$frame$hits)
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
-check_model(richness_ar_TMBmod_1)
+map(
+  list(
+    model_performance,
+    check_collinearity, # good
+    check_overdispersion, # Not overdispersed
+    check_zeroinflation, # ok
+    check_singularity # false
+  ), 
+  ~ .x(richness_ar_TMBmod_1)
+)
 
-model_performance(richness_ar_TMBmod_1)
+map( #TODO change to walk for saving outputs
+  list(check_model,
+       check_predictions), 
+  ~ .x(richness_ar_TMBmod_1)
+)
 
-check_predictions(richness_ar_TMBmod_1) 
-# 
-
-check_collinearity(richness_ar_TMBmod_1)
-# 
-
-check_overdispersion(richness_ar_TMBmod_1)
-# Not overdispersed
-
-check_zeroinflation(richness_ar_TMBmod_1)
-# ok
-
-check_singularity(richness_ar_TMBmod_1)
-# false
 
 # forrest plot of estiamtes
 
