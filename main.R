@@ -422,7 +422,8 @@ cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale
 
 # plot model estimates for zone and period
 
-plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var){
+
+plot_effects_by_vars <- function(model, var1, var2, colour_var, facet_var){ #TODO rename function and update calls to it in script
 
   
   .zone_lvls <- c( "below_baseflow", 
@@ -464,7 +465,7 @@ plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var
   
 
 
-    EventsPredictZonePeriod<- as.data.frame(Effect(c(rlang::expr_text(substitute(var1)), 
+    effects_data <- as.data.frame(Effect(c(rlang::expr_text(substitute(var1)), 
                                                    rlang::expr_text(substitute(var2))), 
                                                  model, 
                                                  xlevels = 20)) %>% 
@@ -472,9 +473,8 @@ plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var
     mutate({{var1}} := factor({{var1}}, levels = var1_levels, ordered = TRUE),
            {{var2}} := factor({{var2}}, levels = var2_levels, ordered = TRUE)
            )
-
-  
-  EventsPredictZonePeriodPlot <- EventsPredictZonePeriod %>% 
+    
+  plot_out <- effects_data %>% 
     ggplot(aes({{var2}}, hits, colour = {{colour_var}})) +
     geom_point(size = 5) +
     geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
@@ -482,36 +482,18 @@ plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var
     coord_cartesian(ylim = c(0, 20))+
     labs(x = rlang::expr_text(substitute(facet_var)) %>% R.utils::capitalize(), y = "Hits") + 
     theme_bw() + 
-    facet_grid(cols = vars({{facet_var}}), switch="x", scales = "free") +# coord_cartesian(ylim = c(0.5, 1)) + 
-    theme(axis.text.x = element_blank(),      # hide iv.y labels
-          axis.ticks.x = element_blank(),#strip.background = element_blank(), 
-          panel.spacing.x = unit(0, "mm"), 
-          panel.border = element_blank(), 
-          panel.grid.major = element_blank(), 
-          panel.grid.minor = element_blank(), 
-          axis.line = element_line(colour = "black"), 
-          legend.position = "right") 
+    facet_grid(cols = vars({{facet_var}}), switch="x", scales = "free") # coord_cartesian(ylim = c(0.5, 1))
   
-  EventsPredictZonePeriodPlot
+  plot_out
   
 }
 
+
 EventsPredictZonePeriodPlot2 <- 
-  plot_effects_by_zone_period(cover_ar_TMBmod_2, var1 = zone, var2 = period, colour_var = period, facet_var = zone)
+  plot_effects_by_vars(cover_ar_TMBmod_2, var1 = zone, var2 = period, colour_var = period, facet_var = zone) +
+  theme_effects(rm_axis.ticks.x = TRUE, rm_axis.text.x = TRUE)
 
 EventsPredictZonePeriodPlot2
-
-ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) + 
-  geom_point(size = 5)+
-  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
-  geom_sina(data= Plotdata, alpha = 0.05)+
-  coord_cartesian(ylim = c(0, 20))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() + facet_grid(~zone, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(axis.text.x = element_blank(),      # hide iv.y labels
-        axis.ticks.x = element_blank(),#strip.background = element_blank(), 
-        panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
-        panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        axis.line = element_line(colour = "black"), legend.position = "right") 
 
 
 #### -------- pilot analysis: Functional Group Model  --------
@@ -576,29 +558,31 @@ pmap(.l = list(model = list(cover_ar_TMBmod_3, cover_ar_TMBmod_3, cover_ar_TMBmo
 cat_plot(cover_ar_TMBmod_3, pred = wpfg, modx =  period, plot.points = T) + scale_y_continuous(limits=c(0, 10))
 
 # plot model estimates 
+EventsPredictFuncPeriodPlot <- plot_effects_by_vars(cover_ar_TMBmod_3, var1 = wpfg, var2 = period, colour_var = wpfg, facet_var = wpfg) +
+  theme_effects(rotate_axis.text.x = TRUE) #TODO where wpfg is NA, these values have been dropped by in model$frame, but we want them IN the plot
 
-plot_effects_by_zone_period(cover_ar_TMBmod_3, var1 = period, var2 = wpfg, colour_var = wpfg, facet_var = wpfg)
+EventsPredictFuncPeriodPlot
 
-EventsPredictFuncPeriod<- as.data.frame(Effect(c('period', 'wpfg'), cover_ar_TMBmod_3,xlevels=20))
-EventsPredictFuncPeriod$hits <- EventsPredictFuncPeriod$fit
-EventsPredictFuncPeriod$period <- ordered(EventsPredictFuncPeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
-
-
-EventsPredictFuncPeriodPlot2<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg)) +
-  geom_point(size = 5)+
-  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
-  geom_sina(data= Plotdata, alpha = 0.1)+
-  coord_cartesian(ylim = c(0, 20))+
-  labs(x = "Period", y = "Hits") + 
-  theme_bw() + 
-  facet_grid(~ wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(#axis.text.x = element_blank(),      # hide iv.y labels
-        #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
-        panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
-        panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-        axis.line = element_line(colour = "black"), legend.position = "right") 
-
-EventsPredictFuncPeriodPlot2
+# EventsPredictFuncPeriod<- as.data.frame(Effect(c('period', 'wpfg'), cover_ar_TMBmod_3,xlevels=20))
+# EventsPredictFuncPeriod$hits <- EventsPredictFuncPeriod$fit
+# EventsPredictFuncPeriod$period <- ordered(EventsPredictFuncPeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
+# 
+# 
+# EventsPredictFuncPeriodPlot2<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg)) +
+#   geom_point(size = 5)+
+#   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
+#   geom_sina(data= Plotdata, alpha = 0.1)+
+#   coord_cartesian(ylim = c(0, 20))+
+#   labs(x = "Period", y = "Hits") + 
+#   theme_bw() + 
+#   facet_grid(~ wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+#   theme(#axis.text.x = element_blank(),      # hide iv.y labels
+#         #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+#         panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
+#         panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+#         axis.line = element_line(colour = "black"), legend.position = "right") 
+# 
+# EventsPredictFuncPeriodPlot2
 
 ### -------- pilot analysis: Richness Models  --------
 
