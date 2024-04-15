@@ -133,7 +133,7 @@ prepare_modelling_data <- function(df, site_info = site_info, metrics = metrics,
 #' @param rm_axis.ticks.x logical, remove x axis ticks
 #' @return ggplot2 theme
 #' @importFrom ggplot2 theme_bw element_blank element_line theme theme_replace
-theme_effects <- function(rm_axis.text.x = FALSE, rm_axis.ticks.x = FALSE){
+theme_effects <- function(rm_axis.text.x = FALSE, rm_axis.ticks.x = FALSE, rotate_axis.text.x = FALSE){
   t <- theme_bw() +
     theme(panel.spacing.x = unit(0, "mm"), 
           panel.border = element_blank(), 
@@ -146,10 +146,12 @@ theme_effects <- function(rm_axis.text.x = FALSE, rm_axis.ticks.x = FALSE){
       theme(axis.text.x = element_blank())
     } else if(rm_axis.ticks.x){
       theme(axis.ticks.x = element_blank())
+    }  else if(rotate_axis.text.x){
+      theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1))
     } else{
       t
     }
   
   t
   
-}
+} #TODO ensure logic allows both removing axis text and ticks
