@@ -127,23 +127,61 @@ summary(veg_cover_ar_sum)
 flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 metrics <- calculate_metrics(flow, site_info)
 
-# add site and flow info into the veg data set, removing plots with missing
-#    values
+# add site and flow info into the veg data set, removing plots with missing values
 # TODO: check missing site info with CJ
+# TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
+# standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
 veg_cover_ar <- veg_cover_ar |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
   left_join(
     metrics,
     by = c("system", "waterbody", "site", "survey_year", "period")
-  )
+  ) |>
+  filter(!is.na(days_above_springfresh)) %>%   #TODO temporary due to incomplete flow data
+  mutate(
+    pr_cover = hits/npoint,
+    log_hits_tm1 = log(hits_tm1 + 1),
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
+    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2) %>% 
+  mutate(., # add constant for avoiding log(0) errors in prep for lognormal models
+         pr_cover_tf = pr_cover + {calc_constant(.)},
+         log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + {calc_constant(.)})
+  ) %>% 
+  unite(wpfg_ori, wpfg, origin, sep = "_", remove = FALSE)
+
 veg_cover_ar_sum <- veg_cover_ar_sum |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
   left_join(
     metrics,
     by = c("system", "waterbody", "site", "survey_year", "period")
+  ) |>
+  filter(!is.na(days_above_springfresh)) %>%  #TODO temporary due to incomplete flow data
+  mutate(
+    pr_cover = hits/npoint,
+    log_hits_tm1 = log(hits_tm1 + 1),
+    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
+    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
+    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
+    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
+    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+  ) %>% 
+  unite(wpfg_ori, wpfg, origin, sep = "_", remove = FALSE)
+
+constant_ar_sum <- calc_constant(veg_cover_ar_sum)  #NOTE separated because console is hanging when comptued in single pipeline
+
+veg_cover_ar_sum <- veg_cover_ar_sum %>%  
+  mutate(., # add constant for avoiding log(0) errors in prep for lognormal models
+         pr_cover_tf = pr_cover + constant_ar_sum,
+         log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + constant_ar_sum)
   )
+
+rm(constant_ar_sum) #rm constant from global environment
+beepr::beep(2)
 
 veg_richness <- veg_richness |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
@@ -152,66 +190,6 @@ veg_richness <- veg_richness |>
     by = c("system", "waterbody", "site", "survey_year", "period")
   ) |>
   filter(!is.na(zone))
-  
-
-## IGNORE FOR NOW
-##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
-##           and 3 and 4 are pre/post summer event), with other factors
-## HITS out of 40, but two obs exceed 40 (work out what to do with these)
-
-## IGNORE FOR NOW
-## TODO: consider including exotic cover as a predictor OR include
-##   random int/slopes for origin and look at correlations to assess
-##   how natives and exotics interact
-
-## TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
-# standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
-
-
-veg_cover_ar <- veg_cover_ar |>
-  mutate(
-    pr_cover = hits/npoint,
-    log_hits_tm1 = log(hits_tm1 + 1),
-    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
-    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
-  ) |>
-  filter(!is.na(days_above_springfresh))  #TODO temporary due to incomplete flow data
-
-veg_cover_ar_sum <- veg_cover_ar_sum |>
-  mutate(
-    pr_cover = hits/npoint,
-    log_hits_tm1 = log(hits_tm1 + 1),
-    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
-    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
-  ) |>
-  filter(!is.na(days_above_springfresh))  #TODO temporary due to incomplete flow data
-
-# add constant value to all response values for use in lognormal model 
-# as per JY methodology for avoid log(0) errors
-
-veg_cover_ar <- veg_cover_ar |>
-  mutate(
-    pr_cover_tf = pr_cover + calc_constant(veg_cover_ar),
-    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + calc_constant(veg_cover_ar)), 
-  )
-
-veg_cover_ar_sum <- veg_cover_ar_sum |>
-  mutate(
-    pr_cover_tf = pr_cover + calc_constant(veg_cover_ar_sum),
-    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + calc_constant(veg_cover_ar_sum)), 
-  )
-
-# create factor that captures differing combinations of plant functional group and origin (native or exotic)
-
-veg_cover_ar$wpfg_ori <- as.factor(paste(veg_cover_ar$wpfg,veg_cover_ar$origin, sep = "_"))
-
-veg_cover_ar_sum$wpfg_ori <- as.factor(paste(veg_cover_ar_sum$wpfg,veg_cover_ar_sum$origin, sep = "_"))
 
 # look at this data 
 
@@ -242,6 +220,19 @@ veg_cover_ar_sum %>%
 ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
 ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
 ggplot(veg_cover_ar_sum, aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + geom_point() 
+
+beepr::beep(4)
+## IGNORE FOR NOW
+##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
+##           and 3 and 4 are pre/post summer event), with other factors
+## HITS out of 40, but two obs exceed 40 (work out what to do with these)
+
+## IGNORE FOR NOW
+## TODO: consider including exotic cover as a predictor OR include
+##   random int/slopes for origin and look at correlations to assess
+##   how natives and exotics interact
+
+
 
 # finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
 ## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
