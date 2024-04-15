@@ -46,8 +46,10 @@ if (!"mixedup" %in% installed.packages()) withr::with_envvar(c(R_REMOTES_NO_ERRO
 library(mixedup)
 library(brms)
 library(rstanarm)
+library(pointblank)
 library(assertthat)
 library(purrr)
+library(cli)
 
 
 # load helper functions
