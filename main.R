@@ -422,24 +422,74 @@ pmap(.l = list(model = list(cover_ar_TMBmod_2, cover_ar_TMBmod_2, cover_ar_TMBmo
 
 cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale_y_continuous(limits=c(0, 60))
 
-# plot model estimates 
+# plot model estimates for zone and period
 
-EventsPredictZonePeriod<- as.data.frame(Effect(c('zone', 'period'),cover_ar_TMBmod_2,xlevels=20))
-EventsPredictZonePeriod$hits <- EventsPredictZonePeriod$fit
-EventsPredictZonePeriod$zone <- ordered(EventsPredictZonePeriod$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
-EventsPredictZonePeriod$period <- ordered(EventsPredictZonePeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
+plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var){
+ 
+   if(rlang::expr_text(substitute(var1)) == "zone"){
+    var1_levels <- .zone_lvls
+  } else{  
+    var1_levels  <- .period_lvls
+  }
+  if(rlang::expr_text(substitute(var2)) == "zone"){
+    var2_levels <- .zone_lvls
+  } else{
+    var2_levels <- .period_lvls
+  }
+  
+  plot_data <- 
+    model$frame %>%
+    as_tibble() %>% 
+    mutate({{var1}} := factor({{var1}}, levels = var1_levels, ordered = TRUE),
+           {{var2}} := factor({{var2}}, levels = var2_levels, ordered = TRUE)
+    )
+  
+  .zone_lvls <- c( "below_baseflow", 
+                   "baseflow_to_springfresh", 
+                   "above_springfresh")
+  
+  .period_lvls <- c( "before_spring", 
+                     "after_spring", 
+                     "after_summer")
 
-EventsPredictZonePeriodPlot<- ggplot(EventsPredictZonePeriod, aes(zone, hits, colour = period, group = period)) +
-  geom_point(size = 5, position= position_dodge(0.5))+
-  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
-  geom_point(data= Plotdata,aes(x=zone, y= hits, colour = period), alpha = 0.2,position= position_dodge(0.5))+
-  coord_cartesian(ylim = c(0, 20))+
-  labs(x = "Zone", y = "Hits")+ theme_bw() +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
+    EventsPredictZonePeriod<- as.data.frame(Effect(c(rlang::expr_text(substitute(var1)), 
+                                                   rlang::expr_text(substitute(var2))), 
+                                                 model, 
+                                                 xlevels = 20)) %>% 
+    rename(hits = fit) %>% 
+    mutate({{var1}} := factor({{var1}}, levels = var1_levels, ordered = TRUE),
+           {{var2}} := factor({{var2}}, levels = var2_levels, ordered = TRUE)
+           )
 
-EventsPredictZonePeriodPlot
+  
+  EventsPredictZonePeriodPlot <- EventsPredictZonePeriod %>% 
+    ggplot(aes({{var2}}, hits, colour = {{colour_var}})) +
+    geom_point(size = 5) +
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
+    geom_sina(data= plot_data , alpha = 0.05) +
+    coord_cartesian(ylim = c(0, 20))+
+    labs(x = rlang::expr_text(substitute(facet_var)) %>% R.utils::capitalize(), y = "Hits") + 
+    theme_bw() + 
+    facet_grid(cols = vars({{facet_var}}), switch="x", scales = "free") +# coord_cartesian(ylim = c(0.5, 1)) + 
+    theme(axis.text.x = element_blank(),      # hide iv.y labels
+          axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+          panel.spacing.x = unit(0, "mm"), 
+          panel.border = element_blank(), 
+          panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank(), 
+          axis.line = element_line(colour = "black"), 
+          legend.position = "right") 
+  
+  EventsPredictZonePeriodPlot
+  
+}
 
-EventsPredictZonePeriodPlot2 <- ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) +
+EventsPredictZonePeriodPlot2 <- 
+  plot_effects_by_zone_period(cover_ar_TMBmod_2, var1 = zone, var2 = period, colour_var = period, facet_var = zone)
+
+EventsPredictZonePeriodPlot2
+
+ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) + 
   geom_point(size = 5)+
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= Plotdata, alpha = 0.05)+
@@ -451,8 +501,7 @@ EventsPredictZonePeriodPlot2 <- ggplot(EventsPredictZonePeriod, aes(period, hits
         panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
         axis.line = element_line(colour = "black"), legend.position = "right") 
 
-EventsPredictZonePeriodPlot2
-  
+
 #### -------- pilot analysis: Functional Group Model  --------
 # Examine flow effects across functional groups
 
