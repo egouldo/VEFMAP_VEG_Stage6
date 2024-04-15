@@ -579,6 +579,13 @@ map( #TODO change to walk for saving outputs
 
 plot(model_parameters(richness_ar_TMBmod_1))
 
+pmap(.l = list(model = list(richness_ar_TMBmod_1),
+               pred = list("log_hits_tm1", "wpfg", "days_above_baseflow_std", "days_above_springfresh_std", "days_above_baseflow_std_sq"),
+               interval = list(TRUE),
+               partial.residuals = list(TRUE)),
+     .f = ~ jtools::effect_plot(model = ..1, pred = ..2, interval = ..3 , partial.residuals = ..4) +
+       scale_y_continuous(limits=c(0, 60))) #TODO allow lims to vary for each plot
+
 effect_plot(richness_ar_TMBmod_1, pred = log_hits_tm1 , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 effect_plot(richness_ar_TMBmod_1, pred = wpfg , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
@@ -588,6 +595,8 @@ effect_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std , interval = TR
 effect_plot(richness_ar_TMBmod_1, pred = days_above_springfresh_std  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 effect_plot(richness_ar_TMBmod_1, pred = days_above_baseflow_std_sq  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
+
+
 
 cat_plot(richness_ar_TMBmod_1, pred = zone, modx = period, interval = T, plot.points = T) #+ scale_y_continuous(limits=c(0, 5))
 
