@@ -116,15 +116,16 @@ ggplot(veg_cover_ar_sum,
 # finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
 ## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
 
-Plotdata <- veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
-Plotdata$zone <- ordered(Plotdata$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
-Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_spring", "after_summer"))
+Plotdata <- veg_cover_ar_sum |> 
+  filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown")) |> 
+  mutate(zone = factor(zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh")),
+         period = factor(period, levels = c( "before_spring", "after_spring", "after_summer")))
 
 # create plot data for raw datapoints
-PlotdataRich <- veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
-PlotdataRich$zone <- ordered(PlotdataRich$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
-PlotdataRich$period <- ordered(PlotdataRich$period, levels = c( "before_spring", "after_spring", "after_summer"))
-
+PlotdataRich <- veg_richness |> 
+  filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown")) %>% 
+  mutate(zone = factor(zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh")),
+         period = factor(period, levels = c( "before_spring", "after_spring", "after_summer")))
 
 ## --------- Modelling ---------
 
