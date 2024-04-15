@@ -143,13 +143,15 @@ veg_cover_ar_sum <- veg_cover_ar_sum |>
     metrics,
     by = c("system", "waterbody", "site", "survey_year", "period")
   )
+
 veg_richness <- veg_richness |>
   left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
-  filter(!is.na(zone)) |>
   left_join(
     metrics,
     by = c("system", "waterbody", "site", "survey_year", "period")
-  )
+  ) |>
+  filter(!is.na(zone))
+  
 
 ## IGNORE FOR NOW
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
