@@ -225,10 +225,8 @@ cover_ar1_mod <- mgcv::gamm(
 # above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
 # and build complexity in once we start to understand how the models are behaving.
 
-summary(veg_cover_ar_sum)
-
 ### -------- pilot analysis of cover data --------
-
+#### Fit model ####
 # glmmTMB version (linear mixed model)
 # note that fitting lognormal models of proportionate cover performed poorly so we instead move towards poisson or negative binomial models
 # these include an offset of npoints to account for the number of points (effectively becomes a proportion response?)
@@ -237,7 +235,8 @@ summary(veg_cover_ar_sum)
 # did not help the fit so we leave it out. We dont fit an offset of npoint as they are all the same value (40), and fitting it seemed to effect fits. Note also that we exclude two 
 # plant functional groups that may be incorrectly specified data (typos). 
 
-sum(veg_cover_ar_sum$hits %in% 0 ) / nrow(veg_cover_ar_sum) # 86% zeros
+cli_alert_danger(glue::glue("Note that the model is still overdispersed: ",
+                 "{round(sum(veg_cover_ar_sum$hits %in% 0 ) / nrow(veg_cover_ar_sum), 2)}% zeros in hits."))
 
 # lets attempt to fit the hydrology model first -
 cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
@@ -258,9 +257,8 @@ cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
-
+#### Check Model ####
 summary(cover_ar_TMBmod_1)
-# 
 
 # old school model fit diagnostic plots
 
@@ -373,7 +371,7 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
     #days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
     # days_above_baseflow_std^2 + #days_above_springfresh_std_sq +
-    zone*period +
+    zone * period +
      origin + wpfg +
     grazing +
     (1 | site / transect) +
@@ -384,13 +382,12 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   family = poisson,
   ziformula=~ wpfg,
   #dispformula =~ wpfg ,
-  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+  data = veg_cover_ar_sum |> 
+    filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
 summary(cover_ar_TMBmod_2)
 
-
-# old school model fit diagnostic plots
 
 plot(fitted(cover_ar_TMBmod_2), cover_ar_TMBmod_2$frame$hits)
 plot(fitted(cover_ar_TMBmod_2) + 1, cover_ar_TMBmod_2$frame$hits + 1, log = "xy")
