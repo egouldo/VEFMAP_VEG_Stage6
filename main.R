@@ -425,24 +425,7 @@ cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale
 # plot model estimates for zone and period
 
 plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var){
- 
-   if(rlang::expr_text(substitute(var1)) == "zone"){
-    var1_levels <- .zone_lvls
-  } else{  
-    var1_levels  <- .period_lvls
-  }
-  if(rlang::expr_text(substitute(var2)) == "zone"){
-    var2_levels <- .zone_lvls
-  } else{
-    var2_levels <- .period_lvls
-  }
-  
-  plot_data <- 
-    model$frame %>%
-    as_tibble() %>% 
-    mutate({{var1}} := factor({{var1}}, levels = var1_levels, ordered = TRUE),
-           {{var2}} := factor({{var2}}, levels = var2_levels, ordered = TRUE)
-    )
+
   
   .zone_lvls <- c( "below_baseflow", 
                    "baseflow_to_springfresh", 
@@ -451,6 +434,37 @@ plot_effects_by_zone_period <- function(model, var1, var2, colour_var, facet_var
   .period_lvls <- c( "before_spring", 
                      "after_spring", 
                      "after_summer")
+  
+  if(rlang::expr_text(substitute(var1)) == "zone"){
+    var1_levels <- .zone_lvls
+  } else if(rlang::expr_text(substitute(var1)) == "period"){  
+    var1_levels  <- .period_lvls
+  } else if(rlang::expr_text(substitute(var1)) == "wpfg"){
+    var1_levels <- .wpfg_list
+  } else{
+    cli_abort("{.var var1} must be either {.var zone}, {.var period} or {.var wpfg}, not: {var1}")
+  }
+  
+  if(rlang::expr_text(substitute(var2)) == "zone"){
+    var2_levels <- .zone_lvls
+  } else if(rlang::expr_text(substitute(var2)) == "period"){  
+    var2_levels  <- .period_lvls
+  } else if(rlang::expr_text(substitute(var2)) == "wpfg"){
+    var2_levels <- .wpfg_list
+  } else{
+    cli_abort("{.var var1} must be either {.var zone}, {.var period} or {.var wpfg}, not: {var1}")
+  }
+  
+  plot_data <- 
+    model$frame %>%
+    as_tibble() %>% 
+    unite(wpfg_ori, wpfg, origin, sep = "_", remove = FALSE) %>%
+    filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown")) %>% 
+    mutate({{var1}} := factor({{var1}}, levels = var1_levels, ordered = TRUE),
+           {{var2}} := factor({{var2}}, levels = var2_levels, ordered = TRUE) #TODO what if wpfg
+    )
+  
+
 
     EventsPredictZonePeriod<- as.data.frame(Effect(c(rlang::expr_text(substitute(var1)), 
                                                    rlang::expr_text(substitute(var2))), 
