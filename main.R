@@ -544,58 +544,54 @@ plot(fitted(cover_ar_TMBmod_3) + 1, cover_ar_TMBmod_3$frame$hits + 1, log = "xy"
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
-check_model(cover_ar_TMBmod_3)
-model_performance(cover_ar_TMBmod_3)
-check_predictions(cover_ar_TMBmod_3) 
+map(
+  list(
+    model_performance,
+    check_collinearity, # good
+    check_overdispersion, # overdispersed
+    check_zeroinflation, # slightly underfitting zeros
+    check_singularity # True
+  ), 
+  ~ .x(cover_ar_TMBmod_3)
+)
 
-check_collinearity(cover_ar_TMBmod_3)
-# good
+map( #TODO change to walk for saving outputs
+  list(check_model,
+       check_predictions), 
+  ~ .x(cover_ar_TMBmod_3)
+)
 
-check_overdispersion(cover_ar_TMBmod_3)
-# still overdispersed
-
-check_zeroinflation(cover_ar_TMBmod_3)
-# slightly underfitting zeros
-
-check_singularity(cover_ar_TMBmod_3)
-# True
-
-# forrest plot of estiamtes
+# Forest plot of estimates
 
 plot(model_parameters(cover_ar_TMBmod_3))
 
-effect_plot(cover_ar_TMBmod_3, pred = zone  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 40))
+pmap(.l = list(model = list(cover_ar_TMBmod_3, cover_ar_TMBmod_3, cover_ar_TMBmod_3, cover_ar_TMBmod_3),
+               pred = list("zone", "wpfg", "period", "survey_year"),
+               interval = list(TRUE, TRUE, TRUE, TRUE),
+               partial.residuals = list(TRUE, TRUE, TRUE, TRUE)),
+     .f = ~ jtools::effect_plot(model = ..1, pred = ..2, interval = ..3 , partial.residuals = ..4) +
+       scale_y_continuous(limits=c(0, 60)))
 
-effect_plot(cover_ar_TMBmod_3, pred = wpfg  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
-
-effect_plot(cover_ar_TMBmod_3, pred = period  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
-
-effect_plot(cover_ar_TMBmod_3, pred = survey_year  , interval = TRUE, partial.residuals = TRUE) + scale_y_continuous(limits=c(0, 60))
 
 cat_plot(cover_ar_TMBmod_3, pred = wpfg, modx =  period, plot.points = T) + scale_y_continuous(limits=c(0, 10))
 
 # plot model estimates 
 
-EventsPredictFuncPeriod<- as.data.frame(Effect(c('period', 'wpfg'),cover_ar_TMBmod_3,xlevels=20))
+plot_effects_by_zone_period(cover_ar_TMBmod_3, var1 = period, var2 = wpfg, colour_var = wpfg, facet_var = wpfg)
+
+EventsPredictFuncPeriod<- as.data.frame(Effect(c('period', 'wpfg'), cover_ar_TMBmod_3,xlevels=20))
 EventsPredictFuncPeriod$hits <- EventsPredictFuncPeriod$fit
 EventsPredictFuncPeriod$period <- ordered(EventsPredictFuncPeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
-EventsPredictFuncPeriodPlot<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg, group = wpfg)) +
-  geom_point(size = 5, position= position_dodge(0.5))+
-  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
-  geom_point(data= Plotdata,aes(x=period, y= hits, colour = wpfg), alpha = 0.2,position= position_dodge(0.5))+
-  coord_cartesian(ylim = c(0, 20))+
-  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg) +# coord_cartesian(ylim = c(0.5, 1)) + 
-  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right") 
-
-EventsPredictFuncPeriodPlot
 
 EventsPredictFuncPeriodPlot2<-ggplot(EventsPredictFuncPeriod, aes(period, hits, colour = wpfg)) +
   geom_point(size = 5)+
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= Plotdata, alpha = 0.1)+
   coord_cartesian(ylim = c(0, 20))+
-  labs(x = "Period", y = "Hits")+ theme_bw() + facet_grid(~wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  labs(x = "Period", y = "Hits") + 
+  theme_bw() + 
+  facet_grid(~ wpfg, switch="x" ) +# coord_cartesian(ylim = c(0.5, 1)) + 
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
         #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
         panel.spacing.x = unit(0, "mm"), panel.border = element_blank(), 
