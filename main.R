@@ -191,23 +191,19 @@ veg_cover_ar_sum <- veg_cover_ar_sum |>
   ) |>
   filter(!is.na(days_above_springfresh))  #TODO temporary due to incomplete flow data
 
-# find the minimum proportion cover score for each dataset
-
-min(veg_cover_ar$pr_cover[veg_cover_ar$pr_cover > 0])
-min(veg_cover_ar_sum$pr_cover[veg_cover_ar_sum$pr_cover > 0])
-
-# add half this minumum value to all repsonse values as an added constant for use in lognormal model (as per JY methodology)
+# add constant value to all response values for use in lognormal model 
+# as per JY methodology for avoid log(0) errors
 
 veg_cover_ar <- veg_cover_ar |>
   mutate(
-    pr_cover_tf = pr_cover + (.025*.5),
-    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+    pr_cover_tf = pr_cover + calc_constant(veg_cover_ar),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + calc_constant(veg_cover_ar)), 
   )
 
 veg_cover_ar_sum <- veg_cover_ar_sum |>
   mutate(
-    pr_cover_tf = pr_cover + (.025*.5),
-    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+    pr_cover_tf = pr_cover + calc_constant(veg_cover_ar_sum),
+    log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + calc_constant(veg_cover_ar_sum)), 
   )
 
 # create factor that captures differing combinations of plant functional group and origin (native or exotic)
@@ -1090,23 +1086,33 @@ veg_cover_full <- map2(.x = .system_list,
 
 
 
+# calculate some summary stats for the full dataset
 # filter for rows hits greater than 0
+
+veg_cover_full %>%  group_by(waterbody) %>% 
+  summarise(n_sites = n_distinct(site),
+            n_site_transects = n_distinct(unique_transect),
+            survey_year = list(unique(survey_year))) %>% 
+  left_join(
+    veg_cover_full %>% 
+      group_by(waterbody, site) %>% 
+      summarise(n_unique_transect = n_distinct(unique_transect)) %>% 
+      nest(waterbody_site = c(site, n_unique_transect))
+  ) %>% 
+  left_join(
+    veg_cover_full %>% 
+      group_by(waterbody,survey_year) %>% 
+      summarise(n_survey_year = n_distinct(survey)) %>% 
+      nest(waterbody_survey_year = -waterbody)
+  ) %>% 
+  unnest(waterbody_site)
+
+
+
+
 veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
-
-veg_cover_full_summary$unique_transect <- as.factor(paste(veg_cover_full_summary$site,veg_cover_full_summary$transect, sep = "_"))
-
-veg_cover_full_summary %>% group_by(waterbody) %>% summarise(n=length(unique(site))) %>% print(n=80) #%>% summarise(ntot=sum((n)))
-
-veg_cover_full_summary %>% group_by(waterbody) %>% distinct((survey_year)) %>% arrange(waterbody) %>% print(n=80)
-
-veg_cover_full_summary %>% distinct((survey_year))  %>% print(n=80)
-
-veg_cover_full_summary %>% group_by(waterbody, site) %>% summarise(n=length(unique(unique_transect))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) #%>% summarise(ntot2=sum((ntot)))
-
-veg_cover_full_summary %>% group_by(waterbody,survey_year) %>% summarise(n=length(unique(survey))) %>% group_by(waterbody) %>% summarise(ntot=sum((n))) %>% print(n=28) %>% summarise(ntot2=sum((ntot)))
-
 veg_cover_full_summary_hits  %>% group_by(waterbody, rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) #%>% group_by(rec_group)%>% summarise(ntot=sum((n)))
-
+#
 veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) 
 
 
