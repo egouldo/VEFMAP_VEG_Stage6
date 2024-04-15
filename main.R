@@ -57,33 +57,22 @@ source("R/utils.R")
 source("R/utils-pipe.R")
 source("R/data.R")
 
-# load site info
-# TODO: work out difference calculations to align true elev with flow elev
+# Load flow, metrics and site info data
 site_info <- load_metadata(recompile = T) #TODO Moorabool transect splitting warning, `gh issue view 79`, check with CJ
+# TODO: work out difference calculations to align true elev with flow elev
+# TODO: check missing site info with CJ
+flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
+metrics <- calculate_metrics(flow, site_info)
 
-# pilot analysis Campaspe ####
+# -------- Campaspe Pilot Anlysis -------
 
-# read in veg survey data and species information for
-#   pilot data set (Campaspe River)
-#debugonce(load_richness)
-veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = FALSE)
+# Load veg data for Campaspe system
+veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = TRUE)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
+## --------- Check Data after loading ---------
 
-# take a quick look at the data
-summary(veg_richness)
-unique(veg_richness$waterbody)
-#[1] "Campaspe"
-unique(veg_richness$site)
-#[1] "Bryants"     "Campbells"   "Doaks"       "English"     "Spencer"     "Strathallan"
-unique(veg_richness$transect)
-#[1] "1"  "10" "2"  "3"  "4"  "5"  "6"  "7"  "8"  "9" 
-unique(veg_richness$period)
-#[1] "after_spring"  "after_summer"  "before_spring"
-unique(veg_richness$origin)
-#[1] "exotic"  "native"  "unknown"
-
-## IGNORE for now, JY to follow up - see also issue #53 on GitHub `gh issue view 53 -w`
+# IGNORE for now, JY to follow up - see also issue #53 on GitHub `gh issue view 53 -w`
 # TODO: check missing species in .wpfg_list
 
 veg_cover_ar %>% 
@@ -102,126 +91,43 @@ wpfg_spp_missing <-
   arrange(wpfg, species) |>
   filter(is.na(wpfg) | include == FALSE) # species with no wpfg in .wpfg_list or NA
 
+## --------- Wrangle Data for Plotting and Modelling ---------
 
-# TODO: sum cover over all species within each wpfg
-veg_cover_ar_sum <- veg_cover_ar |>
-  group_by(
-    waterbody, site, transect, metres, survey, survey_year,
-    period, origin, wpfg
-  ) |>
-  summarise(
-    hits = sum(hits),
-    npoint = unique(npoint),  # each point can have multiple overlapping veg records,
-    #   so it potentially makes more sense to treat it as
-    #   40 points with possibility of > 100% cover.
-    hits_tm1 = sum(hits_tm1),
-    npoint_tm1 = unique(npoint_tm1)
-  ) %>% 
-  pointblank::col_vals_equal(npoint, 40) # validate npoint == 40
+veg_cover_ar_sum <- prepare_modelling_data(df = veg_cover_ar, metrics = metrics, site_info = site_info, cover_ar_sum = TRUE, outcome = "cover")
+veg_cover_ar <- prepare_modelling_data(df= veg_cover_ar, metrics = metrics, site_info = site_info,  cover_ar_sum = FALSE, outcome = "cover") #NOTE ensure called after veg_cover_ar_sum!
+veg_richness <- prepare_modelling_data(df = veg_richness, metrics = metrics, site_info = site_info,  cover_ar_sum = FALSE, outcome = "richness")
 
-# check the values of hits
+## ------------- Visualise Data ---------------
 
-summary(veg_cover_ar_sum)
+ggplot(veg_cover_ar_sum, 
+       aes(x = metres, y = hits, group = wpfg, colour = site) ) + 
+  geom_point() + 
+  facet_grid(.~period)
 
-# load flow data and merge summary metrics with veg
-flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
-metrics <- calculate_metrics(flow, site_info)
+ggplot(veg_cover_ar_sum %>% filter(metres == 0), 
+       aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + 
+  geom_line() + 
+  facet_grid(wpfg ~ transect)
 
-# add site and flow info into the veg data set, removing plots with missing values
-# TODO: check missing site info with CJ
-# TODO: generate npoint_tm1 variable to calculate correct log_pr_cover_tm1 variable - also talk to Jian about log(+1 of this var)
-# standardise predictors and remove rows with missing flow info - note we need to add a small value to everything? 
-veg_cover_ar <- veg_cover_ar |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
-  filter(!is.na(zone)) |>
-  left_join(
-    metrics,
-    by = c("system", "waterbody", "site", "survey_year", "period")
-  ) |>
-  filter(!is.na(days_above_springfresh)) %>%   #TODO temporary due to incomplete flow data
-  mutate(
-    pr_cover = hits/npoint,
-    log_hits_tm1 = log(hits_tm1 + 1),
-    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
-    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2) %>% 
-  mutate(., # add constant for avoiding log(0) errors in prep for lognormal models
-         pr_cover_tf = pr_cover + {calc_constant(.)},
-         log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + {calc_constant(.)})
-  ) %>% 
-  unite(wpfg_ori, wpfg, origin, sep = "_", remove = FALSE)
+ggplot(veg_cover_ar_sum, 
+       aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + 
+  geom_point() 
 
-veg_cover_ar_sum <- veg_cover_ar_sum |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
-  filter(!is.na(zone)) |>
-  left_join(
-    metrics,
-    by = c("system", "waterbody", "site", "survey_year", "period")
-  ) |>
-  filter(!is.na(days_above_springfresh)) %>%  #TODO temporary due to incomplete flow data
-  mutate(
-    pr_cover = hits/npoint,
-    log_hits_tm1 = log(hits_tm1 + 1),
-    #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
-    days_above_baseflow_std = scale(days_above_baseflow) %>% as.numeric,
-    days_above_springfresh_std = scale(days_above_springfresh) %>% as.numeric,
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
-  ) %>% 
-  unite(wpfg_ori, wpfg, origin, sep = "_", remove = FALSE)
+# finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
+## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
 
-constant_ar_sum <- calc_constant(veg_cover_ar_sum)  #NOTE separated because console is hanging when comptued in single pipeline
+Plotdata <- veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+Plotdata$zone <- ordered(Plotdata$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
+Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
-veg_cover_ar_sum <- veg_cover_ar_sum %>%  
-  mutate(., # add constant for avoiding log(0) errors in prep for lognormal models
-         pr_cover_tf = pr_cover + constant_ar_sum,
-         log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + constant_ar_sum)
-  )
-
-rm(constant_ar_sum) #rm constant from global environment
-beepr::beep(2)
-
-veg_richness <- veg_richness |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
-  left_join(
-    metrics,
-    by = c("system", "waterbody", "site", "survey_year", "period")
-  ) |>
-  filter(!is.na(zone))
-
-# look at this data 
-
-unique(veg_richness$zone)
-#[1] "baseflow_to_springfresh" "above_springfresh"       "below_baseflow"   
-
-hist(veg_cover_ar$hits)
-plot(density(veg_cover_ar$hits))
-
-hist(veg_cover_ar_sum$hits)
-plot(density(veg_cover_ar_sum$hits))
-
-hist(veg_cover_ar$pr_cover_tf)
-plot(density(veg_cover_ar$pr_cover_tf))
-
-hist(veg_cover_ar_sum$pr_cover_tf)
-plot(density(veg_cover_ar_sum$pr_cover_tf))
-
-veg_cover_ar_sum %>% 
-  group_by(wpfg, site, origin, period, metres, transect, survey) %>%
-  summarise(no_rows = length(hits)) %>% print(n=50)
-
-veg_cover_ar_sum %>% 
-  group_by(wpfg,  origin) %>%
-  summarise(no_rows = length(hits)) %>% print(n=50)
+# create plot data for raw datapoints
+PlotdataRich <- veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+PlotdataRich$zone <- ordered(PlotdataRich$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
+PlotdataRich$period <- ordered(PlotdataRich$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
 
-ggplot(veg_cover_ar_sum, aes(x = metres, y = hits, group = wpfg, colour = site) ) + geom_point() + facet_grid(.~period)
-ggplot(veg_cover_ar_sum[which(veg_cover_ar_sum$metres == 0),], aes(x = period, y = pr_cover_tf, group = wpfg, colour = site) ) + geom_line() + facet_grid(wpfg~transect)
-ggplot(veg_cover_ar_sum, aes(x = days_above_springfresh, y = hits, group = wpfg, colour = wpfg) ) + geom_point() 
+## --------- Modelling ---------
 
-beepr::beep(4)
 ## IGNORE FOR NOW
 ##    BUILD MODELS BY ZONE, EVENT (surveys 1 and 2 and pre/post spring event
 ##           and 3 and 4 are pre/post summer event), with other factors
@@ -231,15 +137,6 @@ beepr::beep(4)
 ## TODO: consider including exotic cover as a predictor OR include
 ##   random int/slopes for origin and look at correlations to assess
 ##   how natives and exotics interact
-
-
-
-# finally create a daraframe of data for plotting that removes nuisance factor levels found in modelling below
-## TODO: chase up the 'Atl_native' and 'Ate_native' levels to see if they are typos
-
-Plotdata <- veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
-Plotdata$zone <- ordered(Plotdata$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
-Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
 ## Some errors caused by categeroies with all 0 or all 1 values
 ## Need to remove these if they occur.
@@ -329,7 +226,8 @@ cover_ar1_mod <- mgcv::gamm(
 
 summary(veg_cover_ar_sum)
 
-# pilot analysis ####
+### -------- pilot analysis of cover data --------
+
 # glmmTMB version (linear mixed model)
 # note that fitting lognormal models of proportionate cover performed poorly so we instead move towards poisson or negative binomial models
 # these include an offset of npoints to account for the number of points (effectively becomes a proportion response?)
@@ -466,10 +364,9 @@ HydroPredictDaysabovespringFuncPlot<-ggplot(HydroPredictDaysabovespringFunc, aes
 
 HydroPredictDaysabovespringFuncPlot
 
+#### -------- pilot analysis: Flow Event Model  --------
 
-# now lets fit the 'spatial' or 'flow event' model
-# 
-# first look at flow effects across zone
+# Examine flow effects across zone
 
 cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
@@ -489,24 +386,25 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
-
 summary(cover_ar_TMBmod_2)
-# 
+
 
 # old school model fit diagnostic plots
 
 plot(fitted(cover_ar_TMBmod_2), cover_ar_TMBmod_2$frame$hits)
 plot(fitted(cover_ar_TMBmod_2) + 1, cover_ar_TMBmod_2$frame$hits + 1, log = "xy")
-# 
+
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
+
+map(list(check_model), ~.x(cover_ar_TMBmod_2))
 
 check_model(cover_ar_TMBmod_2)
 
 model_performance(cover_ar_TMBmod_2)
 
 check_predictions(cover_ar_TMBmod_2) 
-# 
+
 
 check_collinearity(cover_ar_TMBmod_2)
 # good
@@ -541,7 +439,7 @@ EventsPredictZonePeriod$hits <- EventsPredictZonePeriod$fit
 EventsPredictZonePeriod$zone <- ordered(EventsPredictZonePeriod$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
 EventsPredictZonePeriod$period <- ordered(EventsPredictZonePeriod$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
-EventsPredictZonePeriodPlot<-ggplot(EventsPredictZonePeriod, aes(zone, hits, colour = period, group = period)) +
+EventsPredictZonePeriodPlot<- ggplot(EventsPredictZonePeriod, aes(zone, hits, colour = period, group = period)) +
   geom_point(size = 5, position= position_dodge(0.5))+
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1, position= position_dodge(0.5))+
   geom_point(data= Plotdata,aes(x=zone, y= hits, colour = period), alpha = 0.2,position= position_dodge(0.5))+
@@ -551,7 +449,7 @@ EventsPredictZonePeriodPlot<-ggplot(EventsPredictZonePeriod, aes(zone, hits, col
 
 EventsPredictZonePeriodPlot
 
-EventsPredictZonePeriodPlot2<-ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) +
+EventsPredictZonePeriodPlot2 <- ggplot(EventsPredictZonePeriod, aes(period, hits, colour = period)) +
   geom_point(size = 5)+
   geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.3,  size= 1)+
   geom_sina(data= Plotdata, alpha = 0.05)+
@@ -565,8 +463,8 @@ EventsPredictZonePeriodPlot2<-ggplot(EventsPredictZonePeriod, aes(period, hits, 
 
 EventsPredictZonePeriodPlot2
   
-
-# now look at flow effects across functional groups
+#### -------- pilot analysis: Functional Group Model  --------
+# Examine flow effects across functional groups
 
 cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
@@ -587,22 +485,17 @@ cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
 )
 
 summary(cover_ar_TMBmod_3)
-# 
 
 # old school model fit diagnostic plots
 
 plot(fitted(cover_ar_TMBmod_3), cover_ar_TMBmod_3$frame$hits)
 plot(fitted(cover_ar_TMBmod_3) + 1, cover_ar_TMBmod_3$frame$hits + 1, log = "xy")
-# 
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
 check_model(cover_ar_TMBmod_3)
-
 model_performance(cover_ar_TMBmod_3)
-
 check_predictions(cover_ar_TMBmod_3) 
-# 
 
 check_collinearity(cover_ar_TMBmod_3)
 # good
@@ -660,30 +553,13 @@ EventsPredictFuncPeriodPlot2<-ggplot(EventsPredictFuncPeriod, aes(period, hits, 
 
 EventsPredictFuncPeriodPlot2
 
+### -------- pilot analysis: Richness Models  --------
 
-
-# now lets model vegetation richness
-
-veg_richness <- veg_richness |>
-  mutate(
-    days_above_baseflow_std = scale(days_above_baseflow)[, 1],
-    days_above_springfresh_std = scale(days_above_springfresh)[, 1],
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
-  ) |>
-  filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
-
-# create factor that captures differing combinations of plant functional group and origin (native or exotic)
-
-veg_richness$wpfg_ori <- as.factor(paste(veg_richness$wpfg,veg_richness$origin, sep = "_"))
-
-# create plot data for raw datapoints
-PlotdataRich <- veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
-PlotdataRich$zone <- ordered(PlotdataRich$zone, levels = c( "below_baseflow", "baseflow_to_springfresh", "above_springfresh"))
-PlotdataRich$period <- ordered(PlotdataRich$period, levels = c( "before_spring", "after_spring", "after_summer"))
 
 # lets attempt to fit the additive model to look at model fits under differing distributions
 # tried poisson and nbinom with dispersion and ziformulas of wpfg but all had convergence issues so landed again on poisson distributions.
+
+#### -------- pilot analysis: Richness Model, Regime model --------
 
 # Regime model
 richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
@@ -814,7 +690,7 @@ RichPredictDaysabovespringFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(d
 
 RichPredictDaysabovespringFuncPlot
 
-# Flow event model
+#### -------- pilot analysis: Richness Model, Flow event model --------
 
 richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   richness ~ 
