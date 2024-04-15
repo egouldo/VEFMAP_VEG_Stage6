@@ -54,6 +54,7 @@ library(cli)
 
 # load helper functions
 source("R/utils.R")
+source("R/utils-pipe.R")
 source("R/data.R")
 
 # load site info
