@@ -5,10 +5,10 @@
 #working directory - for LVs computer
 #setwd("C:/Users/lv0e/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
 #setwd("C:/Users/cj0a/Dropbox/VEFMAP_MainStuff/PROJECT_Vegetation response to flows paper/Data")
-setwd("C:/Users/lv0e/OneDrive - Department of Environment, Land, Water and Planning/R/VEFMAP_VEG_Stage6/VEFMAP_VEG_Stage6/data/raw_data/veg_data")
+# setwd("C:/Users/lv0e/OneDrive - Department of Environment, Land, Water and Planning/R/VEFMAP_VEG_Stage6/VEFMAP_VEG_Stage6/data/raw_data/veg_data")
 
-# library(tidyverse)
-# library(dplyr)
+library(readr)
+library(dplyr)
 
 #read in data
 vegdata <- read.csv("VEFMAPS6_Glenelg_2018_2019_Point.csv")
@@ -25,7 +25,11 @@ vegdata <- read.csv("VEFMAPS6_Moorabool_2017_2018_Final_Recruits.csv")
 vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Point.csv")
 vegdata <- read.csv("VEFMAPS6_Loddon_2017_2018_Recruits.csv")
 
-speciesmaster <- read.csv("VEFMAP_species_master.csv")
+vegdata <- read_csv("data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Recruits.csv")
+
+#read in species master
+
+speciesmaster <- read_csv("data/raw_data/veg_data/VEFMAP_species_master.csv")
 
 #Column headers, (#delete the ORIGIN ROW (for now) - NO not yet)
 names(vegdata)

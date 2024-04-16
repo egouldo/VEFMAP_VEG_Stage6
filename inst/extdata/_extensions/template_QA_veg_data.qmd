@@ -1,0 +1,746 @@
+---
+title: '`r paste("QA Report:", basename(params$input_file))`'
+description: |
+  This is an automated report containing the results of QA checks on  `veg_data`.
+format: gfm
+author:
+  - Auto-generated Report
+  - Template by Elliot Gould (@egouldo),
+date: today
+params:
+  input_file: "data/raw_data/veg_data/VEFMAPS6_Campaspe_2017_2018_2019_2020_Point.csv"
+self_contained: true
+toc: true
+execute:
+  freeze: auto # don't re-run the code chunks if source code not changed 
+---
+
+
+```{r}
+#| label: load-libs
+#| code-fold: true
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(pointblank))
+suppressPackageStartupMessages(library(janitor))
+suppressPackageStartupMessages(library(taxize))
+suppressPackageStartupMessages(library(fuzzyjoin))
+suppressPackageStartupMessages(library(here))
+suppressPackageStartupMessages(library(sessioninfo))
+suppressPackageStartupMessages(library(glue))
+suppressPackageStartupMessages(library(gluedown))
+suppressPackageStartupMessages(library(knitr))
+```
+
+```{r}
+#| label: load-data
+#| code-fold: true 
+#| warning: false
+#| message: false
+# Load species data
+species_master <- 
+  read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv"),
+           show_col_types = FALSE) %>% 
+  janitor::clean_names()
+
+# Add new ground spp. data for correct ground layer hits sum
+ground_spp <- 
+  tribble(
+    ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
+    "Log", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree root", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree base", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (dead)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Tree (stump)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Rock", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Sand", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
+    "Poo", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground"
+  )
+
+species_master <- 
+  species_master %>% 
+  bind_rows(ground_spp) %>% 
+  dplyr::filter(
+    !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) %>% 
+  distinct()
+
+# Load veg_data
+veg_data <- read_csv(here::here(params$input_file),
+                     col_types =  readr::cols(
+                       .default = readr::col_character(),
+                       METRES = readr::col_double(),
+                       HITS = readr::col_double(),
+                       DATE = readr::col_date(format = "%d/%m/%Y")
+                     )) %>%
+  janitor::clean_names()
+
+expected_raw_colnames <- c( #lowercase expected column names
+  "system",
+  "waterway", # `waterway` is recoded in the data wrangling process to `waterbody`, but has been entered to date as `waterway` in raw data
+  "site",
+  "transect",
+  "sub_trans",
+  "metres",
+  "species",
+  "origin",
+  "hits",
+  "height",
+  "date",
+  "survey"
+)
+
+VEFMAPS6_Site_Metadata <- 
+  read_csv(here::here("data/raw_data/site_data/VEFMAPS6_Site_Metadata.csv"),
+           show_col_types = FALSE) %>% 
+  janitor::clean_names()
+```
+
+In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. After each `pointblank::` validation set is run, the results are reported in the following sections.
+
+# Check Data Structure & Format
+
+Basic checks that required columns and their column types are present in the `veg_data` dataset.
+
+```{r}
+#| label: check_veg_data_structure
+#| html-table-processing: none
+#| code-fold: true
+
+agent_data_structure <- 
+  create_agent(veg_data, 
+               tbl_name = basename(params$input_file),
+               label = "Data Structure") %>% 
+  pointblank::col_exists(columns = all_of(expected_raw_colnames)) %>% 
+  pointblank::col_vals_in_set(system, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                pluck("system", unique)) %>% 
+  pointblank::rows_distinct(columns = system, 
+                            brief = "Expect one value per system.",
+                            preconditions = ~ . %>% distinct(system)) %>% 
+  pointblank::rows_distinct(columns = waterway, 
+                            brief = "Expect one value per waterway.",
+                            preconditions = ~ . %>% distinct(waterway)) %>% 
+  pointblank::col_vals_in_set(waterway, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                filter(system == veg_data %>% pluck("system", unique)) %>%
+                                pluck("waterway", unique)) %>%
+  pointblank::col_vals_in_set(site, 
+                              VEFMAPS6_Site_Metadata %>% 
+                                filter(system == veg_data %>% pluck("system", unique),
+                                  waterway == veg_data %>% pluck("waterway", unique)) %>% 
+                                pluck("site", unique)) %>% 
+  pointblank::col_vals_not_null(columns = c("system", 
+                                               "waterway", 
+                                               "site", 
+                                               "transect", 
+                                               "metres", 
+                                               "species", 
+                                               "origin", 
+                                               "hits", 
+                                               "height", 
+                                               "date", 
+                                               "survey")) %>% 
+  pointblank::col_is_character(columns = c("system", 
+                                 "waterway", 
+                                 "site", 
+                                 "transect", 
+                                 "species", 
+                                 "origin", 
+                                 "height", 
+                                 "survey")) %>% 
+  pointblank::col_is_numeric(vars(metres, hits)) %>% 
+  pointblank::col_is_date(vars(date)) %>% 
+  pointblank::interrogate()
+
+agent_data_structure %>% get_agent_report() %>% gt::as_raw_html()
+```
+
+
+## Identify Data Structure problems
+
+```{r}
+#| label: check-agent-report-passed
+#| code-fold: true
+#| results: asis
+
+if(agent_data_structure %>% pointblank::all_passed() == FALSE){
+  gluedown::md_text(glue::glue("Some validations failed for {agent_data_structure$label} validations.",
+                               " They are reported below."))
+} else {
+  gluedown::md_text(glue::glue("All validations passed for {agent_data_structure$label} validations."))
+}
+```
+
+```{r}
+#| label: readr-data-type-problems
+#| code-fold: true
+#| results: asis
+#| eval: !expr "!is.null(veg_data) && nrow(problems(veg_data)) > 0"
+
+if(nrow(problems(veg_data)) > 0){
+  gluedown::md_paragraph(glue("There were some data-type issues when reading in the `veg_data` dataset with `readr::`.",
+                         "The issues are reported below."))
+}
+```
+
+```{r}
+#| label: readr-data-type-problems-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr "!is.null(veg_data) && nrow(problems(veg_data)) > 0"
+
+if(nrow(problems(veg_data)) > 0){
+  problems(veg_data) %>% 
+    select(-file) %>% 
+    knitr::kable(caption = "**Data Type Issues in `veg_data`**")
+}
+```
+
+```{r}
+#| label: get-data-extracts
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+data_structure_extracts <- agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  left_join(agent_data_structure  %>% 
+              get_data_extracts() %>%
+              enframe(name = "i", value = "data_extract") %>% 
+              mutate(i = as.integer(i)), by = join_by(i)) %>% 
+  drop_na(data_extract)
+```
+
+```{r}
+#| label: report-missing-cols
+#| code-fold: true
+#| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+missing_cols <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_exists") %>% 
+  filter(n_pass == 0)
+
+if(nrow(missing_cols) > 0){
+  md_paragraph(
+    glue("There are {nrow(missing_cols)} missing columns in the `veg_data` dataset.",
+         " The missing columns are: ", 
+         '{missing_cols$columns %>% backtick() %>% glue_collapse(", ", last = " and ")}.')
+  )
+}
+```
+
+```{r}
+#| label: report-incorrect-vals
+#| code-fold: true
+#| results: asis
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+
+incorrect_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_in_set",
+         f_pass < 1)
+
+n_cols_incorrect_vals <- nrow(incorrect_vals)
+
+gluedown::md_paragraph(glue::glue('There are {n_cols_incorrect_vals} incorrect values in the `veg_data` dataset for columns: {agent_data_structure %>% 
+    get_agent_report(display_table = FALSE) %>% 
+    filter(type == "col_vals_in_set") %>% pluck("columns") %>% glue::glue_collapse(", ", last = " and ")}.'))
+
+if(n_cols_incorrect_vals > 0){
+  gluedown::md_paragraph("The columns with incorrect values are:")
+  gluedown::md_bullet(incorrect_vals$columns)
+  
+  cols_val_set <- agent_data_structure %>% 
+    get_agent_report(display_table = FALSE)  %>% 
+    filter(type == "col_vals_in_set", f_pass < 1) %>% 
+    distinct(type, columns, values) %>% 
+    drop_na(values) 
+  
+  gluedown::md_bullet(
+    glue::glue('Values for `{pluck(cols_val_set, "columns")}` not in set: ', 
+               '{pluck(cols_val_set, "values")}.'))
+}
+```
+
+```{r}
+#| label: report-single-val-cols
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+single_val_cols <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "rows_distinct")
+
+if(filter(single_val_cols, n_pass == 0) %>% nrow() > 0){
+  gluedown::md_paragraph("The following columns should have only a single unique value, but have the following values:",
+                         md_bullet(glue('{single_val_cols$columns}: ', 
+                                        '{map(single_val_cols$columns, 
+                                        ~ pluck(veg_data, .x, unique))}')
+                         ))
+}
+```
+
+```{r}
+#| label: report-missing-vals
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+missing_vals <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_vals_not_null", 
+         f_pass < 1)
+
+if(nrow(missing_vals) > 0){
+  md_paragraph(glue('The following columns have missing (`NA` or `NULL`) values:'),
+               md_bullet(glue('{missing_vals$columns}') %>% backtick()),
+               glue('Below are the observations in `veg_data` where the missing values occur:'))
+  
+}
+```
+
+```{r}
+#| label: report-missing-vals-extracts
+#| code-fold: true
+#| eval: !expr exists("missing_vals", inherits = FALSE) && nrow(missing_vals) > 0
+#| results: asis
+
+data_structure_extracts %>% 
+  semi_join(missing_vals %>% select(i),
+            by = join_by(i)) %>%  
+  pull(data_extract,name = columns) %>%   
+  walk2(.x = ., .y = names(.), 
+       ~ knitr::kable(.x, caption = glue("**{.y}**")) %>% 
+         print()
+       )
+```
+
+```{r}
+#| label: report-incorrect-col-types
+#| code-fold: true
+#| eval: !expr agent_data_structure %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+incorrect_col_types <- 
+  agent_data_structure %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  filter(type == "col_is_character" | type == "col_is_numeric" | type == "col_is_date") %>% 
+  filter(n_pass == 0)
+
+md_text(glue("There are {nrow(incorrect_col_types)} columns with incorrect column types in the `veg_data` dataset."))
+
+if(nrow(incorrect_col_types) > 0){
+  md_text('The following columns have incorrect column types:')
+  md_bullet(glue('{incorrect_col_types$columns}') %>% backtick() )
+}
+```
+
+
+# Check Species Entries
+
+Now we check the entries in the species column of the `veg_data`. We check that:
+
+- the species are in the `species_master` table;
+- That the species do not contain 'spp.' in the name (after removing any species identified as spp. in `species_master`);
+- That there are no spelling mistakes in the species names, checking against the World Flora Online Plant List 2023-12 using the `gnr_resolve` function from the `taxize` package;
+- That there are no species entries to be recoded in `veg_data` (i.e. have fuzzy-matches in `species_master` but no exact-matches);
+- That there are no species entries missing from `species_master` after having accounted for spelling fixes, recoding of entries in `veg_data`, and required species additions to `species_master`.
+
+```{r}
+#| label: check_species_data
+#| html-table-processing: none
+#| code-fold: true
+#| cache: TRUE
+
+# Species Data Checks
+
+# 1. Species names to be updated from Spp.
+
+# Check for species names that contain "spp." in the veg_data
+# These species names need to be updated to the correct species name
+
+has_spp <- 
+  veg_data %>% 
+  anti_join(species_master, by = c("species")) %>% 
+  filter(str_detect(species, "spp.")) %>%
+  distinct(species, dc_comms, .keep_all = TRUE) #TODO consider adding other columns to call distinct on for help with context..
+#TODO .keep_all might only keep the first instance?? so could be a problem if there are multiple instances of the same species name
+
+# If there are any species names that contain "spp." in the veg_data,
+# check the species_master list to see if there is a matching species name without "spp." in the species column
+# if so, update the species name in the veg_data with the species name in the species_master list
+
+suggested_spp_replacements <- 
+  has_spp %>%  
+  mutate(spp_genus = str_remove(species, " spp.")) %>% 
+  left_join(species_master, 
+            by = c("spp_genus" = "genus"), 
+            suffix = c("_check", "_replacement"), 
+            relationship = "many-to-many") %>% # allows multiple species to be suggested for a single hs_spp & duplicate species across subtransects
+  select(-spp_genus) #TODO keep dc_comms column for context?
+
+# 2. Species names spelled correctly, and consistent with species_master
+
+# Run database call to check spelling
+db_title <- "World Flora Online Plant List 2023-12"
+db_datasource <- gnr_datasources() %>% filter(title %in% db_title)
+
+taxa_check_result <- 
+  veg_data %>% 
+  anti_join(species_master, by = c("species")) %>% 
+  anti_join(., { veg_data %>% 
+      anti_join(species_master, by = c("species")) %>% 
+      filter(str_detect(species, "spp.")) %>% 
+      distinct(species)},
+      by = c("species")) %>% #rm species identified as spp.
+  pluck("species", unique) %>% #unmatched species
+  gnr_resolve(data_source_ids = db_datasource$id, with_canonical_ranks = TRUE) %>% 
+  mutate(matched = user_supplied_name == matched_name2,
+         suggested_replacement = ifelse(matched == FALSE, matched_name2, NA)) %>% 
+  select(-matched_name2) %>% 
+  rename(species = user_supplied_name)
+# Check that suggested replacements are in species_master
+# If not, suggest in report that species_master should be updated
+
+# If so, replace the species name in the veg_data with the suggested replacement
+spelling_fixes <-
+  taxa_check_result %>% 
+  filter(matched == FALSE) %>% #don't drop NA just in case no suggested replacements
+  left_join(., species_master, by = c("suggested_replacement" = "species")) 
+
+# if not in species_master, suggest that species_master should be updated
+species_to_add <- taxa_check_result %>% filter(matched == TRUE) 
+
+# species to recode in veg_data (recorded incorrectly in veg_data, but fuzzy-matched in species_master)
+species_to_recode <- 
+  species_master %>% 
+  filter(str_detect(species, paste(species_to_add$species, collapse = "|"))) %>% 
+  fuzzy_left_join(species_to_add, match_fun = str_detect, by = c("species")) %>% 
+  select(-submitted_name, -suggested_replacement, -score, -matched, -data_source_title) %>% 
+  rename(species_master = species.x,  species_veg_data = species.y)
+
+#rm species_to_recode from species_to_add, recompute what spp missing from master_species
+species_to_add <- species_to_add %>% anti_join(species_to_recode, by = c("species" = "species_veg_data"))
+
+agent_species <- 
+  create_agent(veg_data, 
+               tbl_name = basename(params$input_file),
+               label = "Species Data") %>% 
+  pointblank::col_vals_in_set(species, 
+                              species_master %>% 
+                                distinct(species),
+                              brief = "Expect species to be in the species_master table.") %>% 
+  pointblank::col_vals_expr(expr = ~ str_detect(species, "spp.", negate = TRUE),
+                            preconditions = ~ . %>% 
+                              anti_join(species_master, by = c("species")),
+                            brief = "Expect species to not contain 'spp.'") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~ . %>% 
+                    semi_join(taxa_check_result %>% 
+                                filter(matched == FALSE),  
+                              by = c("species")), #TODO what happens if nrow in taxa_check_result == 0?
+                  brief = "Expect no species identified with spelling mistakes.") %>% 
+  row_count_match(count = 0, 
+                 preconditions = ~ . %>% 
+                   semi_join(species_to_recode, #TODO what happens if nrow in species_to_recode == 0?
+                             by = c("species" = "species_veg_data")),
+                 brief = "Expect no species entries to be recoded (fuzzy-matched in `species_master`).") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~ . %>% 
+                    semi_join(species_to_add,  
+                              by = c("species")), #TODO what happens if nrow in species_to_add == 0?
+                  brief = "Expect no species entries missing from `species_master`.") %>% 
+  row_count_match(count = 0, 
+                  preconditions = ~   . %>% 
+                    anti_join(spelling_fixes,  by = c("species")) %>% # rm misspelt spp. 
+                    anti_join(., {suggested_spp_replacements %>% 
+                        distinct(species_check, species_replacement)}, 
+                        by = c("species" = "species_check")) %>% #rm species identified as spp.
+                    anti_join(species_to_recode, 
+                              by = c("species" = "species_veg_data")) %>% #rm spp marked for recoding
+                    anti_join(species_to_add,  by = c("species")) %>% #rm species to add to master list
+                    anti_join(species_master,  by = c("species")),
+                  brief = "Expect no species entries missing from `species_master`, accounting for spelling fixes, recoding, and additions to species_master.") %>% 
+  interrogate()
+
+agent_species %>% get_agent_report() %>% gt::as_raw_html()
+```
+
+## Identify Species Data Problems
+
+```{r}
+#| label: check-agent-species-report-passed
+#| code-fold: true
+#| results: asis
+
+if(agent_species %>% pointblank::all_passed() == FALSE){
+  gluedown::md_text(glue::glue("Some validations failed for {agent_species$label} validations.",
+                               " They are reported below."))
+} else {
+  gluedown::md_text(glue::glue("All validations passed for {agent_species$label} validations."))
+}
+```
+
+```{r}
+#| label: get-species-data-extracts
+#| code-fold: true
+#| eval: !expr agent_species %>% pointblank::all_passed() == FALSE
+#| results: asis
+
+species_data_extracts <- agent_species %>% 
+  get_agent_report(display_table = FALSE) %>% 
+  left_join(agent_species  %>% 
+              get_data_extracts() %>%
+              enframe(name = "i", value = "data_extract") %>% 
+              mutate(i = as.integer(i)), by = join_by(i)) %>% 
+  drop_na(data_extract)
+```
+
+
+
+1. Species names that contain "spp." in the `veg_data` dataset are listed below. These species names need to be updated to the correct species name.
+
+```{r}
+#| label: report-spp-species
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(has_spp) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| collapse: TRUE
+
+has_spp_vals <- agent_species %>% 
+get_agent_report(display_table = FALSE) %>%
+filter(type == "col_vals_expr", f_pass < 1)
+
+if(nrow(has_spp_vals) > 0){
+  gluedown::md_paragraph(glue('There are {has_spp_vals$units - has_spp_vals$n_pass} species ',
+  'entries containing "spp." in the `veg_data` dataset.',
+  ' These records are:'))
+}
+
+if(nrow(has_spp_vals) > 0){
+  species_data_extracts %>% 
+    inner_join(has_spp_vals %>% 
+                 select(i),  
+               by = join_by(i)) %>%
+    pull(data_extract) %>% 
+    flatten_df() %>% 
+    pluck("species", unique) %>% 
+    md_bullet()
+}
+```
+
+
+```{r}
+#| label: report-spelling-fixes
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+if(nrow(spelling_fixes) > 0){
+  gluedown::md_paragraph(glue('There are {nrow(spelling_fixes)} species entries with spelling mistakes in the `veg_data` dataset.',
+  ' The suggested replacements and their corresponding data in `species_master` are listed below in table format.'))
+}
+```
+
+```{r}
+#| label: report-spelling-fixes-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+# Species needing speling fixes in `veg_data`
+if(nrow(spelling_fixes) > 0){
+  knitr::kable(spelling_fixes, 
+               caption = "Suggested Species Replacements")
+}
+```
+
+
+```{r}
+#| label: report-spp-to-recode
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+gluedown::md_paragraph('The following species need to be recoded in the `veg_data` dataset:')
+
+```
+
+```{r}
+#| label: report-spp-to-recode-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+knitr::kable(species_to_recode, 
+               caption = "Species in `veg_data`, but needing to be recoded.")
+```
+
+
+```{r}
+#| label: report-spp-to-add
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+# # Recalculate `species_to_add` after removing `species_to_recode`
+# species_to_add <- species_to_add %>% 
+#   anti_join(species_to_recode, 
+#             by = c("species" = "species_veg_data"))
+
+  gluedown::md_paragraph(glue('The following species are missing from the `species_master` table:'))
+```
+
+```{r}
+#| label: report-spp-to-add-table
+#| code-fold: true
+#| results: asis
+#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+
+
+knitr::kable(species_to_add, 
+               caption = "Species recorded in `veg_data`, but missing from `species_master`")
+```
+
+
+# Check Ground Layer Hits
+
+Check that the total number of hits recorded for the ground layer is between 36 and 40, inclusive. This check is performed for each survey, system, waterway, site, transect, and metres.
+
+```{r}
+#| label: check_hits
+#| html-table-processing: none
+#| code-fold: true
+# Species Hits Checks
+
+agent_hits <- 
+  pointblank::create_agent(veg_data,
+                           tbl_name = basename(params$input_file),
+                           label = "Check Ground Layer Hits") %>%
+  col_vals_lte(vars(ground_layer_hits), 40, na_pass = TRUE,
+               preconditions = ~ . %>% 
+                 left_join(species_master, by = "species") %>% 
+                 filter(classification == "Ground") %>% 
+                 group_by(survey, system, waterway, site, transect, metres) %>% 
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup,
+               brief = "Expect ground layer hits <= 40.") %>%
+  col_vals_gte(vars(ground_layer_hits), 36, na_pass = TRUE,
+               preconditions = ~ . %>% 
+                 left_join(species_master, by = "species") %>% 
+                 filter(classification == "Ground") %>% 
+                 group_by(survey, system, waterway, site, transect, metres) %>% 
+                 summarise(ground_layer_hits = sum(hits,na.rm = TRUE)) %>% ungroup,
+               brief = "Expect ground layer hits >= 36.") %>%
+  interrogate()
+
+agent_hits %>% get_agent_report() %>% gt::as_raw_html()
+```
+
+
+## Identify Ground Layer Hits Issues
+
+Below are sites where the sum of ground layer hits is over 40 (first table), and sites where the sum of the ground layer is under 36 (second table).
+
+```{r}
+#| label: report-ground-layer-hits-issues
+#| code-fold: true
+#| results: asis
+
+agent_hits %>% 
+    pointblank::get_data_extracts() %>% 
+    set_names(agent_hits %>% 
+                  get_agent_report(display = FALSE) %>% 
+                  mutate(validation_name = glue::glue("**{type}({columns}, {values})**")) %>% 
+                pull(validation_name)) %>% 
+  walk2(.x = ., .y = names(.), 
+        ~ knitr::kable(.x, caption = .y) %>% 
+          print)
+```
+
+We also identify the ground layer species with the most hits for each subtransect and then suggest hit reductions for the ground layer species with the most hits to reduce the total of hits across all ground layer 'species' to 40. 
+
+```{r}
+#| label: calculate-ground-layer-hits-reductions
+#| code-fold: true
+
+# Identify subtransects where sum of ground layer hits > 40
+ground_layer_hits_over_40 <- 
+  agent_hits %>% 
+  pointblank::get_data_extracts() %>% 
+  set_names(agent_hits %>% 
+              get_agent_report(display = FALSE) %>% 
+              mutate(validation_name = glue::glue("{type}({columns}, {values})")) %>% 
+              pull(validation_name)) %>% keep_at(., at = ~ .x %>%  str_detect("40")) %>% 
+  flatten_df()
+
+# Identify all ground layer hits in subtransects where sum(hits) over 40
+layer_type_over_40 <- 
+  veg_data %>% 
+  left_join(species_master, by = c("species")) %>% 
+  filter(classification == "Ground") %>% 
+  inner_join(ground_layer_hits_over_40, 
+             by = c("survey", "system", "waterway", "site", "transect", "metres")) %>% 
+  group_by(survey, system, waterway, site, transect, metres, species) %>%
+  tally(hits, name = "ground_layer_species_hits")
+
+# Identify the ground layer species with the most hits for each subtransect
+max_layer_type_over_40 <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  filter(ground_layer_species_hits == max(ground_layer_species_hits))
+
+suggested_hits_reductions <- 
+  layer_type_over_40 %>% 
+  group_by(survey, system, waterway, site, transect, metres) %>% 
+  arrange(desc(ground_layer_species_hits), 
+          .by_group = TRUE) %>% 
+  mutate(max_val = max(ground_layer_species_hits), 
+         total = sum(ground_layer_species_hits), 
+         diff = total - max_val, 
+         reduced_value = 40 - diff) %>% # subtract hits from the layer with the most hits to reduce total to 40
+  ungroup %>%  
+  inner_join(max_layer_type_over_40,
+             by = join_by(survey, system, waterway, site, transect, metres, species, ground_layer_species_hits)) # remove ground layer species which are non-max hits
+```
+
+Ground layer types (`species`) where the sum of hits is over 40 are listed below.
+
+```{r}
+#| label: report-ground-layer-hits
+#| echo: false
+
+knitr::kable(layer_type_over_40, 
+             caption = "**Ground layer types and their hits, where sum of ground layer hits is over 40.**")
+```
+
+Below are potential hit reductions for the ground layer `species` with the greatest hits to reduce the total ground layer hits to 40.
+
+```{r}
+#| label: report-ground-layer-hits-reductions
+#| echo: false
+
+knitr::kable(suggested_hits_reductions, 
+             caption = "**Suggested hits reductions to reduce total ground layer hits to 40.**")
+```
+
+
+
+
+
+
+
+# Session Information
+
+<details>
+<summary>Session Information</summary>
+```{r}
+#| label: session-info
+sessioninfo::session_info(include_base = FALSE)
+```
+</details>
