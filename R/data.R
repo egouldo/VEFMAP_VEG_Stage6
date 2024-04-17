@@ -20,7 +20,10 @@
 )
 
 .species_rename <- c(
-  "Tree root" = "Tree Root",
+  "Tree root" = "Tree",
+  "Tree base" = "Tree",
+  "Tree (stump)" = "Tree",
+  "Tree (dead)" = "Tree",
   "Aster subulatus" = "Symphyotrichum subulatum",
   "Triglochin procera" = "Cycnogeton procerum",
   "Kikuyu" = "Cenchrus clandestinus",
