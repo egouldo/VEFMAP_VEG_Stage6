@@ -40,6 +40,7 @@ substrRight <- function(x, n){
 #' Borrowed from https://github.com/jhelvy/jph/tree/master SHA `0b589cd`
 #' 
 #' @export
+#' @import quarto
 quarto_render_move <- function(
     input,
     output_file = NULL,
