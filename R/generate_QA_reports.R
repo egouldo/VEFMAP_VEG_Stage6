@@ -37,11 +37,6 @@ if(length(filenameS7) == 0){
    
   }
 
-quarto::quarto_render(output_file = "VEFMAPS7_Campaspe_QA_Report_2024-04-17_97e311b4.md", 
-                      input = "inst/extdata/template_QA_veg_data.qmd",
-                      output_format = "md", 
-                      execute_params = list(input_file = "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv", 
-                                            file_sha = "36a376de0e3716a556df65e7aa39e17097e311b4"))
 
 QA_reports |>
   filter(system == "Campaspe") |>
