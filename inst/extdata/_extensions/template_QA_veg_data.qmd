@@ -12,8 +12,6 @@ params:
   file_sha: "97e311b4"
 self_contained: true
 toc: true
-execute:
-  freeze: auto # don't re-run the code chunks if source code not changed 
 ---
 
 
