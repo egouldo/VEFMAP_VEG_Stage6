@@ -8,7 +8,8 @@ author:
   - Template by Elliot Gould (@egouldo),
 date: today
 params:
-  input_file: "data/raw_data/veg_data/VEFMAPS6_Campaspe_2017_2018_2019_2020_Point.csv"
+  input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
+  file_sha: "97e311b4"
 self_contained: true
 toc: true
 execute:
@@ -18,7 +19,7 @@ execute:
 
 ```{r}
 #| label: load-libs
-#| code-fold: true
+#| echo: false
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(pointblank))
 suppressPackageStartupMessages(library(janitor))
@@ -29,7 +30,24 @@ suppressPackageStartupMessages(library(sessioninfo))
 suppressPackageStartupMessages(library(glue))
 suppressPackageStartupMessages(library(gluedown))
 suppressPackageStartupMessages(library(knitr))
+source(here::here("R/utils.R"))
 ```
+
+```{r report-sha-short}
+#| label: report-sha-short
+#| message: false
+#| results: asis
+#| echo: false
+
+link <- glue::glue("https://github.com/egouldo/VEFMAP_VEG_Stage6/commit/{params$file_sha}")
+
+file_sha_short <- substrRight(params$file_sha, 8)
+
+gluedown::md_bold(glue::glue("Note: this report has been run on the input file", 
+                             "whose short SHA is [{file_sha_short}]({link})."))
+```
+
+In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. After each `pointblank::` validation set is run, the results are reported in the following sections.
 
 ```{r}
 #| label: load-data
@@ -95,7 +113,7 @@ VEFMAPS6_Site_Metadata <-
   janitor::clean_names()
 ```
 
-In this section QA checks are run using the package [`pointblank::`](https://rstudio.github.io/pointblank/index.html) on the `veg_data` dataset, from file `r basename(params$input_file)`. The checks are divided into three sections: data structure, species data, and ground layer hits. Write data QA plan for `veg_data`. The first checks look for data structure issues, such as missing columns, incorrect data types, and missing values. The second set of checks look for species data issues, such as spelling mistakes, missing species in `master_species`, and species that need to be recoded in `veg_data`. The third set of checks look for issues with the total number of hits recorded across different ground layer types. After each `pointblank::` validation set is run, the results are reported in the following sections.
+
 
 # Check Data Structure & Format
 
