@@ -58,28 +58,7 @@ In this section QA checks are run using the package [`pointblank::`](https://rst
 species_master <- 
   read_csv(here::here("data/raw_data/veg_data/VEFMAP_species_master.csv"),
            show_col_types = FALSE) %>% 
-  janitor::clean_names()
-
-# Add new ground spp. data for correct ground layer hits sum
-ground_spp <- 
-  tribble(
-    ~species, ~genus, ~family, ~origin, ~lifeform, ~classification, ~instream_veg, ~wpfg, ~group, ~rec_group, ~X11,
-    "Log", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree root", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree base", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (dead)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Tree (stump)", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Rock", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Sand", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground",
-    "Poo", NA, NA, "native", NA, "Ground", NA, NA, NA, "Ground", "Ground"
-  )
-
-species_master <- 
-  species_master %>% 
-  bind_rows(ground_spp) %>% 
-  dplyr::filter(
-    !(species %in% c("Bare", "Litter", "Nil", "Water") & origin == "exotic")) %>% 
+  janitor::clean_names() %>% 
   distinct()
 
 # Load veg_data
