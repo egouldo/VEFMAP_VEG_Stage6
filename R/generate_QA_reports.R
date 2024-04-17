@@ -37,7 +37,7 @@ if(length(filenameS7) == 0){
    
   }
 
-
+# Render the QA reports
 QA_reports |>
   select(output_file, execute_params) |>
   purrr::pwalk(
@@ -45,4 +45,4 @@ QA_reports |>
     input = "inst/extdata/_extensions/template_QA_veg_data.qmd",
     output_format = "md",
     output_dir = here::here("outputs", "QA_reports")
-  )
+  ) # TODO Render the QA reports but only if the file SHA has changed
