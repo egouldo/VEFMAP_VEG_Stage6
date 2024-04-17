@@ -39,8 +39,6 @@ if(length(filenameS7) == 0){
 
 
 QA_reports |>
-  filter(system == "Campaspe") |>
-  select(output_file, execute_params) |>
   purrr::pwalk(
     quarto_render_move,
     input = "inst/extdata/_extensions/template_QA_veg_data.qmd",
