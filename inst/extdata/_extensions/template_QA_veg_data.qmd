@@ -393,7 +393,8 @@ has_spp <-
 # check the species_master list to see if there is a matching species name without "spp." in the species column
 # if so, update the species name in the veg_data with the species name in the species_master list
 
-suggested_spp_replacements <- 
+if(nrow(has_spp) > 0){
+  suggested_spp_replacements <- 
   has_spp %>%  
   mutate(spp_genus = str_remove(species, " spp.")) %>% 
   left_join(species_master, 
@@ -401,6 +402,10 @@ suggested_spp_replacements <-
             suffix = c("_check", "_replacement"), 
             relationship = "many-to-many") %>% # allows multiple species to be suggested for a single hs_spp & duplicate species across subtransects
   select(-spp_genus) #TODO keep dc_comms column for context?
+} else {
+  suggested_spp_replacements <- NULL
+}
+
 
 # 2. Species names spelled correctly, and consistent with species_master
 
@@ -426,24 +431,46 @@ taxa_check_result <-
 # If not, suggest in report that species_master should be updated
 
 # If so, replace the species name in the veg_data with the suggested replacement
-spelling_fixes <-
-  taxa_check_result %>% 
-  filter(matched == FALSE) %>% #don't drop NA just in case no suggested replacements
-  left_join(., species_master, by = c("suggested_replacement" = "species")) 
+if(nrow(taxa_check_result %>% 
+        filter(matched == FALSE)) > 0){
+  spelling_fixes <-
+    taxa_check_result %>% 
+    filter(matched == FALSE) %>% #don't drop NA just in case no suggested replacements
+    left_join(., species_master, by = c("suggested_replacement" = "species")) 
+} else {
+  spelling_fixes <- NULL
+}
 
 # if not in species_master, suggest that species_master should be updated
 species_to_add <- taxa_check_result %>% filter(matched == TRUE) 
 
 # species to recode in veg_data (recorded incorrectly in veg_data, but fuzzy-matched in species_master)
-species_to_recode <- 
-  species_master %>% 
-  filter(str_detect(species, paste(species_to_add$species, collapse = "|"))) %>% 
-  fuzzy_left_join(species_to_add, match_fun = str_detect, by = c("species")) %>% 
-  select(-submitted_name, -suggested_replacement, -score, -matched, -data_source_title) %>% 
-  rename(species_master = species.x,  species_veg_data = species.y)
 
-#rm species_to_recode from species_to_add, recompute what spp missing from master_species
-species_to_add <- species_to_add %>% anti_join(species_to_recode, by = c("species" = "species_veg_data"))
+if(nrow(species_to_add) > 0){
+  species_to_recode <- 
+    species_master %>% 
+    filter(str_detect(species, paste(species_to_add$species, collapse = "|"))) %>% 
+    fuzzy_left_join(species_to_add, match_fun = str_detect, by = c("species")) %>% 
+    select(-submitted_name, -suggested_replacement, -score, -matched, -data_source_title) %>% 
+    rename(species_master = species.x,  species_veg_data = species.y)
+  
+} else {
+  species_to_recode <- NULL
+}
+
+if(nrow(species_to_recode) == 0){
+  species_to_recode <- NULL
+}
+
+if(!is.null(species_to_add) && !is.null(species_to_recode)){
+#rm species_to_recode from species_to_add
+  species_to_add <- species_to_add %>% 
+    anti_join(species_to_recode, by = c("species" = "species_veg_data"))
+} else if(!is.null(species_to_add)){
+  species_to_add <- species_to_add
+} else(
+  species_to_add <- NULL
+)
 
 agent_species <- 
   create_agent(veg_data, 
@@ -456,24 +483,39 @@ agent_species <-
   pointblank::col_vals_expr(expr = ~ str_detect(species, "spp.", negate = TRUE),
                             preconditions = ~ . %>% 
                               anti_join(species_master, by = c("species")),
-                            brief = "Expect species to not contain 'spp.'") %>% 
-  row_count_match(count = 0, 
+                            brief = "Expect species to not contain 'spp.'")
+   
+if(nrow(taxa_check_result %>% filter(matched == FALSE)) > 0){
+  agent_species <- agent_species %>% 
+     row_count_match(count = 0, 
                   preconditions = ~ . %>% 
                     semi_join(taxa_check_result %>% 
                                 filter(matched == FALSE),  
-                              by = c("species")), #TODO what happens if nrow in taxa_check_result == 0?
-                  brief = "Expect no species identified with spelling mistakes.") %>% 
-  row_count_match(count = 0, 
-                 preconditions = ~ . %>% 
-                   semi_join(species_to_recode, #TODO what happens if nrow in species_to_recode == 0?
-                             by = c("species" = "species_veg_data")),
-                 brief = "Expect no species entries to be recoded (fuzzy-matched in `species_master`).") %>% 
+                              by = c("species")), 
+                  brief = "Expect no species identified with spelling mistakes.") 
+}
+
+if(!is.null(species_to_recode)){
+  agent_species <- agent_species %>% 
+    row_count_match(count = 0, 
+                    preconditions = ~ . %>% 
+                      semi_join(species_to_recode, 
+                                by = c("species" = "species_veg_data")),
+                    brief = "Expect no species entries to be recoded (fuzzy-matched in `species_master`).") 
+}
+
+if(!is.null(species_to_add)){
+  agent_species <- agent_species %>% 
   row_count_match(count = 0, 
                   preconditions = ~ . %>% 
                     semi_join(species_to_add,  
-                              by = c("species")), #TODO what happens if nrow in species_to_add == 0?
-                  brief = "Expect no species entries missing from `species_master`.") %>% 
-  row_count_match(count = 0, 
+                              by = c("species")), 
+                  brief = "Expect no species entries missing from `species_master`.") 
+}
+
+if(!is.null(spelling_fixes) & !is.null(suggested_spp_replacements) & !is.null(species_to_recode) & !is.null(species_to_add)){
+  agent_species <- agent_species %>% 
+    row_count_match(count = 0, 
                   preconditions = ~   . %>% 
                     anti_join(spelling_fixes,  by = c("species")) %>% # rm misspelt spp. 
                     anti_join(., {suggested_spp_replacements %>% 
@@ -483,8 +525,10 @@ agent_species <-
                               by = c("species" = "species_veg_data")) %>% #rm spp marked for recoding
                     anti_join(species_to_add,  by = c("species")) %>% #rm species to add to master list
                     anti_join(species_master,  by = c("species")),
-                  brief = "Expect no species entries missing from `species_master`, accounting for spelling fixes, recoding, and additions to species_master.") %>% 
-  interrogate()
+                  brief = "Expect no species entries missing from `species_master`, accounting for spelling fixes, recoding, and additions to species_master.")
+} 
+
+agent_species <- agent_species %>% interrogate()
 
 agent_species %>% get_agent_report() %>% gt::as_raw_html()
 ```
@@ -557,7 +601,7 @@ if(nrow(has_spp_vals) > 0){
 #| label: report-spelling-fixes
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| eval: !expr is.null(spelling_fixes) == FALSE 
 
 if(nrow(spelling_fixes) > 0){
   gluedown::md_paragraph(glue('There are {nrow(spelling_fixes)} species entries with spelling mistakes in the `veg_data` dataset.',
@@ -569,7 +613,7 @@ if(nrow(spelling_fixes) > 0){
 #| label: report-spelling-fixes-table
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(spelling_fixes) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| eval: !expr is.null(spelling_fixes) == FALSE 
 
 # Species needing speling fixes in `veg_data`
 if(nrow(spelling_fixes) > 0){
@@ -583,7 +627,7 @@ if(nrow(spelling_fixes) > 0){
 #| label: report-spp-to-recode
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| eval: !expr is.null(species_to_recode) == FALSE
 
 gluedown::md_paragraph('The following species need to be recoded in the `veg_data` dataset:')
 
@@ -593,7 +637,7 @@ gluedown::md_paragraph('The following species need to be recoded in the `veg_dat
 #| label: report-spp-to-recode-table
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(species_to_recode) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| eval: !expr is.null(species_to_recode) == FALSE
 
 knitr::kable(species_to_recode, 
                caption = "Species in `veg_data`, but needing to be recoded.")
@@ -604,7 +648,7 @@ knitr::kable(species_to_recode,
 #| label: report-spp-to-add
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
+#| eval: !expr is.null(species_to_add) == FALSE
 
 # # Recalculate `species_to_add` after removing `species_to_recode`
 # species_to_add <- species_to_add %>% 
@@ -618,8 +662,7 @@ knitr::kable(species_to_recode,
 #| label: report-spp-to-add-table
 #| code-fold: true
 #| results: asis
-#| eval: !expr nrow(species_to_add) > 0 && agent_species %>% pointblank::all_passed() == FALSE
-
+#| eval: !expr is.null(species_to_add) == FALSE
 
 knitr::kable(species_to_add, 
                caption = "Species recorded in `veg_data`, but missing from `species_master`")
