@@ -9,9 +9,11 @@ author:
 date: today
 params:
   input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
-  file_sha: "97e311b4"
+  file_sha: "276448a4ba00c8d873a7b30ea9afe7e004bdd3ed"
 self_contained: true
 toc: true
+execute:
+  freeze: false
 ---
 
 
@@ -372,7 +374,6 @@ Now we check the entries in the species column of the `veg_data`. We check that:
 #| label: check_species_data
 #| html-table-processing: none
 #| code-fold: true
-#| cache: TRUE
 
 # Species Data Checks
 
@@ -520,7 +521,7 @@ species_data_extracts <- agent_species %>%
 
 
 
-1. Species names that contain "spp." in the `veg_data` dataset are listed below. These species names need to be updated to the correct species name.
+Species names that contain "spp." in the `veg_data` dataset are listed below. These species names need to be updated to the correct species name.
 
 ```{r}
 #| label: report-spp-species
