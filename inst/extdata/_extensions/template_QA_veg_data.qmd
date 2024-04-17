@@ -8,7 +8,7 @@ author:
   - Template by Elliot Gould (@egouldo),
 date: today
 params:
-  input_file: "data/raw_data/veg_data/VEFMAPS7_Campaspe_2021_2022_2023_Point.csv"
+  input_file: "data/raw_data/veg_data/VEFMAPS7_Moorabool_2022_2023_Point.csv"
   file_sha: "276448a4ba00c8d873a7b30ea9afe7e004bdd3ed"
 self_contained: true
 toc: true
@@ -386,7 +386,7 @@ has_spp <-
   veg_data %>% 
   anti_join(species_master, by = c("species")) %>% 
   filter(str_detect(species, "spp.")) %>%
-  distinct(species, dc_comms, .keep_all = TRUE) #TODO consider adding other columns to call distinct on for help with context..
+  distinct(species, notes, .keep_all = TRUE) #TODO consider adding other columns to call distinct on for help with context..
 #TODO .keep_all might only keep the first instance?? so could be a problem if there are multiple instances of the same species name
 
 # If there are any species names that contain "spp." in the veg_data,
@@ -401,7 +401,7 @@ if(nrow(has_spp) > 0){
             by = c("spp_genus" = "genus"), 
             suffix = c("_check", "_replacement"), 
             relationship = "many-to-many") %>% # allows multiple species to be suggested for a single hs_spp & duplicate species across subtransects
-  select(-spp_genus) #TODO keep dc_comms column for context?
+  select(-spp_genus) #TODO keep notes column for context?
 } else {
   suggested_spp_replacements <- NULL
 }

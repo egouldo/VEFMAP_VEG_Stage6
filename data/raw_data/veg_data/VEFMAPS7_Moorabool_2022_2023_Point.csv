@@ -1,4 +1,4 @@
-SYSTEM,WATERWAY,SITE,TRANSECT,METRES,SPECIES,HITS,HEIGHT,DATE,SURVEY,COMMENTS,Site Notes
+SYSTEM,WATERWAY,SITE,TRANSECT,METRES,SPECIES,HITS,HEIGHT,DATE,SURVEY,NOTES,SITE_NOTES
 Moorabool,Moorabool,Bostock,2,-1,Bare,1,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,-1,Litter,36,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,-1,Water,0,0_1m,26/04/2023,6,,
@@ -20,7 +20,7 @@ Moorabool,Moorabool,Bostock,2,0,Lomandra longifolia,12,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,0,Galium aparine,4,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,0,Rumex brownii,1,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,0,Rubus anglocandicans,2,0_1m,26/04/2023,6,"Wrote ""blackberry"", I believe this is the correct species?",
-Moorabool,Moorabool,Bostock,2,0,"""unknown furry""",2,0_1m,26/04/2023,6,didn’t see this ID updated anywhere else unfortunately.,
+Moorabool,Moorabool,Bostock,2,0,"""unknown furry""",2,0_1m,26/04/2023,6,didn't see this ID updated anywhere else unfortunately.,
 Moorabool,Moorabool,Bostock,2,0,Bare,10,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,1,Pteridium esculentum ,31,0_1m,26/04/2023,6,,
 Moorabool,Moorabool,Bostock,2,1,Litter,25,0_1m,26/04/2023,6,,
