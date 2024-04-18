@@ -16,16 +16,19 @@ get_named_list_from_df <- function(df, name_col, value_col){
     deframe()
 }
 
-get_spp_fixes <- function(df, .ignore_suggestions, name_col = "species", value_col = "suggested_replacement"){
+get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", value_col = "suggested_replacement"){
   
-  
-  spelling_fixes %>% 
+  out <- df %>% 
     mutate(words = strsplit(!!sym(value_col), "\\W+") %>% 
              lengths) %>% # remove single word suggestions
     filter(words > 1, 
-           score > 0.5, 
-           !(!!sym(value_col) %in% .ignore_suggestions)) %>%  # remove suggestions we marked for ignoring
-    get_named_list_from_df(., name_col, value_col)
+           score > 0.5)
+  
+  # remove suggestions we marked for ignoring, if exists
+  df <- ifelse(is.null(ignore_suggestions), filter(df,!(!!sym(value_col) %in% .ignore_suggestions))) 
+  
+  
+  df %>% get_named_list_from_df(., name_col, value_col)
 
   
 }
@@ -57,9 +60,10 @@ get_veg_file <- function(stage, system, type){
 
 # suggested fixes we don't want to implement because there are matches in species master
 # or there are multiple matches in World Flora Bank and we manually picked the closest match.
-.ignore_suggestions <- c("Epilobium billardiereanum f. billardiereanum", 
-                         "Eucalyptus camaldulensis var. camaldulensis", 
-                         "Juncus articulatus var. articulatus")
+.ignore_suggestions <- c("Epilobium billardiereanum f. billardiereanum", #Moorabool
+                         "Eucalyptus camaldulensis var. camaldulensis", #Moorabool
+                         "Juncus articulatus var. articulatus", #Moorabool
+                         "Carex dunnii") #Glenelg, more likely to be: Carex gunniana var. gunniana ?
 
 # Execute Species Recoding
 
