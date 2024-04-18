@@ -25,7 +25,7 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
            score > 0.5)
   
   # remove suggestions we marked for ignoring, if exists
-   if(is.null(.ignore_suggestions)){
+   if(!is.null(.ignore_suggestions)){
      out <-  filter(out,!(!!sym(value_col) %in% .ignore_suggestions))
    }
       
@@ -35,8 +35,10 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
 
 
 recode_veg_data <- function(df,col_to_recode, recode_table){
-  df %>% 
+  out <- df %>% 
     mutate(!!col_to_recode := recode(!!sym(col_to_recode), !!!recode_table))
+  
+  out
 } 
 
 get_VEFMAP_stage <- . %>%  str_split("_") %>% flatten_chr() %>% keep(., str_detect(., "VEFMAPS"))
@@ -60,6 +62,7 @@ get_veg_file <- function(stage, system, type){
 
 # suggested fixes we don't want to implement because there are matches in species master
 # or there are multiple matches in World Flora Bank and we manually picked the closest match.
+# favour replacing with .subsp. as per the species master file
 .ignore_suggestions <- c("Epilobium billardiereanum f. billardiereanum", #Moorabool
                          "Eucalyptus camaldulensis var. camaldulensis", #Moorabool
                          "Juncus articulatus var. articulatus", #Moorabool
@@ -76,18 +79,19 @@ latest_spelling_fixes <-
          stage = map_chr(path, get_VEFMAP_stage)) %>% 
   group_by(system, file_type, stage) %>% 
   filter(change_time == last(change_time)) %>% # for each unique QA (system by points by stage), get the latest file
-  mutate(spp_fixes_data = map(path, ~readr::read_csv(.x) %>% filter(is.na(genus))), # remove spp that aren't in species master
+  mutate(spp_fixes_data = map(path, ~readr::read_csv(.x)), 
          spp_fixes_data = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, "species", "suggested_replacement"),
          veg_data_file = pmap(.l = list(stage, system, file_type), .f = get_veg_file) %>% flatten_chr,
-         veg_data = map2(.x = veg_data_file, .y = spp_fixes_data,
+         veg_data = map(.x = veg_data_file,
                         ~ readr::read_csv(here::here( "data/raw_data/veg_data/", .x),
                                           col_types = readr::cols(.default = 
-                                                                    readr::col_character())) %>% 
-                          recode_veg_data(., "SPECIES", .y)
-         )
+                                                                    readr::col_character()))
+         ),
+         veg_data_recoded = map2(.x = veg_data, .y = spp_fixes_data, 
+                                ~ recode_veg_data(.x, "SPECIES", .y))
            
   )
 
 latest_spelling_fixes %>% 
-  pull(veg_data, veg_data_file) %>% 
+  pull(veg_data_recoded, veg_data_file) %>% 
   walk2(.x = ., .y = names(.), ~ write_csv(x = .x, file = here::here("data", "raw_data", "veg_data", .y)))
