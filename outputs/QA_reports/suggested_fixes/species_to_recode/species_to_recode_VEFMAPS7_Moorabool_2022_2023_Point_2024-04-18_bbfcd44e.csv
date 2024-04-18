@@ -1,0 +1,16 @@
+species_master,genus,family,origin,lifeform,classification,instreamveg,wpfg,wpfgsource,group,rec_grp,species_veg_data
+Acaena echinata,Acaena,Rosaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Acaena
+Acaena novae-zelandiae,Acaena,Rosaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Acaena
+Crassula decumbens var. decumbens,Crassula,Crassulaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Crassula
+Crassula helmsii,Crassula,Crassulaceae,native,forb,Fringing_low,NO,ARp,KM,Littoral,Riparian,Crassula
+Crassula natans,Crassula,Crassulaceae,native,forb,Fringing_low,NO,ARp,NA,Littoral,Riparian,Crassula
+Crassula spp.,Crassula,Crassulaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Crassula
+Galium aparine,Galium,Rubiaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Galium
+Galium murale,Galium,Rubiaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Galium
+Geranium dissectum,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Geranium molle,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Geranium
+Geranium spp.,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Geranium sp. 2,Geranium,Geraniaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Rubus anglocandicans,Rubus,Rosaceae,exotic,shrub,Shrub,NO,Tda,KM,Shrub,Terrestrial,Rubus
+Rubus parvifolius,Rubus,Rosaceae,native,shrub,Shrub,NO,Tdr,KM,Shrub,Terrestrial,Rubus
+Rubus spp.,Rubus,Rosaceae,unknown,shrub,Shrub,NO,NA,NA,Shrub,Terrestrial,Rubus
