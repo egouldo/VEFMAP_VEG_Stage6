@@ -1,0 +1,22 @@
+survey,system,waterway,site,transect,metres,species,ground_layer_species_hits,max_val,total,diff,reduced_value
+4,Moorabool,Moorabool,Bakers Bridge,1,4,Litter,31,31,41,10,30
+4,Moorabool,Moorabool,Bakers Bridge,9,0,Water,40,40,43,3,37
+4,Moorabool,Moorabool,Sharps Rd,5,3,Litter,38,38,41,3,37
+5,Moorabool,Moorabool,Bakers Bridge,4,4,Bare,34,34,50,16,24
+5,Moorabool,Moorabool,Bakers Bridge,8,5,Bare,39,39,50,11,29
+5,Moorabool,Moorabool,Bakers Bridge,9,2,Bare,40,40,48,8,32
+5,Moorabool,Moorabool,Hunts Bridge,2,0,Bare,30,30,43,13,27
+5,Moorabool,Moorabool,Hunts Bridge,4,2,Litter,23,23,44,21,19
+5,Moorabool,Moorabool,Hunts Bridge,9,4,Litter,25,25,42,17,23
+5,Moorabool,Moorabool,Sharps Rd,1,1,Litter,28,28,45,17,23
+5,Moorabool,Moorabool,Sharps Rd,1,2,Litter,21,21,41,20,20
+5,Moorabool,Moorabool,Sharps Rd,4,1,Bare,25,25,44,19,21
+5,Moorabool,Moorabool,Sharps Rd,5,2,Rock,17,17,42,25,15
+5,Moorabool,Moorabool,Sharps Rd,8,1,Litter,27,27,41,14,26
+5,Moorabool,Moorabool,Sharps Rd,9,1,Litter,33,33,41,8,32
+6,Moorabool,Moorabool,Bostock,10,2,Litter,38,38,44,6,34
+6,Moorabool,Moorabool,Bostock,3,-1,Litter,21,21,59,38,2
+6,Moorabool,Moorabool,Bostock,4,-1,Litter,40,40,80,40,0
+6,Moorabool,Moorabool,Bostock,4,-1,Water,40,40,80,40,0
+6,Moorabool,Moorabool,Bostock,6,-1,Rock,28,28,50,22,18
+6,Moorabool,Moorabool,Hunts Bridge,5,1,Litter,32,32,42,10,30
