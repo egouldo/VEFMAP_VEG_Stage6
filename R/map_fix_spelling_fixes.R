@@ -88,11 +88,6 @@ latest_spelling_fixes <-
            
   )
 
-
-# Don't forget to save the recoded veg data!
-
-# walk(latest_spelling_fixes, ~write_csv(.x$veg_data, here::here("data", "raw_data", "veg_data", .x$veg_data_file)))
-
-
-
-
+latest_spelling_fixes %>% 
+  pull(veg_data, veg_data_file) %>% 
+  walk2(.x = ., .y = names(.), ~ write_csv(x = .x, file = here::here("data", "raw_data", "veg_data", .y)))
