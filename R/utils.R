@@ -121,3 +121,7 @@ write_QA_outputs <- function(df, params, type = c("hit_reductions", "spelling_fi
   
 }
 
+#' Negated %in% operator
+#' 
+#' @export
+`%nin%` <- Negate(`%in%`)
