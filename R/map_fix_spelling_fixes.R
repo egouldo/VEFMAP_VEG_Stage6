@@ -22,7 +22,7 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
     mutate(words = strsplit(!!sym(value_col), "\\W+") %>% 
              lengths) %>% # remove single word suggestions
     filter(words > 1, 
-           score > 0.5) # remove low confidence suggestions
+           if_any(matches("score"), ~ .x > 0.5)) # remove low confidence suggestions, if col exists (only present in spelling fixes)
   
   # remove suggestions we marked for ignoring, if exists
    if(!is.null(.ignore_suggestions)){
@@ -32,7 +32,7 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
   # Remove replacements where there is more than one suggestion for the same species
   # (These will need to be manually fixed)
   out <- out %>% 
-    group_by(!!name_col) %>% 
+    group_by(!!sym(name_col)) %>% 
     filter(n() == 1) %>% 
     ungroup()
       
