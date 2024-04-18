@@ -1,21 +1,53 @@
-# Recode spelling names in Moorabool veg data
+# ----- Functions for automatically applying species recoding and spelling fixes to veg data -----
+## ----- Create Lookup Objects ------ #TODO remove once merged into master as appears on diff branch in R/data.R
+library(dplyr)
+library(purrr)
 
-library(tidyverse)
-library(here)
-library(cli)
-library(fs)
+.system_list <- c("Campaspe", "Wimmera", "Moorabool", "Loddon", "Yarra", "ThomsonMacalister", "Glenelg") %>%
+  set_names(.) 
 
-source("R/utils.R")
-source("R/data.R")
+## ------ Define Helper Functions ------
 
-# Define Helper Functions
-
+#' Get a named list from a dataframe
+#' 
+#' @param df A dataframe
+#' @param name_col The name of the column to use as the name of the list
+#' @param value_col The name of the column to use as the value of the list
+#' @return A named list
+#' @export
+#' @examples
+#' df <- tibble(name = c("a", "b", "c"), value = c(1, 2, 3))
+#' get_named_list_from_df(df, "name", "value")
+#' #> $a
+#' #> [1] 1
+#' #>
+#' #> $b
+#' #> [1] 2
+#' #>
+#' #> $c
+#' #> [1] 3
+#' 
+#' @importFrom dplyr select
+#' @importFrom tibble deframe
+#' @importFrom rlang sym
+#' @details
+#' Designed as a helper function used within the `get_spp_fixes` function
 get_named_list_from_df <- function(df, name_col, value_col){
   df %>%
     select(!!name_col, !!value_col) %>%
     deframe()
 }
 
+#' Get suggested species fixes
+#' 
+#' @param df A dataframe
+#' @param .ignore_suggestions A named character vector of suggested fixes to ignore
+#' @param name_col The name of the column to use as the name of the list
+#' @param value_col The name of the column to use as the value of the list
+#' @return A named list of suggested fixes
+#' @export
+#' @importFrom dplyr filter group_by if_any mutate ungroup
+#' @importFrom rlang sym
 get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", value_col = "suggested_replacement"){
   
   out <- df %>% 
@@ -42,7 +74,27 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
   
 }
 
-
+#' Recode a column in a dataframe using a recode table
+#' 
+#' @param df A dataframe
+#' @param col_to_recode The name of the column to recode
+#' @param recode_table A named list of recoding values
+#' @return A dataframe with the column recoded
+#' @export
+#' @importFrom dplyr mutate
+#' @importFrom rlang sym
+#' @examples
+#' df <- tibble(x = c("a", "b", "c"))
+#' recode_table <- list(a = "apple", b = "banana", c = "carrot")
+#' recode_veg_data(df, "x", recode_table)
+#' #> # A tibble: 3 x 1
+#' #>   x
+#' #>   <chr>
+#' #> 1 apple
+#' #> 2 banana
+#' #> 3 carrot
+#' @importFrom rlang sym
+#' @importFrom dplyr mutate
 recode_veg_data <- function(df,col_to_recode, recode_table){
   out <- df %>% 
     mutate(!!col_to_recode := recode(!!sym(col_to_recode), !!!recode_table))
@@ -50,9 +102,21 @@ recode_veg_data <- function(df,col_to_recode, recode_table){
   out
 } 
 
-get_VEFMAP_stage <- . %>%  str_split("_") %>% flatten_chr() %>% keep(., str_detect(., "VEFMAPS"))
-
-
+#' Get the veg data file for a given system, stage, and type
+#' 
+#' @param stage The stage of the VEFMAP data
+#' @param system The system of the VEFMAP data
+#' @param type The type of the VEFMAP data
+#' @return A character string of the filename
+#' @export
+#' @details
+#' Gets the files from the `data/raw_data/veg_data` directory, keeping only those that match the
+#' stage, system, and type. If no matching file is found, an error is thrown.
+#' @importFrom here here
+#' @importFrom stringr str_detect
+#' @import cli
+#' @importFrom glue glue
+#' @importFrom purrr keep
 get_veg_file <- function(stage, system, type){
   
   filename <- dir(here::here("data", "raw_data", "veg_data")) %>% 
@@ -64,24 +128,28 @@ get_veg_file <- function(stage, system, type){
   filename
 }
 
-# Create Lookup Objects
-
-.system_list <- c("Campaspe", "Wimmera", "Moorabool", "Loddon", "Yarra", "ThomsonMacalister", "Glenelg") %>%
-  set_names(.) #TODO remove once merged into master as appears on diff branch in R/data.R
-
-# suggested fixes we don't want to implement because there are matches in species master
-# or there are multiple matches in World Flora Bank and we manually picked the closest match.
-# favour replacing with .subsp. as per the species master file
-.ignore_suggestions <- c("Epilobium billardiereanum f. billardiereanum", #Moorabool
-                         "Eucalyptus camaldulensis var. camaldulensis", #Moorabool
-                         "Juncus articulatus var. articulatus", #Moorabool
-                         "Carex dunnii") #Glenelg, more likely to be: Carex gunniana var. gunniana ?
-
-# Execute Species Recoding
-
-# extract function from the code that creates object latest_spelling_fixes
-# to apply to the latest spelling fixes
-
+#' Apply fixes to all veg data files where there is a suggested replacements file
+#' 
+#' @param type The type of fixes to apply. Either "spelling_fixes" or "species_to_recode"
+#' @param .ignore_suggestions A named character vector of suggested fixes to ignore
+#' @param write A logical indicating whether to write the updated files to disk
+#' @return A tibble of the latest fixes
+#' @export
+#' @importFrom dplyr group_by filter mutate pull ungroup select last
+#' @importFrom purrr map map2 walk2 flatten_chr pmap map_chr keep
+#' @importFrom readr read_csv write_csv cols col_character
+#' @importFrom stringr str_detect str_extract str_split 
+#' @importFrom fs dir_info
+#' @importFrom here here
+#' @import cli
+#' @examples
+#' \dontrun{
+#' .ignore_suggestions <- c("Epilobium billardiereanum f. billardiereanum", #Moorabool
+#' "Eucalyptus camaldulensis var. camaldulensis", #Moorabool
+#' "Juncus articulatus var. articulatus", #Moorabool
+#' "Carex dunnii") #Glenelg, more likely to be: Carex gunniana var. gunniana 
+#' apply_veg_data_fixes_from_files(type = "spelling_fixes", .ignore_suggestions = .ignore_suggestions, write = FALSE)
+#' }
 apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_to_recode"), .ignore_suggestions = NULL, write = FALSE) {
   
   if(type == "spelling_fixes"){
@@ -92,6 +160,11 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
     replacement_col <- "species_master"
   }
   
+  get_VEFMAP_stage <- . %>%  
+    str_split("_") %>% 
+    flatten_chr() %>% 
+    keep(., str_detect(., "VEFMAPS"))
+  
   latest_fixes <-
     dir_info(here::here("outputs", "QA_reports", "suggested_fixes", type)) %>% 
     select(path, change_time) %>% 
@@ -101,6 +174,7 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
            stage = map_chr(path, get_VEFMAP_stage)) %>% 
     group_by(system, file_type, stage) %>% 
     filter(change_time == last(change_time)) %>% # for each unique QA (system by points by stage), get the latest file
+    ungroup %>% 
     mutate(spp_fixes_data = map(path, ~readr::read_csv(.x)), 
            spp_fixes_data = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, error_col, replacement_col),
            veg_data_file = pmap(.l = list(stage, system, file_type), .f = get_veg_file) %>% flatten_chr,
@@ -124,9 +198,3 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
   
   latest_fixes
 }
-
-
-# Apply spelling fixes to all veg data files where there is a suggested replacements file
-# apply_veg_data_fixes_from_files(type = "spelling_fixes", .ignore_suggestions = .ignore_suggestions, write = TRUE)
-
-apply_veg_data_fixes_from_files(type = "species_to_recode", .ignore_suggestions = .ignore_suggestions, write = TRUE)
