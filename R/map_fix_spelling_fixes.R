@@ -25,11 +25,11 @@ get_spp_fixes <- function(df, .ignore_suggestions = NULL, name_col = "species", 
            score > 0.5)
   
   # remove suggestions we marked for ignoring, if exists
-  df <- ifelse(is.null(ignore_suggestions), filter(df,!(!!sym(value_col) %in% .ignore_suggestions))) 
-  
-  
-  df %>% get_named_list_from_df(., name_col, value_col)
-
+   if(is.null(.ignore_suggestions)){
+     out <-  filter(out,!(!!sym(value_col) %in% .ignore_suggestions))
+   }
+      
+  out %>% get_named_list_from_df(., name_col, value_col)
   
 }
 
