@@ -126,7 +126,7 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
 }
 
 
+# Apply spelling fixes to all veg data files where there is a suggested replacements file
+# apply_veg_data_fixes_from_files(type = "spelling_fixes", .ignore_suggestions = .ignore_suggestions, write = TRUE)
 
-latest_fixes %>% 
-  pull(veg_data_recoded, veg_data_file) %>% 
-  walk2(.x = ., .y = names(.), ~ write_csv(x = .x, file = here::here("data", "raw_data", "veg_data", .y)))
+apply_veg_data_fixes_from_files(type = "species_to_recode", .ignore_suggestions = .ignore_suggestions, write = TRUE)
