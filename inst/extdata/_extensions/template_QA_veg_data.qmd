@@ -9,7 +9,7 @@ author:
 date: today
 params:
   input_file: "data/raw_data/veg_data/VEFMAPS7_Moorabool_2022_2023_Point.csv"
-  file_sha: "276448a4ba00c8d873a7b30ea9afe7e004bdd3ed"
+  file_sha: "bb8d38be88a3576dcc168badc97646efd89c4437"
 self_contained: true
 toc: true
 execute:
@@ -763,6 +763,9 @@ Below are potential hit reductions for the ground layer `species` with the great
 ```{r}
 #| label: report-ground-layer-hits-reductions
 #| echo: false
+#| eval: !expr  is.null(suggested_hits_reductions) == FALSE
+
+write_QA_outputs(suggested_hits_reductions, params, type = "hit_reductions")
 
 knitr::kable(suggested_hits_reductions, 
              caption = "**Suggested hits reductions to reduce total ground layer hits to 40.**")

@@ -82,3 +82,42 @@ quarto_render_move <- function(
     file.rename(from = output_path_from, to = output_path_to)
   }
 }
+
+#' Write QA outputs to a file
+#' 
+#' @param df A data frame to write to a file
+#' @param params A list of parameters of length 2 with element names `input_file` and `file_sha`
+#' @param type A string indicating the type of QA output
+#' @return A csv file
+#' @details
+#' Output will be written to the directory `outputs/QA_reports/suggested_fixes/` with the filename
+#' format `{type}_{base_input_file}_{Sys.Date()}_{short_SHA}.csv`
+#' The function is designed to be used within a quarto parameterised report and draws on the
+#' params that are parsed to the template report file when rendered. But it can be used interactively.
+#' @importFrom fs path_ext_remove
+#' @importFrom here here
+#' @importFrom glue glue
+#' @importFrom readr write_csv
+#' @export
+write_QA_outputs <- function(df, params, type = "hit_reductions") {
+  
+  base_input_file <- basename(params$input_file) %>% 
+    fs::path_ext_remove()
+  
+  short_SHA <- substrRight(params$file_sha, 8)
+  
+  output_filename <- glue::glue("{type}_{base_input_file}_{Sys.Date()}_{short_SHA}.csv")
+  
+  output_dir <- here::here("outputs",
+                           "QA_reports",
+                           "suggested_fixes",
+                           eval(type)
+  )
+  
+  write_csv(df,
+            file = here::here(output_dir,
+                              output_filename)
+  )
+  
+}
+
