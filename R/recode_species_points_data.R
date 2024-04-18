@@ -128,9 +128,26 @@ get_veg_file <- function(stage, system, type){
   filename
 }
 
+#' Recode species in veg data files based on suggested replacements
+#' 
+#' @param df A dataframe of veg data
+#' @param replace_spp_from_comments A dataframe of suggested replacements
+#' @return A dataframe of veg data with species recoded
+#' @export
+#' @importFrom dplyr rows_update select rename                                                                                                                ~notes,                             ~suggested_replacement,
+recode_from_comment <- function(df, replace_spp_from_comments) {
+  out <- df %>% 
+    rows_update(replace_spp_from_comments %>% 
+                  select(-SPECIES) %>% 
+                  rename(SPECIES = suggested_replacement)
+                  , by = "NOTES", unmatched = "ignore")
+  
+  out
+}
+
 #' Apply fixes to all veg data files where there is a suggested replacements file
 #' 
-#' @param type The type of fixes to apply. Either "spelling_fixes" or "species_to_recode"
+#' @param type The type of fixes to apply. Either "spelling_fixes", "species_to_recode" or "manual_recode_from_comments"
 #' @param .ignore_suggestions A named character vector of suggested fixes to ignore
 #' @param write A logical indicating whether to write the updated files to disk
 #' @return A tibble of the latest fixes
@@ -150,7 +167,7 @@ get_veg_file <- function(stage, system, type){
 #' "Carex dunnii") #Glenelg, more likely to be: Carex gunniana var. gunniana 
 #' apply_veg_data_fixes_from_files(type = "spelling_fixes", .ignore_suggestions = .ignore_suggestions, write = FALSE)
 #' }
-apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_to_recode"), .ignore_suggestions = NULL, write = FALSE) {
+apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_to_recode", "manual_recode_from_comments"), .ignore_suggestions = NULL, write = FALSE) {
   
   if(type == "spelling_fixes"){
     error_col <- "species"
@@ -176,17 +193,26 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
     filter(change_time == last(change_time)) %>% # for each unique QA (system by points by stage), get the latest file
     ungroup %>% 
     mutate(spp_fixes_data = map(path, ~readr::read_csv(.x)), 
-           spp_fixes_data = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, error_col, replacement_col),
            veg_data_file = pmap(.l = list(stage, system, file_type), .f = get_veg_file) %>% flatten_chr,
            veg_data = map(.x = veg_data_file,
                           ~ readr::read_csv(here::here( "data/raw_data/veg_data/", .x),
                                             col_types = readr::cols(.default = 
                                                                       readr::col_character()))
-           ),
-           veg_data_recoded = map2(.x = veg_data, .y = spp_fixes_data, 
-                                   ~ recode_veg_data(.x, "SPECIES", .y))
-           
-    )
+           ))
+  
+  if(type == "spelling_fixes" | type == "species_to_recode"){
+    latest_fixes <- latest_fixes %>%
+      mutate(
+        spp_fixes_l = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, error_col, replacement_col),
+        veg_data_recoded = map2(.x = veg_data, .y = spp_fixes_l, 
+                                ~ recode_veg_data(.x, "SPECIES", .y))
+      )
+  } else if(type == "manual_recode_from_comments"){
+    latest_fixes <- latest_fixes %>%
+      mutate(veg_data_recoded = map2(.x = veg_data, .y = spp_fixes_data, 
+                                     ~ recode_from_comment(.x, .y)))
+    
+  }
   
   if(write == TRUE){
     latest_fixes %>% 
