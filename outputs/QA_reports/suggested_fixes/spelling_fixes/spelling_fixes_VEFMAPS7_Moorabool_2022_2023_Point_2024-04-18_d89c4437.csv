@@ -1,0 +1,20 @@
+species,submitted_name,data_source_title,score,matched,suggested_replacement,genus,family,origin,lifeform,classification,instreamveg,wpfg,wpfgsource,group,rec_grp
+Geranium sp,Geranium sp,World Flora Online Plant List 2023-12,0.75,FALSE,Geranium,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Cyperus ""lanterns""","Cyperus ""lanterns""",World Flora Online Plant List 2023-12,0.75,FALSE,Cyperus,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Rytidosperma sp,Rytidosperma sp,World Flora Online Plant List 2023-12,0.75,FALSE,Rytidosperma,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Glyceria sp,Glyceria sp,World Flora Online Plant List 2023-12,0.75,FALSE,Glyceria,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Einadia nutans subsp. Nutans,Einadia nutans subsp. nutans,World Flora Online Plant List 2023-12,0.999,FALSE,Einadia nutans subsp. nutans,Einadia,Chenopodiaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial
+Cyperus spp,Cyperus spp,World Flora Online Plant List 2023-12,0.75,FALSE,Cyperus,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Juncus acutus subsp. Acutus,Juncus acutus subsp. acutus,World Flora Online Plant List 2023-12,0.999,FALSE,Juncus acutus subsp. acutus,Juncus,Juncaceae,exotic,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian
+Cassinia aculeata subsp. Aculeata,Cassinia aculeata subsp. aculeata,World Flora Online Plant List 2023-12,0.999,FALSE,Cassinia aculeata var. aculeata,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Potamogeton crispis,Potamogeton crispis,World Flora Online Plant List 2023-12,0.75,FALSE,Potamogeton crispus,Potamogeton,Potamogetonaceae,native,forb,Aquatic,YES,ARp,KM,Aquatic,Aquatic
+Oxalis perennns,Oxalis perennns,World Flora Online Plant List 2023-12,0.75,FALSE,Oxalis perennans,Oxalis,Oxalidaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial
+Pteridium esulentum,Pteridium esulentum,World Flora Online Plant List 2023-12,0.75,FALSE,Pteridium esculentum,Pteridium,Dennstaedtiaceae,native,fern,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial
+Juncus amabils,Juncus amabils,World Flora Online Plant List 2023-12,0.75,FALSE,Juncus amabilis,Juncus,Juncaceae,native,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian
+Urtica incisa(?),Urtica incisa(?),World Flora Online Plant List 2023-12,0.997,FALSE,Urtica incisa,Urtica,Urticaceae,native,forb,Fringing_high,NO,Tda,KM,Littoral margin,Terrestrial
+Juncus articulatus subsp. Articulatus,Juncus articulatus subsp. articulatus,World Flora Online Plant List 2023-12,0.999,FALSE,Juncus articulatus subsp. articulatus,Juncus,Juncaceae,exotic,sedge/rush,Fringing_low,NO,ATe,assumed,Littoral,Riparian
+Juncus articulatus subsp. Articulatus,Juncus articulatus subsp. articulatus,World Flora Online Plant List 2023-12,0.999,FALSE,Juncus articulatus var. articulatus,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Eucalyptus camaldulensis subsp. Camaldulensis,Eucalyptus camaldulensis subsp. camaldulensis,World Flora Online Plant List 2023-12,0.999,FALSE,Eucalyptus camaldulensis subsp. camaldulensis,Eucalyptus,Myrtaceae,native,tree,Tree,NO,ATw,Casanova 2011,Tree,Riparian
+Eucalyptus camaldulensis subsp. Camaldulensis,Eucalyptus camaldulensis subsp. camaldulensis,World Flora Online Plant List 2023-12,0.999,FALSE,Eucalyptus camaldulensis var. camaldulensis,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Epilobium billardierianum subsp. Billardierianum,Epilobium billardierianum subsp. billardierianum,World Flora Online Plant List 2023-12,0.54,FALSE,Epilobium billardiereanum subsp. billardiereanum,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Epilobium billardierianum subsp. Billardierianum,Epilobium billardierianum subsp. billardierianum,World Flora Online Plant List 2023-12,0.54,FALSE,Epilobium billardiereanum f. billardiereanum,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

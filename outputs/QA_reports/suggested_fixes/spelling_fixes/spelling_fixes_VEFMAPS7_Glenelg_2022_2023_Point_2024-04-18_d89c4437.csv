@@ -1,0 +1,14 @@
+species,submitted_name,data_source_title,score,matched,suggested_replacement,genus,family,origin,lifeform,classification,instreamveg,wpfg,wpfgsource,group,rec_grp
+Rumex bidens?,Rumex bidens?,World Flora Online Plant List 2023-12,0.75,FALSE,Rumex,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Schoenoplectus tabernaemontani?,Schoenoplectus tabernaemontani?,World Flora Online Plant List 2023-12,0.75,FALSE,Schoenoplectus,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Plantago coronipfolia,Plantago coronipfolia,World Flora Online Plant List 2023-12,0.75,FALSE,Plantago coronopifolia,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Crassula decumbens?,Crassula decumbens?,World Flora Online Plant List 2023-12,0.75,FALSE,Crassula,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Isolepis inundatus,Isolepis inundatus,World Flora Online Plant List 2023-12,0.75,FALSE,Isolepis inundata,Isolepis,Cyperaceae,native,sedge/rush,Fringing_low,NO,ATl,KM,Littoral,Riparian
+Eleocharis spacelata,Eleocharis spacelata,World Flora Online Plant List 2023-12,0.75,FALSE,Eleocharis sphacelata,Eleocharis,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Emergent,Emergent
+Carex gunnii,Carex gunnii,World Flora Online Plant List 2023-12,0.75,FALSE,Carex dunnii,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Tribolium obliteratum,Tribolium obliteratum,World Flora Online Plant List 2023-12,0.75,FALSE,Tribolium obliterum,Tribolium,Poaceae,exotic,grass,NA,NO,NA,NA,Terrestrial,Terrestrial
+Triglochin striatum,Triglochin striatum,World Flora Online Plant List 2023-12,0.75,FALSE,Triglochin striata,Triglochin,Juncaginaceae,native,forb,Fringing_low,NO,ATe,KM,Littoral,Riparian
+Centipedia cunninghamii,Centipedia cunninghamii,World Flora Online Plant List 2023-12,0.75,FALSE,Centipeda cunninghamii,Centipeda,Asteraceae,native,forb,Fringing_low,NO,ATl,Campbell 2014,Littoral,Riparian
+Acaena novae-zealandiae,Acaena novae-zealandiae,World Flora Online Plant List 2023-12,0.75,FALSE,Acaena novae-zelandiae,Acaena,Rosaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial
+Geranium sp. 1,Geranium sp. 1,World Flora Online Plant List 2023-12,0.75,FALSE,Geranium,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+Goodenia radicans???,Goodenia radicans???,World Flora Online Plant List 2023-12,0.75,FALSE,Goodenia,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA

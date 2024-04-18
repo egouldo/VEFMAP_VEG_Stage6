@@ -1,0 +1,4 @@
+species_master,genus,family,origin,lifeform,classification,instreamveg,wpfg,wpfgsource,group,rec_grp,species_veg_data
+Juncus acutus subsp. acutus,Juncus,Juncaceae,exotic,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian,Juncus acutus
+Juncus articulatus subsp. articulatus,Juncus,Juncaceae,exotic,sedge/rush,Fringing_low,NO,ATe,assumed,Littoral,Riparian,Juncus articulatus
+Microlaena stipoides var. stipoides,Microlaena,Poaceae,native,grass,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Microlaena stipoides

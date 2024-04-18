@@ -1,0 +1,17 @@
+survey,system,waterway,site,transect,metres,species,ground_layer_species_hits,max_val,total,diff,reduced_value
+14,Campaspe,Campaspe,Doaks,1,1,Litter,65,65,80,15,25
+14,Campaspe,Campaspe,Doaks,3,-1,Water,40,40,45,5,35
+14,Campaspe,Campaspe,Doaks,7,0,Litter,30,30,45,15,25
+14,Campaspe,Campaspe,English,10,7,Litter,40,40,47,7,33
+14,Campaspe,Campaspe,English,8,-1,Litter,22,22,50,28,12
+14,Campaspe,Campaspe,Spencer,3,-1,Litter,17,17,42,25,15
+14,Campaspe,Campaspe,Strathallan,6,4,Bare,28,28,58,30,10
+15,Campaspe,Campaspe,Strathallan,1,2,Litter,31,31,42,11,29
+15,Campaspe,Campaspe,Strathallan,9,3,Bare,31,31,42,11,29
+16,Campaspe,Campaspe,Campbells,3,7,Litter,22,22,41,19,21
+16,Campaspe,Campaspe,Doaks,5,3,Litter,34,34,43,9,31
+16,Campaspe,Campaspe,Spencer,8,5,Litter,21,21,46,25,15
+16,Campaspe,Campaspe,Strathallan,8,3,Litter,31,31,43,12,28
+16,Campaspe,Campaspe,Strathallan,8,7,Bare,31,31,42,11,29
+16,Campaspe,Campaspe,Strathallan,9,-1,Bare,29,29,42,13,27
+16,Campaspe,Campaspe,Strathallan,9,0,Bare,23,23,43,20,20

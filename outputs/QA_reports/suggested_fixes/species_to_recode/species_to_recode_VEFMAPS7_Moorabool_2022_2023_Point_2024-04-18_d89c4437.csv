@@ -1,0 +1,58 @@
+species_master,genus,family,origin,lifeform,classification,instreamveg,wpfg,wpfgsource,group,rec_grp,species_veg_data
+Acaena echinata,Acaena,Rosaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Acaena
+Acaena novae-zelandiae,Acaena,Rosaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Acaena
+Anthoxanthum odoratum,Anthoxanthum,Poaceae,exotic,grass,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Anthoxanthum
+Anthoxanthum spp.,Anthoxanthum,Poaceae,exotic,grass,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Anthoxanthum
+Cirsium vulgare,Cirsium,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,Campbell 2014,Terrestrial,Terrestrial,Cirsium
+Crassula decumbens var. decumbens,Crassula,Crassulaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Crassula
+Crassula helmsii,Crassula,Crassulaceae,native,forb,Fringing_low,NO,ARp,KM,Littoral,Riparian,Crassula
+Crassula natans,Crassula,Crassulaceae,native,forb,Fringing_low,NO,ARp,NA,Littoral,Riparian,Crassula
+Crassula spp.,Crassula,Crassulaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Crassula
+Cycnogeton alcockiae,Cycnogeton,Juncaginaceae,native,forb,Aquatic,YES,Sk,"CHECK THIS (not Se, less emergent than other Cycno?)",Aquatic,Aquatic,Cycnogeton
+Cycnogeton procerum,Cycnogeton,Juncaginaceae,native,forb,Aquatic,YES,Se,Casanova 2011,Aquatic,Aquatic,Cycnogeton
+Cyperus eragrostis,Cyperus,Cyperaceae,exotic,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian,Cyperus
+Cyperus exaltatus,Cyperus,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian,Cyperus
+Cyperus gunnii subsp. gunnii,Cyperus,Cyperaceae,native,sedge/rush,Emergent,YES,ATe,KM,Littoral,Riparian,Cyperus
+Cyperus lucidus,Cyperus,Cyperaceae,native,sedge/rush,Emergent,YES,NA,NA,Littoral,Riparian,Cyperus
+Cyperus spp.,Cyperus,Cyperaceae,unknown,sedge/rush,Emergent,YES,ATe,assumed,Littoral,Riparian,Cyperus
+Einadia nutans subsp. nutans,Einadia,Chenopodiaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Einadia nutans
+Einadia nutans subsp. nutans,Einadia,Chenopodiaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Einadia
+Galium aparine,Galium,Rubiaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Galium
+Galium murale,Galium,Rubiaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Galium
+Geranium dissectum,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Geranium molle,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Geranium
+Geranium spp.,Geranium,Geraniaceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Geranium sp. 2,Geranium,Geraniaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Geranium
+Hypochaeris glabra,Hypochaeris,Asteraceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Hypochaeris
+Hypochaeris radicata,Hypochaeris,Asteraceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Hypochaeris
+Lomandra filiformis subsp. coriacea,Lomandra,Asparagaceae,native,sedge/rush,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Lomandra
+Lomandra longifolia,Lomandra,Asparagaceae,native,sedge/rush,Fringing_high,NO,Tdr,KM,Littoral margin,Terrestrial,Lomandra
+Lysimachia arvensis,Lysimachia,Primulaceae,exotic,forb,NA,NO,ATl,KM,Terrestrial,Riparian,Lysimachia
+Oxalis corniculata,Oxalis,Oxalidaceae,exotic,forb,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Oxalis
+Oxalis exilis,Oxalis,Oxalidaceae,native,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Oxalis
+Oxalis incarnata,Oxalis,Oxalidaceae,exotic,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Oxalis
+Oxalis perennans,Oxalis,Oxalidaceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Oxalis
+Oxalis pes-caprae,Oxalis,Oxalidaceae,exotic,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Oxalis
+Oxalis spp.,Oxalis,Oxalidaceae,unknown,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Oxalis
+Poa annua,Poa,Poaceae,exotic,grass,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Poa
+Poa bulbosa,Poa,Poaceae,exotic,grass,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Poa
+Poa ensiformis,Poa,Poaceae,native,grass,Fringing_high,NO,NA,NA,Littoral margin,Terrestrial,Poa
+Poa fordeana,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,KM,Littoral margin,Terrestrial,Poa
+Poa labillardierei var. labillardierei,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,KM,Littoral margin,Terrestrial,Poa
+Poa sieberiana,Poa,Poaceae,native,grass,Fringing_high,NO,Tdr,KM,Littoral margin,Terrestrial,Poa
+Poa spp.,Poa,Poaceae,native,grass,Fringing_high,NO,Tda,assumed,Littoral margin,Terrestrial,Poa
+Rubus anglocandicans,Rubus,Rosaceae,exotic,shrub,Shrub,NO,Tda,KM,Shrub,Terrestrial,Rubus
+Rubus parvifolius,Rubus,Rosaceae,native,shrub,Shrub,NO,Tdr,KM,Shrub,Terrestrial,Rubus
+Rubus spp.,Rubus,Rosaceae,unknown,shrub,Shrub,NO,NA,NA,Shrub,Terrestrial,Rubus
+Senecio biserratus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Senecio
+Senecio campylocarpus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Senecio
+Senecio glomeratus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Senecio
+Senecio hispidulus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Senecio
+Senecio minimus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Senecio
+Senecio quadridentatus,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tdr,KM,Terrestrial,Terrestrial,Senecio
+Senecio runcinifolius,Senecio,Asteraceae,native,forb,Terrestrial,NO,Tda,KM,Terrestrial,Terrestrial,Senecio
+Senecio spp.,Senecio,Asteraceae,unknown,forb,Terrestrial,NO,NA,NA,Terrestrial,Terrestrial,Senecio
+Typha domingensis,Typha,Typhaceae,native,sedge/rush,Emergent,YES,Se,Casanova 2011,Emergent,Emergent,Typha
+Typha latifolia,Typha,Typhaceae,exotic,sedge/rush,Emergent,YES,Se,KM,Emergent,Emergent,Typha
+Typha orientalis,Typha,Typhaceae,exotic,sedge/rush,Emergent,YES,Se,KM,Emergent,Emergent,Typha
+Typha spp.,Typha,Typhaceae,native,sedge/rush,Emergent,YES,Se,Casanova 2011,Emergent,Emergent,Typha
