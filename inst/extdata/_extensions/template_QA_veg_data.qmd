@@ -594,6 +594,8 @@ if(nrow(spelling_fixes) > 0){
 #| results: asis
 #| eval: !expr is.null(spelling_fixes) == FALSE 
 
+write_QA_outputs(spelling_fixes, params, "spelling_fixes")
+
 # Species needing speling fixes in `veg_data`
 if(nrow(spelling_fixes) > 0){
   knitr::kable(spelling_fixes, 
@@ -617,6 +619,8 @@ gluedown::md_paragraph('The following species need to be recoded in the `veg_dat
 #| code-fold: true
 #| results: asis
 #| eval: !expr is.null(species_to_recode) == FALSE
+
+write_QA_outputs(species_to_recode, params, "species_to_recode")
 
 knitr::kable(species_to_recode, 
                caption = "Species in `veg_data`, but needing to be recoded.")
@@ -692,7 +696,7 @@ Below are sites where the sum of ground layer hits is over 40 (first table), and
 #| results: asis
 
 agent_hits %>% 
-    pointblank::get_data_extracts() %>% 
+    pointblank::get_data_extracts() %>% #TODO what to do if is 0, i.e. when test passes?
     set_names(agent_hits %>% 
                   get_agent_report(display = FALSE) %>% 
                   mutate(validation_name = glue::glue("**{type}({columns}, {values})**")) %>% 
@@ -711,7 +715,7 @@ We also identify the ground layer species with the most hits for each subtransec
 # Identify subtransects where sum of ground layer hits > 40
 ground_layer_hits_over_40 <- 
   agent_hits %>% 
-  pointblank::get_data_extracts() %>% 
+  pointblank::get_data_extracts() %>% #TODO what to do if is 0, i.e. when test passes?
   set_names(agent_hits %>% 
               get_agent_report(display = FALSE) %>% 
               mutate(validation_name = glue::glue("{type}({columns}, {values})")) %>% 
@@ -753,6 +757,7 @@ Ground layer types (`species`) where the sum of hits is over 40 are listed below
 ```{r}
 #| label: report-ground-layer-hits
 #| echo: false
+#| eval: !expr  is.null(layer_type_over_40) == FALSE
 
 knitr::kable(layer_type_over_40, 
              caption = "**Ground layer types and their hits, where sum of ground layer hits is over 40.**")
