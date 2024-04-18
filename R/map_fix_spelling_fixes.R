@@ -93,7 +93,7 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
   }
   
   latest_fixes <-
-    dir_info(here::here("outputs", "QA_reports", "suggested_fixes", !!type)) %>% 
+    dir_info(here::here("outputs", "QA_reports", "suggested_fixes", type)) %>% 
     select(path, change_time) %>% 
     filter(str_detect(path, ".csv")) %>%
     mutate(system = str_extract(path, paste0(.system_list, collapse= "|")),
@@ -102,7 +102,7 @@ apply_veg_data_fixes_from_files <- function(type = c("spelling_fixes", "species_
     group_by(system, file_type, stage) %>% 
     filter(change_time == last(change_time)) %>% # for each unique QA (system by points by stage), get the latest file
     mutate(spp_fixes_data = map(path, ~readr::read_csv(.x)), 
-           spp_fixes_data = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, error_col, "replacement_col"),
+           spp_fixes_data = map(spp_fixes_data, get_spp_fixes, .ignore_suggestions, error_col, replacement_col),
            veg_data_file = pmap(.l = list(stage, system, file_type), .f = get_veg_file) %>% flatten_chr,
            veg_data = map(.x = veg_data_file,
                           ~ readr::read_csv(here::here( "data/raw_data/veg_data/", .x),
