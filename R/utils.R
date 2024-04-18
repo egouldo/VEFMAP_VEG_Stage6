@@ -99,8 +99,8 @@ quarto_render_move <- function(
 #' @importFrom glue glue
 #' @importFrom readr write_csv
 #' @export
-write_QA_outputs <- function(df, params, type = "hit_reductions") {
-  
+write_QA_outputs <- function(df, params, type = c("hit_reductions", "spelling_fixes", "species_to_add", "species_to_recode")) {
+
   base_input_file <- basename(params$input_file) %>% 
     fs::path_ext_remove()
   
