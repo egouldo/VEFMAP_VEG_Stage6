@@ -46,3 +46,37 @@ QA_reports |>
     output_format = "md",
     output_dir = here::here("outputs", "QA_reports")
   ) # TODO Render the QA reports but only if the file SHA has changed
+
+
+filenameS6 <- dir(here::here("data", "raw_data", "veg_data")) %>% 
+  keep(., str_detect(., "VEFMAPS6_") & str_detect(., "_Point"))
+
+if(length(filenameS6) == 0){
+  cli::cli_abort("No S6 data found")
+} else{
+  
+  QA_reports <- tibble(
+    system = 
+      filenameS6 %>% str_extract(paste0(.system_list, collapse = "|")),
+    filename = here::here("data", "raw_data", "veg_data", filenameS6),
+    file_sha = filenameS6 %>% 
+      paste0("data/raw_data/veg_data/", .) %>%  
+      gert::git_stat_files() %>% 
+      pluck("head")
+  ) %>% mutate(
+    file_sha_short = substrRight(file_sha, 8),
+    output_file = glue::glue("VEFMAPS6_{system}_QA_Report_{lubridate::today()}_{file_sha_short}.md"),
+    execute_params = map2(filename, file_sha, ~ list(input_file = .x, file_sha = .y))
+  )
+  
+}
+
+# Render the QA reports
+QA_reports |>
+  select(output_file, execute_params) |>
+  purrr::pwalk(
+    quarto_render_move,
+    input = "inst/extdata/_extensions/template_QA_veg_data.qmd",
+    output_format = "md",
+    output_dir = here::here("outputs", "QA_reports")
+  ) # TODO Render the QA reports but only if the file SHA has changed
