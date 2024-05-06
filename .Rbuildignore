@@ -1,0 +1,6 @@
+^renv$
+^renv\.lock$
+^LICENSE\.md$
+^CITATION\.cff$
+^.*\.Rproj$
+^\.Rproj\.user$

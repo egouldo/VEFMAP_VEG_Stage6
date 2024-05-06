@@ -2,13 +2,14 @@ Draft Preregistration for Vegetation Responses to Environmental Flows
 ================
 
 Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
-29 February, 2024
+27 March, 2024
 
 # 1.0 Problem Formulation
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > This section specifies the decision-making context in which the model
 > will be used or the intended scope and context of conclusions.
@@ -25,13 +26,14 @@ Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 > applicability of the model, and reasonable extrapolation limits (Grimm
 > et al. 2014).
 
-------------------------------------------------------------------------
+</details>
 
 ## 1.1 Model Context and Purpose
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Defining the purpose of the model is critical because the model
 > purpose influences choices at later stages of model development
@@ -48,13 +50,14 @@ Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 > limitations on model development, analysis and flexibility should also
 > be outlined in this section (Jakeman, Letcher, and Norton 2006).
 
-------------------------------------------------------------------------
+</details>
 
 ### 1.1.1. Key Stakeholders & Model Users
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > Identify relevant interest groups:
 >
@@ -64,7 +67,9 @@ Chris Jones, Jian Yen, Elliot Gould, Henry Wootton
 > - [ ] Describe the decision-making context in which the model will be
 >   used (if relevant).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 This preregistration document relates to the data analysis of a study on
 vegetation responses to environmental flows. The study forms one
@@ -81,7 +86,7 @@ Victorian Environmental Water Holder (VEWH) who manage the environmental
 water entitlements throughout the state, and the Victorian Catchment
 Management Authorities (CMAs) that manage the delivery of environmental
 water along individual waterways. Findings from this research can then
-be used to directly influence: managament decisions through the CMAs;
+be used to directly influence: management decisions through the CMAs;
 water allocation through the VEWH; and water investment through DELWP,
 the State Government and the Murray Darling Basin Authority. Other
 stakeholders, including the public, water authorities and institutions
@@ -104,11 +109,20 @@ of this study and others, regulatory frameworks, funding availability,
 physical and practical constraints, and others. This study does not
 contribute to those decisions outside of providing the study outputs.
 
+The three primary users of the model outputs are: 1) funders of
+environmental water (i.e. state and federal governments) to understand
+the magnitude of the outcomes of their investment, and the limitations
+or barriers to benefits; 2) managers of environmental water (i.e. CMAs)
+to guide and improve management decisions for environmental benefits;
+and 3) other researchers working in the field of waterway flow
+management and environmental flows locally and internationally.
+
 ### 1.1.2 Model purpose, context and problem context
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > Briefly outline
 >
@@ -125,7 +139,9 @@ contribute to those decisions outside of providing the study outputs.
 >   including the decision-trigger and any regulatory frameworks
 >   relevant to the problem.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 The ecological problem is related to river regulation. Natural flow
 regimes are major drivers of ecological processes within waterways.
@@ -162,51 +178,56 @@ study.
 
 ### 1.1.3 Analytical purpose
 
-------------------------------------------------------------------------
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
-**`ℹ️` Rationale & Explanation**
+> How will the model be analysed, what analytical questions will the
+> model be used to answer? For example, you might be using your model in
+> a scenario analysis to determine which management decision is
+> associated with minimum regret or the highest likelihood of
+> improvement. Other examples from ecological decision-making include:
+> to compare the performance of alternative management actions under
+> budget constraint (Fraser et al. 2017) to search for robust decisions
+> under uncertainty (McDonald-Madden, Baxter, and Possingham 2008), to
+> choose the conservation policy that minimises uncertainty (insert
+> ref). See other examples in (Moallemi, Elsawah, and Ryan 2019).
 
-How will the model be analysed, what analytical questions will the model
-be used to answer? For example, you might be using your model in a
-scenario analysis to determine which management decision is associated
-with minimum regret or the highest likelihood of improvement. Other
-examples from ecological decision-making include: to compare the
-performance of alternative management actions under budget constraint
-(Fraser et al. 2017) to search for robust decisions under uncertainty
-(McDonald-Madden, Baxter, and Possingham 2008), to choose the
-conservation policy that minimises uncertainty (insert ref). See other
-examples in (Moallemi, Elsawah, and Ryan 2019).
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
-------------------------------------------------------------------------
+> *Provide detail on the analytical purpose and scope of the model:*
+>
+> - [ ] How will the model be analysed and what analytical questions
+>   will the model be used to answer?
+> - [ ] Candidate decisions should be investigated and are specified a
+>   priori. Depending on the modelling context, they may be specified by
+>   stakeholders, model users or the analyst (Moallemi, Elsawah, and
+>   Ryan 2019).
+> - [ ] Describe the method used to identify relevant management actions
+>   and
+> - [ ] specify management actions to be considered included in the
+>   model.
+> - [ ] Are there potentially unacceptable management or policy outcomes
+>   identified by stakeholders that should be captured in the model,
+>   i.e.as constraints?
+> - [ ] Are there scenarios that model inputs or outputs that must
+>   accommodated? Scenarios should be set a priori, (i.e. before the
+>   model is built, Moallemi, Elsawah, and Ryan 2019) and may be
+>   stakeholder-defined or driven by the judgement of the modeller or
+>   other experts (Mahmoud et al. 2009).
+> - [ ] If relevant, describe what processes you will use to elicit and
+>   identify relevant scenarios, e.g. literature review, structured
+>   workshops with stakeholders or decision-makers.
+> - [ ] Specify scenarios under which decisions are investigated.
 
-**`📝` Preregistration Item**
+</details>
 
-*Provide detail on the analytical purpose and scope of the model:*
-
-- [ ] How will the model be analysed and what analytical questions will
-  the model be used to answer?
-- [ ] Candidate decisions should be investigated and are specified a
-  priori. Depending on the modelling context, they may be specified by
-  stakeholders, model users or the analyst (Moallemi, Elsawah, and Ryan
-  2019).
-  - [ ] Describe the method used to identify relevant management actions
-    and
-  - [ ] specify management actions to be considered included in the
-    model.
-  - [ ] Are there potentially unacceptable management or policy outcomes
-    identified by stakeholders that should be captured in the model,
-    i.e.as constraints?
-- [ ] Are there scenarios that model inputs or outputs that must
-  accommodated? Scenarios should be set a priori, (i.e. before the model
-  is built, Moallemi, Elsawah, and Ryan 2019) and may be
-  stakeholder-defined or driven by the judgement of the modeller or
-  other experts (Mahmoud et al. 2009).
-  - [ ] If relevant, describe what processes you will use to elicit and
-    identify relevant scenarios, e.g. literature review, structured
-    workshops with stakeholders or decision-makers.
-  - [ ] Specify scenarios under which decisions are investigated.
-
-------------------------------------------------------------------------
+<br>
 
 The model objectives for this study are to provide evidence for
 vegetation responses to environmental flow delivery over short (\<1yr)
@@ -231,14 +252,6 @@ groupings are yet to be determined. More information on these groupings
 is provided below in
 [2.4](#24-identify-predictor-and-response-variables).
 
-The models will require a certain amount of flexibility to be able to
-change the timeframes over which data are compared and the set of
-predictor variables that will change depending on the timeframes
-selected. Funding constraints and client objectives may also require
-changes to the modelling process or purpose at any point. Currently
-there are no significant limitations on model development - sufficient
-time and funding resources - but this may change.
-
 The models themselves will be analysed by assessing the model fit and
 parameters indicating suitability of model structure given the data. The
 specific tests to be used will depend on the model structure used. More
@@ -252,26 +265,19 @@ further here.
 Future research will involve testing scenarios of different flow regimes
 to what we have observed. This includes estimating the expected data we
 would have collected if the flows that were delivered were not
-delivered - thus effectively modelling a control or counterfactual
+delivered - thus effectively modelling a control or counter factual
 dataset to the observed data. It also includes testing various future
 scenarios with different hypothetical future regimes in the medium
 (\<5yr) or long (\>5yr) term. However, again this is likely to be beyond
 the scope of the current study which will focus solely on the collected
 data.
 
-The three primary users of the model outputs are: 1) funders of
-environmental water (i.e. state and federal governments) to understand
-the magnitude of the outcomes of their investment, and the limitations
-or barriers to benefits; 2) managers of environmental water (i.e. CMAs)
-to guide and improve management decisions for environmental benefits;
-and 3) other researchers working in the field of waterway flow
-management and environmental flows locally and internationally.
-
 ### 1.1.4 Logistical Constraints
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] What degree of flexibility is required from the model? Might the
 >   model need to be quickly reconfigured to explore new scenarios or
@@ -282,13 +288,24 @@ management and environmental flows locally and internationally.
 > - [ ] When must the model be completed by, e.g. to help make a
 >   decision?
 
-------------------------------------------------------------------------
+</details>
+
+<br>
+
+The models will require a certain amount of flexibility to be able to
+change the time frames over which data are compared and the set of
+predictor variables that will change depending on the time frames
+selected. Funding constraints and client objectives may also require
+changes to the modelling process or purpose at any point. Currently
+there are no significant limitations on model development - sufficient
+time and funding resources - but this may change.
 
 ### 1.1.5 Model Scope, Scale and Resolution
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] The choice of a model’s boundaries is closely linked to the
 >   choice of how finely to aggregate the behaviour within the model
@@ -300,13 +317,30 @@ management and environmental flows locally and internationally.
 >   treated as external forcing (known/unknown), or else as model
 >   outputs (observed, or not, Jakeman, Letcher, and Norton 2006).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
+
+Each of the models described in this preregistration is aggregated
+differently depending on the response variable and depending on the
+particular model specification.
+
+**Vegetation Cover Models**
+
+- Full Model: Models vegetation cover for any given transect
+
+- Simplified Model 1: “flow regime model”
+
+- Simplified Model 2: “flow events model”
+
+**Species Richness Models**
 
 ### 1.1.6 Intended Application of Results
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Preregistration Items in this section are relevant to model
 > transferability (Yates et al. 2018) and constraints on generality in
@@ -319,21 +353,39 @@ management and environmental flows locally and internationally.
 > generalisations about results may be acceptable if the data comes from
 > experimentally manipulated or controlled systems.
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] What is the intended domain in which the model is to be applied?
 >   Are there any reasonable extrapolation limits beyond which you
 >   expect the model should not be applied (Grimm et al. 2014)?
 
-------------------------------------------------------------------------
+</details>
+
+<br>
+
+The models developed in this study will be applied to only the river
+systems for which data was collected and used to fit these models.
+However, improved understanding about the ecological responses to
+environmental flows for the modelled systems may inform future
+conceptual models and statistical models based thereon.
+
+Given that the primary goal of this study is to improve understanding
+about the effects of environmental flows on vegetation, these models
+resulting from this preregistration should not be directly used to
+inform predictions on which to base decisions about the management of
+environmental flows. The models developed in this study will instead be
+appropriately refined for use within a predictive modelling context.
 
 # 2.0 Define Conceptual Model
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Conceptual models underpin the formal or quantitative model
 > (Cartwright et al. 2016). The conceptual model describes the
@@ -346,13 +398,14 @@ management and environmental flows locally and internationally.
 > responses, and internal (state) variables (Jakeman, Letcher, and
 > Norton 2006).
 
-------------------------------------------------------------------------
+</details>
 
 ## 2.1 Elicitation and Representation Method
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe what method you will use to elicit or identify the
 >   conceptual model. Some common methods include interviews, drawings,
@@ -364,7 +417,9 @@ management and environmental flows locally and internationally.
 >   model? This will likely depend on the method chosen to elicit the
 >   conceptual model.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 We have developed a series of relevant conceptual models for this work
 over the past four years that build on previous published work by other
@@ -372,19 +427,20 @@ researchers, as well as our own research, observations and many
 discussions. These conceptual models are described in text within
 program reports and are summarised in diagrams. The models are
 biological/ecological only and do not include links to decision makers
-or values as these constrainsts are not within our capability to
+or values as these constraints are not within our capability to
 influence. Therefore, the models primarily summarise the dominant
 drivers of vegetation attributes (cover, diversity, distribution,
 composition) within waterways. Not all important drivers are included
 because it is impossible to account for everything within our study. Our
-final model for this particular study will be decribed in text and
+final model for this particular study will be described in text and
 summarised within one or more non-quantitative diagrams.
 
 ## 2.2 Explain Critical Conceptual Design Decisions
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > List and explain critical conceptual design decisions (Grimm et al.
 > 2014), including:
@@ -398,9 +454,11 @@ summarised within one or more non-quantitative diagrams.
 >   concepts, or earlier models against alternative conceptual design
 >   decisions that might lead to alternative model structures.
 
-------------------------------------------------------------------------
+</details>
 
-This current study focusses on two different timeframes: short term
+<br>
+
+This current study will focus on two different time frames: short term
 (months) in relation to before and after event surveys; as well as
 long-term (years) in relation to patterns resulting from previous years
 of particular flow regimes. The models therefore need to describe the
@@ -412,7 +470,7 @@ The entities will be the vegetation response variables (cover,
 diversity, composition and perhaps distribution) as well as various flow
 variables and other factors such as bank elevation, site, river system,
 rainfall and livestock grazing. The flow variables will depend on the
-timeframe. Short term responses will include the presence and magnitude
+time frame. Short term responses will include the presence and magnitude
 of a flow event and potentially the time of year and duration of the
 event. Long term responses will include the presence of individual flow
 events over the previous years (number of years TBC) and categorisation
@@ -453,9 +511,10 @@ temperatures.
 
 ## 2.3 Model assumptions and uncertainties
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > Specify key assumptions and uncertainties underlying the model design,
 > describing how uncertainty and variation will be represented in the
@@ -466,7 +525,9 @@ temperatures.
 > - [ ] parametric uncertainty in input data and
 > - [ ] structural / conceptual nonparametric uncertainty in the model.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 **Exogenous uncertainty** By ‘exogenous uncertainties’ I’m assuming this
 refers to uncertainties in any of the possible predictor variables for
@@ -486,11 +547,11 @@ natural environment. These include:
   at sites but this will not account for the spatial and temporal
   variation in these factors that may influence our results.
 - Soil properties. We do not have accurate (or any in some cases)
-  information on soil type at each site. Nor do we have an expecation of
-  how soils might influence plant attributes and responses to flows. We
-  may be able to obtain basic information from spatial mapping of soil
-  types, but this would be at a very coarse scale and would also not
-  account for shallow surface soil deposits or variation through the
+  information on soil type at each site. Nor do we have an expectation
+  of how soils might influence plant attributes and responses to flows.
+  We may be able to obtain basic information from spatial mapping of
+  soil types, but this would be at a very coarse scale and would also
+  not account for shallow surface soil deposits or variation through the
   soil profile. We have some data on soil types at some sites from soil
   cores but not all.
 - Funghi. Funghi may be considered exogenous or endogenous, but it may
@@ -561,18 +622,21 @@ but is not contained within our conceptual model.
 
 ## 2.4 Identify predictor and response variables
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > The identification and definition of primary model input variables
 > should be driven by scenario definitions, and by the scope of the
 > model described in the problem formulation phase (Mahmoud et al.
 > 2009).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > Identify and define system system variables and structures,
 > referencing scenario definitions, and the scope of the model as
@@ -595,7 +659,9 @@ but is not contained within our conceptual model.
 >   answer the research question appropriately? (Should this last step
 >   go here or within define conceptual framework?.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 **Response Variables**
 
@@ -642,26 +708,30 @@ obtain at the appropriate spatial resolution (such as soils and funghi)
 are unlikely to be added. We expect there to be interactions between
 flow and bank elevation, hence the need to incorporate the elevation in
 our models. There may be interactions between bank elevation and
-livestock impacts due to the softer ground at the bank margin being mroe
-susciptible to trampling. Exotic vegetation will also interact with bank
+livestock impacts due to the softer ground at the bank margin being more
+susceptible to trampling. Exotic vegetation will also interact with bank
 elevation and flows. Rainfall in summer is likely to be more influential
 than rainfall in winter.
 
 ## 2.5 Define prior knowledge, data specification and evaluation
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 *This section specifies the plan for collecting, processing and
 preparing data available for parameterisation, determining model
 structure, and for scenario analysis.*
 
+</details>
+
 ### 2.5.1 Collate available data sources that could be used to parameterise or structure the model
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > **For pre-existing data (delete as appropriate):**
 >
@@ -705,7 +775,9 @@ structure, and for scenario analysis.*
 > - [ ] If sample size cannot be specified, specify a stopping rule -
 >   i.e. how will you decide when to terminate your data collection?
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 For this section, I have used the relevant points above from both of the
 options above given that we have collected the data ourselves.
@@ -730,7 +802,7 @@ options above given that we have collected the data ourselves.
   files, but the column names have been intuitively labelled. A file
   will be produced and stored with the data or in an accessible
   repository. *Task/issue to create metadata file*
-- There have been many unpubllished client reports producted based on
+- There have been many unpublished client reports produced based on
   small subsets of these data but with very limited data analysis. There
   have also been many oral presentations and various summary documents
   (flyers etc.) shared with relevant stakeholders. A summary including
@@ -756,16 +828,19 @@ options above given that we have collected the data ourselves.
 
 ### 2.5.2 Data Processing and Preparation
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe any data preparation and processing steps, including
 >   manipulation of environmental layers (e.g. standardisation and
 >   geographic projection) or variable construction (e.g. Principal
 >   Component Analysis).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 This analysis is relatively complex, due to the large dataset and the
 integration of different data sources (vegetation data, flow, transect
@@ -813,10 +888,10 @@ points appears to be accurate, the comparative elevation to the flow
 levels was in some cases misaligned. This is however a relatively easy
 fix, once the difference between the transect and flow data elevations
 is determined, that value is simply added or subtracted from either
-dataset for callibration. The differences were possible due to water
+dataset for calibration. The differences were possible due to water
 level elevations recorded at each site that could compare flow levels
 with sub-transect levels directly. A second issue is that the river
-chanels typically decline in elevation from upstream to downstream
+channels typically decline in elevation from upstream to downstream
 within a site, resulting in a decline in elevation across the transect
 locations within a site. This is particularly true for sites further
 upstream, whereas lowland reaches can be very flat. This means that a
@@ -881,7 +956,7 @@ summer/autumn fresh. A ‘summer’ regime might have all but the spring
 fresh/high-flow, while a ‘spring’ regime might have all but the
 summer/autumn fresh. There may also be a category for ‘variable’ regime
 within recent years. For categorical regimes, the regime also needs to
-be consistent accross the relevant set of years. Depending on the
+be consistent across the relevant set of years. Depending on the
 variability between sites and between years, we might need to consider
 multiple options for evaluating the regime. Each of the sites needs to
 be assessed to list the regime within recent years to determine the best
@@ -923,7 +998,7 @@ are directly equivalent to riparian systems, however there are some
 notable variations. There are also many different WPFGs, which are
 impractical to evaluate separately in many cases. In this study, we do
 not have a pre-determined approach for how vegetation groups will be
-used. We have compiled all of the relvant WPFG assignments for each
+used. We have compiled all of the relevant WPFG assignments for each
 species recorded and have determined our own classes in which these
 groups are nested (with variation required in few cases where the
 riparian response is expected or observed to be different from the
@@ -958,9 +1033,10 @@ determine the variables used.
 
 ### 2.5.3 Describe any data exploration or preliminary data analyses
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > In most modelling cases, it is necessary to perform preliminary
 > analyses to understand the data and check that assumptions and
@@ -970,22 +1046,29 @@ determine the variables used.
 > coverage, quality and resolution, outliers, or the need for
 > transformations (Yates et al. 2018).
 
-------------------------------------------------------------------------
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
-**`📝` Preregistration Item**
+> For each separate preliminary or investigatory analysis:
+>
+> - [ ] State what needs to be known to proceed with further
+>   decision-making about the modelling procedure, and why the analysis
+>   is necessary.
+> - [ ] Explain how you will implement this analysis, as well as any
+>   techniques you will use to summarise and explore your data.
+> - [ ] What method will you use to represent this analysis (graphical,
+>   tabular, or otherwise, describe)
+> - [ ] Specify exactly which parts of the data will be used
+> - [ ] Describe how the results will be interpreted, listing each
+>   potential analytic decision, as well as the analysis finding that
+>   will trigger each decision, where possible.
 
-> For each separate preliminary or investigatory analysis: - \[ \] State
-> what needs to be known to proceed with further decision-making about
-> the modelling procedure, and why the analysis is necessary. - \[ \]
-> Explain how you will implement this analysis, as well as any
-> techniques you will use to summarise and explore your data. - \[ \]
-> What method will you use to represent this analysis (graphical,
-> tabular, or otherwise, describe) - \[ \] Specify exactly which parts
-> of the data will be used - \[ \] Describe how the results will be
-> interpreted, listing each potential analytic decision, as well as the
-> analysis finding that will trigger each decision, where possible.
+</details>
 
-------------------------------------------------------------------------
+<br>
 
 Given the complex nature of this analysis and the uncertainties in the
 data structure due to the data processing that needs to occur, there are
@@ -996,7 +1079,7 @@ account for ‘zero samples’ (see
 different amounts of skew or zero-inflation in the response or predictor
 variables. Initially, we will need to do simple tests of data
 distributions within hierarchies to check for data spread and prevalence
-of zeros or outliers. We will also need to assess the colinearity or
+of zeros or outliers. We will also need to assess the collinearity or
 interactions between candidate predictor variables to ensure relevant
 interactions are captured and to reduce model overfitting. Our data are
 spatially and temporally variable with a relatively large spatial
@@ -1018,13 +1101,21 @@ operationalised, and which variables should be included given issues
 like multicolinearity. The analysis aims to identify any major issues
 that we might need to address within our modelling of the full dataset.
 
-Some questions we will investigate are: - How do we classify best flow
-regime based on inundation data? - What is the relevant regime
-time-frame to consider for quantifying the regime? 3 / 5 years,
-something else? - Are there any outliers? - What distributional
-assumptions do we need to make in our models? - Will there be issues
-with zero-inflated count data? - Do the available data support the
-desired model structures, or do these require simplification?
+Some questions we will investigate are:
+
+- How do we classify best flow regime based on inundation data?
+
+- What is the relevant regime time-frame to consider for quantifying the
+  regime? 3 / 5 years, something else?
+
+- Are there any outliers?
+
+- What distributional assumptions do we need to make in our models?
+
+- Will there be issues with zero-inflated count data?
+
+- Do the available data support the desired model structures, or do
+  these require simplification?
 
 To resolve these uncertainties we will conduct some exploratory data
 analyses. Specifically, we will visually assess distributions of the
@@ -1084,16 +1175,16 @@ It is important to note that models fitted to the pilot dataset may not
 translate directly to the final analysis due to differences in the data
 structure. These differences will change the distribution of
 observations within categories, and will introduce a new random effect
-for waterbody (or system), which is not required for the
-single-waterbody pilot analysis. Due to these changes, the final
-analysis still requires model checking and may require changes to the
-model structure.
+for water body (or system), which is not required for the single-water
+body pilot analysis. Due to these changes, the final analysis still
+requires model checking and may require changes to the model structure.
 
 ### 2.5.4 Data evaluation, exclusion, and missing data
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Documenting issues with reliability is important because data quality
 > and ecological relevance might be constrained by measurement error,
@@ -1103,9 +1194,11 @@ model structure.
 > scales and resolutions, and appropriate to the problem at hand
 > (Mahmoud et al. 2009).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe how you will determine how reliable the data is for the
 >   given model purpose. Ideally, model input data should be internally
@@ -1119,26 +1212,28 @@ model structure.
 >   season, species, trait, etc.
 > - [ ] How will you identify and deal with incomplete or missing data?
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 *Data reliability* At this stage I am unsure about how we will
 quantitatively evaluate how reliable the data are for the questions
-being addressed. Qualitatievely, one of the most important
-considerations will be to assess how logical the outcomes are in
-relation to our observations and conceptual understanding. We have a
-very good moental model of these systems due to the large amounts of
-fieldwork in various areas over the years collecting the dataset used in
-this study as well as relevant data for other studies. As for data
-qualtiy, there are likely to be minor errors in such a large dataset
-that we cannot detect with our quality checking procedures, however, we
-are very confident that the data have been consistently collected
-(almost every survey was led by the same individual with the other
-surveyors being from a consistent set of experienced individuals), in
-the same places (all transects were permanently marked and relocated at
-each survey), and the datat checking process has been extremely thorough
-(documented in git). All this considered, we believe that this is one of
-the most reliable vegetation datasets available anywhere in Victoria for
-its size and complexity.
+being addressed. Qualitatively, one of the most important considerations
+will be to assess how logical the outcomes are in relation to our
+observations and conceptual understanding. We have a very good mental
+model of these systems due to the large amounts of fieldwork in various
+areas over the years collecting the dataset used in this study as well
+as relevant data for other studies. As for data quality, there are
+likely to be minor errors in such a large dataset that we cannot detect
+with our quality checking procedures, however, we are very confident
+that the data have been consistently collected (almost every survey was
+led by the same individual with the other surveyors being from a
+consistent set of experienced individuals), in the same places (all
+transects were permanently marked and relocated at each survey), and the
+data checking process has been extremely thorough (documented in git).
+All this considered, we believe that this is one of the most reliable
+vegetation datasets available anywhere in Victoria for its size and
+complexity.
 
 *Data exclusions* Data will only be excluded if we believe it is
 incorrect, and it can’t be corrected, it is irrelevant to a particular
@@ -1151,19 +1246,23 @@ identify - we are confident that the former have been well accounted for
 in the datasets but the latter is only partially accounted for and there
 may be some minor errors that we cannot isolate. All species will be
 included, but unknown species that have no possible grouping identifier,
-e.g. native/exotic or lifeform, may not be possible to include. The vast
-majority of these occurrences are for seedlings that are too small to be
-identified. In most cases seedlings had minimal impact on plant cover,
-so this would have few implications for evaluation of cover, but this
-may have a greater impact on species richness. Decisions will need to be
-made for certain unknown species categories, particularly those that are
-more common in the dataset. At this stage only species that can reliably
-assigned to a relevant group for a given model will be included.
-Furthermore, the pilot analysis illustrated extreme zero-inflation for
-several groups, which prevented model fitting. Consequently these groups
-were excluded from the pilot study modelling and they may or may not be
-included in the full dataset analysis, depending on whether the models
-can be successfully fit.
+e.g. native/exotic or life form, may not be possible to include. The
+vast majority of these occurrences are for seedlings that are too small
+to be identified. In most cases seedlings had minimal impact on plant
+cover, so this would have few implications for evaluation of cover, but
+this may have a greater impact on species richness. Decisions will need
+to be made for certain unknown species categories, particularly those
+that are more common in the dataset. At this stage only species that can
+reliably assigned to a relevant group for a given model will be
+included. Furthermore, the pilot analysis illustrated extreme
+zero-inflation for several groups, which prevented model fitting.
+Consequently these groups were excluded from the pilot study modelling
+and they may or may not be included in the full dataset analysis,
+depending on whether the models can be successfully fit.
+
+Plant functional groups `"Atl_native", "Ate_native", "Tda_unknown"` are
+removed for all models because these `wpfg` are thought to be
+incorrectly specified (typos).
 
 *Missing data* There are a small number of cases where we have
 incomplete or missing data due to various circumstances in the surveys.
@@ -1172,9 +1271,10 @@ proportion of the overall dataset.
 
 ## 2.6 Conceptual Model Evaluation
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe how your conceptual model will be critically evaluated.
 >   Evaluation includes both the completeness and suitability of the
@@ -1184,25 +1284,35 @@ proportion of the overall dataset.
 > - [ ] Will this process will include consultation or feedback from a
 >   client, manager, or model user.
 
-------------------------------------------------------------------------
+</details>
+
+Model analysis results will be used to update the existing conceptual
+model (described in [2.0 Define Conceptual
+Model](#define-conceptual-model)). Specifically, model results will be
+used to inform understanding about the short-term (flow models) and
+long-term (regime models) impacts of environmental flows combined with
+grazing and exotic vegetation on native vegetation (cover and density)
+within regulated river channels monitored in this dataset.
 
 # 3.0 Formalise and Specify Model
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > In this section describe what quantitative methods you will use to
 > build the model/s, explain how they are relevant to the
 > client/manager/user’s purpose.
 
-------------------------------------------------------------------------
+</details>
 
 ## 3.1 Model Class, Framework and Approach
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Modelling approaches can be described as occurring on a spectrum from
 > correlative or phenomenological to mechanistic or process-based (Yates
@@ -1218,16 +1328,20 @@ proportion of the overall dataset.
 > the model, such as link functions, spatial and temporal scales of
 > processes and their interactions (Jakeman, Letcher, and Norton 2006).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe what modelling framework, approach or class of model
 >   you will use to implement your model and relate your choice to the
 >   model purpose and analytical objectives described in 1.1.2 and
 >   [1.1.3](#113-analytical-purpose).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 We will use a correlative model approach for this analysis, where we
 will attempt to detect and describe patterns in recorded vegetation data
@@ -1257,9 +1371,10 @@ below an upper bound (values must still be non-negative).
 
 ## 3.2 Choose model features and family
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > All modelling approaches require the selection of model features,
 > which conform with the conceptual model and data specified in previous
@@ -1275,13 +1390,14 @@ below an upper bound (values must still be non-negative).
 > choices were made, including any results used to support any changes
 > in the model.
 
-------------------------------------------------------------------------
+</details>
 
 ### 3.2.1 Operationalising Model Variables
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] For each response, predictor, and covariate, *specify how these
 >   variables will be operationalised in the model. This should relate
@@ -1290,22 +1406,24 @@ below an upper bound (values must still be non-negative).
 >   include: the extent of a response, an extreme value, a trend, a
 >   long-term mean, a probability distribution, a spatial pattern, a
 >   time-series, qualitative change, such as a direction of change or,
->   the frequency, location, or probability of some event occuring.
+>   the frequency, location, or probability of some event occurring.
 >   Specify any treatment of model variables, including whether they are
->   lumped / distributed, lienar / non-linear, stochastic /
+>   lumped / distributed, linear / non-linear, stochastic /
 >   deterministic (Jakeman, Letcher, and Norton 2006)* .
 > - [ ] *Provide a rationale for your choices, including why plausible
 >   alternatives under consideration were not chosen, and relate your
->   justification bacj to the purpose, objectives, prior knowledge and
+>   justification back to the purpose, objectives, prior knowledge and
 >   or logistical constraints specified in the problem formulation phase
 >   (Jakeman, Letcher, and Norton 2006).*
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 The two primary response variables are plant cover and species richness
 (see [2.4](#24-identify-predictor-and-response-variables)), which will
-be operationalised in slightly different ways depending on the
-timeframe:
+be operationalised in slightly different ways depending on the time
+frame:
 
 1.  short term-in response to a single event (i.e. before and after);
     and
@@ -1325,9 +1443,10 @@ grazing.
 
 ### 3.2.2 Choose model family
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Specify which family of statistical distributions you will use
 >   in your model, and describe any transformations, or link functions.
@@ -1336,7 +1455,9 @@ grazing.
 >   their behaviour are important, and any associated spatial or
 >   temporal dimensions in sampling.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Posterior predictive checks from the pilot analysis indicated high
 levels of zero-inflation with some over-dispersion. The final models in
@@ -1384,9 +1505,10 @@ is no dominant alternative choice of model distribution.
 
 ## 3.3 Describe approach for identifying model structure
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > This section relates to the process of determining the best/most
 > efficient/parsimonious representation of the system at the appropriate
@@ -1406,9 +1528,11 @@ is no dominant alternative choice of model distribution.
 > system descriptors, such as dimensionality and processes (Jakeman,
 > Letcher, and Norton 2006).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Specify what approach and methods you will use to identify model
 >   structure and parameters.
@@ -1422,7 +1546,9 @@ is no dominant alternative choice of model distribution.
 >   Letcher, and Norton 2006),
 > - any other relevant features of the model structure.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Structure estimation: model structure specification is knowledge-driven
 rather than data-driven, with further refinement and simplification
@@ -1469,9 +1595,10 @@ year.
 
 ## 3.4 Describe Parameter Estimation Technique and Performance Criteria
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Before calibrating the model to the data, the performance criteria on
 > which the calibration is judged are specified. These criteria and
@@ -1488,14 +1615,14 @@ year.
 > (Jakeman, Letcher, and Norton 2006).
 
 <!-- #TODO NOTE THIS DOESN"T SAY ANYTHING ABOUT PARAMETER ESTIMATION! ONLY performance criteria -->
-
-------------------------------------------------------------------------
+</details>
 
 ### 3.4.1 Parameter Estimation Technique
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Specify what technique you will use to estimate parameter
 >   values, and how you will supply non-parametric variables and/or data
@@ -1512,14 +1639,16 @@ year.
 >   learning, decision-tree, K-nearest neighbour or cluster algorithms
 >   (Z. Liu et al. 2018).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Initially, our model structure will be based on our conceptual model of
 the system/response that has also guided our data collection. In this
 case, we do not have a very large set of potential environmental
 variables to select from that may or may not be influential. Instead, we
 have selected variables and monitoring approaches to collect data that
-reflect our expecations of correlation/causation. Given this, there is
+reflect our expectations of correlation/causation. Given this, there is
 unlikely to be a large need for a model selection process where
 variables are added or removed sequentially to evaluate relative model
 performance. However, there will be critical evaluation of all model
@@ -1557,9 +1686,10 @@ fit of model outputs to observations (residuals versus fitted values).
 
 ### 3.4.2 Estimation performance criteria
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Specify which suite of performance criteria you will use to
 >   judge the performance of the model. Examples include correlation
@@ -1571,7 +1701,9 @@ fit of model outputs to observations (residuals versus fitted values).
 > - [ ] Explain how you will identify which model features or components
 >   are significant or meaningful.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 $R^2$, a measure of agreement between fitted and observed values, is the
 primary performance criterion we will use to evaluate the performance of
@@ -1585,22 +1717,27 @@ cross-validation:
 - \< 0.25 is poor,
 - 0.25 - 0.5 is moderate,
 - 0.5 - 0.75 is good,
-- 0.75-1.0 is excellent, but probably indicates overfitting.
+- 0.75 - 1.0 is excellent, but probably indicates overfitting.
 
 ## 3.5 Model Assumptions & Uncertainties
 
-------------------------------------------------------------------------
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
-**`📝` Preregistration Item**
+> - [ ] Specify assumptions and key uncertainties in the formal model.
+>
+> - [ ] Describe what gaps exist between the model conception, and the
+>   real-world problem, what biases might this introduce and how might
+>   this impact any interpretation of the model outputs.
+>
+> - [ ] What implications are there for evaluating model-output to
+>   inform inferences or decisions?
 
-> Specify assumptions and key uncertainties in the formal model.
-> Describe what gaps exist between the model conception, and the
-> real-world problem, what biases might this introduce and how might
-> this impact any interpretation of the model outputs, and what
-> implications are there for evaluating model-output to inform
-> inferences or decisions?
+</details>
 
-------------------------------------------------------------------------
+<br>
 
 Poisson and negative binomial models all assume linearity in model
 parameters, independence between individual observations, as well as the
@@ -1657,9 +1794,10 @@ important in the model design, as per [see section
 
 ## 3.6 Specify formal model
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > Once critical decisions have been made about the modelling approach
 > and method of model specification, the conceptual model is translated
@@ -1673,6 +1811,10 @@ important in the model design, as per [see section
 >   modelling, specify each model used in the candidate set, including
 >   any null or full/global model.
 
+</details>
+
+<br>
+
 **Vegetation Cover Models**
 
 Based on the pilot analysis (section 2.4.3) we have derived three
@@ -1683,7 +1825,8 @@ interactions were too complex given the data, and failed to converge and
 generate reliable parameter estimates on the pilot dataset.
 Consequently, the full models will be fitted again to the full dataset.
 
-*Full Model, full dataset*
+*Full Model, full dataset, [GitHub Issue
+64](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/64)*
 
 We will attempt to fit a single full model using all data, and adding a
 random effect for `waterbody` to account for variation between river
@@ -1699,12 +1842,13 @@ Should the full model fitted to the full dataset not be computationally
 feasible or converge, we will follow a similar strategy for the
 pilot-study modelling, working from the full model towards simplified
 models, as there is potential for the full dataset to support a model of
-intermediate complecity (more complex than the simplified models, but
+intermediate complexity (more complex than the simplified models, but
 not as complex as the full model). We will fit the following simplified
 models in the case that the full model fitted to the full dataset does
 not converge:
 
-*Simplified model 1: “flow regime” model*
+*Simplified model 1: “flow regime” model, [GitHub Issue
+65](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/65)*
 
 The aim of this simplified model is to examine how past flow conditions
 influence vegetation cover while capturing the average effects of flows
@@ -1739,7 +1883,8 @@ cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
  )
 ```
 
-*Simplified model 2a: “flow events” Model, version 1*
+*Simplified model 2a: “flow events” Model, version 1, [GitHub Issue
+66](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/66)*
 
 The aim of the ‘flow events’ models (2a,2b) is to examine how vegetation
 cover changes in specific zones before and after key flow events (spring
@@ -1762,7 +1907,7 @@ vegetation level declined following both the spring and the summer fresh
 Consequently, this model includes several categorical predictors as
 independent fixed effects (`origin`, `wpfg`, `grazing`, and a
 zone-by-period interaction) and the full suite of random effects, but no
-`days_above_` predictors.
+`days_above_` predictors.)
 
 This first version of the flow event model allows functional groups to
 have different levels of cover but assumes that changes following flow
@@ -1794,19 +1939,22 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 )
 ```
 
-*Simplified model 2b: “flow events” model, version 2.* The aim is to
-examine how vegetation cover of each functional grouping changes before
-and after key flow events (spring and summer freshes). This second
-version (Simplified model 2b) allows functional groups to have different
-responses to flow events (spring and summer freshes) but assumes that
-vegetation in all zones changes similarly following each flow event. As
-for simplified model 2a, this model structure is not ideal, but provides
-a method to distinguish `wpfg`-specific responses to flow events.
+*Simplified model 2b: “flow events” model, version 2, [GitHub Issue
+67](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/67)*
+
+The aim is to examine how vegetation cover of each functional grouping
+changes before and after key flow events (spring and summer freshes).
+This second version (Simplified model 2b) allows functional groups to
+have different responses to flow events (spring and summer freshes) but
+assumes that vegetation in all zones changes similarly following each
+flow event. As for simplified model 2a, this model structure is not
+ideal, but provides a method to distinguish `wpfg`-specific responses to
+flow events.
 
 This model includes several categorical predictors as independent fixed
 effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction,
 as well as the full suite of random effects, and no `days_above_`
-predictors.
+predictors.)
 
 ``` r
 cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
@@ -1831,9 +1979,13 @@ cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
 )
 ```
 
-**Species Richness Modles**
+**Species Richness Models**
 
-*Simplified Model 1: “Flow Regime” model*
+*Full Model, Full Dataset, [GitHub Issue
+68](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/68)*
+
+*Simplified Model 1: “Flow Regime” model, [GitHub Issue
+69](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/69)*
 
 ``` r
 richness_ar_TMBmod_1 <- glmmTMB::glmmTMB( 
@@ -1861,14 +2013,12 @@ richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
 ) 
 ```
 
-*Simplified Model 2: “Flow Events” model*
+*Simplified Model 2: “Flow Events” model, [GitHub Issue
+70](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/70)*
 
 Rather than splitting the flow events model into two different versions,
 as we did for the cover models, we have combined these into a single
 model for richness.
-
-- [ ] JY / HW any comment for rationale on this difference? i.e. reason
-  for splitting cover models into two versions but not richness models?
 
 ``` r
 richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
@@ -1901,9 +2051,10 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 
 ## 4.1 Model Calibration and Validation Scheme
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > This section pertains to any data calibration, validation or testing
 > schemes that will be implemented. For example, the model may be tested
@@ -1914,20 +2065,38 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 > hyper-parameters are estimated from data, and may be tuned on further
 > independent holdouts of the training data, (“validation data”).
 
-------------------------------------------------------------------------
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
+
+> This section pertains to any data calibration, validation or testing
+> schemes that will be implemented. For example, the model may be tested
+> on data independent of those used to parameterise the model (external
+> validation), or the model may be cross-validated on random sub-samples
+> of the data used to parameterise the model (internal cross-validation)
+> (Yates et al. 2018; Barnard et al. 2019). For some types of models,
+> hyper-parameters are estimated from data, and may be tuned on further
+> independent holdouts of the training data, (“validation data”).
+
+</details>
 
 ### 4.1.1 Describe Calibration / Validation Data
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > The following items pertain to properties of the *datasets* used for
 > calibration (training), validation, and testing.
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - If partitioning data for cross-validation or similar approach:
 > - [ ] Describe the approach specifying the number of folds that will
@@ -1948,7 +2117,9 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
 >   model validation data, will independent datasets be known or
 >   accessible to any modeller or analyst?
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Due to the complexity of the analysis, and the focus on inference, no
 data partitioning / testing on external data will be used. However, we
@@ -1956,31 +2127,33 @@ will use a subset of the data for exploratory pilot analysis that
 informs the final model specifications (Campaspe catchment only, section
 2.4.3).
 
-
 ## 4.2 Implementation verification
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] What Quality Assurance measures will you take to verify the
 >   model has been correctly implemented? Specifying a priori quality
 >   assurance tests for implementation verification may help to avoid
 >   selective debugging and silent errors.
-> - Checks for verification implementation should include i) thoroughly
->   checking for bugs or programming errors, and ii) whether the
->   implemented model performs as described by the model description
+> - [ ] Checks for verification implementation should include i)
+>   thoroughly checking for bugs or programming errors, and ii) whether
+>   the implemented model performs as described by the model description
 >   (Grimm et al. 2014).
-> - Qualitative tests could include syntax checking of code, and
->   peer-code review (Ivimey et al. 2023). Technical measures include
+> - [ ] Qualitative tests could include syntax checking of code, and
+>   peer-code review (Ivimey et al. 2023a). Technical measures include
 >   using unit tests, or in-built checks within functions to prevent
 >   potential errors.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Implementation verification will be assessed using a number of
 techniques, but will broadly follow the approach proposed by Ivimey-Cook
-*et al.* (**Ivimey2023?**):
+*et al.* (2023a):
 
 1.  Code will be reviewed periodically using the [GitHub flow
     model](https://docs.github.com/en/get-started/using-github/github-flow)
@@ -1991,36 +2164,60 @@ techniques, but will broadly follow the approach proposed by Ivimey-Cook
 2.  Defensive programming techniques, in-line error checking,
     functionalisation, modularisation and documentation of analysis code
     will be used as preventative measures to catch bugs and ensure
-    proper code implementation (**Ivimey2023?**),
+    proper code implementation (Ivimey et al. 2023b),
 3.  Finally, the final analysis and results will be subjected to a more
     substantial peer-code review from collaborators further removed from
     code writing and analysis implementation (likely CJ or EG),
-    following the 4R’s (**Ivimey2023?**).
+    following the 4R’s (Ivimey et al. 2023a).
 
 ## 4.3 Model Checking
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > “Model Checking” goes by many names (“conditional verification”,
 > “quantitative verification”, “model output verification” ), and refers
 > to a series of analyses that assess a model’s performance in
-> representing the system of interest (**Conn:2018hd?**). Model checking
+> representing the system of interest (Conn et al. 2018). Model checking
 > aids in diagnosing assumption violations, and reveals where a model
 > might need to be altered to better represent the data, and therefore
-> system (**Conn:2018hd?**). Quantitative model checking diagnostics
+> system (Conn et al. 2018). Quantitative model checking diagnostics
 > include goodness of fit, tests on residuals or errors, such as for
 > heteroscedascity, cross-correlation, and autocorrelation (Jakeman,
 > Letcher, and Norton 2006).
 
-Model checking will be undertaken using a combination of qualitative and
-quantitative analyses with subjective assessment.
+</details>
 
-In terms of qualitative assessment, model results will be checked by
-field experts Chris Jones & Lyndsey Vivian, who will assess
-model-estimated associations for their plausibility given their expert
-knowledge of the underlying target system.
+### 4.3.1 Quantitative model checking
+
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
+
+> During this process, observed data, or data and patterns that guided
+> model design and calibration, are compared to model output in order to
+> identify if and where there are any systematic differences.
+
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
+
+> - [ ] Specify any diagnostics or tests you will use during model
+>   checking to assess a model’s performance in representing the system
+>   of interest.
+> - [ ] For each test, specify the criteria that will you use to
+>   interpret the outcome of the test in assessing the model’s ability
+>   to sufficiently represent the gathered data used to develop and
+>   parameterise the model.
+
+</details>
+
+<br>
 
 Posterior predictive checks will be conducted to assess the degree of
 zero-inflation and over-dispersion. Posterior checks compare the
@@ -2047,37 +2244,12 @@ models, alternative model families / structures (section 3.1.3) may be
 investigated and compared to the primary models outlined in section
 2.4.3.
 
-------------------------------------------------------------------------
+### 4.3.2 Qualitative model checking
 
-### 4.1.1 Quantitative model checking
-
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
-
-> During this process, observed data, or data and patterns that guided
-> model design and calibration, are compared to model output in order to
-> identify if and where there are any systematic differences.
-
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
-
-> - [ ] Specify any diagnostics or tests you will use during model
->   checking to assess a model’s performance in representing the system
->   of interest.
-> - [ ] For each test, specify the criteria that will you use to
->   interpret the outcome of the test in assessing the model’s ability
->   to sufficiently represent the gathered data used to develop and
->   parameterise the model.
-
-------------------------------------------------------------------------
-
-### 4.1.2 Qualitative model checking
-
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > This step is largely informal and case-specific, but requires‚ ‘face
 > validation’ with model users / clients / managers who aren’t involved
@@ -2090,20 +2262,30 @@ investigated and compared to the primary models outlined in section
 > descriptions, visualisations or summaries of model results to experts
 > for assessment.
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Briefly explain how you will qualitatively check the model, and
 >   whether and how you will include users and clients in the process.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
+
+In terms of qualitative assessment, model results will be checked by
+field experts Chris Jones & Lyndsey Vivian, who will assess
+model-estimated associations for their plausibility given their expert
+knowledge of the underlying target system.
 
 ### 4.3.3 Assumption violation checks
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > The consequences of assumption violations on the interpretation of
 > results should be assessed (Araújo et al. 2019).
@@ -2123,13 +2305,14 @@ investigated and compared to the primary models outlined in section
 >   the preregistration, only if there are departures from assumptions
 >   as demonstrated in the planned tests above).
 
-------------------------------------------------------------------------
+</details>
 
 # 5.0 Model Validation and Evaluation
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > The model validation & evaluation phase comprises a suite of analyses
 > that collectively inform inferences about whether, and under what
@@ -2145,22 +2328,23 @@ investigated and compared to the primary models outlined in section
 > evaluate model checking, and consider over-fitting and extrapolation.
 > The higher the proportion of calibrated, or uncertain parameters, “the
 > greater the risk that the model seems to work correctly, but for the
-> wrong reasons” (citaiton). Evaluation thus complements model checking
+> wrong reasons” (citation). Evaluation thus complements model checking
 > because we can rule out the chance that the model fits the calibration
 > data well, but has not captured the relevant ecological mechanisms of
 > the system pertinent to the research question or the decision problem
 > underpinning the model (Grimm et al. 2014). Evaluation of model
 > outputs against external data in conjunction with the results from
 > model checking provide information about the structural realism and
-> therefore credibility of the model (**Grimm2016?**).
+> therefore credibility of the model (Grimm and Berger 2016).
 
-------------------------------------------------------------------------
+</details>
 
 ## 5.1 Model output corroboration
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Ideally, model outputs or predictions are compared to independent data
 > and patterns that were not used to develop, parameterise, or verify
@@ -2180,27 +2364,32 @@ investigated and compared to the primary models outlined in section
 > consultation with the literature or by experts to judge how accurate
 > the model output is (Grimm et al. 2014).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] State whether you will corroborate the model outputs on external
 >   data, and document any independent validation data in step.
 > - [ ] It is preferable that any independent data used for model
 >   evaluation remains unknown to modellers during the process of model
->   building (**Dwork2015?**), describe the relationship modellers have
->   to model validation data, e.g. will independent datasets be known to
->   any modeller or analyst involved in the model building process?
+>   building (Dwork et al. 2015), describe the relationship modellers
+>   have to model validation data, e.g. will independent datasets be
+>   known to any modeller or analyst involved in the model building
+>   process?
 > - [ ] If unable to evaluate the model outputs against independent
 >   data, explain why and explain what steps you will take to
 >   interrogate the model.
 
-------------------------------------------------------------------------
+</details>
+
+<br>
 
 Model evaluation and validation on external data will not be undertaken
 in this study due to the complexity of the models (hierarchical
 structure combined with interactions) and data (potential for
-over-dispersion and ero-inflation) and also due to the focus of the
+over-dispersion and zero-inflation) and also due to the focus of the
 analysis on inference.
 
 For the same reasons, we will not partition the data for model
@@ -2212,13 +2401,15 @@ Models may be validated on newly collected independent data in the
 future, but external validation is outside the scope of this study.
 
 We have partitioned the data for pilot analysis, see section 2.4.3 for
-details of this subsetting.
+details of this subsetting. Pilot analysis was performed blind to the
+full dataset, and was performed only on the pilot data subset.
 
 ## 5.2 Choose Performance Metrics & Criteria
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Model performance can be quantified by a range of tests, including
 > measures of agreement between predictions and independent
@@ -2231,9 +2422,11 @@ details of this subsetting.
 > parameterisation in [section
 > 4.0](#40-model-calibration-fitting-checking).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Specify what performance measures you will use to evaluate the
 >   model and briefly explain how each test relates to different desired
@@ -2249,20 +2442,21 @@ details of this subsetting.
 >   ability. State what numerical threshold or qualities you will use
 >   for each of these metrics.
 
-------------------------------------------------------------------------
+</details>
 
 ## 5.3 Model Analysis
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Uncertainty in models arises due to incomplete system understanding
 > (which processes to include, or which interact), from imprecise,
-> finite and sparese data measurements, and from uncertainty in input
+> finite and sparse data measurements, and from uncertainty in input
 > conditions and scenarios for model simulations or runs (Jakeman,
 > Letcher, and Norton 2006). Non-technical uncertainties can also be
-> introduced throughout the modellign process, such as uncertainties
+> introduced throughout the modelling process, such as uncertainties
 > arising from issues in problem-framing, indeterminicies, and modeller
 > / client values (Jakeman, Letcher, and Norton 2006).
 >
@@ -2292,13 +2486,14 @@ details of this subsetting.
 > uncertainties that have emerged during model development and testing
 > prior to this point.
 
-------------------------------------------------------------------------
+</details>
 
 ### 5.3.1 Uncertainty Analyses
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Uncertainty can arise from different modelling techniques, response
 > data and predictor variables (Araújo et al. 2019). Uncertainty
@@ -2316,9 +2511,11 @@ details of this subsetting.
 > and perhaps constructing confidence intervals on the mean (Saltelli et
 > al. 2019).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Please describe how you will characterise model and data
 >   uncertainties, e.g. propagating known uncertainties through the
@@ -2328,6 +2525,7 @@ details of this subsetting.
 >   model output data points, and extracting summary statistics,
 >   including the mean, median, variance, and constructing confidence
 >   intervals (Saltelli et al. 2019).
+>
 > - [ ] Relate your choice of analysis to the context and purposes of
 >   the model described in the problem formulation phase. For instance
 >   ‚discrepancies between model output and observed output may be
@@ -2338,9 +2536,11 @@ details of this subsetting.
 >   alternative scenarios or management options is likely to be correct,
 >   with only a rough indication of their sizes” (Jakeman, Letcher, and
 >   Norton 2006).
+>
 > - [ ] Briefly describe how you will summarise the results of these in
 >   silico experiments with graphical, tabular, or other devices, such
 >   as summary statistics.
+>
 > - [ ] If the chosen modelling approach is able to explicitly
 >   articulate uncertainty due to data, measurements or baseline
 >   conditions, such as by providing estimates of uncertainty (typically
@@ -2348,21 +2548,26 @@ details of this subsetting.
 >   Letcher, and Norton 2006)), specify which measure of uncertainty you
 >   will use.
 
-------------------------------------------------------------------------
+</details>
+
+Uncertainty analyses will not be conducted.
 
 ### 5.3.2 Sensitivity Analyses
 
-------------------------------------------------------------------------
-
-**`ℹ️` Rationale & Explanation**
+<details>
+<summary>
+ℹ️ Rationale & Explanation
+</summary>
 
 > Sensitivity analysis examines how uncertainty in model outputs can be
 > apportioned to different sources of uncertainty in model input
 > (Saltelli et al. 2019).
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+</details>
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe the sensitivity analysis approach you will take:
 >   deterministic sensitivity, stochastic sensitivity (variability in
@@ -2380,14 +2585,33 @@ details of this subsetting.
 >   so can be ‘dropped’ from future iterations of the model (Saltelli et
 >   al. 2019).
 
-------------------------------------------------------------------------
+</details>
+
+<br>
+
+No sensitivity analyses will be performed on any models developed in
+this study.
 
 ### 5.3.3 Model application or scenario analysis
 
-------------------------------------------------------------------------
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
-**`📝` Preregistration Item**
-
+> **Model Analysis**
+>
+> - [ ] Explain how you will analyse model to answer your analytical
+>   objectives. For example:
+>   - describe any trade-off or robustness analyses you will undertake
+>     to help evaluate and choose between different alternatives in
+>     consultation with experts or decision-makers.
+>
+>   - Describe how you will summarise and visualise regression models to
+>     improve model understanding.
+>
+> **Scenario Analysis**
+>
 > - [ ] Specify any input conditions and relevant parameter values for
 >   initial environmental conditions and decision-variables under each
 >   scenario specified in [section 1.1](#11-model-context-and-purpose).
@@ -2398,26 +2622,46 @@ details of this subsetting.
 >   model simulations or projections, and how will you map, plot, or
 >   otherwise display and synthesise the results of scenario and model
 >   analyses.
-> - [ ] Explain how you will analyse the outputs to answer your
->   analytical objectives. For instance, describe any trade-off or
->   robustness analyses you will undertake to help evaluate and choose
->   between different alternatives in consultation with experts or
->   decision-makers.
 
-------------------------------------------------------------------------
+</details>
+
+**Model analysis**
+
+Model features will be identified using visual plots of estimates,
+i.e. forest plots of most coefficients, and marginal effects plots
+(plots of predicted values of $y$ against values of $x$) under different
+combinations of of the key flow, zone, and period predictor variables.
+
+*Forest Plots:* For each fitted model we will extract both fixed-effect
+and random-effect coefficient estimates and their 95% Confidence
+Intervals using `parameters::model_parameters()` (Lüdecke et al. 2020)
+or similar. Estimates will then be visualised as forest plots in R.
+
+*Predicted Values Plots:* We will use the `effects::effect_plot()`
+function (Fox and Hong 2009), or similar, to create marginal effects
+plots for each fitted model.
+
+**Scenario analysis** will not be used in this study, but will be used
+in future predictive modelling studies based on the models developed in
+this study.
 
 ### 5.3.4 Other simulation experiments / robustness analyses
 
-------------------------------------------------------------------------
-
-**`📝` Preregistration Item**
+<details>
+<summary>
+📝 Preregistration Item
+</summary>
 
 > - [ ] Describe any other simulation experiments, robustness analyses
 >   or other analyses you will perform on the model, including any
 >   metrics and their criteria / thresholds for interpreting the results
 >   of the analysis.
 
-------------------------------------------------------------------------
+</details>
+
+No further simulation experiments, robustness or other analyses will be
+performed on the model other than analyses described above in this
+document.
 
 # References
 
@@ -2486,6 +2730,24 @@ Ecologists.” *Ecological Monographs* 88 (4): 526–42.
 
 </div>
 
+<div id="ref-Dwork2015" class="csl-entry">
+
+Dwork, Cynthia, Vitaly Feldman, Moritz Hardt, Toniann Pitassi, Omer
+Reingold, and Aaron Roth. 2015. “The reusable holdout: Preserving
+validity in adaptive data analysis.” *Science* 349 (6248): 636–38.
+<https://doi.org/10.1126/science.aaa9375>.
+
+</div>
+
+<div id="ref-Fox2009" class="csl-entry">
+
+Fox, John, and Jangman Hong. 2009. “Effect Displays in R for Multinomial
+and Proportional-Odds Logit Models: Extensions to the
+<span class="nocase">effects</span> Package.” *Journal of Statistical
+Software* 32 (1): 1–24. <https://doi.org/10.18637/jss.v032.i01>.
+
+</div>
+
 <div id="ref-Fraser:2017jf" class="csl-entry">
 
 Fraser, Hannah, Libby Rumpff, Jian D L Yen, Doug Robinson, and Brendan A
@@ -2503,12 +2765,30 @@ and Analysis Using TRACE.” *Ecological Modelling* 280: 129–39.
 
 </div>
 
+<div id="ref-Grimm2016" class="csl-entry">
+
+Grimm, Volker, and Uta Berger. 2016. “Structural Realism, Emergence, and
+Predictions in Next-Generation Ecological Modelling: Synthesis from a
+Special Issue.” *Ecological Modelling* 326: 177–87.
+<https://doi.org/10.1016/j.ecolmodel.2016.01.001>.
+
+</div>
+
 <div id="ref-ivimey2023" class="csl-entry">
 
 Ivimey, Edward R, Joel L Pick, Kevin R Bairos, Antica Culina, Elliot
-Gould, Matthew Grainger, Benjamin M Marshall, et al. 2023. “Implementing
-Code Review in the Scientific Workflow: Insights from Ecology and
-Evolutionary Biology.” *Journal of Evolutionary Biology*.
+Gould, Matthew Grainger, Benjamin M Marshall, et al. 2023b.
+“Implementing Code Review in the Scientific Workflow: Insights from
+Ecology and Evolutionary Biology.” *Journal of Evolutionary Biology*.
+https://doi.org/<https://doi.org/10.1111/jeb.14230>.
+
+</div>
+
+<div id="ref-ivimey2023a" class="csl-entry">
+
+———, et al. 2023a. “Implementing Code Review in the Scientific Workflow:
+Insights from Ecology and Evolutionary Biology.” *Journal of
+Evolutionary Biology*.
 https://doi.org/<https://doi.org/10.1111/jeb.14230>.
 
 </div>
@@ -2553,6 +2833,15 @@ Liu, Zelin, Changhui Peng, Timothy Work, Jean-Noel Candau, Annie
 DesRochers, and Daniel Kneeshaw. 2018. “Application of Machine-Learning
 Methods in Forest Ecology: Recent Progress and Future Challenges.”
 *Environmental Reviews* 26 (4): 339–50.
+
+</div>
+
+<div id="ref-Ludecke2020" class="csl-entry">
+
+Lüdecke, Daniel, Mattan S. Ben-Shachar, Indrajeet Patil, and Dominique
+Makowski. 2020. “Extracting, Computing and Exploring the Parameters of
+Statistical Models Using R.” *Journal of Open Source Software* 5 (53):
+2445. <https://doi.org/10.21105/joss.02445>.
 
 </div>
 
