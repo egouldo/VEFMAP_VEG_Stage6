@@ -367,40 +367,40 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
     
     # remove sites with low data for now
     out <- out |> dplyr::filter(!(system == "Wimmera" & site == "Laharum" | site == "MtVictory")) |>  dplyr::filter(!(system == "Loddon" & site == "Mullins"))
-
-      
-  
+    
+    
+    
     # clean up dates
     out <- out |>
-   dplyr::mutate(
-        date_time = case_when(system == "Yarra" & site == "Millgrove" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]), #remove weird date formatting
-        system == "Yarra" & site == "Warrandyte" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]),
-        .default = date_time)) |>
       dplyr::mutate(
-      date_formatted= case_when(system == "Wimmera" & site == "Peuckers" | site == "RosesGap" | site == "Tobacco" | site == "MtVictory" | site == "Laharum" ~
-       lubridate::floor_date(
-        lubridate::parse_date_time(
-          date_time,
-          orders = c("dmy_HM")
-        ),
-        unit = days()
-      ),system == "Loddon" & site == "Mullins"  ~
-        lubridate::floor_date(
-          lubridate::parse_date_time(
-            date_time,
-            orders = c("dmy_HM")
-          ),
-          unit = days()
-        ),.default =
-       lubridate::floor_date(
-          lubridate::parse_date_time(
-            date_time,
-            orders = c("ymd_HMS")
-          ),
-          unit = days()
-        )
-      ))
-  
+        date_time = case_when(system == "Yarra" & site == "Millgrove" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]), #remove weird date formatting
+                              system == "Yarra" & site == "Warrandyte" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]),
+                              .default = date_time)) |>
+      dplyr::mutate(
+        date_formatted= case_when(system == "Wimmera" & site == "Peuckers" | site == "RosesGap" | site == "Tobacco" | site == "MtVictory" | site == "Laharum" ~
+                                    lubridate::floor_date(
+                                      lubridate::parse_date_time(
+                                        date_time,
+                                        orders = c("dmy_HM")
+                                      ),
+                                      unit = days()
+                                    ),system == "Loddon" & site == "Mullins"  ~
+                                    lubridate::floor_date(
+                                      lubridate::parse_date_time(
+                                        date_time,
+                                        orders = c("dmy_HM")
+                                      ),
+                                      unit = days()
+                                    ),.default =
+                                    lubridate::floor_date(
+                                      lubridate::parse_date_time(
+                                        date_time,
+                                        orders = c("ymd_HMS")
+                                      ),
+                                      unit = days()
+                                    )
+        ))
+    
     
     
     # and collapse to daily averages
@@ -408,7 +408,7 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
       dplyr::group_by(system, waterbody, site, date_formatted) |>
       dplyr::summarise(
         water_level_m = median(water_level_m, na.rm=T),
-      #  qc = ifelse(all(qc %in% "NA"), "NA", extract_mode(qc)), # come back to this if needed
+        #  qc = ifelse(all(qc %in% "NA"), "NA", extract_mode(qc)), # come back to this if needed
         water_level_m_ahd = median(water_level_m_ahd, na.rm=T)
       )
     
@@ -491,7 +491,7 @@ calculate_metrics <- function(x, thresholds) {
         days_above_springfresh, days_above_baseflow
       )|>
       mutate(period = "before_spring")
-
+    
     # repeat for the after spring survey period
     #   (different lags because we drop 12 months in the season IDs)
     out_tm0 <- calculate_metrics_internal(
@@ -681,91 +681,91 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
     out <- qs::qread(here::here("data", "compiled_data", filename))
     
   } else {
-  #  if(system == "ThompsonMacalister"){ # change system designation in the ThomsonMacalister dataset
-      
-      
-  #  }
+    #  if(system == "ThompsonMacalister"){ # change system designation in the ThomsonMacalister dataset
+    
+    
+    #  }
     
     if (s6s7 == TRUE){
-    # load data for a specific site in S6
-    existsS6 <- grepl(
-      paste0("VEFMAPS6_", system, ".*", "_Point"),
-      dir(here::here("data", "raw_data", "veg_data"))
-    )
-   
-    filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[existsS6]
-    filenameS6 <- sort(filenameS6, decreasing = TRUE)[1]
-    outS6 <- readr::read_csv(
-      here::here("data", "raw_data", "veg_data", filenameS6),
-      skip = 1,
-      col_names = c(
-        "system",
-        "waterbody",
-        "site",
-        "transect",
-        "subtransect",
-        "metres",
-        "species",
-        "origin",
-        "hits",
-        "height",
-        "date",
-        "survey"
-      ),
-      col_types =  readr::cols(
-        .default = readr::col_character(),
-        metres = readr::col_double(),
-        hits = readr::col_double()
+      # load data for a specific site in S6
+      existsS6 <- grepl(
+        paste0("VEFMAPS6_", system, ".*", "_Point"),
+        dir(here::here("data", "raw_data", "veg_data"))
       )
-    )
-    
-    
-    # load data for a specific site in S7
-    existsS7 <- grepl(
-      paste0("VEFMAPS7_", system, ".*", "_Point"),
-      dir(here::here("data", "raw_data", "veg_data"))
-    )
-    
-    filenameS7 <- dir(here::here("data", "raw_data", "veg_data"))[existsS7]
-    filenameS7 <- sort(filenameS7, decreasing = TRUE)[1]
-    outS7 <- readr::read_csv(
-      here::here("data", "raw_data", "veg_data", filenameS7),
-      skip = 1,
-      col_names = c(
-        "system",
-        "waterbody",
-        "site",
-        "transect",
-        "metres",
-        "species",
-        "hits",
-        "height",
-        "date",
-        "survey",
-        "comments"
-      ),
-      col_types =  readr::cols(
-        .default = readr::col_character(),
-        metres = readr::col_double(),
-        hits = readr::col_double()
+      
+      filenameS6 <- dir(here::here("data", "raw_data", "veg_data"))[existsS6]
+      filenameS6 <- sort(filenameS6, decreasing = TRUE)[1]
+      outS6 <- readr::read_csv(
+        here::here("data", "raw_data", "veg_data", filenameS6),
+        skip = 1,
+        col_names = c(
+          "system",
+          "waterbody",
+          "site",
+          "transect",
+          "subtransect",
+          "metres",
+          "species",
+          "origin",
+          "hits",
+          "height",
+          "date",
+          "survey"
+        ),
+        col_types =  readr::cols(
+          .default = readr::col_character(),
+          metres = readr::col_double(),
+          hits = readr::col_double()
+        )
       )
-    )
-    #select columns we want as some of the files have multiple 'comments' columns
-    outS7 <- outS7 |> select(c("system",
-                              "waterbody",
-                              "site",
-                              "transect",
-                              "metres",
-                              "species",
-                              "hits",
-                              "height",
-                              "date",
-                              "survey"))
-    
-    # merge the S6 and S7 datasets - note this will need modification if more data is brought in
-  
-    out <- dplyr::bind_rows(outS6, outS7)
-    
+      
+      
+      # load data for a specific site in S7
+      existsS7 <- grepl(
+        paste0("VEFMAPS7_", system, ".*", "_Point"),
+        dir(here::here("data", "raw_data", "veg_data"))
+      )
+      
+      filenameS7 <- dir(here::here("data", "raw_data", "veg_data"))[existsS7]
+      filenameS7 <- sort(filenameS7, decreasing = TRUE)[1]
+      outS7 <- readr::read_csv(
+        here::here("data", "raw_data", "veg_data", filenameS7),
+        skip = 1,
+        col_names = c(
+          "system",
+          "waterbody",
+          "site",
+          "transect",
+          "metres",
+          "species",
+          "hits",
+          "height",
+          "date",
+          "survey",
+          "comments"
+        ),
+        col_types =  readr::cols(
+          .default = readr::col_character(),
+          metres = readr::col_double(),
+          hits = readr::col_double()
+        )
+      )
+      #select columns we want as some of the files have multiple 'comments' columns
+      outS7 <- outS7 |> select(c("system",
+                                 "waterbody",
+                                 "site",
+                                 "transect",
+                                 "metres",
+                                 "species",
+                                 "hits",
+                                 "height",
+                                 "date",
+                                 "survey"))
+      
+      # merge the S6 and S7 datasets - note this will need modification if more data is brought in
+      
+      out <- dplyr::bind_rows(outS6, outS7)
+      
     } else {
       exists <- grepl(
         paste0("VEFMAPS6_", system, ".*", "_Point"),
@@ -861,6 +861,30 @@ load_points <- function(system, recompile = FALSE, pilot = TRUE, s6s7 = FALSE) {
         survey = ifelse(date == "2017-01-30", 2, survey)
       )
     
+    # update some species names (temporary fix to handle changing names through
+    #   time)
+    out <- out |>
+      mutate(
+        species = ifelse(
+          species == "Poa labillardierei",
+          "Poa labillardierei var. labillardierei", 
+          species
+        ),
+        species = ifelse(
+          species == "Juncus usitatus",
+          "Juncus amabilis", 
+          species
+        ),
+      )
+    
+    # fix up the incorrect Cowwarr site
+    out <- out |>
+      mutate(
+        waterbody = ifelse(
+          site == "Cowwarr" & waterbody == "Macalister", "Thomson", waterbody
+        )
+      )
+    
     # classify period (before/after flow events)
     out <- out |>
       mutate(
@@ -913,7 +937,7 @@ load_cover <- function(system, recompile = FALSE, pilot = TRUE, ar = FALSE, s6s7
   
   # load pointing data
   out <- load_points(system = system, recompile = recompile, pilot = pilot, s6s7 = s6s7)
-
+  
   # calculate cover and fill zeros
   out <- out |>
     dplyr::select(

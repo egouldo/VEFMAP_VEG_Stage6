@@ -29,7 +29,7 @@ source("R/utils.R")
 source("R/data.R")
 
 # load site info
-site_info <- load_metadata(recompile = T)
+site_info <- load_metadata(recompile = TRUE)
 
 # first lets extract cover data from raw data files for each site
 veg_cover <- bind_rows(
@@ -249,6 +249,33 @@ spencer_flow3 <- tibble(
 metric <- calculate_metrics(spencer_flow3, site_info)
 max_val_bs <- max(metric$days_above_baseflow)
 max_val_sp <- max(metric$days_above_springfresh)
+water_year_lu <- tibble(
+  val = 1:16,
+  label = c(
+    "2017", "", "",
+    "2018", "", "",
+    "2019", "", "",
+    "2020", "",
+    "2021", "",
+    "2022", "",
+    "2023"
+  )
+)
+water_year_lu <- mapply(
+  \(x, y) x |> mutate(species = y),
+  x = lapply(1:4, \(i, .x) .x, .x = water_year_lu),
+  y = species_to_plot[c(1, 4, 2, 3)],
+  SIMPLIFY = FALSE
+)
+water_year_lu <- bind_rows(water_year_lu)
+max_label <- veg_cover |> 
+  filter(site == "Spencer", species %in% species_to_plot) |>
+  group_by(species) |>
+  summarise(max_label = 100 * quantile(hits / npoint, probs = 0.99))
+survey_mid <- veg_cover |> 
+  filter(site == "Spencer", species %in% species_to_plot) |>
+  group_by(survey_year) |>
+  summarise(survey_mid = mean(survey))
 spencer_time <- veg_cover |>
   filter(
     species %in% species_to_plot,
@@ -266,6 +293,7 @@ spencer_time <- veg_cover |>
     metric,
     by = c("system", "waterbody", "site", "survey_year", "period")
   ) |>
+  left_join(max_label, by = "species") |>
   mutate(
     species = factor(species, level = species_to_plot[c(1, 4, 2, 3)]),
     cover = hits / npoint,
@@ -273,7 +301,7 @@ spencer_time <- veg_cover |>
     days_above_springfresh = days_above_springfresh / max_val_sp,
     survey = factor(survey)
   ) |>
-  group_by(survey, period, species) |>
+  group_by(survey, period, survey_year, species, max_label) |>
   summarise(
     mid = 100 * mean(cover),
     upper = 100 * quantile(cover, probs = 0.9),
@@ -282,18 +310,32 @@ spencer_time <- veg_cover |>
     days_above_springfresh = 100 * median(days_above_springfresh, na.rm = TRUE)
   ) |>
   ungroup() |>
-  ggplot(aes(y = mid, x = survey)) +
+  mutate(
+    water_year_label = water_year_lu$label[match(survey, water_year_lu$val)],
+    period_clean = factor(
+      period,
+      levels = c("before_spring", "after_spring", "after_summer"),
+      labels = c("Before spring", "After spring", "After summer")
+    )
+  ) |>
+  left_join(survey_mid, by = "survey_year") |>
+  ggplot(aes(y = mid, x = survey, shape = period_clean)) +
   geom_point() +
-  geom_point(aes(y = days_above_baseflow), col = "#2166AC") +
-  geom_point(aes(y = days_above_springfresh), col = "#B2182B") +
+  geom_point(aes(y = days_above_baseflow), shape = "circle", col = "#2166AC") +
+  geom_point(aes(y = 1.5 * days_above_springfresh), shape = "circle", col = "#B2182B") +
   geom_errorbar(aes(ymin = lower, ymax = upper)) +
+  geom_text(aes(x = ifelse(survey_mid < 16, survey_mid, 16.5), y = 1.1 * max_label, label = water_year_label), size = 3.5) +
+  geom_vline(xintercept = c(3.5, 6.5, 9.5, 11.5, 13.5, 15.5), linetype = "dashed") +
   xlab("Survey") +
   ylab("Percentage cover / relative days above threshold") +
+  scale_shape(name = "") +
+  scale_x_discrete(
+    breaks = as.character(1:16), 
+    limits = c(as.character(1:16), "16.5"), 
+    labels = c(as.character(1:16))) +
   facet_wrap( ~ species, scales = "free") +
   theme_bw() +
-  theme(panel.grid = element_blank())
-#+
-  # theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme(legend.position = "bottom", panel.grid = element_blank())
 
 ggsave(
   filename = "outputs/figures/spencer-cover.png",
