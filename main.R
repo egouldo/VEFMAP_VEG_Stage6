@@ -24,6 +24,7 @@ library(stringr)
 library(aae.hydro)
 library(ggplot2)
 library(ggtext)
+library(sessioninfo)
 
 # load helper functions
 source("R/utils.R")
@@ -501,3 +502,5 @@ ggsave(
   units = "in",
   dpi = 600
 )
+
+sessioninfo::session_info(to_file = "outputs/session-info.txt")
