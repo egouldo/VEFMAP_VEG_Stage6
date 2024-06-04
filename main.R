@@ -50,6 +50,9 @@ library(pointblank)
 library(assertthat)
 library(purrr)
 library(cli)
+library(sessioninfo)
+library(grateful)
+library(datapasta)
 
 
 # load helper functions
@@ -1702,3 +1705,6 @@ ggplot(RichPredictFuncPeriodZone_full, aes(period, richness)) +
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20), axis.text=element_text(size=12)) +labs(color='Functional group') +guides(size=FALSE) # 1600 x 800
 
+sessioninfo::session_info(to_file = "outputs/session-info.txt")
+grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("outputs/"))
+# grateful_citations %>% datapasta::df_paste() 
