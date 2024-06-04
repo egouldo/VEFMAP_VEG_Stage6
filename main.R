@@ -324,6 +324,8 @@ spencer_time <- veg_cover |>
     )
   ) |>
   left_join(survey_mid, by = "survey_year") |>
+  mutate(species = forcats::fct_relabel(species, ~ gluedown::md_italic(.x) %>% 
+                                          stringr::str_replace(" var. ", "_ var. _"))) |>
   ggplot(aes(y = mid, x = survey, shape = period_clean)) +
   geom_point() +
   geom_point(aes(y = days_above_baseflow), shape = "circle", col = "#2166AC") +
@@ -340,7 +342,9 @@ spencer_time <- veg_cover |>
     labels = c(as.character(1:16))) +
   facet_wrap( ~ species, scales = "free") +
   theme_bw() +
-  theme(legend.position = "bottom", panel.grid = element_blank())
+  theme(legend.position = "bottom", 
+        panel.grid = element_blank(),
+        strip.text = ggtext::element_markdown())
 
 ggsave(
   filename = "outputs/figures/spencer-cover.png",
