@@ -304,7 +304,10 @@ spencer_time <- veg_cover |>
     cover = hits / npoint,
     days_above_baseflow = days_above_baseflow / (2 * max_val_bs),
     days_above_springfresh = days_above_springfresh / max_val_sp,
-    survey = factor(survey)
+    survey = factor(survey),
+    period = case_when(survey == 1 ~ fct_recode(period, "after_spring" = "before_spring",),
+                       survey == 16 ~ fct_recode(period, "after_spring" = "before_spring"),
+                       TRUE ~ period)
   ) |>
   group_by(survey, period, survey_year, species, max_label) |>
   summarise(
