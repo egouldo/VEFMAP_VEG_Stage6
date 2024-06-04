@@ -191,6 +191,11 @@ veg_summary <- veg_cover |>
   left_join(ave_cover, by = "waterbody")
 write.csv(veg_summary, file = "outputs/tables/veg-summary.csv")
 
+veg_cover %>% 
+  distinct(species, rec_group, origin) %>% 
+  drop_na(rec_group, origin) %>% 
+  write_csv("outputs/tables/species-grouping-list.csv")
+
 # add a plot of a single site and some patterns
 species_to_plot <- c(
   "Phragmites australis",
