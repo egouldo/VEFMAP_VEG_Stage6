@@ -23,6 +23,7 @@ library(lubridate)
 library(stringr)
 library(aae.hydro)
 library(ggplot2)
+library(ggtext)
 
 # load helper functions
 source("R/utils.R")
@@ -217,6 +218,8 @@ spencer_mahd <- veg_cover |>
   ) |>
   mutate(
     species = factor(species, level = species_to_plot[c(1, 4, 2, 3)]),
+    species = forcats::fct_relabel(species, ~ gluedown::md_italic(.x) %>% 
+                                     stringr::str_replace(" var. ", "_ var. _")),
     cover = 100 * (hits / npoint),
     baseflow_m_ahd = median(baseflow_m_ahd, na.rm = TRUE),
     springfresh_m_ahd = median(springfresh_m_ahd, na.rm = TRUE)
@@ -229,7 +232,8 @@ spencer_mahd <- veg_cover |>
   ylab("Percentage cover") +
   facet_wrap( ~ species) +
   theme_bw() +
-  theme(panel.grid = element_blank())
+  theme(panel.grid = element_blank(),
+        strip.text = ggtext::element_markdown())
 
 spencer_flow <- fetch_hydro(
   406202,
