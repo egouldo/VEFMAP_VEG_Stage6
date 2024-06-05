@@ -17,6 +17,7 @@ rm(list = ls())
 #  Check renv is up to date with renv::status()
 #  Whenever changing packages, make sure the renv lockfile is updated
 #     with renv::snapshot()
+# See wiki for troubleshooting renv issues https://github.com/egouldo/VEFMAP_VEG_Stage6/wiki/Troubleshooting-renv-package-management
 
 # load some packages (include all dependencies for renv tracking)
 library(here)
