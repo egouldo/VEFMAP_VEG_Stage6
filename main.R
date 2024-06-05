@@ -999,15 +999,16 @@ flow_full <-
   map(.system_list,
       load_flow,
       pilot = FALSE, 
-      recompile = TRUE) %>% 
-  list_rbind()
+      recompile = TRUE)
 
 
 # TODO: investigate raw-data files for low amounts of data
 # note that we have excluded some sites for now (see within the 'load_flow' function for site list)
 
 # calculate metrics
-metrics_full <- calculate_metrics(flow_full, site_info)
+
+metrics_full <- flow_full %>% map(calculate_metrics, site_info) %>% list_rbind() #calculate_metrics faiing on singe df, so need to use map on list
+flow_full <- flow_full %>% list_rbind() #join into single df
 
 # TODO: check thresholds are correct for each site
 # note that sites should have positive values for mean_days_above_spring and mean_days_above_baseflow
@@ -1020,7 +1021,7 @@ metrics_full <- calculate_metrics(flow_full, site_info)
 site_info <- site_info |> distinct(system, waterbody, site, transect, metres, zone, grazing) 
 
 veg_cover_ar_full <- veg_cover_ar_full |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  left_join(site_info, by = c("system", "waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>  
   left_join(
     metrics_full,
@@ -1028,7 +1029,7 @@ veg_cover_ar_full <- veg_cover_ar_full |>
   )
 
 veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  left_join(site_info, by = c( "waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
   left_join(
     metrics_full,
@@ -1036,7 +1037,7 @@ veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
   )
 
 veg_richness_full <- veg_richness_full |>
-  left_join(site_info, by = c("waterbody", "site", "transect", "metres")) |>
+  left_join(site_info, by = c("system", "waterbody", "site", "transect", "metres")) |>
   filter(!is.na(zone)) |>
   left_join(
     metrics_full,
