@@ -1622,7 +1622,7 @@ check_model(richness_ar_TMBmod_full_1)
 model_performance(richness_ar_TMBmod_full_1)
 
 # r^2
-cor(fitted(richness_ar_TMBmod_full_1), richness_ar_TMBmod_full_1$frame$hits) ^ 2
+cor(fitted(richness_ar_TMBmod_full_1), richness_ar_TMBmod_full_1$frame$hits)^ 2
 
 check_predictions(richness_ar_TMBmod_full_1)
 # 
