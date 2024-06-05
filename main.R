@@ -42,6 +42,8 @@ library(parameters) # extract model params for plotting
 library(interactions)
 library(ggforce)
 library(effects)
+library(datapasta)
+library(grateful)
 
 
 # load helper functions
@@ -1023,3 +1025,30 @@ RichPredictPeriodwpfgPlot2
 ##    2. plots of veg richness and cover as a function of zone/period/transect
 
 sessioninfo::session_info(to_file = here::here("outputs/session-info.txt"))
+grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("outputs/"))
+# grateful_citations %>% datapasta::df_paste()
+# tibble(
+#   pkg = c("aae.hydro","assertthat",
+#           "base","brms","cowplot","effects","ggforce","ggtext",
+#           "glmmTMB","glue","here","interactions","jtools","lme4",
+#           "mgcv","mixedup","parameters","patchwork",
+#           "performance","pointblank","qs","R.utils","remotes","renv",
+#           "rmarkdown","rstanarm","see","sessioninfo","tidyverse",
+#           "withr"),
+#   version = c("0.0.1.9003","0.2.1","4.4.0",
+#               "2.21.0","1.1.3","4.2.2","0.4.2","0.1.2","1.1.9",
+#               "1.7.0","1.0.1","1.1.5","2.2.2","1.1.35.3","1.9.1",
+#               "0.4.0","0.21.7","1.2.0","0.11.0","0.12.1","0.26.3",
+#               "2.12.3","2.5.0","0.17.3","2.27","2.32.1","0.8.4",
+#               "1.2.2","2.0.0","3.0.0"),
+#   citekeys = list("aaehydro","assertthat","base",
+#                   c("brms2017", "brms2018", "brms2021"),"cowplot",
+#                   c("effects2019", "effects2018", "effects2003", "effects2009"),
+#                   "ggforce","ggtext","glmmTMB","glue","here","interactions","jtools",
+#                   "lme4",
+#                   c("mgcv2011", "mgcv2016", "mgcv2004", "mgcv2017", "mgcv2003"),"mixedup","parameters","patchwork","performance",
+#                   "pointblank","qs","Rutils","remotes","renv",
+#                   c("rmarkdown2024", "rmarkdown2018", "rmarkdown2020"),
+#                   c("rstanarm2024", "rstanarm2018"),"see","sessioninfo","tidyverse","withr") %>% 
+#     purrr::map(~ glue::glue("@{.x}"))
+# )
