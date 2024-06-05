@@ -1215,7 +1215,7 @@ cover_ar_TMBmod_full_1_re$group <- ordered(cover_ar_TMBmod_full_1_re$group, leve
 
 ggplot(cover_ar_TMBmod_full_1_re , aes(group, value)) +
   geom_point(size = 2)+
-  geom_errorbar(aes(ymin = lower_2.5, ymax = upper_97.5), width = 0.1,  size= 1)+
+  geom_errorbar(aes(ymin = lower_2.5, ymax = upper_97.5), width = 0.1,  linewidth= 1)+
   labs(x = "System", y = "Value")+ theme_bw() +
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
