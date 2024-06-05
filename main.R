@@ -1590,9 +1590,11 @@ veg_richness_full_sum %>%
 
 richness_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
      richness ~ 
-       days_above_baseflow_std*wpfg + days_above_springfresh_std*wpfg + origin +
+       days_above_baseflow_std*wpfg + days_above_springfresh_std*wpfg + 
+       origin +
        I(days_above_baseflow_std^2) + I(days_above_springfresh_std^2) +
-       zone * wpfg * period  + grazing +
+       zone * wpfg * period  + 
+       grazing +
        (1 | site / transect) +
        (1 | metres) +
        (1 | survey_year)+
