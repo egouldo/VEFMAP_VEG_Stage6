@@ -931,8 +931,8 @@ veg_cover_full <- map2(.x = .system_list,
 
 # calculate some summary stats for the full dataset
 # filter for rows hits greater than 0
-
-veg_cover_full %>%  group_by(waterbody) %>% 
+veg_cover_full_summary <- 
+  veg_cover_full %>%  group_by(waterbody) %>% 
   summarise(n_sites = n_distinct(site),
             n_site_transects = n_distinct(unique_transect),
             survey_year = list(unique(survey_year))) %>% 
