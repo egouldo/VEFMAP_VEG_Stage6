@@ -1188,7 +1188,7 @@ check_model(cover_ar_TMBmod_full_1)
 model_performance(cover_ar_TMBmod_full_1)
 
 # r^2
-cor(fitted(cover_ar_TMBmod_full_1), cover_ar_TMBmod_full_1$frame$hits) ^ 2
+cor(fitted(cover_ar_TMBmod_full_1), cover_ar_TMBmod_full_1$frame$hits)^ 2
 
 check_predictions(cover_ar_TMBmod_full_1)
 # 
