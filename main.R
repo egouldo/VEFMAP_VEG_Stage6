@@ -953,10 +953,10 @@ veg_cover_full_summary <-
 
 
 
-veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
-veg_cover_full_summary_hits  %>% group_by(waterbody, rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) #%>% group_by(rec_group)%>% summarise(ntot=sum((n)))
-#
-veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) 
+# veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
+# veg_cover_full_summary_hits  %>% group_by(waterbody, rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) #%>% group_by(rec_group)%>% summarise(ntot=sum((n)))
+# #
+# veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(unique(species)))%>% print(n=80) 
 
 
 ## IGNORE for now, JY to follow up
@@ -967,7 +967,7 @@ veg_cover_full_summary_hits %>% group_by(rec_group) %>% summarise(n=length(uniqu
 #   mutate(include = ifelse(wpfg %in% wpfg_list, TRUE, FALSE))
 
 # sum cover over all species within each wpfg
-  veg_cover_ar_full_sum <- veg_cover_ar_full |>
+veg_cover_ar_full_sum <- veg_cover_ar_full |>
   group_by(
     waterbody, site, transect, metres, survey, survey_year,
     period, origin, rec_group
