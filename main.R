@@ -1710,13 +1710,48 @@ RichPredictDaysabovespringFunc$days_above_springfresh<-(RichPredictDaysabovespri
 RichPredictDaysabovespringFunc$richness <- RichPredictDaysabovespringFunc$fit
    
 RichPredictDaysabovespringFuncPlot<-ggplot(RichPredictDaysabovespringFunc, aes(days_above_springfresh, richness, colour = wpfg, group = wpfg)) +
-geom_line(linewidth = 2)+
-geom_ribbon(aes(ymin = lower, ymax = upper, fill=wpfg),  colour=NA, alpha= 0.1, show.legend = F)+
-coord_cartesian(ylim = c(0, 1.5))+
-labs(x = "Days above spring fresh", y = "Species richness")+ theme_bw()  + #facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
-theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='Functional group') 
-   
+  geom_line(linewidth = 2)+
+  geom_ribbon(aes(ymin = lower, ymax = upper, fill=wpfg),  colour=NA, alpha= 0.1, show.legend = F)+
+  coord_cartesian(ylim = c(0, 1.5))+
+  labs(x = "Days above spring fresh", y = "Species richness")+ theme_bw()  + #facet_grid(.~origin) +# coord_cartesian(ylim = c(0.5, 1)) + 
+  theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='Functional group') 
+
 RichPredictDaysabovespringFuncPlot
+
+# combine as facet plot
+predicted_species_richness_plot <- 
+  bind_rows(
+    RichPredictDaysabovebaseFunc %>% 
+      as_tibble() %>% 
+      mutate(period = "Baseflow") %>% 
+      rename(days_above_threshold = days_above_baseflow),
+    RichPredictDaysabovespringFunc %>% as_tibble() %>% mutate(period = "Spring fresh") %>%   rename(days_above_threshold = days_above_springfresh)
+  ) %>% 
+  ggplot(aes(days_above_threshold, richness, colour = wpfg, group = wpfg)) +
+  geom_line(linewidth = 1)+
+  geom_ribbon(aes(ymin = lower, ymax = upper, fill=wpfg),  colour=NA, alpha= 0.1, show.legend = F)+
+  labs(x = "Days above threshold", y = "Predicted species richness") + 
+  facet_grid(. ~ period, scales = "free_x") +
+  theme_bw() +
+  theme(panel.border = element_blank(), 
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(), 
+        axis.line = element_line(colour = "black"), 
+        legend.position = "bottom", text = element_text(size = 10),
+        legend.title = element_blank()) + 
+  coord_cartesian(ylim = c(0, 0.8))+
+  labs(color='Functional group') 
+
+ggsave(
+  filename = "outputs/figures/predicted_species_richness_plot.png",
+  plot = predicted_species_richness_plot,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
+
    
 # three way plot for the effects of period, functional group and zone on species richness
 Richness_records <- veg_richness_full_sum %>% 
@@ -1780,32 +1815,9 @@ ggsave(
 
 
 
-# now calculate records for the correct combination of factors
-Richness_records <- veg_richness_full_sum %>% filter(!site %in% c("Peuckers")) %>% group_by(wpfg, zone) %>% summarise(n=sum(richness>0)) 
-
-Richness_records$period <-"After spring" 
-Richness_records$zone <- recode_factor(Richness_records$zone, above_springfresh = "Above springfresh", 
-                                                     baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
 
 
-ggplot(RichPredictFuncPeriodZone_full, aes(period, richness)) +
-  geom_point(size = 2)+
-  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.1,  size= 1)+
-  coord_cartesian(ylim = c(0, 1.5))+ ggtext::geom_textbox(data= Richness_records, aes(y= 1.25, label = paste("n = ", n)),
-                                                          size = 4,
-                                                          halign = 0, 
-                                                          hjust = .4,
-                                                         # fill = "white",
-                                                         # box.colour = "white"
-                                                         width = .2,
-                                                         show.legend = FALSE
-                                                          )+
-  labs(x = "Period", y = "Species richness")+ theme_bw() + facet_grid(zone~wpfg) +
-  theme(#axis.text.x = element_blank(),      # hide iv.y labels
-    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
-    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
-    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20), axis.text=element_text(size=12)) +labs(color='Functional group') +guides(size=FALSE) # 1600 x 800
+
 
 sessioninfo::session_info(to_file = "outputs/session-info.txt")
 grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("outputs/"))
