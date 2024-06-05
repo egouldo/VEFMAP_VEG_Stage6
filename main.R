@@ -1448,7 +1448,8 @@ cover_ar_TMBmod_full_2_vc$group <- ordered(cover_ar_TMBmod_full_2_vc$group, leve
 cover_ar_TMBmod_full_2_vc$group <- recode_factor(cover_ar_TMBmod_full_2_vc$group, system = "System", 
                                                  site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
 
-ggplot(cover_ar_TMBmod_full_2_vc , aes(group, sd)) +
+cover_ar_TMBmod_full_2_vc_plot <- 
+  ggplot(cover_ar_TMBmod_full_2_vc , aes(group, sd)) +
   geom_point(size = 2)+
   geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  size= 1)+
   labs(x = "Effect", y = "Standard deviation")+ theme_bw() +
@@ -1457,6 +1458,16 @@ ggplot(cover_ar_TMBmod_full_2_vc , aes(group, sd)) +
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
     axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+
+ggsave(
+  filename = "outputs/figures/cover_ar_TMBmod_full_2_vc.png",
+  plot = cover_ar_TMBmod_full_2_vc_plot,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
 
 # forrest plot of parameter estimates
 
