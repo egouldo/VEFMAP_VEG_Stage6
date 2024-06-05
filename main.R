@@ -1558,7 +1558,7 @@ ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
 # modify the wpfg var to investigate the use of rec_group var in its place
    
 veg_richness_full_sum$wpfg <- veg_richness_full_sum$rec_group
-PlotdataRich_full$wpfg <- PlotdataRich_full$rec_group
+PlotdataRich_full$wpfg <- PlotdataRich_full$rec_group #TODO object not created in this code, assuming uses same method as for pilot creating above?
    
 veg_cover_ar_full_sum %>% group_by(origin, wpfg) %>% distinct(origin, wpfg) %>% arrange(origin) %>% print(n=50)
    
