@@ -1020,3 +1020,5 @@ RichPredictPeriodwpfgPlot2
 ## TODO: generate outputs for reporting:
 ##    1. estimates of flow effects or zone/period effects
 ##    2. plots of veg richness and cover as a function of zone/period/transect
+
+sessioninfo::session_info(to_file = here::here("outputs/session-info.txt"))
