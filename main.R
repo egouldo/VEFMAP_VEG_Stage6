@@ -1160,7 +1160,8 @@ veg_cover_ar_full_sum$wpfg <- veg_cover_ar_full_sum$rec_group
 cover_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
    days_above_baseflow_std*wpfg+ days_above_springfresh_std*wpfg + # original regime model does not converge
-    I(days_above_baseflow_std^2)*wpfg + I(days_above_springfresh_std^2)*wpfg + origin +
+    I(days_above_baseflow_std^2)*wpfg + I(days_above_springfresh_std^2)*wpfg + 
+    origin +
     (1 | site / transect) +
     (1 | metres) +
     (1 | survey_year)+
