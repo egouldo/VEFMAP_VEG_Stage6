@@ -1190,7 +1190,22 @@ model_performance(cover_ar_TMBmod_full_1)
 # r^2
 cor(fitted(cover_ar_TMBmod_full_1), cover_ar_TMBmod_full_1$frame$hits)^ 2
 
-check_predictions(cover_ar_TMBmod_full_1)
+cover_ar_TMBmod_full_1_posterior_check <- check_predictions(cover_ar_TMBmod_full_1) %>% 
+  plot() + 
+  xlab("Cover (as hits)") +
+  theme(legend.position = "bottom")
+
+ggsave(
+  filename = "outputs/figures/cover_ar_TMBmod_full_1_posterior_check.png",
+  plot = cover_ar_TMBmod_full_1_posterior_check,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
+
+ggsave("cover_ar_TMBmod_full_1_predictions.png", plot = last_plot(), device = "png", width = 10, height = 10, units = "in", dpi = 300)
 # 
 
 check_collinearity(cover_ar_TMBmod_full_1)
@@ -1376,6 +1391,22 @@ model_performance(cover_ar_TMBmod_full_2)
 cor(fitted(cover_ar_TMBmod_full_2), cover_ar_TMBmod_full_2$frame$hits) ^ 2
 
 check_predictions(cover_ar_TMBmod_full_2)
+
+cover_ar_TMBmod_full_2_posterior_check <- check_predictions(cover_ar_TMBmod_full_2) %>% 
+  plot() + 
+  xlab("Cover (as hits)") +
+  theme(legend.position = "bottom")
+
+ggsave(
+  filename = "outputs/figures/cover_ar_TMBmod_full_2_posterior_check.png",
+  plot = cover_ar_TMBmod_full_2_posterior_check,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
+
 # 
 
 check_collinearity(cover_ar_TMBmod_full_2)
