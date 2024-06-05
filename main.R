@@ -1624,8 +1624,20 @@ model_performance(richness_ar_TMBmod_full_1)
 # r^2
 cor(fitted(richness_ar_TMBmod_full_1), richness_ar_TMBmod_full_1$frame$hits)^ 2
 
-check_predictions(richness_ar_TMBmod_full_1)
-# 
+richness_ar_TMBmod_full_1_posterior_check <- check_predictions(richness_ar_TMBmod_full_1) %>% 
+  plot() +
+  xlab("Richness") +
+  theme(legend.position = "bottom")
+
+ggsave(
+  filename = "outputs/figures/richness_ar_TMBmod_full_1_posterior_check.png",
+  plot = richness_ar_TMBmod_full_1_posterior_check,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
 
 check_collinearity(richness_ar_TMBmod_full_1)
 # high correlations but to be expected in interactions
