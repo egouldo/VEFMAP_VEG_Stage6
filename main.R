@@ -269,54 +269,54 @@ Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_
 #        log_proportional_cover_tm1 in lognormal model)
 
 # GLMER version (linear mixed model)
-cover_ar1_mod <- lme4::glmer(
-  hits ~ log_hits_tm1 +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-#    zone * period +
-    zone + period +
-    grazing +
-    offset(npoint) +
-    # (1 | waterbody) + # only one for now
-    # (1 | site) +
-    # (1 | transect) +
-    # (1 | survey_year) +
-    (1 | wpfg),
-  # origin = ~ zone + period + grazing,
-  # wpfg = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period,
-  # species = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period
-  family = poisson(),
-  data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
+# cover_ar1_mod <- lme4::glmer(
+#   hits ~ log_hits_tm1 +
+#     days_above_baseflow_std + days_above_springfresh_std +
+#     days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+# #    zone * period +
+#     zone + period +
+#     grazing +
+#     offset(npoint) +
+#     # (1 | waterbody) + # only one for now
+#     # (1 | site) +
+#     # (1 | transect) +
+#     # (1 | survey_year) +
+#     (1 | wpfg),
+#   # origin = ~ zone + period + grazing,
+#   # wpfg = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period,
+#   # species = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period
+#   family = poisson(),
+#   data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+# )
 
 # GAMM version (additive mixed model)
-cover_ar1_mod <- mgcv::gamm(
-  hits ~ log_hits_tm1 +
-    s(days_above_baseflow_std) + s(days_above_springfresh_std) +
-    zone * period +
-    grazing +
-    offset(npoint),
-  random = list(
-    # origin = ~ zone + period + grazing,
-    waterbody = ~ 1,
-    site = ~ 1,
-    transect = ~ 1,
-    survey_year = ~ 1,
-    wpfg = ~ 1
-    # wpfg = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period,
-    # species = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period
-  ),
-  family = poisson(),
-  data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
+# cover_ar1_mod <- mgcv::gamm(
+#   hits ~ log_hits_tm1 +
+#     s(days_above_baseflow_std) + s(days_above_springfresh_std) +
+#     zone * period +
+#     grazing +
+#     offset(npoint),
+#   random = list(
+#     # origin = ~ zone + period + grazing,
+#     waterbody = ~ 1,
+#     site = ~ 1,
+#     transect = ~ 1,
+#     survey_year = ~ 1,
+#     wpfg = ~ 1
+#     # wpfg = ~ days_above_baseflow_std + 
+#     #   days_above_springfresh_std +
+#     #   zone * origin * period,
+#     # species = ~ days_above_baseflow_std + 
+#     #   days_above_springfresh_std +
+#     #   zone * origin * period
+#   ),
+#   family = poisson(),
+#   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+# )
 
 # above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
 # and build complexity in once we start to understand how the models are behaving.
