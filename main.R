@@ -1828,6 +1828,65 @@ ggsave(
 )
 
 
+# -------- summaries --------------
+
+# model checks
+
+tabulate_performance_checks <- function(x){ tibble::as_tibble_row(set_names(c(x), names(x)))}
+extract_over_dispersion <- compose(check_overdispersion, tabulate_performance_checks, .dir = "forward")
+extract_zeroinflation <- compose(check_zeroinflation, tabulate_performance_checks, .dir = "forward")
+
+diagnose_overdispersion <- function(x) {
+  stopifnot(is.data.frame(x))
+    if (x$p_value > 0.05) {
+      result <- "No overdispersion detected"
+    } else if (x$dispersion_ratio > 1) {
+      result <- "Overdispersion detected"
+    } else {
+      result <- "Underdispersion detected"
+    }
+  result
+}
+
+diagnose_zeroinflation <- function(x) {
+  stopifnot(is.data.frame(x))
+  
+  lower <- 1 - x$tolerance
+  upper <- 1 + x$tolerance
+  
+  if (x$ratio < lower) {
+    result <- "Underfitting zeros"
+  } else if (x$ratio > upper) {
+    result <- "Overfitting zeros"
+  } else {
+    result <- "No zero inflation detected"
+  }
+  result
+}
+
+model_checks <-
+  tibble(models = list(richness = richness_ar_TMBmod_full_1, cover_regime = cover_ar_TMBmod_full_1, cover_flow_event = cover_ar_TMBmod_full_2), 
+         model_name = names(models), 
+         overdispersion_checks = map(models, extract_over_dispersion),
+         overdispersion = map_chr(overdispersion_checks, diagnose_overdispersion),
+         zeroinflation_checks = map(models, extract_zeroinflation),
+         zeroinflation = map_chr(zeroinflation_checks, diagnose_zeroinflation),
+         singularity = map_lgl(models, check_singularity))
+
+model_checks %>% select(model_name, singularity) %>% 
+  write_csv(here::here("outputs/tables/model_checks_singularity.csv"))
+
+model_checks %>% select(model_name, starts_with("overdispersion")) %>% unnest(overdispersion_checks) %>% 
+  mutate(p_value = format.pval(p_value,na.form = NA)) %>% 
+  write_csv(here::here("outputs/tables/model_checks_overdispersion.csv"))
+
+model_checks %>% select(model_name, starts_with("zeroinflation")) %>% unnest(zeroinflation_checks) %>%
+  mutate(p.value = ifelse(is.na(p.value), NA, format.pval(p.value))) %>% 
+  write_csv(here::here("outputs/tables/model_checks_zeroinflation.csv"))
+
+# model parameter estimates
+
+ map(model_checks$models, ~ parameters(.x) %>% print_html() )
 
 
 
