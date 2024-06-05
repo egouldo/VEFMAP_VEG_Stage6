@@ -984,14 +984,14 @@ veg_cover_ar_full_sum <- veg_cover_ar_full |>
  
 # sum richness across wpfg to get correct score for rec_group
   
-  veg_richness_full_sum <- veg_richness_full |>
-    group_by(
-      waterbody, site, transect, metres, survey, survey_year,
-      period, origin, rec_group
-    ) |>
-    summarise(
-      richness = sum(richness),
-          )
+veg_richness_full_sum <- veg_richness_full |>
+  group_by(
+    waterbody, site, transect, metres, survey, survey_year,
+    period, origin, rec_group
+  ) |>
+  summarise(
+    richness = sum(richness),
+  )
 
 
 # load flow data and merge summary metrics with veg
