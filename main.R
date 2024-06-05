@@ -23,6 +23,8 @@ library(lubridate)
 library(stringr)
 library(aae.hydro)
 library(ggplot2)
+library(ggtext)
+library(sessioninfo)
 
 # load helper functions
 source("R/utils.R")
@@ -191,6 +193,11 @@ veg_summary <- veg_cover |>
   left_join(ave_cover, by = "waterbody")
 write.csv(veg_summary, file = "outputs/tables/veg-summary.csv")
 
+veg_cover %>% 
+  distinct(species, rec_group, origin) %>% 
+  drop_na(rec_group, origin) %>% 
+  write_csv("outputs/tables/species-grouping-list.csv")
+
 # add a plot of a single site and some patterns
 species_to_plot <- c(
   "Phragmites australis",
@@ -212,6 +219,8 @@ spencer_mahd <- veg_cover |>
   ) |>
   mutate(
     species = factor(species, level = species_to_plot[c(1, 4, 2, 3)]),
+    species = forcats::fct_relabel(species, ~ gluedown::md_italic(.x) %>% 
+                                     stringr::str_replace(" var. ", "_ var. _")),
     cover = 100 * (hits / npoint),
     baseflow_m_ahd = median(baseflow_m_ahd, na.rm = TRUE),
     springfresh_m_ahd = median(springfresh_m_ahd, na.rm = TRUE)
@@ -224,7 +233,8 @@ spencer_mahd <- veg_cover |>
   ylab("Percentage cover") +
   facet_wrap( ~ species) +
   theme_bw() +
-  theme(panel.grid = element_blank())
+  theme(panel.grid = element_blank(),
+        strip.text = ggtext::element_markdown())
 
 spencer_flow <- fetch_hydro(
   406202,
@@ -299,7 +309,10 @@ spencer_time <- veg_cover |>
     cover = hits / npoint,
     days_above_baseflow = days_above_baseflow / (2 * max_val_bs),
     days_above_springfresh = days_above_springfresh / max_val_sp,
-    survey = factor(survey)
+    survey = factor(survey),
+    period = case_when(survey == 1 ~ fct_recode(period, "after_spring" = "before_spring",),
+                       survey == 16 ~ fct_recode(period, "after_spring" = "before_spring"),
+                       TRUE ~ period)
   ) |>
   group_by(survey, period, survey_year, species, max_label) |>
   summarise(
@@ -319,6 +332,8 @@ spencer_time <- veg_cover |>
     )
   ) |>
   left_join(survey_mid, by = "survey_year") |>
+  mutate(species = forcats::fct_relabel(species, ~ gluedown::md_italic(.x) %>% 
+                                          stringr::str_replace(" var. ", "_ var. _"))) |>
   ggplot(aes(y = mid, x = survey, shape = period_clean)) +
   geom_point() +
   geom_point(aes(y = days_above_baseflow), shape = "circle", col = "#2166AC") +
@@ -335,7 +350,9 @@ spencer_time <- veg_cover |>
     labels = c(as.character(1:16))) +
   facet_wrap( ~ species, scales = "free") +
   theme_bw() +
-  theme(legend.position = "bottom", panel.grid = element_blank())
+  theme(legend.position = "bottom", 
+        panel.grid = element_blank(),
+        strip.text = ggtext::element_markdown())
 
 ggsave(
   filename = "outputs/figures/spencer-cover.png",
@@ -485,3 +502,5 @@ ggsave(
   units = "in",
   dpi = 600
 )
+
+sessioninfo::session_info(to_file = "outputs/session-info.txt")
