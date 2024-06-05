@@ -1491,23 +1491,31 @@ Cover_records$period <- "After spring"
 Cover_records$zone <- recode_factor(Cover_records$zone, above_springfresh = "Above springfresh", 
                                        baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
 
-
-   ggplot(EventsPredictFuncPeriodZone_full, aes(period, hits/40*100)) +
-  geom_point(size = 2)+
-  geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 1)+
+EventsPredictFuncPeriodZone_full_plot <- 
+  ggplot(EventsPredictFuncPeriodZone_full, aes(period, hits/40*100)) +
+  geom_point(size = 1)+
+  geom_errorbar(aes(ymin = lower/40*100, ymax = upper/40*100), width = 0.1,  size= 0.5)+
   coord_cartesian(ylim = c(0, 65))+
-  labs(x = "Period", y = "Predicted % cover")+ theme_bw() + facet_grid(zone~wpfg) + 
-     ggtext::geom_textbox(data= Cover_records, aes(y= 50, label = paste("n = ", n)), size = 4, halign = 0,  hjust = .45,  
-                          # fill = "white",
-                 # box.colour = "white"
-                 width = .2, show.legend = FALSE)+
+  labs(x = "Period", y = "Predicted % cover")+ theme_bw() + facet_grid(wpfg~zone) + 
+  ggtext::geom_textbox(data= Cover_records, aes(y= 50, label = paste("n = ", n)), size = 3, halign = 0,  hjust = .45,  
+                       # fill = "white",
+                       # box.colour = "white"
+                       width = .25, show.legend = FALSE)+
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
-   panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 20), axis.text=element_text(size=12)) +labs(color='Functional group') # 1600 x 800
+    axis.line = element_line(colour = "black"), legend.position = "none", text = element_text(size = 15), axis.text=element_text(size=8)) +labs(color='Functional group') # 1600 x 800
 
-  
+ggsave(
+  filename = "outputs/figures/EventsPredictFuncPeriodZone_full.png",
+  plot = EventsPredictFuncPeriodZone_full_plot,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
 # effect of origin 
   
 EventsPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_2))
@@ -1711,15 +1719,65 @@ theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.
 RichPredictDaysabovespringFuncPlot
    
 # three way plot for the effects of period, functional group and zone on species richness
+Richness_records <- veg_richness_full_sum %>% 
+  filter(!site %in% c("Peuckers")) %>% 
+  group_by(wpfg, zone) %>% 
+  summarise(n=sum(richness>0))
 
-RichPredictFuncPeriodZone_full<- as.data.frame(Effect(c('period', 'wpfg', 'zone'),richness_ar_TMBmod_full_1,xlevels=20))
-RichPredictFuncPeriodZone_full$richness <- RichPredictFuncPeriodZone_full$fit
-RichPredictFuncPeriodZone_full$period <- ordered(RichPredictFuncPeriodZone_full$period, levels = c( "before_spring", "after_spring", "after_summer"))
+library(forcats)
+library(ggh4x)
 
-RichPredictFuncPeriodZone_full$period <- recode_factor(RichPredictFuncPeriodZone_full$period, before_spring = "Before spring", 
-                                                         after_spring = "After spring", after_summer = "After summer")
-RichPredictFuncPeriodZone_full$zone <- recode_factor(RichPredictFuncPeriodZone_full$zone, above_springfresh = "Above springfresh", 
-                                                       baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
+RichPredictFuncPeriodZone_full<- as_tibble(Effect(c('period', 'wpfg', 'zone'),richness_ar_TMBmod_full_1,xlevels=20)) %>% 
+  rename(richness = fit) %>% 
+  left_join(Richness_records) %>% 
+  mutate(period = fct_relevel(period, "before_spring", "after_spring", "after_summer"),
+         period = fct_recode(period, "Before spring" = "before_spring", "After spring" = "after_spring", "After summer" = "after_summer"),
+         zone = fct_recode(zone, "Above springfresh" = "above_springfresh", "Baseflow to springfresh" = "baseflow_to_springfresh", "Below baseflow" = "below_baseflow"),
+         n = factor(n))
+
+
+EventsPredictFuncPeriodZone_richness_full <-
+  ggplot(RichPredictFuncPeriodZone_full, aes(period, richness)) +
+  geom_point(size = 0.8)+
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.08,  size= 0.4)+
+  coord_cartesian(clip = "off")+
+  geom_label(data = ~ distinct(.x, zone, wpfg, n),
+            aes(y = Inf, x = 0, label = paste("n = ", n)),
+            size = 1.8,
+            nudge_x = 0.5,
+            # halign = 0,
+            vjust =  1.8,
+            hjust = "inward",
+            # fill = "white",
+            # box.colour = "white"
+            # width = .28,
+            show.legend = FALSE,
+  )+
+  # annotate("text", x = 1.5, y = 0.5, label = n, size = 3, parse = TRUE)+
+  labs(x = "Period", y = "Predicted species richness")+ 
+  theme_bw() + 
+  facet_grid2(wpfg ~ zone, scales = "free_y") +
+  theme(#axis.text.x = element_blank(),      # hide iv.y labels
+    #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
+    # panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
+    # panel.spacing.y = unit(1, "lines"),
+    #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
+    axis.line = element_line(colour = "black"), 
+    legend.position = "none", 
+    text = element_text(size = 8), 
+    axis.text=element_text(size=6)) + 
+  guides(size=FALSE) # 1600 x 800
+
+ggsave(
+  filename = "outputs/figures/EventsPredictFuncPeriodZone_richness_full.png",
+  plot = EventsPredictFuncPeriodZone_richness_full,
+  device = ragg::agg_png,
+  width = 8,
+  height = 6,
+  units = "in",
+  dpi = 600
+)
+
 
 
 # now calculate records for the correct combination of factors
