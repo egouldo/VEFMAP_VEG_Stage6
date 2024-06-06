@@ -17,6 +17,7 @@ rm(list = ls())
 #  Check renv is up to date with renv::status()
 #  Whenever changing packages, make sure the renv lockfile is updated
 #     with renv::snapshot()
+# See wiki for troubleshooting renv issues https://github.com/egouldo/VEFMAP_VEG_Stage6/wiki/Troubleshooting-renv-package-management
 
 # load some packages (include all dependencies for renv tracking)
 library(here)
@@ -41,6 +42,8 @@ library(parameters) # extract model params for plotting
 library(interactions)
 library(ggforce)
 library(effects)
+library(datapasta)
+library(grateful)
 
 
 # load helper functions
@@ -266,54 +269,54 @@ Plotdata$period <- ordered(Plotdata$period, levels = c( "before_spring", "after_
 #        log_proportional_cover_tm1 in lognormal model)
 
 # GLMER version (linear mixed model)
-cover_ar1_mod <- lme4::glmer(
-  hits ~ log_hits_tm1 +
-    days_above_baseflow_std + days_above_springfresh_std +
-    days_above_baseflow_std_sq + days_above_springfresh_std_sq +
-#    zone * period +
-    zone + period +
-    grazing +
-    offset(npoint) +
-    # (1 | waterbody) + # only one for now
-    # (1 | site) +
-    # (1 | transect) +
-    # (1 | survey_year) +
-    (1 | wpfg),
-  # origin = ~ zone + period + grazing,
-  # wpfg = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period,
-  # species = ~ days_above_baseflow_std + 
-  #   days_above_springfresh_std +
-  #   zone * origin * period
-  family = poisson(),
-  data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
+# cover_ar1_mod <- lme4::glmer(
+#   hits ~ log_hits_tm1 +
+#     days_above_baseflow_std + days_above_springfresh_std +
+#     days_above_baseflow_std_sq + days_above_springfresh_std_sq +
+# #    zone * period +
+#     zone + period +
+#     grazing +
+#     offset(npoint) +
+#     # (1 | waterbody) + # only one for now
+#     # (1 | site) +
+#     # (1 | transect) +
+#     # (1 | survey_year) +
+#     (1 | wpfg),
+#   # origin = ~ zone + period + grazing,
+#   # wpfg = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period,
+#   # species = ~ days_above_baseflow_std + 
+#   #   days_above_springfresh_std +
+#   #   zone * origin * period
+#   family = poisson(),
+#   data = veg_cover_ar #|> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+# )
 
 # GAMM version (additive mixed model)
-cover_ar1_mod <- mgcv::gamm(
-  hits ~ log_hits_tm1 +
-    s(days_above_baseflow_std) + s(days_above_springfresh_std) +
-    zone * period +
-    grazing +
-    offset(npoint),
-  random = list(
-    # origin = ~ zone + period + grazing,
-    waterbody = ~ 1,
-    site = ~ 1,
-    transect = ~ 1,
-    survey_year = ~ 1,
-    wpfg = ~ 1
-    # wpfg = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period,
-    # species = ~ days_above_baseflow_std + 
-    #   days_above_springfresh_std +
-    #   zone * origin * period
-  ),
-  family = poisson(),
-  data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
-)
+# cover_ar1_mod <- mgcv::gamm(
+#   hits ~ log_hits_tm1 +
+#     s(days_above_baseflow_std) + s(days_above_springfresh_std) +
+#     zone * period +
+#     grazing +
+#     offset(npoint),
+#   random = list(
+#     # origin = ~ zone + period + grazing,
+#     waterbody = ~ 1,
+#     site = ~ 1,
+#     transect = ~ 1,
+#     survey_year = ~ 1,
+#     wpfg = ~ 1
+#     # wpfg = ~ days_above_baseflow_std + 
+#     #   days_above_springfresh_std +
+#     #   zone * origin * period,
+#     # species = ~ days_above_baseflow_std + 
+#     #   days_above_springfresh_std +
+#     #   zone * origin * period
+#   ),
+#   family = poisson(),
+#   data = veg_cover_ar |> filter(wpfg %in% c("ATl", "Sk", "ARp"))
+# )
 
 # above is Chris' and Jian's model structures. Lets first attempt to fit simple models 
 # and build complexity in once we start to understand how the models are behaving.
@@ -1020,3 +1023,32 @@ RichPredictPeriodwpfgPlot2
 ## TODO: generate outputs for reporting:
 ##    1. estimates of flow effects or zone/period effects
 ##    2. plots of veg richness and cover as a function of zone/period/transect
+
+sessioninfo::session_info(to_file = here::here("outputs/session-info.txt"))
+grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("outputs/"))
+# grateful_citations %>% datapasta::df_paste()
+# tibble(
+#   pkg = c("aae.hydro","assertthat",
+#           "base","brms","cowplot","effects","ggforce","ggtext",
+#           "glmmTMB","glue","here","interactions","jtools","lme4",
+#           "mgcv","mixedup","parameters","patchwork",
+#           "performance","pointblank","qs","R.utils","remotes","renv",
+#           "rmarkdown","rstanarm","see","sessioninfo","tidyverse",
+#           "withr"),
+#   version = c("0.0.1.9003","0.2.1","4.4.0",
+#               "2.21.0","1.1.3","4.2.2","0.4.2","0.1.2","1.1.9",
+#               "1.7.0","1.0.1","1.1.5","2.2.2","1.1.35.3","1.9.1",
+#               "0.4.0","0.21.7","1.2.0","0.11.0","0.12.1","0.26.3",
+#               "2.12.3","2.5.0","0.17.3","2.27","2.32.1","0.8.4",
+#               "1.2.2","2.0.0","3.0.0"),
+#   citekeys = list("aaehydro","assertthat","base",
+#                   c("brms2017", "brms2018", "brms2021"),"cowplot",
+#                   c("effects2019", "effects2018", "effects2003", "effects2009"),
+#                   "ggforce","ggtext","glmmTMB","glue","here","interactions","jtools",
+#                   "lme4",
+#                   c("mgcv2011", "mgcv2016", "mgcv2004", "mgcv2017", "mgcv2003"),"mixedup","parameters","patchwork","performance",
+#                   "pointblank","qs","Rutils","remotes","renv",
+#                   c("rmarkdown2024", "rmarkdown2018", "rmarkdown2020"),
+#                   c("rstanarm2024", "rstanarm2018"),"see","sessioninfo","tidyverse","withr") %>% 
+#     purrr::map(~ glue::glue("@{.x}"))
+# )
