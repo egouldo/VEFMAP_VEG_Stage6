@@ -231,4 +231,96 @@ plot_effects_by_vars <- function(model, var1, var2, colour_var, facet_var){ #TOD
   
 }
 
+# ----------------- Performance checks -----------------
+
+
+#' Tabulate performance check results
+#' 
+#' Generate a tibble of performance check results generated with the `performance::` package
+#' @param x object of class `check_overdisp` or `check_overdisp` generated with the `performance::` package
+#' @return A tibble of performance check results
+#' @export
+#' @importFrom tibble as_tibble_row
+#' @importFrom tibble set_names
+tabulate_performance_checks <- function(x){ 
+  as_tibble_row(set_names(c(x), names(x)))
+}
+
+#' Check for overdispersion and tabulate results
+#' 
+#' Checks for overdispersion on a model object using [performance::check_overdispersion] and tabulates the results using [tabulate_performance_checks()]
+#' 
+#' @param x A model object supported by the `performance::` package
+#' @return A tibble of performance check results
+#' @details
+#' [tabulate_performance_checks()] takes the output of [performance::check_overdispersion] and converts it to a tibble,
+#' while [extract_over_dispersion()] performs the check using [performance::check_overdispersion] *and* tabulates the results using [tabulate_performance_checks()].
+#' @export
+#' @importFrom performance check_overdispersion
+#' @importFrom purrr compose
+extract_over_dispersion <- compose(check_overdispersion, tabulate_performance_checks, .dir = "forward")
+
+#' Check for zero inflation and tabulate results
+#' 
+#' Checks for zero inflation on a model object using [performance::check_zeroinflation] and tabulates the results using [tabulate_performance_checks()]
+#' 
+#' @param x A model object supported by the `performance::` package
+#' @return A tibble of performance check results
+#' @details
+#' [tabulate_performance_checks()] takes the output of [performance::check_zeroinflation] and converts it to a tibble,
+#' while [extract_zeroinflation()] performs the check using [performance::check_zeroinflation] *and* tabulates the results using [tabulate_performance_checks()].
+#' @export
+#' @importFrom performance check_zeroinflation
+#' @importFrom purrr compose
+extract_zeroinflation <- compose(check_zeroinflation, tabulate_performance_checks, .dir = "forward")
+
+
+#' Diagnose overdispersion
+#' 
+#' Diagnoses overdispersion on results of [extract_over_dispersion()]
+#' @details
+#' May be performed on results of [tabulate_performance_checks()] if the results are generated from [performance::check_overdispersion()].
+#' Function uses the logic within the `performance::` package to diagnose overdispersion based on the p-value and dispersion ratio.
+#' 
+#' @param x A tibble of performance check results
+#' @return A character vector indicating the diagnosis
+#' @export
+diagnose_overdispersion <- function(x) {
+  stopifnot(is.data.frame(x))
+  if (x$p_value > 0.05) {
+    result <- "No overdispersion detected"
+  } else if (x$dispersion_ratio > 1) {
+    result <- "Overdispersion detected"
+  } else {
+    result <- "Underdispersion detected"
+  }
+  result
+}
+
+#' Diagnose zero inflation
+#' 
+#' Diagnoses zero inflation on results of [extract_zeroinflation()]
+#' @details
+#' May be performed on results of [tabulate_performance_checks()] if the results are generated from [performance::check_zeroinflation()].
+#' Function uses the logic within the `performance::` package to diagnose zero inflation based on the ratio of zeros to the total number of observations.
+#' Note, may need to change method for the richness model.
+#' 
+#' @param x A tibble of performance check results
+#' @return A character vector indicating the diagnosis
+#' @export
+diagnose_zeroinflation <- function(x) {
+  stopifnot(is.data.frame(x))
+  
+  lower <- 1 - x$tolerance
+  upper <- 1 + x$tolerance
+  
+  if (x$ratio < lower) {
+    result <- "Underfitting zeros"
+  } else if (x$ratio > upper) {
+    result <- "Overfitting zeros"
+  } else {
+    result <- "No zero inflation detected"
+  }
+  result
+}
 

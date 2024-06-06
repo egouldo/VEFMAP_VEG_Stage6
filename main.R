@@ -1558,7 +1558,7 @@ ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
 # modify the wpfg var to investigate the use of rec_group var in its place
    
 veg_richness_full_sum$wpfg <- veg_richness_full_sum$rec_group
-PlotdataRich_full$wpfg <- PlotdataRich_full$rec_group #TODO object not created in this code, assuming uses same method as for pilot creating above?
+# PlotdataRich_full$wpfg <- PlotdataRich_full$rec_group #TODO object not created in this code, assuming uses same method as for pilot creating above?
    
 veg_cover_ar_full_sum %>% group_by(origin, wpfg) %>% distinct(origin, wpfg) %>% arrange(origin) %>% print(n=50)
    
@@ -1831,38 +1831,6 @@ ggsave(
 # -------- summaries --------------
 
 # model checks
-
-tabulate_performance_checks <- function(x){ tibble::as_tibble_row(set_names(c(x), names(x)))}
-extract_over_dispersion <- compose(check_overdispersion, tabulate_performance_checks, .dir = "forward")
-extract_zeroinflation <- compose(check_zeroinflation, tabulate_performance_checks, .dir = "forward")
-
-diagnose_overdispersion <- function(x) {
-  stopifnot(is.data.frame(x))
-    if (x$p_value > 0.05) {
-      result <- "No overdispersion detected"
-    } else if (x$dispersion_ratio > 1) {
-      result <- "Overdispersion detected"
-    } else {
-      result <- "Underdispersion detected"
-    }
-  result
-}
-
-diagnose_zeroinflation <- function(x) {
-  stopifnot(is.data.frame(x))
-  
-  lower <- 1 - x$tolerance
-  upper <- 1 + x$tolerance
-  
-  if (x$ratio < lower) {
-    result <- "Underfitting zeros"
-  } else if (x$ratio > upper) {
-    result <- "Overfitting zeros"
-  } else {
-    result <- "No zero inflation detected"
-  }
-  result
-}
 
 model_checks <-
   tibble(models = list(richness = richness_ar_TMBmod_full_1, cover_regime = cover_ar_TMBmod_full_1, cover_flow_event = cover_ar_TMBmod_full_2), 
