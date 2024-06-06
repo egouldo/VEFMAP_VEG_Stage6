@@ -1860,6 +1860,6 @@ model_checks %>% select(model_name, starts_with("zeroinflation")) %>% unnest(zer
 
 
 
-sessioninfo::session_info(to_file = "outputs/session-info.txt")
-grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("outputs/"))
+sessioninfo::session_info(to_file = "inst/session-info.txt")
+grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("inst"))
 # grateful_citations %>% datapasta::df_paste() 
