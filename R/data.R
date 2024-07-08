@@ -366,13 +366,10 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
     )
     
     # flatten into a single table
-    out <- bind_rows(out)
+    out <- bind_rows(out) %>% #remove sites with low data for now
+      dplyr::filter(!(system == "Wimmera" & site == "Laharum" | site == "MtVictory")) |>  
+      dplyr::filter(!(system == "Loddon" & site == "Mullins"))
     
-    # remove sites with low data for now
-    out <- out |> dplyr::filter(!(system == "Wimmera" & site == "Laharum" | site == "MtVictory")) |>  dplyr::filter(!(system == "Loddon" & site == "Mullins"))
-
-      
-  
     # clean up dates
     out <- out |>
    dplyr::mutate(
