@@ -370,46 +370,51 @@ load_flow <- function(system, recompile = FALSE, pilot = TRUE) {
       dplyr::filter(!(system == "Wimmera" & site == "Laharum" | site == "MtVictory")) |>  
       dplyr::filter(!(system == "Loddon" & site == "Mullins"))
     
-    # clean up dates
-    out <- out |>
-   dplyr::mutate(
-        date_time = case_when(system == "Yarra" & site == "Millgrove" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]), #remove weird date formatting
-        system == "Yarra" & site == "Warrandyte" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]),
-        .default = date_time)) |>
-      dplyr::mutate(
-      date_formatted= case_when(system == "Wimmera" & site == "Peuckers" | site == "RosesGap" | site == "Tobacco" | site == "MtVictory" | site == "Laharum" ~
-       lubridate::floor_date(
+    
+    clean_datetime_dmy_HM <- function(x){
+      lubridate::floor_date(
         lubridate::parse_date_time(
-          date_time,
+          x,
           orders = c("dmy_HM")
         ),
         unit = days()
-      ),system == "Loddon" & site == "Mullins"  ~
-        lubridate::floor_date(
-          lubridate::parse_date_time(
-            date_time,
-            orders = c("dmy_HM")
-          ),
-          unit = days()
-        ),.default =
-       lubridate::floor_date(
-          lubridate::parse_date_time(
-            date_time,
-            orders = c("ymd_HMS")
-          ),
-          unit = days()
-        )
-      ))
-  
+      )
+    }
     
+    clean_datetime_ymd_HMS <- function(x){
+      lubridate::floor_date(
+        lubridate::parse_date_time(
+          x,
+          orders = c("ymd_HMS")
+        ),
+        unit = days()
+      )
+    }
     
-    # and collapse to daily averages
+    # clean up dates
+    
+    out <- out |>
+      dplyr::mutate(
+        date_time = case_when(system == "Yarra" & site == "Millgrove" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]), #remove weird date formatting
+                              system == "Yarra" & site == "Warrandyte" ~ sapply(strsplit(date_time, ".000"), \(x) x[1]),
+                              .default = date_time)) |>
+      dplyr::mutate(
+        date_formatted= case_when(system == "Wimmera" & site %in% c("Peuckers", "RosesGap", "Tobacco", "MtVictory", "Laharum") ~
+                                    suppressWarnings(clean_datetime_dmy_HM(date_time)),
+                                  system == "Loddon" & site == "Mullins"  ~
+                                    suppressWarnings(clean_datetime_dmy_HM(date_time)),
+                                  .default =
+                                    clean_datetime_ymd_HMS(date_time)
+        ))
+
+# and collapse to daily averages
     out <- out |>
       dplyr::group_by(system, waterbody, site, date_formatted) |>
       dplyr::summarise(
         water_level_m = median(water_level_m, na.rm=T),
-      #  qc = ifelse(all(qc %in% "NA"), "NA", extract_mode(qc)), # come back to this if needed
-        water_level_m_ahd = median(water_level_m_ahd, na.rm=T)
+        #  qc = ifelse(all(qc %in% "NA"), "NA", extract_mode(qc)), # come back to this if needed
+        water_level_m_ahd = median(water_level_m_ahd, na.rm=T), 
+        .groups = "keep"
       )
     
     # save compiled version to file
