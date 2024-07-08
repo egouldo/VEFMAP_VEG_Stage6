@@ -67,7 +67,7 @@ site_info <- load_metadata(recompile = T) #TODO Moorabool transect splitting war
 flow <- load_flow(system = "Campaspe", pilot = TRUE, recompile = FALSE)
 metrics <- calculate_metrics(flow, site_info)
 
-# -------- Campaspe Pilot Anlysis -------
+# -------- Campaspe Pilot Analysis -------
 
 # Load veg data for Campaspe system
 veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = TRUE)
@@ -421,7 +421,8 @@ pmap(.l = list(model = list(cover_ar_TMBmod_2, cover_ar_TMBmod_2, cover_ar_TMBmo
   .f = ~ jtools::effect_plot(model = ..1, pred = ..2, interval = ..3 , partial.residuals = ..4) +
     scale_y_continuous(limits=c(0, 60)))
 
-cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + scale_y_continuous(limits=c(0, 60))
+cat_plot(cover_ar_TMBmod_2, pred = zone, modx = period, plot.points = T) + 
+  scale_y_continuous(limits=c(0, 60))
 
 # plot model estimates for zone and period
 
@@ -494,7 +495,11 @@ pmap(.l = list(model = list(cover_ar_TMBmod_3, cover_ar_TMBmod_3, cover_ar_TMBmo
 cat_plot(cover_ar_TMBmod_3, pred = wpfg, modx =  period, plot.points = T) + scale_y_continuous(limits=c(0, 10))
 
 # plot model estimates 
-EventsPredictFuncPeriodPlot <- plot_effects_by_vars(cover_ar_TMBmod_3, var1 = wpfg, var2 = period, colour_var = wpfg, facet_var = wpfg) +
+EventsPredictFuncPeriodPlot <- plot_effects_by_vars(cover_ar_TMBmod_3, 
+                                                    var1 = wpfg, 
+                                                    var2 = period, 
+                                                    colour_var = wpfg, 
+                                                    facet_var = wpfg) +
   theme_effects(rotate_axis.text.x = TRUE) #TODO where wpfg is NA, these values have been dropped by in model$frame, but we want them IN the plot
 
 EventsPredictFuncPeriodPlot
@@ -545,12 +550,12 @@ richness_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   #family = nbinom2,
   #ziformula=~ wpfg,
   # dispformula =~ wpfg ,
-  data = veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% 
+             c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 
-
 summary(richness_ar_TMBmod_1)
-# 
 
 # old school model fit diagnostic plots
 
@@ -672,29 +677,28 @@ richness_ar_TMBmod_2 <- glmmTMB::glmmTMB(
     #days_above_baseflow_std + days_above_springfresh_std +
     # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
     #   zone * period +
-     zone *period + zone*wpfg + wpfg*period +
-      grazing + origin +
+    zone *period + zone*wpfg + wpfg*period +
+    grazing + origin +
     (1 | site / transect) +
     #(1 | site / period) +
     (1 | metres) +
     (1 | survey_year),
   # offset(npoint),
- family = poisson,
+  family = poisson,
   #family = nbinom2,
   #ziformula=~ wpfg,
- # dispformula =~ wpfg ,
+  # dispformula =~ wpfg ,
   data = veg_richness |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))|> filter(!wpfg %in% c("Sk", "Se"))
 )
 
-
 summary(richness_ar_TMBmod_2)
-# 
+
 
 # old school model fit diagnostic plots
 
 plot(fitted(richness_ar_TMBmod_2), richness_ar_TMBmod_2$frame$hits)
 #plot(fitted(richness_ar_TMBmod_2) + 1, richness_ar_TMBmod_2$frame$hits + 1, log = "xy")
-# 
+
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
@@ -927,30 +931,31 @@ veg_cover_full <- map2(.x = .system_list,
   list_rbind(names_to = "system") %>% 
   unite("unique_transect", site, transect, remove = FALSE)
 
-
-
 # calculate some summary stats for the full dataset
 # filter for rows hits greater than 0
 veg_cover_full_summary <- 
-  veg_cover_full %>%  group_by(waterbody) %>% 
+  veg_cover_full %>%  
+  group_by(waterbody) %>% 
   summarise(n_sites = n_distinct(site),
             n_site_transects = n_distinct(unique_transect),
-            survey_year = list(unique(survey_year))) %>% 
+            survey_year = list(unique(survey_year)),
+            .groups = "keep") %>% 
   left_join(
     veg_cover_full %>% 
       group_by(waterbody, site) %>% 
-      summarise(n_unique_transect = n_distinct(unique_transect)) %>% 
-      nest(waterbody_site = c(site, n_unique_transect))
+      summarise(n_unique_transect = n_distinct(unique_transect),
+                .groups = "keep") %>% 
+      nest(waterbody_site = c(site, n_unique_transect)),
+    by = join_by(waterbody)
   ) %>% 
   left_join(
     veg_cover_full %>% 
       group_by(waterbody,survey_year) %>% 
-      summarise(n_survey_year = n_distinct(survey)) %>% 
-      nest(waterbody_survey_year = -waterbody)
+      summarise(n_survey_year = n_distinct(survey), .groups = "keep") %>% 
+      nest(waterbody_survey_year = -waterbody),
+    by = join_by(waterbody)
   ) %>% 
   unnest(waterbody_site)
-
-
 
 
 # veg_cover_full_summary_hits <- veg_cover_full_summary %>% filter(hits > 0)
@@ -978,7 +983,8 @@ veg_cover_ar_full_sum <- veg_cover_ar_full |>
     #   so it potentially makes more sense to treat it as
     #   40 points with possibility of > 100% cover.
     hits_tm1 = sum(hits_tm1),
-    npoint_tm1 = unique(npoint_tm1)
+    npoint_tm1 = unique(npoint_tm1),
+    .groups = "keep"
   )
 
  
@@ -991,8 +997,8 @@ veg_richness_full_sum <- veg_richness_full |>
   ) |>
   summarise(
     richness = sum(richness),
+    .groups = "keep"
   )
-
 
 # load flow data and merge summary metrics with veg
 flow_full <- 
@@ -1001,14 +1007,16 @@ flow_full <-
       pilot = FALSE, 
       recompile = TRUE)
 
-
 # TODO: investigate raw-data files for low amounts of data
 # note that we have excluded some sites for now (see within the 'load_flow' function for site list)
 
 # calculate metrics
 
-metrics_full <- flow_full %>% map(calculate_metrics, site_info) %>% list_rbind() #calculate_metrics faiing on singe df, so need to use map on list
-flow_full <- flow_full %>% list_rbind() #join into single df
+metrics_full <- flow_full %>% 
+  map(calculate_metrics, site_info) %>% 
+  list_rbind() #calculate_metrics failing on singe df, so need to use map on list
+flow_full <- flow_full %>% 
+  list_rbind() #join into single df
 
 # TODO: check thresholds are correct for each site
 # note that sites should have positive values for mean_days_above_spring and mean_days_above_baseflow
@@ -1018,7 +1026,8 @@ flow_full <- flow_full %>% list_rbind() #join into single df
 # TODO: check missing site info with CJ - note that there are about 10 sites with missing info that the filter for zone below removes
 
 # remove duplicate entries
-site_info <- site_info |> distinct(system, waterbody, site, transect, metres, zone, grazing) 
+site_info <- site_info |> 
+  distinct(system, waterbody, site, transect, metres, zone, grazing) 
 
 veg_cover_ar_full <- veg_cover_ar_full |>
   left_join(site_info, by = c("system", "waterbody", "site", "transect", "metres")) |>
@@ -1070,8 +1079,8 @@ veg_cover_ar_full <- veg_cover_ar_full |>
     #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
     # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
     # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+    days_above_baseflow_std_sq = days_above_baseflow_std^2,
+    days_above_springfresh_std_sq = days_above_springfresh_std^2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
@@ -1085,8 +1094,8 @@ veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
     #log_pr_cover_tm1 = log((hits_tm1/npoint) + 1), 
     # days_above_baseflow_std = scale(days_above_baseflow)[, 1],
     # days_above_springfresh_std = scale(days_above_springfresh)[, 1],
-    days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-    days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+    days_above_baseflow_std_sq = days_above_baseflow_std^2,
+    days_above_springfresh_std_sq = days_above_springfresh_std^2
   ) |>
   filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
 
@@ -1107,6 +1116,7 @@ veg_cover_ar_full_sum <- veg_cover_ar_full_sum |>
   mutate(
     pr_cover_tf = pr_cover + (.025*.5),
     log_pr_cover_tm1_tf = log((hits_tm1/npoint_tm1) + (.025*.5)), 
+    wpfg = rec_group # modify the wpfg var to investigate the use of rec_group var in its place
   )
 
 # now look at this data
@@ -1132,10 +1142,15 @@ plot(density(veg_cover_ar_full_sum$pr_cover_tf))
 
 veg_cover_ar_full_sum %>% 
   group_by(rec_group,  origin) %>%
-  summarise(no_rows = length(hits)) %>% print(n=50) # a bunch of unknown origins here but lets leave in as a factor level for now
+  summarise(no_rows = length(hits)) %>% 
+  print(n=50) # a bunch of unknown origins here but lets leave in as a factor level for now
 
-veg_cover_ar_full_sum %>% filter(system == "Campaspe") %>% group_by(period, survey_year) %>%
-  distinct( period, survey_year) %>% arrange(period) %>% print(n=90)
+veg_cover_ar_full_sum %>% 
+  filter(system == "Campaspe") %>% 
+  group_by(period, survey_year) %>%
+  distinct( period, survey_year) %>% 
+  arrange(period) %>% 
+  print(n=90)
 
 ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour =rec_group) ) + geom_point(position=position_dodge(.5)) + facet_grid(.~zone)
 ggplot(veg_cover_ar_full_sum, aes(x = period, y = hits, group = rec_group, colour = rec_group) ) + geom_jitter(position=position_dodge(.5)) #+ facet_grid(wpfg~transect)
@@ -1154,7 +1169,8 @@ sum(veg_cover_ar_full_sum$hits %in% 0 ) / nrow(veg_cover_ar_full_sum) # 76% zero
 
 veg_cover_ar_full_sum$wpfg <- veg_cover_ar_full_sum$rec_group
 
-# cover ####
+## ----- cover model ----- 
+
 # first we will attempt to fit the full model with all systems and sites included.
 
 cover_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
@@ -1173,13 +1189,12 @@ cover_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
 )
 
 summary(cover_ar_TMBmod_full_1)
-# 
+
 
 # old school model fit diagnostic plots
 
 plot(fitted(cover_ar_TMBmod_full_1), cover_ar_TMBmod_full_1$frame$hits)
 plot(fitted(cover_ar_TMBmod_full_1) + 1, cover_ar_TMBmod_full_1$frame$hits + 1, log = "xy")
-# 
 
 # use performance package to test model predictions - ignore homogeneity of variance and normality of residuals
 
@@ -1187,10 +1202,10 @@ check_model(cover_ar_TMBmod_full_1)
 
 model_performance(cover_ar_TMBmod_full_1)
 
-# r^2
-cor(fitted(cover_ar_TMBmod_full_1), cover_ar_TMBmod_full_1$frame$hits)^ 2
+extract_r2(cover_ar_TMBmod_full_1)
 
-cover_ar_TMBmod_full_1_posterior_check <- check_predictions(cover_ar_TMBmod_full_1) %>% 
+cover_ar_TMBmod_full_1_posterior_check <- cover_ar_TMBmod_full_1 %>% 
+  check_predictions() %>% 
   plot() + 
   xlab("Cover (as hits)") +
   theme(legend.position = "bottom")
@@ -1205,8 +1220,14 @@ ggsave(
   dpi = 600
 )
 
-ggsave("cover_ar_TMBmod_full_1_predictions.png", plot = last_plot(), device = "png", width = 10, height = 10, units = "in", dpi = 300)
-# 
+ggsave("cover_ar_TMBmod_full_1_predictions.png", 
+       plot = last_plot(), 
+       device = "png", 
+       width = 10, 
+       height = 10, 
+       units = "in", 
+       dpi = 300)
+
 
 check_collinearity(cover_ar_TMBmod_full_1)
 # high correlations but to be expected in interactions
@@ -1222,11 +1243,15 @@ check_singularity(cover_ar_TMBmod_full_1)
 
 # extract and plot random effects from the model using the 'mixedup' package
 
-cover_ar_TMBmod_full_1_re <- extract_random_effects(cover_ar_TMBmod_full_1) 
-
-cover_ar_TMBmod_full_1_re <- cover_ar_TMBmod_full_1_re %>% filter(group_var == "system")
-
-cover_ar_TMBmod_full_1_re$group <- ordered(cover_ar_TMBmod_full_1_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
+cover_ar_TMBmod_full_1_re <- extract_random_effects(cover_ar_TMBmod_full_1) %>% 
+  filter(group_var == "system") %>% 
+  mutate(group = ordered(group, levels = c( "Campaspe", 
+                                            "Glenelg", 
+                                            "Loddon", 
+                                            "Moorabool", 
+                                            "WGippsland", 
+                                            "Wimmera", 
+                                            "Yarra")))
 
 ggplot(cover_ar_TMBmod_full_1_re , aes(group, value)) +
   geom_point(size = 2)+
@@ -1236,20 +1261,20 @@ ggplot(cover_ar_TMBmod_full_1_re , aes(group, value)) +
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
     panel.spacing.x = unit(0, "mm"), #panel.border = element_blank(), 
     #panel.grid.major = element_blank(), panel.grid.minor = element_blank(), 
-    axis.line = element_line(colour = "black"), legend.position = "right", text = element_text(size = 20)) +labs(color='System')  # 1200 x 800
+    axis.line = element_line(colour = "black"), legend.position = "right", 
+    text = element_text(size = 20)) + 
+  labs(color='System')  # 1200 x 800
 
 # extract and plot vc components
 
-cover_ar_TMBmod_full_1_vc <- extract_vc(cover_ar_TMBmod_full_1) 
-
-cover_ar_TMBmod_full_1_vc$group <- ordered(cover_ar_TMBmod_full_1_vc$group, levels = c( "system", "site", "transect:site", "metres", "survey_year"))
-
-cover_ar_TMBmod_full_1_vc$group <- recode_factor(cover_ar_TMBmod_full_1_vc$group, system = "System", 
-                                                       site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+cover_ar_TMBmod_full_1_vc <- extract_vc(cover_ar_TMBmod_full_1) %>% 
+  mutate(group = ordered(group, levels = c( "system", "site", "transect:site", "metres", "survey_year") ),
+         group = recode_factor(group, system = "System", 
+                               site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year"))
 
 ggplot(cover_ar_TMBmod_full_1_vc , aes(group, sd)) +
   geom_point(size = 2)+
-  geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  size= 1)+
+  geom_errorbar(aes(ymin = sd_2.5, ymax = sd_97.5), width = 0.1,  linewidth= 1)+
   labs(x = "Effect", y = "Standard deviation")+ theme_bw() +
   theme(#axis.text.x = element_blank(),      # hide iv.y labels
     #axis.ticks.x = element_blank(),#strip.background = element_blank(), 
@@ -1266,7 +1291,8 @@ plot(model_parameters(cover_ar_TMBmod_full_1))
 
 # effect of days above baseflow
 
-HydroPredictDaysabovebaseFuncOri_full<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),cover_ar_TMBmod_full_1,xlevels=20))
+HydroPredictDaysabovebaseFuncOri_full<- as.data.frame(Effect(c('days_above_baseflow_std', 'wpfg'),
+                                                             cover_ar_TMBmod_full_1,xlevels=20))
 
 c<-mean(veg_cover_ar_full_sum$days_above_baseflow) 
 d<-sd(veg_cover_ar_full_sum$days_above_baseflow)
@@ -1274,7 +1300,8 @@ HydroPredictDaysabovebaseFuncOri_full$days_above_baseflow<-(HydroPredictDaysabov
 
 HydroPredictDaysabovebaseFuncOri_full$hits <- HydroPredictDaysabovebaseFuncOri_full$fit
 
-HydroPredictDaysabovebaseFuncoriPlot_full<-ggplot(HydroPredictDaysabovebaseFuncOri_full, aes(days_above_baseflow, hits/40*100, colour = wpfg, group = wpfg)) +
+HydroPredictDaysabovebaseFuncoriPlot_full<-HydroPredictDaysabovebaseFuncOri_full %>% 
+  ggplot(, aes(days_above_baseflow, hits/40*100, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   geom_ribbon(aes(ymin=lower/40*100, ymax=upper/40*100,fill=wpfg),alpha=0.1 , color=NA, show.legend = F) +
   coord_cartesian(ylim = c(0, 17))+
@@ -1283,7 +1310,8 @@ HydroPredictDaysabovebaseFuncoriPlot_full<-ggplot(HydroPredictDaysabovebaseFuncO
 
 HydroPredictDaysabovebaseFuncoriPlot_full
 
-HydroPredictDaysabovebaseFuncoriPlot_full2<-ggplot(HydroPredictDaysabovebaseFuncOri_full, aes(days_above_baseflow, hits/40*100, colour = wpfg, group = wpfg)) +
+HydroPredictDaysabovebaseFuncoriPlot_full2 <- HydroPredictDaysabovebaseFuncOri_full %>% 
+  ggplot(aes(days_above_baseflow, hits/40*100, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   geom_ribbon(aes(ymin=lower/40*100, ymax=upper/40*100,fill=wpfg),alpha=0.1 , color=NA, show.legend = F) +
   coord_cartesian(ylim = c(0, 100))+
@@ -1294,14 +1322,16 @@ HydroPredictDaysabovebaseFuncoriPlot_full2
 
 # effect of days above springfresh
 
-HydroPredictDaysabovespringFunc_full<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg'),cover_ar_TMBmod_full_1,xlevels=60))
+HydroPredictDaysabovespringFunc_full<- as.data.frame(Effect(c('days_above_springfresh_std', 'wpfg'),
+                                                            cover_ar_TMBmod_full_1,xlevels=60)) 
 c<-mean(veg_cover_ar_full_sum$days_above_springfresh) 
 d<-sd(veg_cover_ar_full_sum$days_above_springfresh)
 HydroPredictDaysabovespringFunc_full$days_above_springfresh<-(HydroPredictDaysabovespringFunc_full$days_above_springfresh_std*d+c)
 
 HydroPredictDaysabovespringFunc_full$hits <- HydroPredictDaysabovespringFunc_full$fit
 
-HydroPredictDaysabovespringFuncPlot_full<-ggplot(HydroPredictDaysabovespringFunc_full, aes(days_above_springfresh, hits/40*100, colour = wpfg, group = wpfg)) +
+HydroPredictDaysabovespringFuncPlot_full <- HydroPredictDaysabovespringFunc_full %>% 
+  ggplot(aes(days_above_springfresh, hits/40*100, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   coord_cartesian(ylim = c(0, 17))+
   geom_ribbon(aes(ymin=lower/40*100, ymax=upper/40*100,fill=wpfg),alpha=0.1 , color=NA, show.legend = F) +
@@ -1310,7 +1340,8 @@ HydroPredictDaysabovespringFuncPlot_full<-ggplot(HydroPredictDaysabovespringFunc
 
 HydroPredictDaysabovespringFuncPlot_full
 
-HydroPredictDaysabovespringFuncPlot_full<-ggplot(HydroPredictDaysabovespringFunc_full, aes(days_above_springfresh, hits/40*100, colour = wpfg, group = wpfg)) +
+HydroPredictDaysabovespringFuncPlot_full <- HydroPredictDaysabovespringFunc_full %>% 
+  ggplot(aes(days_above_springfresh, hits/40*100, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 2)+
   coord_cartesian(ylim = c(0, 100))+
   geom_ribbon(aes(ymin=lower/40*100, ymax=upper/40*100,fill=wpfg),alpha=0.1 , color=NA, show.legend = F) +
@@ -1321,13 +1352,10 @@ HydroPredictDaysabovespringFuncPlot_full
 
 # effect of origin
 
-HydroPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_1))
-
-HydroPredictOrigin_full$origin <- ordered(HydroPredictOrigin_full$origin, levels = c( "native", "exotic"))
-
-HydroPredictOrigin_full$origin <- recode_factor(HydroPredictOrigin_full$origin, native = "Native", 
-                                                 exotic = "Exotic")
-
+HydroPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_1)) %>% 
+  mutate(origin = ordered(origin, levels = c( "native", "exotic")),
+         origin = recode_factor(origin, native = "Native", 
+                                exotic = "Exotic"))
 
 ggplot(HydroPredictOrigin_full%>% filter(origin != "unknown"), aes(origin , fit/40*100)) +
   geom_point(size = 2)+
@@ -1342,17 +1370,27 @@ ggplot(HydroPredictOrigin_full%>% filter(origin != "unknown"), aes(origin , fit/
 
 
 # now lets fit the 'spatial' or 'flow event' model
-# 
-# we need to modify the period factor for a few sites that do not recieve Eflows and as such we will call this a no_event level
 
-veg_cover_ar_full_sum <-  veg_cover_ar_full_sum %>% dplyr::mutate(
- period = ifelse(site == "Peuckers" & period == "after_spring", "no_event", ifelse(site == "Peuckers" & period == "after_summer", "no_event", 
-                                                                                   ifelse(site == "McInnes" & period == "after_spring", "no_event",  
-                                                                                          ifelse(site == "McInnes" & period == "after_summer", "no_event", period)))))
+# we need to modify the period factor for a few sites that do not receive Eflows and as such we will call this a no_event level
+
+veg_cover_ar_full_sum <-  
+  veg_cover_ar_full_sum %>% 
+  dplyr::mutate(
+    period = ifelse(site == "Peuckers" & period == "after_spring", 
+                    "no_event", 
+                    ifelse(site == "Peuckers" & period == "after_summer", 
+                           "no_event", 
+                           ifelse(site == "McInnes" & period == "after_spring", "no_event",  
+                                  ifelse(site == "McInnes" & period == "after_summer", "no_event", period)
+                           )
+                    )
+    )
+  )
+
 veg_cover_ar_full_sum %>% 
   group_by( waterbody, site, period) %>%
-  summarise(no_rows = length(hits)) %>% print(n=100)
-
+  summarise(no_rows = length(hits)) %>% 
+  print(n=100)
 
 # first look at flow effects across zone and period for each functional group
 
@@ -1423,11 +1461,10 @@ check_singularity(cover_ar_TMBmod_full_2)
 
 # extract and plot random effects from the model using the 'mixedup' package
 
-cover_ar_TMBmod_full_2_re <- extract_random_effects(cover_ar_TMBmod_full_2) 
-
-cover_ar_TMBmod_full_2_re <- cover_ar_TMBmod_full_2_re %>% filter(group_var == "system")
-
-cover_ar_TMBmod_full_2_re$group <- ordered(cover_ar_TMBmod_full_2_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
+cover_ar_TMBmod_full_2_re <- extract_random_effects(cover_ar_TMBmod_full_2) %>% 
+  filter(group_var == "system") %>% 
+  mutate(group =  ordered(group, 
+                          levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra")))
 
 ggplot(cover_ar_TMBmod_full_2_re %>% filter(group_var == "system"), aes(group, value)) +
   geom_point(size = 2)+
@@ -1441,12 +1478,12 @@ ggplot(cover_ar_TMBmod_full_2_re %>% filter(group_var == "system"), aes(group, v
 
 # extract and plot vc components
 
-cover_ar_TMBmod_full_2_vc <- extract_vc(cover_ar_TMBmod_full_2) 
-
-cover_ar_TMBmod_full_2_vc$group <- ordered(cover_ar_TMBmod_full_2_vc$group, levels = c( "system", "site", "transect:site", "metres", "survey_year"))
-
-cover_ar_TMBmod_full_2_vc$group <- recode_factor(cover_ar_TMBmod_full_2_vc$group, system = "System", 
-                                                 site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+cover_ar_TMBmod_full_2_vc <- extract_vc(cover_ar_TMBmod_full_2) %>% 
+  mutate(group = ordered(group, 
+                         levels = c( "system", "site", "transect:site", "metres", "survey_year")),
+         group = recode_factor(group, system = "System", 
+                               site = "Site", 'transect:site' = "Site(transect)", metres = "Metres", survey_year = "Survey year")
+  )
 
 cover_ar_TMBmod_full_2_vc_plot <- 
   ggplot(cover_ar_TMBmod_full_2_vc , aes(group, sd)) +
@@ -1475,21 +1512,26 @@ plot(model_parameters(cover_ar_TMBmod_full_2))
 
 # predicted effects plots
 
-EventsPredictFuncPeriodZone_full<- as.data.frame(Effect(c('period', 'wpfg', 'zone'),cover_ar_TMBmod_full_2,xlevels=20))
-EventsPredictFuncPeriodZone_full$hits <- EventsPredictFuncPeriodZone_full$fit
-EventsPredictFuncPeriodZone_full$period <- ordered(EventsPredictFuncPeriodZone_full$period, levels = c( "before_spring", "after_spring", "after_summer", "no_event"))
-
-EventsPredictFuncPeriodZone_full$period <- recode_factor(EventsPredictFuncPeriodZone_full$period, before_spring = "Before spring", 
-                                                         after_spring = "After spring", after_summer = "After summer", no_event = "No event")
-EventsPredictFuncPeriodZone_full$zone <- recode_factor(EventsPredictFuncPeriodZone_full$zone, above_springfresh = "Above springfresh", 
-                                                       baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
+EventsPredictFuncPeriodZone_full <- as.data.frame(Effect(c('period', 'wpfg', 'zone'),
+                                                         cover_ar_TMBmod_full_2,xlevels=20)) %>% 
+  mutate(hits = fit,
+         period = ordered(period, 
+                          levels = c( "before_spring", "after_spring", "after_summer", "no_event")),
+         period = recode_factor(period, before_spring = "Before spring", 
+                                after_spring = "After spring", after_summer = "After summer", no_event = "No event"),
+         zone = recode_factor(zone, above_springfresh = "Above springfresh", 
+                              baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow"))
 
 # now calculate records for the correct combination of factors
-Cover_records <- veg_cover_ar_full_sum %>% filter(!site %in% c("Peuckers", "McInnes")) %>% filter(!origin %in% c("unknown")) %>% group_by(wpfg, zone) %>% summarise(n=sum(hits>0)) 
-
-Cover_records$period <- "After spring"
-Cover_records$zone <- recode_factor(Cover_records$zone, above_springfresh = "Above springfresh", 
-                                       baseflow_to_springfresh = "Baseflow to springfresh", below_baseflow = "Below baseflow")
+Cover_records <- veg_cover_ar_full_sum %>% 
+  filter(!site %in% c("Peuckers", "McInnes")) %>% 
+  filter(!origin %in% c("unknown")) %>% 
+  group_by(wpfg, zone) %>% 
+  summarise(n=sum(hits>0)) %>% 
+  mutate(period = "After spring",
+         zone = recode_factor(zone, above_springfresh = "Above springfresh", 
+                              baseflow_to_springfresh = "Baseflow to springfresh", 
+                              below_baseflow = "Below baseflow"))
 
 EventsPredictFuncPeriodZone_full_plot <- 
   ggplot(EventsPredictFuncPeriodZone_full, aes(period, hits/40*100)) +
@@ -1518,11 +1560,9 @@ ggsave(
 )
 # effect of origin 
   
-EventsPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_2))
-   
-EventsPredictOrigin_full$origin <- ordered(EventsPredictOrigin_full$origin, levels = c( "native", "exotic"))
-
-EventsPredictOrigin_full$origin <- recode_factor(EventsPredictOrigin_full$origin, native = "Native",  exotic = "Exotic")
+EventsPredictOrigin_full<- as.data.frame(Effect(c('origin'),cover_ar_TMBmod_full_2)) %>% 
+  mutate(origin = ordered(origin, levels = c( "native", "exotic")),
+         origin = recode_factor(origin, native = "Native",  exotic = "Exotic"))
 
 ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100)) +
  geom_point(size = 2)+
@@ -1537,9 +1577,8 @@ ggplot(EventsPredictOrigin_full, aes(origin, fit/40*100)) +
 
 # effect of grazing 
    
-EventsPredictgrazing_full<- as.data.frame(Effect(c('grazing'),cover_ar_TMBmod_full_2))
-
-EventsPredictgrazing_full$grazing <- recode_factor(EventsPredictgrazing_full$grazing, N = "No",   Y = "Yes")
+EventsPredictgrazing_full<- as.data.frame(Effect(c('grazing'),cover_ar_TMBmod_full_2)) %>% 
+  mutate(grazing = recode_factor(grazing,  N = "No",   Y = "Yes"))
 
 ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
   geom_point(size = 2)+
@@ -1556,8 +1595,12 @@ ggplot(EventsPredictgrazing_full, aes(grazing, fit/40*100)) +
 # now lets model vegetation richness
 
 # modify the wpfg var to investigate the use of rec_group var in its place
-   
-veg_richness_full_sum$wpfg <- veg_richness_full_sum$rec_group
+
+veg_richness_full_sum <- 
+  veg_richness_full_sum %>% 
+  mutate(rec_group = wpfg,
+         days_above_baseflow_std = scale(days_above_baseflow))
+
 # PlotdataRich_full$wpfg <- PlotdataRich_full$rec_group #TODO object not created in this code, assuming uses same method as for pilot creating above?
    
 veg_cover_ar_full_sum %>% group_by(origin, wpfg) %>% distinct(origin, wpfg) %>% arrange(origin) %>% print(n=50)
@@ -1567,8 +1610,8 @@ veg_richness_full_sum$days_above_springfresh_std <-  scale(veg_richness_full_sum
 
 veg_richness_full_sum <- veg_richness_full_sum |>
   mutate(
-       days_above_baseflow_std_sq = days_above_baseflow_std ^ 2,
-       days_above_springfresh_std_sq = days_above_springfresh_std ^ 2
+       days_above_baseflow_std_sq = days_above_baseflow_std^2,
+       days_above_springfresh_std_sq = days_above_springfresh_std^2
      ) |>
      filter(!is.na(days_above_springfresh))  # temporary due to incomplete flow data
    
@@ -1622,7 +1665,7 @@ check_model(richness_ar_TMBmod_full_1)
 model_performance(richness_ar_TMBmod_full_1)
 
 # r^2
-cor(fitted(richness_ar_TMBmod_full_1), richness_ar_TMBmod_full_1$frame$hits)^ 2
+cor(fitted(richness_ar_TMBmod_full_1), richness_ar_TMBmod_full_1$frame$hits)^2
 
 richness_ar_TMBmod_full_1_posterior_check <- check_predictions(richness_ar_TMBmod_full_1) %>% 
   plot() +
@@ -1653,11 +1696,10 @@ check_singularity(richness_ar_TMBmod_full_1)
 
 # extract and plot random effects from the model using the 'mixedup' package
 
-richness_ar_TMBmod_full_1_re <- extract_random_effects(richness_ar_TMBmod_full_1) 
-
-richness_ar_TMBmod_full_1_re <- richness_ar_TMBmod_full_1_re %>% filter(group_var == "system")
-
-richness_ar_TMBmod_full_1_re$group <- ordered(richness_ar_TMBmod_full_1_re$group, levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra"))
+richness_ar_TMBmod_full_1_re <- extract_random_effects(richness_ar_TMBmod_full_1) %>% 
+   filter(group_var == "system") %>% 
+  mutate(group = ordered(group, 
+                         levels = c( "Campaspe", "Glenelg", "Loddon", "Moorabool", "WGippsland", "Wimmera", "Yarra")))
 
 ggplot(richness_ar_TMBmod_full_1_re %>% filter(group_var == "system"), aes(group, value)) +
   geom_point(size = 2)+
@@ -1739,7 +1781,10 @@ predicted_species_richness_plot <-
       as_tibble() %>% 
       mutate(period = "Baseflow") %>% 
       rename(days_above_threshold = days_above_baseflow),
-    RichPredictDaysabovespringFunc %>% as_tibble() %>% mutate(period = "Spring fresh") %>%   rename(days_above_threshold = days_above_springfresh)
+    RichPredictDaysabovespringFunc %>% 
+      as_tibble() %>% 
+      mutate(period = "Spring fresh") %>% 
+      rename(days_above_threshold = days_above_springfresh)
   ) %>% 
   ggplot(aes(days_above_threshold, richness, colour = wpfg, group = wpfg)) +
   geom_line(linewidth = 1)+
@@ -1766,7 +1811,6 @@ ggsave(
   dpi = 600
 )
 
-   
 # three way plot for the effects of period, functional group and zone on species richness
 Richness_records <- veg_richness_full_sum %>% 
   filter(!site %in% c("Peuckers")) %>% 
@@ -1854,7 +1898,7 @@ model_checks %>% select(model_name, starts_with("zeroinflation")) %>% unnest(zer
 
 # model parameter estimates
 
- map(model_checks$models, ~ parameters(.x) %>% print_html() )
+map(model_checks$models, ~ parameters(.x) %>% print_html() )
 
 
 
