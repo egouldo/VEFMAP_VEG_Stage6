@@ -243,7 +243,7 @@ plot_effects_by_vars <- function(model, var1, var2, colour_var, facet_var){ #TOD
 #' @importFrom tibble as_tibble_row
 #' @importFrom tibble set_names
 tabulate_performance_checks <- function(x){ 
-  as_tibble_row(set_names(c(x), names(x)))
+  tibble::as_tibble_row(set_names(c(x), names(x)))
 }
 
 #' Check for overdispersion and tabulate results
@@ -324,3 +324,17 @@ diagnose_zeroinflation <- function(x) {
   result
 }
 
+#' extract R^2
+#'
+#' @param model_object 
+#'
+#' @return A numeric vector of length one equal to model \code{R^2}
+#' @export
+#' @importFrom stats fitted
+#' @importFrom purrr pluck
+#' @importFrom stats cor
+#' @examples
+extract_r2 <- function(model_object){
+  cor(fitted(model_object), 
+      pluck(model_object, "frame", "hits"))^2
+}
