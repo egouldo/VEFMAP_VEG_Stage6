@@ -1874,6 +1874,10 @@ ggsave(
 
 # -------- summaries --------------
 
+# Correlation Coefficients
+
+extract_r2(cover_ar_TMBmod_full_1)
+
 # model checks
 
 model_checks <-
