@@ -1,7 +1,8 @@
 ---
 title: "Preregistration for Vegetation Responses to Environmental Flows" 
 format:
-  # EcoConsModPreReg-pdf: default
+  ecoconsmodprereg-pdf:
+    keep-tex: true
   ecoconsmodprereg-html: default
   # EcoConsModPreReg-docx: default
 authors: # Replace with authors in your study 
