@@ -1117,7 +1117,7 @@ For example, the model may be tested on data independent of those used to parame
 For some types of models, hyper-parameters are estimated from data, and may be tuned on further independent holdouts of the training data ("validation data").
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Describe any data calibration, validation and testing scheme you will implement, including any procedures for tuning or estimating model hyper-parameters (if any).
@@ -1131,7 +1131,7 @@ For some types of models, hyper-parameters are estimated from data, and may be t
 The following items pertain to properties of the *datasets* used for calibration (training), validation, and testing.
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 *If partitioning data for cross-validation or similar approach (delete as needed):*
@@ -1157,7 +1157,7 @@ This process is distinct from model checking, which assesses the model's perform
 -   Qualitative tests could include syntax checking of code, and peer-code review [@ivimey2023]. Technical measures include using unit tests, or in-built checks within functions to prevent potential errors.
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] What Quality Assurance measures will you take to verify the model has been correctly implemented? Specifying a priori quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.
@@ -1175,7 +1175,7 @@ Quantitative model checking diagnostics include goodness of fit, tests on residu
 
 ### Quantitative model checking {#sec-quantitative-model-checking}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 *During this process, observed data, or data and patterns that guided model design and calibration, are compared to model output in order to identify if and where there are any systematic differences.*
@@ -1194,7 +1194,7 @@ This process is sometimes called a "laugh test" or a "pub test" and in addition 
 Face validation could include structured walk-throughs, or presenting descriptions, visualisations or summaries of model results to experts for assessment.
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Briefly explain how you will qualitatively check the model, and whether and how you will include users and clients in the process.
@@ -1202,7 +1202,7 @@ Face validation could include structured walk-throughs, or presenting descriptio
 
 ### Assumption Violation Checks {#sec-assumption-violation-checks}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 *The consequences of assumption violations on the interpretation of results should be assessed [@Araujo2019].*
@@ -1227,8 +1227,6 @@ It should evaluate model checking, and consider over-fitting and extrapolation.
 As the proportion of calibrated or uncertain parameters increases, so does the risk that the model seemingly works correctly, but for the wrong mechanistic reasons [@Boettiger2022].
 Evaluation thus complements model checking because we can rule out the chance that the model fits the calibration data well, but has not captured the relevant ecological mechanisms of the system pertinent to the research question or the decision problem underpinning the model [@Grimm:2014es].
 Evaluation of model outputs against external data in conjunction with the results from model checking provide information about the structural realism and therefore credibility of the model [@Grimm2016].
-
-<!-- #NOTE, explain how model-checking is different to model validation / evaluation. Explain model analysis / application. the phases of the modelling process underlying this template need exposition somewhere -->
 :::
 
 ## Model output corroboration {#sec-model-output-corroboration}
@@ -1243,7 +1241,7 @@ Independent predictions might instead be tested on sub-models.
 Alternatively, patterns in model output that are robust and seem characteristic of the system can be identified and evaluated in consultation with the literature or by experts to judge how accurate the model output is [@Grimm:2014es].
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] State whether you will corroborate the model outputs on external data, and document any independent validation data in step.
@@ -1260,7 +1258,7 @@ Model performance can be quantified by a range of tests, including measures of a
 Note that the performance metrics and criteria in this section are used for evaluating the structured and parameterised models (ideally) on independent holdout data, so this step is additional to any performance criteria used for determining model structure or parameterisation (@sec-parameter-model-fit-performance-criteria).
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Specify what performance measures you will use to evaluate the model and briefly explain how each test relates to different desired properties of a model's performance.
@@ -1298,7 +1296,7 @@ It could also include characterising the output distribution, such as through em
 It could also include extracting summary statistics like the mean, median and variance from this distribution, and perhaps constructing confidence intervals on the mean [@Saltelli2019].
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Please describe how you will characterise model and data uncertainties, e.g. propagating known uncertainties through the model, investigating the effect of different model scenarios with different parameters and modelling technique combinations [@Araujo2019], or empirically constructing model distributions from model output data points, and extracting summary statistics, including the mean, median, variance, and constructing confidence intervals [@Saltelli2019].
@@ -1315,7 +1313,7 @@ It could also include extracting summary statistics like the mean, median and va
 Sensitivity analysis examines how uncertainty in model outputs can be apportioned to different sources of uncertainty in model input [@Saltelli2019].
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Describe the sensitivity analysis approach you will take: deterministic sensitivity, stochastic sensitivity (variability in the model), or scenario sensitivity (effect of changes based on scenarios).
@@ -1325,7 +1323,7 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 
 ### Model application or scenario analysis {#sec-model-application-or-scenario-analysis}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Specify any input conditions and relevant parameter values for initial environmental conditions and decision-variables under each scenario specified in @sec-problem-formulation.
@@ -1336,7 +1334,7 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 
 ### Other simulation experiments / robustness analyses {#sec-other-simulation-experiments-robustness-analyses}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
 -   [ ] Describe any other simulation experiments, robustness analyses or other analyses you will perform on the model, including any metrics and their criteria / thresholds for interpreting the results of the analysis.
