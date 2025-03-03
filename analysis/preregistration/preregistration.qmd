@@ -1134,16 +1134,15 @@ The following items pertain to properties of the *datasets* used for calibration
 ::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
-*If partitioning data for cross-validation or similar approach (delete as needed):*
-
--   [ ] Describe the approach specifying the number of folds that will be created, the relative size of each fold, and any stratification methods used for ensuring evenness of groups between folds and between calibration / validation data?
-
 *If using external / independent holdout data for model testing and evaluation (delete as needed):*
 
--   [ ] Which data will be used as a the testing data? What method will you be used for generating training / test data subsets?
--   [ ] Describe any known differences between the training/validation and testing datasets, the relative size of each, as well as any stratification methods used for ensuring evenness of groups between data sets?
--   [ ] It is preferable that any independent data used for model testing remains unknown to modellers during the process of model development, please describe the relationship modellers have to model validation data, will independent datasets be known or accessible to any modeller or analyst?
+-   [x] Which data will be used as a the testing data? What method will you be used for generating training / test data subsets?
+-   [x] Describe any known differences between the training/validation and testing datasets, the relative size of each, as well as any stratification methods used for ensuring evenness of groups between data sets?
+-   [x] It is preferable that any independent data used for model testing remains unknown to modellers during the process of model development, please describe the relationship modellers have to model validation data, will independent datasets be known or accessible to any modeller or analyst?
 :::
+
+Due to the complexity of the analysis, and the focus on inference, no data partitioning / testing on external data will be used.
+However, we will use a subset of the data for exploratory pilot analysis that informs the final model specifications (Campaspe catchment only, @sec-describe-any-data-exploration-or-preliminary-data-analyses).
 
 ## Implementation verification {#sec-implementation-verification}
 
@@ -1160,8 +1159,14 @@ This process is distinct from model checking, which assesses the model's perform
 ::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] What Quality Assurance measures will you take to verify the model has been correctly implemented? Specifying a priori quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.
+-   [x] What Quality Assurance measures will you take to verify the model has been correctly implemented? Specifying a priori quality assurance tests for implementation verification may help to avoid selective debugging and silent errors.
 :::
+
+Implementation verification will be assessed using a number of techniques, but will broadly follow the approach proposed by Ivimey-Cook *et al.* [-@ivimey2023]:
+
+1.  Code will be reviewed periodically using the [GitHub flow model](https://docs.github.com/en/get-started/using-github/github-flow) where code is submitted for independent review by collaborators before being merged into the working copy of the code repository. Code will be assessed either by attempting to reproduce the code in the pull-request, or by visual inspection.
+2.  Defensive programming techniques, in-line error checking, functionalisation, modularisation and documentation of analysis code will be used as preventative measures to catch bugs and ensure proper code implementation [@ivimey2023],
+3.  Finally, the final analysis and results will be subjected to a more substantial peer-code review from collaborators further removed from code writing and analysis implementation (likely CJ or EG), following the 4R's [@ivimey2023].
 
 ## Model checking {#sec-model-checking}
 
@@ -1180,9 +1185,19 @@ Quantitative model checking diagnostics include goodness of fit, tests on residu
 
 *During this process, observed data, or data and patterns that guided model design and calibration, are compared to model output in order to identify if and where there are any systematic differences.*
 
--   [ ] Specify any diagnostics or tests you will use during model checking to assess a model's performance in representing the system of interest.
--   [ ] For each test, specify the criteria that will you use to interpret the outcome of the test in assessing the model's ability to sufficiently represent the gathered data used to develop and parameterise the model.
+-   [x] Specify any diagnostics or tests you will use during model checking to assess a model's performance in representing the system of interest.
+-   [x] For each test, specify the criteria that will you use to interpret the outcome of the test in assessing the model's ability to sufficiently represent the gathered data used to develop and parameterise the model.
 :::
+
+Posterior predictive checks will be conducted to assess the degree of zero-inflation and over-dispersion.
+Posterior checks compare the distribution of observed data against a distribution simulated from the fitted model and are assessed quantitatively or graphically [@Conn:2018hd].
+We will plot both distributions and visually compare the distributions: close alignment of the two distributions indicates that the specified model structure is appropriate, whereas deviations between the observed distribution and the model-generated distribution indicate potential assumption violations and mismatches between the data and model.
+
+For graphical posterior checks, there is no threshold but any disagreement, particularly in key aspects of the model (zero inflation, and counts in the range of the majority of the data) would suggest an alternative distribution is worth considering.
+Often no distribution will be perfect, so it's a choice between two imperfect options.
+(in which case, we will take into consideration the balance between model balance simplicity, $R^2$, and the "key aspects" of model such as zero inflation and the bulk of the data).
+
+Should over-dispersion and zero-inflation be present in the fitted models, alternative model families / structures ( @sec-choose-model-features-and-family) may be investigated and compared to the primary models outlined in @sec-describe-any-data-exploration-or-preliminary-data-analyses.
 
 ### Qualitative model checking {#sec-qualitative-model-checking}
 
@@ -1197,8 +1212,10 @@ Face validation could include structured walk-throughs, or presenting descriptio
 ::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] Briefly explain how you will qualitatively check the model, and whether and how you will include users and clients in the process.
+-   [x] Briefly explain how you will qualitatively check the model, and whether and how you will include users and clients in the process.
 :::
+
+In terms of qualitative assessment, model results will be checked by field experts Chris Jones & Lyndsey Vivian, who will assess model-estimated associations for their plausibility given their expert knowledge of the underlying target system.
 
 ### Assumption Violation Checks {#sec-assumption-violation-checks}
 
@@ -1244,10 +1261,20 @@ Alternatively, patterns in model output that are robust and seem characteristic 
 ::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] State whether you will corroborate the model outputs on external data, and document any independent validation data in step.
--   [ ] It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building [@Dwork2015], describe the relationship modellers have to model validation data, e.g. will independent datasets be known to any modeller or analyst involved in the model building process?
--   [ ] If unable to evaluate the model outputs against independent data, explain why and explain what steps you will take to interrogate the model.
+-   [x] State whether you will corroborate the model outputs on external data, and document any independent validation data in step.
+-   [x] It is preferable that any independent data used for model evaluation remains unknown to modellers during the process of model building [@Dwork2015], describe the relationship modellers have to model validation data, e.g. will independent datasets be known to any modeller or analyst involved in the model building process?
+-   [x] If unable to evaluate the model outputs against independent data, explain why and explain what steps you will take to interrogate the model.
 :::
+
+Model evaluation and validation on external data will not be undertaken in this study due to the complexity of the models (hierarchical structure combined with interactions) and data (potential for over-dispersion and zero-inflation) and also due to the focus of the analysis on inference.
+
+For the same reasons, we will not partition the data for model validation on independent data using cross-validation or other data-partitioning approaches.
+Instead, in-sample model fit assessment will be conducted (@sec-parameter-model-fit-performance-criteria).
+
+Models may be validated on newly collected independent data in the future, but external validation is outside the scope of this study.
+
+We have partitioned the data for pilot analysis, see @sec-describe-any-data-exploration-or-preliminary-data-analyses for details of this subsetting.
+Pilot analysis was performed blind to the full dataset, and was performed only on the pilot data subset.
 
 ## Choose performance metrics and criteria {#sec-choose-performance-metrics-and-criteria}
 
@@ -1305,6 +1332,8 @@ It could also include extracting summary statistics like the mean, median and va
 -   [ ] If the chosen modelling approach is able to explicitly articulate uncertainty due to data, measurements or baseline conditions, such as by providing estimates of uncertainty [typically in the form of probabilistic parameter covariance, @Jakeman:2006ii], specify which measure of uncertainty you will use.
 :::
 
+Uncertainty analyses will not be conducted.
+
 ### Sensitivity analyses {#sec-sensitivity-analyses}
 
 ::: {.callout-note collapse="true"}
@@ -1321,6 +1350,8 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 -   [ ] State the primary objective of each sensitivity analysis, for example, to identify which input variables contribute the most to model uncertainty so that these variables can be targeted for further data collection, or alternatively to identify which variables or factors contribute little to overall model outputs, and so can be 'dropped' from future iterations of the model [@Saltelli2019].
 :::
 
+No sensitivity analyses will be performed on any models developed in this study.
+
 ### Model application or scenario analysis {#sec-model-application-or-scenario-analysis}
 
 ::: {.callout-caution collapse="true"}
@@ -1328,9 +1359,20 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 
 -   [ ] Specify any input conditions and relevant parameter values for initial environmental conditions and decision-variables under each scenario specified in @sec-problem-formulation.
 -   [ ] Describe any other relevant technical details of model application, such as methods for how you will implement any simulations or model projections.
--   [ ] What raw and transformed model outputs will you extract from the model simulations or projections, and how will you map, plot, or otherwise display and synthesise the results of scenario and model analyses.
+-   [x] What raw and transformed model outputs will you extract from the model simulations or projections, and how will you map, plot, or otherwise display and synthesise the results of scenario and model analyses.
 -   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
 :::
+
+**Model analysis**
+
+Model features will be identified using visual plots of estimates, i.e. forest plots of most coefficients, and marginal effects plots (plots of predicted values of $y$ against values of $x$) under different combinations of of the key flow, zone, and period predictor variables.
+
+*Forest Plots:* For each fitted model we will extract both fixed-effect and random-effect coefficient estimates and their 95% Confidence Intervals using `parameters::model_parameters()` [@Ludecke2020] or similar.
+Estimates will then be visualised as forest plots in R.
+
+*Predicted Values Plots:* We will use the `effects::effect_plot()` function [@Fox2009], or similar, to create marginal effects plots for each fitted model.
+
+**Scenario analysis** will not be used in this study, but will be used in future predictive modelling studies based on the models developed in this study.
 
 ### Other simulation experiments / robustness analyses {#sec-other-simulation-experiments-robustness-analyses}
 
@@ -1339,5 +1381,7 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 
 -   [ ] Describe any other simulation experiments, robustness analyses or other analyses you will perform on the model, including any metrics and their criteria / thresholds for interpreting the results of the analysis.
 :::
+
+No further simulation experiments, robustness or other analyses will be performed on the model other than analyses described above in this document.
 
 # References {.unnumbered}
