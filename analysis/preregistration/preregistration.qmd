@@ -11,15 +11,16 @@ authors: # Replace with authors in your study
     affiliations:
       - ref: 2
     affil-id: 2
+    email: jian.yen@delwp.vic.gov.au
   - name: Chris Jones
     roles: [contributor, data curation, analysis, funding, methodology, project administration, resources, editing]
     orcid: 0000-0003-2833-0194
+    email: chris.jones@delwp.vic.gov.au
     affiliations:
       - ref: 2
     affil-id: 2
     id: CJ
   - name: Elliot Gould
-    email: elliot.gould@unimelb.edu.au
     orcid: 0000-0002-6585-538X
     roles: [conceptualization, maintainer, funding, investigation, methodology, project administration, resources, software, validation, vizualisation, editing, writing]
     attributes: corresponding
@@ -29,7 +30,6 @@ authors: # Replace with authors in your study
     id: EG
   - name: Henry Wootton
     roles: [data curation, analysis, software, vizualisation]
-    email: henry.wootton@deeca.vic.gov.au
     orcid: 0000-0001-6506-0248
     affiliations:
       ref: 2
