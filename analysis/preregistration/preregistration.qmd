@@ -198,10 +198,11 @@ Currently there are no significant limitations on model development - sufficient
 
 ### Model Scope, Scale and Resolution {#sec-model-scope-scale-and-resolution}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] The choice of a model's boundaries is closely linked to the choice of how finely to aggregate the behaviour within the model [@Jakeman:2006ii] - what is the intended scale, and resolution of the model (temporal, spatial or otherwise)?
+-   [ ] The choice of a model's boundaries is closely linked to the choice of how finely to aggregate the behaviour within the model [@Jakeman:2006ii]
+    -   what is the intended scale, and resolution of the model (temporal, spatial or otherwise)?
 -   [ ] Where is the boundary of the modelled system? Everything outside beyond the boundary and not crossing it is to be ignored within the domain of the model, and everything crossing the boundary is to be treated as external forcing (known/unknown), or else as model outputs [observed, or not, @Jakeman:2006ii].
 :::
 
