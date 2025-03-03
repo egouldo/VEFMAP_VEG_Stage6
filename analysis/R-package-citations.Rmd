@@ -1,8 +1,9 @@
 ---
 title: "R Package Citations"
 output:
+  html_document: 
+    keep_md: true
   word_document: default
-  html_document: default
 bibliography: "../outputs/grateful-refs.bib"
 csl: wildlife-research.csl
 ---
