@@ -32,7 +32,7 @@ authors: # Replace with authors in your study
     roles: [data curation, analysis, software, vizualisation]
     orcid: 0000-0001-6506-0248
     affiliations:
-      ref: 2
+      - ref: 2
     affil-id: 2
 affiliations:
   - id: 1
