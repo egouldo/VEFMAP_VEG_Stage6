@@ -836,33 +836,81 @@ For integrated or sub-divided models, other considerations might include choices
 
 ### Parameter estimation technique {#sec-parameter-estimation-technique}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] Specify what technique you will use to estimate parameter values, and how you will supply non-parametric variables and/or data (e.g. distributed boundary conditions). For example, will you calibrate all variables simultaneously by optimising fit of model outputs to observations, or will you parameterise the model in a piecemeal fashion by either direct measurement, inference from secondary data, or some combination [@Jakeman:2006ii].
--   [ ] Identify which variables will be parameterised directly, such as by expert elicitation or prior knowledge.
--   [ ] Specify which algorithm(s) you will use for any data-driven parameter estimation, including supervised, or unsupervised machine learning, decision-tree, K-nearest neighbour or cluster algorithms [@Liu2018b].
+-   [x] Specify what technique you will use to estimate parameter values, and how you will supply non-parametric variables and/or data (e.g. distributed boundary conditions). For example, will you calibrate all variables simultaneously by optimising fit of model outputs to observations, or will you parameterise the model in a piecemeal fashion by either direct measurement, inference from secondary data, or some combination [@Jakeman:2006ii].
+-   [x] Identify which variables will be parameterised directly, such as by expert elicitation or prior knowledge.
+-   [x] Specify which algorithm(s) you will use for any data-driven parameter estimation, including supervised, or unsupervised machine learning, decision-tree, K-nearest neighbour or cluster algorithms [@Liu2018b].
 :::
+
+Initially, our model structure will be based on our conceptual model of the system/response that has also guided our data collection.
+In this case, we do not have a very large set of potential environmental variables to select from that may or may not be influential.
+Instead, we have selected variables and monitoring approaches to collect data that reflect our expectations of correlation/causation.
+Given this, there is unlikely to be a large need for a model selection process where variables are added or removed sequentially to evaluate relative model performance.
+However, there will be critical evaluation of all model components to determine their value to the model, such as the hierarchical nature of the data and the need (or not) to include all levels of the hierarchy in the final models.
+The model selection process is an important part of the study in itself and will be described in the resulting paper, particularly where it relates to relative effects of different variables and relative importance of spatial and temporal scales.
+Additionally, there will be some investigation of the effectiveness/appropriateness of different forms of certain variables, such as: bank elevation (continuous or categorical), vegetation groupings, and flow variables (@sec-identify-predictor-and-response-variables).
+The primary focus of the model is to evaluate the relative impacts of the key variables in line with the conceptual model and hypotheses, so model performance will align with that objective, including model fit parameters of residual plots, model uncertainty, unexplained variation, degrees of freedom, and fit statistics.
+Evaluating the model performance for predictive capacity within and beyond the dataset may not be required in the current study as it is likely beyond the scope, but this would involve testing predictive capacity within and between waterways using e.g. a cross-validation approach.
+
+Parameterisation: Parameter estimation will be data-driven, and implemented with the `glmmTMB` R package [@Brooks2017], which uses [Template Model Builder software](https://kaskr.github.io/adcomp/_book/Introduction.html) to fit flexible GLMM-type models, amongst other model types.
+`glmmTMB` uses maximum likelihood to estimate parameters for both parametric and non-parametric factor data (nominal or ordinal) variables (e.g. categorised elevation and/or flow data, as well as binary or categorical grazing variables).
+We will optimise the model by comparing fit of model outputs to observations (residuals versus fitted values).
 
 ### Parameter estimation / model fit performance criteria {#sec-parameter-model-fit-performance-criteria}
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] Specify which suite of performance criteria you will use to judge the performance of the model. Examples include correlation scores, coefficient of determination, specificity, sensitivity, AUC, etcetera [@Yates2018].
--   [ ] Relate any underlying assumptions of each criterion to the desired properties of the model, and justify the choice of performance metric in relation
--   [ ] Explain how you will identify which model features or components are significant or meaningful.
+-   [x] Specify which suite of performance criteria you will use to judge the performance of the model. Examples include correlation scores, coefficient of determination, specificity, sensitivity, AUC, etcetera [@Yates2018].
+-   [x] Relate any underlying assumptions of each criterion to the desired properties of the model, and justify the choice of performance metric in relation
+-   [x] Explain how you will identify which model features or components are significant or meaningful.
 :::
+
+$R^2$, a measure of agreement between fitted and observed values, is the primary performance criterion we will use to evaluate the performance of each model, coupled with posterior predictive checks to assist the suitability of normal structures (@sec-model-calibration-validation-checking) .
+When comparing among alternative models, models with a higher $R^2$ will be preferred over those with lower $R^2$.
+As an approximate guide for judging model fit, we will use the following thresholds $R^2$ in the absence of cross-validation:
+
+-   \< 0.25 is poor,
+-   0.25 - 0.5 is moderate,
+-   0.5 - 0.75 is good,
+-   0.75 - 1.0 is excellent, but probably indicates overfitting.
 
 ## Model assumptions and uncertainties
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] Specify assumptions and key uncertainties in the formal model. Describe what gaps exist between the model conception, and the real-world problem, what biases might this introduce and how might this impact any interpretation of the model outputs, and what implications are there for evaluating model-output to inform inferences or decisions?
+-   [x] Specify assumptions and key uncertainties in the formal model. Describe what gaps exist between the model conception, and the real-world problem, what biases might this introduce and how might this impact any interpretation of the model outputs, and what implications are there for evaluating model-output to inform inferences or decisions?
 :::
 
-## Specify formal model(s) {#sec-specify-formal-model(s}
+Poisson and negative binomial models all assume linearity in model parameters, independence between individual observations, as well as the multiplicative effects of independent variables.
+
+*Zero-inflation*
+
+Based on the results of the pilot study (@sec-describe-any-data-exploration-or-preliminary-data-analyses), all Poisson models allow for zero-inflation parameters to differ among plant functional groups (using `glmmTMB::` argument `ziformula=~ wpfg`).
+
+*Over-dispersion*
+
+Should over-dispersion (where the conditional variance of the outcome variable is greater than the conditional mean) be detected in models specified with a Poisson distribution, negative-binomial models will be fitted because they allow for over-dispersion by estimating the mean and variance independently [@Kruppa2021] and assume that extra-Poisson variance is a quadratic function of the mean [@linden2011].
+Negative binomial models may allow for group-specific dispersion parameters using the `glmmTMB::` argument `dispformula = ~ wpfg`.
+
+Issues of over-dispersion are not expected to be fully resolved by the model specifications outlined in @sec-formalise-and-specify-model, however proposed model specifications were a compromise between ideal specification and the limitations of our data.
+
+*Other Model Assumptions & Sources of Uncertainty*
+
+For each specified model we may fit, further assumptions are described below in @sec-formalise-and-specify-model.
+
+A formal sensitivity analysis has not yet been completed and so we are unaware of what variables the model outputs are most sensitive to.
+The many potential forms of flow and/or elevation data is a key area of possible variation in the variable behaviour, which is currently unknown.
+There are also many spatial and temporal dimensions associated with the data, such as the hierarchical scales of sub-transect, transect, site, reach, waterway, basin, and State.
+There will be spatial autocorrelation within the data at each of these levels, such as northern waterways or river basins being more similar to southern counterparts due to climate and geomorphology differences.
+The extent of the variation among the different spatial scale is currently unknown and is an important aspect of the study to evaluate.
+Temporal patterns are also important due to the longitudinal nature of the data collection and different seasons of survey (i.e. different proximity to different flow/climate periods).
+Careful consideration of these aspects will be important in the model design, as per @sec-identify-predictor-and-response-variables.
+
+## Specify formal model(s) {#sec-specify-formal-models}
 
 ::: {.callout-note collapse="true"}
 ## Explanation
@@ -870,15 +918,193 @@ For integrated or sub-divided models, other considerations might include choices
 Once critical decisions have been made about the modelling approach and method of model specification, the conceptual model is translated into the quantitative model.
 :::
 
-::: callout-caution
+::: {.callout-caution collapse="true"}
 ## Preregistration Item
 
--   [ ] Specify all formal models
+-   [x] Specify all formal models
     -   [ ] Note, For data-driven approaches to determining model structure and or parameterisation, it may not be possible to respond to this preregistration item. In such cases, explain why this is the case, and how you will document the model(s) used in the final analysis.
--   [ ] For quantitative model selection approaches, including ensemble modelling, specify each model used in the candidate set, including any null or full/global model.
+-   [x] For quantitative model selection approaches, including ensemble modelling, specify each model used in the candidate set, including any null or full/global model.
 :::
 
-# Model Calibration, Validation & Checking {#sec-model-calibration-validation--checking}
+**Vegetation Cover Models**
+
+Based on the pilot analysis (@sec-describe-any-data-exploration-or-preliminary-data-analyses) we have derived three additional model structures to be fitted on the full dataset that are simplified versions of the full models specified in @sec-describe-any-data-exploration-or-preliminary-data-analyses.
+While these simplified models are not ideal, the full models with three-way interactions were too complex given the data, and failed to converge and generate reliable parameter estimates on the pilot dataset.
+Consequently, the full models will be fitted again to the full dataset.
+
+*Full Model, full dataset, [GitHub Issue 64](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/64)*
+
+We will attempt to fit a single full model using all data, and adding a random effect for `waterbody` to account for variation between river systems.
+
+Should the full model fit to all data be computationally feasible and converge, we will add the three-way interaction `zone * period * wpfg` back into the full model specification (discarded in the pilot analysis).
+If this converges it will be used as the basis for final outputs, if not, the simplified models listed below will be used.
+
+Should the full model fitted to the full dataset not be computationally feasible or converge, we will follow a similar strategy for the pilot-study modelling, working from the full model towards simplified models, as there is potential for the full dataset to support a model of intermediate complexity (more complex than the simplified models, but not as complex as the full model).
+We will fit the following simplified models in the case that the full model fitted to the full dataset does not converge:
+
+*Simplified model 1: "flow regime" model, [GitHub Issue 65](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/65)*
+
+The aim of this simplified model is to examine how past flow conditions influence vegetation cover while capturing the average effects of flows at different levels over multiple years.
+The model does not consider zone or period and identifies functional group-specific impacts of days above baseflow or spring fresh levels.
+
+This model includes two flow predictors (`days_above_baseflow_std`, `days_above_spring_fresh_std`), and the full suite of random effects.
+
+```{r cover-flow-regime-model, eval=FALSE}
+cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
+   hits ~ log_hits_tm1 +
+     days_above_baseflow_std * wpfg * origin + 
+     days_above_springfresh_std * wpfg * origin +
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+     #   zone * period +
+   #  zone + period +
+   #  grazing + wpfg  +
+     (1 | site / transect) +
+     #(1 | site / period) +
+     (1 | metres) +
+     (1 | survey_year),
+   # offset(npoint),
+   family = poisson,
+   ziformula=~ wpfg,
+   #dispformula =~ wpfg ,
+   data = veg_cover_ar_sum |> 
+     filter(!wpfg_ori %in% c("Atl_native", 
+                             "Ate_native", 
+                             "Tda_unknown"))
+ )
+```
+
+*Simplified model 2a: "flow events" Model, version 1, [GitHub Issue 66](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/66)*
+
+The aim of the 'flow events' models (2a,2b) is to examine how vegetation cover changes in specific zones before and after key flow events (spring and summer freshes).
+Model 2a seeks to examine the effects on vegetation before and after specific flow events assuming that different plant functional groups (`wpfg`s) have different cover levels but similar responses to flows.
+
+In the pilot analysis, model results indicated that vegetation cover differed in its responses to spring and summer freshes in each zone (below baseflow, baseflow to spring fresh, above spring fresh).
+Below baseflow level, vegetation increased following the spring fresh and remained high following the summer event (Pilot Analysis, Figure 5).
+In the baseflow-to-spring fresh zone, vegetation increased following the spring fresh but returned to pre-spring levels following the summer fresh (Pilot Analysis, Figure 5).
+In the above-spring fresh zone, vegetation level declined following both the spring and the summer fresh (Pilot Analysis, Figure 5).
+
+Consequently, this model includes several categorical predictors as independent fixed effects (`origin`, `wpfg`, `grazing`, and a zone-by-period interaction) and the full suite of random effects, but no `days_above_` predictors.)
+
+This first version of the flow event model allows functional groups to have different levels of cover but assumes that changes following flow events are similar in all groups within a zone.
+Although this is not an ideal model structure, it is likely that functional groups are restricted to particular zones, in which case the zone-by-period interaction may capture some of the variation attributable to functional groupings.
+
+```{r cover-flow-events-model-v1, eval=FALSE}
+cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
+  hits ~ log_hits_tm1 +
+    # days_above_baseflow_std*wpfg*origin +
+    # days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std_sq +
+    zone*period +
+    origin + wpfg +
+    grazing +
+    (1 | site / transect) +
+    #(1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  ziformula=~ wpfg,
+  # dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+```
+
+*Simplified model 2b: "flow events" model, version 2, [GitHub Issue 67](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/67)*
+
+The aim is to examine how vegetation cover of each functional grouping changes before and after key flow events (spring and summer freshes).
+This second version (Simplified model 2b) allows functional groups to have different responses to flow events (spring and summer freshes) but assumes that vegetation in all zones changes similarly following each flow event.
+As for simplified model 2a, this model structure is not ideal, but provides a method to distinguish `wpfg`-specific responses to flow events.
+
+This model includes several categorical predictors as independent fixed effects (`origin`, `zone`, `grazing`), a `wpfg`-by-`period` interaction, as well as the full suite of random effects, and no `days_above_` predictors.)
+
+```{r cover-flow-events-model-v2, eval=FALSE}
+cover_ar_TMBmod_3 <- glmmTMB::glmmTMB(
+  hits ~ log_hits_tm1 +
+    # days_above_baseflow_std*wpfg*origin + 
+    # days_above_springfresh_std*wpfg*origin +
+    # days_above_baseflow_std^2 + 
+    # days_above_springfresh_std_sq +
+    zone + wpfg * period + 
+    origin + 
+    grazing +
+    (1 | site / transect) +
+    # (1 | site / period) +
+    (1 | metres) +
+    (1 | survey_year),
+  # offset(npoint),
+  family = poisson,
+  ziformula=~ wpfg,
+  # dispformula =~ wpfg ,
+  data = veg_cover_ar_sum |> 
+    filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+)
+```
+
+**Species Richness Models**
+
+*Full Model, Full Dataset, [GitHub Issue 68](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/68)*
+
+*Simplified Model 1: "Flow Regime" model, [GitHub Issue 69](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/69)*
+
+```{r richness-flow-regime-model, eval=FALSE}
+richness_ar_TMBmod_1 <- glmmTMB::glmmTMB( 
+  richness ~  
+    days_above_baseflow_std*wpfg*origin +
+    days_above_springfresh_std*wpfg*origin + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
+    #zone *period + zone*wpfg + wpfg*period + 
+    # grazing + origin + 
+    (1 | site / transect) + 
+    #(1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown")) 
+) 
+```
+
+*Simplified Model 2: "Flow Events" model, [GitHub Issue 70](https://github.com/egouldo/VEFMAP_VEG_Stage6/issues/70)*
+
+Rather than splitting the flow events model into two different versions, as we did for the cover models, we have combined these into a single model for richness.
+
+```{r richness-flow-events-model, eval=FALSE}
+richness_ar_TMBmod_2 <- glmmTMB::glmmTMB( 
+  richness ~  
+    #days_above_baseflow_std + 
+    # days_above_springfresh_std + 
+    # days_above_baseflow_std^2 +
+    # days_above_springfresh_std^2 + 
+    # zone * period + 
+    zone *period + zone*wpfg + wpfg*period + 
+    grazing + origin + 
+    (1 | site / transect) + 
+    # (1 | site / period) + 
+    (1 | metres) + 
+    (1 | survey_year), 
+  # offset(npoint), 
+  family = poisson, 
+  #family = nbinom2, 
+  #ziformula=~ wpfg, 
+  # dispformula =~ wpfg , 
+  data = veg_richness |> 
+    filter(!wpfg_ori %in% c("Atl_native", 
+                            "Ate_native", 
+                            "Tda_unknown"))|> 
+    filter(!wpfg %in% c("Sk", "Se")) 
+)
+```
+
+# Model Calibration, Validation & Checking {#sec-model-calibration-validation-checking}
 
 ## Model calibration and validation scheme {#sec-model-calibration-and-validation-scheme}
 
@@ -1107,7 +1333,7 @@ Sensitivity analysis examines how uncertainty in model outputs can be apportione
 -   [ ] Explain how you will analyse the outputs to answer your analytical objectives. For instance, describe any trade-off or robustness analyses you will undertake to help evaluate and choose between different alternatives in consultation with experts or decision-makers.
 :::
 
-### Other simulation experiments / robustness analyses {#sec-other-simulation-experiments--robustness-analyses}
+### Other simulation experiments / robustness analyses {#sec-other-simulation-experiments-robustness-analyses}
 
 ::: callout-caution
 ## Preregistration Item
