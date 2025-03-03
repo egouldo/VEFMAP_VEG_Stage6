@@ -601,10 +601,15 @@ library(glmmTMB)
 
 # autoregressive model for cover
 cover_ar_model <- glmmTMB(
-  plant_hits ~ log_plant_hits_tm1 +                                          # specify an autoregressive model structure to model change in plant cover
-    wpfg * origin * (days_above_baseflow + days_above_springfresh) +         # assess group- and origin-specific impacts of broad flow "regimes"
-    wpfg * zone * period * origin                                            # fixed effects for functional group, zone (bank elev.), period (before/after), and origin (with interactions)
-    grazing +                                                                # fixed effect for grazing impacts (binary variable)
+  # specify an autoregressive model structure to model change in plant cover
+  plant_hits ~ log_plant_hits_tm1 +
+    # assess group- and origin-specific impacts of broad flow "regimes"
+    wpfg * origin * (days_above_baseflow + days_above_springfresh) +  
+    # fixed effects for functional group, zone (bank elev.), period (before/after), 
+    # and origin (with interactions)
+    wpfg * zone * period * origin + 
+    # fixed effect for grazing impacts (binary variable)
+    grazing +                                                                
     (1 | site / transect) +   # random effects for transects nested within sites
     (1 | metres) +            # random effect for location of site up the streambank
     (1 | survey_year) +       # random effect for survey year
@@ -616,9 +621,13 @@ cover_ar_model <- glmmTMB(
 # model for species richness
 richness_model <- glmmTMB(
   species_richness ~
-    wpfg * origin * (days_above_baseflow + days_above_springfresh) +         # assess group- and origin-specific impacts of broad flow "regimes"
-    wpfg * zone * period * origin                                            # fixed effects for functional group, zone (bank elev.), period (before/after), and origin (with interactions)
-    grazing +                                                                # fixed effect for grazing impacts (binary variable)
+    # assess group- and origin-specific impacts of broad flow "regimes"
+    wpfg * origin * (days_above_baseflow + days_above_springfresh) +  
+    # fixed effects for functional group, zone (bank elev.), period (before/after), 
+    # and origin (with interactions)
+    wpfg * zone * period * origin +   
+    # fixed effect for grazing impacts (binary variable)
+    grazing +                                                                
     (1 | site / transect) +   # random effects for transects nested within sites
     (1 | metres) +            # random effect for location of site up the streambank
     (1 | survey_year) +       # random effect for survey year
@@ -1008,7 +1017,8 @@ cover_ar_TMBmod_2 <- glmmTMB::glmmTMB(
   family = poisson,
   ziformula=~ wpfg,
   # dispformula =~ wpfg ,
-  data = veg_cover_ar_sum |> filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
+  data = veg_cover_ar_sum |> 
+    filter(!wpfg_ori %in% c("Atl_native", "Ate_native", "Tda_unknown"))
 )
 ```
 
