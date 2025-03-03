@@ -1,0 +1,66 @@
+title: ecoconsmodprereg
+authors: 
+  - Elliot Gould
+  - Jian Yen
+  - Chris Jones
+  - Hannah Fraser
+  - Libby Rumpff
+  - David Duncan
+  - Megan Good
+  - Workshop Participants #TODO: add workshop participants
+version: 1.0.0
+quarto-required: ">=1.5.0"
+contributes:
+  formats:
+    common:
+      number-sections: true
+      highlight-style: github
+      linkcolor: blue
+      citecolor: blue
+      link-citations: true
+      abstract-title: Background and Instructions #for html and docx (renames "abstract" to "Background and Instructions")
+      format-resources:
+        - mee.bst
+        - methods-in-ecology-and-evolution.csl
+      csl: methods-in-ecology-and-evolution.csl
+    abstract-title: Instructions
+    html:
+      toc: true
+      theme: [flatly, custom.scss]
+      toc-location: left
+      toc-expand: true
+    pdf:
+      toc: true
+      toc-depth: 2
+      documentclass: article
+      keep-tex: true
+      template-partials: 
+        - title.tex
+      include-in-header:
+        text: |
+          \usepackage{easy-todo}
+          \usepackage{geometry}
+          \usepackage{xcolor}
+          \usepackage{fancyhdr}
+          \usepackage{sectsty}
+          \usepackage{fontspec}
+          \usepackage[noblocks]{authblk}
+          \renewcommand*{\Authsep}{, }
+          \renewcommand*{\Authand}{, }
+          \renewcommand*{\Authands}{, }
+          \renewcommand\Affilfont{\small}
+          \usepackage[sfdefault]{cabin}
+          \usepackage[condensed]{roboto}
+          \usepackage[T1]{fontenc}
+          \usepackage{titlesec}
+          \renewcommand{\abstractname}{Background and Instructions}  %for pdf (renames "abstract" to "Background and Instructions")
+    docx: 
+      toc: true
+      toc-depth: 2
+      filters:
+        - authors-block
+      format-resources:
+        - custom-reference-doc.docx
+pdf-engine: xelatex
+mainfont: Lato
+sansfont: Roboto
