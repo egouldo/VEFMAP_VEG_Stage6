@@ -1910,6 +1910,18 @@ model_checks %>% select(model_name, starts_with("zeroinflation")) %>% unnest(zer
 map(model_checks$models, ~ parameters(.x) %>% print_html() )
 
 
+# ICC
+
+icc_results <- tibble(models = 
+                        list(richness = richness_ar_TMBmod_full_1, 
+                             cover_regime = cover_ar_TMBmod_full_1, 
+                             cover_flow_event = cover_ar_TMBmod_full_2)) %>% 
+  mutate(icc_results = 
+           map(models, .f = ~ performance::icc(.x, by_group = TRUE, model_component = "full"))) %>%  
+  mutate(model_name = names(icc_results)) %>% 
+  select(-models) %>% 
+  unnest(everything()) %>% 
+  select(model_name, everything())
 
 
 # Session Info
