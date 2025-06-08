@@ -70,7 +70,7 @@ metrics <- calculate_metrics(flow, site_info)
 # -------- Campaspe Pilot Analysis -------
 
 # Load veg data for Campaspe system
-veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = TRUE)
+veg_richness <- load_richness(system = "Campaspe", pilot = TRUE, recompile = F)
 veg_cover_ar <- load_cover(system = "Campaspe", pilot = TRUE, recompile = FALSE, ar = TRUE)
 
 ## --------- Check Data after loading ---------
