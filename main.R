@@ -1208,7 +1208,9 @@ cover_ar_TMBmod_full_1_posterior_check <- cover_ar_TMBmod_full_1 %>%
   check_predictions() %>% 
   plot() + 
   xlab("Cover (as hits)") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") + 
+  ggforce::facet_zoom(xlim = c(0,100), ylim = c(0,2500)) + 
+  labs(subtitle = "Flow regime model")
 
 ggsave(
   filename = "outputs/figures/cover_ar_TMBmod_full_1_posterior_check.png",
@@ -1226,7 +1228,7 @@ ggsave("cover_ar_TMBmod_full_1_predictions.png",
        width = 10, 
        height = 10, 
        units = "in", 
-       dpi = 300)
+       dpi = 600)
 
 
 check_collinearity(cover_ar_TMBmod_full_1)
@@ -1433,7 +1435,9 @@ check_predictions(cover_ar_TMBmod_full_2)
 cover_ar_TMBmod_full_2_posterior_check <- check_predictions(cover_ar_TMBmod_full_2) %>% 
   plot() + 
   xlab("Cover (as hits)") +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom") +
+  ggforce::facet_zoom(xlim = c(0,100), ylim = c(0,2000)) + 
+  labs(subtitle = "Flow event model")
 
 ggsave(
   filename = "outputs/figures/cover_ar_TMBmod_full_2_posterior_check.png",
