@@ -890,7 +890,7 @@ RichPredictPeriodwpfgPlot2
 ### ----------- Extract cover data from raw data files for each site ----------
 
 veg_cover_ar_full <- map2(.x = .system_list, 
-                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                          .y = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE) %>% 
                             set_names(.system_list),
                           ~ load_cover(system = .x, 
                                        pilot = FALSE, 
@@ -905,7 +905,7 @@ veg_cover_ar_full <- map2(.x = .system_list,
 ### ----------- Extract richness data from raw data files for each site --------
 
 veg_richness_full <- map2(.x = .system_list, 
-                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                          .y = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE) %>% 
                             set_names(.system_list),
                           ~ load_richness(system = .x, 
                                           pilot = FALSE, 
@@ -921,7 +921,7 @@ veg_richness_full <- map2(.x = .system_list,
 # collect information on the number of species at sites etc. within the raw dataset (not the ar dataset as this removes the first year)
 
 veg_cover_full <- map2(.x = .system_list, 
-                          .y = c(TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE) %>% 
+                          .y = c(FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE) %>% 
                             set_names(.system_list),
                           ~ load_cover(system = .x, 
                                        pilot = FALSE, 
