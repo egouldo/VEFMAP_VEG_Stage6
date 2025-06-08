@@ -1649,7 +1649,8 @@ richness_ar_TMBmod_full_1 <- glmmTMB::glmmTMB(
       family = poisson,
      #ziformula=~ wpfg,
      # dispformula =~ wpfg ,
-     data = veg_richness_full_sum |> filter(!site %in% c("Peuckers", "McInnes"))
+     data = veg_richness_full_sum |> filter(!site %in% c("Peuckers", "McInnes")) %>% 
+       rename(wpfg = rec_group) #TODO See gh issue view 83 ? gives error if don't rename
    )
    
    
