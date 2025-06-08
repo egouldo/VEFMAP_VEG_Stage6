@@ -1911,6 +1911,8 @@ map(model_checks$models, ~ parameters(.x) %>% print_html() )
 
 
 
+# Session Info
+
 
 sessioninfo::session_info(to_file = "inst/session-info.txt")
 grateful_citations <- grateful::get_pkgs_info(out.dir = here::here("inst"))
