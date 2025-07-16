@@ -37,9 +37,9 @@ authors: # Replace with authors in your study
     affil-id: 2
 affiliations:
   - id: 1
-    name: "University of Melbourne"
+    name: "School of Agriculture, Food and Ecosystem Sciences, University of Melbourne"
   - id: 2
-    name: "Arthur Rylah Institute for Environmental Research"
+    name: "Arthur Rylah Institute for Environmental Research, Department of Energy, Environment and Climate Action"
 date: "2024-03-25"
 bibliography: references.bib
 license: CC-BY-NC-SA
