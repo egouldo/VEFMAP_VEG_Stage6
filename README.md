@@ -6,4 +6,4 @@ Data analysis is focused initially around one paper that will feed into VEFMAP S
 
 This work is preregistered following the [*Adaptive Preregistration* methodology](https://egouldo.github.io/EcoConsPreReg/adaptive_preregistration_background.html).
 
-The preregistration document follows the template provided by the [Gould et al. *in prep*](https://egouldo.github.io/EcoConsPreReg/preregistration_modelling.html). The preregistration document is available [here ](https://github.com/egouldo/VEFMAP_VEG_Stage6/blob/master/analysis/preregistration_template.md).
+The preregistration document follows the template provided by [Gould et al. *in prep*](https://egouldo.github.io/EcoConsPreReg/preregistration_modelling.html). The preregistration document is available [here ](https://github.com/egouldo/VEFMAP_VEG_Stage6/blob/master/analysis/preregistration_template.md).
