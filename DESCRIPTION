@@ -1,6 +1,6 @@
 Package: VEFMAP_VEG_Stage6
 Title: VEFMAP, Vegetation Responses to Environmental Flows. 
-Version: 0.20.9
+Version: 0.21.0
 Authors@R: 
     person("Christopher, S.", "Jones", , "chris.jones@delwp.vic.gov.au", role = c("aut"),
            comment = c(ORCID = "0000-0003-2833-0194"))
