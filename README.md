@@ -1,6 +1,6 @@
 # Analysis Code for: "Vegetation responses to managed river flow events and regimes"
 
-Christopher Jones[^1] [^2]\*, Lyndsey Vivian[^1], Henry Wootton[^1], Elliot Gould2, Jian Yen[^1], Bryan Mole[^1], Freya Thomas[^1], Ana Backstrom[^3], and Karl Just[^3]
+Christopher Jones[^1] [^2]\*, Lyndsey Vivian[^1], Henry Wootton[^1], Elliot Gould[^2], Jian Yen[^1], Bryan Mole[^1], Freya Thomas[^1], Ana Backstrom[^3], and Karl Just[^3]
 
 \*Corresponding author, chris.jones@deeca.vic.gov.au
 
