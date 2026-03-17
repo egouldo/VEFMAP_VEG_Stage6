@@ -8,7 +8,7 @@ message: 'To cite the source code contained in "VEFMAP_VEG_Stage6" in publicatio
 type: software
 license: CC-BY-4.0
 title: 'Analysis Code for: "Vegetation responses to managed river flow events and regimes"'
-version: 0.20.9
+version: 0.21.0
 abstract: This repository contains the analysis code for stage 6 of the VEFMAP project.
 authors:
 - family-names: Jones
