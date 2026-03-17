@@ -55,7 +55,7 @@ source("R/data.R")
 
 # load site info
 # TODO: work out difference calculations to align true elev with flow elev
-site_info <- load_metadata(recompile = T)
+site_info <- load_metadata(recompile = F)
 
 # pilot analysis Campaspe ####
 
