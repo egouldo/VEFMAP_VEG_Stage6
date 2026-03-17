@@ -342,10 +342,10 @@ sum(veg_cover_ar_sum$hits %in% 0 ) / nrow(veg_cover_ar_sum) # 86% zeros
 cover_ar_TMBmod_1 <- glmmTMB::glmmTMB(
   hits ~ log_hits_tm1 +
     days_above_baseflow_std*wpfg*origin + days_above_springfresh_std*wpfg*origin +
-   # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
+    # days_above_baseflow_std^2 + days_above_springfresh_std^2 +
     #   zone * period +
-  #  zone + period +
-  #  grazing + wpfg  +
+    #  zone + period +
+    #  grazing + wpfg  +
     (1 | site / transect) +
     #(1 | site / period) +
     (1 | metres) +
