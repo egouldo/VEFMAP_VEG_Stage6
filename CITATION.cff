@@ -4,7 +4,7 @@
 # -----------------------------------------------------------
  
 cff-version: 1.2.0
-message: 'To cite package "VEFMAP_VEG_Stage6" in publications use:'
+message: 'To cite the source code contained in "VEFMAP_VEG_Stage6" in publications use:'
 type: software
 license: CC-BY-4.0
 title: 'VEFMAP_VEG_Stage6: VEFMAP, Vegetation Responses to Environmental Flows.'
