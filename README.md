@@ -1,5 +1,7 @@
 # Analysis Code for: "Vegetation responses to managed river flow events and regimes"
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19063999.svg)](https://doi.org/10.5281/zenodo.19063999)
+
 Christopher Jones[^1] [^2]\*, Lyndsey Vivian[^1], Henry Wootton[^1], Elliot Gould[^2], Jian Yen[^1], Bryan Mole[^1], Freya Thomas[^1], Ana Backstrom[^3], and Karl Just[^3]
 
 \*Corresponding author, chris.jones@deeca.vic.gov.au
@@ -22,9 +24,9 @@ The preregistration document follows the template provided by [Gould et al. *in 
 
 # Referencing this work
 
-Please cite this repository as:
+Please cite this repository as: 
 
-> TBD.
+> Jones, C.S., Yen, J.D.L., Gould, E., Wootton, H., Vivian, L. (2026) 'Analysis Code for: "Vegetation responses to managed river flow events and regimes"' Zenodo. <https://doi.org/10.5281/zenodo.19063999>
 
 [^1]: Arthur Rylah Institute for Environmental Research, Department of Energy, Environment, and Climate Action, Heidelberg, 3084, Victoria, Australia.
 
