@@ -4,11 +4,14 @@
 # -----------------------------------------------------------
  
 cff-version: 1.2.0
-message: 'To cite the source code contained in "VEFMAP_VEG_Stage6" in publications use: Jones, C., Yen, J., Gould, E., Wootton, H., Vivian, L., (2026) Analysis Code for: "Vegetation responses to managed river flow events and regimes" '
+message: 'To cite the source code contained in "VEFMAP_VEG_Stage6" in publications use: > Jones, C., Yen, J., Gould, E., Wootton, H., Vivian, L., (2026) Analysis Code for: "Vegetation responses to managed river flow events and regimes". Zenodo. https://doi.org/10.5281/zenodo.19063999'
 type: software
 license: CC-BY-4.0
+doi: 10.5281/zenodo.19064144
 title: 'Analysis Code for: "Vegetation responses to managed river flow events and regimes"'
-version: 0.21.0
+version: 0.21.2.9000
+date-released: '2026-03-17'
+repository-code: https://github.com/egouldo/VEFMAP_VEG_Stage6
 abstract: This repository contains the analysis code for stage 6 of the VEFMAP project.
 authors:
 - family-names: Jones
@@ -44,3 +47,4 @@ contact:
   given-names: Gould
   email: elliot.gould@unimelb.edu.au
   orcid: https://orcid.org/0000-0002-6585-538X
+
