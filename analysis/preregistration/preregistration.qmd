@@ -3,7 +3,8 @@ title: "Preregistration for Vegetation Responses to Environmental Flows"
 format:
   ecoconsmodprereg-pdf:
     keep-tex: true
-  ecoconsmodprereg-html: default
+  ecoconsmodprereg-html:
+    keep-md: true
   # EcoConsModPreReg-docx: default
 authors: # Replace with authors in your study 
   - name: Chris Jones
