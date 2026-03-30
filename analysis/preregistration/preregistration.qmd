@@ -4,7 +4,6 @@ format:
   ecoconsmodprereg-pdf:
     keep-tex: true
   ecoconsmodprereg-html: default
-  gfm: default
   # EcoConsModPreReg-docx: default
 authors: # Replace with authors in your study 
   - name: Chris Jones
