@@ -26,7 +26,7 @@ The preregistration document follows the template provided by [Gould et al. *in 
 
 Please cite this repository as: 
 
-> Jones, C.S., Yen, J.D.L., Gould, E., Wootton, H., Vivian, L. (2026) 'Analysis Code for: "Vegetation responses to managed river flow events and regimes"' Zenodo. <https://doi.org/10.5281/zenodo.19063999>
+> Jones, C.S., Yen, J.D.L., Gould, E., Wootton, H., Vivian, L. (2026) 'Analysis Code and Data for: "Vegetation responses to managed river flow events and regimes"' Zenodo. <https://doi.org/10.5281/zenodo.19063999>
 
 [^1]: Arthur Rylah Institute for Environmental Research, Department of Energy, Environment, and Climate Action, Heidelberg, 3084, Victoria, Australia.
 
